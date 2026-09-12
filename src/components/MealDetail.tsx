@@ -1,4 +1,5 @@
 import type { Meal } from '../lib/types'
+import { FREQUENCY_LABEL } from '../lib/types'
 import { CARB_SOURCE_TEXT, CONFIDENCE_TEXT } from '../lib/format'
 import { ingredientText } from '../lib/foods'
 import { CarbChip, DemoBadge, MealMark, SatietyMark } from './ui'
@@ -14,13 +15,20 @@ const Fact = ({ label, value }: { label: string; value: string }) => (
 )
 
 export function MealDetail({ meal }: { meal: Meal }) {
-  const badges = [
-    meal.buyOutside ? null : meal.portable ? 'Se puede llevar' : 'Para comer en casa',
-    meal.needsCold ? 'Va con frío' : null,
-    meal.needsReheat ? 'Se calienta' : null,
-    meal.makeNightBefore ? 'Se prepara la noche anterior' : null,
-    meal.freezable ? 'Se puede congelar' : null,
-  ].filter(Boolean) as string[]
+  /* Los datos derivados no repiten lo que ya dice una etiqueta. */
+  const badges = (
+    [
+      meal.buyOutside || meal.tags.includes('para llevar') || meal.tags.includes('en casa')
+        ? null
+        : meal.portable
+          ? 'Se puede llevar'
+          : 'Para comer en casa',
+      meal.needsCold ? 'Va con frío' : null,
+      meal.needsReheat ? 'Se calienta' : null,
+      meal.makeNightBefore ? 'Se deja listo la noche anterior' : null,
+      meal.freezable ? 'Se puede congelar' : null,
+    ].filter(Boolean) as string[]
+  ).filter((b) => !meal.tags.includes(b.toLowerCase() as never))
 
   return (
     <div>
@@ -62,7 +70,19 @@ export function MealDetail({ meal }: { meal: Meal }) {
         ni sugiere insulina.
       </p>
 
+      {/* Etiquetas: qué es y para qué sirve. Ninguna dice si está bien o mal. */}
       <div className="mt-5 flex flex-wrap gap-2">
+        <span className="rounded-pill border border-line bg-surface px-3 py-1.5 text-[13px] text-ink-soft">
+          {FREQUENCY_LABEL[meal.frequency]}
+        </span>
+        {meal.tags.map((t) => (
+          <span
+            key={t}
+            className="rounded-pill border border-line bg-surface px-3 py-1.5 text-[13px] text-ink-soft first-letter:uppercase"
+          >
+            {t}
+          </span>
+        ))}
         {badges.map((b) => (
           <span
             key={b}
@@ -72,6 +92,34 @@ export function MealDetail({ meal }: { meal: Meal }) {
           </span>
         ))}
       </div>
+
+      {meal.packaged && (
+        <>
+          <h4 className="v-eyebrow mt-7 text-ink-faint">Producto envasado</h4>
+          <div className="mt-1 divide-y divide-line">
+            {meal.packaged.brand && <Fact label="Marca" value={meal.packaged.brand} />}
+            {meal.packaged.product && <Fact label="Producto" value={meal.packaged.product} />}
+            {meal.packaged.servingSize && (
+              <Fact label="Porción" value={meal.packaged.servingSize} />
+            )}
+            {meal.packaged.servingsPerPack && (
+              <Fact label="Porciones por envase" value={String(meal.packaged.servingsPerPack)} />
+            )}
+            {meal.packaged.carbsPerServing !== undefined && (
+              <Fact
+                label="Carbohidratos por porción"
+                value={`${meal.packaged.carbsPerServing} g CHO`}
+              />
+            )}
+          </div>
+          {!meal.carbsVerified && (
+            <p className="mt-3 text-[13px] leading-relaxed text-ink-faint">
+              Tiene etiqueta, así que este número puede dejar de ser una estimación
+              en cuanto carguemos la marca y la porción reales.
+            </p>
+          )}
+        </>
+      )}
 
       {meal.venues && meal.venues.length > 0 && (
         <>

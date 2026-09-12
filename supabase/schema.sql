@@ -20,6 +20,8 @@ create type plan_slot     as enum (
 -- Dónde transcurre el día. No se deduce del día de la semana.
 create type day_context   as enum ('casa', 'calle', 'mixto');
 -- Dónde se consigue una opción que no cocinás vos.
+-- Cada cuánto tiene sentido que algo aparezca. Dato de rotación, no juicio.
+create type frequency     as enum ('habitual', 'ocasional', 'emergencia');
 create type venue         as enum (
   'kiosco', 'supermercado', 'cafetería', 'panadería',
   'rotisería', 'restaurante', 'estación de servicio', 'casa de comidas');
@@ -93,6 +95,7 @@ create table meals (
   freezable         boolean not null default false,
 
   difficulty        smallint not null default 1 check (difficulty between 1 and 3),
+  freq              frequency not null default 'habitual',
   favorite          boolean not null default false,
   tested            boolean not null default false,
   rating            smallint check (rating between 1 and 5),
@@ -106,6 +109,17 @@ create table meals (
   venues            venue[] not null default '{}',
   price_level       smallint check (price_level between 1 and 3),
   handheld          boolean not null default false,  -- se come caminando
+
+  -- Producto envasado: acá el carbohidrato se lee de la etiqueta, no se
+  -- estima. Con esto cargado y validado, carbs_verified pasa a true y la
+  -- marca DEMO desaparece sola.
+  brand             text,
+  product_name      text,
+  serving_size      text,              -- "1 barra (40 g)"
+  servings_per_pack numeric,
+  carbs_per_serving numeric,
+  carbs_per_pack    numeric,
+  label_photo_url   text,
 
   is_demo           boolean not null default false,   -- para borrar los ejemplos de una
   carbs_verified_at timestamptz,                      -- cuándo se revisó el carbo

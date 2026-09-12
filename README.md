@@ -52,9 +52,10 @@ día de la semana, y no se configura a diario: vive en Configuración y en
 - **Modo foco** — sólo lo que viene ahora.
 - **Asistente** — entrada integrada, resuelta con reglas locales sobre la biblioteca.
 - **SEMANA** — los 7 días, con reemplazo desde cualquier día.
-- **COMIDAS** — biblioteca personal con 31 opciones de demostración (21 caseras
-  y 10 para comprar afuera), marcadas como tales y con los carbohidratos sin
-  verificar.
+- **COMIDAS** — biblioteca personal con 80 opciones de demostración (42 caseras
+  y 38 para comprar afuera), marcadas como tales y con los carbohidratos sin
+  verificar. Hay fideos, pizza, barras, galletitas y chocolate: la app no está
+  hecha para alguien que cocina perfecto todos los días.
 - **RESOLVER AHORA** — la salida cuando el plan falla: no traje comida, tengo
   hambre, cambió mi día, no preparé nada, quiero reemplazar. Tres toques hasta
   ver opciones, agrupadas por lugar concreto (rotisería, panadería,
@@ -86,8 +87,8 @@ npm run build && npm run preview
 src/
   lib/
     types.ts       modelo de dominio (espeja supabase/schema.sql)
-    demo.ts        48 opciones de demostración (isDemo, carbsVerified: false),
-                   21 caseras y 27 para comprar afuera
+    demo.ts        80 opciones de demostración (isDemo, carbsVerified: false),
+                   42 caseras y 38 para comprar afuera
     foods.ts       catálogo: en qué sector está cada cosa y cómo se compra
     domain.ts      necesidades del día, rotación, reemplazos, rescate,
                    resolver ahora, tareas de preparación, mochila
@@ -129,6 +130,9 @@ Dos reglas que se respetan en toda la app:
 5. **No depende de tu disciplina.** La app avanza con el reloj. Marcar es
    opcional en todas las pantallas salvo la lista de compras, donde tachar
    es el punto.
+6. **Ninguna comida es buena ni mala.** No hay verde ni rojo, ni «permitido»
+   ni «prohibido». Se clasifica por saciedad, practicidad, frecuencia,
+   contexto y verificación de carbohidratos — nunca por si es «sana».
 
 ## PWA
 

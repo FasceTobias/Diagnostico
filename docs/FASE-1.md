@@ -3,10 +3,9 @@
 > Documento de arquitectura, UX y diseño.
 > **Vianda** es un nombre temporal, no una marca definitiva.
 >
-> *Revisión 4 — simplificación. La app avanza sola con el reloj, la mochila
-> deja de ser una tarea, el contexto se va de la pantalla principal, la lista
-> de compras trae cantidades reales y «Resolver ahora» habla de lugares
-> concretos.*
+> *Revisión 5 — biblioteca y tono. La app deja de sonar a nutricionista:
+> entran fideos, pizza, barras, galletitas y chocolate, y aparece `frequency`
+> para rotar sin moralizar.*
 
 ---
 
@@ -47,6 +46,7 @@ Todo lo demás es soporte de esas tres preguntas.
 | El día no es perfecto | Contexto por día, snacks opcionales y una salida rápida cuando no preparaste nada |
 | No depende de tu disciplina | La pantalla avanza con el reloj. Si no marcás nada en tres días, funciona igual. Los estados son una anotación opcional, nunca el motor |
 | Todo en español de acá | Nada de *oats*, *snack PM* ni nombres que no dirías en voz alta |
+| La comida no es buena ni mala | No hay verde ni rojo, ni «permitido» ni «prohibido». Se clasifica por saciedad, practicidad, frecuencia, contexto y verificación |
 | La necesidad antes que la variedad | Si el día pide algo que llene, primero se busca ahí; la repetición desempata, nunca veta |
 
 ### Identidad visual (resumen)
@@ -242,6 +242,42 @@ el ingrediente principal dentro del mismo día.
 - **Comiste otra cosa** → cambiar cuesta lo mismo que marcar.
 - **El día cambió** → un toque en el contexto y lo pendiente se rearma.
 - **No tenés hambre** → los snacks se sacan sin consecuencias.
+
+## D bis 1. La biblioteca es de una persona real
+
+La app no está hecha para alguien que cocina perfecto todos los días. Una semana
+de verdad tiene fideos, pizza, una barra en el bolsillo y un chocolate a las
+cuatro de la tarde, y todo eso **entra en el día**, no se cuela.
+
+**No hay comida buena ni mala.** No existe el verde ni el rojo, ni «permitido»
+ni «prohibido», ni «premio» ni «cheat meal». Lo que sí existe es la información
+que sirve para decidir:
+
+| Se clasifica por | No se clasifica por |
+|---|---|
+| saciedad · practicidad · frecuencia | si es «sano» |
+| contexto · transportabilidad | si es dulce o salado como juicio |
+| preparación · verificación de carbohidratos | si «corresponde» o no |
+
+### `frequency`: rotación, no conducta
+
+Cada opción dice cada cuánto tiene sentido que aparezca:
+
+| | Qué significa | En la rotación |
+|---|---|---|
+| **habitual** | puede estar cualquier día | sin penalización |
+| **de vez en cuando** | no todos los días | pesa un poco menos |
+| **para salir del paso** | su lugar es «Resolver ahora», no el menú | casi nunca se planifica |
+
+Una barra proteica es **habitual** porque es práctica. Un budín dulce es **de vez
+en cuando** porque no todos los días. Ninguna de las dos está mal.
+
+### Productos envasados
+
+Para lo de góndola el carbohidrato no se estima: se lee. El modelo ya guarda
+marca, producto, tamaño de porción, porciones por envase, carbohidratos por
+porción y foto de la etiqueta. Mientras eso no esté cargado y validado, el dato
+sigue mostrándose como **sin verificar**; cuando se carga, el DEMO se cae solo.
 
 ## D bis 2. Lo que la app NO te pide
 

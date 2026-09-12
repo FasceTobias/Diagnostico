@@ -75,6 +75,28 @@ export const FOODS: Record<string, Food> = {
   harina: { aisle: 'almacén', buy: { unit: 'kg' } },
   café: { aisle: 'almacén', buy: { unit: 'g', step: 250 } },
 
+  // --- envasados y cosas de góndola ---
+  'galletitas sin azúcar': { aisle: 'almacén', buy: { unit: 'g', per: 150, label: 'paquete' } },
+  'barra proteica': { plural: 'barras proteicas', aisle: 'almacén', buy: { unit: 'u' } },
+  'barra de cereal': { plural: 'barras de cereal', aisle: 'almacén', buy: { unit: 'u' } },
+  chocolate: { aisle: 'almacén', buy: { unit: 'g', step: 100 } },
+  'frutos secos con chocolate': { aisle: 'almacén', buy: { unit: 'g', step: 150 } },
+  'gelatina sin azúcar': { plural: 'gelatinas sin azúcar', aisle: 'almacén', buy: { unit: 'u' } },
+  'flan sin azúcar': { plural: 'flanes sin azúcar', aisle: 'lácteos', buy: { unit: 'u' } },
+  'budín sin azúcar': { aisle: 'panadería', buy: { unit: 'g', per: 300, label: 'budín' } },
+  'mermelada sin azúcar': { aisle: 'almacén', buy: { unit: 'g', per: 350, label: 'frasco' } },
+  'queso untable': { aisle: 'lácteos', buy: { unit: 'g', per: 300, label: 'pote' } },
+  'yogur saborizado sin azúcar': { plural: 'yogures saborizados sin azúcar', aisle: 'lácteos', buy: { unit: 'g', per: 200, label: 'pote' } },
+
+  // --- más cosas de todos los días ---
+  fideos: { aisle: 'almacén', buy: { unit: 'g', per: 500, label: 'paquete' } },
+  'salsa de tomate': { aisle: 'almacén', buy: { unit: 'g', per: 400, label: 'lata' } },
+  muzzarella: { aisle: 'lácteos', buy: { unit: 'g', step: 100 } },
+  'carne picada': { aisle: 'carnicería', buy: { unit: 'g', step: 250 } },
+  'pan de hamburguesa': { plural: 'panes de hamburguesa', aisle: 'panadería', buy: { unit: 'u', per: 4 } },
+  'masa de tarta': { plural: 'masas de tarta', aisle: 'congelados', buy: { unit: 'u', per: 2 } },
+  'masa de pizza': { plural: 'masas de pizza', aisle: 'panadería', buy: { unit: 'u' } },
+
   // --- ya está en casa ---
   'aceite de oliva': { aisle: 'almacén', pantry: true },
   sal: { aisle: 'almacén', pantry: true },

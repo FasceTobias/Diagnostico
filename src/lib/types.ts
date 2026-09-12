@@ -13,6 +13,9 @@ export type Slot =
 
 export type Category = 'desayuno' | 'snack' | 'almuerzo' | 'merienda' | 'cena'
 
+/* Etiquetas descriptivas. Ninguna dice si algo es bueno o malo: dicen qué
+   es, dónde se consigue y para qué sirve. Una barra de chocolate en la
+   calle puede ser exactamente lo que necesitás. */
 export type Tag =
   | 'para llevar'
   | 'en casa'
@@ -21,6 +24,37 @@ export type Tag =
   | 'potente'
   | 'normal'
   | 'liviano'
+  | 'práctico'
+  | 'antojo'
+  | 'dulce'
+  | 'salado'
+  | 'kiosco'
+  | 'supermercado'
+  | 'envasado'
+
+/* Cada cuánto tiene sentido que aparezca. Es un dato de rotación, no un
+   juicio: «ocasional» significa que no todos los días, no que esté mal. */
+export type Frequency = 'habitual' | 'ocasional' | 'emergencia'
+
+export const FREQUENCY_LABEL: Record<Frequency, string> = {
+  habitual: 'Habitual',
+  ocasional: 'De vez en cuando',
+  emergencia: 'Para salir del paso',
+}
+
+/* Producto envasado. Acá el carbohidrato no se estima: se lee de la
+   etiqueta. Mientras no esté cargada, sigue siendo DEMO. */
+export interface PackagedInfo {
+  brand?: string
+  product?: string
+  /** "1 barra (40 g)" */
+  servingSize?: string
+  servingsPerPack?: number
+  carbsPerServing?: number
+  /** Total del envase, cuando te comés el paquete entero */
+  carbsPerPack?: number
+  labelPhotoUrl?: string
+}
 
 /** Tres niveles, no un número: un número invita a optimizar. */
 export type Satiety = 'liviana' | 'normal' | 'potente'
@@ -128,6 +162,10 @@ export interface Meal {
   makeNightBefore: boolean
   freezable: boolean
   difficulty: 1 | 2 | 3
+  /** Cada cuánto tiene sentido. Para la rotación, no para juzgar. */
+  frequency: Frequency
+  /** Producto de góndola: la etiqueta manda sobre cualquier estimación. */
+  packaged?: PackagedInfo
   favorite: boolean
   tested: boolean
   rating?: number

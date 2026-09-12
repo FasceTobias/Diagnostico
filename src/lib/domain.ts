@@ -1,6 +1,7 @@
 import type {
   Aisle,
   DayContext,
+  Frequency,
   DayPlan,
   Meal,
   PackItem,
@@ -132,18 +133,31 @@ export const candidatesFor = (
   return pool
 }
 
+/* Cada cuánto tiene sentido que algo aparezca en el plan. No es una nota
+   de conducta: una pizza o un budín siguen entrando, sólo que no todos los
+   días. Lo de «emergencia» casi no se planifica porque su lugar es
+   «Resolver ahora», no el menú de la semana. */
+const FREQUENCY_WEIGHT: Record<Frequency, number> = {
+  habitual: 0,
+  ocasional: -10,
+  emergencia: -28,
+}
+
 /** Puntaje de preferencia DENTRO del pozo de candidatos válidos.
     Acá sí pesa la variedad, porque cualquiera de estas opciones ya sirve. */
 const preferenceScore = (meal: Meal, ctx: RotationContext): number => {
   let score = (meal.rating ?? 3) * 4
   if (meal.favorite) score += 12
   if (!meal.tested) score -= 6
+  score += FREQUENCY_WEIGHT[meal.frequency]
 
-  // Penalización por repetición: acotada, para que sea un desempate y no
-  // un veto. Ayer pesa más que anteayer.
+  // Penalización por repetición. Es fuerte los primeros días —si no, las
+  // dos o tres favoritas se turnan entre ellas y la semana queda cíclica—
+  // pero sigue siendo un desempate: acá ya se descartó todo lo que no
+  // sirve para el día, así que nunca puede elegir algo que deje con hambre.
   ctx.recentByDay.forEach((ids, daysAgo) => {
     if (!ids.includes(meal.id)) return
-    score -= Math.max(4, 20 - daysAgo * 5)
+    score -= Math.max(4, 28 - daysAgo * 6)
   })
 
   // Variedad dentro del mismo día: dos veces huevo cansa.
