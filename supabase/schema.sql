@@ -49,7 +49,14 @@ create table foods (
   unit           text not null default 'g',
   carbs_per_100  numeric,
   carb_src       carb_source not null default 'estimacion',
-  shopping_aisle text,                  -- verduleria, carniceria, lacteos, almacen, congelados, panaderia, otros
+  shopping_aisle text,                  -- verduleria, carniceria, lacteos, almacen, panaderia, congelados, otros
+  -- Cómo se compra de verdad: de a 6 los huevos, por kilo el pollo, por
+  -- paquete el pan. Es lo que convierte una suma en una compra práctica.
+  buy_unit       text,                  -- 'u' | 'g' | 'ml' | 'kg' | 'paquete'
+  buy_step       numeric,               -- redondear para arriba a múltiplos
+  buy_per        numeric,               -- cuántas unidades de receta trae un envase
+  buy_label      text,                  -- 'pote', 'lata', 'frasco', 'atado'
+  is_pantry      boolean not null default false,  -- ya está en casa, no va a la lista
   is_packaged    boolean not null default false,
   brand          text,
   notes          text,
@@ -106,13 +113,15 @@ create table meals (
 );
 create index on meals (profile_id, category);
 
+-- Con cantidad, siempre: sin esto la lista de compras dice "huevo" en vez
+-- de "12 huevos", que no sirve parado en el supermercado.
 create table meal_items (
   id            uuid primary key default gen_random_uuid(),
   meal_id       uuid not null references meals (id) on delete cascade,
   food_id       uuid references foods (id) on delete set null,
   label         text,                 -- por si el ingrediente todavía no está en foods
-  quantity      numeric,
-  unit          text,
+  quantity      numeric not null default 1,
+  unit          text not null default 'u',
   carbs_contrib numeric
 );
 create index on meal_items (meal_id);

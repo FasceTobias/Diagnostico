@@ -53,15 +53,55 @@ export type Venue =
   | 'estación de servicio'
   | 'casa de comidas'
 
+/* El orden es el de utilidad real cuando estás parado en la calle con
+   hambre: primero donde hay comida hecha, último donde hay un paquete. */
 export const VENUES: Venue[] = [
-  'kiosco',
-  'supermercado',
-  'cafetería',
-  'panadería',
   'rotisería',
-  'restaurante',
-  'estación de servicio',
   'casa de comidas',
+  'panadería',
+  'cafetería',
+  'supermercado',
+  'restaurante',
+  'kiosco',
+  'estación de servicio',
+]
+
+/* Ingredientes con cantidad: sin esto la lista de compras no puede decir
+   "12 huevos", sólo "huevo". */
+export type Unit =
+  | 'u'
+  | 'g'
+  | 'ml'
+  | 'rebanada'
+  | 'cda'
+  | 'puñado'
+  | 'pote'
+  | 'lata'
+
+export interface Ingredient {
+  /** Clave del catálogo de alimentos (foods.ts) */
+  item: string
+  qty: number
+  unit: Unit
+}
+
+export type Aisle =
+  | 'verdulería'
+  | 'carnicería'
+  | 'lácteos'
+  | 'almacén'
+  | 'panadería'
+  | 'congelados'
+  | 'otros'
+
+export const AISLES: Aisle[] = [
+  'verdulería',
+  'carnicería',
+  'lácteos',
+  'panadería',
+  'almacén',
+  'congelados',
+  'otros',
 ]
 
 export interface Meal {
@@ -71,7 +111,7 @@ export interface Meal {
   tags: Tag[]
   /** Ingrediente principal. Lo usa la rotación para no repetir pollo tres días. */
   mainIngredient: string
-  ingredients: string[]
+  ingredients: Ingredient[]
   portion: string
   /** Cuando existan fotos reales, ocupan el lugar del ícono. */
   photoUrl?: string
@@ -127,21 +167,12 @@ export const RESOLVE_REASON: Record<ResolveReason, string> = {
   reemplazar: 'Quiero reemplazar una comida',
 }
 
-export type ResolveFilter =
-  | 'mucha-hambre'
-  | 'normal'
-  | 'rapido'
-  | 'barato'
-  | 'sentarme'
-  | 'caminando'
+export type ResolveFilter = 'mucha-hambre' | 'rapido' | 'barato'
 
 export const RESOLVE_FILTER: Record<ResolveFilter, string> = {
-  'mucha-hambre': 'Tengo mucha hambre',
-  normal: 'Algo normal',
-  rapido: 'Tengo poco tiempo',
-  barato: 'Gastar poco',
-  sentarme: 'Puedo sentarme',
-  caminando: 'Comer caminando',
+  'mucha-hambre': 'Que llene',
+  rapido: 'Rápido',
+  barato: 'Barato',
 }
 
 /* ------------------------------------------------------------------
@@ -225,9 +256,9 @@ export const SLOT_LABEL: Record<Slot, string> = {
 /** Etiqueta corta para listas densas. */
 export const SLOT_SHORT: Record<Slot, string> = {
   breakfast: 'Desayuno',
-  snack_am: 'Snack AM',
+  snack_am: 'Media mañana',
   lunch: 'Almuerzo',
-  snack_pm: 'Snack PM',
+  snack_pm: 'Media tarde',
   merienda: 'Merienda',
   dinner: 'Cena',
 }
@@ -252,6 +283,16 @@ export const SLOT_CATEGORY: Record<Slot, Category> = {
 
 /** Los snacks se suman o se sacan según cómo venga el día. */
 export const OPTIONAL_SLOTS: Slot[] = ['snack_am', 'snack_pm']
+
+/** Para hablar como se habla: "tenés que almorzar", no "resolver lunch". */
+export const SLOT_VERB: Record<Slot, string> = {
+  breakfast: 'desayunar',
+  snack_am: 'comer algo a media mañana',
+  lunch: 'almorzar',
+  snack_pm: 'comer algo a media tarde',
+  merienda: 'merendar',
+  dinner: 'cenar',
+}
 
 export const STATUS_LABEL: Record<MealStatus, string> = {
   pending: 'Pendiente',

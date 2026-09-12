@@ -3,9 +3,10 @@
 > Documento de arquitectura, UX y diseño.
 > **Vianda** es un nombre temporal, no una marca definitiva.
 >
-> *Revisión 3 — «Resolver ahora», opciones comprables afuera, configuración
-> personal de insulina con calculadora explícita, y una sola convención de
-> carbohidratos.*
+> *Revisión 4 — simplificación. La app avanza sola con el reloj, la mochila
+> deja de ser una tarea, el contexto se va de la pantalla principal, la lista
+> de compras trae cantidades reales y «Resolver ahora» habla de lugares
+> concretos.*
 
 ---
 
@@ -44,6 +45,8 @@ Todo lo demás es soporte de esas tres preguntas.
 | Datos honestos | Todo carbohidrato muestra su nivel de confianza, y el que no fue verificado se muestra como tal |
 | Una sola convención | Los carbohidratos se escriben siempre igual: `34 g CHO`. La palabra completa sólo como etiqueta de sección |
 | El día no es perfecto | Contexto por día, snacks opcionales y una salida rápida cuando no preparaste nada |
+| No depende de tu disciplina | La pantalla avanza con el reloj. Si no marcás nada en tres días, funciona igual. Los estados son una anotación opcional, nunca el motor |
+| Todo en español de acá | Nada de *oats*, *snack PM* ni nombres que no dirías en voz alta |
 | La necesidad antes que la variedad | Si el día pide algo que llene, primero se busca ahí; la repetición desempata, nunca veta |
 
 ### Identidad visual (resumen)
@@ -240,6 +243,27 @@ el ingrediente principal dentro del mismo día.
 - **El día cambió** → un toque en el contexto y lo pendiente se rearma.
 - **No tenés hambre** → los snacks se sacan sin consecuencias.
 
+## D bis 2. Lo que la app NO te pide
+
+Tres decisiones de diseño que valen más que cualquier función agregada:
+
+**No hay que marcar nada.** El día avanza por hora: a las 12:10 lo que toca es el
+almuerzo, marques o no marques. «Preparado», «comido» y «hoy no» existen, pero son
+una anotación para vos, no el motor. Tres días sin tocar la app y HOY sigue
+mostrando exactamente lo correcto.
+
+**La mochila no es una checklist.** Dice **«Hoy llevate»** y abajo lista lo que va
+en el bolso. Nada para tildar. Si querés ir marcando mientras cargás, hay un link
+discreto que enciende las casillas — apagado por defecto.
+
+**El contexto no se configura todos los días.** Salió de la pantalla principal.
+Vive en Configuración y en «Resolver ahora → Cambió mi día», que es cuando
+realmente aporta.
+
+La pantalla principal quedó en tres cosas: **ahora**, **después** y **el día**.
+Debajo, una sola acción según la hora (la mochila de mañana, la preparación de
+noche) y el resto en renglones apagados al final.
+
 ## D quater. Resolver ahora
 
 El plan del día falla seguido, y falla lejos de casa. Saliste pensando que
@@ -259,10 +283,29 @@ Máximo tres toques hasta ver opciones:
   Quiero reemplazar una comida
 ```
 
-Los filtros van **arriba de los resultados, no antes**: se ajustan mirando lo que
-salió. Y si un filtro deja la lista vacía, se afloja el último en vez de mostrar
-una pantalla en blanco — a las 12:30 en la calle, una lista vacía no le sirve a
-nadie.
+Los filtros son tres —**que llene**, **rápido**, **barato**— y van **arriba de los
+resultados, no antes**: se ajustan mirando lo que salió. Si un filtro deja la
+lista vacía, se afloja el último en vez de mostrar una pantalla en blanco.
+
+### Lugares concretos, no categorías
+
+«Estás en la calle» es demasiado abstracto. Lo concreto es **a qué lugar entrás y
+qué pedís ahí adentro**, así que los resultados vienen agrupados por lugar con
+platos de verdad:
+
+```
+ESTÁS EN LA CALLE Y TENÉS QUE ALMORZAR
+
+ROTISERÍA       pollo con guarnición · milanesa con ensalada · empanadas …
+PANADERÍA       sándwich de jamón y queso · porción de tarta
+SUPERMERCADO    sándwich preparado · ensalada con pollo
+CAFETERÍA       tostado de jamón y queso
+RESTAURANTE     milanesa con guarnición · pastas con salsa
+KIOSCO          …
+```
+
+El orden de los lugares es el de utilidad real con hambre: primero donde hay
+comida hecha, último donde hay un paquete.
 
 ### Comidas que se compran afuera
 
@@ -499,12 +542,16 @@ No para hacer menos, sino para que lo que se use todos los días esté impecable
 | Login / multiusuario | Un solo usuario. `profile_id` existe desde el día uno, pero no hay pantalla de login. |
 | Alta y edición completa de comidas | Primero hay que querer usar la app. La carga real la hacemos juntos y puede empezar por un seed. |
 | Fotos de comidas | Subida de imágenes es un módulo entero. Mientras tanto, una marca visual generada por categoría — y se ve bien. |
-| Lista de compras automática desde el plan | La agregación depende de que `meal_items` esté cargado en serio. Antes de eso da resultados pobres. |
 | Stock / alacena | Mucha carga manual, poco retorno diario. Es la típica función que se abandona en una semana. |
 | Asistente con API paga | Se construye la experiencia y el contrato de datos; la primera versión resuelve con reglas locales. |
 | Notificaciones push | Requiere permisos, service worker con push y backend. La app todavía no se ganó el derecho a interrumpir. |
 | Proteínas, calorías, micros | Carbohidratos y saciedad resuelven el 95% de las decisiones. Lo demás es ruido. |
 | Sincronización offline con conflictos | Lectura offline sí (service worker). Escritura offline con merge, no. |
+
+**Ya no está pospuesta:** la lista de compras. Los ingredientes tienen cantidad,
+así que la semana se suma y se redondea a cómo se compra de verdad — «12 huevos»,
+«1,5 kg de pollo», «1 paquete de pan». Lo que se come afuera no entra, y lo que
+siempre hay en casa (sal, aceite, caldo) tampoco.
 
 **Lo que sí entra completo, porque es el corazón:** HOY, próxima comida, estados, cambiar con
 reemplazos compatibles, mochila, preparar para mañana, modo foco y la entrada del asistente.

@@ -1,33 +1,29 @@
 import { useMemo, useState } from 'react'
 import type { Vianda } from '../lib/store'
 import type { MealStatus, Slot } from '../lib/types'
-import type { ResolveStart } from '../components/ResolveSheet'
-import { CONTEXT_NOTE, SLOT_LABEL } from '../lib/types'
+import { SLOT_LABEL } from '../lib/types'
 import { findNext } from '../lib/domain'
 import { greeting, longDate, minutesOf, nowMinutes, relativeTime } from '../lib/format'
-import {
-  CarbChip,
-  CheckRow,
-  ContextSwitch,
-  DemoBadge,
-  MealMark,
-  SatietyMark,
-  StatusPill,
-} from '../components/ui'
-import { SettingsSheet } from '../components/Settings'
+import { CarbChip, CheckRow, DemoBadge, SatietyMark, StatusPill } from '../components/ui'
 import { MealRow } from '../components/MealRow'
 import { MealSheet, type MealSheetTarget } from '../components/MealSheet'
+import { CarryList } from '../components/CarryList'
+import { SettingsSheet } from '../components/Settings'
 import { Sheet } from '../components/Sheet'
+import type { ResolveStart } from '../components/ResolveSheet'
 
 /* ------------------------------------------------------------------
-   HOY — la pantalla que importa.
+   HOY
 
-   Jerarquía: 1) próxima comida  2) qué hay que hacer ahora  3) el día.
-   Una acción primaria visible. Todo lo demás vive en sheets.
+   Tres cosas, en este orden: qué toca ahora, qué viene después, y el
+   resto del día. Nada más.
 
-   El día no se asume perfecto: el contexto se cambia de un toque, los
-   snacks se sacan y se vuelven a sumar, y si no preparaste nada hay una
-   salida rápida desde el detalle de cada comida.
+   La pantalla avanza sola con el reloj. Si no marcás nada en tres días,
+   funciona exactamente igual: los estados existen, pero son una anotación
+   opcional, no el motor.
+
+   Lo secundario —qué llevar, qué preparar, resolver algo— aparece cuando
+   la hora lo pide, y el resto queda abajo, apagado.
    ------------------------------------------------------------------ */
 
 export function Hoy({
@@ -40,26 +36,37 @@ export function Hoy({
   onResolve: (start: ResolveStart) => void
 }) {
   const [target, setTarget] = useState<MealSheetTarget | null>(null)
-  const [sheet, setSheet] = useState<'pack' | 'prep' | 'config' | null>(null)
+  const [sheet, setSheet] = useState<'carry' | 'prep' | 'config' | null>(null)
 
   const now = nowMinutes()
+  const hour = new Date().getHours()
+
   const next = useMemo(
     () => (app.today ? findNext(app.today, app.meals, now) : undefined),
     [app.today, app.meals, now],
   )
 
-  const evening = new Date().getHours() >= 18
-  const packDone = app.packing.filter((p) => p.done).length
-  const prepDone = app.prep.filter((p) => p.done).length
-  const context = app.today?.context ?? 'mixto'
+  /* Lo que viene después de lo que viene. Una línea, sin acciones. */
+  const { today, mealById } = app
+  const later = useMemo(() => {
+    if (!today || !next) return undefined
+    const after = today.meals
+      .filter((p) => p.status !== 'skipped' && minutesOf(p.time) > next.minutes)
+      .sort((a, b) => minutesOf(a.time) - minutesOf(b.time))[0]
+    const meal = after ? mealById(after.mealId) : undefined
+    return after && meal ? { planned: after, meal } : undefined
+  }, [today, mealById, next])
+
+  const carryMeals = app.packing.filter((p) => p.kind === 'meal').length
+  const morning = hour < 13
+  const evening = hour >= 18
 
   const setStatus = (slot: Slot, status: MealStatus) =>
     app.today && app.setStatus(app.today.date, slot, status)
 
   return (
     <div className="mx-auto max-w-md px-4 pb-40">
-      {/* 1. Encabezado — quién soy y qué día es. */}
-      <header className="v-safe-top flex items-start justify-between gap-3 pt-6 pb-5">
+      <header className="v-safe-top flex items-start justify-between gap-3 pt-6 pb-7">
         <div>
           <h1 className="text-[30px] leading-none v-display text-ink">{greeting()}</h1>
           <p className="mt-2 text-[15px] text-ink-soft">Hoy, {longDate(new Date())}</p>
@@ -94,22 +101,13 @@ export function Hoy({
         </div>
       </header>
 
-      {/* 2. Cómo viene el día. Es la palanca de adaptación: un toque y el
-             menú pendiente se rearma solo. */}
-      <section className="pb-6">
-        <ContextSwitch
-          value={context}
-          onChange={(c) => app.today && app.setContext(app.today.date, c)}
-        />
-        <p className="mt-2 px-1 text-[12px] text-ink-faint">{CONTEXT_NOTE[context]}</p>
-      </section>
-
-      {/* 3. Próxima comida — lo más grande de la pantalla, sin discusión. */}
+      {/* 1 — AHORA. Lo más grande de la pantalla, con una sola acción. */}
       {next ? (
         <section className="v-rise rounded-hero bg-surface p-5 shadow-lg">
           <div className="flex items-center justify-between">
             <p className="v-eyebrow text-clay">
-              Próximo{next.planned.optional ? ' · opcional' : ''}
+              {next.isNow ? 'Ahora' : 'Próximo'}
+              {next.planned.optional ? ' · opcional' : ''}
             </p>
             <p className="text-[13px] font-medium text-ink-faint v-tnum">
               {relativeTime(next.minutes, now)}
@@ -132,25 +130,12 @@ export function Hoy({
             {next.meal.isDemo && <DemoBadge />}
           </div>
 
-          <div className="mt-6 flex gap-2.5">
-            <button
-              onClick={() =>
-                setStatus(
-                  next.planned.slot,
-                  next.planned.status === 'prepared' ? 'eaten' : 'prepared',
-                )
-              }
-              className="min-h-[52px] flex-1 rounded-pill bg-clay text-[16px] font-semibold text-white shadow-sm transition-transform duration-150 active:scale-[0.97]"
-            >
-              {next.planned.status === 'prepared' ? 'Ya lo comí' : 'Ya está preparado'}
-            </button>
-            <button
-              onClick={() => setTarget({ planned: next.planned, meal: next.meal })}
-              className="min-h-[52px] rounded-pill border border-line px-5 text-[16px] font-semibold text-ink active:scale-[0.97]"
-            >
-              Ver
-            </button>
-          </div>
+          <button
+            onClick={() => setTarget({ planned: next.planned, meal: next.meal })}
+            className="mt-6 min-h-[52px] w-full rounded-pill border border-line text-[16px] font-semibold text-ink transition-transform duration-150 active:scale-[0.98]"
+          >
+            Ver
+          </button>
         </section>
       ) : (
         <section className="rounded-hero bg-surface p-6 text-center shadow-md">
@@ -159,50 +144,36 @@ export function Hoy({
         </section>
       )}
 
-      {/* 4. La salida de emergencia. Liviana, pero siempre a mano: el plan
-             falla seguido y esto tiene que estar donde ya estás mirando. */}
-      <button
-        onClick={() => onResolve({})}
-        className="mt-3 flex w-full items-center gap-3 rounded-card border border-line px-4 py-3 text-left transition-transform duration-150 active:scale-[0.985]"
-      >
-        <svg viewBox="0 0 20 20" className="size-[18px] shrink-0 text-clay" fill="none" aria-hidden>
-          <path
-            d="M10.8 2.5 4.5 11h4.2l-.5 6.5L15.5 9h-4.2z"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinejoin="round"
-          />
-        </svg>
-        <span className="flex-1 text-[15px] font-semibold text-ink">Resolver ahora</span>
-        <span className="text-[13px] text-ink-faint">se me complicó el día</span>
-      </button>
+      {/* 2 — DESPUÉS. Una línea. */}
+      {later && (
+        <button
+          onClick={() => setTarget({ planned: later.planned, meal: later.meal })}
+          className="mt-3 flex w-full items-baseline gap-2 px-2 py-2 text-left"
+        >
+          <span className="v-eyebrow shrink-0 text-ink-faint">Después</span>
+          <span className="min-w-0 flex-1 truncate text-[15px] text-ink-soft">
+            {SLOT_LABEL[later.planned.slot]} {later.planned.time} · {later.meal.name}
+          </span>
+        </button>
+      )}
 
-      {/* 5. Lo que hay que hacer ahora. Cambia según la hora. */}
-      <div className="mt-2 space-y-2">
-        <ActionBand
-          title={evening ? 'Preparar para mañana' : 'Mochila de hoy'}
-          count={
-            evening
-              ? `${prepDone} de ${app.prep.length}`
-              : `${packDone} de ${app.packing.length}`
-          }
-          done={evening ? prepDone === app.prep.length : packDone === app.packing.length}
-          onClick={() => setSheet(evening ? 'prep' : 'pack')}
-          primary
+      {/* 3 — La acción del momento. Una sola, según la hora. */}
+      {morning && carryMeals > 0 && (
+        <MainBand
+          title="Hoy llevate"
+          detail={`${carryMeals} ${carryMeals === 1 ? 'comida' : 'comidas'} + botella, termo y cubiertos`}
+          onClick={() => setSheet('carry')}
         />
-        <ActionBand
-          title={evening ? 'Mochila de hoy' : 'Preparar para mañana'}
-          count={
-            evening
-              ? `${packDone} de ${app.packing.length}`
-              : `${prepDone} de ${app.prep.length}`
-          }
-          done={evening ? packDone === app.packing.length : prepDone === app.prep.length}
-          onClick={() => setSheet(evening ? 'pack' : 'prep')}
+      )}
+      {evening && (
+        <MainBand
+          title="Preparar para mañana"
+          detail={`${app.prep.length} cosas, salen del menú de mañana`}
+          onClick={() => setSheet('prep')}
         />
-      </div>
+      )}
 
-      {/* 6. El resto del día. Segundo nivel: compacto y escaneable. */}
+      {/* 4 — El resto del día. Un renglón por comida, para leer. */}
       <h3 className="v-eyebrow mt-9 mb-2.5 px-1 text-ink-faint">El día</h3>
       <ul className="space-y-2">
         {app.today?.meals.map((planned) => {
@@ -213,27 +184,29 @@ export function Hoy({
               key={planned.slot}
               planned={planned}
               meal={meal}
-              dim={
-                planned.status === 'eaten' ||
-                minutesOf(planned.time) < now - 60
-              }
+              dim={planned.status === 'eaten' || minutesOf(planned.time) < now - 60}
               onOpen={() => setTarget({ planned, meal })}
-              onSwipeReplace={() => setTarget({ planned, meal, replace: true })}
               onRestore={() => setStatus(planned.slot, 'pending')}
             />
           )
         })}
       </ul>
 
-      <p className="mt-6 px-1 text-[12px] leading-relaxed text-ink-faint">
-        Deslizá una comida hacia la izquierda para cambiarla. Los snacks son
-        opcionales: si no los necesitás, sacalos y volvelos a sumar cuando quieras.
-      </p>
+      {/* 5 — Lo secundario, apagado, al final. */}
+      <div className="mt-8 divide-y divide-line border-t border-line">
+        <QuietRow label="Resolver ahora" onClick={() => onResolve({})} />
+        {!(morning && carryMeals > 0) && carryMeals > 0 && (
+          <QuietRow label="Hoy llevate" onClick={() => setSheet('carry')} />
+        )}
+        {!evening && (
+          <QuietRow label="Preparar para mañana" onClick={() => setSheet('prep')} />
+        )}
+      </div>
 
       <MealSheet
         target={target}
         meals={app.meals}
-        context={context}
+        context={app.today?.context ?? 'mixto'}
         insulin={app.insulin}
         onClose={() => setTarget(null)}
         onStatus={(status) => target && setStatus(target.planned.slot, status)}
@@ -242,37 +215,21 @@ export function Hoy({
         }
       />
 
-      <Sheet open={sheet === 'pack'} onClose={() => setSheet(null)} title="Mochila de hoy">
-        <p className="text-[14px] text-ink-soft">
-          Lo que va en el bolso. Las comidas salen del menú del día.
-        </p>
-        <div className="mt-3 -mx-1">
-          {app.packing.map((item) => (
-            <CheckRow
-              key={item.id}
-              label={item.label}
-              hint={item.hint ?? (item.kind === 'meal' ? 'Del menú de hoy' : undefined)}
-              done={item.done}
-              onToggle={() => app.checkPack(item.id)}
-            />
-          ))}
-        </div>
-        {app.packing.every((i) => i.kind === 'gear') && (
-          <p className="mt-3 rounded-2xl border border-dashed border-line-strong px-4 py-3 text-[13px] text-ink-faint">
-            Hoy no hay comida para llevar. Si eso cambia, pasá el día a
-            «En la calle» o «Mixto».
-          </p>
-        )}
-      </Sheet>
+      <CarryList
+        open={sheet === 'carry'}
+        onClose={() => setSheet(null)}
+        items={app.packing}
+        onCheck={app.checkPack}
+      />
 
       <Sheet open={sheet === 'prep'} onClose={() => setSheet(null)} title="Preparar para mañana">
-        <TomorrowSummary app={app} />
-        <div className="mt-4 -mx-1">
+        <p className="text-[14px] text-ink-soft">Sale del menú de mañana.</p>
+        <div className="mt-3 -mx-1">
           {app.prep.map((task) => (
             <CheckRow
               key={task.id}
               label={task.label}
-              hint={task.sourceMealIds.length > 1 ? 'Tarea agrupada' : undefined}
+              hint={task.sourceMealIds.length > 1 ? 'Para varias comidas' : undefined}
               done={task.done}
               onToggle={() => app.checkPrep(task.id)}
             />
@@ -287,77 +244,48 @@ export function Hoy({
         onTime={app.setTime}
         insulin={app.insulin}
         onInsulin={app.setInsulin}
+        context={app.today?.context ?? 'mixto'}
+        onContext={(c) => app.today && app.setContext(app.today.date, c)}
       />
-
     </div>
   )
 }
 
-function ActionBand({
+function MainBand({
   title,
-  count,
-  done,
+  detail,
   onClick,
-  primary,
 }: {
   title: string
-  count: string
-  done: boolean
+  detail: string
   onClick: () => void
-  primary?: boolean
 }) {
   return (
     <button
       onClick={onClick}
-      className={`flex w-full items-center gap-3 rounded-card text-left transition-transform duration-150 active:scale-[0.985] ${
-        primary ? 'bg-surface px-4 py-4 shadow-md' : 'border border-line bg-transparent px-4 py-3'
-      }`}
+      className="mt-3 flex w-full items-center gap-3 rounded-card bg-surface px-4 py-4 text-left shadow-md transition-transform duration-150 active:scale-[0.985]"
     >
-      <span
-        aria-hidden
-        className={`grid size-6 shrink-0 place-items-center rounded-full text-[12px] font-bold ${
-          done ? 'bg-sage text-white' : 'border-2 border-line-strong text-transparent'
-        }`}
-      >
-        ✓
+      <span className="min-w-0 flex-1">
+        <span className="block text-[17px] font-semibold text-ink">{title}</span>
+        <span className="mt-0.5 block truncate text-[13px] text-ink-faint">{detail}</span>
       </span>
-      <span className="flex-1">
-        <span
-          className={`block ${primary ? 'text-[17px] font-semibold' : 'text-[15px] font-medium'} text-ink`}
-        >
-          {title}
-        </span>
-      </span>
-      <span className="text-[13px] font-medium text-ink-faint v-tnum">{count}</span>
-      <svg viewBox="0 0 12 12" className="size-3 text-ink-faint" aria-hidden>
+      <svg viewBox="0 0 12 12" className="size-3 shrink-0 text-ink-faint" aria-hidden>
         <path d="M4 2l4 4-4 4" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" />
       </svg>
     </button>
   )
 }
 
-function TomorrowSummary({ app }: { app: Vianda }) {
-  if (!app.tomorrow) return null
-  const meals = app.tomorrow.meals.filter((p) => p.status !== 'skipped')
+function QuietRow({ label, onClick }: { label: string; onClick: () => void }) {
   return (
-    <div>
-      <p className="text-[14px] text-ink-soft">Sale del menú de mañana.</p>
-      <ul className="mt-3 space-y-1.5">
-        {meals.map((planned) => {
-          const meal = app.mealById(planned.mealId)
-          if (!meal) return null
-          return (
-            <li
-              key={planned.slot}
-              className="flex items-center gap-3 rounded-2xl bg-surface px-3 py-2.5 shadow-sm"
-            >
-              <MealMark meal={meal} size={20} />
-              <span className="min-w-0 flex-1 truncate text-[14px] text-ink">{meal.name}</span>
-              <CarbChip meal={meal} />
-            </li>
-          )
-        })}
-      </ul>
-    </div>
+    <button
+      onClick={onClick}
+      className="flex w-full items-center justify-between gap-3 py-4 text-left active:opacity-60"
+    >
+      <span className="text-[15px] font-medium text-ink-soft">{label}</span>
+      <svg viewBox="0 0 12 12" className="size-3 text-ink-faint" aria-hidden>
+        <path d="M4 2l4 4-4 4" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+      </svg>
+    </button>
   )
 }

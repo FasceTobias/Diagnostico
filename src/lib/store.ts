@@ -191,6 +191,10 @@ export const useVianda = () => {
     (id: string) => toggleCheck(`pack:${todayIso}:${id}`),
     [toggleCheck, todayIso],
   )
+  /* La lista de compras se marca por id de línea, no por comida. */
+  const isBought = useCallback((id: string) => !!checks[`shop:${id}`], [checks])
+  const toggleBought = useCallback((id: string) => toggleCheck(`shop:${id}`), [toggleCheck])
+
   const checkPrep = useCallback(
     (id: string) => toggleCheck(`prep:${tomorrowIso}:${id}`),
     [toggleCheck, tomorrowIso],
@@ -215,6 +219,8 @@ export const useVianda = () => {
     replaceMeal,
     checkPack,
     checkPrep,
+    isBought,
+    toggleBought,
     regenerate,
   }
 }

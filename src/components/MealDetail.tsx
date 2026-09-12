@@ -1,5 +1,6 @@
 import type { Meal } from '../lib/types'
 import { CARB_SOURCE_TEXT, CONFIDENCE_TEXT } from '../lib/format'
+import { ingredientText } from '../lib/foods'
 import { CarbChip, DemoBadge, MealMark, SatietyMark } from './ui'
 
 /* Detalle: acá sí se muestra todo. Es el segundo nivel de la divulgación
@@ -14,7 +15,7 @@ const Fact = ({ label, value }: { label: string; value: string }) => (
 
 export function MealDetail({ meal }: { meal: Meal }) {
   const badges = [
-    meal.portable ? 'Se puede llevar' : 'Para comer en casa',
+    meal.buyOutside ? null : meal.portable ? 'Se puede llevar' : 'Para comer en casa',
     meal.needsCold ? 'Va con frío' : null,
     meal.needsReheat ? 'Se calienta' : null,
     meal.makeNightBefore ? 'Se prepara la noche anterior' : null,
@@ -72,25 +73,45 @@ export function MealDetail({ meal }: { meal: Meal }) {
         ))}
       </div>
 
-      <h4 className="v-eyebrow mt-7 text-ink-faint">Ingredientes</h4>
-      <ul className="mt-2 divide-y divide-line">
-        {meal.ingredients.map((i) => (
-          <li key={i} className="py-2.5 text-[15px] text-ink">
-            {i}
-          </li>
-        ))}
-      </ul>
+      {meal.venues && meal.venues.length > 0 && (
+        <>
+          <h4 className="v-eyebrow mt-7 text-ink-faint">Dónde conseguirla</h4>
+          <p className="mt-2 text-[15px] text-ink first-letter:uppercase">
+            {meal.venues.join(' · ')}
+          </p>
+        </>
+      )}
 
-      <h4 className="v-eyebrow mt-7 text-ink-faint">Datos</h4>
-      <div className="mt-1 divide-y divide-line">
-        <Fact label="Preparación" value={`${meal.prepMinutes} min`} />
-        <Fact
-          label="Dificultad"
-          value={['Fácil', 'Media', 'Requiere tiempo'][meal.difficulty - 1]}
-        />
-        {meal.rating && <Fact label="Puntuación" value={`${meal.rating} de 5`} />}
-        <Fact label="Probada" value={meal.tested ? 'Sí' : 'Todavía no'} />
-      </div>
+      {meal.ingredients.length > 0 && (
+        <>
+          <h4 className="v-eyebrow mt-7 text-ink-faint">Ingredientes</h4>
+          <ul className="mt-2 divide-y divide-line">
+            {meal.ingredients.map((ing) => (
+              <li
+                key={`${ing.item}-${ing.unit}`}
+                className="py-2.5 text-[15px] text-ink first-letter:uppercase"
+              >
+                {ingredientText(ing.item, ing.qty, ing.unit)}
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+
+      {!meal.buyOutside && (
+        <>
+          <h4 className="v-eyebrow mt-7 text-ink-faint">Datos</h4>
+          <div className="mt-1 divide-y divide-line">
+            <Fact label="Preparación" value={`${meal.prepMinutes} min`} />
+            <Fact
+              label="Dificultad"
+              value={['Fácil', 'Media', 'Requiere tiempo'][meal.difficulty - 1]}
+            />
+            {meal.rating && <Fact label="Puntuación" value={`${meal.rating} de 5`} />}
+            <Fact label="Probada" value={meal.tested ? 'Sí' : 'Todavía no'} />
+          </div>
+        </>
+      )}
 
       {meal.notes && (
         <>
@@ -101,8 +122,9 @@ export function MealDetail({ meal }: { meal: Meal }) {
 
       {meal.isDemo && (
         <p className="mt-7 rounded-2xl border border-dashed border-line-strong px-4 py-3 text-[13px] leading-relaxed text-ink-faint">
-          Comida de demostración: existe sólo para que la interfaz tenga algo que
-          mostrar. La biblioteca real la vamos a construir comida por comida.
+          {meal.buyOutside
+            ? 'Opción de demostración: es el tipo de cosa que vas a encontrar, no un lugar ni un plato concreto. Los de verdad los cargamos juntos.'
+            : 'Comida de demostración: existe sólo para que la interfaz tenga algo que mostrar. La biblioteca real la vamos a construir comida por comida.'}
         </p>
       )}
     </div>

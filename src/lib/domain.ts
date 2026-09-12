@@ -1,4 +1,5 @@
 import type {
+  Aisle,
   DayContext,
   DayPlan,
   Meal,
@@ -8,9 +9,12 @@ import type {
   ResolveFilter,
   Satiety,
   Slot,
+  Unit,
+  Venue,
 } from './types'
-import { OPTIONAL_SLOTS, SLOT_CATEGORY, SLOT_ORDER } from './types'
+import { AISLES, OPTIONAL_SLOTS, SLOT_CATEGORY, SLOT_ORDER, VENUES } from './types'
 import { addDays, isoDate, minutesOf, nowMinutes } from './format'
+import { foodOf, shoppingText } from './foods'
 
 /* Horarios por defecto de la rutina. Son editables: salen del perfil,
    no están clavados en la UI. */
@@ -155,8 +159,14 @@ export const pickForSlot = (
   meals: Meal[],
   ctx: RotationContext,
 ): Meal | undefined => {
-  const pool = candidatesFor(slot, context, meals, ctx.maxPrepMinutes)
-  if (!pool.length) return undefined
+  const all = candidatesFor(slot, context, meals, ctx.maxPrepMinutes)
+  if (!all.length) return undefined
+
+  // La misma comida dos veces en el mismo día no va. Los dos snacks son el
+  // caso típico: si no se excluye, salen idénticos.
+  const used = new Set(ctx.usedToday.map((m) => m.id))
+  const fresh = all.filter((m) => !used.has(m.id))
+  const pool = fresh.length ? fresh : all
 
   return [...pool].sort(
     (a, b) =>
@@ -484,22 +494,11 @@ const matchesFilters = (meal: Meal, filters: ResolveFilter[]): boolean => {
       case 'mucha-hambre':
         if (meal.satiety !== 'potente') return false
         break
-      case 'normal':
-        if (meal.satiety === 'liviana') return false
-        break
       case 'rapido':
         if (meal.prepMinutes > 10) return false
         break
       case 'barato':
         if ((meal.priceLevel ?? 1) > 1) return false
-        break
-      case 'caminando':
-        // Lo propio transportable ya se come caminando; lo comprable tiene
-        // que decirlo explícitamente.
-        if (meal.buyOutside ? !meal.handheld : !meal.portable) return false
-        break
-      case 'sentarme':
-        // No filtra nada: sentarse abre opciones, no las cierra.
         break
     }
   }
@@ -545,4 +544,109 @@ export const resolveNow = (
       .sort(rank)
       .slice(0, limit),
   }
+}
+
+/* ------------------------------------------------------------------
+   LISTA DE COMPRAS
+
+   Suma los ingredientes del menú de la semana y los convierte a cantidades
+   de compra reales: "12 huevos", no "huevo". Lo que se compra afuera no
+   entra, y lo que ya tenés en casa (sal, aceite) tampoco.
+   ------------------------------------------------------------------ */
+
+export interface ShoppingLine {
+  id: string
+  item: string
+  text: string
+  aisle: Aisle
+  /** De qué comidas salió, para saber por qué está en la lista */
+  fromMeals: string[]
+}
+
+export interface ShoppingGroup {
+  aisle: Aisle
+  lines: ShoppingLine[]
+}
+
+export const buildShoppingList = (week: DayPlan[], meals: Meal[]): ShoppingGroup[] => {
+  const totals = new Map<
+    string,
+    { item: string; unit: Unit; qty: number; from: Set<string> }
+  >()
+
+  for (const day of week) {
+    for (const planned of day.meals) {
+      if (planned.status === 'skipped') continue
+      const meal = meals.find((m) => m.id === planned.mealId)
+      if (!meal || meal.buyOutside) continue
+
+      for (const ing of meal.ingredients) {
+        if (foodOf(ing.item).pantry) continue
+        const key = `${ing.item}|${ing.unit}`
+        const acc = totals.get(key) ?? {
+          item: ing.item,
+          unit: ing.unit,
+          qty: 0,
+          from: new Set<string>(),
+        }
+        acc.qty += ing.qty
+        acc.from.add(meal.name)
+        totals.set(key, acc)
+      }
+    }
+  }
+
+  const byAisle = new Map<Aisle, ShoppingLine[]>()
+  for (const [key, acc] of totals) {
+    const aisle = foodOf(acc.item).aisle
+    const line: ShoppingLine = {
+      id: key,
+      item: acc.item,
+      text: shoppingText(acc.item, acc.qty, acc.unit),
+      aisle,
+      fromMeals: [...acc.from],
+    }
+    byAisle.set(aisle, [...(byAisle.get(aisle) ?? []), line])
+  }
+
+  return AISLES.filter((a) => byAisle.has(a)).map((aisle) => ({
+    aisle,
+    lines: (byAisle.get(aisle) ?? []).sort((a, b) => a.item.localeCompare(b.item)),
+  }))
+}
+
+/* ------------------------------------------------------------------
+   OPCIONES DE AFUERA, AGRUPADAS POR LUGAR
+
+   «Estoy en la calle» es demasiado abstracto. Lo concreto es el lugar al
+   que vas a entrar y qué pedís ahí adentro.
+   ------------------------------------------------------------------ */
+
+export interface VenueGroup {
+  venue: Venue
+  meals: Meal[]
+}
+
+export const byVenue = (
+  slot: Slot,
+  meals: Meal[],
+  filters: ResolveFilter[] = [],
+): VenueGroup[] => {
+  const category = SLOT_CATEGORY[slot]
+  const pool = searchRelaxing(
+    meals.filter((m) => m.buyOutside && m.category === category),
+    filters,
+  )
+
+  const groups = new Map<Venue, Meal[]>()
+  for (const meal of pool) {
+    const venue = meal.venues?.[0]
+    if (!venue) continue
+    groups.set(venue, [...(groups.get(venue) ?? []), meal])
+  }
+
+  return VENUES.filter((v) => groups.has(v)).map((venue) => ({
+    venue,
+    meals: (groups.get(venue) ?? []).sort((a, b) => a.carbs - b.carbs),
+  }))
 }

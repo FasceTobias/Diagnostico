@@ -201,7 +201,7 @@ export const askAssistant = ({ text, app }: AssistantQuery): AssistantAnswer => 
     const options = pool
       .filter(
         (m) =>
-          !m.ingredients.some((i) => norm(i).includes(missing)) &&
+          !m.ingredients.some((ing) => norm(ing.item).includes(missing)) &&
           !norm(m.name).includes(missing),
       )
       .slice(0, 4)

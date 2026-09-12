@@ -7,11 +7,12 @@ import {
   RESOLVE_REASON,
   SLOT_LABEL,
   SLOT_ORDER,
+  SLOT_VERB,
 } from '../lib/types'
 import type { Vianda } from '../lib/store'
-import { compatibleReplacements, findNext, resolveNow } from '../lib/domain'
+import { byVenue, compatibleReplacements, findNext, resolveNow } from '../lib/domain'
 import { Sheet } from './Sheet'
-import { BuyBadge, CarbChip, DemoBadge, MealMark, SatietyMark } from './ui'
+import { CarbChip, DemoBadge, SatietyMark } from './ui'
 
 /* ------------------------------------------------------------------
    RESOLVER AHORA
@@ -48,14 +49,7 @@ const REASON_HINT: Record<ResolveReason, string> = {
   reemplazar: 'Cambiar una comida del día',
 }
 
-const FILTERS: ResolveFilter[] = [
-  'mucha-hambre',
-  'normal',
-  'rapido',
-  'barato',
-  'caminando',
-  'sentarme',
-]
+const FILTERS: ResolveFilter[] = ['mucha-hambre', 'rapido', 'barato']
 
 /* Cerrado no existe: así cada apertura arranca limpia, sin efectos que
    reseteen estado. Abierto desde el asistente, entra directo al paso que
@@ -138,7 +132,13 @@ function ResolveFlow({
         ? 'Cómo sigue el día'
         : step === 'slot'
           ? '¿Qué necesitás resolver?'
-          : `Resolver ${slot ? SLOT_LABEL[slot].toLowerCase() : ''}`
+          : !slot
+            ? 'Resolver ahora'
+            : reason === 'sin-comida'
+              ? `Estás en la calle y tenés que ${SLOT_VERB[slot]}`
+              : reason === 'reemplazar'
+                ? `Cambiar ${SLOT_LABEL[slot].toLowerCase()}`
+                : `Tenés que ${SLOT_VERB[slot]}`
 
   return (
     <Sheet open onClose={close} title={title}>
@@ -298,26 +298,32 @@ function Results({
     )
   }
 
-  const { propias, comprables } = resolveNow(slot, meals, filters)
-  // Si saliste sin comida, lo que tenés en casa no te sirve ahora.
+  const { propias } = resolveNow(slot, meals, filters)
+  const venues = byVenue(slot, meals, filters)
+  // Si saliste sin nada, lo que tenés en casa no te sirve ahora.
   const buyFirst = reason === 'sin-comida'
 
   const propiasBlock = propias.length > 0 && (
-    <section key="propias" className="mt-6">
-      <h4 className="v-eyebrow text-ink-faint">De tu biblioteca</h4>
-      <OptionList options={propias.map((meal) => ({ meal, why: `${meal.prepMinutes} min` }))} onPick={onPick} />
+    <section key="propias" className="mt-7">
+      <h4 className="v-eyebrow text-ink-faint">
+        {buyFirst ? 'Si llegás a casa' : 'De tu biblioteca'}
+      </h4>
+      <OptionList
+        options={propias.map((meal) => ({ meal, why: `${meal.prepMinutes} min` }))}
+        onPick={onPick}
+      />
     </section>
   )
 
-  const comprablesBlock = comprables.length > 0 && (
-    <section key="comprables" className="mt-6">
-      <h4 className="v-eyebrow text-ink-faint">Para comprar afuera</h4>
-      <p className="mt-1 text-[12px] leading-relaxed text-ink-faint">
-        Tipos de opción, no lugares concretos. Los carbohidratos son un orden de
-        magnitud: dependen del tamaño y de quién la hizo.
-      </p>
-      <OptionList options={comprables.map((meal) => ({ meal }))} onPick={onPick} />
-    </section>
+  const venuesBlock = venues.length > 0 && (
+    <div key="venues">
+      {venues.map(({ venue, meals: options }) => (
+        <section key={venue} className="mt-7">
+          <h4 className="v-eyebrow text-ink-faint">{venue}</h4>
+          <OptionList options={options.map((meal) => ({ meal }))} onPick={onPick} />
+        </section>
+      ))}
+    </div>
   )
 
   return (
@@ -340,14 +346,19 @@ function Results({
         })}
       </div>
 
-      {buyFirst ? [comprablesBlock, propiasBlock] : [propiasBlock, comprablesBlock]}
+      {buyFirst ? [venuesBlock, propiasBlock] : [propiasBlock, venuesBlock]}
 
-      {propias.length === 0 && comprables.length === 0 && (
+      {propias.length === 0 && venues.length === 0 && (
         <p className="mt-6 rounded-2xl border border-dashed border-line-strong px-4 py-4 text-[14px] leading-relaxed text-ink-faint">
           No hay nada cargado para este momento del día. Cuando armemos tu
           biblioteca real, acá va a haber opciones.
         </p>
       )}
+
+      <p className="mt-8 text-[12px] leading-relaxed text-ink-faint">
+        Los carbohidratos de lo que se compra afuera son un orden de magnitud:
+        dependen del tamaño y de quién lo hizo.
+      </p>
     </>
   )
 }
@@ -365,26 +376,16 @@ function OptionList({
         <li key={meal.id}>
           <button
             onClick={() => onPick(meal.id)}
-            className="flex w-full items-center gap-3.5 rounded-card bg-surface px-3.5 py-3.5 text-left shadow-sm transition-transform duration-150 active:scale-[0.985]"
+            className="flex w-full items-center gap-3.5 rounded-card bg-surface px-4 py-3.5 text-left shadow-sm transition-transform duration-150 active:scale-[0.985]"
           >
-            <MealMark meal={meal} size={24} />
             <span className="min-w-0 flex-1">
               <span className="block truncate text-[16px] font-medium text-ink">{meal.name}</span>
               <span className="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1">
                 <CarbChip meal={meal} />
                 <SatietyMark level={meal.satiety} showLabel={false} />
-                {meal.buyOutside ? (
-                  <BuyBadge venues={meal.venues} />
-                ) : (
-                  why && <span className="text-[13px] text-ink-faint">{why}</span>
-                )}
+                {why && <span className="text-[13px] text-ink-faint">{why}</span>}
                 {meal.isDemo && <DemoBadge />}
               </span>
-              {meal.buyOutside && meal.venues && meal.venues.length > 1 && (
-                <span className="mt-1 block truncate text-[12px] text-ink-faint">
-                  {meal.venues.join(' · ')}
-                </span>
-              )}
             </span>
           </button>
         </li>

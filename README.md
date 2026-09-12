@@ -39,13 +39,16 @@ comidas, la merienda es una comida y puede ser fuerte. Los dos snacks son
 
 Cada día tiene un **contexto** — en casa, mixto o en la calle — que decide qué
 tiene que poder llevarse y cuánto tiene que llenar cada comida. No se deduce del
-día de la semana. Cambiarlo rearma sólo lo pendiente.
+día de la semana, y no se configura a diario: vive en Configuración y en
+«Resolver ahora». Cambiarlo rearma sólo lo pendiente.
 
 ### Construido
 
-- **HOY** — próxima comida, contexto del día, los seis momentos, estados,
-  cambiar comida con reemplazos compatibles, la salida rápida para cuando no
-  preparaste nada, horarios editables, mochila y preparar para mañana.
+- **HOY** — qué toca ahora, qué viene después y el resto del día. Avanza sola
+  con el reloj: **no hace falta marcar nada**. Debajo, una acción según la hora
+  (la mochila de mañana, la preparación de noche).
+- **HOY LLEVATE** — lo que va en el bolso, como lectura. Las casillas existen
+  pero están apagadas.
 - **Modo foco** — sólo lo que viene ahora.
 - **Asistente** — entrada integrada, resuelta con reglas locales sobre la biblioteca.
 - **SEMANA** — los 7 días, con reemplazo desde cualquier día.
@@ -54,11 +57,14 @@ día de la semana. Cambiarlo rearma sólo lo pendiente.
   verificar.
 - **RESOLVER AHORA** — la salida cuando el plan falla: no traje comida, tengo
   hambre, cambió mi día, no preparé nada, quiero reemplazar. Tres toques hasta
-  ver opciones, con filtros por hambre, tiempo, precio y si podés sentarte.
-- **CONFIGURACIÓN** — horarios editables y relación insulina/carbohidratos, con
-  una calculadora que se abre a mano. Apagada por defecto.
-- **COMPRAS** — preparación semanal agrupada. La lista automática espera a que
-  estén cargadas las cantidades reales (ver `docs/FASE-1.md`, sección J).
+  ver opciones, agrupadas por lugar concreto (rotisería, panadería,
+  supermercado…) con platos de verdad.
+- **CONFIGURACIÓN** — cómo viene el día, horarios editables y relación
+  insulina/carbohidratos con una calculadora que se abre a mano. Apagada por
+  defecto.
+- **COMPRAS** — la compra de la semana con cantidades reales, agrupada por
+  sector: «12 huevos», «1,5 kg de pollo», «1 paquete de pan». Más la
+  preparación semanal agrupada.
 - **Los tres conceptos visuales** en `#/conceptos`, para compararlos en el teléfono.
 
 ## Correr
@@ -80,8 +86,9 @@ npm run build && npm run preview
 src/
   lib/
     types.ts       modelo de dominio (espeja supabase/schema.sql)
-    demo.ts        31 opciones de demostración (isDemo, carbsVerified: false),
-                   21 caseras y 10 comprables afuera
+    demo.ts        48 opciones de demostración (isDemo, carbsVerified: false),
+                   21 caseras y 27 para comprar afuera
+    foods.ts       catálogo: en qué sector está cada cosa y cómo se compra
     domain.ts      necesidades del día, rotación, reemplazos, rescate,
                    resolver ahora, tareas de preparación, mochila
     insulin.ts     la relación configurada y la división. Nada más.
@@ -119,6 +126,9 @@ Dos reglas que se respetan en toda la app:
    desde la calle sin nada encima.
 4. **Nada de insulina sin que lo pidas.** Apagado por defecto; encendido, sólo
    detrás de un botón explícito.
+5. **No depende de tu disciplina.** La app avanza con el reloj. Marcar es
+   opcional en todas las pantallas salvo la lista de compras, donde tachar
+   es el punto.
 
 ## PWA
 

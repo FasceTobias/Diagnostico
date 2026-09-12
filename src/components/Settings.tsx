@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import type { InsulinSettings, Slot } from '../lib/types'
-import { SLOT_LABEL, SLOT_ORDER } from '../lib/types'
+import type { DayContext, InsulinSettings, Slot } from '../lib/types'
+import { CONTEXT_NOTE, SLOT_LABEL, SLOT_ORDER } from '../lib/types'
 import { CARB_UNIT } from '../lib/format'
 import { Sheet } from './Sheet'
+import { ContextSwitch } from './ui'
 import { CarbCalculator } from './CarbCalculator'
 
 /* Configuración: lo que no se toca todos los días.
@@ -15,6 +16,8 @@ export function SettingsSheet({
   onTime,
   insulin,
   onInsulin,
+  context,
+  onContext,
 }: {
   open: boolean
   onClose: () => void
@@ -22,6 +25,8 @@ export function SettingsSheet({
   onTime: (slot: Slot, time: string) => void
   insulin: InsulinSettings
   onInsulin: (next: InsulinSettings) => void
+  context: DayContext
+  onContext: (c: DayContext) => void
 }) {
   const [calc, setCalc] = useState(false)
 
@@ -38,7 +43,17 @@ export function SettingsSheet({
   return (
     <>
       <Sheet open={open} onClose={onClose} title="Configuración">
-        <h3 className="v-eyebrow text-ink-faint">Horarios</h3>
+        {/* El contexto ya no vive en HOY: es una decisión ocasional, no algo
+            que haya que estar configurando todos los días. */}
+        <h3 className="v-eyebrow text-ink-faint">Cómo viene el día de hoy</h3>
+        <div className="mt-3">
+          <ContextSwitch value={context} onChange={onContext} />
+          <p className="mt-2 px-1 text-[12px] leading-relaxed text-ink-faint">
+            {CONTEXT_NOTE[context]} Cambiarlo rearma sólo lo que todavía no pasó.
+          </p>
+        </div>
+
+        <h3 className="v-eyebrow mt-9 text-ink-faint">Horarios</h3>
         <p className="mt-1.5 text-[14px] leading-relaxed text-ink-soft">
           Son aproximados y se pueden mover cuando quieras. La app los usa para
           saber qué viene ahora, no para apurarte.
