@@ -1,0 +1,262 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   VIANDA — sistema de diseño
+   Cálido, sobrio, doméstico. Nada clínico, nada corporativo.
+   ------------------------------------------------------------------ */
+
+:root {
+  /* Superficies: hueso cálido, no blanco */
+  --v-bg: #f5f2ec;
+  --v-bg-deep: #ece7de;
+  --v-surface: #fffdfa;
+  --v-surface-2: #f9f6f0;
+  --v-veil: rgb(255 253 250 / 0.88);
+
+  /* Tinta cálida, nunca negro puro */
+  --v-ink: #1c1814;
+  --v-ink-soft: #6a6157;
+  --v-ink-faint: #9a9187;
+  --v-line: rgb(28 24 20 / 0.09);
+  --v-line-strong: rgb(28 24 20 / 0.16);
+
+  /* Acento único: arcilla */
+  --v-clay: #b85c33;
+  --v-clay-soft: rgb(184 92 51 / 0.12);
+  --v-clay-ink: #8c4526;
+
+  /* Estados (apoyan, nunca son la única señal) */
+  --v-sage: #4f7a5a;
+  --v-sage-soft: rgb(79 122 90 / 0.13);
+  --v-dusk: #5b6b86;
+  --v-dusk-soft: rgb(91 107 134 / 0.12);
+
+
+  /* Tintes por momento del día: identidad sin fotos */
+  --v-t-desayuno-bg: rgb(214 154 84 / 0.22);
+  --v-t-desayuno-fg: #935f22;
+  --v-t-snack-bg: rgb(126 152 98 / 0.22);
+  --v-t-snack-fg: #4f6633;
+  --v-t-almuerzo-bg: rgb(184 92 51 / 0.18);
+  --v-t-almuerzo-fg: #9a4826;
+  --v-t-merienda-bg: rgb(158 110 152 / 0.20);
+  --v-t-merienda-fg: #72496e;
+  --v-t-cena-bg: rgb(91 107 134 / 0.20);
+  --v-t-cena-fg: #46587a;
+
+  --v-shadow-sm: 0 1px 2px rgb(28 24 20 / 0.05);
+  --v-shadow-md: 0 2px 10px -2px rgb(28 24 20 / 0.10), 0 1px 3px rgb(28 24 20 / 0.05);
+  --v-shadow-lg: 0 12px 34px -12px rgb(28 24 20 / 0.28), 0 2px 8px rgb(28 24 20 / 0.06);
+}
+
+:root[data-theme="dark"],
+html.dark {
+  --v-bg: #100f0d;
+  --v-bg-deep: #070706;
+  --v-surface: #1a1815;
+  --v-surface-2: #221f1b;
+  --v-veil: rgb(26 24 21 / 0.9);
+
+  --v-ink: #f4f0e9;
+  --v-ink-soft: #a49c91;
+  --v-ink-faint: #776f66;
+  --v-line: rgb(244 240 233 / 0.10);
+  --v-line-strong: rgb(244 240 233 / 0.20);
+
+  --v-clay: #e08256;
+  --v-clay-soft: rgb(224 130 86 / 0.16);
+  --v-clay-ink: #f0a179;
+
+  --v-sage: #86ae8f;
+  --v-sage-soft: rgb(134 174 143 / 0.16);
+  --v-dusk: #93a4c0;
+  --v-dusk-soft: rgb(147 164 192 / 0.16);
+
+
+  --v-t-desayuno-bg: rgb(214 154 84 / 0.20);
+  --v-t-desayuno-fg: #e0b071;
+  --v-t-snack-bg: rgb(140 176 110 / 0.20);
+  --v-t-snack-fg: #a8c98c;
+  --v-t-almuerzo-bg: rgb(224 130 86 / 0.20);
+  --v-t-almuerzo-fg: #eda07a;
+  --v-t-merienda-bg: rgb(190 140 185 / 0.20);
+  --v-t-merienda-fg: #d2a9cd;
+  --v-t-cena-bg: rgb(147 164 192 / 0.20);
+  --v-t-cena-fg: #aebdd6;
+
+  --v-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --v-shadow-md: 0 2px 12px -2px rgb(0 0 0 / 0.5);
+  --v-shadow-lg: 0 16px 40px -12px rgb(0 0 0 / 0.7);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --v-bg: #100f0d;
+    --v-bg-deep: #070706;
+    --v-surface: #1a1815;
+    --v-surface-2: #221f1b;
+    --v-veil: rgb(26 24 21 / 0.9);
+
+    --v-ink: #f4f0e9;
+    --v-ink-soft: #a49c91;
+    --v-ink-faint: #776f66;
+    --v-line: rgb(244 240 233 / 0.10);
+    --v-line-strong: rgb(244 240 233 / 0.20);
+
+    --v-clay: #e08256;
+    --v-clay-soft: rgb(224 130 86 / 0.16);
+    --v-clay-ink: #f0a179;
+
+    --v-sage: #86ae8f;
+    --v-sage-soft: rgb(134 174 143 / 0.16);
+    --v-dusk: #93a4c0;
+    --v-dusk-soft: rgb(147 164 192 / 0.16);
+
+  
+  --v-t-desayuno-bg: rgb(214 154 84 / 0.20);
+  --v-t-desayuno-fg: #e0b071;
+  --v-t-snack-bg: rgb(140 176 110 / 0.20);
+  --v-t-snack-fg: #a8c98c;
+  --v-t-almuerzo-bg: rgb(224 130 86 / 0.20);
+  --v-t-almuerzo-fg: #eda07a;
+  --v-t-merienda-bg: rgb(190 140 185 / 0.20);
+  --v-t-merienda-fg: #d2a9cd;
+  --v-t-cena-bg: rgb(147 164 192 / 0.20);
+  --v-t-cena-fg: #aebdd6;
+
+  --v-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+    --v-shadow-md: 0 2px 12px -2px rgb(0 0 0 / 0.5);
+    --v-shadow-lg: 0 16px 40px -12px rgb(0 0 0 / 0.7);
+}
+}
+
+@theme inline {
+  --color-bg: var(--v-bg);
+  --color-bg-deep: var(--v-bg-deep);
+  --color-surface: var(--v-surface);
+  --color-surface-2: var(--v-surface-2);
+  --color-veil: var(--v-veil);
+  --color-ink: var(--v-ink);
+  --color-ink-soft: var(--v-ink-soft);
+  --color-ink-faint: var(--v-ink-faint);
+  --color-line: var(--v-line);
+  --color-line-strong: var(--v-line-strong);
+  --color-clay: var(--v-clay);
+  --color-clay-soft: var(--v-clay-soft);
+  --color-clay-ink: var(--v-clay-ink);
+  --color-sage: var(--v-sage);
+  --color-sage-soft: var(--v-sage-soft);
+  --color-dusk: var(--v-dusk);
+  --color-dusk-soft: var(--v-dusk-soft);
+
+  --radius-card: 22px;
+  --radius-hero: 30px;
+  --radius-sheet: 28px;
+  --radius-pill: 999px;
+
+  --shadow-sm: var(--v-shadow-sm);
+  --shadow-md: var(--v-shadow-md);
+  --shadow-lg: var(--v-shadow-lg);
+
+  --font-sans: "Inter var", "Inter", -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", system-ui, sans-serif;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    background: var(--v-bg);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    background: var(--v-bg);
+    color: var(--v-ink);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior-y: none;
+  }
+  button {
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+  /* Foco visible sólo por teclado: en mobile no ensucia */
+  :focus-visible {
+    outline: 2px solid var(--v-clay);
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
+}
+
+@layer utilities {
+  /* Titulares del producto: apretados y con peso. Es la firma tipográfica. */
+  .v-display {
+    letter-spacing: -0.033em;
+    font-weight: 600;
+  }
+  .v-eyebrow {
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 11px;
+  }
+  .v-tnum {
+    font-variant-numeric: tabular-nums;
+  }
+  /* margin, no padding: así no pelea con el pt-* de la pantalla */
+  .v-safe-top {
+    margin-top: env(safe-area-inset-top, 0px);
+  }
+  .v-safe-bottom {
+    padding-bottom: max(env(safe-area-inset-bottom), 0px);
+  }
+  .v-no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .v-no-scrollbar {
+    scrollbar-width: none;
+  }
+  /* Target táctil cómodo aunque el ícono sea chico */
+  .v-tap::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+  }
+}
+
+/* ---- Motion: corto, confirma, no decora ---- */
+@keyframes v-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes v-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes v-sheet-in {
+  from { transform: translateY(102%); }
+  to   { transform: none; }
+}
+@keyframes v-check {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+.v-rise { animation: v-rise 0.34s var(--ease-out-soft) both; }
+.v-fade { animation: v-fade 0.22s ease-out both; }
+.v-sheet-in { animation: v-sheet-in 0.3s var(--ease-out-soft) both; }
+.v-checked { animation: v-check 0.24s var(--ease-out-soft); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

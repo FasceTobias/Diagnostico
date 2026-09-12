@@ -8,3 +8,6 @@ dist-ssr
 .DS_Store
 *.log
 .vite
+
+# Iconos PNG: se generan en el build desde scripts/make-icons.mjs
+public/icons/*.png
