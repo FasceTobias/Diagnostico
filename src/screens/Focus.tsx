@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import type { Vianda } from '../lib/store'
 import { SLOT_LABEL } from '../lib/types'
-import { findNext, dayCarbs } from '../lib/domain'
+import { findNext } from '../lib/domain'
 import { minutesOf, nowMinutes, relativeTime } from '../lib/format'
 import { carbLabel } from '../lib/format'
 
@@ -70,9 +70,7 @@ export function Focus({ app, onExit }: { app: Vianda; onExit: () => void }) {
             <span className="text-ink-soft">{afterMeal.name}</span>
           </p>
         ) : (
-          <p className="text-[15px] text-ink-faint">
-            {app.today ? `${dayCarbs(app.today, app.meals)} g CH en el día` : ''}
-          </p>
+          <p className="text-[15px] text-ink-faint">No queda nada después.</p>
         )}
       </div>
     </div>

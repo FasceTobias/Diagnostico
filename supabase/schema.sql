@@ -13,7 +13,12 @@ create type satiety_level as enum ('liviana', 'normal', 'potente');
 create type carb_source   as enum ('etiqueta', 'receta', 'estimacion', 'pendiente');
 create type confidence    as enum ('alta', 'media', 'estimada');
 create type meal_status   as enum ('pending', 'prepared', 'eaten', 'skipped', 'replaced');
-create type plan_slot     as enum ('breakfast', 'snack_am', 'lunch', 'snack_pm', 'dinner');
+-- Seis momentos. Snack y merienda NO son lo mismo: el snack aguanta entre
+-- comidas, la merienda es una comida y puede ser fuerte.
+create type plan_slot     as enum (
+  'breakfast', 'snack_am', 'lunch', 'snack_pm', 'merienda', 'dinner');
+-- Dónde transcurre el día. No se deduce del día de la semana.
+create type day_context   as enum ('casa', 'calle', 'mixto');
 create type prep_kind     as enum ('night_before', 'weekly');
 create type pack_kind     as enum ('meal', 'gear');
 
@@ -21,10 +26,12 @@ create type pack_kind     as enum ('meal', 'gear');
 create table profiles (
   id           uuid primary key references auth.users (id) on delete cascade,
   display_name text,
-  -- horarios de la rutina: {"breakfast":"08:30", ...}
+  -- horarios de la rutina, editables: {"breakfast":"08:30", ...}
   meal_times   jsonb not null default '{
     "breakfast":"08:30","snack_am":"10:30","lunch":"12:30",
-    "snack_pm":"18:30","dinner":"21:30"}'::jsonb,
+    "snack_pm":"16:00","merienda":"18:30","dinner":"21:30"}'::jsonb,
+  -- contexto por defecto cuando se arma una semana nueva
+  default_context day_context not null default 'mixto',
   created_at   timestamptz not null default now()
 );
 
@@ -57,6 +64,9 @@ create table meals (
   carbs_total       numeric not null default 0,
   carbs_source      carb_source not null default 'estimacion',
   carbs_confidence  confidence not null default 'estimada',
+  -- El dato fue revisado contra una fuente real. Mientras sea false, la app
+  -- muestra el carbo como sin confirmar e ignora carbs_confidence.
+  carbs_verified    boolean not null default false,
   protein_total     numeric,
 
   portion           text,
@@ -106,10 +116,14 @@ create table weekly_plans (
 -- Un día se lee y se escribe entero: los slots van en jsonb en vez de
 -- una tabla aparte, que implicaría cinco queries por día.
 -- El grano por slot ya queda guardado en meal_history.
+-- slots: [{slot, meal_id, time, status, optional, replaced_from, note}]
+-- Los snacks van con optional = true: se sacan y se vuelven a sumar según
+-- cómo venga el día, sin que eso cuente como incumplir nada.
 create table daily_plans (
   id             uuid primary key default gen_random_uuid(),
   weekly_plan_id uuid not null references weekly_plans (id) on delete cascade,
   date           date not null,
+  context        day_context not null default 'mixto',
   slots          jsonb not null default '[]'::jsonb,
   unique (weekly_plan_id, date)
 );

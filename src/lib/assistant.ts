@@ -1,6 +1,13 @@
-import type { Meal } from './types'
+import type { DayContext, Meal, Slot } from './types'
+import { SLOT_LABEL } from './types'
 import type { Vianda } from './store'
-import { compatibleReplacements, findNext, prepTasksFor } from './domain'
+import {
+  candidatesFor,
+  compatibleReplacements,
+  findNext,
+  prepTasksFor,
+  rescueOptions,
+} from './domain'
 
 /* ------------------------------------------------------------------
    ASISTENTE — arquitectura, no chatbot.
@@ -9,6 +16,9 @@ import { compatibleReplacements, findNext, prepTasksFor } from './domain'
    dibujar con sus propios componentes. Hoy la resuelven reglas locales.
    Mañana la puede resolver un modelo: el contrato de entrada/salida es
    el mismo, y la UI no se entera del cambio.
+
+   Todo lo que propone sale del mismo filtro que usa la rotación, así que
+   nunca sugiere algo que no sirva para el día que estás teniendo.
    ------------------------------------------------------------------ */
 
 export interface AssistantAnswer {
@@ -16,6 +26,8 @@ export interface AssistantAnswer {
   note?: string
   meals?: { meal: Meal; why?: string }[]
   tasks?: string[]
+  /** Un cambio de contexto que resuelve el pedido de raíz. */
+  suggestContext?: DayContext
   /** Lo que el asistente todavía no sabe hacer. Se dice, no se inventa. */
   unsupported?: boolean
 }
@@ -27,11 +39,12 @@ export interface AssistantQuery {
 
 export const SUGGESTIONS = [
   'Tengo más hambre',
+  'Hoy estoy todo el día afuera',
+  'No preparé nada',
   'Mañana salgo 6:30',
+  'Merienda que llene',
   'No tengo yogur',
   '¿Qué preparo ahora?',
-  'Cambiame la merienda',
-  'Algo que llene y se lleve',
 ]
 
 const norm = (s: string) =>
@@ -39,40 +52,86 @@ const norm = (s: string) =>
 
 const has = (t: string, ...words: string[]) => words.some((w) => t.includes(w))
 
+/* Snack y merienda no son lo mismo, así que se reconocen por separado. */
+const SLOT_WORDS: [Slot, string[]][] = [
+  ['breakfast', ['desayuno', 'desayunar']],
+  ['snack_am', ['snack de manana', 'snack am', 'snack de la manana']],
+  ['lunch', ['almuerzo', 'almorzar']],
+  ['snack_pm', ['snack de tarde', 'snack pm', 'snack de la tarde']],
+  ['merienda', ['merienda', 'merendar']],
+  ['dinner', ['cena', 'cenar']],
+]
+
+const findSlot = (t: string): Slot | undefined => {
+  for (const [slot, words] of SLOT_WORDS) if (words.some((w) => t.includes(w))) return slot
+  // "snack" a secas: el que venga más adelante en el día
+  if (t.includes('snack')) return 'snack_pm'
+  return undefined
+}
+
 export const askAssistant = ({ text, app }: AssistantQuery): AssistantAnswer => {
   const t = norm(text)
   const { meals, today } = app
+  const context = today?.context ?? 'mixto'
   const next = today ? findNext(today, meals) : undefined
 
-  /* Más hambre → subir saciedad de la próxima comida */
-  if (has(t, 'mas hambre', 'poco', 'chico', 'no me llena', 'contundente', 'que llene')) {
-    const base = next?.meal
-    const options = (base
-      ? compatibleReplacements(base, meals, { limit: 4 })
-      : meals.map((meal) => ({ meal, why: '' }))
-    ).filter(({ meal }) => meal.satiety === 'potente')
-
+  /* El día cambió: eso se resuelve con el contexto, no comida por comida. */
+  if (has(t, 'todo el dia afuera', 'todo el dia en la calle', 'no vuelvo', 'afuera todo el dia')) {
     return {
-      title: 'Opciones que llenan más',
-      note: base ? `En lugar de ${base.name.toLowerCase()}.` : undefined,
-      meals: options.length
-        ? options
-        : meals.filter((m) => m.satiety === 'potente').slice(0, 4).map((meal) => ({ meal })),
+      title: 'Pasá el día a «En la calle»',
+      note:
+        'Con eso todo lo pendiente se rearma solo: nada que no se pueda llevar, y desayuno, almuerzo y merienda con saciedad potente.',
+      suggestContext: 'calle',
+    }
+  }
+  if (has(t, 'me quedo en casa', 'hoy no salgo', 'trabajo desde casa')) {
+    return {
+      title: 'Pasá el día a «En casa»',
+      note: 'Se libera la restricción de transporte y entran las comidas que se cocinan en el momento.',
+      suggestContext: 'casa',
     }
   }
 
-  /* Salgo temprano → desayuno transportable y rápido */
+  /* No preparé nada: lo que se resuelve en minutos. */
+  if (has(t, 'no prepare', 'no tengo nada', 'me olvide', 'sin preparar')) {
+    const slot = findSlot(t) ?? next?.planned.slot ?? 'breakfast'
+    const options = rescueOptions(slot, meals, 4)
+    return {
+      title: `Para resolver ${SLOT_LABEL[slot].toLowerCase()} ya`,
+      note: 'Sin preparación previa.',
+      meals: options,
+    }
+  }
+
+  /* Más hambre: subir la saciedad de lo que viene. */
+  if (has(t, 'mas hambre', 'poco', 'chico', 'no me llena', 'contundente', 'que llene')) {
+    const slot = findSlot(t) ?? next?.planned.slot
+    const pool = slot
+      ? candidatesFor(slot, context, meals).filter((m) => m.satiety === 'potente')
+      : meals.filter((m) => m.satiety === 'potente')
+
+    const base = slot === next?.planned.slot ? next?.meal : undefined
+    return {
+      title: 'Opciones que llenan más',
+      note: base ? `En lugar de ${base.name.toLowerCase()}.` : undefined,
+      meals: pool
+        .filter((m) => m.id !== base?.id)
+        .slice(0, 4)
+        .map((meal) => ({ meal, why: 'potente' })),
+    }
+  }
+
+  /* Salgo temprano: desayuno transportable y rápido. */
   if (has(t, 'salgo', 'temprano', '6:30', '6.30', 'apurado', 'sin tiempo')) {
     const options = meals
       .filter((m) => m.category === 'desayuno' && m.portable)
       .sort((a, b) => a.prepMinutes - b.prepMinutes)
       .slice(0, 3)
       .map((meal) => ({
-        meal: meal,
-        why:
-          meal.makeNightBefore
-            ? 'se deja listo la noche anterior'
-            : `${meal.prepMinutes} min a la mañana`,
+        meal,
+        why: meal.makeNightBefore
+          ? 'se deja listo la noche anterior'
+          : `${meal.prepMinutes} min a la mañana`,
       }))
     return {
       title: 'Desayunos para salir temprano',
@@ -81,17 +140,18 @@ export const askAssistant = ({ text, app }: AssistantQuery): AssistantAnswer => 
     }
   }
 
-  /* Falta un ingrediente → filtrar la biblioteca */
-  const missing = ['yogur', 'huevo', 'pan', 'pollo', 'avena', 'queso', 'fruta'].find((i) =>
-    t.includes(i),
+  /* Falta un ingrediente: filtrar la biblioteca. */
+  const missing = ['yogur', 'huevo', 'pan', 'pollo', 'avena', 'queso', 'fruta', 'atun'].find(
+    (i) => t.includes(i),
   )
-  if (missing && has(t, 'no tengo', 'sin', 'se acabo', 'falta')) {
-    const options = meals
+  if (missing && has(t, 'no tengo', 'sin ', 'se acabo', 'falta')) {
+    const slot = findSlot(t) ?? next?.planned.slot
+    const pool = slot ? candidatesFor(slot, context, meals) : meals
+    const options = pool
       .filter(
         (m) =>
           !m.ingredients.some((i) => norm(i).includes(missing)) &&
-          !norm(m.name).includes(missing) &&
-          (next ? m.category === next.meal.category : true),
+          !norm(m.name).includes(missing),
       )
       .slice(0, 4)
       .map((meal) => ({ meal, why: `sin ${missing}` }))
@@ -103,7 +163,7 @@ export const askAssistant = ({ text, app }: AssistantQuery): AssistantAnswer => 
     }
   }
 
-  /* Qué preparo ahora → tareas de la noche */
+  /* Qué preparo ahora: tareas de la noche. */
   if (has(t, 'que preparo', 'preparar', 'noche', 'dejar listo')) {
     const tasks = app.tomorrow ? prepTasksFor(app.tomorrow, meals).map((x) => x.label) : []
     return {
@@ -113,45 +173,44 @@ export const askAssistant = ({ text, app }: AssistantQuery): AssistantAnswer => 
     }
   }
 
-  /* Cambiar una comida puntual */
-  const slotWord = (
-    [
-      ['desayuno', 'desayuno'],
-      ['almuerzo', 'almuerzo'],
-      ['merienda', 'merienda'],
-      ['cena', 'cena'],
-      ['snack', 'snack'],
-    ] as const
-  ).find(([w]) => t.includes(w))
-
-  if (slotWord && has(t, 'cambia', 'cambiame', 'otra', 'otro', 'reemplaz')) {
-    const planned = today?.meals.find(
-      (p) => app.mealById(p.mealId)?.category === slotWord[1],
-    )
+  /* Cambiar una comida puntual, o pedir opciones de un momento del día. */
+  const slot = findSlot(t)
+  if (slot) {
+    const planned = today?.meals.find((p) => p.slot === slot)
     const current = planned ? app.mealById(planned.mealId) : undefined
-    if (current) {
+
+    if (current && has(t, 'cambia', 'cambiame', 'otra', 'otro', 'reemplaz')) {
       return {
-        title: `Reemplazos para la ${slotWord[1]}`,
-        meals: compatibleReplacements(current, meals, { limit: 3 }),
+        title: `Reemplazos para ${SLOT_LABEL[slot].toLowerCase()}`,
+        meals: compatibleReplacements(current, meals, { slot, context }),
       }
+    }
+
+    return {
+      title: `Opciones de ${SLOT_LABEL[slot].toLowerCase()}`,
+      note: 'Las que sirven para el día que estás teniendo.',
+      meals: candidatesFor(slot, context, meals)
+        .slice(0, 4)
+        .map((meal) => ({ meal, why: meal.satiety })),
     }
   }
 
-  /* Transportable + potente */
+  /* Transportable y que llene. */
   if (has(t, 'llevar', 'mochila', 'transport')) {
-    const options = meals
-      .filter((m) => m.portable && m.satiety !== 'liviana')
-      .slice(0, 4)
-      .map((meal) => ({ meal, why: 'se lleva bien' }))
-    return { title: 'Se llevan y llenan', meals: options }
+    return {
+      title: 'Se llevan y llenan',
+      meals: meals
+        .filter((m) => m.portable && m.satiety !== 'liviana')
+        .slice(0, 4)
+        .map((meal) => ({ meal, why: 'se lleva bien' })),
+    }
   }
 
   /* Compras: todavía no. Se dice, no se simula. */
   if (has(t, 'comprar', 'compra', 'super', 'lista')) {
     return {
       title: 'Todavía no',
-      note:
-        'La lista de compras se arma en la próxima etapa, cuando estén cargadas las cantidades reales de cada comida.',
+      note: 'La lista de compras se arma cuando estén cargadas las cantidades reales de cada comida.',
       unsupported: true,
     }
   }

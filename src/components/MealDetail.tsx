@@ -1,6 +1,6 @@
 import type { Meal } from '../lib/types'
 import { CARB_SOURCE_TEXT, CONFIDENCE_TEXT } from '../lib/format'
-import { CarbChip, MealTile, SatietyMark } from './ui'
+import { CarbChip, DemoBadge, MealTile, SatietyMark } from './ui'
 
 /* Detalle: acá sí se muestra todo. Es el segundo nivel de la divulgación
    progresiva, y el único lugar donde la densidad de datos está permitida. */
@@ -27,8 +27,11 @@ export function MealDetail({ meal }: { meal: Meal }) {
         <MealTile meal={meal} size={56} />
         <div className="min-w-0 flex-1">
           <h3 className="text-[19px] leading-tight v-display text-ink">{meal.name}</h3>
-          <p className="mt-1 text-[13px] text-ink-faint first-letter:uppercase">
-            {meal.category} · {meal.portion}
+          <p className="mt-1 flex flex-wrap items-center gap-2 text-[13px] text-ink-faint first-letter:uppercase">
+            <span className="first-letter:uppercase">
+              {meal.category} · {meal.portion}
+            </span>
+            {meal.isDemo && <DemoBadge />}
           </p>
         </div>
       </div>
@@ -37,13 +40,23 @@ export function MealDetail({ meal }: { meal: Meal }) {
         <div>
           <CarbChip meal={meal} size="lg" />
           <p className="mt-1 text-[12px] text-ink-faint">
-            {CARB_SOURCE_TEXT[meal.carbSource]} · {CONFIDENCE_TEXT[meal.confidence]}
+            {meal.carbsVerified
+              ? `${CARB_SOURCE_TEXT[meal.carbSource]} · ${CONFIDENCE_TEXT[meal.confidence]}`
+              : 'Sin verificar'}
           </p>
         </div>
         <SatietyMark level={meal.satiety} />
       </div>
 
-      <p className="mt-4 text-[12px] leading-relaxed text-ink-faint">
+      {!meal.carbsVerified && (
+        <p className="mt-3 rounded-2xl border border-dashed border-line-strong px-4 py-3 text-[13px] leading-relaxed text-ink-faint">
+          <span className="font-semibold text-ink-soft">Carbohidratos sin verificar.</span>{' '}
+          Es un valor de demostración, no medido contra una etiqueta ni una receta
+          calculada. No lo uses para decidir nada.
+        </p>
+      )}
+
+      <p className="mt-3 text-[12px] leading-relaxed text-ink-faint">
         Los carbohidratos son información para que decidas vos. Vianda no calcula
         ni sugiere insulina.
       </p>
@@ -87,8 +100,9 @@ export function MealDetail({ meal }: { meal: Meal }) {
       )}
 
       {meal.isDemo && (
-        <p className="mt-7 rounded-2xl border border-dashed border-line-strong px-4 py-3 text-[13px] text-ink-faint">
-          Comida de ejemplo. Los datos reales los vamos a cargar juntos.
+        <p className="mt-7 rounded-2xl border border-dashed border-line-strong px-4 py-3 text-[13px] leading-relaxed text-ink-faint">
+          Comida de demostración: existe sólo para que la interfaz tenga algo que
+          mostrar. La biblioteca real la vamos a construir comida por comida.
         </p>
       )}
     </div>

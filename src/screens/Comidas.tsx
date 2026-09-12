@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import type { Vianda } from '../lib/store'
 import type { Category, Meal } from '../lib/types'
-import { CarbChip, MealTile, SatietyMark } from '../components/ui'
+import { CarbChip, DemoBadge, MealTile, SatietyMark } from '../components/ui'
 import { Sheet } from '../components/Sheet'
 import { MealDetail } from '../components/MealDetail'
 
@@ -37,6 +37,12 @@ export function Comidas({ app }: { app: Vianda }) {
         <h1 className="text-[30px] leading-none v-display text-ink">Comidas</h1>
         <p className="mt-2 text-[15px] text-ink-soft">
           Tu biblioteca. {app.meals.length} cargadas.
+        </p>
+        <p className="mt-4 rounded-2xl border border-dashed border-line-strong px-4 py-3 text-[13px] leading-relaxed text-ink-faint">
+          <span className="font-semibold text-ink-soft">Todas son de demostración.</span>{' '}
+          Los carbohidratos no están verificados y las comidas no las elegiste vos:
+          están para que la interfaz tenga algo que mostrar. La biblioteca real la
+          construimos comida por comida.
         </p>
       </header>
 
@@ -81,6 +87,7 @@ export function Comidas({ app }: { app: Vianda }) {
                       ★
                     </span>
                   )}
+                  {meal.isDemo && <DemoBadge />}
                 </span>
                 <span className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1">
                   <CarbChip meal={meal} />
@@ -100,11 +107,6 @@ export function Comidas({ app }: { app: Vianda }) {
           No hay comidas con esos filtros.
         </p>
       )}
-
-      <p className="mt-7 rounded-2xl border border-dashed border-line-strong px-4 py-4 text-[13px] leading-relaxed text-ink-faint">
-        Estas 15 comidas son de ejemplo, para que la app funcione desde el primer día.
-        Las reales las cargamos juntos: merienda y cena son las categorías más flacas.
-      </p>
 
       <Sheet open={open !== null} onClose={() => setOpen(null)}>
         {open && <MealDetail meal={open} />}

@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import type { Vianda } from '../lib/store'
 import { SUGGESTIONS, askAssistant, type AssistantAnswer } from '../lib/assistant'
+import { CONTEXT_LABEL } from '../lib/types'
 import { Sheet } from './Sheet'
-import { CarbChip, MealTile, SatietyMark } from './ui'
+import { CarbChip, DemoBadge, MealTile, SatietyMark } from './ui'
 
 /* El asistente no es una pestaña ni un chat: es una entrada que vive
    encima de la navegación y devuelve tarjetas de la app, no burbujas. */
@@ -93,6 +94,18 @@ function AssistantSheet({
             <p className="mt-1 text-[14px] leading-relaxed text-ink-soft">{answer.note}</p>
           )}
 
+          {answer.suggestContext && app.today && (
+            <button
+              onClick={() => {
+                app.setContext(app.today!.date, answer.suggestContext!)
+                close()
+              }}
+              className="mt-4 min-h-[52px] w-full rounded-pill bg-clay text-[16px] font-semibold text-white shadow-sm active:scale-[0.98]"
+            >
+              Pasar el día a «{CONTEXT_LABEL[answer.suggestContext]}»
+            </button>
+          )}
+
           {answer.meals && answer.meals.length > 0 && (
             <ul className="mt-4 space-y-2">
               {answer.meals.map(({ meal, why }) => (
@@ -102,7 +115,10 @@ function AssistantSheet({
                 >
                   <MealTile meal={meal} size={40} />
                   <div className="min-w-0 flex-1">
-                    <p className="truncate text-[15px] font-medium text-ink">{meal.name}</p>
+                    <p className="flex items-center gap-2">
+                      <span className="truncate text-[15px] font-medium text-ink">{meal.name}</span>
+                      {meal.isDemo && <DemoBadge />}
+                    </p>
                     <p className="mt-0.5 flex items-center gap-2.5 text-[13px]">
                       <CarbChip meal={meal} />
                       <SatietyMark level={meal.satiety} showLabel={false} />

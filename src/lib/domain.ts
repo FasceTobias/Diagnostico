@@ -1,129 +1,231 @@
-import type { DayPlan, Meal, PackItem, PlannedMeal, PrepTask, Slot } from './types'
-import { SLOT_CATEGORY, SLOT_ORDER } from './types'
+import type {
+  DayContext,
+  DayPlan,
+  Meal,
+  PackItem,
+  PlannedMeal,
+  PrepTask,
+  Satiety,
+  Slot,
+} from './types'
+import { OPTIONAL_SLOTS, SLOT_CATEGORY, SLOT_ORDER } from './types'
 import { addDays, isoDate, minutesOf, nowMinutes } from './format'
 
-/* Horarios de la rutina real. Salen del perfil, no están hardcodeados en la UI. */
+/* Horarios por defecto de la rutina. Son editables: salen del perfil,
+   no están clavados en la UI. */
 export const DEFAULT_TIMES: Record<Slot, string> = {
   breakfast: '08:30',
   snack_am: '10:30',
   lunch: '12:30',
-  snack_pm: '18:30',
+  snack_pm: '16:00',
+  merienda: '18:30',
   dinner: '21:30',
 }
 
 /* ------------------------------------------------------------------
-   ROTACIÓN
-   No es random. Puntúa candidatos y elige el mejor con desempate estable.
+   NECESIDADES DEL DÍA
+
+   El contexto manda: dónde transcurre el día decide qué tiene que poder
+   llevarse y cuánto tiene que llenar cada comida. No se deduce del día
+   de la semana — un sábado también podés estar todo el día afuera.
    ------------------------------------------------------------------ */
+
+const SATIETY_RANK: Record<Satiety, number> = { liviana: 0, normal: 1, potente: 2 }
+
+export interface SlotNeed {
+  category: Meal['category']
+  /** Tiene que poder viajar en la mochila */
+  requirePortable: boolean
+  /** Piso de saciedad. Es un requisito, no una preferencia. */
+  minSatiety: Satiety | null
+}
+
+const PORTABLE_BY_CONTEXT: Record<DayContext, Slot[]> = {
+  casa: [],
+  mixto: ['breakfast', 'snack_am', 'lunch', 'snack_pm'],
+  calle: ['breakfast', 'snack_am', 'lunch', 'snack_pm', 'merienda'],
+}
+
+const SATIETY_BY_CONTEXT: Record<DayContext, Partial<Record<Slot, Satiety>>> = {
+  // En casa podés cocinar en el momento: sólo se pide que no sean livianas
+  // las tres comidas grandes.
+  casa: { breakfast: 'normal', lunch: 'normal', merienda: 'normal' },
+  // Medio día afuera: el desayuno tiene que aguantar hasta el mediodía.
+  mixto: { breakfast: 'potente', lunch: 'normal', merienda: 'normal' },
+  // Todo el día afuera: nada liviano en las comidas grandes, y los snacks
+  // tienen que servir de verdad para aguantar.
+  calle: {
+    breakfast: 'potente',
+    snack_am: 'normal',
+    lunch: 'potente',
+    snack_pm: 'normal',
+    merienda: 'potente',
+  },
+}
+
+export const needsFor = (slot: Slot, context: DayContext): SlotNeed => ({
+  category: SLOT_CATEGORY[slot],
+  requirePortable: PORTABLE_BY_CONTEXT[context].includes(slot),
+  minSatiety: SATIETY_BY_CONTEXT[context][slot] ?? null,
+})
+
+/* ------------------------------------------------------------------
+   ROTACIÓN
+
+   No es random, y tampoco es una suma de puntos donde la variedad puede
+   ganarle al hambre. Primero se filtra por lo que el día NECESITA; recién
+   dentro de lo que sirve se optimiza preferencia y variedad.
+
+   Orden: contexto → saciedad → momento → transporte → preparación → variedad.
+   La repetición penaliza. Nunca invalida una opción mejor.
+   ------------------------------------------------------------------ */
+
+/** Aplica un requisito. Si dejara el pozo vacío, no se aplica:
+    es mejor una comida imperfecta que ninguna. */
+const narrow = (pool: Meal[], keep: (m: Meal) => boolean): Meal[] => {
+  const next = pool.filter(keep)
+  return next.length ? next : pool
+}
 
 export interface RotationContext {
   /** ids usados por día, del más reciente al más viejo */
   recentByDay: string[][]
-  /** El día requiere comida transportable en ese slot */
-  needsPortable: (slot: Slot) => boolean
-  /** Saciedad mínima pedida para ese slot */
-  wantsPotent: (slot: Slot) => boolean
+  /** ingredientes principales ya usados hoy */
+  usedToday: Meal[]
+  /** minutos disponibles para cocinar, si el día aprieta */
+  maxPrepMinutes?: number
 }
 
-const scoreMeal = (meal: Meal, slot: Slot, ctx: RotationContext): number => {
-  let score = 0
+/** Candidatos que efectivamente sirven para este slot, en orden de prioridad. */
+export const candidatesFor = (
+  slot: Slot,
+  context: DayContext,
+  meals: Meal[],
+  maxPrepMinutes?: number,
+): Meal[] => {
+  const need = needsFor(slot, context)
 
-  // 1. Restricciones duras primero: si no se puede llevar, no sirve.
-  if (ctx.needsPortable(slot) && !meal.portable) return -Infinity
-  if (meal.category !== SLOT_CATEGORY[slot]) return -Infinity
+  // 1. Momento del día. Este sí es infranqueable: una cena no es un desayuno.
+  const sameMoment = meals.filter((m) => m.category === need.category)
+  if (!sameMoment.length) return []
 
-  // 2. Favoritas pesan, pero no tanto como para comer siempre lo mismo.
-  if (meal.favorite) score += 14
-  score += (meal.rating ?? 3) * 3
+  // 2. Saciedad necesaria. Antes que nada: que llene lo que tiene que llenar.
+  let pool = need.minSatiety
+    ? narrow(sameMoment, (m) => SATIETY_RANK[m.satiety] >= SATIETY_RANK[need.minSatiety!])
+    : sameMoment
 
-  // 3. Penalizar lo reciente. Ayer pesa mucho más que hace cinco días.
+  // 3. Transportabilidad, cuando el contexto la exige.
+  if (need.requirePortable) pool = narrow(pool, (m) => m.portable)
+
+  // 4. Disponibilidad: que entre en el tiempo que hay.
+  if (maxPrepMinutes) pool = narrow(pool, (m) => m.prepMinutes <= maxPrepMinutes)
+
+  return pool
+}
+
+/** Puntaje de preferencia DENTRO del pozo de candidatos válidos.
+    Acá sí pesa la variedad, porque cualquiera de estas opciones ya sirve. */
+const preferenceScore = (meal: Meal, ctx: RotationContext): number => {
+  let score = (meal.rating ?? 3) * 4
+  if (meal.favorite) score += 12
+  if (!meal.tested) score -= 6
+
+  // Penalización por repetición: acotada, para que sea un desempate y no
+  // un veto. Ayer pesa más que anteayer.
   ctx.recentByDay.forEach((ids, daysAgo) => {
-    if (ids.includes(meal.id)) score -= daysAgo === 0 ? 60 : 34 - daysAgo * 5
+    if (!ids.includes(meal.id)) return
+    score -= Math.max(4, 20 - daysAgo * 5)
   })
 
-  // 4. Saciedad pedida.
-  if (ctx.wantsPotent(slot)) {
-    if (meal.satiety === 'potente') score += 18
-    if (meal.satiety === 'liviana') score -= 16
-  }
-
-  // 5. Lo que se prepara la noche anterior vale más para los slots de afuera.
-  if (ctx.needsPortable(slot) && meal.makeNightBefore) score += 6
-
-  // 6. Nunca probado: se propone, pero después de lo conocido.
-  if (!meal.tested) score -= 8
+  // Variedad dentro del mismo día: dos veces huevo cansa.
+  const repeats = ctx.usedToday.filter((m) => m.mainIngredient === meal.mainIngredient).length
+  score -= repeats * 10
 
   return score
 }
 
-/** Elige comida para un slot evitando repetir ingrediente principal del día. */
-const pickForSlot = (
+export const pickForSlot = (
   slot: Slot,
+  context: DayContext,
   meals: Meal[],
   ctx: RotationContext,
-  usedToday: Meal[],
 ): Meal | undefined => {
-  const mainToday = usedToday.map((m) => m.mainIngredient)
-  const ranked = meals
-    .map((meal) => {
-      let s = scoreMeal(meal, slot, ctx)
-      // Variedad dentro del mismo día: dos huevos seguidos cansan.
-      const repeats = mainToday.filter((i) => i === meal.mainIngredient).length
-      s -= repeats * 22
-      return { meal, s }
-    })
-    .filter((c) => c.s > -Infinity)
-    .sort((a, b) => b.s - a.s || a.meal.id.localeCompare(b.meal.id))
+  const pool = candidatesFor(slot, context, meals, ctx.maxPrepMinutes)
+  if (!pool.length) return undefined
 
-  return ranked[0]?.meal
+  return [...pool].sort(
+    (a, b) =>
+      preferenceScore(b, ctx) - preferenceScore(a, ctx) || a.id.localeCompare(b.id),
+  )[0]
 }
 
 export const buildDayPlan = (
   date: Date,
   meals: Meal[],
+  context: DayContext,
   history: string[][] = [],
-  opts: { portableDay?: boolean; longDay?: boolean } = {},
+  times: Record<Slot, string> = DEFAULT_TIMES,
 ): DayPlan => {
-  const ctx: RotationContext = {
-    recentByDay: history,
-    needsPortable: (slot) =>
-      (opts.portableDay ?? true) && slot !== 'dinner' && slot !== 'snack_pm',
-    wantsPotent: (slot) =>
-      (opts.longDay ?? true) && (slot === 'breakfast' || slot === 'lunch'),
-  }
-
   const usedToday: Meal[] = []
   const planned: PlannedMeal[] = []
 
   for (const slot of SLOT_ORDER) {
-    const meal = pickForSlot(slot, meals, ctx, usedToday)
+    const meal = pickForSlot(slot, context, meals, { recentByDay: history, usedToday })
     if (!meal) continue
     usedToday.push(meal)
     planned.push({
       slot,
       mealId: meal.id,
-      time: DEFAULT_TIMES[slot],
+      time: times[slot],
       status: 'pending',
+      optional: OPTIONAL_SLOTS.includes(slot),
     })
   }
 
-  return { date: isoDate(date), meals: planned }
+  return { date: isoDate(date), context, meals: planned }
 }
 
-export const buildWeek = (start: Date, meals: Meal[]): DayPlan[] => {
+export const buildWeek = (
+  start: Date,
+  meals: Meal[],
+  context: DayContext = 'mixto',
+  times: Record<Slot, string> = DEFAULT_TIMES,
+): DayPlan[] => {
   const days: DayPlan[] = []
   const history: string[][] = []
   for (let i = 0; i < 7; i++) {
-    const date = addDays(start, i)
-    const weekend = date.getDay() === 0 || date.getDay() === 6
-    const day = buildDayPlan(date, meals, history, {
-      portableDay: !weekend,
-      longDay: !weekend,
-    })
+    const day = buildDayPlan(addDays(start, i), meals, context, history, times)
     history.unshift(day.meals.map((m) => m.mealId))
     days.push(day)
   }
   return days
+}
+
+/** Rearma sólo lo que todavía no pasó. Lo preparado o comido no se toca:
+    cambiar el contexto a mitad del día no puede borrar lo que ya hiciste. */
+export const reflowDay = (
+  day: DayPlan,
+  meals: Meal[],
+  context: DayContext,
+  history: string[][] = [],
+): DayPlan => {
+  const usedToday = day.meals
+    .filter((p) => p.status === 'eaten' || p.status === 'prepared')
+    .map((p) => meals.find((m) => m.id === p.mealId))
+    .filter((m): m is Meal => !!m)
+
+  const next = day.meals.map((planned) => {
+    if (planned.status !== 'pending') return planned
+    const meal = pickForSlot(planned.slot, context, meals, {
+      recentByDay: history,
+      usedToday,
+    })
+    if (!meal) return planned
+    usedToday.push(meal)
+    return { ...planned, mealId: meal.id }
+  })
+
+  return { ...day, context, meals: next }
 }
 
 /* ------------------------------------------------------------------
@@ -140,14 +242,25 @@ export interface ReplacementReason {
 export const compatibleReplacements = (
   current: Meal,
   all: Meal[],
-  opts: { needsPortable?: boolean; maxMinutes?: number; limit?: number } = {},
+  opts: {
+    slot?: Slot
+    context?: DayContext
+    /** "no preparé nada": sólo lo que se resuelve ya */
+    maxMinutes?: number
+    limit?: number
+  } = {},
 ): ReplacementReason[] => {
   const limit = opts.limit ?? 3
-  const needsPortable = opts.needsPortable ?? current.portable
 
-  return all
-    .filter((m) => m.id !== current.id && m.category === current.category)
-    .filter((m) => (needsPortable ? m.portable : true))
+  // Los candidatos salen del mismo filtro que usa la rotación: lo que se
+  // ofrece como reemplazo tiene que servir para el día de verdad.
+  const pool =
+    opts.slot && opts.context
+      ? candidatesFor(opts.slot, opts.context, all, opts.maxMinutes)
+      : all.filter((m) => m.category === current.category)
+
+  return pool
+    .filter((m) => m.id !== current.id)
     .filter((m) => (opts.maxMinutes ? m.prepMinutes <= opts.maxMinutes : true))
     .map((meal) => {
       let score = 0
@@ -156,7 +269,7 @@ export const compatibleReplacements = (
       if (meal.satiety === current.satiety) {
         score += 26
         why.push(`igual de ${meal.satiety === 'potente' ? 'contundente' : meal.satiety}`)
-      } else if (meal.satiety === 'potente') {
+      } else if (SATIETY_RANK[meal.satiety] > SATIETY_RANK[current.satiety]) {
         score += 10
         why.push('llena más')
       } else {
@@ -192,17 +305,60 @@ export const compatibleReplacements = (
     .map(({ meal, why }) => ({ meal, why }))
 }
 
+/** "Hoy no preparé nada": lo que se resuelve ya.
+
+    Afloja de a poco en vez de devolver una lista vacía. Si no hay nada
+    rápido en ese momento del día, ofrece algo de otro momento que aguante:
+    en la vida real dos snacks potentes reemplazan un almuerzo, y es mejor
+    eso que una pantalla vacía a las 12:30. */
+export interface RescueOption {
+  meal: Meal
+  why: string
+}
+
+const bySpeed = (a: RescueOption, b: RescueOption) =>
+  a.meal.prepMinutes - b.meal.prepMinutes || (b.meal.rating ?? 0) - (a.meal.rating ?? 0)
+
+export const rescueOptions = (slot: Slot, meals: Meal[], limit = 4): RescueOption[] => {
+  const category = SLOT_CATEGORY[slot]
+
+  const sameMoment = (max: number) =>
+    meals
+      .filter((m) => m.category === category && m.prepMinutes <= max)
+      .map((meal) => ({ meal, why: `${meal.prepMinutes} min` }))
+
+  // 1. Cero preparación. 2. Casi cero.
+  for (const max of [8, 15]) {
+    const tier = sameMoment(max)
+    if (tier.length) return tier.sort(bySpeed).slice(0, limit)
+  }
+
+  // 3. Red de seguridad: otro momento del día, pero que llene y salga ya.
+  return meals
+    .filter(
+      (m) => m.category !== category && m.prepMinutes <= 8 && m.satiety !== 'liviana',
+    )
+    .map((meal) => ({ meal, why: `es ${meal.category}, pero sale en ${meal.prepMinutes} min` }))
+    .sort(bySpeed)
+    .slice(0, limit)
+}
+
 /* ------------------------------------------------------------------
    PREPARAR PARA MAÑANA
    Las tareas salen del menú. Si tres comidas llevan pollo, se dice una vez.
    ------------------------------------------------------------------ */
 
+const activeMeals = (day: DayPlan, meals: Meal[]) =>
+  day.meals
+    .filter((p) => p.status !== 'skipped')
+    .map((p) => ({ planned: p, meal: meals.find((m) => m.id === p.mealId) }))
+    .filter((x): x is { planned: PlannedMeal; meal: Meal } => !!x.meal)
+
 export const prepTasksFor = (day: DayPlan, meals: Meal[]): PrepTask[] => {
   const byLabel = new Map<string, string[]>()
 
-  for (const planned of day.meals) {
-    const meal = meals.find((m) => m.id === planned.mealId)
-    if (!meal || !meal.makeNightBefore) continue
+  for (const { meal } of activeMeals(day, meals)) {
+    if (!meal.makeNightBefore) continue
     for (const step of meal.prepSteps ?? []) {
       byLabel.set(step, [...(byLabel.get(step) ?? []), meal.id])
     }
@@ -230,20 +386,16 @@ export const prepTasksFor = (day: DayPlan, meals: Meal[]): PrepTask[] => {
    ------------------------------------------------------------------ */
 
 export const packListFor = (day: DayPlan, meals: Meal[]): PackItem[] => {
-  const fromMeals: PackItem[] = day.meals
-    .map((planned): PackItem | null => {
-      const meal = meals.find((m) => m.id === planned.mealId)
-      if (!meal || !meal.portable) return null
-      return {
-        id: `pack-${planned.slot}`,
-        label: meal.name,
-        kind: 'meal' as const,
-        hint: meal.needsCold ? 'Va con frío' : undefined,
-        mealId: meal.id,
-        done: false,
-      }
-    })
-    .filter((x): x is PackItem => x !== null)
+  const fromMeals: PackItem[] = activeMeals(day, meals)
+    .filter(({ meal }) => meal.portable)
+    .map(({ planned, meal }) => ({
+      id: `pack-${planned.slot}`,
+      label: meal.name,
+      kind: 'meal' as const,
+      hint: meal.needsCold ? 'Va con frío' : undefined,
+      mealId: meal.id,
+      done: false,
+    }))
 
   const gear: PackItem[] = [
     { id: 'pack-botella', label: 'Botella de agua', kind: 'gear', done: false },
@@ -252,8 +404,7 @@ export const packListFor = (day: DayPlan, meals: Meal[]): PackItem[] => {
     { id: 'pack-servilletas', label: 'Servilletas', kind: 'gear', done: false },
   ]
 
-  const needsCold = fromMeals.some((m) => m.hint)
-  if (needsCold) {
+  if (fromMeals.some((m) => m.hint)) {
     gear.unshift({
       id: 'pack-refrigerante',
       label: 'Refrigerante de la mochila térmica',
@@ -301,11 +452,3 @@ export const findNext = (
     isNow: Math.abs(upcoming.minutes - at) <= 45,
   }
 }
-
-/** Carbohidratos del día. Dato, no objetivo: no hay meta que cumplir. */
-export const dayCarbs = (day: DayPlan, meals: Meal[]) =>
-  day.meals.reduce((sum, p) => {
-    if (p.status === 'skipped') return sum
-    const meal = meals.find((m) => m.id === p.mealId)
-    return sum + (meal?.carbs ?? 0)
-  }, 0)

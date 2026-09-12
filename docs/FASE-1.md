@@ -1,7 +1,10 @@
 # Vianda — Fase 1
 
-> Documento de arquitectura, UX y diseño previo a la construcción.
-> Nombre temporal del producto: **Vianda**.
+> Documento de arquitectura, UX y diseño.
+> **Vianda** es un nombre temporal, no una marca definitiva.
+>
+> *Revisión 2 — corregido el modelo del día (seis momentos, no cinco),
+> incorporado el contexto por día y reescrita la prioridad de la rotación.*
 
 ---
 
@@ -37,7 +40,9 @@ Todo lo demás es soporte de esas tres preguntas.
 | La app organiza, no decide por vos | Carbohidratos se muestran, nunca se traduce a insulina |
 | Nunca castigar | No existe el estado "fallaste". Existe "cambiado" |
 | Menos es más rápido | Si una función no se usa a diario, va a segundo nivel |
-| Datos honestos | Todo carbohidrato muestra su nivel de confianza |
+| Datos honestos | Todo carbohidrato muestra su nivel de confianza, y el que no fue verificado se muestra como tal |
+| El día no es perfecto | Contexto por día, snacks opcionales y una salida rápida cuando no preparaste nada |
+| La necesidad antes que la variedad | Si el día pide algo que llene, primero se busca ahí; la repetición desempata, nunca veta |
 
 ### Identidad visual (resumen)
 
@@ -99,7 +104,8 @@ Vianda
 │
 ├── HOY  ★ pantalla principal
 │   ├── Próxima comida (héroe)
-│   ├── Resto del día (desayuno · snack · almuerzo · merienda · cena)
+│   ├── Cómo viene el día (en casa · mixto · en la calle)
+│   ├── El día (6 momentos, los dos snacks opcionales)
 │   ├── Mochila de hoy            → bottom sheet
 │   ├── Preparar para mañana      → bottom sheet (aparece de tarde/noche)
 │   ├── Detalle de comida         → bottom sheet (carbos, ingredientes, notas)
@@ -162,6 +168,73 @@ acciones del día, no secciones.
 
 ---
 
+## D bis. El día: seis momentos y un contexto
+
+### Seis momentos, no cinco
+
+**Snack y merienda no son lo mismo.** El snack sirve para aguantar entre comidas y es más chico;
+la merienda es una comida hecha y derecha, y puede ser fuerte.
+
+| # | Momento | Horario aproximado | ¿Obligatorio? |
+|---|---|---|---|
+| 1 | Desayuno | 08:00–09:00 | sí |
+| 2 | Snack de mañana | 10:30–11:00 | **no** |
+| 3 | Almuerzo | 12:00–13:00 | sí |
+| 4 | Snack de tarde | entre almuerzo y merienda | **no** |
+| 5 | Merienda | 18:00–19:00 | sí |
+| 6 | Cena | 21:00–22:00 | sí |
+
+Los horarios son valores por defecto **editables**, no reglas. Los dos snacks nacen opcionales:
+se sacan con un toque y se vuelven a sumar con otro. Sacarlos no aparece como incumplimiento
+en ningún lado — la fila se colapsa a una línea y listo.
+
+### El contexto del día
+
+Tres estados, siempre visibles arriba de todo, a un toque:
+
+| Contexto | Qué tiene que poder llevarse | Saciedad exigida |
+|---|---|---|
+| **En casa** | nada | desayuno, almuerzo y merienda no pueden ser livianos |
+| **Mixto** | desayuno, snacks y almuerzo | desayuno potente |
+| **En la calle** | todo menos la cena | desayuno, almuerzo y merienda potentes; snacks al menos normales |
+
+**No se deduce del día de la semana.** Un sábado también podés estar todo el día afuera.
+
+Cambiar el contexto **rearma sólo lo pendiente**. Lo que ya marcaste como preparado o comido
+no se toca: adaptarse al día no puede borrar lo que ya hiciste.
+
+## D ter. Cómo elige la rotación
+
+No es azar, y tampoco es una suma de puntos donde la variedad puede ganarle al hambre.
+Son **dos etapas**:
+
+**Etapa 1 — filtrar por lo que el día necesita.** En este orden:
+
+1. momento del día (una cena no es un desayuno) — nunca se relaja
+2. **saciedad necesaria** — si el día pide potente, se busca primero entre las potentes
+3. transportabilidad, cuando el contexto la exige
+4. tiempo disponible de preparación
+
+Cada filtro se aplica sólo si no deja el pozo vacío: una comida imperfecta es mejor que ninguna.
+
+**Etapa 2 — elegir dentro de lo que ya sirve.** Recién acá pesan la preferencia (favoritas,
+puntuación) y la **variedad**: penalización por haberla comido en los últimos días y por repetir
+el ingrediente principal dentro del mismo día.
+
+> La repetición **penaliza, no invalida**. El algoritmo nunca va a elegir algo que te deja con
+> hambre sólo para no repetir, porque cuando llega el turno de la variedad ya se descartó todo
+> lo que no alcanza.
+
+### Cuando el día se rompe
+
+- **No preparaste nada** → desde el detalle de cualquier comida que dependiera de la preparación
+  previa: *"No lo preparé — resolvelo ya"*. Ofrece lo que sale en minutos, y si no hay nada en
+  ese momento del día, afloja: primero ≤8 min, después ≤15, y como última red algo de otro
+  momento que llene y salga ya.
+- **Comiste otra cosa** → cambiar cuesta lo mismo que marcar.
+- **El día cambió** → un toque en el contexto y lo pendiente se rearma.
+- **No tenés hambre** → los snacks se sacan sin consecuencias.
+
 ## E. Estructura de datos
 
 Un solo usuario hoy, pero todo cuelga de `profile_id` desde el día uno. Migrar después es imposible.
@@ -189,9 +262,10 @@ weekly_plans
 
 daily_plans
   id · weekly_plan_id · date
-  slots(jsonb)  →  [{slot, meal_id, planned_time, status, replaced_from, note}]
+  context       día en casa / en la calle / mixto
+  slots(jsonb)  →  [{slot, meal_id, time, status, optional, replaced_from, note}]
 
-  slot   = breakfast | snack_am | lunch | snack_pm | dinner
+  slot   = breakfast | snack_am | lunch | snack_pm | merienda | dinner
   status = pending | prepared | eaten | skipped | replaced
 
 prep_tasks
@@ -223,10 +297,17 @@ preferences
 - **`carbs_confidence` separado de `carbs_source`**: la fuente es un hecho (etiqueta / receta /
   estimación / pendiente); la confianza es cómo se muestra (ALTA / MEDIA / ESTIMADA). Se deriva
   de la fuente pero puede bajarse a mano ("la etiqueta es de otra marca parecida").
-- **`is_demo` en `meals`**: los 12 registros de ejemplo quedan marcados y se pueden borrar todos
+- **`is_demo` en `meals`**: los registros de ejemplo quedan marcados y se pueden borrar todos
   juntos cuando entren los datos reales.
+- **`carbs_verified` separado de todo lo demás**: mientras sea `false`, la app muestra el carbo
+  como sin confirmar e ignora `carbs_confidence`. Un número inventado no puede verse igual que
+  uno leído de una etiqueta.
+- **`context` en `daily_plans`, no derivado del día de la semana**: un sábado también podés estar
+  todo el día en la calle. Es un dato del día, no una suposición del calendario.
 - **`satiety` como enum de 3, no un número**: un número invita a optimizar. Tres niveles se
   entienden de un vistazo y bastan para el algoritmo de rotación.
+- **`optional` por slot**: los dos snacks nacen opcionales. Sacarlos no es incumplir nada y
+  volverlos a sumar cuesta un toque.
 
 ### Nivel de confianza de carbohidratos
 
@@ -329,8 +410,8 @@ La regla es la del brief: **una pantalla excelente antes que veinte mediocres.**
 
 | # | Riesgo | Mitigación |
 |---|---|---|
-| 1 | **La biblioteca vacía mata la app.** Sin comidas cargadas no hay plan, y cargar comidas es trabajo. Es el punto donde la app se abandona. | 12 comidas demo desde el primer segundo. Alta de comida progresiva (nombre + categoría + carbos y listo; el resto después). "Duplicar y editar" antes que "crear de cero". |
-| 2 | **Marcar estados se vuelve tarea.** Si hay que marcar 5 comidas × 3 estados por día, en dos semanas nadie marca nada. | Un solo toque por comida en el caso normal. Estados opcionales: la app funciona igual si nunca marcás. Nada se rompe ni se pone rojo. |
+| 1 | **La biblioteca vacía mata la app.** Sin comidas cargadas no hay plan, y cargar comidas es trabajo. Es el punto donde la app se abandona. | Comidas demo desde el primer segundo, marcadas como tales. Alta de comida progresiva (nombre + categoría + carbos y listo; el resto después). "Duplicar y editar" antes que "crear de cero". |
+| 2 | **Marcar estados se vuelve tarea.** Si hay que marcar seis comidas × tres estados por día, en dos semanas nadie marca nada. | Un solo toque por comida en el caso normal. Estados opcionales: la app funciona igual si nunca marcás. Nada se rompe ni se pone rojo. |
 | 3 | **Los carbohidratos pueden volverla médica.** Es la línea más fina del producto. | El carbo es un dato tipográfico discreto, no un semáforo ni un gauge. Sin colores de alarma. Sin totales diarios con "objetivo". |
 | 4 | **El plan se desincroniza de la vida real.** Comiste otra cosa tres días seguidos y el plan ya no representa nada. | Cambiar es tan barato como marcar. `meal_history` guarda lo real, no lo planificado. Cero lenguaje de incumplimiento. |
 | 5 | **Sobrecarga en la pantalla HOY.** Es la pantalla que todo quiere habitar: mochila, preparar, asistente, foco, semana. | Presupuesto duro: máximo 1 acción primaria + 2 secundarias visibles. Lo demás vive en sheets y aparece por contexto horario. |

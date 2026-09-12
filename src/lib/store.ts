@@ -1,17 +1,31 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import type { DayPlan, MealStatus, PackItem, PrepTask, Slot } from './types'
+import type {
+  DayContext,
+  DayPlan,
+  MealStatus,
+  PackItem,
+  PrepTask,
+  Slot,
+} from './types'
 import { DEMO_MEALS } from './demo'
 import { addDays, isoDate } from './format'
-import { buildWeek, packListFor, prepTasksFor } from './domain'
+import {
+  DEFAULT_TIMES,
+  buildWeek,
+  packListFor,
+  prepTasksFor,
+  reflowDay,
+} from './domain'
 
 /* Repositorio local. Misma forma que va a tener el de Supabase, para que
    cambiar de uno a otro no toque ninguna pantalla. */
 
-const KEY = 'vianda.state.v1'
+const KEY = 'vianda.state.v2'
 
 interface Persisted {
   week: DayPlan[]
   weekStart: string
+  times: Record<Slot, string>
   checks: Record<string, boolean>
   focus: boolean
 }
@@ -39,20 +53,25 @@ const save = (state: Persisted) => {
   }
 }
 
+const fresh = (): Persisted => {
+  const ws = startOfWeek(new Date())
+  return {
+    // 'mixto' por defecto: ni asumir que estás en casa ni que estás afuera.
+    week: buildWeek(ws, DEMO_MEALS, 'mixto', DEFAULT_TIMES),
+    weekStart: isoDate(ws),
+    times: DEFAULT_TIMES,
+    checks: {},
+    focus: false,
+  }
+}
+
 export const useVianda = () => {
   const meals = DEMO_MEALS
 
   const [state, setState] = useState<Persisted>(() => {
-    const today = new Date()
-    const ws = startOfWeek(today)
     const stored = load()
-    if (stored && stored.weekStart === isoDate(ws)) return stored
-    return {
-      week: buildWeek(ws, DEMO_MEALS),
-      weekStart: isoDate(ws),
-      checks: {},
-      focus: false,
-    }
+    const ws = isoDate(startOfWeek(new Date()))
+    return stored && stored.weekStart === ws ? stored : fresh()
   })
 
   useEffect(() => save(state), [state])
@@ -69,42 +88,56 @@ export const useVianda = () => {
     [state.week, tomorrowIso],
   )
 
-  const mealById = useCallback(
-    (id: string) => meals.find((m) => m.id === id),
-    [meals],
+  const mealById = useCallback((id: string) => meals.find((m) => m.id === id), [meals])
+
+  const patchDay = useCallback(
+    (date: string, fn: (day: DayPlan) => DayPlan) => {
+      setState((s) => ({
+        ...s,
+        week: s.week.map((day) => (day.date === date ? fn(day) : day)),
+      }))
+    },
+    [],
   )
 
-  const setStatus = useCallback((date: string, slot: Slot, status: MealStatus) => {
-    setState((s) => ({
-      ...s,
-      week: s.week.map((day) =>
-        day.date !== date
-          ? day
-          : {
-              ...day,
-              meals: day.meals.map((m) =>
-                m.slot === slot ? { ...m, status } : m,
-              ),
-            },
-      ),
-    }))
-  }, [])
+  const setStatus = useCallback(
+    (date: string, slot: Slot, status: MealStatus) =>
+      patchDay(date, (day) => ({
+        ...day,
+        meals: day.meals.map((m) => (m.slot === slot ? { ...m, status } : m)),
+      })),
+    [patchDay],
+  )
 
-  const replaceMeal = useCallback((date: string, slot: Slot, mealId: string) => {
+  const replaceMeal = useCallback(
+    (date: string, slot: Slot, mealId: string) =>
+      patchDay(date, (day) => ({
+        ...day,
+        meals: day.meals.map((m) =>
+          m.slot === slot
+            ? { ...m, mealId, replacedFrom: m.mealId, status: 'pending' }
+            : m,
+        ),
+      })),
+    [patchDay],
+  )
+
+  /* Cambiar el contexto rearma sólo lo pendiente. Lo preparado o comido
+     no se toca: la app se adapta al día, no borra lo que ya hiciste. */
+  const setContext = useCallback(
+    (date: string, context: DayContext) =>
+      patchDay(date, (day) => reflowDay(day, meals, context)),
+    [patchDay, meals],
+  )
+
+  const setTime = useCallback((slot: Slot, time: string) => {
     setState((s) => ({
       ...s,
-      week: s.week.map((day) =>
-        day.date !== date
-          ? day
-          : {
-              ...day,
-              meals: day.meals.map((m) =>
-                m.slot === slot
-                  ? { ...m, mealId, replacedFrom: m.mealId, status: 'pending' }
-                  : m,
-              ),
-            },
-      ),
+      times: { ...s.times, [slot]: time },
+      week: s.week.map((day) => ({
+        ...day,
+        meals: day.meals.map((m) => (m.slot === slot ? { ...m, time } : m)),
+      })),
     }))
   }, [])
 
@@ -119,25 +152,27 @@ export const useVianda = () => {
   const regenerate = useCallback(() => {
     setState((s) => ({
       ...s,
-      week: buildWeek(new Date(s.weekStart + 'T00:00:00'), meals),
+      week: buildWeek(new Date(s.weekStart + 'T00:00:00'), meals, today?.context ?? 'mixto', s.times),
       checks: {},
     }))
-  }, [meals])
+  }, [meals, today?.context])
 
   /* Checklists derivadas del menú. El estado marcado se guarda por id. */
-  const withChecks = <T extends { id: string; done: boolean }>(items: T[], ns: string) =>
-    items.map((i) => ({ ...i, done: !!state.checks[`${ns}:${i.id}`] }))
+  const checks = state.checks
+  const withChecks = useCallback(
+    <T extends { id: string; done: boolean }>(items: T[], ns: string) =>
+      items.map((i) => ({ ...i, done: !!checks[`${ns}:${i.id}`] })),
+    [checks],
+  )
 
   const packing: PackItem[] = useMemo(
     () => (today ? withChecks(packListFor(today, meals), `pack:${today.date}`) : []),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [today, meals, state.checks],
+    [today, meals, withChecks],
   )
 
   const prep: PrepTask[] = useMemo(
     () => (tomorrow ? withChecks(prepTasksFor(tomorrow, meals), `prep:${tomorrow.date}`) : []),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [tomorrow, meals, state.checks],
+    [tomorrow, meals, withChecks],
   )
 
   const checkPack = useCallback(
@@ -155,11 +190,14 @@ export const useVianda = () => {
     week: state.week,
     today,
     tomorrow,
+    times: state.times,
     packing,
     prep,
     focus: state.focus,
     setFocus,
     setStatus,
+    setContext,
+    setTime,
     replaceMeal,
     checkPack,
     checkPrep,

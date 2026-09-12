@@ -1,12 +1,32 @@
 import type { Meal } from './types'
 
-/* 15 comidas DEMO. Marcadas con isDemo para poder borrarlas todas juntas
-   cuando entren los datos reales. Los carbohidratos son valores de referencia,
-   no verdad nutricional: la fuente y la confianza se muestran siempre. */
+/* ------------------------------------------------------------------
+   DATOS DE DEMOSTRACIÓN — NO SON DATOS REALES
+
+   Estas comidas existen sólo para que la interfaz tenga algo que mostrar
+   y para poder probar la rotación con los seis momentos del día.
+
+   Los carbohidratos NO están verificados: son valores plausibles, no
+   medidos. Por eso todas llevan carbsVerified: false, y la app las marca
+   como DEMO en todas las pantallas y muestra el carbo como sin confirmar,
+   ignorando el carbSource / confidence que tengan cargado.
+
+   Esos dos campos quedan con valores variados a propósito: el día que una
+   comida real se marque carbsVerified: true, el sistema de confianza
+   (alta / media / estimada) se enciende solo, sin tocar ninguna pantalla.
+
+   La biblioteca real la vamos a construir comida por comida.
+   ------------------------------------------------------------------ */
+
+const demo = (m: Omit<Meal, 'isDemo' | 'carbsVerified'>): Meal => ({
+  ...m,
+  carbsVerified: false,
+  isDemo: true,
+})
 
 export const DEMO_MEALS: Meal[] = [
   /* ---------------- DESAYUNO ---------------- */
-  {
+  demo({
     id: 'm-oats',
     name: 'Overnight oats con banana y nueces',
     category: 'desayuno',
@@ -28,11 +48,10 @@ export const DEMO_MEALS: Meal[] = [
     favorite: true,
     tested: true,
     rating: 5,
-    notes: 'Aguanta bien hasta el mediodía. Si el día es largo, sumar una cucharada más de nueces.',
+    notes: 'Aguanta bien hasta el mediodía.',
     prepSteps: ['Armar overnight oats en el frasco', 'Cortar banana'],
-    isDemo: true,
-  },
-  {
+  }),
+  demo({
     id: 'm-sandwich',
     name: 'Sándwich completo',
     category: 'desayuno',
@@ -54,16 +73,40 @@ export const DEMO_MEALS: Meal[] = [
     favorite: true,
     tested: true,
     rating: 5,
-    notes: 'Poner la palta a último momento o pincelarla con limón.',
+    notes: 'La palta, a último momento o con limón.',
     prepSteps: ['Armar sándwich completo', 'Hervir huevos'],
-    isDemo: true,
-  },
-  {
+  }),
+  demo({
+    id: 'm-muffins',
+    name: 'Muffins salados de huevo, queso y espinaca',
+    category: 'desayuno',
+    tags: ['para llevar', 'potente'],
+    mainIngredient: 'huevo',
+    ingredients: ['Huevo 6', 'Queso 80 g', 'Espinaca 2 puñados', 'Harina integral 40 g'],
+    portion: '3 muffins (rinde 6)',
+    carbs: 22,
+    carbSource: 'receta',
+    confidence: 'media',
+    prepMinutes: 30,
+    satiety: 'potente',
+    portable: true,
+    needsCold: true,
+    needsReheat: false,
+    makeNightBefore: true,
+    freezable: true,
+    difficulty: 2,
+    favorite: false,
+    tested: true,
+    rating: 4,
+    notes: 'Rinden dos días y se congelan bien.',
+    prepSteps: ['Hornear muffins salados', 'Porcionar en tuppers'],
+  }),
+  demo({
     id: 'm-tortilla',
     name: 'Tortilla de papa en tupper',
     category: 'desayuno',
     tags: ['para llevar', 'normal'],
-    mainIngredient: 'huevo',
+    mainIngredient: 'papa',
     ingredients: ['Papa 2 medianas', 'Huevo 4', 'Cebolla ½', 'Aceite de oliva'],
     portion: '2 porciones (rinde para 2 días)',
     carbs: 34,
@@ -80,11 +123,10 @@ export const DEMO_MEALS: Meal[] = [
     favorite: false,
     tested: true,
     rating: 4,
-    notes: 'Se come fría sin problema. Rinde dos días.',
+    notes: 'Se come fría sin problema.',
     prepSteps: ['Hacer tortilla de papa', 'Porcionar en tuppers'],
-    isDemo: true,
-  },
-  {
+  }),
+  demo({
     id: 'm-tostadas-huevo',
     name: 'Tostadas con huevo revuelto, queso y tomate',
     category: 'desayuno',
@@ -106,9 +148,8 @@ export const DEMO_MEALS: Meal[] = [
     favorite: true,
     tested: true,
     rating: 5,
-    isDemo: true,
-  },
-  {
+  }),
+  demo({
     id: 'm-yogur-granola',
     name: 'Yogur con granola',
     category: 'desayuno',
@@ -131,11 +172,10 @@ export const DEMO_MEALS: Meal[] = [
     tested: true,
     rating: 3,
     notes: 'Plan de emergencia: cero preparación. No aguanta muchas horas.',
-    isDemo: true,
-  },
+  }),
 
   /* ---------------- SNACK ---------------- */
-  {
+  demo({
     id: 'm-nueces',
     name: 'Nueces y almendras',
     category: 'snack',
@@ -158,9 +198,8 @@ export const DEMO_MEALS: Meal[] = [
     tested: true,
     rating: 4,
     prepSteps: ['Porcionar frutos secos'],
-    isDemo: true,
-  },
-  {
+  }),
+  demo({
     id: 'm-manzana-mani',
     name: 'Manzana con mantequilla de maní',
     category: 'snack',
@@ -182,11 +221,34 @@ export const DEMO_MEALS: Meal[] = [
     favorite: false,
     tested: true,
     rating: 4,
-    notes: 'Confirmar los carbos con la etiqueta del frasco de maní.',
     prepSteps: ['Lavar fruta'],
-    isDemo: true,
-  },
-  {
+  }),
+  demo({
+    id: 'm-huevos-queso',
+    name: 'Huevos duros con queso en cubos',
+    category: 'snack',
+    tags: ['para llevar', 'potente'],
+    mainIngredient: 'huevo',
+    ingredients: ['Huevo 2', 'Queso 40 g'],
+    portion: '1 tupper chico',
+    carbs: 3,
+    carbSource: 'estimación',
+    confidence: 'estimada',
+    prepMinutes: 10,
+    satiety: 'potente',
+    portable: true,
+    needsCold: true,
+    needsReheat: false,
+    makeNightBefore: true,
+    freezable: false,
+    difficulty: 1,
+    favorite: false,
+    tested: true,
+    rating: 4,
+    notes: 'Casi sin carbos. Sirve cuando faltan muchas horas para comer.',
+    prepSteps: ['Hervir huevos'],
+  }),
+  demo({
     id: 'm-mini-sandwich',
     name: 'Mini sándwich de queso y jamón',
     category: 'snack',
@@ -208,20 +270,18 @@ export const DEMO_MEALS: Meal[] = [
     favorite: false,
     tested: true,
     rating: 4,
-    notes: 'Para cuando el almuerzo fue chico o faltan muchas horas.',
     prepSteps: ['Armar mini sándwich'],
-    isDemo: true,
-  },
+  }),
 
   /* ---------------- ALMUERZO ---------------- */
-  {
+  demo({
     id: 'm-pollo-arroz',
     name: 'Pollo al horno con arroz y ensalada',
     category: 'almuerzo',
-    tags: ['en casa', 'potente'],
+    tags: ['para llevar', 'potente'],
     mainIngredient: 'pollo',
     ingredients: ['Pechuga de pollo 200 g', 'Arroz 70 g en crudo', 'Tomate', 'Lechuga', 'Aceite de oliva'],
-    portion: '1 plato',
+    portion: '1 tupper grande',
     carbs: 58,
     carbSource: 'receta',
     confidence: 'alta',
@@ -237,9 +297,8 @@ export const DEMO_MEALS: Meal[] = [
     tested: true,
     rating: 5,
     prepSteps: ['Cocinar pollo', 'Hacer arroz', 'Armar tupper de almuerzo'],
-    isDemo: true,
-  },
-  {
+  }),
+  demo({
     id: 'm-wrap-pollo',
     name: 'Wrap de pollo y vegetales',
     category: 'almuerzo',
@@ -263,9 +322,8 @@ export const DEMO_MEALS: Meal[] = [
     rating: 4,
     notes: 'Envolver en papel manteca para que no se abra en la mochila.',
     prepSteps: ['Cocinar pollo', 'Armar wrap'],
-    isDemo: true,
-  },
-  {
+  }),
+  demo({
     id: 'm-lentejas',
     name: 'Ensalada de lentejas con huevo y palta',
     category: 'almuerzo',
@@ -289,11 +347,36 @@ export const DEMO_MEALS: Meal[] = [
     rating: 4,
     notes: 'Se come fría. Muy buena para días de mucho movimiento.',
     prepSteps: ['Hervir huevos', 'Armar tupper de almuerzo'],
-    isDemo: true,
-  },
+  }),
+  demo({
+    id: 'm-arroz-atun',
+    name: 'Arroz con atún, huevo y vegetales',
+    category: 'almuerzo',
+    tags: ['para llevar', 'potente'],
+    mainIngredient: 'atún',
+    ingredients: ['Arroz 70 g en crudo', 'Atún al natural 1 lata', 'Huevo 1', 'Choclo', 'Morrón', 'Mayonesa 1 cda'],
+    portion: '1 tupper grande',
+    carbs: 62,
+    carbSource: 'receta',
+    confidence: 'media',
+    prepMinutes: 25,
+    satiety: 'potente',
+    portable: true,
+    needsCold: true,
+    needsReheat: false,
+    makeNightBefore: true,
+    freezable: false,
+    difficulty: 1,
+    favorite: false,
+    tested: true,
+    rating: 4,
+    notes: 'Se come frío. Sale rápido si el arroz ya está hecho.',
+    prepSteps: ['Hacer arroz', 'Hervir huevos', 'Armar tupper de almuerzo'],
+  }),
 
-  /* ---------------- MERIENDA ---------------- */
-  {
+  /* ---------------- MERIENDA ----------------
+     La merienda es una comida, no un snack: puede ser bastante fuerte. */
+  demo({
     id: 'm-tostadas-queso',
     name: 'Tostadas con queso y tomate + café',
     category: 'merienda',
@@ -315,9 +398,8 @@ export const DEMO_MEALS: Meal[] = [
     favorite: false,
     tested: true,
     rating: 4,
-    isDemo: true,
-  },
-  {
+  }),
+  demo({
     id: 'm-omelette',
     name: 'Omelette de espinaca y queso con pan',
     category: 'merienda',
@@ -339,12 +421,60 @@ export const DEMO_MEALS: Meal[] = [
     favorite: true,
     tested: true,
     rating: 5,
-    notes: 'Para cuando la cena va a ser tarde o el almuerzo fue temprano.',
-    isDemo: true,
-  },
+    notes: 'Para cuando la cena va a ser tarde.',
+  }),
+  demo({
+    id: 'm-sandwich-merienda',
+    name: 'Sándwich de queso, tomate y huevo',
+    category: 'merienda',
+    tags: ['para llevar', 'potente'],
+    mainIngredient: 'pan',
+    ingredients: ['Pan integral 2 rebanadas', 'Queso 50 g', 'Huevo 1', 'Tomate', 'Orégano'],
+    portion: '1 sándwich',
+    carbs: 40,
+    carbSource: 'receta',
+    confidence: 'media',
+    prepMinutes: 10,
+    satiety: 'potente',
+    portable: true,
+    needsCold: true,
+    needsReheat: false,
+    makeNightBefore: true,
+    freezable: false,
+    difficulty: 1,
+    favorite: false,
+    tested: true,
+    rating: 4,
+    notes: 'Merienda de verdad para los días en la calle.',
+    prepSteps: ['Hervir huevos', 'Armar sándwich de merienda'],
+  }),
+  demo({
+    id: 'm-yogur-completo',
+    name: 'Yogur completo con avena, fruta y nueces',
+    category: 'merienda',
+    tags: ['para llevar', 'potente'],
+    mainIngredient: 'yogur',
+    ingredients: ['Yogur entero 250 g', 'Avena 40 g', 'Frutilla o banana', 'Nueces 20 g'],
+    portion: '1 frasco grande',
+    carbs: 52,
+    carbSource: 'receta',
+    confidence: 'media',
+    prepMinutes: 6,
+    satiety: 'potente',
+    portable: true,
+    needsCold: true,
+    needsReheat: false,
+    makeNightBefore: true,
+    freezable: false,
+    difficulty: 1,
+    favorite: true,
+    tested: true,
+    rating: 4,
+    prepSteps: ['Armar frasco de yogur', 'Lavar fruta'],
+  }),
 
   /* ---------------- CENA ---------------- */
-  {
+  demo({
     id: 'm-milanesa',
     name: 'Milanesa de pollo al horno con puré de calabaza',
     category: 'cena',
@@ -366,13 +496,12 @@ export const DEMO_MEALS: Meal[] = [
     favorite: false,
     tested: true,
     rating: 4,
-    isDemo: true,
-  },
-  {
+  }),
+  demo({
     id: 'm-revuelto',
     name: 'Revuelto de zapallitos con huevo',
     category: 'cena',
-    tags: ['en casa', 'liviano', 'rápido'],
+    tags: ['en casa', 'rápido', 'liviano'],
     mainIngredient: 'huevo',
     ingredients: ['Zapallitos 2', 'Huevo 3', 'Cebolla ½', 'Pan 1 rebanada'],
     portion: '1 plato',
@@ -391,6 +520,28 @@ export const DEMO_MEALS: Meal[] = [
     tested: true,
     rating: 4,
     notes: 'Cena liviana para cuando se come tarde.',
-    isDemo: true,
-  },
+  }),
+  demo({
+    id: 'm-sopa-calabaza',
+    name: 'Sopa crema de calabaza con pan y queso',
+    category: 'cena',
+    tags: ['en casa', 'normal'],
+    mainIngredient: 'calabaza',
+    ingredients: ['Calabaza 500 g', 'Cebolla 1', 'Caldo', 'Pan 1 rebanada', 'Queso 40 g'],
+    portion: '1 plato hondo',
+    carbs: 34,
+    carbSource: 'receta',
+    confidence: 'media',
+    prepMinutes: 30,
+    satiety: 'normal',
+    portable: false,
+    needsCold: false,
+    needsReheat: true,
+    makeNightBefore: false,
+    freezable: true,
+    difficulty: 1,
+    favorite: false,
+    tested: true,
+    rating: 3,
+  }),
 ]

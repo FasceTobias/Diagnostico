@@ -60,9 +60,10 @@ export const relativeTime = (targetMinutes: number, from = nowMinutes()) => {
 
 /* ---- Carbohidratos: el dato se muestra con su confianza, siempre ---- */
 
-/** La tilde comunica "estimado" sin depender del color. */
-export const carbLabel = (meal: Pick<Meal, 'carbs' | 'confidence'>) =>
-  meal.confidence === 'estimada' ? `~${meal.carbs}` : `${meal.carbs}`
+/** La tilde comunica "no confirmado" sin depender del color.
+    Un dato sin verificar siempre lleva tilde, sea cual sea su confianza. */
+export const carbLabel = (meal: Pick<Meal, 'carbs' | 'confidence' | 'carbsVerified'>) =>
+  !meal.carbsVerified || meal.confidence === 'estimada' ? `~${meal.carbs}` : `${meal.carbs}`
 
 export const CONFIDENCE_TEXT: Record<Confidence, string> = {
   alta: 'Confianza alta',

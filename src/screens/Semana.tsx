@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import type { Vianda } from '../lib/store'
-import { SLOT_LABEL } from '../lib/types'
-import { dayCarbs } from '../lib/domain'
+import { CONTEXT_NOTE, SLOT_LABEL } from '../lib/types'
 import { isoDate, longDate, parseIso, shortDate } from '../lib/format'
-import { CarbChip, MealTile, SatietyMark } from '../components/ui'
+import { CarbChip, ContextSwitch, DemoBadge, MealTile, SatietyMark } from '../components/ui'
 import { MealSheet, type MealSheetTarget } from '../components/MealSheet'
 
 export function Semana({ app }: { app: Vianda }) {
@@ -46,13 +45,16 @@ export function Semana({ app }: { app: Vianda }) {
 
       {day && (
         <section className="mt-7">
-          <div className="flex items-baseline justify-between px-1">
-            <h2 className="text-[17px] v-display text-ink first-letter:uppercase">
-              {longDate(parseIso(day.date))}
-            </h2>
-            <span className="text-[13px] text-ink-faint v-tnum">
-              {dayCarbs(day, app.meals)} g CH
-            </span>
+          <h2 className="px-1 text-[17px] v-display text-ink first-letter:uppercase">
+            {longDate(parseIso(day.date))}
+          </h2>
+
+          <div className="mt-3">
+            <ContextSwitch
+              value={day.context}
+              onChange={(c) => app.setContext(day.date, c)}
+            />
+            <p className="mt-2 px-1 text-[12px] text-ink-faint">{CONTEXT_NOTE[day.context]}</p>
           </div>
 
           <ul className="mt-3 space-y-2">
@@ -67,8 +69,13 @@ export function Semana({ app }: { app: Vianda }) {
                   >
                     <MealTile meal={meal} size={42} />
                     <span className="min-w-0 flex-1">
-                      <span className="block text-[11px] v-eyebrow text-ink-faint">
-                        {SLOT_LABEL[planned.slot]}
+                      <span className="flex items-center gap-2">
+                        <span className="v-eyebrow truncate text-ink-faint">
+                          {SLOT_LABEL[planned.slot]}
+                        </span>
+                        {planned.optional && (
+                          <span className="v-eyebrow shrink-0 text-clay">Opcional</span>
+                        )}
                       </span>
                       <span className="mt-0.5 block truncate text-[16px] font-medium text-ink">
                         {meal.name}
@@ -76,6 +83,7 @@ export function Semana({ app }: { app: Vianda }) {
                       <span className="mt-1.5 flex items-center gap-3">
                         <CarbChip meal={meal} />
                         <SatietyMark level={meal.satiety} showLabel={false} />
+                        {meal.isDemo && <DemoBadge />}
                       </span>
                     </span>
                   </button>
@@ -93,13 +101,14 @@ export function Semana({ app }: { app: Vianda }) {
         Volver a armar la semana
       </button>
       <p className="mt-3 px-1 text-[12px] leading-relaxed text-ink-faint">
-        La rotación evita repetir la misma comida en días seguidos y el mismo
-        ingrediente principal dentro del día.
+        Primero se elige entre las comidas que el día necesita —saciedad,
+        transporte, tiempo—; la variedad desempata dentro de esas. Nunca al revés.
       </p>
 
       <MealSheet
         target={target}
         meals={app.meals}
+        context={day?.context ?? 'mixto'}
         onClose={() => setTarget(null)}
         onStatus={(status) => target && day && app.setStatus(day.date, target.planned.slot, status)}
         onReplace={(mealId) =>

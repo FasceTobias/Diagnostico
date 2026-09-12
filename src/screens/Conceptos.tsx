@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react'
 import type { Vianda } from '../lib/store'
 import type { Meal, PlannedMeal } from '../lib/types'
-import { SLOT_LABEL } from '../lib/types'
-import { findNext, dayCarbs } from '../lib/domain'
+import { SLOT_LABEL, SLOT_SHORT } from '../lib/types'
+import { findNext } from '../lib/domain'
 import { carbLabel, greeting, longDate, nowMinutes, relativeTime } from '../lib/format'
 
 /* ------------------------------------------------------------------
@@ -28,6 +28,7 @@ export function Conceptos({ app, onBack }: { app: Vianda; onBack: () => void }) 
   )
 
   const rows = (app.today?.meals ?? [])
+    .filter((planned) => planned.status !== 'skipped')
     .map((planned) => ({ planned, meal: app.mealById(planned.mealId) }))
     .filter((r): r is { planned: PlannedMeal; meal: Meal } => !!r.meal)
 
@@ -71,7 +72,7 @@ export function Conceptos({ app, onBack }: { app: Vianda; onBack: () => void }) 
 
       <div className="mx-auto max-w-md px-4 pb-16">
         <div className="overflow-hidden rounded-[32px] shadow-lg ring-1 ring-line">
-          {c === 'A' && <ConceptA next={next} rows={rows} carbs={dayCarbs(app.today!, app.meals)} />}
+          {c === 'A' && <ConceptA next={next} rows={rows} />}
           {c === 'B' && <ConceptB next={next} rows={rows} now={now} />}
           {c === 'C' && <ConceptC next={next} rows={rows} now={now} />}
         </div>
@@ -91,7 +92,7 @@ type Next = NonNullable<ReturnType<typeof findNext>>
    Separación por espacio, no por líneas. Un anillo fino marca el día.
    Riesgo conocido: la acción principal queda alta y hay que scrollear. */
 
-function ConceptA({ next, rows, carbs }: { next: Next; rows: Rows; carbs: number }) {
+function ConceptA({ next, rows }: { next: Next; rows: Rows }) {
   const eaten = rows.filter((r) => r.planned.status === 'eaten').length
   const pct = rows.length ? eaten / rows.length : 0
 
@@ -111,8 +112,11 @@ function ConceptA({ next, rows, carbs }: { next: Next; rows: Rows; carbs: number
           />
         </svg>
         <div>
-          <p className="text-[40px] leading-none font-light tracking-[-0.03em]">{carbs}</p>
-          <p className="mt-1 text-[14px] text-[#6a6157]">gramos de carbohidratos hoy</p>
+          <p className="text-[40px] leading-none font-light tracking-[-0.03em]">
+            {eaten}
+            <span className="text-[22px] text-[#9a9187]"> de {rows.length}</span>
+          </p>
+          <p className="mt-1 text-[14px] text-[#6a6157]">comidas del día</p>
         </div>
       </div>
 
@@ -131,7 +135,7 @@ function ConceptA({ next, rows, carbs }: { next: Next; rows: Rows; carbs: number
         {rows.map(({ planned, meal }) => (
           <div key={planned.slot}>
             <p className="text-[12px] tracking-[0.12em] text-[#9a9187] uppercase">
-              {SLOT_LABEL[planned.slot]} · {planned.time}
+              {SLOT_SHORT[planned.slot]} · {planned.time}
             </p>
             <p className="mt-1.5 text-[19px] font-light tracking-[-0.02em]">{meal.name}</p>
             <p className="mt-1 text-[14px] text-[#9a9187]">
@@ -207,7 +211,7 @@ function ConceptB({ next, rows, now }: { next: Next; rows: Rows; now: number }) 
             </span>
             <span className="min-w-0 flex-1">
               <span className="block text-[11px] font-semibold tracking-[0.11em] text-[#9a9187] uppercase">
-                {SLOT_LABEL[planned.slot]}
+                {SLOT_SHORT[planned.slot]}
               </span>
               <span className="mt-0.5 block truncate text-[16px] font-medium">{meal.name}</span>
               <span className="text-[13px] text-[#6a6157]">
@@ -264,7 +268,7 @@ function ConceptC({ next, rows, now }: { next: Next; rows: Rows; now: number }) 
             <span className="min-w-0 flex-1">
               <span className="block truncate text-[16px] text-white/85">{meal.name}</span>
               <span className="text-[12px] text-white/30">
-                {SLOT_LABEL[planned.slot]} · {meal.satiety}
+                {SLOT_SHORT[planned.slot]} · {meal.satiety}
               </span>
             </span>
             <span className="text-[14px] text-white/45">{carbLabel(meal)} g</span>

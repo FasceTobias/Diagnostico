@@ -1,27 +1,28 @@
 import type { ReactNode } from 'react'
-import type { Meal, MealStatus, Satiety } from '../lib/types'
-import { STATUS_LABEL } from '../lib/types'
-import { CATEGORY_TINT, carbLabel, mealInitial } from '../lib/format'
+import type { DayContext, Meal, MealStatus, Satiety } from '../lib/types'
+import { CONTEXT_LABEL, STATUS_LABEL } from '../lib/types'
+import { CATEGORY_TINT, mealInitial } from '../lib/format'
 
 /* ------------------------------------------------------------------
    Primitivas. Ninguna depende sólo del color para comunicar estado:
    siempre hay forma, texto o posición además del tono.
    ------------------------------------------------------------------ */
 
-/** Carbohidratos con su confianza. El punto dice cuánto confiar en el número. */
-export function CarbChip({
-  meal,
-  size = 'sm',
-}: {
-  meal: Pick<Meal, 'carbs' | 'confidence'>
-  size?: 'sm' | 'lg'
-}) {
-  const dot =
-    meal.confidence === 'alta'
+type CarbInfo = Pick<Meal, 'carbs' | 'confidence' | 'carbsVerified'>
+
+/** Carbohidratos con su confianza.
+    Si el dato no fue verificado, el número se muestra como lo que es:
+    sin confirmar. La confianza cargada no se usa hasta que alguien lo revisó. */
+export function CarbChip({ meal, size = 'sm' }: { meal: CarbInfo; size?: 'sm' | 'lg' }) {
+  const dot = !meal.carbsVerified
+    ? 'border-dashed bg-transparent'
+    : meal.confidence === 'alta'
       ? 'bg-current'
       : meal.confidence === 'media'
         ? 'bg-linear-to-r from-current from-50% to-transparent to-50%'
         : 'bg-transparent'
+
+  const approx = !meal.carbsVerified || meal.confidence === 'estimada'
 
   return (
     <span
@@ -30,6 +31,7 @@ export function CarbChip({
           ? 'inline-flex items-baseline gap-1.5 text-ink v-tnum'
           : 'inline-flex items-baseline gap-1 text-ink-soft v-tnum'
       }
+      title={meal.carbsVerified ? undefined : 'Carbohidratos sin verificar'}
     >
       <span
         aria-hidden
@@ -38,9 +40,20 @@ export function CarbChip({
         }`}
       />
       <span className={size === 'lg' ? 'text-3xl v-display' : 'text-[13px] font-medium'}>
-        {carbLabel(meal)}
+        {approx ? '~' : ''}
+        {meal.carbs}
       </span>
       <span className={size === 'lg' ? 'text-base text-ink-soft' : 'text-[13px]'}>g CH</span>
+    </span>
+  )
+}
+
+/** Marca de dato de demostración. Se ve en todas las pantallas, no sólo
+    en el detalle: no quiero confundir un número inventado con uno real. */
+export function DemoBadge({ full = false }: { full?: boolean }) {
+  return (
+    <span className="inline-flex shrink-0 items-center rounded-pill border border-dashed border-line-strong px-1.5 py-px text-[10px] font-semibold tracking-wide text-ink-faint uppercase">
+      {full ? 'Demo · sin verificar' : 'Demo'}
     </span>
   )
 }
@@ -56,9 +69,7 @@ export function SatietyMark({ level, showLabel = true }: { level: Satiety; showL
         {[0, 1, 2].map((i) => (
           <span
             key={i}
-            className={`w-[3px] rounded-full ${
-              i < filled ? 'bg-clay' : 'bg-line-strong'
-            }`}
+            className={`w-[3px] rounded-full ${i < filled ? 'bg-clay' : 'bg-line-strong'}`}
             style={{ height: 4 + i * 3 }}
           />
         ))}
@@ -68,7 +79,7 @@ export function SatietyMark({ level, showLabel = true }: { level: Satiety; showL
   )
 }
 
-/** Estado. Nunca hay estado "mal": omitido y cambiado son neutros. */
+/** Estado. Nunca hay estado "mal": omitir o cambiar son decisiones, no faltas. */
 export function StatusPill({ status }: { status: MealStatus }) {
   if (status === 'pending') return null
   const style: Record<Exclude<MealStatus, 'pending'>, string> = {
@@ -111,6 +122,41 @@ export function MealTile({ meal, size = 44 }: { meal: Meal; size?: number }) {
     >
       {mealInitial(meal.name)}
     </span>
+  )
+}
+
+/** Dónde transcurre el día. Es la palanca principal de adaptación:
+    tres opciones, un toque, siempre visible. */
+export function ContextSwitch({
+  value,
+  onChange,
+}: {
+  value: DayContext
+  onChange: (c: DayContext) => void
+}) {
+  const options: DayContext[] = ['casa', 'mixto', 'calle']
+  return (
+    <div
+      role="group"
+      aria-label="Dónde transcurre el día"
+      className="flex gap-1 rounded-pill border border-line bg-surface p-1"
+    >
+      {options.map((o) => {
+        const active = o === value
+        return (
+          <button
+            key={o}
+            onClick={() => onChange(o)}
+            aria-pressed={active}
+            className={`min-h-[38px] flex-1 rounded-pill px-3 text-[13px] font-semibold transition-colors duration-150 ${
+              active ? 'bg-ink text-bg' : 'text-ink-soft'
+            }`}
+          >
+            {CONTEXT_LABEL[o]}
+          </button>
+        )
+      })}
+    </div>
   )
 }
 
@@ -165,29 +211,4 @@ export function CheckRow({
 
 export function Eyebrow({ children }: { children: ReactNode }) {
   return <p className="v-eyebrow text-ink-faint">{children}</p>
-}
-
-/** Botón de acción. Grande, cómodo, sin decoración. */
-export function Action({
-  children,
-  onClick,
-  variant = 'quiet',
-  full,
-}: {
-  children: ReactNode
-  onClick?: () => void
-  variant?: 'primary' | 'quiet'
-  full?: boolean
-}) {
-  const base =
-    'inline-flex min-h-[48px] items-center justify-center gap-2 rounded-pill px-5 text-[15px] font-semibold transition-[transform,background-color] duration-150 active:scale-[0.97]'
-  const look =
-    variant === 'primary'
-      ? 'bg-clay text-white shadow-sm'
-      : 'bg-surface text-ink border border-line'
-  return (
-    <button onClick={onClick} className={`${base} ${look} ${full ? 'w-full' : ''}`}>
-      {children}
-    </button>
-  )
 }

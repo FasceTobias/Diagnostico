@@ -1,7 +1,15 @@
 /* Modelo de dominio. Espeja el esquema de Supabase (supabase/schema.sql)
    para que migrar de local a remoto no toque la UI. */
 
-export type Slot = 'breakfast' | 'snack_am' | 'lunch' | 'snack_pm' | 'dinner'
+/* Seis momentos. Snack y merienda NO son lo mismo:
+   el snack aguanta entre comidas, la merienda es una comida. */
+export type Slot =
+  | 'breakfast'
+  | 'snack_am'
+  | 'lunch'
+  | 'snack_pm'
+  | 'merienda'
+  | 'dinner'
 
 export type Category = 'desayuno' | 'snack' | 'almuerzo' | 'merienda' | 'cena'
 
@@ -29,6 +37,10 @@ export type MealStatus =
   | 'skipped'
   | 'replaced'
 
+/** Dónde transcurre el día. No se deduce del día de la semana:
+   un sábado también podés estar todo el día en la calle. */
+export type DayContext = 'casa' | 'calle' | 'mixto'
+
 export interface Meal {
   id: string
   name: string
@@ -41,6 +53,8 @@ export interface Meal {
   carbs: number
   carbSource: CarbSource
   confidence: Confidence
+  /** Los carbos fueron revisados contra una fuente real. Los demo, nunca. */
+  carbsVerified: boolean
   prepMinutes: number
   satiety: Satiety
   portable: boolean
@@ -64,6 +78,8 @@ export interface PlannedMeal {
   /** "08:30" */
   time: string
   status: MealStatus
+  /** Los snacks son opcionales: se comen si el día los pide. */
+  optional: boolean
   replacedFrom?: string
   note?: string
 }
@@ -71,6 +87,7 @@ export interface PlannedMeal {
 export interface DayPlan {
   /** ISO yyyy-mm-dd */
   date: string
+  context: DayContext
   meals: PlannedMeal[]
 }
 
@@ -95,9 +112,20 @@ export interface PackItem {
 
 export const SLOT_LABEL: Record<Slot, string> = {
   breakfast: 'Desayuno',
-  snack_am: 'Snack',
+  snack_am: 'Snack de mañana',
   lunch: 'Almuerzo',
-  snack_pm: 'Merienda',
+  snack_pm: 'Snack de tarde',
+  merienda: 'Merienda',
+  dinner: 'Cena',
+}
+
+/** Etiqueta corta para listas densas. */
+export const SLOT_SHORT: Record<Slot, string> = {
+  breakfast: 'Desayuno',
+  snack_am: 'Snack AM',
+  lunch: 'Almuerzo',
+  snack_pm: 'Snack PM',
+  merienda: 'Merienda',
   dinner: 'Cena',
 }
 
@@ -106,6 +134,7 @@ export const SLOT_ORDER: Slot[] = [
   'snack_am',
   'lunch',
   'snack_pm',
+  'merienda',
   'dinner',
 ]
 
@@ -113,14 +142,31 @@ export const SLOT_CATEGORY: Record<Slot, Category> = {
   breakfast: 'desayuno',
   snack_am: 'snack',
   lunch: 'almuerzo',
-  snack_pm: 'merienda',
+  snack_pm: 'snack',
+  merienda: 'merienda',
   dinner: 'cena',
 }
+
+/** Los snacks se suman o se sacan según cómo venga el día. */
+export const OPTIONAL_SLOTS: Slot[] = ['snack_am', 'snack_pm']
 
 export const STATUS_LABEL: Record<MealStatus, string> = {
   pending: 'Pendiente',
   prepared: 'Preparado',
   eaten: 'Comido',
-  skipped: 'Omitido',
+  skipped: 'Hoy no',
   replaced: 'Cambiado',
+}
+
+export const CONTEXT_LABEL: Record<DayContext, string> = {
+  casa: 'En casa',
+  calle: 'En la calle',
+  mixto: 'Mixto',
+}
+
+/** Qué implica cada contexto para el armado del día. */
+export const CONTEXT_NOTE: Record<DayContext, string> = {
+  casa: 'Podés cocinar en el momento.',
+  calle: 'Todo tiene que poder llevarse.',
+  mixto: 'Desayuno, snacks y almuerzo se llevan; merienda y cena en casa.',
 }
