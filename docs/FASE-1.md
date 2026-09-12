@@ -3,9 +3,9 @@
 > Documento de arquitectura, UX y diseño.
 > **Vianda** es un nombre temporal, no una marca definitiva.
 >
-> *Revisión 6 — segunda versión visual. Se van las tarjetas, entra una serif
-> con carácter y cada pantalla toma una forma propia: HOY es una línea de
-> tiempo, COMIDAS un índice y COMPRAS un ticket.*
+> *Revisión 7 — el punto medio. La revisión anterior se fue a revista: se
+> recorta el héroe, la serif pasa a ser acento, se van las versalitas y cada
+> fila vuelve a ser un control. Identidad editorial, comportamiento de app.*
 
 ---
 
@@ -53,11 +53,15 @@ Todo lo demás es soporte de esas tres preguntas.
 
 - **Tono:** cálido, sobrio, doméstico. Nada de blanco clínico ni azul hospital.
 - **Paleta base:** hueso / tinta cálida / arcilla como acento único.
-- **Dos voces:** *Fraunces* (serif variable) para el contenido — los nombres de
-  las comidas, los títulos — e *Inter* para datos, rótulos y cifras. Autoalojadas.
-- **El separador es una regla, no una tarjeta.** El relieve dejó de ser el
-  recurso principal: lo que ordena es el espacio, la regla fina y el contraste
-  tipográfico.
+- **Tres voces:** *Space Grotesk* para el contenido —nombres de comidas y
+  titulares—, *Inter* para datos y cifras, *Fraunces* como acento en los títulos
+  de sección. Autoalojadas.
+- **El separador es una regla, no una tarjeta.** La única superficie elevada de
+  HOY es la zona de trabajo: la comida de ahora con sus dos acciones.
+- **Rótulos en caja baja.** Las versalitas anchas se ven bien en una revista y
+  cansan en algo que se abre seis veces por día.
+- **Toda fila es un control:** 56px, fondo que responde al toque y flecha que
+  dice que se abre. La línea de tiempo es la idea; la fila es la interfaz.
 - **Una forma por pantalla:** HOY es una línea de tiempo, SEMANA un pliego,
   COMIDAS un índice, COMPRAS un ticket. Mismo lenguaje, distinta estructura.
 - **Nada de:** gradientes exagerados, íconos por todos lados, cards repetidas sin jerarquía.

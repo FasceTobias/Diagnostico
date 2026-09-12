@@ -52,10 +52,10 @@
 
 :root[data-theme="dark"],
 html.dark {
-  --v-bg: #100f0d;
+  --v-bg: #0e0d0c;
   --v-bg-deep: #070706;
-  --v-surface: #1a1815;
-  --v-surface-2: #221f1b;
+  --v-surface: #1b1917;
+  --v-surface-2: #252220;
   --v-veil: rgb(26 24 21 / 0.9);
 
   --v-ink: #f4f0e9;
@@ -92,10 +92,10 @@ html.dark {
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --v-bg: #100f0d;
+    --v-bg: #0e0d0c;
     --v-bg-deep: #070706;
-    --v-surface: #1a1815;
-    --v-surface-2: #221f1b;
+    --v-surface: #1b1917;
+    --v-surface-2: #252220;
     --v-veil: rgb(26 24 21 / 0.9);
 
     --v-ink: #f4f0e9;
@@ -159,9 +159,13 @@ html.dark {
   --shadow-md: var(--v-shadow-md);
   --shadow-lg: var(--v-shadow-lg);
 
-  /* Dos voces: una serif variable con carácter para los titulares y el
-     nombre de cada comida, y una grotesca neutra para todo lo demás.
-     Ambas autoalojadas: la app abre sin red y sin pedirle nada a nadie. */
+  /* Tres voces, con roles claros:
+       · Space Grotesk — la voz principal. Nombres de comidas y titulares.
+         Tiene carácter y se lee bien chica en un teléfono.
+       · Inter — datos, rótulos, cifras tabulares. No compite.
+       · Fraunces — acento. Sólo los títulos de sección, nada más.
+     Autoalojadas: la app abre sin red y sin pedirle nada a nadie. */
+  --font-head: "Space Grotesk", "Inter", system-ui, sans-serif;
   --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
   --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
 
@@ -199,48 +203,58 @@ html.dark {
 }
 
 @layer utilities {
-  /* La voz del producto: serif variable, apretada, con peso medio.
-     Se usa para los nombres de las comidas y los títulos, nunca para datos. */
+  /* La voz principal: grotesca con carácter, apretada. Nombres de comidas,
+     titulares y cualquier cosa que el usuario lea como contenido. */
+  .v-head {
+    font-family: var(--font-head);
+    font-weight: 600;
+    letter-spacing: -0.018em;
+  }
+
+  /* Acento serif. Sólo títulos de sección: es condimento, no la base. */
   .v-serif {
     font-family: var(--font-display);
     font-weight: 500;
-    letter-spacing: -0.022em;
+    letter-spacing: -0.02em;
     font-optical-sizing: auto;
   }
   .v-serif-lg {
     font-family: var(--font-display);
     font-weight: 500;
-    letter-spacing: -0.03em;
-    line-height: 1.02;
+    letter-spacing: -0.026em;
+    line-height: 1.05;
     font-optical-sizing: auto;
   }
 
-  /* Rótulos: versalitas anchas. Todo lo que es dato y no contenido. */
+  /* Rótulos en caja baja. Las versalitas anchas se ven bien en una revista
+     y cansan en una app que se abre seis veces por día. */
   .v-label {
-    font-size: 11px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    font-weight: 600;
-    line-height: 1.4;
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.35;
   }
   .v-label-sm {
-    font-size: 10px;
-    letter-spacing: 0.14em;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.35;
+  }
+  /* Versalitas: quedan para lo poquísimo que las gana (el estado «Ahora»). */
+  .v-caps {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
-    font-weight: 600;
-    line-height: 1.4;
+    line-height: 1.3;
   }
 
   .v-tnum {
     font-variant-numeric: tabular-nums;
   }
 
-  /* Regla fina: el separador de la casa. Reemplaza a la tarjeta. */
   .v-rule {
     border-top: 1px solid var(--v-line);
-  }
-  .v-rule-strong {
-    border-top: 1.5px solid var(--v-ink);
   }
 
   .v-safe-top {

@@ -33,11 +33,11 @@ export function MealDetail({ meal }: { meal: Meal }) {
 
   return (
     <div>
-      <p className="v-label text-clay first-letter:uppercase">{meal.category}</p>
-      <h3 className="v-serif-lg mt-2.5 text-[32px] text-ink">{meal.name}</h3>
-      <p className="v-label-sm mt-2 text-ink-faint">{meal.portion}</p>
+      <p className="v-label font-semibold text-clay first-letter:uppercase">{meal.category}</p>
+      <h3 className="v-head mt-1.5 text-[25px] leading-[1.15] text-ink">{meal.name}</h3>
+      <p className="v-label-sm mt-1.5 text-ink-faint">{meal.portion}</p>
 
-      <div className="mt-7 flex items-end justify-between gap-4 border-y border-line py-5">
+      <div className="mt-5 flex items-end justify-between gap-4 rounded-xl bg-surface px-4 py-4">
         <div>
           <CarbValue meal={meal} size="lg" />
           <p className="v-label-sm mt-2 text-ink-faint">
@@ -63,7 +63,7 @@ export function MealDetail({ meal }: { meal: Meal }) {
       </p>
 
       {/* Etiquetas: qué es y para qué sirve. Ninguna dice si está bien o mal. */}
-      <p className="v-label-sm mt-6 leading-[2] text-ink-faint">
+      <p className="v-label-sm mt-5 leading-[1.9] text-ink-faint">
         {[FREQUENCY_LABEL[meal.frequency].toLowerCase(), ...meal.tags, ...badges].join(' · ')}
       </p>
 

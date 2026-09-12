@@ -26,13 +26,13 @@ export function Semana({ app }: { app: Vianda }) {
 
   return (
     <LazyMotion features={domAnimation}>
-      <div className="mx-auto max-w-md px-6 pb-32">
-        <header className="v-safe-top pt-8 pb-6">
-          <h1 className="v-serif-lg text-[38px] text-ink">Semana</h1>
+      <div className="mx-auto max-w-md px-4 pb-40">
+        <header className="v-safe-top flex items-baseline justify-between py-4">
+          <h1 className="v-serif-lg text-[28px] text-ink">Semana</h1>
         </header>
 
         {/* Tira de días: numerales en serif, sin cápsulas */}
-        <div className="v-no-scrollbar -mx-6 flex gap-1 overflow-x-auto border-y border-line px-6">
+        <div className="v-no-scrollbar -mx-4 flex gap-1 overflow-x-auto px-4 pb-1">
           {app.week.map((d) => {
             const date = parseIso(d.date)
             const active = d.date === selected
@@ -41,7 +41,9 @@ export function Semana({ app }: { app: Vianda }) {
               <button
                 key={d.date}
                 onClick={() => setSelected(d.date)}
-                className="relative min-w-[46px] shrink-0 py-3.5 text-center"
+                className={`relative min-w-[47px] shrink-0 rounded-xl py-2.5 text-center transition-colors ${
+                  active ? 'bg-clay-soft' : 'active:bg-surface-2'
+                }`}
               >
                 <span
                   className={`v-label-sm block ${active ? 'text-clay' : 'text-ink-faint'}`}
@@ -49,24 +51,19 @@ export function Semana({ app }: { app: Vianda }) {
                   {shortDate(date).split(' ')[0]}
                 </span>
                 <span
-                  className={`v-serif mt-0.5 block text-[22px] v-tnum transition-colors ${
-                    active ? 'text-ink' : 'text-ink-faint'
+                  className={`v-head mt-0.5 block text-[20px] v-tnum transition-colors ${
+                    active ? 'text-clay' : 'text-ink'
                   }`}
                 >
                   {date.getDate()}
                 </span>
-                {isToday && !active && (
-                  <span aria-hidden className="mx-auto mt-1 block size-1 rounded-full bg-clay" />
-                )}
-                {active && (
-                  <m.span
+                {isToday && (
+                  <span
                     aria-hidden
-                    initial={{ scaleX: 0.3, opacity: 0 }}
-                    animate={{ scaleX: 1, opacity: 1 }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 34 }}
-                    className="absolute inset-x-1 bottom-0 h-[2px] bg-clay"
+                    className={`mx-auto mt-1 block size-1 rounded-full ${active ? 'bg-clay' : 'bg-ink-faint'}`}
                   />
                 )}
+
               </button>
             )
           })}
@@ -78,18 +75,18 @@ export function Semana({ app }: { app: Vianda }) {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: 'spring', stiffness: 250, damping: 28 }}
-            className="pt-7"
+            className="pt-5"
           >
-            <h2 className="v-serif-lg text-[27px] text-ink first-letter:uppercase">
+            <h2 className="v-head text-[20px] text-ink first-letter:uppercase">
               {longDate(parseIso(day.date))}
             </h2>
 
-            <div className="mt-5">
+            <div className="mt-3.5">
               <ContextSwitch value={day.context} onChange={(c) => app.setContext(day.date, c)} />
-              <p className="v-label-sm mt-2.5 text-ink-faint">{CONTEXT_NOTE[day.context]}</p>
+              <p className="v-label-sm mt-2 px-1 text-ink-faint">{CONTEXT_NOTE[day.context]}</p>
             </div>
 
-            <SectionLabel className="mt-9 mb-3" aside="g CHO">El día</SectionLabel>
+            <SectionLabel className="mt-7 mb-1 px-1" aside="g CHO">El día</SectionLabel>
             <Rail
               items={items}
               onOpen={(item) => setTarget({ planned: item.planned, meal: item.meal })}
@@ -101,11 +98,11 @@ export function Semana({ app }: { app: Vianda }) {
 
         <button
           onClick={app.regenerate}
-          className="mt-10 w-full border-y border-line py-4 text-[16px] text-ink-soft active:bg-surface-2"
+          className="v-label mt-8 w-full rounded-xl border border-line py-3.5 font-semibold text-ink-soft active:bg-surface-2"
         >
           Volver a armar la semana
         </button>
-        <p className="mt-3 text-[13px] leading-relaxed text-ink-faint">
+        <p className="mt-3 px-1 text-[13px] leading-relaxed text-ink-faint">
           Primero se elige entre las comidas que el día necesita —saciedad,
           transporte, tiempo—; la variedad desempata dentro de esas. Nunca al revés.
         </p>

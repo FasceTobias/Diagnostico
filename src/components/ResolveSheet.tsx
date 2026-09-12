@@ -165,10 +165,10 @@ function ResolveFlow({
               <button
                 key={r}
                 onClick={() => pickReason(r)}
-                className="flex w-full items-center gap-3 border-b border-line py-4 text-left active:bg-surface-2"
+                className="flex w-full items-center gap-3 rounded-xl border-b border-line px-1 py-3 text-left transition-colors active:bg-surface-2"
               >
                 <span className="flex-1">
-                  <span className="v-serif block text-[19px] text-ink">{RESOLVE_REASON[r]}</span>
+                  <span className="v-head block text-[17px] text-ink">{RESOLVE_REASON[r]}</span>
                   <span className="v-label-sm mt-1 block text-ink-faint">{REASON_HINT[r]}</span>
                 </span>
                 <svg viewBox="0 0 12 12" className="size-3 text-ink-faint" aria-hidden>
@@ -222,9 +222,9 @@ function ResolveFlow({
               <button
                 key={s}
                 onClick={() => pickSlot(s)}
-                className="flex w-full items-center gap-3 border-b border-line py-4 text-left active:bg-surface-2"
+                className="flex w-full items-center gap-3 rounded-xl border-b border-line px-1 py-3 text-left transition-colors active:bg-surface-2"
               >
-                <span className="v-serif flex-1 text-[19px] text-ink">{SLOT_LABEL[s]}</span>
+                <span className="v-head flex-1 text-[17px] text-ink">{SLOT_LABEL[s]}</span>
                 {suggested && <span className="v-label-sm text-clay">Ahora</span>}
               </button>
             )
@@ -368,10 +368,10 @@ function OptionList({
         <button
           key={meal.id}
           onClick={() => onPick(meal.id)}
-          className="flex w-full items-baseline gap-4 border-b border-line py-3.5 text-left active:bg-surface-2"
+          className="flex w-full items-center gap-3 rounded-xl border-b border-line px-1 py-2.5 text-left transition-colors active:bg-surface-2"
         >
           <span className="min-w-0 flex-1">
-            <span className="v-serif block truncate text-[17px] text-ink">{meal.name}</span>
+            <span className="v-head block truncate text-[16px] text-ink">{meal.name}</span>
             <MetaLine className="mt-1" parts={[meal.satiety, why]} />
           </span>
           <CarbValue meal={meal} />

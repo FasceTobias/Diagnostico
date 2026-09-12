@@ -43,10 +43,10 @@ export function Compras({ app }: { app: Vianda }) {
 
   return (
     <LazyMotion features={domAnimation}>
-      <div className="mx-auto max-w-md px-6 pb-32">
-        <header className="v-safe-top pt-8 pb-7">
-          <h1 className="v-serif-lg text-[38px] text-ink">Compras</h1>
-          <p className="v-label-sm mt-3 text-ink-faint">
+      <div className="mx-auto max-w-md px-4 pb-40">
+        <header className="v-safe-top pt-5 pb-5">
+          <h1 className="v-serif-lg text-[28px] text-ink">Compras</h1>
+          <p className="v-label-sm mt-1.5 text-ink-faint">
             {total} cosas para la semana · {done} en el changuito
           </p>
         </header>
@@ -54,9 +54,9 @@ export function Compras({ app }: { app: Vianda }) {
         {groups.map((group, gi) => {
           const gDone = group.lines.filter((l) => app.isBought(l.id)).length
           return (
-            <section key={group.aisle} className="mb-9">
-              <div className="flex items-baseline justify-between border-t-[1.5px] border-ink pt-2.5 pb-1">
-                <h2 className="v-serif text-[19px] text-ink first-letter:uppercase">
+            <section key={group.aisle} className="mb-7">
+              <div className="flex items-baseline justify-between border-b border-line px-1 pt-1 pb-1.5">
+                <h2 className="v-serif text-[18px] text-ink first-letter:uppercase">
                   {group.aisle}
                 </h2>
                 <span className="v-label-sm text-ink-faint v-tnum">
@@ -74,14 +74,14 @@ export function Compras({ app }: { app: Vianda }) {
                     initial={{ opacity: 0, y: 4 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.012 * (gi * 6 + li) }}
-                    className="flex w-full items-baseline gap-4 border-b border-line py-3 text-left active:bg-surface-2"
+                    className="flex w-full items-center gap-3 rounded-xl border-b border-line px-1 py-2.5 text-left transition-colors active:bg-surface-2"
                   >
                     <span
-                      className={`flex w-[86px] shrink-0 items-baseline gap-1 transition-colors ${
+                      className={`flex w-[82px] shrink-0 items-baseline gap-1 transition-colors ${
                         bought ? 'text-ink-faint' : 'text-ink'
                       }`}
                     >
-                      <span className="text-[18px] font-medium v-tnum">{line.value}</span>
+                      <span className="v-head text-[17px] v-tnum">{line.value}</span>
                       {line.unit && (
                         <span className="v-label-sm text-ink-faint">{line.unit}</span>
                       )}
@@ -95,10 +95,16 @@ export function Compras({ app }: { app: Vianda }) {
                     </span>
                     <span
                       aria-hidden
-                      className={`mt-1 size-[7px] shrink-0 rounded-full transition-colors ${
-                        bought ? 'bg-clay' : 'bg-line-strong'
+                      className={`grid size-[20px] shrink-0 place-items-center rounded-[6px] border transition-colors ${
+                        bought ? 'border-clay bg-clay text-white' : 'border-line-strong'
                       }`}
-                    />
+                    >
+                      {bought && (
+                        <svg viewBox="0 0 16 16" className="size-3" fill="none" aria-hidden>
+                          <path d="M3 8.5 6.2 11.6 13 4.8" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      )}
+                    </span>
                   </m.button>
                 )
               })}
@@ -112,23 +118,23 @@ export function Compras({ app }: { app: Vianda }) {
           </p>
         )}
 
-        <p className="text-[13px] leading-relaxed text-ink-faint">
+        <p className="px-1 text-[13px] leading-relaxed text-ink-faint">
           Cantidades aproximadas, redondeadas a cómo se compra. Lo que se come
           afuera no entra, y lo que siempre tenés en casa —sal, aceite, caldo—
           tampoco.
         </p>
 
         <section className="mt-12">
-          <div className="border-t-[1.5px] border-ink pt-2.5 pb-1">
-            <h2 className="v-serif text-[19px] text-ink">Para preparar esta semana</h2>
+          <div className="border-b border-line px-1 pb-1.5">
+            <h2 className="v-serif text-[18px] text-ink">Para preparar esta semana</h2>
           </div>
-          <p className="v-label-sm mt-2 mb-4 text-ink-faint">
+          <p className="v-label-sm mt-2 mb-2 px-1 text-ink-faint">
             Cocinar una vez y que rinda varios días
           </p>
 
           {prep.map(({ ingredient, names }) => (
-            <div key={ingredient} className="border-b border-line py-3.5">
-              <p className="v-serif text-[18px] text-ink first-letter:uppercase">
+            <div key={ingredient} className="border-b border-line px-1 py-3">
+              <p className="v-head text-[16px] text-ink first-letter:uppercase">
                 {ingredient}
                 {names.length > 1 && (
                   <span className="v-label-sm ml-2.5 text-clay">{names.length} comidas</span>

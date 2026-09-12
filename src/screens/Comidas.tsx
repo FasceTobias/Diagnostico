@@ -48,24 +48,22 @@ export function Comidas({ app }: { app: Vianda }) {
 
   return (
     <LazyMotion features={domAnimation}>
-      <div className="mx-auto max-w-md px-6 pb-32">
-        <header className="v-safe-top pt-8 pb-6">
-          <h1 className="v-serif-lg text-[38px] text-ink">Comidas</h1>
-          <p className="v-label-sm mt-3 text-ink-faint">
+      <div className="mx-auto max-w-md px-4 pb-40">
+        <header className="v-safe-top pt-5 pb-4">
+          <h1 className="v-serif-lg text-[28px] text-ink">Comidas</h1>
+          <p className="v-label-sm mt-1.5 text-ink-faint">
             {count} de {app.meals.length} · todas de demostración
           </p>
         </header>
 
         {/* Filtros como palabras, no como botones */}
-        <div className="v-no-scrollbar -mx-6 flex gap-5 overflow-x-auto border-y border-line px-6 py-3">
+        <div className="v-no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4 pb-2">
           {CATEGORIES.map((c) => (
             <button
               key={c}
               onClick={() => setCat(c)}
-              className={`v-label shrink-0 transition-colors ${
-                c === cat
-                  ? 'text-ink underline decoration-clay decoration-2 underline-offset-[7px]'
-                  : 'text-ink-faint'
+              className={`v-label min-h-[36px] shrink-0 rounded-lg px-3.5 font-semibold capitalize transition-colors ${
+                c === cat ? 'bg-clay text-white' : 'bg-surface-2 text-ink-soft active:bg-surface'
               }`}
             >
               {c}
@@ -73,7 +71,7 @@ export function Comidas({ app }: { app: Vianda }) {
           ))}
         </div>
 
-        <div className="flex gap-5 py-3">
+        <div className="flex gap-1.5 pb-3">
           <FilterWord active={portable} onClick={() => setPortable((v) => !v)}>
             se lleva
           </FilterWord>
@@ -99,10 +97,10 @@ export function Comidas({ app }: { app: Vianda }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={{ type: 'spring', stiffness: 260, damping: 30 }}
-              className="mt-8"
+              className="mt-6"
             >
-              <div className="flex items-baseline justify-between gap-3 border-b border-line pb-2">
-                <h2 className="v-serif text-[21px] text-ink first-letter:uppercase">
+              <div className="flex items-baseline justify-between gap-3 border-b border-line px-1 pb-1.5">
+                <h2 className="v-serif text-[18px] text-ink first-letter:uppercase">
                   {group.category}
                 </h2>
                 <span className="v-label-sm text-ink-faint">
@@ -114,19 +112,22 @@ export function Comidas({ app }: { app: Vianda }) {
                 <button
                   key={meal.id}
                   onClick={() => setOpen(meal)}
-                  className="flex w-full items-baseline gap-4 border-b border-line py-3.5 text-left active:bg-surface-2"
+                  className="flex w-full items-center gap-3 rounded-xl border-b border-line px-1 py-2.5 text-left transition-colors active:bg-surface-2"
                 >
                   <span className="min-w-0 flex-1">
-                    <span className="flex items-center gap-2">
-                      <span className="v-serif truncate text-[17px] text-ink">{meal.name}</span>
+                    <span className="flex items-baseline gap-2">
+                      <span className="v-head min-w-0 flex-1 truncate text-[16px] text-ink">
+                        {meal.name}
+                      </span>
                       {meal.favorite && (
                         <span aria-label="Favorita" className="shrink-0 text-[12px] text-clay">
                           ★
                         </span>
                       )}
+                      <CarbValue meal={meal} unit={false} />
                     </span>
                     <MetaLine
-                      className="mt-1"
+                      className="mt-0.5"
                       parts={[
                         meal.satiety,
                         meal.buyOutside ? meal.venues?.[0] : `${meal.prepMinutes} min`,
@@ -134,7 +135,9 @@ export function Comidas({ app }: { app: Vianda }) {
                       ]}
                     />
                   </span>
-                  <CarbValue meal={meal} unit={false} />
+                  <svg viewBox="0 0 12 12" className="size-3 shrink-0 text-ink-faint" aria-hidden>
+                    <path d="M4 2l4 4-4 4" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+                  </svg>
                 </button>
               ))}
             </m.section>
@@ -147,7 +150,7 @@ export function Comidas({ app }: { app: Vianda }) {
           </p>
         )}
 
-        <p className="mt-10 text-[13px] leading-relaxed text-ink-faint">
+        <p className="mt-8 px-1 text-[13px] leading-relaxed text-ink-faint">
           Todas son de demostración: los carbohidratos no están verificados y las
           comidas no las elegiste vos. La biblioteca real la construimos comida
           por comida.
@@ -174,10 +177,10 @@ function FilterWord({
     <button
       onClick={onClick}
       aria-pressed={active}
-      className={`text-[14px] transition-colors ${
+      className={`v-label-sm min-h-[34px] rounded-lg px-3 transition-colors ${
         active
-          ? 'text-ink underline decoration-clay decoration-2 underline-offset-[6px]'
-          : 'text-ink-faint'
+          ? 'bg-clay-soft font-semibold text-clay'
+          : 'border border-line text-ink-faint active:bg-surface-2'
       }`}
     >
       {children}

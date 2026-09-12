@@ -33,7 +33,7 @@ export function AssistantBar({
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 300, damping: 24, delay: 0.25 }}
         whileTap={{ scale: 0.9 }}
-        className="fixed right-5 z-30 grid size-12 place-items-center rounded-full border border-line bg-surface shadow-md"
+        className="fixed right-4 z-30 grid size-12 place-items-center rounded-full border border-line bg-surface shadow-lg"
       >
         <svg viewBox="0 0 20 20" className="size-[18px] text-clay" aria-hidden>
           <path
@@ -120,7 +120,7 @@ function AssistantSheet({
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             className="mt-8"
           >
-            <h3 className="v-serif text-[21px] text-ink">{answer.title}</h3>
+            <h3 className="v-head text-[19px] leading-snug text-ink">{answer.title}</h3>
             {answer.note && (
               <p className="mt-1.5 text-[15px] leading-relaxed text-ink-soft">{answer.note}</p>
             )}
@@ -163,7 +163,7 @@ function AssistantSheet({
                     className="flex items-baseline gap-4 border-b border-line py-3.5"
                   >
                     <span className="min-w-0 flex-1">
-                      <span className="v-serif block truncate text-[17px] text-ink">
+                      <span className="v-head block truncate text-[16px] text-ink">
                         {meal.name}
                       </span>
                       <MetaLine className="mt-1" parts={[meal.satiety, why, meal.isDemo && 'demo']} />

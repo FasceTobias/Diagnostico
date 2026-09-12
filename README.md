@@ -117,17 +117,23 @@ Bundle: ~84 kB gzip.
 Todo vive en `src/index.css` como tokens. Cálido y sobrio: hueso, tinta cálida
 y arcilla como único acento. Modo oscuro automático según el sistema.
 
-**Dos voces tipográficas**, ambas autoalojadas (`scripts/fetch-fonts.mjs`), así
-que la app abre sin red y sin pedirle nada a un tercero:
+**Tres voces tipográficas** con roles claros, todas autoalojadas
+(`scripts/fetch-fonts.mjs`), así que la app abre sin red y sin pedirle nada a un
+tercero:
 
-- **Fraunces** — serif variable, para los nombres de las comidas y los títulos.
-  Es la identidad del producto.
-- **Inter** — para datos, rótulos y cifras tabulares.
+- **Space Grotesk** — la voz principal: nombres de comidas y titulares. Tiene
+  carácter y se lee bien chica en un teléfono.
+- **Inter** — datos, rótulos y cifras tabulares. No compite.
+- **Fraunces** — acento. Sólo los títulos de sección.
 
-**Menos cajas, más página.** El separador de la casa es una regla de 1px, no una
-tarjeta redondeada. El día se lee como una línea de tiempo, la biblioteca como
-un índice y la compra como un ticket: cada pantalla tiene su forma, con el mismo
-lenguaje.
+**Es una app, no una revista.** Rótulos en caja baja, no versalitas anchas. Cada
+fila es una superficie táctil con su flecha. Las acciones importantes —ver,
+cambiar, resolver— están a la vista, no escondidas en un gesto.
+
+**Menos cajas, más lista.** El separador de la casa es una regla de 1px. La
+única superficie elevada de HOY es la zona de trabajo: la comida que toca ahora
+con sus dos acciones. El día se lee como una línea de tiempo, la biblioteca como
+un índice y la compra como un ticket.
 
 Dos reglas que se respetan en toda la app:
 

@@ -51,7 +51,7 @@ export function CarryList({
             <ul>
               {meals.map((item) => (
                 <li key={item.id} className="border-b border-line py-3">
-                  <p className="v-serif text-[19px] leading-snug text-ink">{item.label}</p>
+                  <p className="v-head text-[17px] leading-snug text-ink">{item.label}</p>
                   {item.hint && (
                     <p className="v-label-sm mt-1 text-ink-faint">{item.hint}</p>
                   )}

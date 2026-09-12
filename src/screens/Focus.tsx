@@ -35,7 +35,7 @@ export function Focus({ app, onExit }: { app: Vianda; onExit: () => void }) {
       {next ? (
         <div className="v-rise flex flex-1 flex-col justify-center py-12">
           <p className="v-label text-clay">Ahora</p>
-          <h1 className="v-serif-lg mt-4 text-[30px] text-ink">
+          <h1 className="v-head mt-4 text-[26px] text-ink">
             {SLOT_LABEL[next.planned.slot]}
           </h1>
           <p className="mt-2 text-[20px] text-ink-soft v-tnum">
@@ -45,7 +45,7 @@ export function Focus({ app, onExit }: { app: Vianda; onExit: () => void }) {
             </span>
           </p>
 
-          <p className="v-serif-lg mt-8 text-[46px] text-ink">
+          <p className="v-head mt-8 text-[36px] leading-[1.12] text-ink">
             {next.meal.name}
           </p>
 

@@ -57,13 +57,13 @@ export function Sheet({
               transition={{ type: 'spring', stiffness: 420, damping: 42, mass: 0.9 }}
               className="relative max-h-[88vh] overflow-y-auto rounded-t-sheet bg-bg shadow-lg v-safe-bottom"
             >
-              <div className="sticky top-0 z-10 bg-bg/96 px-6 pt-3 backdrop-blur-sm">
+              <div className="sticky top-0 z-10 bg-bg/96 px-5 pt-3 backdrop-blur-sm">
                 <div aria-hidden className="mx-auto h-1 w-9 rounded-full bg-line-strong" />
                 {title && (
-                  <h2 className="v-serif-lg pt-5 pb-4 text-[26px] text-ink">{title}</h2>
+                  <h2 className="v-head pt-4 pb-3.5 text-[22px] leading-tight text-ink">{title}</h2>
                 )}
               </div>
-              <div className="px-6 pt-1 pb-8">{children}</div>
+              <div className="px-5 pt-1 pb-8">{children}</div>
             </m.div>
           </div>
         )}

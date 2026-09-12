@@ -113,7 +113,7 @@ export function StatusPill({ status }: { status: MealStatus }) {
     replaced: '↺',
   }
   return (
-    <span className={`v-label-sm inline-flex items-center gap-1 ${tone[s]}`}>
+    <span className={`v-label-sm inline-flex shrink-0 items-center gap-1 ${tone[s]}`}>
       <span aria-hidden>{glyph[s]}</span>
       {STATUS_LABEL[s]}
     </span>
@@ -183,7 +183,7 @@ export function ContextSwitch({
     <div
       role="group"
       aria-label="Dónde transcurre el día"
-      className="flex divide-x divide-line border-y border-line"
+      className="flex gap-1 rounded-xl bg-surface-2 p-1"
     >
       {options.map((o) => {
         const active = o === value
@@ -192,8 +192,8 @@ export function ContextSwitch({
             key={o}
             onClick={() => onChange(o)}
             aria-pressed={active}
-            className={`min-h-[46px] flex-1 v-label transition-colors duration-150 ${
-              active ? 'bg-ink text-bg' : 'text-ink-faint active:bg-surface-2'
+            className={`v-label min-h-[40px] flex-1 rounded-lg font-semibold transition-colors duration-150 ${
+              active ? 'bg-clay text-white' : 'text-ink-soft active:bg-surface'
             }`}
           >
             {CONTEXT_LABEL[o]}
@@ -220,7 +220,7 @@ export function CheckRow({
     <button
       onClick={onToggle}
       aria-pressed={done}
-      className="flex w-full items-start gap-3.5 border-b border-line py-3.5 text-left transition-colors active:bg-surface-2"
+      className="flex w-full items-start gap-3.5 rounded-xl border-b border-line px-1 py-3.5 text-left transition-colors active:bg-surface-2"
     >
       <span
         className={`mt-0.5 grid size-[18px] shrink-0 place-items-center rounded-[5px] border transition-all duration-200 ${
@@ -265,10 +265,9 @@ export function SectionLabel({
   className?: string
 }) {
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
-      <p className="v-label shrink-0 text-ink-faint">{children}</p>
-      <span aria-hidden className="h-px flex-1 bg-line" />
-      {aside && <p className="v-label-sm shrink-0 text-ink-faint">{aside}</p>}
+    <div className={`flex items-baseline justify-between gap-3 ${className}`}>
+      <p className="v-label font-semibold text-ink-soft">{children}</p>
+      {aside && <p className="v-label-sm text-ink-faint">{aside}</p>}
     </div>
   )
 }

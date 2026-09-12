@@ -15,7 +15,7 @@ const UA =
 const FAMILIES = [
   { q: 'Fraunces:opsz,wght@9..144,400..700', name: 'Fraunces', file: 'fraunces', out: 'app' },
   { q: 'Inter:opsz,wght@14..32,400..700', name: 'Inter', file: 'inter', out: 'app' },
-  { q: 'Space+Grotesk:wght@400..700', name: 'Space Grotesk', file: 'space-grotesk', out: 'alt' },
+  { q: 'Space+Grotesk:wght@400..700', name: 'Space Grotesk', file: 'space-grotesk', out: 'app' },
   {
     q: 'Bricolage+Grotesque:opsz,wght@12..96,400..800',
     name: 'Bricolage Grotesque',

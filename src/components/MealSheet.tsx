@@ -39,10 +39,10 @@ function OptionList({
         <button
           key={meal.id}
           onClick={() => onPick(meal.id)}
-          className="flex w-full items-baseline gap-4 border-b border-line py-3.5 text-left active:bg-surface-2"
+          className="flex w-full items-center gap-3 rounded-xl border-b border-line px-1 py-2.5 text-left transition-colors active:bg-surface-2"
         >
           <span className="min-w-0 flex-1">
-            <span className="v-serif block truncate text-[17px] text-ink">{meal.name}</span>
+            <span className="v-head block truncate text-[16px] text-ink">{meal.name}</span>
             <MetaLine className="mt-1" parts={[meal.satiety, why]} />
           </span>
           <CarbValue meal={meal} />
