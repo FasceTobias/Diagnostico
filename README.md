@@ -14,8 +14,13 @@ No es una app médica ni un recetario. Es logística alimentaria personal.
 > ninguna indicación médica.**
 >
 > Los carbohidratos de las comidas de ejemplo **no están verificados** y la app
-> lo dice en todas las pantallas. No hay totales diarios: el carbo es por comida,
-> no una meta a cumplir.
+> lo dice en todas las pantallas. Se escriben siempre igual: `34 g CHO`. No hay
+> totales diarios: el carbo es por comida, no una meta a cumplir.
+>
+> La relación insulina/carbohidratos se guarda si vos la configurás, y la
+> calculadora hace **una división** cuando se la pedís. La app no calcula dosis
+> por su cuenta, no las muestra en tarjetas ni en listas, y no reemplaza lo que
+> te indicó tu médico.
 
 ---
 
@@ -44,8 +49,14 @@ día de la semana. Cambiarlo rearma sólo lo pendiente.
 - **Modo foco** — sólo lo que viene ahora.
 - **Asistente** — entrada integrada, resuelta con reglas locales sobre la biblioteca.
 - **SEMANA** — los 7 días, con reemplazo desde cualquier día.
-- **COMIDAS** — biblioteca personal con 21 comidas de demostración, marcadas
-  como tales y con los carbohidratos sin verificar.
+- **COMIDAS** — biblioteca personal con 31 opciones de demostración (21 caseras
+  y 10 para comprar afuera), marcadas como tales y con los carbohidratos sin
+  verificar.
+- **RESOLVER AHORA** — la salida cuando el plan falla: no traje comida, tengo
+  hambre, cambió mi día, no preparé nada, quiero reemplazar. Tres toques hasta
+  ver opciones, con filtros por hambre, tiempo, precio y si podés sentarte.
+- **CONFIGURACIÓN** — horarios editables y relación insulina/carbohidratos, con
+  una calculadora que se abre a mano. Apagada por defecto.
 - **COMPRAS** — preparación semanal agrupada. La lista automática espera a que
   estén cargadas las cantidades reales (ver `docs/FASE-1.md`, sección J).
 - **Los tres conceptos visuales** en `#/conceptos`, para compararlos en el teléfono.
@@ -69,9 +80,11 @@ npm run build && npm run preview
 src/
   lib/
     types.ts       modelo de dominio (espeja supabase/schema.sql)
-    demo.ts        21 comidas de demostración (isDemo, carbsVerified: false)
+    demo.ts        31 opciones de demostración (isDemo, carbsVerified: false),
+                   21 caseras y 10 comprables afuera
     domain.ts      necesidades del día, rotación, reemplazos, rescate,
-                   tareas de preparación, mochila
+                   resolver ahora, tareas de preparación, mochila
+    insulin.ts     la relación configurada y la división. Nada más.
     assistant.ts   contrato del asistente (hoy reglas, mañana un modelo)
     store.ts       estado + persistencia local
     format.ts      fechas, carbohidratos, tintes
@@ -102,7 +115,10 @@ Dos reglas que se respetan en toda la app:
    texto o posición.
 2. **Una acción primaria visible por pantalla.** El resto vive en bottom sheets.
 3. **El día no se asume perfecto.** Toda ruta tiene salida: sacar un snack,
-   cambiar el contexto, resolver sin preparación, comer otra cosa.
+   cambiar el contexto, resolver sin preparación, comer otra cosa, o resolver
+   desde la calle sin nada encima.
+4. **Nada de insulina sin que lo pidas.** Apagado por defecto; encendido, sólo
+   detrás de un botón explícito.
 
 ## PWA
 

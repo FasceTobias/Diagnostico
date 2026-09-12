@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import type { Meal, PlannedMeal } from '../lib/types'
 import { SLOT_LABEL } from '../lib/types'
-import { CarbChip, DemoBadge, MealTile, SatietyMark, StatusPill } from './ui'
+import { CarbChip, DemoBadge, MealMark, SatietyMark, StatusPill } from './ui'
 
 /* Fila del día. El swipe a la izquierda es un atajo para cambiar la comida,
    nunca el único camino: la fila abre el detalle, y ahí hay un botón visible.
@@ -90,7 +90,7 @@ export function MealRow({
         <span className="w-[46px] shrink-0 text-[13px] font-semibold text-ink-faint v-tnum">
           {planned.time}
         </span>
-        <MealTile meal={meal} size={42} />
+        <MealMark meal={meal} size={24} />
         <span className="min-w-0 flex-1">
           <span className="flex items-center gap-2">
             <span className="v-eyebrow truncate text-ink-faint">

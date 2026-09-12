@@ -2,7 +2,7 @@ import { useState } from 'react'
 import type { Vianda } from '../lib/store'
 import { CONTEXT_NOTE, SLOT_LABEL } from '../lib/types'
 import { isoDate, longDate, parseIso, shortDate } from '../lib/format'
-import { CarbChip, ContextSwitch, DemoBadge, MealTile, SatietyMark } from '../components/ui'
+import { CarbChip, ContextSwitch, DemoBadge, MealMark, SatietyMark } from '../components/ui'
 import { MealSheet, type MealSheetTarget } from '../components/MealSheet'
 
 export function Semana({ app }: { app: Vianda }) {
@@ -67,7 +67,7 @@ export function Semana({ app }: { app: Vianda }) {
                     onClick={() => setTarget({ planned, meal })}
                     className="flex w-full items-center gap-3.5 rounded-card bg-surface px-3.5 py-3.5 text-left shadow-sm active:scale-[0.985]"
                   >
-                    <MealTile meal={meal} size={42} />
+                    <MealMark meal={meal} size={24} />
                     <span className="min-w-0 flex-1">
                       <span className="flex items-center gap-2">
                         <span className="v-eyebrow truncate text-ink-faint">
@@ -109,6 +109,7 @@ export function Semana({ app }: { app: Vianda }) {
         target={target}
         meals={app.meals}
         context={day?.context ?? 'mixto'}
+        insulin={app.insulin}
         onClose={() => setTarget(null)}
         onStatus={(status) => target && day && app.setStatus(day.date, target.planned.slot, status)}
         onReplace={(mealId) =>

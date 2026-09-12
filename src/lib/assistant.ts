@@ -1,4 +1,4 @@
-import type { DayContext, Meal, Slot } from './types'
+import type { DayContext, Meal, ResolveReason, Slot } from './types'
 import { SLOT_LABEL } from './types'
 import type { Vianda } from './store'
 import {
@@ -28,6 +28,9 @@ export interface AssistantAnswer {
   tasks?: string[]
   /** Un cambio de contexto que resuelve el pedido de raíz. */
   suggestContext?: DayContext
+  /** Abre «Resolver ahora» en el paso que corresponde. El asistente propone
+      acciones, no párrafos. */
+  action?: { reason: ResolveReason; slot?: Slot; label: string }
   /** Lo que el asistente todavía no sabe hacer. Se dice, no se inventa. */
   unsupported?: boolean
 }
@@ -38,13 +41,14 @@ export interface AssistantQuery {
 }
 
 export const SUGGESTIONS = [
+  'Estoy en la calle y no traje almuerzo',
+  '¿Qué puedo comprar ahora?',
   'Tengo más hambre',
-  'Hoy estoy todo el día afuera',
+  'Pensé que volvía pero no vuelvo',
+  'Tengo 10 minutos',
   'No preparé nada',
   'Mañana salgo 6:30',
-  'Merienda que llene',
   'No tengo yogur',
-  '¿Qué preparo ahora?',
 ]
 
 const norm = (s: string) =>
@@ -74,6 +78,53 @@ export const askAssistant = ({ text, app }: AssistantQuery): AssistantAnswer => 
   const { meals, today } = app
   const context = today?.context ?? 'mixto'
   const next = today ? findNext(today, meals) : undefined
+
+  /* ---- Estoy afuera ----
+     Es el caso más urgente: pasa a las 12:30, parado, sin nada encima.
+     Por eso va primero y responde con una acción, no con un párrafo. */
+  const onTheStreet = has(
+    t,
+    'en la calle',
+    'estoy afuera',
+    'no traje',
+    'no vuelvo',
+    'pense que volvia',
+    'me quede afuera',
+  )
+  const wantsToBuy = has(t, 'que puedo comprar', 'comprar ahora', 'donde compro', 'comprar algo')
+
+  if (onTheStreet || wantsToBuy) {
+    const slot = findSlot(t) ?? next?.planned.slot
+    const slotName = slot ? SLOT_LABEL[slot].toLowerCase() : 'la próxima comida'
+    const notComingBack = has(t, 'no vuelvo', 'pense que volvia')
+
+    return {
+      title: onTheStreet ? `Estás afuera y no tenés ${slotName}` : `Qué buscar para ${slotName}`,
+      note: notComingBack
+        ? 'Resolvé lo de ahora, y si querés dejo el resto del día como día en la calle.'
+        : 'Te muestro qué tipo de opción buscar, no lugares concretos.',
+      action: {
+        reason: 'sin-comida',
+        slot,
+        label: `Resolver ${slotName} ahora`,
+      },
+      suggestContext: notComingBack ? 'calle' : undefined,
+    }
+  }
+
+  /* ---- Poco tiempo, ahora ---- */
+  if (has(t, '10 minutos', '15 minutos', 'poco tiempo', 'cinco minutos')) {
+    const slot = findSlot(t) ?? next?.planned.slot
+    return {
+      title: 'Con poco tiempo',
+      note: 'Filtrá por «tengo poco tiempo» y te quedan sólo las que salen rápido.',
+      action: {
+        reason: 'hambre',
+        slot,
+        label: `Ver opciones rápidas`,
+      },
+    }
+  }
 
   /* El día cambió: eso se resuelve con el contexto, no comida por comida. */
   if (has(t, 'todo el dia afuera', 'todo el dia en la calle', 'no vuelvo', 'afuera todo el dia')) {

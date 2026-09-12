@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import type { DayContext, Meal, MealStatus, Satiety } from '../lib/types'
 import { CONTEXT_LABEL, STATUS_LABEL } from '../lib/types'
-import { CATEGORY_TINT, mealInitial } from '../lib/format'
+import { CARB_UNIT, CATEGORY_TINT, carbApprox } from '../lib/format'
 
 /* ------------------------------------------------------------------
    Primitivas. Ninguna depende sólo del color para comunicar estado:
@@ -22,7 +22,7 @@ export function CarbChip({ meal, size = 'sm' }: { meal: CarbInfo; size?: 'sm' | 
         ? 'bg-linear-to-r from-current from-50% to-transparent to-50%'
         : 'bg-transparent'
 
-  const approx = !meal.carbsVerified || meal.confidence === 'estimada'
+  const approx = carbApprox(meal)
 
   return (
     <span
@@ -43,7 +43,9 @@ export function CarbChip({ meal, size = 'sm' }: { meal: CarbInfo; size?: 'sm' | 
         {approx ? '~' : ''}
         {meal.carbs}
       </span>
-      <span className={size === 'lg' ? 'text-base text-ink-soft' : 'text-[13px]'}>g CH</span>
+      <span className={size === 'lg' ? 'text-base text-ink-soft' : 'text-[13px]'}>
+        {CARB_UNIT}
+      </span>
     </span>
   )
 }
@@ -105,22 +107,71 @@ export function StatusPill({ status }: { status: MealStatus }) {
   )
 }
 
-/** Marca de la comida: tono por momento del día + inicial. Sin fotos, con identidad. */
-export function MealTile({ meal, size = 44 }: { meal: Meal; size?: number }) {
-  const tint = CATEGORY_TINT[meal.category]
+/* Un ícono de línea por momento del día. Sin caja, sin iniciales: una
+   inicial dentro de un círculo se lee como un avatar de persona, y esto
+   es comida. Cuando haya fotos reales, la foto ocupa este lugar. */
+
+const CATEGORY_PATH: Record<Meal['category'], string> = {
+  // sol: la mañana
+  desayuno:
+    'M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6M12 3.2v1.8M12 19v1.8M3.2 12H5M19 12h1.8M5.8 5.8l1.3 1.3M16.9 16.9l1.3 1.3M18.2 5.8l-1.3 1.3M7.1 16.9l-1.3 1.3',
+  // manzana
+  snack: 'M12 8c-1.1-1.5-3-1.9-4.3-.8C6.2 8.4 6 10.6 6.9 12.8c.8 2 2.1 4.2 3.3 4.2.6 0 .9-.3 1.8-.3s1.2.3 1.8.3c1.2 0 2.5-2.2 3.3-4.2.9-2.2.7-4.4-.8-5.6C14.9 6.1 13.1 6.5 12 8ZM12 8V5.2',
+  // tenedor y cuchillo (un plato redondo con aro interior se lee como diana)
+  almuerzo:
+    'M5.2 3.5v4.4M7.4 3.5v4.4M9.6 3.5v4.4M5.2 7.9a2.2 2.2 0 0 0 4.4 0M7.4 10.1V20.5M16.9 3.5c1.6 1.9 2.2 4.5 1.5 6.7-.3.9-1 1.5-1.5 1.5V20.5',
+  // taza con vapor: la merienda
+  merienda:
+    'M4.5 10.5h11v4a4 4 0 0 1-4 4h-3a4 4 0 0 1-4-4zM15.5 11.5H17a2.5 2.5 0 0 1 0 5h-1.5M7.5 4v2.5M11.5 3.5V6',
+  // luna: la noche
+  cena: 'M18 14.8A7.2 7.2 0 0 1 9.2 6a7.2 7.2 0 1 0 8.8 8.8Z',
+}
+
+export function MealMark({ meal, size = 24 }: { meal: Meal; size?: number }) {
+  if (meal.photoUrl) {
+    return (
+      <img
+        src={meal.photoUrl}
+        alt=""
+        className="shrink-0 rounded-[12px] object-cover"
+        style={{ width: size * 1.6, height: size * 1.6 }}
+      />
+    )
+  }
   return (
-    <span
+    <svg
+      viewBox="0 0 24 24"
+      className="shrink-0"
+      style={{ width: size, height: size, color: CATEGORY_TINT[meal.category].fg }}
+      fill="none"
       aria-hidden
-      className="grid shrink-0 place-items-center rounded-[14px] v-display"
-      style={{
-        width: size,
-        height: size,
-        background: tint.bg,
-        color: tint.fg,
-        fontSize: size * 0.42,
-      }}
     >
-      {mealInitial(meal.name)}
+      <path
+        d={CATEGORY_PATH[meal.category]}
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
+/** Marca de una opción que hay que salir a comprar. Nunca se confunde con
+    algo que ya tenés. */
+export function BuyBadge({ venues }: { venues?: string[] }) {
+  return (
+    <span className="inline-flex shrink-0 items-center gap-1 rounded-pill bg-dusk-soft px-2 py-0.5 text-[12px] font-semibold text-dusk">
+      <svg viewBox="0 0 16 16" className="size-3" fill="none" aria-hidden>
+        <path
+          d="M3 5h10l-.9 7.3a1.4 1.4 0 0 1-1.4 1.2H5.3a1.4 1.4 0 0 1-1.4-1.2ZM6 5a2 2 0 0 1 4 0"
+          stroke="currentColor"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+      {venues?.length ? venues[0] : 'comprar'}
     </span>
   )
 }

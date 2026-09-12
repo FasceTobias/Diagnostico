@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import type { DayContext, Meal, MealStatus, PlannedMeal } from '../lib/types'
+import type { DayContext, InsulinSettings, Meal, MealStatus, PlannedMeal } from '../lib/types'
 import { SLOT_LABEL } from '../lib/types'
 import { compatibleReplacements, rescueOptions } from '../lib/domain'
 import { Sheet } from './Sheet'
 import { MealDetail } from './MealDetail'
-import { CarbChip, DemoBadge, MealTile, SatietyMark } from './ui'
+import { CarbCalculator } from './CarbCalculator'
+import { CarbChip, DemoBadge, MealMark, SatietyMark } from './ui'
 
 /* Un solo sheet resuelve: ver, marcar, cambiar y rescatar el día.
    Las acciones son grandes y ninguna es destructiva. */
@@ -39,7 +40,7 @@ function OptionList({
             onClick={() => onPick(meal.id)}
             className="flex w-full items-center gap-3.5 rounded-card bg-surface px-3.5 py-3.5 text-left shadow-sm transition-transform duration-150 active:scale-[0.985]"
           >
-            <MealTile meal={meal} size={44} />
+            <MealMark meal={meal} size={24} />
             <span className="min-w-0 flex-1">
               <span className="flex items-center gap-2">
                 <span className="truncate text-[16px] font-medium text-ink">{meal.name}</span>
@@ -62,6 +63,7 @@ export function MealSheet({
   target,
   meals,
   context,
+  insulin,
   onClose,
   onStatus,
   onReplace,
@@ -69,11 +71,13 @@ export function MealSheet({
   target: MealSheetTarget | null
   meals: Meal[]
   context: DayContext
+  insulin: InsulinSettings
   onClose: () => void
   onStatus: (status: MealStatus) => void
   onReplace: (mealId: string) => void
 }) {
   const [mode, setMode] = useState<Mode>('detail')
+  const [calc, setCalc] = useState(false)
 
   const close = () => {
     onClose()
@@ -182,6 +186,15 @@ export function MealSheet({
           Cambiar por otra
         </button>
 
+        {insulin.enabled && (
+          <button
+            onClick={() => setCalc(true)}
+            className="mt-2 min-h-[44px] w-full text-[15px] font-medium text-ink-soft active:text-ink"
+          >
+            Calcular referencia de insulina
+          </button>
+        )}
+
         {canRescue && (
           <button
             onClick={() => setMode('rescue')}
@@ -191,6 +204,15 @@ export function MealSheet({
           </button>
         )}
       </div>
+
+      <CarbCalculator
+        open={calc}
+        onClose={() => setCalc(false)}
+        insulin={insulin}
+        meal={meal}
+        slot={planned.slot}
+        time={planned.time}
+      />
     </Sheet>
   )
 }

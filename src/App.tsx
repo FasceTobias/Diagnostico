@@ -8,6 +8,7 @@ import { Focus } from './screens/Focus'
 import { Conceptos } from './screens/Conceptos'
 import { BottomNav, type Tab } from './components/BottomNav'
 import { AssistantBar } from './components/Assistant'
+import { ResolveSheet, type ResolveStart } from './components/ResolveSheet'
 
 /* Router propio: cuatro pantallas no justifican una dependencia.
    #/conceptos queda disponible para comparar las tres propuestas visuales. */
@@ -25,6 +26,7 @@ const useHash = () => {
 export default function App() {
   const app = useVianda()
   const [tab, setTab] = useState<Tab>('hoy')
+  const [resolve, setResolve] = useState<ResolveStart | null>(null)
   const [hash, setHash] = useHash()
 
   if (hash === '#/conceptos') {
@@ -37,13 +39,22 @@ export default function App() {
 
   return (
     <div className="min-h-dvh bg-bg">
-      {tab === 'hoy' && <Hoy app={app} onFocus={() => app.setFocus(true)} />}
+      {tab === 'hoy' && (
+        <Hoy app={app} onFocus={() => app.setFocus(true)} onResolve={setResolve} />
+      )}
       {tab === 'semana' && <Semana app={app} />}
       {tab === 'comidas' && <Comidas app={app} />}
       {tab === 'compras' && <Compras app={app} />}
 
-      <AssistantBar app={app} bottom={74} />
+      <AssistantBar app={app} bottom={74} onResolve={setResolve} />
       <BottomNav tab={tab} onTab={setTab} />
+
+      <ResolveSheet
+        open={resolve !== null}
+        onClose={() => setResolve(null)}
+        app={app}
+        start={resolve ?? undefined}
+      />
     </div>
   )
 }

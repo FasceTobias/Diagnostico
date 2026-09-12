@@ -3,6 +3,10 @@ import { useEffect, type ReactNode } from 'react'
 /* Bottom sheet: acá vive todo lo secundario.
    La pantalla principal se mantiene con una sola acción visible. */
 
+/* Los sheets se apilan (la calculadora se abre sobre Configuración), así que
+   el bloqueo del scroll de fondo se cuenta: sólo lo libera el último en cerrar. */
+let openSheets = 0
+
 export function Sheet({
   open,
   onClose,
@@ -18,10 +22,12 @@ export function Sheet({
     if (!open) return
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose()
     document.addEventListener('keydown', onKey)
+    openSheets += 1
     document.body.style.overflow = 'hidden'
     return () => {
       document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
+      openSheets -= 1
+      if (openSheets === 0) document.body.style.overflow = ''
     }
   }, [open, onClose])
 

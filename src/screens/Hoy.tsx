@@ -1,7 +1,8 @@
 import { useMemo, useState } from 'react'
 import type { Vianda } from '../lib/store'
 import type { MealStatus, Slot } from '../lib/types'
-import { CONTEXT_NOTE, SLOT_LABEL, SLOT_ORDER } from '../lib/types'
+import type { ResolveStart } from '../components/ResolveSheet'
+import { CONTEXT_NOTE, SLOT_LABEL } from '../lib/types'
 import { findNext } from '../lib/domain'
 import { greeting, longDate, minutesOf, nowMinutes, relativeTime } from '../lib/format'
 import {
@@ -9,10 +10,11 @@ import {
   CheckRow,
   ContextSwitch,
   DemoBadge,
-  MealTile,
+  MealMark,
   SatietyMark,
   StatusPill,
 } from '../components/ui'
+import { SettingsSheet } from '../components/Settings'
 import { MealRow } from '../components/MealRow'
 import { MealSheet, type MealSheetTarget } from '../components/MealSheet'
 import { Sheet } from '../components/Sheet'
@@ -28,9 +30,17 @@ import { Sheet } from '../components/Sheet'
    salida rápida desde el detalle de cada comida.
    ------------------------------------------------------------------ */
 
-export function Hoy({ app, onFocus }: { app: Vianda; onFocus: () => void }) {
+export function Hoy({
+  app,
+  onFocus,
+  onResolve,
+}: {
+  app: Vianda
+  onFocus: () => void
+  onResolve: (start: ResolveStart) => void
+}) {
   const [target, setTarget] = useState<MealSheetTarget | null>(null)
-  const [sheet, setSheet] = useState<'pack' | 'prep' | 'times' | null>(null)
+  const [sheet, setSheet] = useState<'pack' | 'prep' | 'config' | null>(null)
 
   const now = nowMinutes()
   const next = useMemo(
@@ -56,13 +66,19 @@ export function Hoy({ app, onFocus }: { app: Vianda; onFocus: () => void }) {
         </div>
         <div className="flex shrink-0 gap-2">
           <button
-            onClick={() => setSheet('times')}
-            aria-label="Horarios del día"
+            onClick={() => setSheet('config')}
+            aria-label="Configuración"
             className="grid size-11 place-items-center rounded-full border border-line bg-surface text-ink-soft shadow-sm active:scale-95"
           >
             <svg viewBox="0 0 20 20" className="size-[18px]" fill="none" aria-hidden>
-              <circle cx="10" cy="10" r="7.2" stroke="currentColor" strokeWidth="1.5" />
-              <path d="M10 6v4.2l2.8 1.7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              <path
+                d="M3 6h5.5M11.5 6H17M3 14h2.5M8.5 14H17"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+              <circle cx="10" cy="6" r="2" stroke="currentColor" strokeWidth="1.5" />
+              <circle cx="7" cy="14" r="2" stroke="currentColor" strokeWidth="1.5" />
             </svg>
           </button>
           <button
@@ -143,8 +159,26 @@ export function Hoy({ app, onFocus }: { app: Vianda; onFocus: () => void }) {
         </section>
       )}
 
-      {/* 4. Lo que hay que hacer ahora. Cambia según la hora. */}
-      <div className="mt-3 space-y-2">
+      {/* 4. La salida de emergencia. Liviana, pero siempre a mano: el plan
+             falla seguido y esto tiene que estar donde ya estás mirando. */}
+      <button
+        onClick={() => onResolve({})}
+        className="mt-3 flex w-full items-center gap-3 rounded-card border border-line px-4 py-3 text-left transition-transform duration-150 active:scale-[0.985]"
+      >
+        <svg viewBox="0 0 20 20" className="size-[18px] shrink-0 text-clay" fill="none" aria-hidden>
+          <path
+            d="M10.8 2.5 4.5 11h4.2l-.5 6.5L15.5 9h-4.2z"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+          />
+        </svg>
+        <span className="flex-1 text-[15px] font-semibold text-ink">Resolver ahora</span>
+        <span className="text-[13px] text-ink-faint">se me complicó el día</span>
+      </button>
+
+      {/* 5. Lo que hay que hacer ahora. Cambia según la hora. */}
+      <div className="mt-2 space-y-2">
         <ActionBand
           title={evening ? 'Preparar para mañana' : 'Mochila de hoy'}
           count={
@@ -168,7 +202,7 @@ export function Hoy({ app, onFocus }: { app: Vianda; onFocus: () => void }) {
         />
       </div>
 
-      {/* 5. El resto del día. Segundo nivel: compacto y escaneable. */}
+      {/* 6. El resto del día. Segundo nivel: compacto y escaneable. */}
       <h3 className="v-eyebrow mt-9 mb-2.5 px-1 text-ink-faint">El día</h3>
       <ul className="space-y-2">
         {app.today?.meals.map((planned) => {
@@ -200,6 +234,7 @@ export function Hoy({ app, onFocus }: { app: Vianda; onFocus: () => void }) {
         target={target}
         meals={app.meals}
         context={context}
+        insulin={app.insulin}
         onClose={() => setTarget(null)}
         onStatus={(status) => target && setStatus(target.planned.slot, status)}
         onReplace={(mealId) =>
@@ -245,25 +280,15 @@ export function Hoy({ app, onFocus }: { app: Vianda; onFocus: () => void }) {
         </div>
       </Sheet>
 
-      <Sheet open={sheet === 'times'} onClose={() => setSheet(null)} title="Horarios">
-        <p className="text-[14px] leading-relaxed text-ink-soft">
-          Son aproximados y se pueden mover cuando quieras. La app los usa para
-          saber qué viene ahora, no para apurarte.
-        </p>
-        <div className="mt-4 divide-y divide-line">
-          {SLOT_ORDER.map((slot) => (
-            <label key={slot} className="flex items-center justify-between gap-4 py-3">
-              <span className="text-[15px] text-ink">{SLOT_LABEL[slot]}</span>
-              <input
-                type="time"
-                value={app.times[slot]}
-                onChange={(e) => app.setTime(slot, e.target.value)}
-                className="rounded-xl border border-line bg-surface px-3 py-2 text-[15px] text-ink v-tnum outline-none focus:border-clay"
-              />
-            </label>
-          ))}
-        </div>
-      </Sheet>
+      <SettingsSheet
+        open={sheet === 'config'}
+        onClose={() => setSheet(null)}
+        times={app.times}
+        onTime={app.setTime}
+        insulin={app.insulin}
+        onInsulin={app.setInsulin}
+      />
+
     </div>
   )
 }
@@ -326,7 +351,7 @@ function TomorrowSummary({ app }: { app: Vianda }) {
               key={planned.slot}
               className="flex items-center gap-3 rounded-2xl bg-surface px-3 py-2.5 shadow-sm"
             >
-              <MealTile meal={meal} size={32} />
+              <MealMark meal={meal} size={20} />
               <span className="min-w-0 flex-1 truncate text-[14px] text-ink">{meal.name}</span>
               <CarbChip meal={meal} />
             </li>

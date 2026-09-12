@@ -1,14 +1,23 @@
 import { useState } from 'react'
 import type { Vianda } from '../lib/store'
 import { SUGGESTIONS, askAssistant, type AssistantAnswer } from '../lib/assistant'
+import type { ResolveStart } from './ResolveSheet'
 import { CONTEXT_LABEL } from '../lib/types'
 import { Sheet } from './Sheet'
-import { CarbChip, DemoBadge, MealTile, SatietyMark } from './ui'
+import { CarbChip, DemoBadge, MealMark, SatietyMark } from './ui'
 
 /* El asistente no es una pestaña ni un chat: es una entrada que vive
    encima de la navegación y devuelve tarjetas de la app, no burbujas. */
 
-export function AssistantBar({ app, bottom }: { app: Vianda; bottom: number }) {
+export function AssistantBar({
+  app,
+  bottom,
+  onResolve,
+}: {
+  app: Vianda
+  bottom: number
+  onResolve: (start: ResolveStart) => void
+}) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -28,7 +37,12 @@ export function AssistantBar({ app, bottom }: { app: Vianda; bottom: number }) {
         <span className="flex-1 text-[15px] text-ink-soft">¿Qué necesitás?</span>
       </button>
 
-      <AssistantSheet app={app} open={open} onClose={() => setOpen(false)} />
+      <AssistantSheet
+        app={app}
+        open={open}
+        onClose={() => setOpen(false)}
+        onResolve={onResolve}
+      />
     </>
   )
 }
@@ -37,10 +51,12 @@ function AssistantSheet({
   app,
   open,
   onClose,
+  onResolve,
 }: {
   app: Vianda
   open: boolean
   onClose: () => void
+  onResolve: (start: ResolveStart) => void
 }) {
   const [text, setText] = useState('')
   const [answer, setAnswer] = useState<AssistantAnswer | null>(null)
@@ -94,13 +110,30 @@ function AssistantSheet({
             <p className="mt-1 text-[14px] leading-relaxed text-ink-soft">{answer.note}</p>
           )}
 
+          {answer.action && (
+            <button
+              onClick={() => {
+                const a = answer.action!
+                close()
+                onResolve({ reason: a.reason, slot: a.slot })
+              }}
+              className="mt-4 min-h-[52px] w-full rounded-pill bg-clay text-[16px] font-semibold text-white shadow-sm active:scale-[0.98]"
+            >
+              {answer.action.label}
+            </button>
+          )}
+
           {answer.suggestContext && app.today && (
             <button
               onClick={() => {
                 app.setContext(app.today!.date, answer.suggestContext!)
                 close()
               }}
-              className="mt-4 min-h-[52px] w-full rounded-pill bg-clay text-[16px] font-semibold text-white shadow-sm active:scale-[0.98]"
+              className={`mt-2 min-h-[48px] w-full rounded-pill text-[15px] font-semibold active:scale-[0.98] ${
+                answer.action
+                  ? 'border border-line bg-surface text-ink'
+                  : 'bg-clay text-white shadow-sm'
+              }`}
             >
               Pasar el día a «{CONTEXT_LABEL[answer.suggestContext]}»
             </button>
@@ -113,7 +146,7 @@ function AssistantSheet({
                   key={meal.id}
                   className="flex items-center gap-3.5 rounded-card bg-surface px-3.5 py-3 shadow-sm"
                 >
-                  <MealTile meal={meal} size={40} />
+                  <MealMark meal={meal} size={22} />
                   <div className="min-w-0 flex-1">
                     <p className="flex items-center gap-2">
                       <span className="truncate text-[15px] font-medium text-ink">{meal.name}</span>

@@ -127,7 +127,7 @@ function ConceptA({ next, rows }: { next: Next; rows: Rows }) {
         </p>
         <p className="mt-5 text-[17px] font-light text-[#6a6157]">
           {SLOT_LABEL[next.planned.slot]} · {next.planned.time} ·{' '}
-          {carbLabel(next.meal)} g CH
+          {carbLabel(next.meal)}
         </p>
       </div>
 
@@ -139,7 +139,7 @@ function ConceptA({ next, rows }: { next: Next; rows: Rows }) {
             </p>
             <p className="mt-1.5 text-[19px] font-light tracking-[-0.02em]">{meal.name}</p>
             <p className="mt-1 text-[14px] text-[#9a9187]">
-              {carbLabel(meal)} g CH · {meal.satiety}
+              {carbLabel(meal)} · {meal.satiety}
             </p>
           </div>
         ))}
@@ -178,7 +178,7 @@ function ConceptB({ next, rows, now }: { next: Next; rows: Rows; now: number }) 
             {next.meal.name}
           </p>
           <p className="mt-4 text-[15px] text-[#6a6157]">
-            {carbLabel(next.meal)} g CH · {next.meal.satiety}
+            {carbLabel(next.meal)} · {next.meal.satiety}
           </p>
           <div className="mt-6 flex gap-2.5">
             <div className="min-h-[52px] flex-1 rounded-full bg-[#b85c33] text-center text-[16px] leading-[52px] font-semibold text-white">
@@ -215,7 +215,7 @@ function ConceptB({ next, rows, now }: { next: Next; rows: Rows; now: number }) 
               </span>
               <span className="mt-0.5 block truncate text-[16px] font-medium">{meal.name}</span>
               <span className="text-[13px] text-[#6a6157]">
-                {carbLabel(meal)} g CH · {meal.satiety}
+                {carbLabel(meal)} · {meal.satiety}
               </span>
             </span>
           </div>
@@ -256,7 +256,6 @@ function ConceptC({ next, rows, now }: { next: Next; rows: Rows; now: number }) 
           </p>
           <p className="text-[24px] font-medium tracking-[-0.02em]">
             {carbLabel(next.meal)}
-            <span className="ml-1 text-[13px] text-white/40">g CH</span>
           </p>
         </div>
       </div>

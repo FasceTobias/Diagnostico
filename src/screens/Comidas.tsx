@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import type { Vianda } from '../lib/store'
 import type { Category, Meal } from '../lib/types'
-import { CarbChip, DemoBadge, MealTile, SatietyMark } from '../components/ui'
+import { CarbChip, DemoBadge, MealMark, SatietyMark } from '../components/ui'
 import { Sheet } from '../components/Sheet'
 import { MealDetail } from '../components/MealDetail'
 
@@ -78,7 +78,7 @@ export function Comidas({ app }: { app: Vianda }) {
               onClick={() => setOpen(meal)}
               className="flex w-full items-center gap-3.5 rounded-card bg-surface px-3.5 py-3.5 text-left shadow-sm active:scale-[0.985]"
             >
-              <MealTile meal={meal} size={44} />
+              <MealMark meal={meal} size={24} />
               <span className="min-w-0 flex-1">
                 <span className="flex items-center gap-2">
                   <span className="truncate text-[16px] font-medium text-ink">{meal.name}</span>

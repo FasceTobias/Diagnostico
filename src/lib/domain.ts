@@ -5,6 +5,7 @@ import type {
   PackItem,
   PlannedMeal,
   PrepTask,
+  ResolveFilter,
   Satiety,
   Slot,
 } from './types'
@@ -106,7 +107,11 @@ export const candidatesFor = (
   const need = needsFor(slot, context)
 
   // 1. Momento del día. Este sí es infranqueable: una cena no es un desayuno.
-  const sameMoment = meals.filter((m) => m.category === need.category)
+  //    Lo comprable afuera queda fuera del plan: el martes no puede decirte
+  //    "comprá empanadas". Aparece sólo desde «Resolver ahora».
+  const sameMoment = meals.filter(
+    (m) => m.category === need.category && !m.buyOutside,
+  )
   if (!sameMoment.length) return []
 
   // 2. Saciedad necesaria. Antes que nada: que llene lo que tiene que llenar.
@@ -257,7 +262,7 @@ export const compatibleReplacements = (
   const pool =
     opts.slot && opts.context
       ? candidatesFor(opts.slot, opts.context, all, opts.maxMinutes)
-      : all.filter((m) => m.category === current.category)
+      : all.filter((m) => m.category === current.category && !m.buyOutside)
 
   return pool
     .filter((m) => m.id !== current.id)
@@ -324,7 +329,7 @@ export const rescueOptions = (slot: Slot, meals: Meal[], limit = 4): RescueOptio
 
   const sameMoment = (max: number) =>
     meals
-      .filter((m) => m.category === category && m.prepMinutes <= max)
+      .filter((m) => m.category === category && !m.buyOutside && m.prepMinutes <= max)
       .map((meal) => ({ meal, why: `${meal.prepMinutes} min` }))
 
   // 1. Cero preparación. 2. Casi cero.
@@ -336,7 +341,11 @@ export const rescueOptions = (slot: Slot, meals: Meal[], limit = 4): RescueOptio
   // 3. Red de seguridad: otro momento del día, pero que llene y salga ya.
   return meals
     .filter(
-      (m) => m.category !== category && m.prepMinutes <= 8 && m.satiety !== 'liviana',
+      (m) =>
+        m.category !== category &&
+        !m.buyOutside &&
+        m.prepMinutes <= 8 &&
+        m.satiety !== 'liviana',
     )
     .map((meal) => ({ meal, why: `es ${meal.category}, pero sale en ${meal.prepMinutes} min` }))
     .sort(bySpeed)
@@ -450,5 +459,90 @@ export const findNext = (
     meal,
     minutes: upcoming.minutes,
     isNow: Math.abs(upcoming.minutes - at) <= 45,
+  }
+}
+
+/* ------------------------------------------------------------------
+   RESOLVER AHORA
+
+   El plan del día no coincide con la realidad: saliste sin almuerzo, o el
+   día se estiró. Esto no planifica nada — busca qué comer ya, con lo que
+   haya, acá y ahora.
+
+   Devuelve dos grupos separados porque la decisión es distinta: lo que
+   tenés en tu biblioteca y lo que tendrías que salir a comprar.
+   ------------------------------------------------------------------ */
+
+export interface ResolveResult {
+  propias: Meal[]
+  comprables: Meal[]
+}
+
+const matchesFilters = (meal: Meal, filters: ResolveFilter[]): boolean => {
+  for (const f of filters) {
+    switch (f) {
+      case 'mucha-hambre':
+        if (meal.satiety !== 'potente') return false
+        break
+      case 'normal':
+        if (meal.satiety === 'liviana') return false
+        break
+      case 'rapido':
+        if (meal.prepMinutes > 10) return false
+        break
+      case 'barato':
+        if ((meal.priceLevel ?? 1) > 1) return false
+        break
+      case 'caminando':
+        // Lo propio transportable ya se come caminando; lo comprable tiene
+        // que decirlo explícitamente.
+        if (meal.buyOutside ? !meal.handheld : !meal.portable) return false
+        break
+      case 'sentarme':
+        // No filtra nada: sentarse abre opciones, no las cierra.
+        break
+    }
+  }
+  return true
+}
+
+/** Relaja el último filtro antes que devolver una lista vacía:
+    a las 12:30 en la calle, una lista vacía no le sirve a nadie. */
+const searchRelaxing = (pool: Meal[], filters: ResolveFilter[]): Meal[] => {
+  for (let i = filters.length; i >= 0; i--) {
+    const applied = filters.slice(0, i)
+    const found = pool.filter((m) => matchesFilters(m, applied))
+    if (found.length) return found
+  }
+  return pool
+}
+
+const rank = (a: Meal, b: Meal) =>
+  Number(b.favorite) - Number(a.favorite) ||
+  (b.rating ?? 0) - (a.rating ?? 0) ||
+  a.prepMinutes - b.prepMinutes
+
+export const resolveNow = (
+  slot: Slot,
+  meals: Meal[],
+  filters: ResolveFilter[],
+  limit = 4,
+): ResolveResult => {
+  const category = SLOT_CATEGORY[slot]
+  const ofMoment = meals.filter((m) => m.category === category)
+
+  return {
+    propias: searchRelaxing(
+      ofMoment.filter((m) => !m.buyOutside),
+      filters,
+    )
+      .sort(rank)
+      .slice(0, limit),
+    comprables: searchRelaxing(
+      ofMoment.filter((m) => m.buyOutside),
+      filters,
+    )
+      .sort(rank)
+      .slice(0, limit),
   }
 }

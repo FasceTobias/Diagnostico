@@ -50,7 +50,7 @@ export function Focus({ app, onExit }: { app: Vianda; onExit: () => void }) {
           </p>
 
           <p className="mt-5 text-[20px] text-ink-soft v-tnum">
-            {carbLabel(next.meal)} g CH
+            {carbLabel(next.meal)}
             <span className="ml-3 text-[16px] text-ink-faint capitalize">
               {next.meal.satiety}
             </span>

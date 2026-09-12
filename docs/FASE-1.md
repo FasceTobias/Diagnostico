@@ -3,8 +3,9 @@
 > Documento de arquitectura, UX y diseño.
 > **Vianda** es un nombre temporal, no una marca definitiva.
 >
-> *Revisión 2 — corregido el modelo del día (seis momentos, no cinco),
-> incorporado el contexto por día y reescrita la prioridad de la rotación.*
+> *Revisión 3 — «Resolver ahora», opciones comprables afuera, configuración
+> personal de insulina con calculadora explícita, y una sola convención de
+> carbohidratos.*
 
 ---
 
@@ -41,6 +42,7 @@ Todo lo demás es soporte de esas tres preguntas.
 | Nunca castigar | No existe el estado "fallaste". Existe "cambiado" |
 | Menos es más rápido | Si una función no se usa a diario, va a segundo nivel |
 | Datos honestos | Todo carbohidrato muestra su nivel de confianza, y el que no fue verificado se muestra como tal |
+| Una sola convención | Los carbohidratos se escriben siempre igual: `34 g CHO`. La palabra completa sólo como etiqueta de sección |
 | El día no es perfecto | Contexto por día, snacks opcionales y una salida rápida cuando no preparaste nada |
 | La necesidad antes que la variedad | Si el día pide algo que llene, primero se busca ahí; la repetición desempata, nunca veta |
 
@@ -49,6 +51,9 @@ Todo lo demás es soporte de esas tres preguntas.
 - **Tono:** cálido, sobrio, doméstico. Nada de blanco clínico ni azul hospital.
 - **Paleta base:** hueso / tinta cálida / arcilla como acento único.
 - **Nada de:** gradientes exagerados, íconos por todos lados, cards repetidas sin jerarquía.
+- **Nada de iniciales dentro de círculos:** una letra en un círculo se lee como el avatar de una
+  persona, y esto es comida. Un solo ícono de línea por momento del día, sin caja. Cuando haya
+  fotos reales, la foto ocupa ese lugar.
 - **Motion:** rápido y corto (120–220ms). La animación confirma, no decora.
 
 ---
@@ -234,6 +239,68 @@ el ingrediente principal dentro del mismo día.
 - **Comiste otra cosa** → cambiar cuesta lo mismo que marcar.
 - **El día cambió** → un toque en el contexto y lo pendiente se rearma.
 - **No tenés hambre** → los snacks se sacan sin consecuencias.
+
+## D quater. Resolver ahora
+
+El plan del día falla seguido, y falla lejos de casa. Saliste pensando que
+volvías, no volviste, son las 12:30 y no tenés nada.
+
+**«Resolver ahora» no planifica: busca qué comer ya.** Está en HOY, debajo del
+héroe, y también se llega desde el asistente y desde el detalle de una comida.
+
+Máximo tres toques hasta ver opciones:
+
+```
+¿Qué pasó?                    →   ¿Qué comida?        →   Opciones + filtros
+  No traje comida                   los 6 momentos,         para comprar afuera
+  Tengo hambre ahora                con "Ahora" marcado     de tu biblioteca
+  Cambió mi día ──────────────→  contexto (termina acá)
+  No preparé nada
+  Quiero reemplazar una comida
+```
+
+Los filtros van **arriba de los resultados, no antes**: se ajustan mirando lo que
+salió. Y si un filtro deja la lista vacía, se afloja el último en vez de mostrar
+una pantalla en blanco — a las 12:30 en la calle, una lista vacía no le sirve a
+nadie.
+
+### Comidas que se compran afuera
+
+La biblioteca ya no es sólo lo que cocinás. Una comida puede tener
+`buy_outside`, una lista de tipos de lugar (kiosco, rotisería, panadería…), un
+nivel de precio y si se come caminando.
+
+> **Quedan fuera de la rotación normal.** El plan del martes no puede decirte
+> "comprá empanadas". Aparecen únicamente cuando las pedís desde «Resolver ahora».
+
+Sus carbohidratos son órdenes de magnitud, no datos: dependen del lugar, del
+tamaño y de quién la hizo. Van todas sin verificar y la pantalla lo dice.
+
+## D quinquies. Insulina: aritmética, no medicina
+
+La app guarda **una relación** que el usuario configura y ofrece **una división**
+que el usuario pide. Nada más.
+
+**Está apagada por defecto.** Se activa en Configuración, y mientras esté apagada
+no aparece nada de insulina en ninguna pantalla.
+
+Cuatro cosas separadas y rotuladas, nunca mezcladas:
+
+| | |
+|---|---|
+| 1. Carbohidratos de la comida | dato de la comida, editable en la calculadora |
+| 2. Tu relación configurada | `1 u por 15 g CHO`, guardada en un solo lugar |
+| 3. Resultado matemático | la división, con la cuenta a la vista |
+| 4. La decisión | **tuya**, con lo que te indicó tu médico |
+
+Lo que la app **no** hace, por diseño: calcular sola, mostrar dosis en tarjetas o
+listas, corregir por glucemia, mirar actividad, ni sugerir nada.
+
+El modelo soporta desde ya relaciones por momento del día o por franja horaria
+(`scope`, `from_time`, `to_time`); la interfaz expone una sola, general.
+
+Si los carbohidratos de la comida **no están verificados**, la calculadora lo dice
+antes del resultado: es aritmética sobre un número que todavía no es real.
 
 ## E. Estructura de datos
 

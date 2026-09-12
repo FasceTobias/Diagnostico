@@ -19,6 +19,10 @@ create type plan_slot     as enum (
   'breakfast', 'snack_am', 'lunch', 'snack_pm', 'merienda', 'dinner');
 -- Dónde transcurre el día. No se deduce del día de la semana.
 create type day_context   as enum ('casa', 'calle', 'mixto');
+-- Dónde se consigue una opción que no cocinás vos.
+create type venue         as enum (
+  'kiosco', 'supermercado', 'cafetería', 'panadería',
+  'rotisería', 'restaurante', 'estación de servicio', 'casa de comidas');
 create type prep_kind     as enum ('night_before', 'weekly');
 create type pack_kind     as enum ('meal', 'gear');
 
@@ -32,6 +36,8 @@ create table profiles (
     "snack_pm":"16:00","merienda":"18:30","dinner":"21:30"}'::jsonb,
   -- contexto por defecto cuando se arma una semana nueva
   default_context day_context not null default 'mixto',
+  -- La configuración de insulina está apagada hasta que el usuario la active.
+  insulin_enabled boolean not null default false,
   created_at   timestamptz not null default now()
 );
 
@@ -86,7 +92,16 @@ create table meals (
   notes             text,
   prep_steps        text[] not null default '{}',     -- tareas que genera la noche anterior
 
+  -- Opciones que se compran afuera. Quedan FUERA de la rotación del plan:
+  -- el martes no puede decirte "comprá empanadas". Aparecen sólo desde
+  -- «Resolver ahora».
+  buy_outside       boolean not null default false,
+  venues            venue[] not null default '{}',
+  price_level       smallint check (price_level between 1 and 3),
+  handheld          boolean not null default false,  -- se come caminando
+
   is_demo           boolean not null default false,   -- para borrar los ejemplos de una
+  carbs_verified_at timestamptz,                      -- cuándo se revisó el carbo
   created_at        timestamptz not null default now()
 );
 create index on meals (profile_id, category);
@@ -190,6 +205,28 @@ create table meal_history (
 );
 create index on meal_history (profile_id, date);
 
+-- ------------------------------------------------------------------
+-- INSULINA
+--
+-- La app guarda la relación y hace una división cuando el usuario se la
+-- pide. No decide dosis, no corrige por glucemia y no sugiere nada por su
+-- cuenta. Es una preferencia personal, no un dato clínico.
+--
+-- El scope permite, a futuro, relaciones distintas por momento del día o
+-- por franja horaria. Hoy se usa solamente la general.
+-- ------------------------------------------------------------------
+create table insulin_ratios (
+  id             uuid primary key default gen_random_uuid(),
+  profile_id     uuid not null references profiles (id) on delete cascade,
+  -- 'general' o el nombre de un plan_slot
+  scope          text not null default 'general',
+  grams_per_unit numeric not null check (grams_per_unit > 0),
+  from_time      time,
+  to_time        time,
+  created_at     timestamptz not null default now()
+);
+create index on insulin_ratios (profile_id);
+
 create table preferences (
   id         uuid primary key default gen_random_uuid(),
   profile_id uuid not null references profiles (id) on delete cascade,
@@ -213,6 +250,7 @@ alter table packing_items  enable row level security;
 alter table shopping_lists enable row level security;
 alter table shopping_items enable row level security;
 alter table meal_history   enable row level security;
+alter table insulin_ratios enable row level security;
 alter table preferences    enable row level security;
 
 create policy "perfil propio" on profiles
@@ -224,7 +262,7 @@ declare t text;
 begin
   foreach t in array array[
     'foods','meals','weekly_plans','prep_tasks','packing_items',
-    'shopping_lists','meal_history','preferences'
+    'shopping_lists','meal_history','preferences','insulin_ratios'
   ] loop
     execute format(
       'create policy "datos propios" on %I for all

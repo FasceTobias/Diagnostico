@@ -60,10 +60,19 @@ export const relativeTime = (targetMinutes: number, from = nowMinutes()) => {
 
 /* ---- Carbohidratos: el dato se muestra con su confianza, siempre ---- */
 
+/* Convención única de carbohidratos en toda la app: «34 g CHO».
+   La palabra completa «Carbohidratos» se usa sólo como etiqueta de sección,
+   nunca como otra forma de escribir el valor. */
+export const CARB_UNIT = 'g CHO'
+
 /** La tilde comunica "no confirmado" sin depender del color.
     Un dato sin verificar siempre lleva tilde, sea cual sea su confianza. */
+export const carbApprox = (meal: Pick<Meal, 'confidence' | 'carbsVerified'>) =>
+  !meal.carbsVerified || meal.confidence === 'estimada'
+
+/** "34 g CHO" · "~34 g CHO" */
 export const carbLabel = (meal: Pick<Meal, 'carbs' | 'confidence' | 'carbsVerified'>) =>
-  !meal.carbsVerified || meal.confidence === 'estimada' ? `~${meal.carbs}` : `${meal.carbs}`
+  `${carbApprox(meal) ? '~' : ''}${meal.carbs} ${CARB_UNIT}`
 
 export const CONFIDENCE_TEXT: Record<Confidence, string> = {
   alta: 'Confianza alta',
@@ -78,18 +87,12 @@ export const CARB_SOURCE_TEXT: Record<Meal['carbSource'], string> = {
   pendiente: 'Pendiente de confirmar',
 }
 
-/** Marca visual por categoría: identidad propia sin depender de fotos.
-    Un tono cálido por momento del día + la inicial de la comida. */
+/** Tono cálido por momento del día. Colorea el ícono de categoría;
+    ya no hay iniciales ni avatares. */
 export const CATEGORY_TINT: Record<Meal['category'], { bg: string; fg: string }> = {
   desayuno: { bg: 'var(--v-t-desayuno-bg)', fg: 'var(--v-t-desayuno-fg)' },
   snack: { bg: 'var(--v-t-snack-bg)', fg: 'var(--v-t-snack-fg)' },
   almuerzo: { bg: 'var(--v-t-almuerzo-bg)', fg: 'var(--v-t-almuerzo-fg)' },
   merienda: { bg: 'var(--v-t-merienda-bg)', fg: 'var(--v-t-merienda-fg)' },
   cena: { bg: 'var(--v-t-cena-bg)', fg: 'var(--v-t-cena-fg)' },
-}
-
-/** Inicial de la comida, ignorando artículos. */
-export const mealInitial = (name: string) => {
-  const word = name.split(' ').find((w) => w.length > 2) ?? name
-  return word.charAt(0).toUpperCase()
 }

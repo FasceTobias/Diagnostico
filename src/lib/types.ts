@@ -41,6 +41,29 @@ export type MealStatus =
    un sábado también podés estar todo el día en la calle. */
 export type DayContext = 'casa' | 'calle' | 'mixto'
 
+/* Dónde se consigue una opción que no cocinás vos. No hace falta integrar
+   negocios reales: alcanza con saber QUÉ TIPO de lugar buscar. */
+export type Venue =
+  | 'kiosco'
+  | 'supermercado'
+  | 'cafetería'
+  | 'panadería'
+  | 'rotisería'
+  | 'restaurante'
+  | 'estación de servicio'
+  | 'casa de comidas'
+
+export const VENUES: Venue[] = [
+  'kiosco',
+  'supermercado',
+  'cafetería',
+  'panadería',
+  'rotisería',
+  'restaurante',
+  'estación de servicio',
+  'casa de comidas',
+]
+
 export interface Meal {
   id: string
   name: string
@@ -50,6 +73,8 @@ export interface Meal {
   mainIngredient: string
   ingredients: string[]
   portion: string
+  /** Cuando existan fotos reales, ocupan el lugar del ícono. */
+  photoUrl?: string
   carbs: number
   carbSource: CarbSource
   confidence: Confidence
@@ -69,7 +94,85 @@ export interface Meal {
   notes?: string
   /** Tareas que genera la noche anterior. Se agrupan entre comidas. */
   prepSteps?: string[]
+
+  /* --- Opciones que se compran afuera ---
+     Quedan FUERA de la rotación normal: el plan de la semana no puede
+     decirte "comprá empanadas". Aparecen sólo cuando las pedís. */
+  buyOutside: boolean
+  venues?: Venue[]
+  /** 1 barato · 2 medio · 3 caro. Para "quiero gastar poco". */
+  priceLevel?: 1 | 2 | 3
+  /** Se come caminando, sin sentarse ni cubiertos. */
+  handheld?: boolean
+
   isDemo: boolean
+}
+
+/* ------------------------------------------------------------------
+   RESOLVER AHORA — cuando el plan del día no coincide con la realidad.
+   ------------------------------------------------------------------ */
+
+export type ResolveReason =
+  | 'sin-comida'
+  | 'hambre'
+  | 'cambio-dia'
+  | 'sin-preparar'
+  | 'reemplazar'
+
+export const RESOLVE_REASON: Record<ResolveReason, string> = {
+  'sin-comida': 'No traje comida',
+  hambre: 'Tengo hambre ahora',
+  'cambio-dia': 'Cambió mi día',
+  'sin-preparar': 'No preparé nada',
+  reemplazar: 'Quiero reemplazar una comida',
+}
+
+export type ResolveFilter =
+  | 'mucha-hambre'
+  | 'normal'
+  | 'rapido'
+  | 'barato'
+  | 'sentarme'
+  | 'caminando'
+
+export const RESOLVE_FILTER: Record<ResolveFilter, string> = {
+  'mucha-hambre': 'Tengo mucha hambre',
+  normal: 'Algo normal',
+  rapido: 'Tengo poco tiempo',
+  barato: 'Gastar poco',
+  sentarme: 'Puedo sentarme',
+  caminando: 'Comer caminando',
+}
+
+/* ------------------------------------------------------------------
+   INSULINA — configuración personal.
+
+   La app NO decide dosis. Guarda una relación que el usuario configura y
+   ofrece una calculadora que el usuario abre a mano. Nada automático,
+   nada en las tarjetas, nada silencioso.
+   ------------------------------------------------------------------ */
+
+/** 1 unidad cada `gramsPerUnit` gramos de carbohidratos.
+    El alcance permite, a futuro, relaciones distintas por momento del día
+    o por franja horaria. Hoy se usa solamente la general. */
+export interface InsulinRatio {
+  id: string
+  scope: 'general' | Slot
+  gramsPerUnit: number
+  /** Franja horaria, para cuando haga falta. "06:00" */
+  fromTime?: string
+  toTime?: string
+}
+
+export interface InsulinSettings {
+  /** Apagado hasta que el usuario lo active. No domina la app. */
+  enabled: boolean
+  ratios: InsulinRatio[]
+}
+
+export const DEFAULT_INSULIN: InsulinSettings = {
+  enabled: false,
+  ratios: [{ id: 'general', scope: 'general', gramsPerUnit: 15 }],
 }
 
 export interface PlannedMeal {

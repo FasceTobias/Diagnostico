@@ -2,11 +2,13 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import type {
   DayContext,
   DayPlan,
+  InsulinSettings,
   MealStatus,
   PackItem,
   PrepTask,
   Slot,
 } from './types'
+import { DEFAULT_INSULIN } from './types'
 import { DEMO_MEALS } from './demo'
 import { addDays, isoDate } from './format'
 import {
@@ -20,12 +22,13 @@ import {
 /* Repositorio local. Misma forma que va a tener el de Supabase, para que
    cambiar de uno a otro no toque ninguna pantalla. */
 
-const KEY = 'vianda.state.v2'
+const KEY = 'vianda.state.v3'
 
 interface Persisted {
   week: DayPlan[]
   weekStart: string
   times: Record<Slot, string>
+  insulin: InsulinSettings
   checks: Record<string, boolean>
   focus: boolean
 }
@@ -60,6 +63,7 @@ const fresh = (): Persisted => {
     week: buildWeek(ws, DEMO_MEALS, 'mixto', DEFAULT_TIMES),
     weekStart: isoDate(ws),
     times: DEFAULT_TIMES,
+    insulin: DEFAULT_INSULIN,
     checks: {},
     focus: false,
   }
@@ -71,7 +75,11 @@ export const useVianda = () => {
   const [state, setState] = useState<Persisted>(() => {
     const stored = load()
     const ws = isoDate(startOfWeek(new Date()))
-    return stored && stored.weekStart === ws ? stored : fresh()
+    if (!stored) return fresh()
+    // La semana se regenera, pero la configuración personal sobrevive.
+    return stored.weekStart === ws
+      ? { ...fresh(), ...stored }
+      : { ...fresh(), times: stored.times, insulin: stored.insulin }
   })
 
   useEffect(() => save(state), [state])
@@ -145,6 +153,10 @@ export const useVianda = () => {
     setState((s) => ({ ...s, checks: { ...s.checks, [id]: !s.checks[id] } }))
   }, [])
 
+  const setInsulin = useCallback((insulin: InsulinSettings) => {
+    setState((s) => ({ ...s, insulin }))
+  }, [])
+
   const setFocus = useCallback((focus: boolean) => {
     setState((s) => ({ ...s, focus }))
   }, [])
@@ -191,6 +203,8 @@ export const useVianda = () => {
     today,
     tomorrow,
     times: state.times,
+    insulin: state.insulin,
+    setInsulin,
     packing,
     prep,
     focus: state.focus,

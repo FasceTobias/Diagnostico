@@ -1,6 +1,6 @@
 import type { Meal } from '../lib/types'
 import { CARB_SOURCE_TEXT, CONFIDENCE_TEXT } from '../lib/format'
-import { CarbChip, DemoBadge, MealTile, SatietyMark } from './ui'
+import { CarbChip, DemoBadge, MealMark, SatietyMark } from './ui'
 
 /* Detalle: acá sí se muestra todo. Es el segundo nivel de la divulgación
    progresiva, y el único lugar donde la densidad de datos está permitida. */
@@ -24,7 +24,7 @@ export function MealDetail({ meal }: { meal: Meal }) {
   return (
     <div>
       <div className="flex items-start gap-4">
-        <MealTile meal={meal} size={56} />
+        <MealMark meal={meal} size={30} />
         <div className="min-w-0 flex-1">
           <h3 className="text-[19px] leading-tight v-display text-ink">{meal.name}</h3>
           <p className="mt-1 flex flex-wrap items-center gap-2 text-[13px] text-ink-faint first-letter:uppercase">
