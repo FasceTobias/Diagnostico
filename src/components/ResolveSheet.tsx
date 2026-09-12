@@ -12,7 +12,7 @@ import {
 import type { Vianda } from '../lib/store'
 import { byVenue, compatibleReplacements, findNext, resolveNow } from '../lib/domain'
 import { Sheet } from './Sheet'
-import { CarbChip, DemoBadge, SatietyMark } from './ui'
+import { CarbValue, MetaLine, SectionLabel } from './ui'
 
 /* ------------------------------------------------------------------
    RESOLVER AHORA
@@ -160,28 +160,23 @@ function ResolveFlow({
           <p className="text-[14px] leading-relaxed text-ink-soft">
             El plan es una guía, no una obligación. ¿Qué pasó?
           </p>
-          <ul className="mt-4 space-y-2">
+          <div className="mt-5 border-t border-line">
             {REASONS.map((r) => (
-              <li key={r}>
-                <button
-                  onClick={() => pickReason(r)}
-                  className="flex w-full items-center gap-3 rounded-card bg-surface px-4 py-4 text-left shadow-sm transition-transform duration-150 active:scale-[0.985]"
-                >
-                  <span className="flex-1">
-                    <span className="block text-[16px] font-semibold text-ink">
-                      {RESOLVE_REASON[r]}
-                    </span>
-                    <span className="mt-0.5 block text-[13px] text-ink-faint">
-                      {REASON_HINT[r]}
-                    </span>
-                  </span>
-                  <svg viewBox="0 0 12 12" className="size-3 text-ink-faint" aria-hidden>
-                    <path d="M4 2l4 4-4 4" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" />
-                  </svg>
-                </button>
-              </li>
+              <button
+                key={r}
+                onClick={() => pickReason(r)}
+                className="flex w-full items-center gap-3 border-b border-line py-4 text-left active:bg-surface-2"
+              >
+                <span className="flex-1">
+                  <span className="v-serif block text-[19px] text-ink">{RESOLVE_REASON[r]}</span>
+                  <span className="v-label-sm mt-1 block text-ink-faint">{REASON_HINT[r]}</span>
+                </span>
+                <svg viewBox="0 0 12 12" className="size-3 text-ink-faint" aria-hidden>
+                  <path d="M4 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+                </svg>
+              </button>
             ))}
-          </ul>
+          </div>
         </>
       )}
 
@@ -220,22 +215,21 @@ function ResolveFlow({
 
       {/* 2b — ¿Qué comida? */}
       {step === 'slot' && (
-        <ul className="space-y-2">
+        <div className="border-t border-line">
           {SLOT_ORDER.map((s) => {
             const suggested = s === next?.planned.slot
             return (
-              <li key={s}>
-                <button
-                  onClick={() => pickSlot(s)}
-                  className="flex w-full items-center gap-3 rounded-card bg-surface px-4 py-3.5 text-left shadow-sm active:scale-[0.985]"
-                >
-                  <span className="flex-1 text-[16px] font-medium text-ink">{SLOT_LABEL[s]}</span>
-                  {suggested && <span className="v-eyebrow text-clay">Ahora</span>}
-                </button>
-              </li>
+              <button
+                key={s}
+                onClick={() => pickSlot(s)}
+                className="flex w-full items-center gap-3 border-b border-line py-4 text-left active:bg-surface-2"
+              >
+                <span className="v-serif flex-1 text-[19px] text-ink">{SLOT_LABEL[s]}</span>
+                {suggested && <span className="v-label-sm text-clay">Ahora</span>}
+              </button>
             )
           })}
-        </ul>
+        </div>
       )}
 
       {/* 3 — Filtros arriba, resultados abajo */}
@@ -292,7 +286,7 @@ function Results({
             'Elegí una opción.'
           )}
         </p>
-        <h4 className="v-eyebrow mt-6 text-ink-faint">Reemplazos compatibles</h4>
+        <h4 className="v-label mt-6 text-ink-faint">Reemplazos compatibles</h4>
         <OptionList options={options.map((o) => ({ meal: o.meal, why: o.why }))} onPick={onPick} />
       </>
     )
@@ -305,9 +299,7 @@ function Results({
 
   const propiasBlock = propias.length > 0 && (
     <section key="propias" className="mt-7">
-      <h4 className="v-eyebrow text-ink-faint">
-        {buyFirst ? 'Si llegás a casa' : 'De tu biblioteca'}
-      </h4>
+      <SectionLabel>{buyFirst ? 'Si llegás a casa' : 'De tu biblioteca'}</SectionLabel>
       <OptionList
         options={propias.map((meal) => ({ meal, why: `${meal.prepMinutes} min` }))}
         onPick={onPick}
@@ -319,7 +311,7 @@ function Results({
     <div key="venues">
       {venues.map(({ venue, meals: options }) => (
         <section key={venue} className="mt-7">
-          <h4 className="v-eyebrow text-ink-faint">{venue}</h4>
+          <SectionLabel>{venue}</SectionLabel>
           <OptionList options={options.map((meal) => ({ meal }))} onPick={onPick} />
         </section>
       ))}
@@ -371,25 +363,20 @@ function OptionList({
   onPick: (id: string) => void
 }) {
   return (
-    <ul className="mt-2 space-y-2">
+    <div className="mt-2 border-t border-line">
       {options.map(({ meal, why }) => (
-        <li key={meal.id}>
-          <button
-            onClick={() => onPick(meal.id)}
-            className="flex w-full items-center gap-3.5 rounded-card bg-surface px-4 py-3.5 text-left shadow-sm transition-transform duration-150 active:scale-[0.985]"
-          >
-            <span className="min-w-0 flex-1">
-              <span className="block truncate text-[16px] font-medium text-ink">{meal.name}</span>
-              <span className="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1">
-                <CarbChip meal={meal} />
-                <SatietyMark level={meal.satiety} showLabel={false} />
-                {why && <span className="text-[13px] text-ink-faint">{why}</span>}
-                {meal.isDemo && <DemoBadge />}
-              </span>
-            </span>
-          </button>
-        </li>
+        <button
+          key={meal.id}
+          onClick={() => onPick(meal.id)}
+          className="flex w-full items-baseline gap-4 border-b border-line py-3.5 text-left active:bg-surface-2"
+        >
+          <span className="min-w-0 flex-1">
+            <span className="v-serif block truncate text-[17px] text-ink">{meal.name}</span>
+            <MetaLine className="mt-1" parts={[meal.satiety, why]} />
+          </span>
+          <CarbValue meal={meal} />
+        </button>
       ))}
-    </ul>
+    </div>
   )
 }

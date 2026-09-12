@@ -140,44 +140,69 @@ export const ingredientText = (item: string, qty: number, unit: Unit): string =>
   }
 }
 
-/** Cómo se escribe en la lista de compras: en cantidad de compra real.
-    "12 huevos" · "1,5 kg de pollo" · "1 paquete de pan" */
-export const shoppingText = (item: string, qty: number, unit: Unit): string => {
+/** Cómo se escribe en la lista de compras, partido en dos:
+    la cantidad a un lado y el producto al otro, para poder componerlos
+    con distinto peso. "12" + "huevos" · "1,5 kg" + "pollo". */
+export interface ShoppingParts {
+  /** La cifra sola: "12", "1,5", "250" */
+  value: string
+  /** La unidad, si la hay: "kg", "g", "paquete", "potes" */
+  unit: string
+  /** El producto: "huevos", "pollo", "pan" */
+  label: string
+}
+
+export const shoppingParts = (item: string, qty: number, unit: Unit): ShoppingParts => {
   const food = foodOf(item)
   const buy = food.buy
   const plural = food.plural ?? item
 
-  if (!buy) return ingredientText(item, Math.ceil(qty), unit)
+  const count = (n: number) => ({ value: nice(n), unit: '', label: n === 1 ? item : plural })
+  const pack = (n: number, word: string, wordPlural: string) => ({
+    value: String(n),
+    unit: n === 1 ? word : wordPlural,
+    label: item,
+  })
+
+  if (!buy) {
+    const n = Math.ceil(qty)
+    return unit === 'u' ? count(n) : { value: nice(n), unit, label: item }
+  }
 
   if (buy.unit === 'kg') {
     const kg = Math.ceil((qty / 1000) * 2) / 2
-    return kg >= 1 ? `${nice(kg)} kg de ${item}` : `${Math.ceil(qty / 100) * 100} g de ${item}`
+    return kg >= 1
+      ? { value: nice(kg), unit: 'kg', label: item }
+      : { value: String(Math.ceil(qty / 100) * 100), unit: 'g', label: item }
   }
 
   if (buy.unit === 'paquete') {
-    const packs = Math.max(1, Math.ceil(qty / (buy.per ?? 1)))
-    return `${packs} ${packs === 1 ? 'paquete' : 'paquetes'} de ${item}`
+    return pack(Math.max(1, Math.ceil(qty / (buy.per ?? 1))), 'paquete', 'paquetes')
   }
 
   if (buy.per) {
     const n = Math.max(1, Math.ceil(qty / buy.per))
     // Una lechuga rinde varias comidas: se compra una, no media por plato.
-    if (buy.unit === 'u') return `${n} ${n === 1 ? item : plural}`
-    const label = buy.label ?? 'unidad'
-    const labelPlural = label === 'pote' ? 'potes' : label === 'lata' ? 'latas' : `${label}s`
-    return `${n} ${n === 1 ? label : labelPlural} de ${item}`
+    if (buy.unit === 'u') return count(n)
+    const word = buy.label ?? 'unidad'
+    return pack(n, word, word === 'pote' ? 'potes' : word === 'lata' ? 'latas' : `${word}s`)
   }
 
   if (buy.step) {
-    const n = Math.ceil(qty / buy.step) * buy.step
-    if (buy.unit === 'u') return `${n} ${n === 1 ? item : plural}`
+    if (buy.unit === 'u') return count(Math.ceil(qty / buy.step) * buy.step)
     if (buy.label) {
       const packs = Math.ceil(qty / buy.step)
-      return `${packs} ${packs === 1 ? buy.label : buy.label + 's'} de ${item}`
+      return pack(packs, buy.label, `${buy.label}s`)
     }
-    return `${n} ${buy.unit} de ${item}`
+    return { value: String(Math.ceil(qty / buy.step) * buy.step), unit: buy.unit, label: item }
   }
 
   const n = Math.ceil(qty)
-  return buy.unit === 'u' ? `${n} ${n === 1 ? item : plural}` : `${n} ${buy.unit} de ${item}`
+  return buy.unit === 'u' ? count(n) : { value: String(n), unit: buy.unit, label: item }
+}
+
+/** "12 huevos" · "1,5 kg de pollo" — para donde haga falta una sola línea. */
+export const shoppingText = (item: string, qty: number, unit: Unit): string => {
+  const { value, unit: u, label } = shoppingParts(item, qty, unit)
+  return u ? `${value} ${u} de ${label}` : `${value} ${label}`
 }

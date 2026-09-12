@@ -3,9 +3,10 @@ import type { DayContext, InsulinSettings, Meal, MealStatus, PlannedMeal } from 
 import { SLOT_LABEL } from '../lib/types'
 import { compatibleReplacements, rescueOptions } from '../lib/domain'
 import { Sheet } from './Sheet'
+import { SectionLabel } from './ui'
 import { MealDetail } from './MealDetail'
 import { CarbCalculator } from './CarbCalculator'
-import { CarbChip, DemoBadge, MealMark, SatietyMark } from './ui'
+import { CarbValue, MetaLine } from './ui'
 
 /* Un solo sheet resuelve: ver, marcar, cambiar y rescatar el día.
    Las acciones son grandes y ninguna es destructiva. */
@@ -33,29 +34,21 @@ function OptionList({
   onPick: (id: string) => void
 }) {
   return (
-    <ul className="mt-2 space-y-2">
+    <div className="mt-2 border-t border-line">
       {options.map(({ meal, why }) => (
-        <li key={meal.id}>
-          <button
-            onClick={() => onPick(meal.id)}
-            className="flex w-full items-center gap-3.5 rounded-card bg-surface px-3.5 py-3.5 text-left shadow-sm transition-transform duration-150 active:scale-[0.985]"
-          >
-            <MealMark meal={meal} size={24} />
-            <span className="min-w-0 flex-1">
-              <span className="flex items-center gap-2">
-                <span className="truncate text-[16px] font-medium text-ink">{meal.name}</span>
-                {meal.isDemo && <DemoBadge />}
-              </span>
-              <span className="mt-1 flex items-center gap-2.5">
-                <CarbChip meal={meal} />
-                <SatietyMark level={meal.satiety} showLabel={false} />
-                {why && <span className="truncate text-[13px] text-ink-faint">{why}</span>}
-              </span>
-            </span>
-          </button>
-        </li>
+        <button
+          key={meal.id}
+          onClick={() => onPick(meal.id)}
+          className="flex w-full items-baseline gap-4 border-b border-line py-3.5 text-left active:bg-surface-2"
+        >
+          <span className="min-w-0 flex-1">
+            <span className="v-serif block truncate text-[17px] text-ink">{meal.name}</span>
+            <MetaLine className="mt-1" parts={[meal.satiety, why]} />
+          </span>
+          <CarbValue meal={meal} />
+        </button>
       ))}
-    </ul>
+    </div>
   )
 }
 
@@ -110,7 +103,7 @@ export function MealSheet({
         onClose={close}
         title={rescue ? `Resolver ${slotName}` : `Cambiar ${slotName}`}
       >
-        <p className="text-[14px] leading-relaxed text-ink-soft">
+        <p className="text-[15px] leading-relaxed text-ink-soft">
           {rescue ? (
             <>
               Sin preparación previa. Esto se resuelve en minutos, con lo que
@@ -124,14 +117,14 @@ export function MealSheet({
           )}
         </p>
 
-        <h4 className="v-eyebrow mt-6 text-ink-faint">
+        <SectionLabel className="mt-7">
           {rescue ? 'Sin preparar nada' : 'Reemplazos compatibles'}
-        </h4>
+        </SectionLabel>
 
         <OptionList options={options} onPick={pick} />
 
         {options.length === 0 && (
-          <p className="mt-4 rounded-2xl border border-dashed border-line-strong px-4 py-4 text-[14px] leading-relaxed text-ink-faint">
+          <p className="mt-4 text-[14px] leading-relaxed text-ink-faint">
             {rescue
               ? 'No hay nada cargado que se resuelva sin preparación. Hoy toca improvisar: cuando cargues comidas de emergencia, esto se llena solo.'
               : 'Todavía no hay otra opción cargada para este momento del día.'}
@@ -152,7 +145,7 @@ export function MealSheet({
     <Sheet open onClose={close}>
       <MealDetail meal={meal} />
 
-      <div className="sticky bottom-0 -mx-5 mt-8 bg-linear-to-t from-bg via-bg to-transparent px-5 pt-6 pb-1">
+      <div className="sticky bottom-0 -mx-6 mt-9 bg-linear-to-t from-bg via-bg to-transparent px-6 pt-6 pb-1">
         <div className="flex gap-2">
           {ACTIONS.map((a) => {
             const active = planned.status === a.status
@@ -164,10 +157,10 @@ export function MealSheet({
                   if (!active) close()
                 }}
                 aria-pressed={active}
-                className={`flex min-h-[52px] flex-1 flex-col items-center justify-center gap-0.5 rounded-2xl border text-[13px] font-semibold transition-colors duration-150 active:scale-[0.97] ${
+                className={`v-label-sm flex min-h-[52px] flex-1 flex-col items-center justify-center gap-1 rounded-[10px] border transition-colors duration-150 active:scale-[0.97] ${
                   active
                     ? 'border-clay bg-clay text-white'
-                    : 'border-line bg-surface text-ink-soft'
+                    : 'border-line text-ink-soft'
                 }`}
               >
                 <span aria-hidden className="text-[15px]">
@@ -181,7 +174,7 @@ export function MealSheet({
 
         <button
           onClick={() => setMode('replace')}
-          className="mt-2 min-h-[48px] w-full rounded-2xl border border-line bg-surface text-[15px] font-semibold text-ink active:scale-[0.98]"
+          className="mt-2 min-h-[48px] w-full rounded-[10px] border border-ink/80 text-[15px] font-semibold text-ink active:scale-[0.98]"
         >
           Cambiar por otra
         </button>

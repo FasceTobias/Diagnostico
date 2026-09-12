@@ -23,7 +23,7 @@ export function Focus({ app, onExit }: { app: Vianda; onExit: () => void }) {
   return (
     <div className="flex min-h-dvh flex-col bg-bg px-7 v-safe-top v-safe-bottom">
       <div className="relative z-10 flex shrink-0 items-center justify-between pt-6">
-        <p className="v-eyebrow text-ink-faint">Modo foco</p>
+        <p className="v-label text-ink-faint">Modo foco</p>
         <button
           onClick={onExit}
           className="-mr-2 rounded-pill px-3 py-2 text-[15px] font-medium text-ink-soft active:bg-surface-2"
@@ -34,31 +34,31 @@ export function Focus({ app, onExit }: { app: Vianda; onExit: () => void }) {
 
       {next ? (
         <div className="v-rise flex flex-1 flex-col justify-center py-12">
-          <p className="v-eyebrow text-clay">Ahora</p>
-          <h1 className="mt-3 text-[34px] leading-none v-display text-ink">
+          <p className="v-label text-clay">Ahora</p>
+          <h1 className="v-serif-lg mt-4 text-[30px] text-ink">
             {SLOT_LABEL[next.planned.slot]}
           </h1>
-          <p className="mt-2 text-[22px] text-ink-soft v-tnum">
+          <p className="mt-2 text-[20px] text-ink-soft v-tnum">
             {next.planned.time}
             <span className="ml-2.5 text-[16px] text-ink-faint">
               {relativeTime(next.minutes, now)}
             </span>
           </p>
 
-          <p className="mt-9 text-[30px] leading-[1.15] v-display text-ink">
+          <p className="v-serif-lg mt-8 text-[46px] text-ink">
             {next.meal.name}
           </p>
 
-          <p className="mt-5 text-[20px] text-ink-soft v-tnum">
+          <p className="v-label mt-6 text-ink-soft v-tnum">
             {carbLabel(next.meal)}
-            <span className="ml-3 text-[16px] text-ink-faint capitalize">
+            <span className="ml-3 text-ink-faint">
               {next.meal.satiety}
             </span>
           </p>
         </div>
       ) : (
         <div className="flex flex-1 flex-col justify-center py-12">
-          <h1 className="text-[30px] v-display text-ink">Nada pendiente</h1>
+          <h1 className="text-[30px] v-serif text-ink">Nada pendiente</h1>
           <p className="mt-2 text-[17px] text-ink-soft">El día ya está resuelto.</p>
         </div>
       )}

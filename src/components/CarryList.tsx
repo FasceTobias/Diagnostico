@@ -28,7 +28,7 @@ export function CarryList({
   return (
     <Sheet open={open} onClose={onClose} title="Hoy llevate">
       {meals.length === 0 && (
-        <p className="rounded-2xl border border-dashed border-line-strong px-4 py-4 text-[14px] leading-relaxed text-ink-faint">
+        <p className="text-[15px] leading-relaxed text-ink-faint">
           Hoy no hay comida para llevar: el día está armado para comer en casa.
         </p>
       )}
@@ -48,12 +48,12 @@ export function CarryList({
       ) : (
         <>
           {meals.length > 0 && (
-            <ul className="space-y-1">
+            <ul>
               {meals.map((item) => (
-                <li key={item.id} className="py-1.5">
-                  <p className="text-[17px] leading-snug text-ink">{item.label}</p>
+                <li key={item.id} className="border-b border-line py-3">
+                  <p className="v-serif text-[19px] leading-snug text-ink">{item.label}</p>
                   {item.hint && (
-                    <p className="text-[13px] text-ink-faint">{item.hint}</p>
+                    <p className="v-label-sm mt-1 text-ink-faint">{item.hint}</p>
                   )}
                 </li>
               ))}
@@ -61,9 +61,9 @@ export function CarryList({
           )}
 
           {gear.length > 0 && (
-            <ul className="mt-5 space-y-1 border-t border-line pt-4">
+            <ul className="mt-6">
               {gear.map((item) => (
-                <li key={item.id} className="py-1 text-[16px] text-ink-soft">
+                <li key={item.id} className="border-b border-line py-2.5 text-[16px] text-ink-soft">
                   {item.label}
                 </li>
               ))}
@@ -74,7 +74,7 @@ export function CarryList({
 
       <button
         onClick={() => setMarking((m) => !m)}
-        className="mt-7 w-full py-3 text-[14px] font-medium text-ink-faint active:text-ink"
+        className="v-label-sm mt-8 w-full py-3 text-ink-faint active:text-ink"
       >
         {marking ? 'Sólo mirar la lista' : 'Ir marcando mientras cargo'}
       </button>

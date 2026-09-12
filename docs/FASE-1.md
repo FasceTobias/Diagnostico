@@ -3,9 +3,9 @@
 > Documento de arquitectura, UX y diseño.
 > **Vianda** es un nombre temporal, no una marca definitiva.
 >
-> *Revisión 5 — biblioteca y tono. La app deja de sonar a nutricionista:
-> entran fideos, pizza, barras, galletitas y chocolate, y aparece `frequency`
-> para rotar sin moralizar.*
+> *Revisión 6 — segunda versión visual. Se van las tarjetas, entra una serif
+> con carácter y cada pantalla toma una forma propia: HOY es una línea de
+> tiempo, COMIDAS un índice y COMPRAS un ticket.*
 
 ---
 
@@ -53,6 +53,13 @@ Todo lo demás es soporte de esas tres preguntas.
 
 - **Tono:** cálido, sobrio, doméstico. Nada de blanco clínico ni azul hospital.
 - **Paleta base:** hueso / tinta cálida / arcilla como acento único.
+- **Dos voces:** *Fraunces* (serif variable) para el contenido — los nombres de
+  las comidas, los títulos — e *Inter* para datos, rótulos y cifras. Autoalojadas.
+- **El separador es una regla, no una tarjeta.** El relieve dejó de ser el
+  recurso principal: lo que ordena es el espacio, la regla fina y el contraste
+  tipográfico.
+- **Una forma por pantalla:** HOY es una línea de tiempo, SEMANA un pliego,
+  COMIDAS un índice, COMPRAS un ticket. Mismo lenguaje, distinta estructura.
 - **Nada de:** gradientes exagerados, íconos por todos lados, cards repetidas sin jerarquía.
 - **Nada de iniciales dentro de círculos:** una letra en un círculo se lee como el avatar de una
   persona, y esto es comida. Un solo ícono de línea por momento del día, sin caja. Cuando haya

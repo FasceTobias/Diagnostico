@@ -117,6 +117,18 @@ Bundle: ~84 kB gzip.
 Todo vive en `src/index.css` como tokens. Cálido y sobrio: hueso, tinta cálida
 y arcilla como único acento. Modo oscuro automático según el sistema.
 
+**Dos voces tipográficas**, ambas autoalojadas (`scripts/fetch-fonts.mjs`), así
+que la app abre sin red y sin pedirle nada a un tercero:
+
+- **Fraunces** — serif variable, para los nombres de las comidas y los títulos.
+  Es la identidad del producto.
+- **Inter** — para datos, rótulos y cifras tabulares.
+
+**Menos cajas, más página.** El separador de la casa es una regla de 1px, no una
+tarjeta redondeada. El día se lee como una línea de tiempo, la biblioteca como
+un índice y la compra como un ticket: cada pantalla tiene su forma, con el mismo
+lenguaje.
+
 Dos reglas que se respetan en toda la app:
 
 1. **Ningún estado se comunica sólo con color.** Siempre hay además forma,

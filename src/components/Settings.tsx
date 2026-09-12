@@ -3,7 +3,7 @@ import type { DayContext, InsulinSettings, Slot } from '../lib/types'
 import { CONTEXT_NOTE, SLOT_LABEL, SLOT_ORDER } from '../lib/types'
 import { CARB_UNIT } from '../lib/format'
 import { Sheet } from './Sheet'
-import { ContextSwitch } from './ui'
+import { ContextSwitch, SectionLabel } from './ui'
 import { CarbCalculator } from './CarbCalculator'
 
 /* Configuración: lo que no se toca todos los días.
@@ -45,7 +45,7 @@ export function SettingsSheet({
       <Sheet open={open} onClose={onClose} title="Configuración">
         {/* El contexto ya no vive en HOY: es una decisión ocasional, no algo
             que haya que estar configurando todos los días. */}
-        <h3 className="v-eyebrow text-ink-faint">Cómo viene el día de hoy</h3>
+        <SectionLabel>Cómo viene el día de hoy</SectionLabel>
         <div className="mt-3">
           <ContextSwitch value={context} onChange={onContext} />
           <p className="mt-2 px-1 text-[12px] leading-relaxed text-ink-faint">
@@ -53,32 +53,32 @@ export function SettingsSheet({
           </p>
         </div>
 
-        <h3 className="v-eyebrow mt-9 text-ink-faint">Horarios</h3>
+        <SectionLabel className="mt-10">Horarios</SectionLabel>
         <p className="mt-1.5 text-[14px] leading-relaxed text-ink-soft">
           Son aproximados y se pueden mover cuando quieras. La app los usa para
           saber qué viene ahora, no para apurarte.
         </p>
-        <div className="mt-3 divide-y divide-line">
+        <div className="border-t border-line">
           {SLOT_ORDER.map((slot) => (
-            <label key={slot} className="flex items-center justify-between gap-4 py-3">
+            <label key={slot} className="flex items-center justify-between gap-4 border-b border-line py-3">
               <span className="text-[15px] text-ink">{SLOT_LABEL[slot]}</span>
               <input
                 type="time"
                 value={times[slot]}
                 onChange={(e) => onTime(slot, e.target.value)}
-                className="rounded-xl border border-line bg-surface px-3 py-2 text-[15px] text-ink v-tnum outline-none focus:border-clay"
+                className="rounded-[8px] border border-line bg-transparent px-3 py-2 text-[15px] text-ink v-tnum outline-none focus:border-clay"
               />
             </label>
           ))}
         </div>
 
         {/* ---- Insulina: existe, pero no domina ---- */}
-        <h3 className="v-eyebrow mt-9 text-ink-faint">Relación insulina / carbohidratos</h3>
+        <SectionLabel className="mt-10">Relación insulina / carbohidratos</SectionLabel>
 
         <button
           onClick={() => onInsulin({ ...insulin, enabled: !insulin.enabled })}
           aria-pressed={insulin.enabled}
-          className="mt-3 flex w-full items-center gap-3.5 rounded-card border border-line px-4 py-3.5 text-left active:bg-surface-2"
+          className="mt-4 flex w-full items-center gap-3.5 border-b border-line py-4 text-left active:bg-surface-2"
         >
           <span
             className={`relative h-6 w-10 shrink-0 rounded-pill transition-colors duration-200 ${
@@ -103,7 +103,7 @@ export function SettingsSheet({
 
         {insulin.enabled && general && (
           <div className="v-rise mt-3">
-            <div className="rounded-card bg-surface px-4 py-5 shadow-sm">
+            <div className="border-b border-line py-5">
               <div className="flex flex-wrap items-center gap-x-2 gap-y-2 text-[17px] text-ink">
                 <span className="font-semibold v-tnum">1 unidad</span>
                 <span className="text-ink-soft">por</span>
@@ -123,7 +123,7 @@ export function SettingsSheet({
 
             <button
               onClick={() => setCalc(true)}
-              className="mt-2 min-h-[48px] w-full rounded-card border border-line bg-surface text-[15px] font-semibold text-ink active:scale-[0.98]"
+              className="mt-4 min-h-[48px] w-full rounded-[10px] border border-ink/80 text-[15px] font-semibold text-ink active:scale-[0.98]"
             >
               Abrir la calculadora
             </button>
@@ -133,7 +133,7 @@ export function SettingsSheet({
               día o por franja horaria. Por ahora se usa una sola para todo.
             </p>
 
-            <p className="mt-3 rounded-2xl border border-line px-4 py-3.5 text-[13px] leading-relaxed text-ink-soft">
+            <p className="mt-4 text-[13px] leading-relaxed text-ink-soft">
               Vianda guarda este número y hace la división cuando se la pedís.
               Nunca calcula ni sugiere dosis por su cuenta, y no reemplaza lo que
               te indicó tu médico.

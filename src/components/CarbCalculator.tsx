@@ -45,14 +45,14 @@ export function CarbCalculator({
     <Sheet open={open} onClose={onClose} title="Calculadora de referencia">
       {/* 1 — los carbohidratos */}
       <label className="block">
-        <span className="v-eyebrow text-ink-faint">Carbohidratos de la comida</span>
+        <span className="v-label text-ink-faint">Carbohidratos de la comida</span>
         <span className="mt-2 flex items-baseline gap-2">
           <input
             inputMode="decimal"
             value={carbs}
             onChange={(e) => setCarbs(e.target.value)}
             placeholder="0"
-            className="w-28 rounded-xl border border-line bg-surface px-3 py-2.5 text-[22px] v-display text-ink v-tnum outline-none focus:border-clay"
+            className="w-28 border-b-[1.5px] border-line-strong bg-transparent pb-2 text-[30px] v-serif text-ink v-tnum outline-none focus:border-clay"
           />
           <span className="text-[16px] text-ink-soft">{CARB_UNIT}</span>
         </span>
@@ -65,7 +65,7 @@ export function CarbCalculator({
       )}
 
       {meal && !meal.carbsVerified && (
-        <p className="mt-3 rounded-2xl border border-dashed border-line-strong px-4 py-3 text-[13px] leading-relaxed text-ink-faint">
+        <p className="mt-4 text-[13px] leading-relaxed text-ink-faint">
           <span className="font-semibold text-ink-soft">
             Estos carbohidratos no están verificados.
           </span>{' '}
@@ -77,7 +77,7 @@ export function CarbCalculator({
       {/* 2 — tu relación */}
       <div className="mt-7 flex items-end justify-between gap-4">
         <div>
-          <p className="v-eyebrow text-ink-faint">Tu relación configurada</p>
+          <p className="v-label text-ink-faint">Tu relación configurada</p>
           <p className="mt-1.5 text-[17px] font-semibold text-ink v-tnum">
             {ratio ? `1 u por ${ratio.gramsPerUnit} ${CARB_UNIT}` : 'Sin configurar'}
           </p>
@@ -85,7 +85,7 @@ export function CarbCalculator({
         {onEditRatio && (
           <button
             onClick={onEditRatio}
-            className="shrink-0 rounded-pill border border-line px-4 py-2 text-[14px] font-semibold text-ink-soft active:bg-surface-2"
+            className="v-label-sm shrink-0 border-b border-clay pb-0.5 text-ink-soft active:text-ink"
           >
             Editar
           </button>
@@ -93,11 +93,11 @@ export function CarbCalculator({
       </div>
 
       {/* 3 — la cuenta */}
-      <div className="mt-4 rounded-card bg-surface px-5 py-5 shadow-sm">
-        <p className="v-eyebrow text-ink-faint">Resultado matemático</p>
+      <div className="mt-5 border-y border-line py-5">
+        <p className="v-label text-ink-faint">Resultado matemático</p>
         {result ? (
           <>
-            <p className="mt-2 text-[40px] leading-none v-display text-ink v-tnum">
+            <p className="v-serif-lg mt-2 text-[46px] text-ink v-tnum">
               {formatUnits(result.rounded)}
               <span className="ml-2 text-[18px] font-normal text-ink-soft">
                 {result.rounded === 1 ? 'unidad' : 'unidades'}
@@ -115,7 +115,7 @@ export function CarbCalculator({
       </div>
 
       {/* 4 — la decisión */}
-      <p className="mt-4 rounded-2xl border border-line px-4 py-4 text-[13px] leading-relaxed text-ink-soft">
+      <p className="mt-5 text-[13px] leading-relaxed text-ink-soft">
         Esto es una división, no una indicación. No mira tu glucemia, ni lo que
         hiciste hoy, ni nada más. <span className="text-ink">La dosis la decidís vos</span>,
         con lo que te indicó tu médico.

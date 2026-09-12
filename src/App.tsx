@@ -5,7 +5,7 @@ import { Semana } from './screens/Semana'
 import { Comidas } from './screens/Comidas'
 import { Compras } from './screens/Compras'
 import { Focus } from './screens/Focus'
-import { Conceptos } from './screens/Conceptos'
+import { Direcciones } from './screens/Direcciones'
 import { BottomNav, type Tab } from './components/BottomNav'
 import { AssistantBar } from './components/Assistant'
 import { ResolveSheet, type ResolveStart } from './components/ResolveSheet'
@@ -29,8 +29,8 @@ export default function App() {
   const [resolve, setResolve] = useState<ResolveStart | null>(null)
   const [hash, setHash] = useHash()
 
-  if (hash === '#/conceptos') {
-    return <Conceptos app={app} onBack={() => setHash('')} />
+  if (hash === '#/direcciones' || hash === '#/conceptos') {
+    return <Direcciones app={app} onBack={() => setHash('')} />
   }
 
   if (app.focus) {
@@ -46,7 +46,7 @@ export default function App() {
       {tab === 'comidas' && <Comidas app={app} />}
       {tab === 'compras' && <Compras app={app} />}
 
-      <AssistantBar app={app} bottom={74} onResolve={setResolve} />
+      <AssistantBar app={app} bottom={68} onResolve={setResolve} />
       <BottomNav tab={tab} onTab={setTab} />
 
       <ResolveSheet

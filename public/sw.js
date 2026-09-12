@@ -1,8 +1,16 @@
 /* Service worker mínimo: cachea el shell para que la app abra al instante
    y siga funcionando sin señal. Nada de push ni sincronización todavía. */
 
-const CACHE = 'vianda-v1'
-const SHELL = ['/', '/index.html', '/manifest.webmanifest', '/icons/icon.svg']
+const CACHE = 'vianda-v2'
+const SHELL = [
+  '/',
+  '/index.html',
+  '/manifest.webmanifest',
+  '/icons/icon.svg',
+  // Las tipografías van en el shell: sin ellas la app abre con otra cara.
+  '/fonts/fraunces-latin.woff2',
+  '/fonts/inter-latin.woff2',
+]
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)))

@@ -1,24 +1,21 @@
 import { useMemo } from 'react'
+import { LazyMotion, domAnimation, m } from 'motion/react'
 import type { Vianda } from '../lib/store'
 import { buildShoppingList } from '../lib/domain'
-import { CheckRow } from '../components/ui'
 
-/* COMPRAS — una compra práctica, no un inventario.
+/* COMPRAS — un ticket, no una lista de texto.
 
-   Las cantidades salen de sumar el menú de la semana y redondear a cómo se
-   compra de verdad: "12 huevos", no "23 huevos"; "1,5 kg de pollo", no
-   "1350 g". No busca precisión: busca que sirva parado en el súper.
+   La cantidad vive en su propia columna, en números tabulares y con peso
+   propio: parada en el súper lo que buscás es "1,5 kg", no la oración
+   entera. El sector encabeza con una regla gruesa y su propio conteo.
 
-   Acá marcar sí tiene sentido —es el único lugar donde tachar es el punto—
-   pero tampoco hace falta: la lista se lee igual. */
+   Marcar acá sí tiene sentido —es el único lugar donde tachar es el
+   punto— pero la lista se lee igual sin tocar nada. */
 
 export function Compras({ app }: { app: Vianda }) {
   const { week, mealById } = app
 
-  const groups = useMemo(
-    () => buildShoppingList(week, app.meals),
-    [week, app.meals],
-  )
+  const groups = useMemo(() => buildShoppingList(week, app.meals), [week, app.meals])
 
   /* Preparaciones compartidas: si varias comidas llevan pollo, se dice una vez. */
   const prep = useMemo(() => {
@@ -39,66 +36,111 @@ export function Compras({ app }: { app: Vianda }) {
   }, [week, mealById])
 
   const total = groups.reduce((n, g) => n + g.lines.length, 0)
+  const done = groups.reduce(
+    (n, g) => n + g.lines.filter((l) => app.isBought(l.id)).length,
+    0,
+  )
 
   return (
-    <div className="mx-auto max-w-md px-4 pb-40">
-      <header className="v-safe-top pt-6 pb-5">
-        <h1 className="text-[30px] leading-none v-display text-ink">Compras</h1>
-        <p className="mt-2 text-[15px] text-ink-soft">
-          {total} cosas para la semana, salidas del menú.
-        </p>
-      </header>
+    <LazyMotion features={domAnimation}>
+      <div className="mx-auto max-w-md px-6 pb-32">
+        <header className="v-safe-top pt-8 pb-7">
+          <h1 className="v-serif-lg text-[38px] text-ink">Compras</h1>
+          <p className="v-label-sm mt-3 text-ink-faint">
+            {total} cosas para la semana · {done} en el changuito
+          </p>
+        </header>
 
-      {groups.map(({ aisle, lines }) => (
-        <section key={aisle} className="mb-6">
-          <h2 className="v-eyebrow mb-1 px-1 text-ink-faint">{aisle}</h2>
-          <div className="-mx-1">
-            {lines.map((line) => (
-              <CheckRow
-                key={line.id}
-                label={line.text}
-                done={app.isBought(line.id)}
-                onToggle={() => app.toggleBought(line.id)}
-              />
-            ))}
-          </div>
-        </section>
-      ))}
-
-      {total === 0 && (
-        <p className="rounded-card border border-dashed border-line-strong px-5 py-8 text-center text-[15px] text-ink-faint">
-          No hay nada que comprar todavía.
-        </p>
-      )}
-
-      <p className="px-1 text-[12px] leading-relaxed text-ink-faint">
-        Cantidades aproximadas, redondeadas a cómo se compra. Lo que se come
-        afuera no entra, y lo que siempre tenés en casa —sal, aceite, caldo—
-        tampoco.
-      </p>
-
-      <h2 className="v-eyebrow mt-10 mb-1 px-1 text-ink-faint">Para preparar esta semana</h2>
-      <p className="mb-3 px-1 text-[13px] leading-relaxed text-ink-faint">
-        Cocinar una vez y que rinda varios días.
-      </p>
-
-      <ul className="space-y-2">
-        {prep.map(({ ingredient, names }) => (
-          <li key={ingredient} className="rounded-card bg-surface px-4 py-3.5 shadow-sm">
-            <p className="text-[16px] font-medium text-ink first-letter:uppercase">
-              {ingredient}
-              {names.length > 1 && (
-                <span className="ml-2 text-[13px] font-normal text-clay">
-                  {names.length} comidas
+        {groups.map((group, gi) => {
+          const gDone = group.lines.filter((l) => app.isBought(l.id)).length
+          return (
+            <section key={group.aisle} className="mb-9">
+              <div className="flex items-baseline justify-between border-t-[1.5px] border-ink pt-2.5 pb-1">
+                <h2 className="v-serif text-[19px] text-ink first-letter:uppercase">
+                  {group.aisle}
+                </h2>
+                <span className="v-label-sm text-ink-faint v-tnum">
+                  {gDone}/{group.lines.length}
                 </span>
-              )}
-            </p>
-            <p className="mt-1 text-[13px] leading-relaxed text-ink-faint">
-              {names.join(' · ')}
-            </p>
-          </li>
-        ))}
-      </ul>
-    </div>
+              </div>
+
+              {group.lines.map((line, li) => {
+                const bought = app.isBought(line.id)
+                return (
+                  <m.button
+                    key={line.id}
+                    onClick={() => app.toggleBought(line.id)}
+                    aria-pressed={bought}
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.012 * (gi * 6 + li) }}
+                    className="flex w-full items-baseline gap-4 border-b border-line py-3 text-left active:bg-surface-2"
+                  >
+                    <span
+                      className={`flex w-[86px] shrink-0 items-baseline gap-1 transition-colors ${
+                        bought ? 'text-ink-faint' : 'text-ink'
+                      }`}
+                    >
+                      <span className="text-[18px] font-medium v-tnum">{line.value}</span>
+                      {line.unit && (
+                        <span className="v-label-sm text-ink-faint">{line.unit}</span>
+                      )}
+                    </span>
+                    <span
+                      className={`min-w-0 flex-1 text-[16px] transition-colors ${
+                        bought ? 'text-ink-faint line-through decoration-1' : 'text-ink-soft'
+                      }`}
+                    >
+                      {line.label}
+                    </span>
+                    <span
+                      aria-hidden
+                      className={`mt-1 size-[7px] shrink-0 rounded-full transition-colors ${
+                        bought ? 'bg-clay' : 'bg-line-strong'
+                      }`}
+                    />
+                  </m.button>
+                )
+              })}
+            </section>
+          )
+        })}
+
+        {total === 0 && (
+          <p className="border-y border-line py-10 text-center text-[16px] text-ink-faint">
+            No hay nada que comprar todavía.
+          </p>
+        )}
+
+        <p className="text-[13px] leading-relaxed text-ink-faint">
+          Cantidades aproximadas, redondeadas a cómo se compra. Lo que se come
+          afuera no entra, y lo que siempre tenés en casa —sal, aceite, caldo—
+          tampoco.
+        </p>
+
+        <section className="mt-12">
+          <div className="border-t-[1.5px] border-ink pt-2.5 pb-1">
+            <h2 className="v-serif text-[19px] text-ink">Para preparar esta semana</h2>
+          </div>
+          <p className="v-label-sm mt-2 mb-4 text-ink-faint">
+            Cocinar una vez y que rinda varios días
+          </p>
+
+          {prep.map(({ ingredient, names }) => (
+            <div key={ingredient} className="border-b border-line py-3.5">
+              <p className="v-serif text-[18px] text-ink first-letter:uppercase">
+                {ingredient}
+                {names.length > 1 && (
+                  <span className="v-label-sm ml-2.5 text-clay">{names.length} comidas</span>
+                )}
+              </p>
+              <p className="mt-1 text-[14px] leading-relaxed text-ink-faint">
+                {names.join(' · ')}
+              </p>
+            </div>
+          ))}
+        </section>
+      </div>
+    </LazyMotion>
   )
 }

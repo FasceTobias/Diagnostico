@@ -15,7 +15,7 @@ import type {
 } from './types'
 import { AISLES, OPTIONAL_SLOTS, SLOT_CATEGORY, SLOT_ORDER, VENUES } from './types'
 import { addDays, isoDate, minutesOf, nowMinutes } from './format'
-import { foodOf, shoppingText } from './foods'
+import { foodOf, shoppingParts } from './foods'
 
 /* Horarios por defecto de la rutina. Son editables: salen del perfil,
    no están clavados en la UI. */
@@ -571,7 +571,12 @@ export const resolveNow = (
 export interface ShoppingLine {
   id: string
   item: string
-  text: string
+  /** "12" · "1,5" · "1" */
+  value: string
+  /** "" · "kg" · "paquete" */
+  unit: string
+  /** "huevos" · "pollo" · "pan" */
+  label: string
   aisle: Aisle
   /** De qué comidas salió, para saber por qué está en la lista */
   fromMeals: string[]
@@ -616,7 +621,7 @@ export const buildShoppingList = (week: DayPlan[], meals: Meal[]): ShoppingGroup
     const line: ShoppingLine = {
       id: key,
       item: acc.item,
-      text: shoppingText(acc.item, acc.qty, acc.unit),
+      ...shoppingParts(acc.item, acc.qty, acc.unit),
       aisle,
       fromMeals: [...acc.from],
     }
