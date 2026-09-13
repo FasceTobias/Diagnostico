@@ -81,6 +81,12 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 1, favorite: true, tested: true, rating: 5,
     notes: 'Se deja lista la noche anterior en el frasco. Aguanta bien hasta el mediodía.',
     prepSteps: ['Dejar la avena en remojo en el frasco', 'Cortar banana'],
+    steps: [
+      { text: 'Mezclar la avena con el yogur y la leche en el frasco', minutes: 3 },
+      { text: 'Sumar la canela y revolver bien', minutes: 1 },
+      { text: 'Tapar y dejar en la heladera toda la noche' },
+      { text: 'A la mañana, sumar la banana cortada y las nueces', minutes: 2 },
+    ],
   }),
   demo({
     id: 'm-sandwich',
@@ -96,6 +102,12 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 1, favorite: true, tested: true, rating: 5,
     notes: 'La palta, a último momento o con limón.',
     prepSteps: ['Armar el sándwich', 'Hervir huevos'],
+    steps: [
+      { text: 'Hervir los huevos desde que rompe el hervor', minutes: 8 },
+      { text: 'Tostar el pan y cortar el tomate', minutes: 2 },
+      { text: 'Armar con el queso y el huevo en rodajas', minutes: 2 },
+      { text: 'La palta, recién al momento de comer o con unas gotas de limón' },
+    ],
   }),
   demo({
     id: 'm-budincitos',
@@ -112,6 +124,12 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 2, favorite: false, tested: true, rating: 4,
     notes: 'Rinden dos días y se congelan bien.',
     prepSteps: ['Hornear los budincitos', 'Porcionar en tuppers'],
+    steps: [
+      { text: 'Precalentar el horno a 180°', minutes: 10 },
+      { text: 'Batir los huevos con el queso, la espinaca picada y la harina', minutes: 5 },
+      { text: 'Repartir en moldecitos hasta tres cuartos', minutes: 2 },
+      { text: 'Hornear hasta que estén firmes y dorados', minutes: 20 },
+    ],
   }),
   demo({
     id: 'm-tortilla',
@@ -127,6 +145,12 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 2, favorite: false, tested: true, rating: 4,
     notes: 'Se come fría sin problema.',
     prepSteps: ['Hacer la tortilla de papa', 'Porcionar en tuppers'],
+    steps: [
+      { text: 'Cortar la papa en rodajas finas y la cebolla en pluma', minutes: 8 },
+      { text: 'Freír a fuego bajo hasta que la papa esté blanda', minutes: 12 },
+      { text: 'Mezclar con los huevos batidos y salar', minutes: 2 },
+      { text: 'Cuajar en la sartén, dar vuelta con un plato y terminar', minutes: 8 },
+    ],
   }),
   demo({
     id: 'm-tostadas-huevo',
@@ -141,6 +165,12 @@ export const DEMO_MEALS: Meal[] = [
     prepMinutes: 10, satiety: 'potente',
     portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
     difficulty: 1, favorite: true, tested: true, rating: 5,
+    steps: [
+      { text: 'Batir los huevos con una pizca de sal', minutes: 1 },
+      { text: 'Revolver a fuego bajo hasta que estén cremosos', minutes: 5 },
+      { text: 'Tostar el pan y cortar el tomate', minutes: 3 },
+      { text: 'Servir el huevo sobre las tostadas con el queso', minutes: 1 },
+    ],
   }),
   demo({
     id: 'm-yogur-granola',
@@ -203,6 +233,11 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 1, favorite: false, tested: true, rating: 4,
     notes: 'Casi sin carbohidratos. Sirve cuando faltan muchas horas para comer.',
     prepSteps: ['Hervir huevos'],
+    steps: [
+      { text: 'Hervir los huevos desde que rompe el hervor', minutes: 10 },
+      { text: 'Pasarlos por agua fría y pelarlos', minutes: 2 },
+      { text: 'Cortar el queso en cubos y guardar todo junto', minutes: 2 },
+    ],
   }),
   demo({
     id: 'm-mini-sandwich',
@@ -217,6 +252,10 @@ export const DEMO_MEALS: Meal[] = [
     portable: true, needsCold: true, needsReheat: false, makeNightBefore: true, freezable: false,
     difficulty: 1, favorite: false, tested: true, rating: 4,
     prepSteps: ['Armar el sándwich chico'],
+    steps: [
+      { text: 'Tostar el pan', minutes: 3 },
+      { text: 'Armar con el queso y el jamón', minutes: 2 },
+    ],
   }),
 
   /* ---- Almuerzo ---- */
@@ -233,6 +272,12 @@ export const DEMO_MEALS: Meal[] = [
     portable: true, needsCold: true, needsReheat: true, makeNightBefore: true, freezable: true,
     difficulty: 2, favorite: true, tested: true, rating: 5,
     prepSteps: ['Cocinar pollo', 'Hacer arroz', 'Armar el tupper del almuerzo'],
+    steps: [
+      { text: 'Precalentar el horno a 200°', minutes: 10 },
+      { text: 'Salpimentar el pollo y hornear hasta que esté dorado', minutes: 25 },
+      { text: 'Mientras tanto, hervir el arroz', minutes: 15 },
+      { text: 'Cortar el tomate y la lechuga, y armar el tupper', minutes: 5 },
+    ],
   }),
   demo({
     id: 'm-wrap-pollo',
@@ -248,6 +293,12 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 1, favorite: true, tested: true, rating: 4,
     notes: 'Envolver en papel manteca para que no se abra en la mochila.',
     prepSteps: ['Cocinar pollo', 'Armar el rollo'],
+    steps: [
+      { text: 'Cortar el pollo ya cocido en tiras', minutes: 3 },
+      { text: 'Rallar la zanahoria y cortar el tomate y la lechuga', minutes: 5 },
+      { text: 'Untar la tortilla con el yogur y repartir el relleno', minutes: 3 },
+      { text: 'Envolver apretado en papel manteca', minutes: 2 },
+    ],
   }),
   demo({
     id: 'm-lentejas',
@@ -263,6 +314,12 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 1, favorite: false, tested: true, rating: 4,
     notes: 'Se come fría. Muy buena para días de mucho movimiento.',
     prepSteps: ['Hervir huevos', 'Armar el tupper del almuerzo'],
+    steps: [
+      { text: 'Hervir los huevos', minutes: 10 },
+      { text: 'Escurrir y enjuagar las lentejas', minutes: 2 },
+      { text: 'Cortar la cebolla morada, el tomate y la palta', minutes: 5 },
+      { text: 'Mezclar todo con jugo de limón y un chorrito de aceite', minutes: 3 },
+    ],
   }),
   demo({
     id: 'm-arroz-atun',
@@ -278,6 +335,12 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 1, favorite: false, tested: true, rating: 4,
     notes: 'Se come frío. Sale rápido si el arroz ya está hecho.',
     prepSteps: ['Hacer arroz', 'Hervir huevos', 'Armar el tupper del almuerzo'],
+    steps: [
+      { text: 'Hervir el arroz y dejarlo enfriar', minutes: 15 },
+      { text: 'Hervir el huevo', minutes: 10 },
+      { text: 'Escurrir el atún y el choclo, cortar el morrón', minutes: 4 },
+      { text: 'Mezclar todo con la mayonesa', minutes: 2 },
+    ],
   }),
 
   /* ---- Merienda ----
@@ -309,6 +372,12 @@ export const DEMO_MEALS: Meal[] = [
     portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
     difficulty: 1, favorite: true, tested: true, rating: 5,
     notes: 'Para cuando la cena va a ser tarde.',
+    steps: [
+      { text: 'Saltear la espinaca hasta que reduzca', minutes: 3 },
+      { text: 'Batir los huevos y volcarlos en la sartén', minutes: 2 },
+      { text: 'Sumar el queso y doblar el omelette cuando cuaje', minutes: 5 },
+      { text: 'Tostar el pan', minutes: 2 },
+    ],
   }),
   demo({
     id: 'm-sandwich-merienda',
@@ -324,6 +393,11 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 1, favorite: false, tested: true, rating: 4,
     notes: 'Merienda de verdad para los días en la calle.',
     prepSteps: ['Hervir huevos', 'Armar el sándwich de la merienda'],
+    steps: [
+      { text: 'Hervir el huevo', minutes: 10 },
+      { text: 'Cortarlo en rodajas junto con el tomate', minutes: 2 },
+      { text: 'Armar con el queso y un poco de orégano', minutes: 2 },
+    ],
   }),
   demo({
     id: 'm-yogur-completo',
@@ -354,6 +428,12 @@ export const DEMO_MEALS: Meal[] = [
     prepMinutes: 35, satiety: 'potente',
     portable: false, needsCold: false, needsReheat: true, makeNightBefore: false, freezable: true,
     difficulty: 2, favorite: false, tested: true, rating: 4,
+    steps: [
+      { text: 'Precalentar el horno a 200°', minutes: 10 },
+      { text: 'Pelar y cortar la calabaza en cubos', minutes: 5 },
+      { text: 'Hornear la milanesa y la calabaza juntas', minutes: 25 },
+      { text: 'Pisar la calabaza con un chorrito de aceite', minutes: 3 },
+    ],
   }),
   demo({
     id: 'm-revuelto',
@@ -368,6 +448,11 @@ export const DEMO_MEALS: Meal[] = [
     portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
     difficulty: 1, favorite: false, tested: true, rating: 4,
     notes: 'Cena liviana para cuando se come tarde.',
+    steps: [
+      { text: 'Cortar el zapallito en cubos y la cebolla fina', minutes: 5 },
+      { text: 'Saltearlos hasta que estén blandos', minutes: 7 },
+      { text: 'Sumar los huevos batidos y revolver hasta que cuajen', minutes: 3 },
+    ],
   }),
   demo({
     id: 'm-sopa-calabaza',
@@ -381,6 +466,12 @@ export const DEMO_MEALS: Meal[] = [
     prepMinutes: 30, satiety: 'normal',
     portable: false, needsCold: false, needsReheat: true, makeNightBefore: false, freezable: true,
     difficulty: 1, favorite: false, tested: true, rating: 3,
+    steps: [
+      { text: 'Cortar la calabaza y la cebolla', minutes: 8 },
+      { text: 'Hervirlas en el caldo hasta que estén blandas', minutes: 18 },
+      { text: 'Procesar hasta que quede crema', minutes: 3 },
+      { text: 'Servir con el pan y el queso encima', minutes: 1 },
+    ],
   }),
 
   /* ================= LO QUE COMPRÁS AFUERA =================
@@ -740,6 +831,11 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 1, favorite: true, tested: true, rating: 5,
     notes: 'De lo que más carbohidratos tiene del día. Conviene mirarlo bien.',
     prepSteps: ['Hervir fideos', 'Armar el tupper del almuerzo'],
+    steps: [
+      { text: 'Calentar la salsa a fuego bajo', minutes: 8 },
+      { text: 'Hervir los fideos según el paquete', minutes: 10 },
+      { text: 'Escurrir, mezclar con la salsa y sumar el queso', minutes: 2 },
+    ],
   }),
   demo({
     id: 'm-tarta-jamon',
@@ -755,6 +851,12 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 1, favorite: false, tested: true, rating: 4,
     notes: 'Se come fría y rinde dos días.',
     prepSteps: ['Hornear la tarta', 'Porcionar en tuppers'],
+    steps: [
+      { text: 'Precalentar el horno a 200°', minutes: 10 },
+      { text: 'Batir los huevos y mezclarlos con el jamón y el queso', minutes: 5 },
+      { text: 'Volcar sobre la masa y cubrir con la otra tapa', minutes: 3 },
+      { text: 'Hornear hasta que esté dorada', minutes: 25 },
+    ],
   }),
   demo({
     id: 'm-hamburguesa',
@@ -769,6 +871,12 @@ export const DEMO_MEALS: Meal[] = [
     prepMinutes: 20, satiety: 'potente',
     portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
     difficulty: 1, favorite: true, tested: true, rating: 5,
+    steps: [
+      { text: 'Armar los medallones y salarlos', minutes: 5 },
+      { text: 'Cocinarlos a fuego fuerte, cuatro minutos de cada lado', minutes: 8 },
+      { text: 'Sumar el queso arriba y tapar hasta que se derrita', minutes: 2 },
+      { text: 'Tostar el pan y armar con el tomate y la lechuga', minutes: 4 },
+    ],
   }),
 
   /* ---- Cena ---- */
@@ -786,6 +894,12 @@ export const DEMO_MEALS: Meal[] = [
     portable: false, needsCold: false, needsReheat: true, makeNightBefore: false, freezable: false,
     difficulty: 1, favorite: true, tested: true, rating: 5,
     notes: 'Bastantes carbohidratos y muy variable según la masa.',
+    steps: [
+      { text: 'Precalentar el horno al máximo', minutes: 10 },
+      { text: 'Estirar la salsa sobre la masa', minutes: 3 },
+      { text: 'Cubrir con la muzzarella', minutes: 2 },
+      { text: 'Hornear hasta que la muzzarella burbujee', minutes: 12 },
+    ],
   }),
   demo({
     id: 'm-sandwich-caliente',
@@ -800,6 +914,11 @@ export const DEMO_MEALS: Meal[] = [
     portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
     difficulty: 1, favorite: false, tested: true, rating: 4,
     notes: 'Cena de las noches en que llegás tarde y no querés cocinar.',
+    steps: [
+      { text: 'Hacer los huevos a la plancha o revueltos', minutes: 5 },
+      { text: 'Armar el sándwich con el jamón y el queso', minutes: 2 },
+      { text: 'Tostarlo hasta que el queso se derrita', minutes: 4 },
+    ],
   }),
   demo({
     id: 'm-flan',
@@ -923,6 +1042,12 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 2, favorite: false, tested: true, rating: 5,
     notes: 'Se hacen la noche anterior y rinden dos días.',
     prepSteps: ['Hacer panqueques', 'Porcionar en tuppers'],
+    steps: [
+      { text: 'Batir la harina con los huevos y la leche hasta que no queden grumos', minutes: 5 },
+      { text: 'Dejar reposar la mezcla', minutes: 10 },
+      { text: 'Hacer los panqueques de a uno en sartén caliente', minutes: 12 },
+      { text: 'Rellenar con el queso untable y la mermelada', minutes: 3 },
+    ],
   }),
 
   /* ================= LO QUE SE COME UN MARTES =================
@@ -1190,6 +1315,11 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 1, favorite: true, tested: true, rating: 5,
     notes: 'Envuelto en papel manteca aguanta bien hasta media mañana.',
     prepSteps: ['Armar el tostado'],
+    steps: [
+      { text: 'Armar el tostado con el jamón y el queso', minutes: 2 },
+      { text: 'Tostarlo hasta que el queso se derrita', minutes: 4 },
+      { text: 'Envolverlo en papel manteca', minutes: 1 },
+    ],
   }),
   demo({
     id: 'd-tortilla-pan',
@@ -1206,6 +1336,11 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 1, favorite: false, tested: true, rating: 5,
     notes: 'Si quedó tortilla de la noche anterior, sale en dos minutos.',
     prepSteps: ['Armar el sándwich'],
+    steps: [
+      { text: 'Cortar una porción de la tortilla del día anterior', minutes: 2 },
+      { text: 'Tostar el pan', minutes: 3 },
+      { text: 'Armar el sándwich y envolverlo', minutes: 2 },
+    ],
   }),
   demo({
     id: 'd-medialunas',
@@ -1239,5 +1374,10 @@ export const DEMO_MEALS: Meal[] = [
     portable: true, needsCold: true, needsReheat: false, makeNightBefore: true, freezable: false,
     difficulty: 1, favorite: false, tested: true, rating: 4,
     prepSteps: ['Hervir huevos', 'Armar el sándwich'],
+    steps: [
+      { text: 'Usar un huevo duro de los que dejaste hechos', minutes: 1 },
+      { text: 'Cortarlo en rodajas junto con el tomate', minutes: 3 },
+      { text: 'Armar el sándwich con el queso y envolverlo', minutes: 3 },
+    ],
   }),
 ]

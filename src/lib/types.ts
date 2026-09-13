@@ -149,6 +149,14 @@ export type Unit =
   | 'pote'
   | 'lata'
 
+/* Un paso de preparación. Corto: la app no es un blog de cocina.
+   Los minutos son los de ese paso; pueden solaparse con el anterior
+   (el horno calienta mientras cortás). */
+export interface Step {
+  text: string
+  minutes?: number
+}
+
 export interface Ingredient {
   /** Clave del catálogo de alimentos (foods.ts) */
   item: string
@@ -218,8 +226,12 @@ export interface Meal {
   tested: boolean
   rating?: number
   notes?: string
-  /** Tareas que genera la noche anterior. Se agrupan entre comidas. */
+  /** Tareas que genera la noche anterior. Se agrupan entre comidas.
+      No son la receta: son etiquetas de checklist. */
   prepSteps?: string[]
+  /** Cómo se hace, en tres a cinco pasos. Sólo donde hace falta: un
+      tostado o unas tostadas con queso untable no necesitan instrucciones. */
+  steps?: Step[]
 
   /* --- Opciones que se compran afuera ---
      Quedan FUERA de la rotación normal: el plan de la semana no puede

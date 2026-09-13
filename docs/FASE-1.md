@@ -3,9 +3,9 @@
 > Documento de arquitectura, UX y diseño.
 > **Vianda** es un nombre temporal, no una marca definitiva.
 >
-> *Revisión 8 — comer mejor no es comer fit. La base de la biblioteca pasa a
-> ser comida de un martes cualquiera, las bebidas entran como parte de la
-> comida y «Resolver ahora» suma algo dulce y tarde larga.*
+> *Revisión 9 — las comidas que se preparan traen pasos. Tres a cinco líneas
+> con el tiempo de cada una, dentro del detalle, sólo en las que lo
+> necesitan. Sigue sin ser una app de recetas.*
 
 ---
 
@@ -127,7 +127,7 @@ Vianda
 │   ├── El día (6 momentos, los dos snacks opcionales)
 │   ├── Mochila de hoy            → bottom sheet
 │   ├── Preparar para mañana      → bottom sheet (aparece de tarde/noche)
-│   ├── Detalle de comida         → bottom sheet (carbos, ingredientes, notas)
+│   ├── Detalle de comida         → bottom sheet (carbos, ingredientes, pasos, notas)
 │   ├── Cambiar comida            → bottom sheet "Reemplazos compatibles"
 │   └── Modo Foco                 → pantalla completa minimalista
 │
@@ -314,6 +314,21 @@ Para lo de góndola el carbohidrato no se estima: se lee. El modelo ya guarda
 marca, producto, tamaño de porción, porciones por envase, carbohidratos por
 porción y foto de la etiqueta. Mientras eso no esté cargado y validado, el dato
 sigue mostrándose como **sin verificar**; cuando se carga, el DEMO se cae solo.
+
+### Cómo se hace
+
+Las comidas que se cocinan traen pasos: entre tres y cinco líneas, con los
+minutos de cada una, dentro del detalle. No están en todas. Un tostado, unas
+tostadas con queso untable o una fruta no llevan instrucciones, y ponerle
+instrucciones a eso sería ruido.
+
+Los minutos son los de ese paso y **se solapan**: el horno calienta mientras
+cortás, así que no suman `prepMinutes`. `prepMinutes` sigue siendo el tiempo
+real que te lleva la comida, y los pasos nunca pueden pedir más que eso.
+
+Esto no convierte a Vianda en una app de recetas. No hay porciones escalables,
+ni fotos de proceso, ni variantes. Es lo mínimo para que una comida de la
+biblioteca se pueda hacer sin acordarse de nada.
 
 ## D bis 2. Lo que la app NO te pide
 

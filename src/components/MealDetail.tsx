@@ -130,6 +130,31 @@ export function MealDetail({ meal }: { meal: Meal }) {
         </>
       )}
 
+      {meal.steps && meal.steps.length > 0 && (
+        <>
+          <SectionLabel className="mt-8 mb-1" aside={`${meal.prepMinutes} min`}>
+            Cómo se hace
+          </SectionLabel>
+          {meal.steps.map((step, idx) => (
+            <div
+              key={step.text}
+              className="flex items-baseline gap-3 border-b border-line py-3"
+            >
+              <span className="v-label-sm w-4 shrink-0 text-clay v-tnum">{idx + 1}</span>
+              <p className="min-w-0 flex-1 text-[16px] leading-snug text-ink">{step.text}</p>
+              {step.minutes && (
+                <span className="v-label-sm shrink-0 text-ink-faint v-tnum">
+                  {step.minutes} min
+                </span>
+              )}
+            </div>
+          ))}
+          <p className="mt-2.5 text-[13px] leading-relaxed text-ink-faint">
+            Los tiempos se solapan: el horno calienta mientras cortás.
+          </p>
+        </>
+      )}
+
       {!meal.buyOutside && (
         <>
           <SectionLabel className="mt-8 mb-1">Datos</SectionLabel>

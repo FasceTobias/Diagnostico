@@ -113,6 +113,12 @@ create table meals (
   notes             text,
   prep_steps        text[] not null default '{}',     -- tareas que genera la noche anterior
 
+  -- Cómo se hace, en tres a cinco pasos. Sólo donde hace falta: un tostado
+  -- no necesita instrucciones. Cada paso es { text, minutes? } y los minutos
+  -- son los de ese paso, que puede solaparse con el anterior (el horno
+  -- calienta mientras cortás), así que no suman prep_minutes.
+  steps             jsonb not null default '[]'::jsonb,
+
   -- Opciones que se compran afuera. Quedan FUERA de la rotación del plan:
   -- el martes no puede decirte "comprá empanadas". Aparecen sólo desde
   -- «Resolver ahora».
