@@ -43,7 +43,7 @@ function OptionList({
         >
           <span className="min-w-0 flex-1">
             <span className="v-head block truncate text-[16px] text-ink">{meal.name}</span>
-            <MetaLine className="mt-1" parts={[meal.satiety, why]} />
+            <MetaLine className="mt-1" parts={[meal.satiety, meal.drink, why]} />
           </span>
           <CarbValue meal={meal} />
         </button>

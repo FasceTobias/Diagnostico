@@ -10,7 +10,15 @@ import {
   SLOT_VERB,
 } from '../lib/types'
 import type { Vianda } from '../lib/store'
-import { byVenue, compatibleReplacements, findNext, resolveNow } from '../lib/domain'
+import type { Preferences } from '../lib/types'
+import {
+  byVenue,
+  compatibleReplacements,
+  eventCombos,
+  findNext,
+  resolveNow,
+  sweetOptions,
+} from '../lib/domain'
 import { Sheet } from './Sheet'
 import { CarbValue, MetaLine, SectionLabel } from './ui'
 
@@ -36,6 +44,8 @@ type Step = 'reason' | 'slot' | 'context' | 'results'
 const REASONS: ResolveReason[] = [
   'sin-comida',
   'hambre',
+  'dulce',
+  'evento',
   'cambio-dia',
   'sin-preparar',
   'reemplazar',
@@ -44,10 +54,16 @@ const REASONS: ResolveReason[] = [
 const REASON_HINT: Record<ResolveReason, string> = {
   'sin-comida': 'Estás afuera sin nada encima',
   hambre: 'Comer algo ahora, fuera del plan',
+  dulce: 'Ganas de algo dulce, sin vueltas',
+  evento: 'Varias horas afuera sin una comida clara',
   'cambio-dia': 'Volvés más tarde, o ya no salís',
   'sin-preparar': 'Quedó sin hacer la noche anterior',
   reemplazar: 'Cambiar una comida del día',
 }
+
+/* Estas dos no preguntan por momento del día: las ganas de algo dulce y
+   una tarde larga no respetan el horario del almuerzo. */
+const SLOTLESS: ResolveReason[] = ['dulce', 'evento']
 
 const FILTERS: ResolveFilter[] = ['mucha-hambre', 'rapido', 'barato']
 
@@ -72,6 +88,7 @@ export function ResolveSheet({
 const firstStep = (start?: ResolveStart): Step => {
   if (!start?.reason) return 'reason'
   if (start.reason === 'cambio-dia') return 'context'
+  if (SLOTLESS.includes(start.reason)) return 'results'
   return start.slot ? 'results' : 'slot'
 }
 
@@ -97,6 +114,10 @@ function ResolveFlow({
   const pickReason = (r: ResolveReason) => {
     setReason(r)
     if (r === 'cambio-dia') return setStep('context')
+    if (SLOTLESS.includes(r)) {
+      setSlot(next?.planned.slot ?? null)
+      return setStep('results')
+    }
     // La comida que viene es la apuesta más probable, pero se puede cambiar.
     setSlot(next?.planned.slot ?? null)
     setStep('slot')
@@ -121,7 +142,7 @@ function ResolveFlow({
     setFilters((prev) => (prev.includes(f) ? prev.filter((x) => x !== f) : [...prev, f]))
 
   const back = () => {
-    if (step === 'results') return setStep('slot')
+    if (step === 'results' && reason && !SLOTLESS.includes(reason)) return setStep('slot')
     setStep('reason')
   }
 
@@ -132,13 +153,17 @@ function ResolveFlow({
         ? 'Cómo sigue el día'
         : step === 'slot'
           ? '¿Qué necesitás resolver?'
-          : !slot
-            ? 'Resolver ahora'
-            : reason === 'sin-comida'
-              ? `Estás en la calle y tenés que ${SLOT_VERB[slot]}`
-              : reason === 'reemplazar'
-                ? `Cambiar ${SLOT_LABEL[slot].toLowerCase()}`
-                : `Tenés que ${SLOT_VERB[slot]}`
+          : reason === 'dulce'
+            ? 'Algo dulce'
+            : reason === 'evento'
+              ? 'Para pasar la tarde'
+              : !slot
+                ? 'Resolver ahora'
+                : reason === 'sin-comida'
+                  ? `Estás en la calle y tenés que ${SLOT_VERB[slot]}`
+                  : reason === 'reemplazar'
+                    ? `Cambiar ${SLOT_LABEL[slot].toLowerCase()}`
+                    : `Tenés que ${SLOT_VERB[slot]}`
 
   return (
     <Sheet open onClose={close} title={title}>
@@ -233,7 +258,19 @@ function ResolveFlow({
       )}
 
       {/* 3 — Filtros arriba, resultados abajo */}
-      {step === 'results' && slot && (
+      {step === 'results' && (reason === 'dulce' || reason === 'evento') && (
+        <Extras
+          reason={reason}
+          filters={filters}
+          onToggleFilter={toggleFilter}
+          meals={app.meals}
+          prefs={app.prefs}
+          onPick={apply}
+          slotName={slot ? SLOT_LABEL[slot].toLowerCase() : 'la próxima comida'}
+        />
+      )}
+
+      {step === 'results' && slot && reason !== 'dulce' && reason !== 'evento' && (
         <Results
           slot={slot}
           reason={reason}
@@ -320,23 +357,7 @@ function Results({
 
   return (
     <>
-      <div className="v-no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 pb-1">
-        {FILTERS.map((f) => {
-          const on = filters.includes(f)
-          return (
-            <button
-              key={f}
-              onClick={() => onToggleFilter(f)}
-              aria-pressed={on}
-              className={`shrink-0 rounded-pill px-4 py-2 text-[14px] font-medium transition-colors ${
-                on ? 'bg-ink text-bg' : 'border border-line bg-surface text-ink-soft'
-              }`}
-            >
-              {RESOLVE_FILTER[f]}
-            </button>
-          )
-        })}
-      </div>
+      <Filters filters={filters} onToggle={onToggleFilter} />
 
       {buyFirst ? [venuesBlock, propiasBlock] : [propiasBlock, venuesBlock]}
 
@@ -352,6 +373,145 @@ function Results({
         dependen del tamaño y de quién lo hizo.
       </p>
     </>
+  )
+}
+
+/* ALGO DULCE y EVENTO no piden momento del día: van directo a opciones.
+   El evento responde con combinaciones, porque una tarde larga no se
+   resuelve con un alimento suelto. */
+function Extras({
+  reason,
+  filters,
+  onToggleFilter,
+  meals,
+  prefs,
+  onPick,
+  slotName,
+}: {
+  reason: 'dulce' | 'evento'
+  filters: ResolveFilter[]
+  onToggleFilter: (f: ResolveFilter) => void
+  meals: Meal[]
+  prefs: Preferences
+  onPick: (id: string) => void
+  slotName: string
+}) {
+  const sweet = reason === 'dulce' ? sweetOptions(meals, filters, prefs) : null
+  const combos = reason === 'evento' ? eventCombos(meals, prefs) : []
+
+  return (
+    <>
+      <p className="text-[15px] leading-relaxed text-ink-soft">
+        {reason === 'dulce'
+          ? 'Comer algo dulce es comer. Esto reemplaza ' + slotName + ', o va aparte.'
+          : 'Varias horas afuera se pasan mejor combinando algo que llene con algo dulce.'}
+      </p>
+
+      <Filters filters={filters} onToggle={onToggleFilter} />
+
+      {reason === 'evento' && (
+        <>
+          <SectionLabel className="mt-7">Combinaciones</SectionLabel>
+          <div className="mt-2 border-t border-line">
+            {combos.map((combo) => (
+              <div
+                key={combo.id}
+                className="flex items-center gap-3 border-b border-line px-1 py-3"
+              >
+                <span className="min-w-0 flex-1">
+                  <button
+                    onClick={() => onPick(combo.salado.id)}
+                    className="v-head block w-full truncate text-left text-[16px] text-ink"
+                  >
+                    {combo.salado.name}
+                  </button>
+                  <button
+                    onClick={() => onPick(combo.dulce.id)}
+                    className="v-head mt-0.5 block w-full truncate text-left text-[16px] text-ink"
+                  >
+                    + {combo.dulce.name}
+                  </button>
+                  <MetaLine
+                    className="mt-1"
+                    parts={[
+                      combo.salado.buyOutside || combo.dulce.buyOutside
+                        ? [combo.salado, combo.dulce]
+                            .filter((m) => m.buyOutside)
+                            .map((m) => m.venues?.[0])
+                            .filter((v, idx, all) => v && all.indexOf(v) === idx)
+                            .join(' y ')
+                        : 'de lo que tenés',
+                    ]}
+                  />
+                </span>
+                <span className="v-head shrink-0 text-[15px] text-ink v-tnum">
+                  ~{combo.carbs}
+                </span>
+              </div>
+            ))}
+          </div>
+          {combos.length === 0 && (
+            <p className="mt-4 text-[14px] leading-relaxed text-ink-faint">
+              Todavía no hay suficientes opciones cargadas para armar una
+              combinación.
+            </p>
+          )}
+        </>
+      )}
+
+      {sweet && (
+        <>
+          {sweet.propias.length > 0 && (
+            <section className="mt-7">
+              <SectionLabel>En casa</SectionLabel>
+              <OptionList
+                options={sweet.propias.map((meal) => ({ meal }))}
+                onPick={onPick}
+              />
+            </section>
+          )}
+          {sweet.venues.map(({ venue, meals: options }) => (
+            <section key={venue} className="mt-7">
+              <SectionLabel>{venue}</SectionLabel>
+              <OptionList options={options.map((meal) => ({ meal }))} onPick={onPick} />
+            </section>
+          ))}
+        </>
+      )}
+
+      <p className="mt-8 text-[12px] leading-relaxed text-ink-faint">
+        Los carbohidratos de lo envasado y de lo que se compra afuera son un
+        orden de magnitud hasta que carguemos la etiqueta.
+      </p>
+    </>
+  )
+}
+
+function Filters({
+  filters,
+  onToggle,
+}: {
+  filters: ResolveFilter[]
+  onToggle: (f: ResolveFilter) => void
+}) {
+  return (
+    <div className="v-no-scrollbar -mx-5 mt-4 flex gap-2 overflow-x-auto px-5 pb-1">
+      {FILTERS.map((f) => {
+        const on = filters.includes(f)
+        return (
+          <button
+            key={f}
+            onClick={() => onToggle(f)}
+            aria-pressed={on}
+            className={`v-label min-h-[36px] shrink-0 rounded-lg px-3.5 font-semibold transition-colors ${
+              on ? 'bg-clay text-white' : 'bg-surface-2 text-ink-soft active:bg-surface'
+            }`}
+          >
+            {RESOLVE_FILTER[f]}
+          </button>
+        )
+      })}
+    </div>
   )
 }
 
@@ -372,7 +532,7 @@ function OptionList({
         >
           <span className="min-w-0 flex-1">
             <span className="v-head block truncate text-[16px] text-ink">{meal.name}</span>
-            <MetaLine className="mt-1" parts={[meal.satiety, why]} />
+            <MetaLine className="mt-1" parts={[meal.satiety, meal.drink, why]} />
           </span>
           <CarbValue meal={meal} />
         </button>

@@ -130,6 +130,7 @@ export function Comidas({ app }: { app: Vianda }) {
                       className="mt-0.5"
                       parts={[
                         meal.satiety,
+                        meal.drink,
                         meal.buyOutside ? meal.venues?.[0] : `${meal.prepMinutes} min`,
                         meal.frequency === 'ocasional' && 'de vez en cuando',
                       ]}

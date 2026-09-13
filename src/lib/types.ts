@@ -31,6 +31,8 @@ export type Tag =
   | 'kiosco'
   | 'supermercado'
   | 'envasado'
+  | 'evento'
+  | 'salida'
 
 /* Cada cuánto tiene sentido que aparezca. Es un dato de rotación, no un
    juicio: «ocasional» significa que no todos los días, no que esté mal. */
@@ -43,18 +45,53 @@ export const FREQUENCY_LABEL: Record<Frequency, string> = {
 }
 
 /* Producto envasado. Acá el carbohidrato no se estima: se lee de la
-   etiqueta. Mientras no esté cargada, sigue siendo DEMO. */
+   etiqueta. Mientras no esté cargada, sigue siendo DEMO.
+
+   Nada de esto se inventa: si el campo está vacío es porque todavía no
+   miramos el envase. */
 export interface PackagedInfo {
   brand?: string
   product?: string
+  /** Tamaño del envase: "paquete de 150 g", "botella de 500 ml" */
+  size?: string
   /** "1 barra (40 g)" */
   servingSize?: string
   servingsPerPack?: number
   carbsPerServing?: number
   /** Total del envase, cuando te comés el paquete entero */
   carbsPerPack?: number
+  /** Azúcares totales por porción, como figuran en la etiqueta */
+  sugarPerServing?: number
+  /** Azúcares añadidos, cuando la etiqueta los declara aparte */
+  addedSugarPerServing?: number
+  caloriesPerServing?: number
+  /** De dónde salió el dato: "etiqueta", "web del fabricante"… */
+  source?: string
+  /** La etiqueta fue leída y cargada de verdad */
+  verified?: boolean
   labelPhotoUrl?: string
 }
+
+/* Bebidas. Una comida no es sólo lo sólido: un tostado con café es un
+   tostado con café, no un tostado. */
+export type Drink =
+  | 'café'
+  | 'café con leche'
+  | 'mate'
+  | 'té'
+  | 'agua'
+  | 'bebida sin azúcar'
+  | 'jugo'
+
+export const DRINKS: Drink[] = [
+  'café',
+  'café con leche',
+  'mate',
+  'té',
+  'agua',
+  'bebida sin azúcar',
+  'jugo',
+]
 
 /** Tres niveles, no un número: un número invita a optimizar. */
 export type Satiety = 'liviana' | 'normal' | 'potente'
@@ -164,6 +201,17 @@ export interface Meal {
   difficulty: 1 | 2 | 3
   /** Cada cuánto tiene sentido. Para la rotación, no para juzgar. */
   frequency: Frequency
+  /** La bebida que la acompaña, cuando la comida la tiene. */
+  drink?: Drink
+  /** ¿Es algo que una persona comería un martes cualquiera?
+
+      Las opciones de gimnasio, de dieta específica o de receta de internet
+      no desaparecen: pierden prioridad. La base de la app es comida
+      normal. */
+  everyday: boolean
+  /** Tiene azúcar agregada. NO la bloquea ni la marca como mala: sólo
+      permite preferir la alternativa cuando existe una equivalente. */
+  addedSugar?: boolean
   /** Producto de góndola: la etiqueta manda sobre cualquier estimación. */
   packaged?: PackagedInfo
   favorite: boolean
@@ -193,6 +241,8 @@ export interface Meal {
 export type ResolveReason =
   | 'sin-comida'
   | 'hambre'
+  | 'dulce'
+  | 'evento'
   | 'cambio-dia'
   | 'sin-preparar'
   | 'reemplazar'
@@ -200,6 +250,8 @@ export type ResolveReason =
 export const RESOLVE_REASON: Record<ResolveReason, string> = {
   'sin-comida': 'No traje comida',
   hambre: 'Tengo hambre ahora',
+  dulce: 'Quiero algo dulce',
+  evento: 'Evento o tarde larga',
   'cambio-dia': 'Cambió mi día',
   'sin-preparar': 'No preparé nada',
   reemplazar: 'Quiero reemplazar una comida',
@@ -237,6 +289,40 @@ export interface InsulinSettings {
   /** Apagado hasta que el usuario lo active. No domina la app. */
   enabled: boolean
   ratios: InsulinRatio[]
+}
+
+/* ------------------------------------------------------------------
+   PREFERENCIAS
+
+   El lugar donde más adelante va a vivir lo que el usuario elija en el
+   onboarding: objetivo, gustos, cuánto cocina, cuántas horas pasa afuera,
+   horarios. Todavía no hay pantallas para casi nada de esto — están acá
+   para que las decisiones de hoy no lo compliquen mañana.
+
+   Lo único que hoy hace algo es reduceAddedSugar.
+   ------------------------------------------------------------------ */
+
+export type Goal = 'ordenarme' | 'bajar' | 'mantener' | 'subir'
+
+export interface Preferences {
+  /** Qué busca. Hoy no cambia nada: queda guardado. */
+  goal: Goal
+  /** Entre dos opciones parecidas, preferir la que tiene menos azúcar
+      agregada. No bloquea ni esconde nada: sólo desempata. */
+  reduceAddedSugar: boolean
+  /** Ids de comidas que le gustan y que no. Sin pantalla todavía. */
+  likes: string[]
+  dislikes: string[]
+  /** Cuánto cocina y cuántas horas pasa afuera, de 0 a 3. */
+  cooks?: number
+  hoursOutside?: number
+}
+
+export const DEFAULT_PREFERENCES: Preferences = {
+  goal: 'ordenarme',
+  reduceAddedSugar: true,
+  likes: [],
+  dislikes: [],
 }
 
 export const DEFAULT_INSULIN: InsulinSettings = {

@@ -3,9 +3,9 @@
 > Documento de arquitectura, UX y diseño.
 > **Vianda** es un nombre temporal, no una marca definitiva.
 >
-> *Revisión 7 — el punto medio. La revisión anterior se fue a revista: se
-> recorta el héroe, la serif pasa a ser acento, se van las versalitas y cada
-> fila vuelve a ser un control. Identidad editorial, comportamiento de app.*
+> *Revisión 8 — comer mejor no es comer fit. La base de la biblioteca pasa a
+> ser comida de un martes cualquiera, las bebidas entran como parte de la
+> comida y «Resolver ahora» suma algo dulce y tarde larga.*
 
 ---
 
@@ -270,6 +270,31 @@ que sirve para decidir:
 | contexto · transportabilidad | si es dulce o salado como juicio |
 | preparación · verificación de carbohidratos | si «corresponde» o no |
 
+### La pregunta del martes
+
+Antes de que algo entre en el plan, la rotación se pregunta: **¿esto es algo que
+una persona comería un martes cualquiera?**
+
+Avena, frutos secos, bowls y meal prep de internet siguen en la biblioteca —y se
+pueden elegir a mano— pero pierden prioridad frente a café con leche y tostadas,
+un tostado, un sándwich o mate con galletitas. Es un peso en el puntaje
+(`everyday`), no un filtro: nada desaparece.
+
+### Las bebidas son parte de la comida
+
+Una comida puede tener bebida (`drink`): café, café con leche, mate, té, agua,
+bebida sin azúcar. No se muestran como dos cosas separadas — un tostado con café
+es un tostado con café.
+
+### Azúcar: se muestra, no se bloquea
+
+Una comida con azúcar común no se bloquea, no se marca y no lleva ningún aviso.
+Se muestra igual que todas: porción, carbohidratos, verificación y contexto.
+
+Lo único que hace la preferencia `reduceAddedSugar` es **desempatar** cuando
+existen dos opciones equivalentes —el budín sin azúcar y el budín— y es un ajuste
+chico a propósito.
+
 ### `frequency`: rotación, no conducta
 
 Cada opción dice cada cuánto tiene sentido que aparezca:
@@ -325,10 +350,20 @@ Máximo tres toques hasta ver opciones:
 ¿Qué pasó?                    →   ¿Qué comida?        →   Opciones + filtros
   No traje comida                   los 6 momentos,         para comprar afuera
   Tengo hambre ahora                con "Ahora" marcado     de tu biblioteca
+  Quiero algo dulce ──────────────────────────────────→  directo a opciones
+  Evento o tarde larga ───────────────────────────────→  combinaciones
   Cambió mi día ──────────────→  contexto (termina acá)
   No preparé nada
   Quiero reemplazar una comida
 ```
+
+**Algo dulce** no responde «comé fruta»: busca lo que realmente se come cuando
+hay ganas de algo dulce —café con budín, mate con galletitas, una barra, un
+alfajor— en casa y afuera. Ignora el momento del día a propósito.
+
+**Evento o tarde larga** no devuelve un alimento suelto: devuelve
+**combinaciones**, algo que llene más algo dulce, con la suma de carbohidratos
+hecha. Prioriza lo que se compra afuera, porque en un evento estás afuera.
 
 Los filtros son tres —**que llene**, **rápido**, **barato**— y van **arriba de los
 resultados, no antes**: se ajustan mirando lo que salió. Si un filtro deja la

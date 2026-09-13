@@ -35,6 +35,7 @@ export function MealDetail({ meal }: { meal: Meal }) {
     <div>
       <p className="v-label font-semibold text-clay first-letter:uppercase">{meal.category}</p>
       <h3 className="v-head mt-1.5 text-[25px] leading-[1.15] text-ink">{meal.name}</h3>
+      {meal.drink && <p className="v-label mt-1 text-ink-soft">con {meal.drink}</p>}
       <p className="v-label-sm mt-1.5 text-ink-faint">{meal.portion}</p>
 
       <div className="mt-5 flex items-end justify-between gap-4 rounded-xl bg-surface px-4 py-4">
@@ -93,6 +94,19 @@ export function MealDetail({ meal }: { meal: Meal }) {
               value={`${meal.packaged.carbsPerServing} g CHO`}
             />
           )}
+          {meal.packaged.sugarPerServing !== undefined && (
+            <Fact label="Azúcares por porción" value={`${meal.packaged.sugarPerServing} g`} />
+          )}
+          {meal.packaged.addedSugarPerServing !== undefined && (
+            <Fact
+              label="Azúcares añadidos"
+              value={`${meal.packaged.addedSugarPerServing} g`}
+            />
+          )}
+          {meal.packaged.caloriesPerServing !== undefined && (
+            <Fact label="Calorías por porción" value={`${meal.packaged.caloriesPerServing}`} />
+          )}
+          {meal.packaged.source && <Fact label="Fuente" value={meal.packaged.source} />}
           {!meal.carbsVerified && (
             <p className="mt-3 text-[13px] leading-relaxed text-ink-faint">
               Tiene etiqueta, así que este número puede dejar de ser una estimación

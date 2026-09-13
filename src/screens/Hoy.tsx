@@ -106,6 +106,9 @@ export function Hoy({
               <p className="v-head mt-2.5 text-[26px] leading-[1.15] text-ink">
                 {next.meal.name}
               </p>
+              {next.meal.drink && (
+                <p className="v-label mt-1 text-ink-soft">con {next.meal.drink}</p>
+              )}
 
               <div className="mt-2 flex flex-wrap items-center gap-x-2.5 gap-y-1">
                 <CarbValue meal={next.meal} size="md" />
@@ -243,6 +246,8 @@ export function Hoy({
           onInsulin={app.setInsulin}
           context={app.today?.context ?? 'mixto'}
           onContext={(c) => app.today && app.setContext(app.today.date, c)}
+          prefs={app.prefs}
+          onPrefs={app.setPrefs}
         />
       </div>
     </LazyMotion>

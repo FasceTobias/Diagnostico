@@ -22,6 +22,9 @@ create type day_context   as enum ('casa', 'calle', 'mixto');
 -- Dónde se consigue una opción que no cocinás vos.
 -- Cada cuánto tiene sentido que algo aparezca. Dato de rotación, no juicio.
 create type frequency     as enum ('habitual', 'ocasional', 'emergencia');
+create type drink         as enum (
+  'café', 'café con leche', 'mate', 'té', 'agua', 'bebida sin azúcar', 'jugo');
+create type goal          as enum ('ordenarme', 'bajar', 'mantener', 'subir');
 create type venue         as enum (
   'kiosco', 'supermercado', 'cafetería', 'panadería',
   'rotisería', 'restaurante', 'estación de servicio', 'casa de comidas');
@@ -96,6 +99,14 @@ create table meals (
 
   difficulty        smallint not null default 1 check (difficulty between 1 and 3),
   freq              frequency not null default 'habitual',
+  -- La bebida que la acompaña: un tostado con café es un tostado con café.
+  drink             drink,
+  -- ¿Es algo que una persona comería un martes cualquiera? Lo de gimnasio
+  -- y lo de receta de internet no desaparece: pierde prioridad.
+  everyday          boolean not null default true,
+  -- Tiene azúcar agregada. No bloquea ni marca nada: sólo desempata
+  -- cuando existe una alternativa equivalente.
+  added_sugar       boolean not null default false,
   favorite          boolean not null default false,
   tested            boolean not null default false,
   rating            smallint check (rating between 1 and 5),
@@ -115,10 +126,15 @@ create table meals (
   -- marca DEMO desaparece sola.
   brand             text,
   product_name      text,
+  pack_size         text,              -- "paquete de 150 g"
   serving_size      text,              -- "1 barra (40 g)"
   servings_per_pack numeric,
   carbs_per_serving numeric,
   carbs_per_pack    numeric,
+  sugar_per_serving numeric,
+  added_sugar_per_serving numeric,
+  calories_per_serving numeric,
+  label_source      text,              -- "etiqueta", "web del fabricante"
   label_photo_url   text,
 
   is_demo           boolean not null default false,   -- para borrar los ejemplos de una
@@ -250,13 +266,40 @@ create table insulin_ratios (
 );
 create index on insulin_ratios (profile_id);
 
+-- ------------------------------------------------------------------
+-- PREFERENCIAS
+--
+-- Acá va a vivir lo que el usuario elija en el onboarding: objetivo,
+-- gustos, cuánto cocina, cuántas horas pasa afuera. Todavía no hay
+-- pantallas para casi nada de esto: las columnas están para que las
+-- decisiones de hoy no lo compliquen mañana.
+--
+-- Lo único que hoy hace algo es reduce_added_sugar.
+-- ------------------------------------------------------------------
 create table preferences (
-  id         uuid primary key default gen_random_uuid(),
-  profile_id uuid not null references profiles (id) on delete cascade,
-  key        text not null,
-  value      jsonb not null default '{}'::jsonb,
-  unique (profile_id, key)
+  id          uuid primary key default gen_random_uuid(),
+  profile_id  uuid not null references profiles (id) on delete cascade,
+  goal        goal not null default 'ordenarme',
+  -- Entre dos opciones parecidas, desempata la de menos azúcar agregada.
+  reduce_added_sugar boolean not null default true,
+  -- De 0 a 3. Sin pantalla todavía.
+  cooks       smallint,
+  hours_outside smallint,
+  -- Para cualquier otra cosa que aparezca antes de tener columna propia.
+  extra       jsonb not null default '{}'::jsonb,
+  unique (profile_id)
 );
+
+-- Gustos explícitos, cuando exista la pantalla que los cargue.
+create table meal_opinions (
+  profile_id uuid not null references profiles (id) on delete cascade,
+  meal_id    uuid not null references meals (id) on delete cascade,
+  opinion    smallint not null check (opinion in (-1, 1)),
+  primary key (profile_id, meal_id)
+);
+alter table meal_opinions enable row level security;
+create policy "opiniones propias" on meal_opinions for all
+  using (profile_id = auth.uid()) with check (profile_id = auth.uid());
 
 -- ------------------------------------------------------------------
 -- RLS: cada quien ve lo suyo. Se activa desde el principio aunque hoy

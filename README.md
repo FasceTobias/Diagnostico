@@ -52,10 +52,11 @@ día de la semana, y no se configura a diario: vive en Configuración y en
 - **Modo foco** — sólo lo que viene ahora.
 - **Asistente** — entrada integrada, resuelta con reglas locales sobre la biblioteca.
 - **SEMANA** — los 7 días, con reemplazo desde cualquier día.
-- **COMIDAS** — biblioteca personal con 80 opciones de demostración (42 caseras
-  y 38 para comprar afuera), marcadas como tales y con los carbohidratos sin
-  verificar. Hay fideos, pizza, barras, galletitas y chocolate: la app no está
-  hecha para alguien que cocina perfecto todos los días.
+- **COMIDAS** — biblioteca personal con 100 opciones de demostración, marcadas
+  como tales y con los carbohidratos sin verificar. La base es comida de un
+  martes cualquiera: café con leche y tostadas, tostado, sándwich, mate con
+  galletitas, fideos, pizza, milanesa. Avena, frutos secos y bowls siguen
+  existiendo, pero no son el default.
 - **RESOLVER AHORA** — la salida cuando el plan falla: no traje comida, tengo
   hambre, cambió mi día, no preparé nada, quiero reemplazar. Tres toques hasta
   ver opciones, agrupadas por lugar concreto (rotisería, panadería,
@@ -151,6 +152,11 @@ Dos reglas que se respetan en toda la app:
 6. **Ninguna comida es buena ni mala.** No hay verde ni rojo, ni «permitido»
    ni «prohibido». Se clasifica por saciedad, practicidad, frecuencia,
    contexto y verificación de carbohidratos — nunca por si es «sana».
+7. **Comer mejor no es comer fit.** Antes de sugerir algo, la pregunta es si
+   una persona lo comería un martes cualquiera. Lo de gimnasio y lo de receta
+   de internet pierde prioridad; no desaparece.
+8. **La bebida es parte de la comida.** Un tostado con café es un tostado con
+   café, no un tostado.
 
 ## PWA
 

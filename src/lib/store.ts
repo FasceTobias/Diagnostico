@@ -4,11 +4,12 @@ import type {
   DayPlan,
   InsulinSettings,
   MealStatus,
+  Preferences,
   PackItem,
   PrepTask,
   Slot,
 } from './types'
-import { DEFAULT_INSULIN } from './types'
+import { DEFAULT_INSULIN, DEFAULT_PREFERENCES } from './types'
 import { DEMO_MEALS } from './demo'
 import { addDays, isoDate } from './format'
 import {
@@ -22,13 +23,14 @@ import {
 /* Repositorio local. Misma forma que va a tener el de Supabase, para que
    cambiar de uno a otro no toque ninguna pantalla. */
 
-const KEY = 'vianda.state.v3'
+const KEY = 'vianda.state.v4'
 
 interface Persisted {
   week: DayPlan[]
   weekStart: string
   times: Record<Slot, string>
   insulin: InsulinSettings
+  prefs: Preferences
   checks: Record<string, boolean>
   focus: boolean
 }
@@ -60,10 +62,11 @@ const fresh = (): Persisted => {
   const ws = startOfWeek(new Date())
   return {
     // 'mixto' por defecto: ni asumir que estás en casa ni que estás afuera.
-    week: buildWeek(ws, DEMO_MEALS, 'mixto', DEFAULT_TIMES),
+    week: buildWeek(ws, DEMO_MEALS, 'mixto', DEFAULT_TIMES, DEFAULT_PREFERENCES),
     weekStart: isoDate(ws),
     times: DEFAULT_TIMES,
     insulin: DEFAULT_INSULIN,
+    prefs: DEFAULT_PREFERENCES,
     checks: {},
     focus: false,
   }
@@ -79,7 +82,7 @@ export const useVianda = () => {
     // La semana se regenera, pero la configuración personal sobrevive.
     return stored.weekStart === ws
       ? { ...fresh(), ...stored }
-      : { ...fresh(), times: stored.times, insulin: stored.insulin }
+      : { ...fresh(), times: stored.times, insulin: stored.insulin, prefs: stored.prefs }
   })
 
   useEffect(() => save(state), [state])
@@ -97,6 +100,7 @@ export const useVianda = () => {
   )
 
   const mealById = useCallback((id: string) => meals.find((m) => m.id === id), [meals])
+  const prefsRef = state.prefs
 
   const patchDay = useCallback(
     (date: string, fn: (day: DayPlan) => DayPlan) => {
@@ -134,8 +138,8 @@ export const useVianda = () => {
      no se toca: la app se adapta al día, no borra lo que ya hiciste. */
   const setContext = useCallback(
     (date: string, context: DayContext) =>
-      patchDay(date, (day) => reflowDay(day, meals, context)),
-    [patchDay, meals],
+      patchDay(date, (day) => reflowDay(day, meals, context, [], prefsRef)),
+    [patchDay, meals, prefsRef],
   )
 
   const setTime = useCallback((slot: Slot, time: string) => {
@@ -157,6 +161,19 @@ export const useVianda = () => {
     setState((s) => ({ ...s, insulin }))
   }, [])
 
+  /* Las preferencias rearman lo pendiente: si cambiás el criterio, el plan
+     que todavía no pasó tiene que reflejarlo. */
+  const setPrefs = useCallback(
+    (prefs: Preferences) => {
+      setState((s) => ({
+        ...s,
+        prefs,
+        week: s.week.map((day) => reflowDay(day, meals, day.context, [], prefs)),
+      }))
+    },
+    [meals],
+  )
+
   const setFocus = useCallback((focus: boolean) => {
     setState((s) => ({ ...s, focus }))
   }, [])
@@ -164,7 +181,13 @@ export const useVianda = () => {
   const regenerate = useCallback(() => {
     setState((s) => ({
       ...s,
-      week: buildWeek(new Date(s.weekStart + 'T00:00:00'), meals, today?.context ?? 'mixto', s.times),
+      week: buildWeek(
+        new Date(s.weekStart + 'T00:00:00'),
+        meals,
+        today?.context ?? 'mixto',
+        s.times,
+        s.prefs,
+      ),
       checks: {},
     }))
   }, [meals, today?.context])
@@ -209,6 +232,8 @@ export const useVianda = () => {
     times: state.times,
     insulin: state.insulin,
     setInsulin,
+    prefs: state.prefs,
+    setPrefs,
     packing,
     prep,
     focus: state.focus,

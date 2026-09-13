@@ -102,6 +102,7 @@ export function Rail({
                 <span className="mt-0.5 flex items-center gap-2">
                   <span className="v-label-sm truncate text-ink-faint">
                     {SLOT_SHORT[planned.slot]} · {meal.satiety}
+                    {meal.drink ? ` · ${meal.drink}` : ''}
                     {planned.optional ? ' · opcional' : ''}
                   </span>
                   {showStatus && <StatusPill status={planned.status} />}

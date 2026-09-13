@@ -85,6 +85,11 @@ export const FOODS: Record<string, Food> = {
   'flan sin azúcar': { plural: 'flanes sin azúcar', aisle: 'lácteos', buy: { unit: 'u' } },
   'budín sin azúcar': { aisle: 'panadería', buy: { unit: 'g', per: 300, label: 'budín' } },
   'mermelada sin azúcar': { aisle: 'almacén', buy: { unit: 'g', per: 350, label: 'frasco' } },
+  manteca: { aisle: 'lácteos', buy: { unit: 'g', step: 200 } },
+  yerba: { aisle: 'almacén', buy: { unit: 'g', step: 500 } },
+  budín: { aisle: 'panadería', buy: { unit: 'g', per: 300, label: 'budín' } },
+  medialuna: { plural: 'medialunas', aisle: 'panadería', buy: { unit: 'u' } },
+  alfajor: { plural: 'alfajores', aisle: 'almacén', buy: { unit: 'u' } },
   'queso untable': { aisle: 'lácteos', buy: { unit: 'g', per: 300, label: 'pote' } },
   'yogur saborizado sin azúcar': { plural: 'yogures saborizados sin azúcar', aisle: 'lácteos', buy: { unit: 'g', per: 200, label: 'pote' } },
 

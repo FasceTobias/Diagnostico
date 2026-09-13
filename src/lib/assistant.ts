@@ -41,6 +41,8 @@ export interface AssistantQuery {
 }
 
 export const SUGGESTIONS = [
+  'Quiero algo dulce',
+  'Estoy en un evento',
   'Estoy en la calle y no traje almuerzo',
   '¿Qué puedo comprar ahora?',
   'Tengo más hambre',
@@ -109,6 +111,24 @@ export const askAssistant = ({ text, app }: AssistantQuery): AssistantAnswer => 
         label: `Resolver ${slotName} ahora`,
       },
       suggestContext: notComingBack ? 'calle' : undefined,
+    }
+  }
+
+  /* ---- Ganas de algo dulce ---- */
+  if (has(t, 'algo dulce', 'dulce', 'postre', 'chocolate', 'antojo')) {
+    return {
+      title: 'Algo dulce',
+      note: 'Sin vueltas: lo que realmente se come cuando hay ganas de algo dulce.',
+      action: { reason: 'dulce', label: 'Ver opciones dulces' },
+    }
+  }
+
+  /* ---- Evento o tarde larga ---- */
+  if (has(t, 'evento', 'tarde larga', 'cumpleanos', 'reunion', 'muchas horas')) {
+    return {
+      title: 'Una tarde larga',
+      note: 'Se pasa mejor combinando algo que llene con algo dulce.',
+      action: { reason: 'evento', label: 'Ver combinaciones' },
     }
   }
 

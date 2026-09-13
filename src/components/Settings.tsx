@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { DayContext, InsulinSettings, Slot } from '../lib/types'
+import type { DayContext, InsulinSettings, Preferences, Slot } from '../lib/types'
 import { CONTEXT_NOTE, SLOT_LABEL, SLOT_ORDER } from '../lib/types'
 import { CARB_UNIT } from '../lib/format'
 import { Sheet } from './Sheet'
@@ -18,6 +18,8 @@ export function SettingsSheet({
   onInsulin,
   context,
   onContext,
+  prefs,
+  onPrefs,
 }: {
   open: boolean
   onClose: () => void
@@ -27,6 +29,8 @@ export function SettingsSheet({
   onInsulin: (next: InsulinSettings) => void
   context: DayContext
   onContext: (c: DayContext) => void
+  prefs: Preferences
+  onPrefs: (next: Preferences) => void
 }) {
   const [calc, setCalc] = useState(false)
 
@@ -53,6 +57,16 @@ export function SettingsSheet({
           </p>
         </div>
 
+        {/* Preferencias: por ahora una sola, la que efectivamente hace algo.
+            El resto del onboarding todavía no existe. */}
+        <SectionLabel className="mt-10">Preferencias</SectionLabel>
+        <Toggle
+          on={prefs.reduceAddedSugar}
+          onToggle={() => onPrefs({ ...prefs, reduceAddedSugar: !prefs.reduceAddedSugar })}
+          title="Preferir menos azúcar agregada"
+          detail="Entre dos opciones parecidas, desempata la que tiene menos. No esconde ni bloquea nada."
+        />
+
         <SectionLabel className="mt-10">Horarios</SectionLabel>
         <p className="mt-1.5 text-[14px] leading-relaxed text-ink-soft">
           Son aproximados y se pueden mover cuando quieras. La app los usa para
@@ -75,31 +89,12 @@ export function SettingsSheet({
         {/* ---- Insulina: existe, pero no domina ---- */}
         <SectionLabel className="mt-10">Relación insulina / carbohidratos</SectionLabel>
 
-        <button
-          onClick={() => onInsulin({ ...insulin, enabled: !insulin.enabled })}
-          aria-pressed={insulin.enabled}
-          className="mt-4 flex w-full items-center gap-3.5 border-b border-line py-4 text-left active:bg-surface-2"
-        >
-          <span
-            className={`relative h-6 w-10 shrink-0 rounded-pill transition-colors duration-200 ${
-              insulin.enabled ? 'bg-clay' : 'bg-line-strong'
-            }`}
-          >
-            <span
-              className={`absolute top-0.5 size-5 rounded-full bg-white shadow-sm transition-all duration-200 ${
-                insulin.enabled ? 'left-[18px]' : 'left-0.5'
-              }`}
-            />
-          </span>
-          <span className="flex-1">
-            <span className="block text-[15px] font-medium text-ink">
-              Guardar mi relación y usar la calculadora
-            </span>
-            <span className="mt-0.5 block text-[13px] leading-relaxed text-ink-faint">
-              Apagado, la app no muestra nada de insulina en ningún lado.
-            </span>
-          </span>
-        </button>
+        <Toggle
+          on={insulin.enabled}
+          onToggle={() => onInsulin({ ...insulin, enabled: !insulin.enabled })}
+          title="Guardar mi relación y usar la calculadora"
+          detail="Apagado, la app no muestra nada de insulina en ningún lado."
+        />
 
         {insulin.enabled && general && (
           <div className="v-rise mt-3">
@@ -148,5 +143,43 @@ export function SettingsSheet({
         insulin={insulin}
       />
     </>
+  )
+}
+
+function Toggle({
+  on,
+  onToggle,
+  title,
+  detail,
+}: {
+  on: boolean
+  onToggle: () => void
+  title: string
+  detail: string
+}) {
+  return (
+    <button
+      onClick={onToggle}
+      aria-pressed={on}
+      className="mt-3 flex w-full items-center gap-3.5 rounded-xl border-b border-line px-1 py-3.5 text-left transition-colors active:bg-surface-2"
+    >
+      <span
+        className={`relative h-6 w-10 shrink-0 rounded-pill transition-colors duration-200 ${
+          on ? 'bg-clay' : 'bg-line-strong'
+        }`}
+      >
+        <span
+          className={`absolute top-0.5 size-5 rounded-full bg-white shadow-sm transition-all duration-200 ${
+            on ? 'left-[18px]' : 'left-0.5'
+          }`}
+        />
+      </span>
+      <span className="flex-1">
+        <span className="block text-[15px] font-medium text-ink">{title}</span>
+        <span className="mt-0.5 block text-[13px] leading-relaxed text-ink-faint">
+          {detail}
+        </span>
+      </span>
+    </button>
   )
 }

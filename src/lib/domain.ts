@@ -7,6 +7,7 @@ import type {
   PackItem,
   PlannedMeal,
   PrepTask,
+  Preferences,
   ResolveFilter,
   Satiety,
   Slot,
@@ -100,6 +101,8 @@ export interface RotationContext {
   usedToday: Meal[]
   /** minutos disponibles para cocinar, si el día aprieta */
   maxPrepMinutes?: number
+  /** Preferencias del usuario. Hoy sólo desempata; mañana va a pesar más. */
+  prefs?: Preferences
 }
 
 /** Candidatos que efectivamente sirven para este slot, en orden de prioridad. */
@@ -145,11 +148,28 @@ const FREQUENCY_WEIGHT: Record<Frequency, number> = {
 
 /** Puntaje de preferencia DENTRO del pozo de candidatos válidos.
     Acá sí pesa la variedad, porque cualquiera de estas opciones ya sirve. */
-const preferenceScore = (meal: Meal, ctx: RotationContext): number => {
+const preferenceScore = (
+  meal: Meal,
+  ctx: RotationContext,
+  prefs?: Preferences,
+): number => {
   let score = (meal.rating ?? 3) * 4
   if (meal.favorite) score += 12
   if (!meal.tested) score -= 6
   score += FREQUENCY_WEIGHT[meal.frequency]
+
+  /* La base de la app es comida de un martes cualquiera. Lo de gimnasio,
+     lo de receta de internet y lo de dieta específica sigue disponible,
+     pero no es el default: pierde prioridad, no desaparece. */
+  score += meal.everyday ? 14 : -22
+
+  /* Entre dos opciones parecidas, la de menos azúcar agregada desempata.
+     Es un ajuste chico a propósito: no esconde nada ni bloquea nada. */
+  if (prefs?.reduceAddedSugar && meal.addedSugar) score -= 8
+
+  /* Gustos explícitos, para cuando exista la pantalla que los cargue. */
+  if (prefs?.likes.includes(meal.id)) score += 20
+  if (prefs?.dislikes.includes(meal.id)) score -= 60
 
   // Penalización por repetición. Es fuerte los primeros días —si no, las
   // dos o tres favoritas se turnan entre ellas y la semana queda cíclica—
@@ -184,7 +204,8 @@ export const pickForSlot = (
 
   return [...pool].sort(
     (a, b) =>
-      preferenceScore(b, ctx) - preferenceScore(a, ctx) || a.id.localeCompare(b.id),
+      preferenceScore(b, ctx, ctx.prefs) - preferenceScore(a, ctx, ctx.prefs) ||
+      a.id.localeCompare(b.id),
   )[0]
 }
 
@@ -194,12 +215,13 @@ export const buildDayPlan = (
   context: DayContext,
   history: string[][] = [],
   times: Record<Slot, string> = DEFAULT_TIMES,
+  prefs?: Preferences,
 ): DayPlan => {
   const usedToday: Meal[] = []
   const planned: PlannedMeal[] = []
 
   for (const slot of SLOT_ORDER) {
-    const meal = pickForSlot(slot, context, meals, { recentByDay: history, usedToday })
+    const meal = pickForSlot(slot, context, meals, { recentByDay: history, usedToday, prefs })
     if (!meal) continue
     usedToday.push(meal)
     planned.push({
@@ -219,11 +241,12 @@ export const buildWeek = (
   meals: Meal[],
   context: DayContext = 'mixto',
   times: Record<Slot, string> = DEFAULT_TIMES,
+  prefs?: Preferences,
 ): DayPlan[] => {
   const days: DayPlan[] = []
   const history: string[][] = []
   for (let i = 0; i < 7; i++) {
-    const day = buildDayPlan(addDays(start, i), meals, context, history, times)
+    const day = buildDayPlan(addDays(start, i), meals, context, history, times, prefs)
     history.unshift(day.meals.map((m) => m.mealId))
     days.push(day)
   }
@@ -237,6 +260,7 @@ export const reflowDay = (
   meals: Meal[],
   context: DayContext,
   history: string[][] = [],
+  prefs?: Preferences,
 ): DayPlan => {
   const usedToday = day.meals
     .filter((p) => p.status === 'eaten' || p.status === 'prepared')
@@ -248,6 +272,7 @@ export const reflowDay = (
     const meal = pickForSlot(planned.slot, context, meals, {
       recentByDay: history,
       usedToday,
+      prefs,
     })
     if (!meal) return planned
     usedToday.push(meal)
@@ -668,4 +693,135 @@ export const byVenue = (
     venue,
     meals: (groups.get(venue) ?? []).sort((a, b) => a.carbs - b.carbs),
   }))
+}
+
+/* ------------------------------------------------------------------
+   ALGO DULCE
+
+   No responde «comé fruta». Busca lo que realmente se come cuando se
+   quiere algo dulce, esté donde esté: café con budín, mate con
+   galletitas, una barra, un alfajor.
+
+   Ignora el momento del día a propósito: las ganas de algo dulce no
+   respetan el horario del almuerzo.
+   ------------------------------------------------------------------ */
+
+const sweetRank = (prefs?: Preferences) => (a: Meal, b: Meal) => {
+  const sugarPenalty = (m: Meal) => (prefs?.reduceAddedSugar && m.addedSugar ? 1 : 0)
+  return (
+    sugarPenalty(a) - sugarPenalty(b) ||
+    Number(b.everyday) - Number(a.everyday) ||
+    Number(b.favorite) - Number(a.favorite) ||
+    (b.rating ?? 0) - (a.rating ?? 0)
+  )
+}
+
+export const sweetOptions = (
+  meals: Meal[],
+  filters: ResolveFilter[] = [],
+  prefs?: Preferences,
+  limit = 5,
+): { propias: Meal[]; venues: VenueGroup[] } => {
+  /* Dulce quiere decir dulce. «Antojo» también lo usa una pizza, así que
+     no alcanza como criterio. */
+  const sweet = meals.filter((m) => m.tags.includes('dulce'))
+
+  const propias = searchRelaxing(
+    sweet.filter((m) => !m.buyOutside),
+    filters,
+  )
+    .sort(sweetRank(prefs))
+    .slice(0, limit)
+
+  const groups = new Map<Venue, Meal[]>()
+  for (const meal of searchRelaxing(sweet.filter((m) => m.buyOutside), filters)) {
+    const venue = meal.venues?.[0]
+    if (!venue) continue
+    groups.set(venue, [...(groups.get(venue) ?? []), meal])
+  }
+
+  return {
+    propias,
+    venues: VENUES.filter((v) => groups.has(v)).map((venue) => ({
+      venue,
+      meals: (groups.get(venue) ?? []).sort(sweetRank(prefs)).slice(0, 3),
+    })),
+  }
+}
+
+/* ------------------------------------------------------------------
+   EVENTO O TARDE LARGA
+
+   Varias horas afuera sin una comida clara en el medio. Lo que funciona
+   no es un plato: es una combinación — algo que llene y algo dulce, o
+   algo salado y una bebida sin azúcar.
+
+   Devuelve pares armados, no una lista de alimentos sueltos.
+   ------------------------------------------------------------------ */
+
+export interface Combo {
+  id: string
+  salado: Meal
+  dulce: Meal
+  /** Suma de los dos, para no tener que hacer la cuenta */
+  carbs: number
+}
+
+export const eventCombos = (
+  meals: Meal[],
+  prefs?: Preferences,
+  limit = 4,
+): Combo[] => {
+  /* En un evento estás afuera: lo que se compra ahí pesa más que lo que
+     quedó en casa. Y las porciones tienen que ser de picar, no dos
+     desayunos enteros pegados. */
+  const handy = (m: Meal) => (m.buyOutside ? m.handheld !== false : m.portable)
+  const outsideFirst = (a: Meal, b: Meal) => Number(b.buyOutside) - Number(a.buyOutside)
+  const quality = (a: Meal, b: Meal) =>
+    Number(b.everyday) - Number(a.everyday) ||
+    Number(b.favorite) - Number(a.favorite) ||
+    (b.rating ?? 0) - (a.rating ?? 0)
+
+  const salados = meals
+    .filter(
+      (m) =>
+        handy(m) &&
+        m.satiety !== 'liviana' &&
+        !m.tags.includes('dulce') &&
+        m.carbs <= 45 &&
+        m.prepMinutes <= 10,
+    )
+    .sort((a, b) => outsideFirst(a, b) || quality(a, b))
+
+  const dulces = meals
+    .filter((m) => handy(m) && m.tags.includes('dulce') && m.carbs <= 30)
+    .sort((a, b) => sweetRank(prefs)(a, b) || outsideFirst(a, b))
+
+  const combos: Combo[] = []
+  const usedSweet = new Set<string>()
+  const usedName = new Set<string>()
+
+  for (const salado of salados) {
+    if (usedName.has(salado.name)) continue
+    // Que la suma siga siendo una merienda y no un almuerzo encubierto.
+    const dulce = dulces.find(
+      (d) =>
+        !usedSweet.has(d.id) &&
+        // Dos yogures no son una combinación.
+        d.mainIngredient !== salado.mainIngredient &&
+        salado.carbs + d.carbs <= 75,
+    )
+    if (!dulce) continue
+    usedSweet.add(dulce.id)
+    usedName.add(salado.name)
+    combos.push({
+      id: `${salado.id}+${dulce.id}`,
+      salado,
+      dulce,
+      carbs: salado.carbs + dulce.carbs,
+    })
+    if (combos.length >= limit) break
+  }
+
+  return combos
 }

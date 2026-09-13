@@ -18,13 +18,16 @@ import type { Ingredient, Meal, Unit } from './types'
 const i = (item: string, qty: number, unit: Unit = 'u'): Ingredient => ({ item, qty, unit })
 
 const demo = (
-  m: Omit<Meal, 'isDemo' | 'carbsVerified' | 'buyOutside' | 'frequency'> & {
+  m: Omit<Meal, 'isDemo' | 'carbsVerified' | 'buyOutside' | 'frequency' | 'everyday'> & {
     buyOutside?: boolean
     frequency?: Meal['frequency']
+    /** Por defecto todo es cotidiano. Lo que no lo es, lo dice. */
+    everyday?: boolean
   },
 ): Meal => ({
   buyOutside: false,
   frequency: 'habitual',
+  everyday: true,
   ...m,
   carbsVerified: false,
   isDemo: true,
@@ -38,8 +41,8 @@ const afuera = (
     | 'isDemo' | 'carbsVerified' | 'buyOutside' | 'ingredients' | 'prepSteps'
     | 'makeNightBefore' | 'freezable' | 'needsCold' | 'needsReheat'
     | 'difficulty' | 'tested' | 'favorite' | 'carbSource' | 'confidence'
-    | 'portable' | 'prepMinutes' | 'mainIngredient' | 'frequency'
-  > & { frequency?: Meal['frequency']; prepMinutes?: number },
+    | 'portable' | 'prepMinutes' | 'mainIngredient' | 'frequency' | 'everyday'
+  > & { frequency?: Meal['frequency']; prepMinutes?: number; everyday?: boolean },
 ): Meal =>
   demo({
     ...m,
@@ -65,6 +68,7 @@ export const DEMO_MEALS: Meal[] = [
   /* ---- Desayuno ---- */
   demo({
     id: 'm-avena',
+    everyday: false,
     name: 'Avena con banana y nueces',
     category: 'desayuno',
     tags: ['para llevar', 'potente'],
@@ -95,6 +99,7 @@ export const DEMO_MEALS: Meal[] = [
   }),
   demo({
     id: 'm-budincitos',
+    everyday: false,
     name: 'Budincitos de huevo, queso y espinaca',
     category: 'desayuno',
     tags: ['para llevar', 'potente'],
@@ -125,7 +130,8 @@ export const DEMO_MEALS: Meal[] = [
   }),
   demo({
     id: 'm-tostadas-huevo',
-    name: 'Tostadas con huevo revuelto, queso y tomate',
+    name: 'Huevos revueltos con tostadas',
+    drink: 'café con leche',
     category: 'desayuno',
     tags: ['en casa', 'potente'],
     mainIngredient: 'huevo',
@@ -154,6 +160,7 @@ export const DEMO_MEALS: Meal[] = [
   /* ---- Snack ---- */
   demo({
     id: 'm-nueces',
+    everyday: false,
     name: 'Nueces y almendras',
     category: 'snack',
     tags: ['para llevar', 'liviano', 'rápido'],
@@ -168,6 +175,7 @@ export const DEMO_MEALS: Meal[] = [
   }),
   demo({
     id: 'm-manzana-mani',
+    everyday: false,
     name: 'Manzana con mantequilla de maní',
     category: 'snack',
     tags: ['para llevar', 'normal'],
@@ -182,6 +190,7 @@ export const DEMO_MEALS: Meal[] = [
   }),
   demo({
     id: 'm-huevos-queso',
+    everyday: false,
     name: 'Huevos duros con queso en cubos',
     category: 'snack',
     tags: ['para llevar', 'potente'],
@@ -275,7 +284,8 @@ export const DEMO_MEALS: Meal[] = [
      La merienda es una comida, no un snack: puede ser bastante fuerte. */
   demo({
     id: 'm-tostadas-queso',
-    name: 'Tostadas con queso y tomate, con café',
+    name: 'Tostadas con queso y tomate',
+    drink: 'café con leche',
     category: 'merienda',
     tags: ['en casa', 'normal', 'rápido'],
     mainIngredient: 'pan',
@@ -317,6 +327,7 @@ export const DEMO_MEALS: Meal[] = [
   }),
   demo({
     id: 'm-yogur-completo',
+    everyday: false,
     name: 'Yogur con avena, fruta y nueces',
     category: 'merienda',
     tags: ['para llevar', 'potente'],
@@ -433,7 +444,7 @@ export const DEMO_MEALS: Meal[] = [
   }),
   afuera({
     id: 'c-sup-yogur', name: 'Yogur con fruta y frutos secos', category: 'snack',
-    tags: ['rápido', 'normal'], portion: '1 pote + 1 fruta', carbs: 34, satiety: 'normal',
+    tags: ['rápido', 'dulce', 'supermercado'], portion: '1 pote + 1 fruta', carbs: 34, satiety: 'normal',
     venues: ['supermercado'], priceLevel: 1, handheld: true,
     notes: 'Acá sí conviene leer la etiqueta: el número está en el pote.',
   }),
@@ -449,7 +460,7 @@ export const DEMO_MEALS: Meal[] = [
   }),
   afuera({
     id: 'c-sup-merienda', name: 'Yogur con fruta', category: 'merienda',
-    tags: ['rápido', 'normal'], portion: '1 pote + 1 fruta', carbs: 36, satiety: 'normal',
+    tags: ['rápido', 'dulce', 'supermercado'], portion: '1 pote + 1 fruta', carbs: 36, satiety: 'normal',
     venues: ['supermercado'], priceLevel: 1, handheld: true,
   }),
 
@@ -465,7 +476,8 @@ export const DEMO_MEALS: Meal[] = [
     venues: ['panadería'], priceLevel: 1, handheld: true,
   }),
   afuera({
-    id: 'c-pan-desayuno', name: 'Café con leche y medialunas', category: 'desayuno',
+    id: 'c-pan-desayuno', name: 'Medialunas',
+    drink: 'café con leche', category: 'desayuno',
     tags: ['emergencia', 'rápido', 'normal'], portion: '1 taza + 2 medialunas', carbs: 50, satiety: 'normal',
     venues: ['panadería'], priceLevel: 1, handheld: true,
     notes: 'Los carbohidratos varían mucho según el tamaño de la medialuna.',
@@ -483,7 +495,8 @@ export const DEMO_MEALS: Meal[] = [
     venues: ['cafetería'], priceLevel: 1, handheld: true,
   }),
   afuera({
-    id: 'c-caf-merienda', name: 'Café con leche y tostadas', category: 'merienda',
+    id: 'c-caf-merienda', name: 'Tostadas',
+    drink: 'café con leche', category: 'merienda',
     tags: ['rápido', 'normal'], portion: '1 taza + 2 tostadas', carbs: 38, satiety: 'normal',
     venues: ['cafetería'], priceLevel: 1, handheld: false,
   }),
@@ -548,13 +561,14 @@ export const DEMO_MEALS: Meal[] = [
   /* ---- Desayuno ---- */
   demo({
     id: 'm-tostadas-untable',
-    name: 'Tostadas con queso untable y café',
+    name: 'Tostadas con queso untable y tomate',
+    drink: 'café con leche',
     category: 'desayuno',
     tags: ['en casa', 'rápido', 'salado'],
     mainIngredient: 'pan',
-    ingredients: [i('pan', 2, 'rebanada'), i('queso untable', 40, 'g'), i('café', 10, 'g'), i('leche', 150, 'ml')],
+    ingredients: [i('pan', 2, 'rebanada'), i('queso untable', 40, 'g'), i('tomate', 1), i('café', 10, 'g'), i('leche', 150, 'ml')],
     portion: '2 tostadas + 1 taza',
-    carbs: 30, carbSource: 'receta', confidence: 'media',
+    carbs: 32, carbSource: 'receta', confidence: 'media',
     prepMinutes: 5, satiety: 'normal',
     portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
     difficulty: 1, favorite: false, tested: true, rating: 4,
@@ -669,7 +683,8 @@ export const DEMO_MEALS: Meal[] = [
   /* ---- Merienda ---- */
   demo({
     id: 'm-tostado-cafe',
-    name: 'Tostado de jamón y queso con café',
+    name: 'Tostado de jamón y queso',
+    drink: 'café con leche',
     category: 'merienda',
     tags: ['en casa', 'rápido', 'salado'],
     mainIngredient: 'pan',
@@ -679,35 +694,6 @@ export const DEMO_MEALS: Meal[] = [
     prepMinutes: 8, satiety: 'potente',
     portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
     difficulty: 1, favorite: true, tested: true, rating: 5,
-  }),
-  demo({
-    id: 'm-budin-cafe',
-    name: 'Budín sin azúcar con café',
-    category: 'merienda',
-    frequency: 'ocasional',
-    tags: ['en casa', 'rápido', 'dulce', 'antojo'],
-    mainIngredient: 'budín sin azúcar',
-    ingredients: [i('budín sin azúcar', 80, 'g'), i('café', 10, 'g'), i('leche', 150, 'ml')],
-    portion: '2 rebanadas + 1 taza',
-    carbs: 32, carbSource: 'estimación', confidence: 'estimada',
-    prepMinutes: 4, satiety: 'normal',
-    portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
-    difficulty: 1, favorite: false, tested: true, rating: 5,
-    notes: 'Sin azúcar no quiere decir sin carbohidratos: la harina sigue estando.',
-  }),
-  demo({
-    id: 'm-galletitas-cafe',
-    name: 'Galletitas sin azúcar con café',
-    category: 'merienda',
-    tags: ['en casa', 'rápido', 'dulce', 'práctico', 'envasado'],
-    mainIngredient: 'galletitas sin azúcar',
-    ingredients: [i('galletitas sin azúcar', 40, 'g'), i('café', 10, 'g'), i('leche', 150, 'ml')],
-    portion: '5 o 6 galletitas + 1 taza',
-    carbs: 28, carbSource: 'etiqueta', confidence: 'estimada',
-    prepMinutes: 3, satiety: 'normal',
-    portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
-    difficulty: 1, favorite: false, tested: true, rating: 4,
-    packaged: { servingSize: '30 g' },
   }),
   demo({
     id: 'm-barra-fruta',
@@ -727,6 +713,7 @@ export const DEMO_MEALS: Meal[] = [
   demo({
     id: 'm-untable-mermelada',
     name: 'Tostadas con queso untable y mermelada',
+    drink: 'café',
     category: 'merienda',
     tags: ['en casa', 'rápido', 'dulce'],
     mainIngredient: 'pan',
@@ -862,7 +849,8 @@ export const DEMO_MEALS: Meal[] = [
     notes: 'La bebida zero no suma carbohidratos; los frutos secos, casi nada.',
   }),
   afuera({
-    id: 'c-kio-merienda', name: 'Barra proteica y café', category: 'merienda',
+    id: 'c-kio-merienda', name: 'Barra proteica',
+    drink: 'café', category: 'merienda',
     tags: ['rápido', 'práctico', 'envasado', 'kiosco'], portion: '1 barra + 1 café',
     carbs: 22, satiety: 'normal', venues: ['estación de servicio', 'kiosco'],
     priceLevel: 2, handheld: true,
@@ -895,7 +883,7 @@ export const DEMO_MEALS: Meal[] = [
 
   /* ---- Para comprar: panadería y cafetería ---- */
   afuera({
-    id: 'c-pan-budin', name: 'Budín con café', category: 'merienda',
+    id: 'c-pan-budin', name: 'Budín', category: 'merienda', drink: 'café con leche',
     frequency: 'ocasional',
     tags: ['rápido', 'dulce', 'antojo'], portion: '1 porción + 1 taza',
     carbs: 45, satiety: 'normal', venues: ['panadería', 'cafetería'], priceLevel: 1, handheld: false,
@@ -935,5 +923,321 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 2, favorite: false, tested: true, rating: 5,
     notes: 'Se hacen la noche anterior y rinden dos días.',
     prepSteps: ['Hacer panqueques', 'Porcionar en tuppers'],
+  }),
+
+  /* ================= LO QUE SE COME UN MARTES =================
+
+     La base de la biblioteca. Café, mate, tostadas, tostado, sándwich:
+     lo que efectivamente se desayuna y se merienda acá.
+
+     La bebida va como campo, no como parte del nombre: un tostado con
+     café es un tostado con café, no dos comidas.
+     ========================================================= */
+
+  /* ---- Desayuno ---- */
+  demo({
+    id: 'd-tostadas-manteca',
+    name: 'Tostadas con manteca',
+    category: 'desayuno',
+    tags: ['en casa', 'rápido'],
+    mainIngredient: 'pan',
+    drink: 'café con leche',
+    ingredients: [i('pan', 2, 'rebanada'), i('manteca', 15, 'g'), i('café', 10, 'g'), i('leche', 180, 'ml')],
+    portion: '2 tostadas + 1 taza',
+    carbs: 32, carbSource: 'receta', confidence: 'media',
+    prepMinutes: 4, satiety: 'normal',
+    portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
+    difficulty: 1, favorite: true, tested: true, rating: 4,
+  }),
+  demo({
+    id: 'd-tostadas-jamon',
+    name: 'Tostadas con jamón y queso',
+    category: 'desayuno',
+    tags: ['en casa', 'rápido', 'salado'],
+    mainIngredient: 'pan',
+    drink: 'café con leche',
+    ingredients: [i('pan', 2, 'rebanada'), i('jamón', 40, 'g'), i('queso', 40, 'g'), i('café', 10, 'g'), i('leche', 180, 'ml')],
+    portion: '2 tostadas + 1 taza',
+    carbs: 34, carbSource: 'receta', confidence: 'media',
+    prepMinutes: 5, satiety: 'normal',
+    portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
+    difficulty: 1, favorite: true, tested: true, rating: 5,
+  }),
+  demo({
+    id: 'd-mate-tostadas',
+    name: 'Tostadas con queso untable',
+    category: 'desayuno',
+    tags: ['en casa', 'rápido'],
+    mainIngredient: 'pan',
+    drink: 'mate',
+    ingredients: [i('pan', 3, 'rebanada'), i('queso untable', 50, 'g'), i('yerba', 50, 'g')],
+    portion: '3 tostadas + mate',
+    carbs: 40, carbSource: 'receta', confidence: 'media',
+    prepMinutes: 6, satiety: 'normal',
+    portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
+    difficulty: 1, favorite: true, tested: true, rating: 5,
+    notes: 'El mate estira el desayuno un buen rato.',
+  }),
+  demo({
+    id: 'd-budin',
+    name: 'Budín sin azúcar',
+    category: 'desayuno',
+    tags: ['en casa', 'rápido', 'dulce'],
+    mainIngredient: 'budín sin azúcar',
+    drink: 'café con leche',
+    ingredients: [i('budín sin azúcar', 80, 'g'), i('café', 10, 'g'), i('leche', 180, 'ml')],
+    portion: '2 rebanadas + 1 taza',
+    carbs: 34, carbSource: 'estimación', confidence: 'estimada',
+    prepMinutes: 3, satiety: 'normal',
+    portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
+    difficulty: 1, favorite: false, tested: true, rating: 5,
+    notes: 'Sin azúcar no quiere decir sin carbohidratos: la harina sigue estando.',
+  }),
+  demo({
+    id: 'd-galletitas',
+    name: 'Galletitas sin azúcar',
+    category: 'desayuno',
+    tags: ['en casa', 'rápido', 'dulce', 'envasado'],
+    mainIngredient: 'galletitas sin azúcar',
+    drink: 'café con leche',
+    ingredients: [i('galletitas sin azúcar', 40, 'g'), i('café', 10, 'g'), i('leche', 180, 'ml')],
+    portion: '5 o 6 galletitas + 1 taza',
+    carbs: 30, carbSource: 'etiqueta', confidence: 'estimada',
+    prepMinutes: 3, satiety: 'liviana',
+    portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
+    difficulty: 1, favorite: false, tested: true, rating: 4,
+    packaged: { servingSize: '30 g' },
+  }),
+  demo({
+    id: 'd-sandwich-rapido',
+    name: 'Sándwich de jamón y queso',
+    category: 'desayuno',
+    tags: ['para llevar', 'rápido', 'salado', 'práctico'],
+    mainIngredient: 'pan',
+    drink: 'café',
+    ingredients: [i('pan', 2, 'rebanada'), i('jamón', 40, 'g'), i('queso', 40, 'g')],
+    portion: '1 sándwich',
+    carbs: 34, carbSource: 'receta', confidence: 'media',
+    prepMinutes: 4, satiety: 'normal',
+    portable: true, needsCold: true, needsReheat: false, makeNightBefore: true, freezable: false,
+    difficulty: 1, favorite: true, tested: true, rating: 4,
+    notes: 'El de los días que salís corriendo. Se arma en dos minutos.',
+    prepSteps: ['Armar el sándwich'],
+  }),
+  demo({
+    id: 'd-barra-cafe',
+    name: 'Barra proteica de chocolate',
+    category: 'desayuno',
+    tags: ['para llevar', 'rápido', 'práctico', 'envasado', 'dulce'],
+    mainIngredient: 'barra proteica',
+    drink: 'café',
+    ingredients: [i('barra proteica', 1)],
+    portion: '1 barra + 1 café',
+    carbs: 20, carbSource: 'etiqueta', confidence: 'estimada',
+    prepMinutes: 2, satiety: 'liviana',
+    portable: true, needsCold: false, needsReheat: false, makeNightBefore: true, freezable: false,
+    difficulty: 1, favorite: false, tested: true, rating: 3,
+    packaged: { servingSize: '1 barra (40 g)', servingsPerPack: 1 },
+    notes: 'Para los días que no hay tiempo ni para tostar pan.',
+    prepSteps: ['Guardar una barra en la mochila'],
+  }),
+  demo({
+    id: 'd-mate-sandwich',
+    name: 'Sándwich de queso',
+    category: 'desayuno',
+    tags: ['en casa', 'rápido', 'salado'],
+    mainIngredient: 'pan',
+    drink: 'mate',
+    ingredients: [i('pan', 2, 'rebanada'), i('queso', 60, 'g'), i('yerba', 50, 'g')],
+    portion: '1 sándwich + mate',
+    carbs: 32, carbSource: 'receta', confidence: 'media',
+    prepMinutes: 4, satiety: 'normal',
+    portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
+    difficulty: 1, favorite: false, tested: true, rating: 4,
+  }),
+
+  /* ---- Merienda ---- */
+  demo({
+    id: 'me-mate-galletitas',
+    name: 'Galletitas sin azúcar',
+    category: 'merienda',
+    tags: ['en casa', 'rápido', 'dulce', 'envasado'],
+    mainIngredient: 'galletitas sin azúcar',
+    drink: 'mate',
+    ingredients: [i('galletitas sin azúcar', 50, 'g'), i('yerba', 50, 'g')],
+    portion: '6 o 7 galletitas + mate',
+    carbs: 32, carbSource: 'etiqueta', confidence: 'estimada',
+    prepMinutes: 4, satiety: 'normal',
+    portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
+    difficulty: 1, favorite: true, tested: true, rating: 5,
+    packaged: { servingSize: '30 g' },
+  }),
+  demo({
+    id: 'me-mate-budin',
+    name: 'Budín sin azúcar',
+    category: 'merienda',
+    tags: ['en casa', 'dulce'],
+    mainIngredient: 'budín sin azúcar',
+    drink: 'mate',
+    ingredients: [i('budín sin azúcar', 90, 'g'), i('yerba', 50, 'g')],
+    portion: '2 rebanadas + mate',
+    carbs: 36, carbSource: 'estimación', confidence: 'estimada',
+    prepMinutes: 3, satiety: 'normal',
+    portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
+    difficulty: 1, favorite: false, tested: true, rating: 4,
+  }),
+  demo({
+    id: 'me-sandwich-mate',
+    name: 'Sándwich de jamón y queso',
+    category: 'merienda',
+    tags: ['en casa', 'salado', 'potente'],
+    mainIngredient: 'pan',
+    drink: 'mate',
+    ingredients: [i('pan', 2, 'rebanada'), i('jamón', 50, 'g'), i('queso', 50, 'g'), i('yerba', 50, 'g')],
+    portion: '1 sándwich + mate',
+    carbs: 34, carbSource: 'receta', confidence: 'media',
+    prepMinutes: 5, satiety: 'potente',
+    portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
+    difficulty: 1, favorite: true, tested: true, rating: 5,
+  }),
+
+  /* ---- Con azúcar común: existe, no está prohibida ----
+     Están acá justamente para que se vea que la app no las bloquea ni las
+     marca. Aparecen menos seguido porque son de vez en cuando, no porque
+     estén mal. Y cuando hay una versión con menos azúcar agregada, la
+     preferencia del usuario desempata. */
+  demo({
+    id: 'me-budin-comun',
+    name: 'Budín',
+    category: 'merienda',
+    frequency: 'ocasional',
+    addedSugar: true,
+    tags: ['en casa', 'dulce', 'antojo'],
+    mainIngredient: 'budín',
+    drink: 'café con leche',
+    ingredients: [i('budín', 90, 'g'), i('café', 10, 'g'), i('leche', 180, 'ml')],
+    portion: '2 rebanadas + 1 taza',
+    carbs: 52, carbSource: 'estimación', confidence: 'estimada',
+    prepMinutes: 3, satiety: 'normal',
+    portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
+    difficulty: 1, favorite: false, tested: true, rating: 5,
+  }),
+  demo({
+    id: 's-alfajor',
+    name: 'Alfajor',
+    category: 'snack',
+    frequency: 'ocasional',
+    addedSugar: true,
+    tags: ['para llevar', 'rápido', 'dulce', 'antojo', 'envasado', 'kiosco'],
+    mainIngredient: 'alfajor',
+    ingredients: [i('alfajor', 1)],
+    portion: '1 alfajor',
+    carbs: 38, carbSource: 'estimación', confidence: 'estimada',
+    prepMinutes: 1, satiety: 'liviana',
+    portable: true, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
+    difficulty: 1, favorite: false, tested: true, rating: 5,
+    packaged: { servingSize: '1 alfajor' },
+    notes: 'El número está en el envase y cambia bastante entre marcas.',
+  }),
+
+  /* ---- Para comprar ---- */
+  afuera({
+    id: 'c-kio-alfajor-comun', name: 'Alfajor', category: 'snack',
+    frequency: 'ocasional', addedSugar: true,
+    tags: ['rápido', 'dulce', 'antojo', 'envasado', 'kiosco'], portion: '1 alfajor',
+    carbs: 38, satiety: 'liviana', venues: ['kiosco', 'estación de servicio'],
+    priceLevel: 1, handheld: true,
+    packaged: { servingSize: '1 alfajor' },
+  }),
+  afuera({
+    id: 'c-caf-budin', name: 'Budín', category: 'merienda',
+    frequency: 'ocasional', addedSugar: true, drink: 'café con leche',
+    tags: ['rápido', 'dulce', 'antojo'], portion: '1 porción + 1 taza',
+    carbs: 55, satiety: 'normal', venues: ['cafetería', 'panadería'],
+    priceLevel: 1, handheld: false,
+  }),
+  afuera({
+    id: 'c-kio-gaseosa-zero', name: 'Bebida sin azúcar', category: 'snack',
+    tags: ['rápido', 'práctico', 'envasado', 'kiosco'], portion: '1 botella chica',
+    carbs: 0, satiety: 'liviana', venues: ['kiosco', 'estación de servicio'],
+    priceLevel: 1, handheld: true, drink: 'bebida sin azúcar',
+    notes: 'Cero carbohidratos. Sirve para acompañar cualquier otra cosa.',
+  }),
+  afuera({
+    id: 'c-kio-gaseosa', name: 'Gaseosa común', category: 'snack',
+    frequency: 'ocasional', addedSugar: true,
+    tags: ['rápido', 'dulce', 'envasado', 'kiosco'], portion: '1 botella chica (500 ml)',
+    carbs: 53, satiety: 'liviana', venues: ['kiosco', 'estación de servicio'],
+    priceLevel: 1, handheld: true, drink: 'jugo',
+    notes: 'Bastantes carbohidratos y llegan rápido. El número está en la etiqueta.',
+  }),
+
+  /* ---- Desayunos cotidianos que además se llevan ----
+     Los días mixtos y de calle piden desayuno transportable y que aguante.
+     Sin estos, lo cotidiano quedaba sólo para los días en casa. */
+  demo({
+    id: 'd-tostado-llevar',
+    name: 'Tostado de jamón y queso',
+    category: 'desayuno',
+    tags: ['para llevar', 'rápido', 'salado', 'práctico'],
+    mainIngredient: 'pan',
+    drink: 'café',
+    ingredients: [i('pan', 2, 'rebanada'), i('jamón', 50, 'g'), i('queso', 50, 'g')],
+    portion: '1 tostado',
+    carbs: 34, carbSource: 'receta', confidence: 'media',
+    prepMinutes: 7, satiety: 'potente',
+    portable: true, needsCold: true, needsReheat: false, makeNightBefore: true, freezable: false,
+    difficulty: 1, favorite: true, tested: true, rating: 5,
+    notes: 'Envuelto en papel manteca aguanta bien hasta media mañana.',
+    prepSteps: ['Armar el tostado'],
+  }),
+  demo({
+    id: 'd-tortilla-pan',
+    name: 'Sándwich de tortilla de papa',
+    category: 'desayuno',
+    tags: ['para llevar', 'salado', 'potente'],
+    mainIngredient: 'papa',
+    drink: 'café',
+    ingredients: [i('pan', 2, 'rebanada'), i('papa', 1), i('huevo', 2), i('cebolla', 0.5)],
+    portion: '1 sándwich',
+    carbs: 48, carbSource: 'receta', confidence: 'media',
+    prepMinutes: 8, satiety: 'potente',
+    portable: true, needsCold: true, needsReheat: false, makeNightBefore: true, freezable: false,
+    difficulty: 1, favorite: false, tested: true, rating: 5,
+    notes: 'Si quedó tortilla de la noche anterior, sale en dos minutos.',
+    prepSteps: ['Armar el sándwich'],
+  }),
+  demo({
+    id: 'd-medialunas',
+    name: 'Medialunas de jamón y queso',
+    category: 'desayuno',
+    frequency: 'ocasional',
+    addedSugar: true,
+    tags: ['para llevar', 'rápido', 'salado', 'antojo'],
+    mainIngredient: 'medialuna',
+    drink: 'café con leche',
+    ingredients: [i('medialuna', 2), i('jamón', 40, 'g'), i('queso', 40, 'g')],
+    portion: '2 medialunas',
+    carbs: 46, carbSource: 'estimación', confidence: 'estimada',
+    prepMinutes: 4, satiety: 'potente',
+    portable: true, needsCold: true, needsReheat: false, makeNightBefore: true, freezable: false,
+    difficulty: 1, favorite: false, tested: true, rating: 5,
+    notes: 'La masa de la medialuna lleva azúcar: los carbos suben bastante.',
+    prepSteps: ['Armar las medialunas'],
+  }),
+  demo({
+    id: 'd-sandwich-queso-tomate',
+    name: 'Sándwich de queso, tomate y huevo',
+    category: 'desayuno',
+    tags: ['para llevar', 'salado', 'potente'],
+    mainIngredient: 'pan',
+    drink: 'café',
+    ingredients: [i('pan integral', 2, 'rebanada'), i('queso', 50, 'g'), i('huevo', 1), i('tomate', 1)],
+    portion: '1 sándwich',
+    carbs: 40, carbSource: 'receta', confidence: 'media',
+    prepMinutes: 8, satiety: 'potente',
+    portable: true, needsCold: true, needsReheat: false, makeNightBefore: true, freezable: false,
+    difficulty: 1, favorite: false, tested: true, rating: 4,
+    prepSteps: ['Hervir huevos', 'Armar el sándwich'],
   }),
 ]
