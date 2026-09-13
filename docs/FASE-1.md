@@ -4,8 +4,8 @@
 > **Vianda** es un nombre temporal, no una marca definitiva.
 >
 > *Revisión 9 — las comidas que se preparan traen pasos. Tres a cinco líneas
-> con el tiempo de cada una, dentro del detalle, sólo en las que lo
-> necesitan. Sigue sin ser una app de recetas.*
+> con el tiempo de cada una, y «Ver con detalle» abre la receta entera.
+> Sólo en las comidas que lo necesitan.*
 
 ---
 
@@ -326,9 +326,20 @@ Los minutos son los de ese paso y **se solapan**: el horno calienta mientras
 cortás, así que no suman `prepMinutes`. `prepMinutes` sigue siendo el tiempo
 real que te lleva la comida, y los pasos nunca pueden pedir más que eso.
 
+**Dos niveles, y el segundo no se abre solo.** Lo que ves por defecto es la
+versión corta: una línea por paso, que es lo que necesitás si ya sabés cocinar
+eso. Abajo hay un botón, **«Ver con detalle»**, y ahí está la receta entera:
+cantidades, temperaturas, cómo te das cuenta de que algo está listo, qué hacer
+si va a viajar en la mochila. Se cierra con el mismo botón.
+
+El orden importa. La app no puede asumir que no sabés hacer fideos, pero
+tampoco puede esconder cómo se hace una tortilla. El default es corto porque
+la mayoría de las veces alcanza; el detalle está a un toque porque las veces
+que hace falta, hace falta entero.
+
 Esto no convierte a Vianda en una app de recetas. No hay porciones escalables,
-ni fotos de proceso, ni variantes. Es lo mínimo para que una comida de la
-biblioteca se pueda hacer sin acordarse de nada.
+ni fotos de proceso, ni variantes, ni buscador de recetas. Es lo mínimo para
+que una comida de la biblioteca se pueda hacer sin acordarse de nada.
 
 ## D bis 2. Lo que la app NO te pide
 

@@ -1,4 +1,6 @@
-import type { Meal } from '../lib/types'
+import { useState } from 'react'
+import { AnimatePresence, LazyMotion, domAnimation, m } from 'motion/react'
+import type { Meal, Step } from '../lib/types'
 import { FREQUENCY_LABEL } from '../lib/types'
 import { CARB_SOURCE_TEXT, CONFIDENCE_TEXT } from '../lib/format'
 import { ingredientText } from '../lib/foods'
@@ -131,28 +133,7 @@ export function MealDetail({ meal }: { meal: Meal }) {
       )}
 
       {meal.steps && meal.steps.length > 0 && (
-        <>
-          <SectionLabel className="mt-8 mb-1" aside={`${meal.prepMinutes} min`}>
-            Cómo se hace
-          </SectionLabel>
-          {meal.steps.map((step, idx) => (
-            <div
-              key={step.text}
-              className="flex items-baseline gap-3 border-b border-line py-3"
-            >
-              <span className="v-label-sm w-4 shrink-0 text-clay v-tnum">{idx + 1}</span>
-              <p className="min-w-0 flex-1 text-[16px] leading-snug text-ink">{step.text}</p>
-              {step.minutes && (
-                <span className="v-label-sm shrink-0 text-ink-faint v-tnum">
-                  {step.minutes} min
-                </span>
-              )}
-            </div>
-          ))}
-          <p className="mt-2.5 text-[13px] leading-relaxed text-ink-faint">
-            Los tiempos se solapan: el horno calienta mientras cortás.
-          </p>
-        </>
+        <Recipe steps={meal.steps} minutes={meal.prepMinutes} />
       )}
 
       {!meal.buyOutside && (
@@ -183,5 +164,73 @@ export function MealDetail({ meal }: { meal: Meal }) {
         </p>
       )}
     </div>
+  )
+}
+
+/* Cómo se hace. Por defecto, la versión corta: lo que necesitás si ya
+   sabés cocinar eso. «Ver con detalle» abre la receta entera —cantidades,
+   temperaturas, cómo te das cuenta de que está— sin cambiar de pantalla.
+   Nunca al revés: el detalle no se abre solo. */
+function Recipe({ steps, minutes }: { steps: Step[]; minutes: number }) {
+  const [full, setFull] = useState(false)
+  const hasDetail = steps.some((s) => s.detail)
+
+  return (
+    <LazyMotion features={domAnimation}>
+      <SectionLabel className="mt-8 mb-1" aside={`${minutes} min`}>
+        Cómo se hace
+      </SectionLabel>
+
+      {steps.map((step, idx) => (
+        <div key={step.text} className="border-b border-line py-3">
+          <div className="flex items-baseline gap-3">
+            <span className="v-label-sm w-4 shrink-0 text-clay v-tnum">{idx + 1}</span>
+            <p className="min-w-0 flex-1 text-[16px] leading-snug text-ink">{step.text}</p>
+            {step.minutes && (
+              <span className="v-label-sm shrink-0 text-ink-faint v-tnum">
+                {step.minutes} min
+              </span>
+            )}
+          </div>
+          <AnimatePresence initial={false}>
+            {full && step.detail && (
+              <m.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.22, ease: [0.32, 0.72, 0, 1] }}
+                className="overflow-hidden"
+              >
+                <p className="pt-2 pl-7 text-[14px] leading-relaxed text-ink-soft">
+                  {step.detail}
+                </p>
+              </m.div>
+            )}
+          </AnimatePresence>
+        </div>
+      ))}
+
+      {hasDetail && (
+        <button
+          type="button"
+          onClick={() => setFull((v) => !v)}
+          className="v-label mt-3 flex w-full items-center justify-between gap-3 rounded-xl border border-line px-4 py-3 text-left font-semibold text-ink transition-colors active:bg-surface-2"
+        >
+          {full ? 'Ver en corto' : 'Ver con detalle'}
+          <span
+            className={`text-[13px] text-ink-faint transition-transform duration-200 ${full ? '-rotate-180' : ''}`}
+            aria-hidden
+          >
+            ▾
+          </span>
+        </button>
+      )}
+
+      <p className="mt-2.5 text-[13px] leading-relaxed text-ink-faint">
+        {full
+          ? 'La receta entera. Los tiempos se solapan: el horno calienta mientras cortás.'
+          : 'Los tiempos se solapan: el horno calienta mientras cortás.'}
+      </p>
+    </LazyMotion>
   )
 }

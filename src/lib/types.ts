@@ -155,6 +155,9 @@ export type Unit =
 export interface Step {
   text: string
   minutes?: number
+  /** Lo mismo, contado entero: cantidades, temperaturas, cómo te das
+      cuenta de que está. Sólo se ve si lo pedís. */
+  detail?: string
 }
 
 export interface Ingredient {

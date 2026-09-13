@@ -57,8 +57,10 @@ día de la semana, y no se configura a diario: vive en Configuración y en
   martes cualquiera: café con leche y tostadas, tostado, sándwich, mate con
   galletitas, fideos, pizza, milanesa. Avena, frutos secos y bowls siguen
   existiendo, pero no son el default. El detalle de las comidas que se cocinan
-  trae **cómo se hace**: tres a cinco pasos con los minutos de cada uno. Sólo
-  donde hace falta — un tostado no lleva instrucciones.
+  trae **cómo se hace**: tres a cinco pasos con los minutos de cada uno, y un
+  «Ver con detalle» que abre la receta entera —cantidades, temperaturas, cómo
+  te das cuenta de que está—. Sólo donde hace falta: un tostado no lleva
+  instrucciones.
 - **RESOLVER AHORA** — la salida cuando el plan falla: no traje comida, tengo
   hambre, cambió mi día, no preparé nada, quiero reemplazar. Tres toques hasta
   ver opciones, agrupadas por lugar concreto (rotisería, panadería,
@@ -92,7 +94,8 @@ src/
     types.ts       modelo de dominio (espeja supabase/schema.sql)
     demo.ts        99 opciones de demostración (isDemo, carbsVerified: false),
                    57 caseras y 42 para comprar afuera. Las que se cocinan
-                   traen pasos cortos con el tiempo de cada uno
+                   traen pasos cortos con tiempos, y la receta entera detrás
+                   de «Ver con detalle»
     foods.ts       catálogo: en qué sector está cada cosa y cómo se compra
     domain.ts      necesidades del día, rotación, reemplazos, rescate,
                    resolver ahora, tareas de preparación, mochila

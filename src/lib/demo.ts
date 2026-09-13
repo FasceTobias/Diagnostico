@@ -82,10 +82,29 @@ export const DEMO_MEALS: Meal[] = [
     notes: 'Se deja lista la noche anterior en el frasco. Aguanta bien hasta el mediodía.',
     prepSteps: ['Dejar la avena en remojo en el frasco', 'Cortar banana'],
     steps: [
-      { text: 'Mezclar la avena con el yogur y la leche en el frasco', minutes: 3 },
-      { text: 'Sumar la canela y revolver bien', minutes: 1 },
-      { text: 'Tapar y dejar en la heladera toda la noche' },
-      { text: 'A la mañana, sumar la banana cortada y las nueces', minutes: 2 },
+      {
+        text: 'Mezclar la avena con el yogur y la leche en el frasco',
+        minutes: 3,
+        detail:
+          'Medio pote de yogur y un chorro de leche por cada tres cucharadas de avena. Tiene que quedar cubierta, no nadando: de noche la avena chupa casi todo el líquido.',
+      },
+      {
+        text: 'Sumar la canela y revolver bien',
+        minutes: 1,
+        detail:
+          'Una cucharadita al ras. Revolvé hasta que no queden grumos secos en el fondo del frasco, que es donde siempre se esconden.',
+      },
+      {
+        text: 'Tapar y dejar en la heladera toda la noche',
+        detail:
+          'Mínimo seis horas. Aguanta tres días tapada, así que podés dejar dos o tres frascos hechos de una vez.',
+      },
+      {
+        text: 'A la mañana, sumar la banana cortada y las nueces',
+        minutes: 2,
+        detail:
+          'Recién a la mañana: si las ponés de noche la banana se pone marrón y las nueces se ablandan. Si salís apurado, llevalas aparte en una bolsita.',
+      },
     ],
   }),
   demo({
@@ -103,10 +122,29 @@ export const DEMO_MEALS: Meal[] = [
     notes: 'La palta, a último momento o con limón.',
     prepSteps: ['Armar el sándwich', 'Hervir huevos'],
     steps: [
-      { text: 'Hervir los huevos desde que rompe el hervor', minutes: 8 },
-      { text: 'Tostar el pan y cortar el tomate', minutes: 2 },
-      { text: 'Armar con el queso y el huevo en rodajas', minutes: 2 },
-      { text: 'La palta, recién al momento de comer o con unas gotas de limón' },
+      {
+        text: 'Hervir los huevos desde que rompe el hervor',
+        minutes: 8,
+        detail:
+          'Agua fría, huevos adentro, y contás los ocho minutos desde que burbujea fuerte. Pasalos por agua fría apenas salen: se pelan mucho mejor.',
+      },
+      {
+        text: 'Tostar el pan y cortar el tomate',
+        minutes: 2,
+        detail:
+          'El pan apenas dorado. El tomate en rodajas finas y, si el sándwich es para llevar, secalas con papel de cocina para que no lo mojen.',
+      },
+      {
+        text: 'Armar con el queso y el huevo en rodajas',
+        minutes: 2,
+        detail:
+          'El queso contra el pan y el tomate en el medio: así el pan no se humedece. Sal y orégano arriba del huevo.',
+      },
+      {
+        text: 'La palta, recién al momento de comer o con unas gotas de limón',
+        detail:
+          'Se oxida en minutos. Si el sándwich es para más tarde, pisala con unas gotas de limón o llevala entera y agregala al momento.',
+      },
     ],
   }),
   demo({
@@ -125,10 +163,30 @@ export const DEMO_MEALS: Meal[] = [
     notes: 'Rinden dos días y se congelan bien.',
     prepSteps: ['Hornear los budincitos', 'Porcionar en tuppers'],
     steps: [
-      { text: 'Precalentar el horno a 180°', minutes: 10 },
-      { text: 'Batir los huevos con el queso, la espinaca picada y la harina', minutes: 5 },
-      { text: 'Repartir en moldecitos hasta tres cuartos', minutes: 2 },
-      { text: 'Hornear hasta que estén firmes y dorados', minutes: 20 },
+      {
+        text: 'Precalentar el horno a 180°',
+        minutes: 10,
+        detail:
+          'Calor arriba y abajo. Mientras levanta temperatura te da el tiempo justo para hacer toda la mezcla.',
+      },
+      {
+        text: 'Batir los huevos con el queso, la espinaca picada y la harina',
+        minutes: 5,
+        detail:
+          'Seis huevos, un puñado de queso rallado y dos cucharadas de harina. La espinaca picada chica y bien escurrida: si viene con agua, los budincitos quedan aguados.',
+      },
+      {
+        text: 'Repartir en moldecitos hasta tres cuartos',
+        minutes: 2,
+        detail:
+          'Aceitá los moldes o usá pirotines. Hasta tres cuartos nomás, porque crecen.',
+      },
+      {
+        text: 'Hornear hasta que estén firmes y dorados',
+        minutes: 20,
+        detail:
+          'Están cuando el centro no se mueve al sacudir la bandeja. Salen seis o siete y aguantan tres días en la heladera.',
+      },
     ],
   }),
   demo({
@@ -146,10 +204,30 @@ export const DEMO_MEALS: Meal[] = [
     notes: 'Se come fría sin problema.',
     prepSteps: ['Hacer la tortilla de papa', 'Porcionar en tuppers'],
     steps: [
-      { text: 'Cortar la papa en rodajas finas y la cebolla en pluma', minutes: 8 },
-      { text: 'Freír a fuego bajo hasta que la papa esté blanda', minutes: 12 },
-      { text: 'Mezclar con los huevos batidos y salar', minutes: 2 },
-      { text: 'Cuajar en la sartén, dar vuelta con un plato y terminar', minutes: 8 },
+      {
+        text: 'Cortar la papa en rodajas finas y la cebolla en pluma',
+        minutes: 8,
+        detail:
+          'Rodajas de dos o tres milímetros: cuanto más finas, menos tardan. La cebolla en tiras finas, una mediana cada dos papas.',
+      },
+      {
+        text: 'Freír a fuego bajo hasta que la papa esté blanda',
+        minutes: 12,
+        detail:
+          'Fuego bajo y con aceite que las cubra hasta la mitad. No se doran: se ablandan. Cuando el tenedor entra sin resistencia, están. Escurrilas bien.',
+      },
+      {
+        text: 'Mezclar con los huevos batidos y salar',
+        minutes: 2,
+        detail:
+          'Cuatro huevos para dos papas. Volcá la papa caliente sobre el huevo batido y dejala reposar un minuto ahí: cuaja mejor.',
+      },
+      {
+        text: 'Cuajar en la sartén, dar vuelta con un plato y terminar',
+        minutes: 8,
+        detail:
+          'Fuego medio, cuatro minutos de un lado. Tapás con un plato, das vuelta la sartén y la devolvés para terminar el otro lado. Fría al día siguiente está mejor que recién hecha.',
+      },
     ],
   }),
   demo({
@@ -166,10 +244,30 @@ export const DEMO_MEALS: Meal[] = [
     portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
     difficulty: 1, favorite: true, tested: true, rating: 5,
     steps: [
-      { text: 'Batir los huevos con una pizca de sal', minutes: 1 },
-      { text: 'Revolver a fuego bajo hasta que estén cremosos', minutes: 5 },
-      { text: 'Tostar el pan y cortar el tomate', minutes: 3 },
-      { text: 'Servir el huevo sobre las tostadas con el queso', minutes: 1 },
+      {
+        text: 'Batir los huevos con una pizca de sal',
+        minutes: 1,
+        detail:
+          'Dos o tres huevos. Batilos apenas, hasta que se una la yema: batidos de más quedan chiclosos.',
+      },
+      {
+        text: 'Revolver a fuego bajo hasta que estén cremosos',
+        minutes: 5,
+        detail:
+          'Fuego bajo y revolviendo casi todo el tiempo. Sacalos de la sartén cuando todavía se ven húmedos, porque siguen cocinándose con el calor de la sartén.',
+      },
+      {
+        text: 'Tostar el pan y cortar el tomate',
+        minutes: 3,
+        detail:
+          'Dos rebanadas bien tostadas: tienen que aguantar el huevo arriba. El tomate en rodajas con sal.',
+      },
+      {
+        text: 'Servir el huevo sobre las tostadas con el queso',
+        minutes: 1,
+        detail:
+          'El queso arriba del huevo caliente para que se ablande solo. Esto se come al momento: no es para llevar.',
+      },
     ],
   }),
   demo({
@@ -234,9 +332,24 @@ export const DEMO_MEALS: Meal[] = [
     notes: 'Casi sin carbohidratos. Sirve cuando faltan muchas horas para comer.',
     prepSteps: ['Hervir huevos'],
     steps: [
-      { text: 'Hervir los huevos desde que rompe el hervor', minutes: 10 },
-      { text: 'Pasarlos por agua fría y pelarlos', minutes: 2 },
-      { text: 'Cortar el queso en cubos y guardar todo junto', minutes: 2 },
+      {
+        text: 'Hervir los huevos desde que rompe el hervor',
+        minutes: 10,
+        detail:
+          'Diez minutos exactos para que la yema quede firme y no verdosa. Hacé cuatro o seis de una: con cáscara aguantan una semana en la heladera.',
+      },
+      {
+        text: 'Pasarlos por agua fría y pelarlos',
+        minutes: 2,
+        detail:
+          'El golpe de frío despega la cáscara. Pelalos abajo del chorro de agua y salen limpios.',
+      },
+      {
+        text: 'Cortar el queso en cubos y guardar todo junto',
+        minutes: 2,
+        detail:
+          'Cubos de bocado, de un queso que no se desarme. En un tupper chico con los huevos ya pelados es el snack más rápido que tenés.',
+      },
     ],
   }),
   demo({
@@ -253,8 +366,18 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 1, favorite: false, tested: true, rating: 4,
     prepSteps: ['Armar el sándwich chico'],
     steps: [
-      { text: 'Tostar el pan', minutes: 3 },
-      { text: 'Armar con el queso y el jamón', minutes: 2 },
+      {
+        text: 'Tostar el pan',
+        minutes: 3,
+        detail:
+          'Apenas dorado. Si es para llevar, dejalo enfriar antes de armarlo o el vapor lo ablanda.',
+      },
+      {
+        text: 'Armar con el queso y el jamón',
+        minutes: 2,
+        detail:
+          'Una feta de cada uno. Es un snack, no un almuerzo: si te queda grande, cortalo al medio y guardás la mitad.',
+      },
     ],
   }),
 
@@ -273,10 +396,30 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 2, favorite: true, tested: true, rating: 5,
     prepSteps: ['Cocinar pollo', 'Hacer arroz', 'Armar el tupper del almuerzo'],
     steps: [
-      { text: 'Precalentar el horno a 200°', minutes: 10 },
-      { text: 'Salpimentar el pollo y hornear hasta que esté dorado', minutes: 25 },
-      { text: 'Mientras tanto, hervir el arroz', minutes: 15 },
-      { text: 'Cortar el tomate y la lechuga, y armar el tupper', minutes: 5 },
+      {
+        text: 'Precalentar el horno a 200°',
+        minutes: 10,
+        detail:
+          'Mientras levanta temperatura salpimentás el pollo y ponés el agua del arroz a hervir.',
+      },
+      {
+        text: 'Salpimentar el pollo y hornear hasta que esté dorado',
+        minutes: 25,
+        detail:
+          'Sal, pimienta, un chorro de aceite y lo que tengas a mano: limón, ajo, pimentón. Está listo cuando al pincharlo el jugo sale transparente.',
+      },
+      {
+        text: 'Mientras tanto, hervir el arroz',
+        minutes: 15,
+        detail:
+          'Dos medidas de agua por una de arroz y bastante sal. Se hace solo mientras el horno trabaja.',
+      },
+      {
+        text: 'Cortar el tomate y la lechuga, y armar el tupper',
+        minutes: 5,
+        detail:
+          'Dejalo enfriar antes de tapar: cerrado en caliente se llena de vapor. La ensalada aparte y el aceite recién antes de comer.',
+      },
     ],
   }),
   demo({
@@ -294,10 +437,30 @@ export const DEMO_MEALS: Meal[] = [
     notes: 'Envolver en papel manteca para que no se abra en la mochila.',
     prepSteps: ['Cocinar pollo', 'Armar el rollo'],
     steps: [
-      { text: 'Cortar el pollo ya cocido en tiras', minutes: 3 },
-      { text: 'Rallar la zanahoria y cortar el tomate y la lechuga', minutes: 5 },
-      { text: 'Untar la tortilla con el yogur y repartir el relleno', minutes: 3 },
-      { text: 'Envolver apretado en papel manteca', minutes: 2 },
+      {
+        text: 'Cortar el pollo ya cocido en tiras',
+        minutes: 3,
+        detail:
+          'Pollo del día anterior, o una pechuga a la plancha. En tiras finas, que se coma sin pelear.',
+      },
+      {
+        text: 'Rallar la zanahoria y cortar el tomate y la lechuga',
+        minutes: 5,
+        detail:
+          'La zanahoria rallada gruesa para que no largue agua. El tomate sin semillas: son las que mojan la tortilla.',
+      },
+      {
+        text: 'Untar la tortilla con el yogur y repartir el relleno',
+        minutes: 3,
+        detail:
+          'Yogur natural con sal y limón hace de aderezo. Dejá dos dedos libres en los bordes o al enrollar se escapa todo.',
+      },
+      {
+        text: 'Envolver apretado en papel manteca',
+        minutes: 2,
+        detail:
+          'Apretado y con el papel puesto: el papel es lo que lo sostiene armado hasta el mediodía. Cortalo al medio recién cuando lo vas a comer.',
+      },
     ],
   }),
   demo({
@@ -315,10 +478,30 @@ export const DEMO_MEALS: Meal[] = [
     notes: 'Se come fría. Muy buena para días de mucho movimiento.',
     prepSteps: ['Hervir huevos', 'Armar el tupper del almuerzo'],
     steps: [
-      { text: 'Hervir los huevos', minutes: 10 },
-      { text: 'Escurrir y enjuagar las lentejas', minutes: 2 },
-      { text: 'Cortar la cebolla morada, el tomate y la palta', minutes: 5 },
-      { text: 'Mezclar todo con jugo de limón y un chorrito de aceite', minutes: 3 },
+      {
+        text: 'Hervir los huevos',
+        minutes: 10,
+        detail:
+          'Diez minutos desde el hervor. Si ya tenés huevos duros hechos, salteás este paso entero.',
+      },
+      {
+        text: 'Escurrir y enjuagar las lentejas',
+        minutes: 2,
+        detail:
+          'Si son de lata, enjuagalas bien bajo el chorro: sacás el líquido espeso y el exceso de sal.',
+      },
+      {
+        text: 'Cortar la cebolla morada, el tomate y la palta',
+        minutes: 5,
+        detail:
+          'La cebolla bien fina y, si te resulta fuerte, dejala cinco minutos en agua fría. La palta al final, en cubos grandes.',
+      },
+      {
+        text: 'Mezclar todo con jugo de limón y un chorrito de aceite',
+        minutes: 3,
+        detail:
+          'Limón, aceite, sal y orégano. Mejora de un día para el otro, pero si es para llevar sumá la palta recién a la mañana.',
+      },
     ],
   }),
   demo({
@@ -336,10 +519,30 @@ export const DEMO_MEALS: Meal[] = [
     notes: 'Se come frío. Sale rápido si el arroz ya está hecho.',
     prepSteps: ['Hacer arroz', 'Hervir huevos', 'Armar el tupper del almuerzo'],
     steps: [
-      { text: 'Hervir el arroz y dejarlo enfriar', minutes: 15 },
-      { text: 'Hervir el huevo', minutes: 10 },
-      { text: 'Escurrir el atún y el choclo, cortar el morrón', minutes: 4 },
-      { text: 'Mezclar todo con la mayonesa', minutes: 2 },
+      {
+        text: 'Hervir el arroz y dejarlo enfriar',
+        minutes: 15,
+        detail:
+          'Dos medidas de agua por una de arroz. Enfrialo esparcido en una fuente y destapado, así no se apelmaza.',
+      },
+      {
+        text: 'Hervir el huevo',
+        minutes: 10,
+        detail:
+          'Diez minutos. Va en la misma hornalla mientras el arroz se hace, o usás uno ya hecho.',
+      },
+      {
+        text: 'Escurrir el atún y el choclo, cortar el morrón',
+        minutes: 4,
+        detail:
+          'El atún bien escurrido, apretándolo contra la lata. El morrón crudo en cubos chicos, que es el que aporta el crujido.',
+      },
+      {
+        text: 'Mezclar todo con la mayonesa',
+        minutes: 2,
+        detail:
+          'Una cucharada alcanza. Aguanta dos días en la heladera y se come frío: no necesita microondas.',
+      },
     ],
   }),
 
@@ -373,10 +576,30 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 1, favorite: true, tested: true, rating: 5,
     notes: 'Para cuando la cena va a ser tarde.',
     steps: [
-      { text: 'Saltear la espinaca hasta que reduzca', minutes: 3 },
-      { text: 'Batir los huevos y volcarlos en la sartén', minutes: 2 },
-      { text: 'Sumar el queso y doblar el omelette cuando cuaje', minutes: 5 },
-      { text: 'Tostar el pan', minutes: 2 },
+      {
+        text: 'Saltear la espinaca hasta que reduzca',
+        minutes: 3,
+        detail:
+          'Un puñado grande que se va a reducir a nada. Si es congelada, escurrila apretando fuerte.',
+      },
+      {
+        text: 'Batir los huevos y volcarlos en la sartén',
+        minutes: 2,
+        detail:
+          'Tres huevos con sal. Sartén caliente, fuego medio, y no lo toques los primeros treinta segundos.',
+      },
+      {
+        text: 'Sumar el queso y doblar el omelette cuando cuaje',
+        minutes: 5,
+        detail:
+          'Cuando la superficie deja de estar líquida, queso en una mitad y doblás con una espátula. Un minuto más y sale.',
+      },
+      {
+        text: 'Tostar el pan',
+        minutes: 2,
+        detail:
+          'Dos rebanadas para acompañar. Son la mitad de los carbohidratos del plato.',
+      },
     ],
   }),
   demo({
@@ -394,9 +617,24 @@ export const DEMO_MEALS: Meal[] = [
     notes: 'Merienda de verdad para los días en la calle.',
     prepSteps: ['Hervir huevos', 'Armar el sándwich de la merienda'],
     steps: [
-      { text: 'Hervir el huevo', minutes: 10 },
-      { text: 'Cortarlo en rodajas junto con el tomate', minutes: 2 },
-      { text: 'Armar con el queso y un poco de orégano', minutes: 2 },
+      {
+        text: 'Hervir el huevo',
+        minutes: 10,
+        detail:
+          'Diez minutos desde el hervor, o uno de los que ya tenés hechos.',
+      },
+      {
+        text: 'Cortarlo en rodajas junto con el tomate',
+        minutes: 2,
+        detail:
+          'Con el cuchillo mojado el huevo no se desarma. El tomate en rodajas finas y con sal.',
+      },
+      {
+        text: 'Armar con el queso y un poco de orégano',
+        minutes: 2,
+        detail:
+          'Queso contra el pan, huevo y tomate en el medio. Orégano y un hilo de aceite de oliva.',
+      },
     ],
   }),
   demo({
@@ -429,10 +667,30 @@ export const DEMO_MEALS: Meal[] = [
     portable: false, needsCold: false, needsReheat: true, makeNightBefore: false, freezable: true,
     difficulty: 2, favorite: false, tested: true, rating: 4,
     steps: [
-      { text: 'Precalentar el horno a 200°', minutes: 10 },
-      { text: 'Pelar y cortar la calabaza en cubos', minutes: 5 },
-      { text: 'Hornear la milanesa y la calabaza juntas', minutes: 25 },
-      { text: 'Pisar la calabaza con un chorrito de aceite', minutes: 3 },
+      {
+        text: 'Precalentar el horno a 200°',
+        minutes: 10,
+        detail:
+          'Con la bandeja adentro: la milanesa apoyada sobre metal caliente se dora abajo y no queda blanda.',
+      },
+      {
+        text: 'Pelar y cortar la calabaza en cubos',
+        minutes: 5,
+        detail:
+          'Cubos parejos de unos tres centímetros para que se cocinen todos igual. Aceite y sal por encima.',
+      },
+      {
+        text: 'Hornear la milanesa y la calabaza juntas',
+        minutes: 25,
+        detail:
+          'Misma bandeja, misma temperatura. A los quince minutos das vuelta la milanesa. La calabaza está cuando se pincha sin esfuerzo.',
+      },
+      {
+        text: 'Pisar la calabaza con un chorrito de aceite',
+        minutes: 3,
+        detail:
+          'Con un tenedor y ahí mismo en la fuente. No hace falta manteca ni leche: la calabaza ya viene cremosa.',
+      },
     ],
   }),
   demo({
@@ -449,9 +707,24 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 1, favorite: false, tested: true, rating: 4,
     notes: 'Cena liviana para cuando se come tarde.',
     steps: [
-      { text: 'Cortar el zapallito en cubos y la cebolla fina', minutes: 5 },
-      { text: 'Saltearlos hasta que estén blandos', minutes: 7 },
-      { text: 'Sumar los huevos batidos y revolver hasta que cuajen', minutes: 3 },
+      {
+        text: 'Cortar el zapallito en cubos y la cebolla fina',
+        minutes: 5,
+        detail:
+          'Dos zapallitos y media cebolla. Cubos chicos: se hacen más rápido y quedan mejor en el revuelto.',
+      },
+      {
+        text: 'Saltearlos hasta que estén blandos',
+        minutes: 7,
+        detail:
+          'Fuego medio y tapado los primeros minutos: el zapallito larga su propia agua y se cocina ahí. Destapá al final para que evapore.',
+      },
+      {
+        text: 'Sumar los huevos batidos y revolver hasta que cuajen',
+        minutes: 3,
+        detail:
+          'Tres huevos. Revolvé enseguida para que se integre todo y sacalo cuando todavía se ve húmedo.',
+      },
     ],
   }),
   demo({
@@ -467,10 +740,30 @@ export const DEMO_MEALS: Meal[] = [
     portable: false, needsCold: false, needsReheat: true, makeNightBefore: false, freezable: true,
     difficulty: 1, favorite: false, tested: true, rating: 3,
     steps: [
-      { text: 'Cortar la calabaza y la cebolla', minutes: 8 },
-      { text: 'Hervirlas en el caldo hasta que estén blandas', minutes: 18 },
-      { text: 'Procesar hasta que quede crema', minutes: 3 },
-      { text: 'Servir con el pan y el queso encima', minutes: 1 },
+      {
+        text: 'Cortar la calabaza y la cebolla',
+        minutes: 8,
+        detail:
+          'Media calabaza y una cebolla. Como después se procesa, los cubos pueden ser grandes y disparejos: nadie se va a enterar.',
+      },
+      {
+        text: 'Hervirlas en el caldo hasta que estén blandas',
+        minutes: 18,
+        detail:
+          'Caldo justo hasta cubrir, no más. Siempre podés agregar después; sacar es imposible.',
+      },
+      {
+        text: 'Procesar hasta que quede crema',
+        minutes: 3,
+        detail:
+          'Con minipimer dentro de la olla y fuera del fuego. Si queda muy espesa, un poco más de caldo caliente.',
+      },
+      {
+        text: 'Servir con el pan y el queso encima',
+        minutes: 1,
+        detail:
+          'El pan es lo que la convierte en una cena de verdad. El queso rallado o en cubitos se derrite solo con el calor.',
+      },
     ],
   }),
 
@@ -832,9 +1125,24 @@ export const DEMO_MEALS: Meal[] = [
     notes: 'De lo que más carbohidratos tiene del día. Conviene mirarlo bien.',
     prepSteps: ['Hervir fideos', 'Armar el tupper del almuerzo'],
     steps: [
-      { text: 'Calentar la salsa a fuego bajo', minutes: 8 },
-      { text: 'Hervir los fideos según el paquete', minutes: 10 },
-      { text: 'Escurrir, mezclar con la salsa y sumar el queso', minutes: 2 },
+      {
+        text: 'Calentar la salsa a fuego bajo',
+        minutes: 8,
+        detail:
+          'Si es de lata, un chorro de aceite, sal y orégano le cambian la cara. Fuego bajo mientras esperás el agua.',
+      },
+      {
+        text: 'Hervir los fideos según el paquete',
+        minutes: 10,
+        detail:
+          'Bastante agua y sal cuando rompe el hervor. Un minuto menos de lo que dice el paquete: terminan de hacerse en la salsa.',
+      },
+      {
+        text: 'Escurrir, mezclar con la salsa y sumar el queso',
+        minutes: 2,
+        detail:
+          'Guardá medio vaso del agua de cocción: si la salsa quedó seca, la arregla. El queso al final, fuera del fuego.',
+      },
     ],
   }),
   demo({
@@ -852,10 +1160,30 @@ export const DEMO_MEALS: Meal[] = [
     notes: 'Se come fría y rinde dos días.',
     prepSteps: ['Hornear la tarta', 'Porcionar en tuppers'],
     steps: [
-      { text: 'Precalentar el horno a 200°', minutes: 10 },
-      { text: 'Batir los huevos y mezclarlos con el jamón y el queso', minutes: 5 },
-      { text: 'Volcar sobre la masa y cubrir con la otra tapa', minutes: 3 },
-      { text: 'Hornear hasta que esté dorada', minutes: 25 },
+      {
+        text: 'Precalentar el horno a 200°',
+        minutes: 10,
+        detail:
+          'Mientras calienta armás todo el relleno. La masa puede esperar ya puesta en la tartera.',
+      },
+      {
+        text: 'Batir los huevos y mezclarlos con el jamón y el queso',
+        minutes: 5,
+        detail:
+          'Tres huevos, jamón y queso en cubos y no en fetas: se reparte mejor. Pimienta; sal casi no hace falta.',
+      },
+      {
+        text: 'Volcar sobre la masa y cubrir con la otra tapa',
+        minutes: 3,
+        detail:
+          'Pinchá la base con un tenedor antes de volcar. Cerrá los bordes apretando con los dedos y, si te sobró huevo, pintá la tapa.',
+      },
+      {
+        text: 'Hornear hasta que esté dorada',
+        minutes: 25,
+        detail:
+          'Está cuando la tapa tomó color parejo. Entera son seis porciones: dos cenas y dos almuerzos para llevar.',
+      },
     ],
   }),
   demo({
@@ -872,10 +1200,30 @@ export const DEMO_MEALS: Meal[] = [
     portable: false, needsCold: false, needsReheat: false, makeNightBefore: false, freezable: false,
     difficulty: 1, favorite: true, tested: true, rating: 5,
     steps: [
-      { text: 'Armar los medallones y salarlos', minutes: 5 },
-      { text: 'Cocinarlos a fuego fuerte, cuatro minutos de cada lado', minutes: 8 },
-      { text: 'Sumar el queso arriba y tapar hasta que se derrita', minutes: 2 },
-      { text: 'Tostar el pan y armar con el tomate y la lechuga', minutes: 4 },
+      {
+        text: 'Armar los medallones y salarlos',
+        minutes: 5,
+        detail:
+          'Cien gramos cada uno, aplastados finos y con un hueco en el centro hecho con el pulgar: así no se inflan. Salá recién ahora, no antes.',
+      },
+      {
+        text: 'Cocinarlos a fuego fuerte, cuatro minutos de cada lado',
+        minutes: 8,
+        detail:
+          'Sartén bien caliente y sin tocarlos: la costra es lo que les da gusto. Una sola vuelta.',
+      },
+      {
+        text: 'Sumar el queso arriba y tapar hasta que se derrita',
+        minutes: 2,
+        detail:
+          'Fuego apagado y una tapa encima. El vapor derrite el queso en menos de un minuto.',
+      },
+      {
+        text: 'Tostar el pan y armar con el tomate y la lechuga',
+        minutes: 4,
+        detail:
+          'El pan tostado del lado de adentro aguanta los jugos. Y es casi todo el carbohidrato del plato.',
+      },
     ],
   }),
 
@@ -895,10 +1243,30 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 1, favorite: true, tested: true, rating: 5,
     notes: 'Bastantes carbohidratos y muy variable según la masa.',
     steps: [
-      { text: 'Precalentar el horno al máximo', minutes: 10 },
-      { text: 'Estirar la salsa sobre la masa', minutes: 3 },
-      { text: 'Cubrir con la muzzarella', minutes: 2 },
-      { text: 'Hornear hasta que la muzzarella burbujee', minutes: 12 },
+      {
+        text: 'Precalentar el horno al máximo',
+        minutes: 10,
+        detail:
+          'Al máximo y con la bandeja adentro, diez minutos como mínimo. Es lo que separa una pizza de una tarta.',
+      },
+      {
+        text: 'Estirar la salsa sobre la masa',
+        minutes: 3,
+        detail:
+          'Poca salsa y hasta dos dedos del borde. De más, la masa queda cruda en el centro.',
+      },
+      {
+        text: 'Cubrir con la muzzarella',
+        minutes: 2,
+        detail:
+          'En rodajas o rallada, sin tapar del todo. El orégano recién al salir: adentro del horno se quema.',
+      },
+      {
+        text: 'Hornear hasta que la muzzarella burbujee',
+        minutes: 12,
+        detail:
+          'Abajo del todo si querés la base crocante. Está cuando el queso hace globitos y los bordes están dorados.',
+      },
     ],
   }),
   demo({
@@ -915,9 +1283,24 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 1, favorite: false, tested: true, rating: 4,
     notes: 'Cena de las noches en que llegás tarde y no querés cocinar.',
     steps: [
-      { text: 'Hacer los huevos a la plancha o revueltos', minutes: 5 },
-      { text: 'Armar el sándwich con el jamón y el queso', minutes: 2 },
-      { text: 'Tostarlo hasta que el queso se derrita', minutes: 4 },
+      {
+        text: 'Hacer los huevos a la plancha o revueltos',
+        minutes: 5,
+        detail:
+          'Uno o dos. Si van a la plancha, dejá la yema firme: cortada moja todo el pan.',
+      },
+      {
+        text: 'Armar el sándwich con el jamón y el queso',
+        minutes: 2,
+        detail:
+          'Queso abajo y arriba, jamón y huevo en el medio: el queso derretido es lo que lo mantiene cerrado.',
+      },
+      {
+        text: 'Tostarlo hasta que el queso se derrita',
+        minutes: 4,
+        detail:
+          'En sandwichera, o en una sartén apretándolo con una cacerola encima. Cuatro minutos alcanzan.',
+      },
     ],
   }),
   demo({
@@ -1043,10 +1426,30 @@ export const DEMO_MEALS: Meal[] = [
     notes: 'Se hacen la noche anterior y rinden dos días.',
     prepSteps: ['Hacer panqueques', 'Porcionar en tuppers'],
     steps: [
-      { text: 'Batir la harina con los huevos y la leche hasta que no queden grumos', minutes: 5 },
-      { text: 'Dejar reposar la mezcla', minutes: 10 },
-      { text: 'Hacer los panqueques de a uno en sartén caliente', minutes: 12 },
-      { text: 'Rellenar con el queso untable y la mermelada', minutes: 3 },
+      {
+        text: 'Batir la harina con los huevos y la leche hasta que no queden grumos',
+        minutes: 5,
+        detail:
+          'Una taza de harina, dos huevos y dos tazas de leche. Empezá con poca leche y sumá de a poco: los grumos se van así, no batiendo más fuerte.',
+      },
+      {
+        text: 'Dejar reposar la mezcla',
+        minutes: 10,
+        detail:
+          'Diez minutos afuera de la heladera. La harina se hidrata y salen más tiernos. Este rato no estás haciendo nada: aprovechalo.',
+      },
+      {
+        text: 'Hacer los panqueques de a uno en sartén caliente',
+        minutes: 12,
+        detail:
+          'Sartén caliente apenas aceitada, un cucharón por panqueque, y girás la sartén para repartir. Se dan vuelta cuando los bordes se despegan solos. Salen seis u ocho.',
+      },
+      {
+        text: 'Rellenar con el queso untable y la mermelada',
+        minutes: 3,
+        detail:
+          'Untás y doblás en cuatro, o enrollás. Fríos al otro día siguen buenos: son la merienda del día siguiente.',
+      },
     ],
   }),
 
@@ -1316,9 +1719,24 @@ export const DEMO_MEALS: Meal[] = [
     notes: 'Envuelto en papel manteca aguanta bien hasta media mañana.',
     prepSteps: ['Armar el tostado'],
     steps: [
-      { text: 'Armar el tostado con el jamón y el queso', minutes: 2 },
-      { text: 'Tostarlo hasta que el queso se derrita', minutes: 4 },
-      { text: 'Envolverlo en papel manteca', minutes: 1 },
+      {
+        text: 'Armar el tostado con el jamón y el queso',
+        minutes: 2,
+        detail:
+          'Una feta de cada uno. Con pan de molde aguanta el viaje mejor que con pan francés.',
+      },
+      {
+        text: 'Tostarlo hasta que el queso se derrita',
+        minutes: 4,
+        detail:
+          'Sandwichera, o sartén con peso encima. El queso derretido lo sella y no se desarma en la mochila.',
+      },
+      {
+        text: 'Envolverlo en papel manteca',
+        minutes: 1,
+        detail:
+          'Papel, no film: el film lo transpira y a las dos horas está blando. Dejalo enfriar un minuto antes de envolver.',
+      },
     ],
   }),
   demo({
@@ -1337,9 +1755,24 @@ export const DEMO_MEALS: Meal[] = [
     notes: 'Si quedó tortilla de la noche anterior, sale en dos minutos.',
     prepSteps: ['Armar el sándwich'],
     steps: [
-      { text: 'Cortar una porción de la tortilla del día anterior', minutes: 2 },
-      { text: 'Tostar el pan', minutes: 3 },
-      { text: 'Armar el sándwich y envolverlo', minutes: 2 },
+      {
+        text: 'Cortar una porción de la tortilla del día anterior',
+        minutes: 2,
+        detail:
+          'Fría y de la heladera está perfecta: para esto, la tortilla del día anterior es mejor que la recién hecha.',
+      },
+      {
+        text: 'Tostar el pan',
+        minutes: 3,
+        detail:
+          'Tostado firme: tiene que aguantar una porción con peso.',
+      },
+      {
+        text: 'Armar el sándwich y envolverlo',
+        minutes: 2,
+        detail:
+          'Un poco de mayonesa o mostaza si querés. Envuelto en papel manteca llega entero al mediodía.',
+      },
     ],
   }),
   demo({
@@ -1375,9 +1808,24 @@ export const DEMO_MEALS: Meal[] = [
     difficulty: 1, favorite: false, tested: true, rating: 4,
     prepSteps: ['Hervir huevos', 'Armar el sándwich'],
     steps: [
-      { text: 'Usar un huevo duro de los que dejaste hechos', minutes: 1 },
-      { text: 'Cortarlo en rodajas junto con el tomate', minutes: 3 },
-      { text: 'Armar el sándwich con el queso y envolverlo', minutes: 3 },
+      {
+        text: 'Usar un huevo duro de los que dejaste hechos',
+        minutes: 1,
+        detail:
+          'Acá está la gracia: con huevos duros en la heladera esto son cinco minutos. Sin ellos, quince.',
+      },
+      {
+        text: 'Cortarlo en rodajas junto con el tomate',
+        minutes: 3,
+        detail:
+          'Cuchillo mojado para el huevo. El tomate sin semillas y secado con papel, o el pan llega mojado.',
+      },
+      {
+        text: 'Armar el sándwich con el queso y envolverlo',
+        minutes: 3,
+        detail:
+          'Queso contra las dos tapas de pan y el resto en el medio. Papel manteca y listo.',
+      },
     ],
   }),
 ]
