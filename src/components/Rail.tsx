@@ -59,7 +59,7 @@ export function Rail({
                 {onRestore && (
                   <button
                     onClick={() => onRestore(item)}
-                    className="v-label -my-2 rounded-lg px-3 py-2.5 font-semibold text-clay active:bg-surface-2"
+                    className="v-label -my-2 rounded-lg px-3 py-2.5 font-semibold text-accent active:bg-surface-2"
                   >
                     Sumar
                   </button>
@@ -84,7 +84,7 @@ export function Rail({
               <span aria-hidden className="flex w-[10px] shrink-0 justify-center">
                 <span
                   className={`rounded-full ring-4 ring-bg ${
-                    active ? 'size-[9px] bg-clay' : 'size-[5px] bg-line-strong'
+                    active ? 'size-[9px] bg-accent' : 'size-[5px] bg-line-strong'
                   }`}
                 />
               </span>

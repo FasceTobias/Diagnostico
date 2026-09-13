@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Vianda">
-  <rect width="512" height="512" rx="113" fill="#b85c33"/>
-  <rect x="100" y="148" width="312" height="52" rx="26" fill="#fffbf5"/>
-  <path d="M122 248a34 34 0 0 1 34-34h200a34 34 0 0 1 34 34l-14 122a34 34 0 0 1-34 30H170a34 34 0 0 1-34-30z" fill="#fffbf5"/>
+  <rect width="512" height="512" rx="113" fill="#0a0c0f"/>
+  <rect x="100" y="148" width="312" height="52" rx="26" fill="#72c7ff"/>
+  <path d="M122 248a34 34 0 0 1 34-34h200a34 34 0 0 1 34 34l-14 122a34 34 0 0 1-34 30H170a34 34 0 0 1-34-30z" fill="#72c7ff"/>
 </svg>

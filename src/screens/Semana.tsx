@@ -42,17 +42,17 @@ export function Semana({ app }: { app: Vianda }) {
                 key={d.date}
                 onClick={() => setSelected(d.date)}
                 className={`relative min-w-[47px] shrink-0 rounded-xl py-2.5 text-center transition-colors ${
-                  active ? 'bg-clay-soft' : 'active:bg-surface-2'
+                  active ? 'bg-accent-soft' : 'active:bg-surface-2'
                 }`}
               >
                 <span
-                  className={`v-label-sm block ${active ? 'text-clay' : 'text-ink-faint'}`}
+                  className={`v-label-sm block ${active ? 'text-accent' : 'text-ink-faint'}`}
                 >
                   {shortDate(date).split(' ')[0]}
                 </span>
                 <span
                   className={`v-head mt-0.5 block text-[20px] v-tnum transition-colors ${
-                    active ? 'text-clay' : 'text-ink'
+                    active ? 'text-accent' : 'text-ink'
                   }`}
                 >
                   {date.getDate()}
@@ -60,7 +60,7 @@ export function Semana({ app }: { app: Vianda }) {
                 {isToday && (
                   <span
                     aria-hidden
-                    className={`mx-auto mt-1 block size-1 rounded-full ${active ? 'bg-clay' : 'bg-ink-faint'}`}
+                    className={`mx-auto mt-1 block size-1 rounded-full ${active ? 'bg-accent' : 'bg-ink-faint'}`}
                   />
                 )}
 

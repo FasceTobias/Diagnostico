@@ -80,7 +80,7 @@ export function SettingsSheet({
                 type="time"
                 value={times[slot]}
                 onChange={(e) => onTime(slot, e.target.value)}
-                className="rounded-[8px] border border-line bg-transparent px-3 py-2 text-[15px] text-ink v-tnum outline-none focus:border-clay"
+                className="rounded-[8px] border border-line bg-transparent px-3 py-2 text-[15px] text-ink v-tnum outline-none focus:border-accent"
               />
             </label>
           ))}
@@ -110,7 +110,7 @@ export function SettingsSheet({
                     if (Number.isFinite(n) && n > 0) setGrams(n)
                   }}
                   aria-label="Gramos de carbohidratos por unidad"
-                  className="w-20 rounded-xl border border-line bg-bg px-3 py-2 text-[17px] font-semibold text-ink v-tnum outline-none focus:border-clay"
+                  className="w-20 rounded-xl border border-line bg-bg px-3 py-2 text-[17px] font-semibold text-ink v-tnum outline-none focus:border-accent"
                 />
                 <span className="text-ink-soft">{CARB_UNIT}</span>
               </div>
@@ -165,7 +165,7 @@ function Toggle({
     >
       <span
         className={`relative h-6 w-10 shrink-0 rounded-pill transition-colors duration-200 ${
-          on ? 'bg-clay' : 'bg-line-strong'
+          on ? 'bg-accent' : 'bg-line-strong'
         }`}
       >
         <span

@@ -3,132 +3,170 @@
 
 /* ------------------------------------------------------------------
    VIANDA — sistema de diseño
-   Cálido, sobrio, doméstico. Nada clínico, nada corporativo.
+   Calmo, limpio, frío. El acento es un azul claro: el color de lo
+   activo, lo seleccionado y lo que se puede tocar. Nunca lo decorativo.
    ------------------------------------------------------------------ */
 
 :root {
-  /* Superficies: hueso cálido, no blanco */
-  --v-bg: #f5f2ec;
-  --v-bg-deep: #ece7de;
-  --v-surface: #fffdfa;
-  --v-surface-2: #f9f6f0;
-  --v-veil: rgb(255 253 250 / 0.88);
+  /* Superficies: blanco frío y limpio. Nada de hueso cálido: el acento
+     ahora es azul y el papel tibio lo ensuciaba. */
+  --v-bg: #f2f5f8;
+  --v-bg-deep: #e5eaf0;
+  --v-surface: #ffffff;
+  --v-surface-2: #eaeff5;
+  --v-veil: rgb(255 255 255 / 0.9);
+  --v-scrim: rgb(12 18 26 / 0.38);
 
-  /* Tinta cálida, nunca negro puro */
-  --v-ink: #1c1814;
-  --v-ink-soft: #6a6157;
-  --v-ink-faint: #9a9187;
-  --v-line: rgb(28 24 20 / 0.09);
-  --v-line-strong: rgb(28 24 20 / 0.16);
+  /* Tinta azulada, nunca negro puro */
+  --v-ink: #0f1620;
+  --v-ink-soft: #4e5a67;
+  --v-ink-faint: #646e7a;
+  --v-line: rgb(15 22 32 / 0.09);
+  --v-line-strong: rgb(15 22 32 / 0.17);
 
-  /* Acento único: arcilla */
-  --v-clay: #b85c33;
-  --v-clay-soft: rgb(184 92 51 / 0.12);
-  --v-clay-ink: #8c4526;
+  /* Acento: azul claro. Sobre fondo claro hay que bajarlo bastante para
+     que el texto chico se lea; el celeste vive en el modo oscuro. */
+  --v-accent: #0a6299;
+  --v-accent-strong: #084f7d;
+  --v-accent-quiet: #5ba3d4;
+  --v-accent-soft: rgb(10 98 153 / 0.10);
+  --v-accent-line: rgb(10 98 153 / 0.28);
+  --v-accent-ink: #ffffff;
+  --v-accent-glow: rgb(10 98 153 / 0.16);
+  /* El orb es el único lugar donde el celeste va a full en modo claro:
+     es la firma de la app y tiene que ser el mismo azul en los dos modos. */
+  --v-orb-from: #8ed5ff;
+  --v-orb-to: #1e88c8;
+  --v-orb-ink: #05121c;
 
-  /* Estados (apoyan, nunca son la única señal) */
-  --v-sage: #4f7a5a;
-  --v-sage-soft: rgb(79 122 90 / 0.13);
-  --v-dusk: #5b6b86;
-  --v-dusk-soft: rgb(91 107 134 / 0.12);
+  /* Estados. El azul es «activo»; lo demás conserva su propio idioma. */
+  --v-ok: #2f7d5c;
+  --v-ok-soft: rgb(47 125 92 / 0.12);
+  --v-warn: #9a6a12;
+  --v-warn-soft: rgb(154 106 18 / 0.12);
+  --v-alert: #a53b32;
+  --v-alert-soft: rgb(165 59 50 / 0.12);
 
-
-  /* Tintes por momento del día: identidad sin fotos */
-  --v-t-desayuno-bg: rgb(214 154 84 / 0.22);
-  --v-t-desayuno-fg: #935f22;
-  --v-t-snack-bg: rgb(126 152 98 / 0.22);
-  --v-t-snack-fg: #4f6633;
-  --v-t-almuerzo-bg: rgb(184 92 51 / 0.18);
-  --v-t-almuerzo-fg: #9a4826;
-  --v-t-merienda-bg: rgb(158 110 152 / 0.20);
-  --v-t-merienda-fg: #72496e;
-  --v-t-cena-bg: rgb(91 107 134 / 0.20);
+  /* Momentos del día: familia fría y desaturada. Distinguen sin competir
+     con el acento ni volver a traer el naranja por la ventana. */
+  --v-t-desayuno-bg: rgb(47 126 155 / 0.14);
+  --v-t-desayuno-fg: #2f7e9b;
+  --v-t-snack-bg: rgb(58 125 92 / 0.14);
+  --v-t-snack-fg: #3a7d5c;
+  --v-t-almuerzo-bg: rgb(79 98 168 / 0.14);
+  --v-t-almuerzo-fg: #4f62a8;
+  --v-t-merienda-bg: rgb(122 78 150 / 0.14);
+  --v-t-merienda-fg: #7a4e96;
+  --v-t-cena-bg: rgb(70 88 122 / 0.14);
   --v-t-cena-fg: #46587a;
 
-  --v-shadow-sm: 0 1px 2px rgb(28 24 20 / 0.05);
-  --v-shadow-md: 0 1px 3px rgb(28 24 20 / 0.06);
-  --v-shadow-lg: 0 18px 44px -20px rgb(28 24 20 / 0.34), 0 2px 8px rgb(28 24 20 / 0.05);
+  --v-shadow-sm: 0 1px 2px rgb(15 22 32 / 0.05);
+  --v-shadow-md: 0 1px 3px rgb(15 22 32 / 0.07);
+  --v-shadow-lg: 0 18px 44px -20px rgb(15 22 32 / 0.30), 0 2px 8px rgb(15 22 32 / 0.05);
+  --v-shadow-orb: 0 10px 26px -12px rgb(10 98 153 / 0.55), 0 2px 6px rgb(15 22 32 / 0.10);
 }
 
 :root[data-theme="dark"],
 html.dark {
-  --v-bg: #0e0d0c;
-  --v-bg-deep: #070706;
-  --v-surface: #1b1917;
-  --v-surface-2: #252220;
-  --v-veil: rgb(26 24 21 / 0.9);
+  --v-bg: #0a0c0f;
+  --v-bg-deep: #06080a;
+  --v-surface: #11151a;
+  --v-surface-2: #1a2028;
+  --v-veil: rgb(10 12 15 / 0.9);
+  --v-scrim: rgb(3 5 8 / 0.55);
 
-  --v-ink: #f4f0e9;
-  --v-ink-soft: #a49c91;
-  --v-ink-faint: #776f66;
-  --v-line: rgb(244 240 233 / 0.10);
-  --v-line-strong: rgb(244 240 233 / 0.20);
+  --v-ink: #f5f7fa;
+  --v-ink-soft: #9ea7b3;
+  --v-ink-faint: #7a8492;
+  --v-line: rgb(255 255 255 / 0.08);
+  --v-line-strong: rgb(255 255 255 / 0.18);
 
-  --v-clay: #e08256;
-  --v-clay-soft: rgb(224 130 86 / 0.16);
-  --v-clay-ink: #f0a179;
+  /* Acá el azul es el de verdad: claro, frío, tranquilo sobre casi negro. */
+  --v-accent: #72c7ff;
+  --v-accent-strong: #4bafef;
+  --v-accent-quiet: #a9deff;
+  --v-accent-soft: rgb(114 199 255 / 0.14);
+  --v-accent-line: rgb(114 199 255 / 0.38);
+  --v-accent-ink: #05121c;
+  --v-accent-glow: rgb(114 199 255 / 0.22);
+  --v-orb-from: #a9deff;
+  --v-orb-to: #4bafef;
+  --v-orb-ink: #05121c;
 
-  --v-sage: #86ae8f;
-  --v-sage-soft: rgb(134 174 143 / 0.16);
-  --v-dusk: #93a4c0;
-  --v-dusk-soft: rgb(147 164 192 / 0.16);
+  --v-ok: #7fc9a6;
+  --v-ok-soft: rgb(127 201 166 / 0.16);
+  --v-warn: #e0b871;
+  --v-warn-soft: rgb(224 184 113 / 0.16);
+  --v-alert: #e8877e;
+  --v-alert-soft: rgb(232 135 126 / 0.16);
 
+  --v-t-desayuno-bg: rgb(143 203 224 / 0.16);
+  --v-t-desayuno-fg: #8fcbe0;
+  --v-t-snack-bg: rgb(150 201 168 / 0.16);
+  --v-t-snack-fg: #96c9a8;
+  --v-t-almuerzo-bg: rgb(168 180 221 / 0.16);
+  --v-t-almuerzo-fg: #a8b4dd;
+  --v-t-merienda-bg: rgb(198 169 216 / 0.16);
+  --v-t-merienda-fg: #c6a9d8;
+  --v-t-cena-bg: rgb(142 156 184 / 0.16);
+  --v-t-cena-fg: #8e9cb8;
 
-  --v-t-desayuno-bg: rgb(214 154 84 / 0.20);
-  --v-t-desayuno-fg: #e0b071;
-  --v-t-snack-bg: rgb(140 176 110 / 0.20);
-  --v-t-snack-fg: #a8c98c;
-  --v-t-almuerzo-bg: rgb(224 130 86 / 0.20);
-  --v-t-almuerzo-fg: #eda07a;
-  --v-t-merienda-bg: rgb(190 140 185 / 0.20);
-  --v-t-merienda-fg: #d2a9cd;
-  --v-t-cena-bg: rgb(147 164 192 / 0.20);
-  --v-t-cena-fg: #aebdd6;
-
-  --v-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
-  --v-shadow-md: 0 2px 12px -2px rgb(0 0 0 / 0.5);
+  --v-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.45);
+  --v-shadow-md: 0 2px 12px -2px rgb(0 0 0 / 0.55);
   --v-shadow-lg: 0 16px 40px -12px rgb(0 0 0 / 0.7);
+  --v-shadow-orb: 0 10px 30px -10px rgb(114 199 255 / 0.45), 0 0 0 1px rgb(114 199 255 / 0.20);
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --v-bg: #0e0d0c;
-    --v-bg-deep: #070706;
-    --v-surface: #1b1917;
-    --v-surface-2: #252220;
-    --v-veil: rgb(26 24 21 / 0.9);
+    --v-bg: #0a0c0f;
+    --v-bg-deep: #06080a;
+    --v-surface: #11151a;
+    --v-surface-2: #1a2028;
+    --v-veil: rgb(10 12 15 / 0.9);
+    --v-scrim: rgb(3 5 8 / 0.55);
 
-    --v-ink: #f4f0e9;
-    --v-ink-soft: #a49c91;
-    --v-ink-faint: #776f66;
-    --v-line: rgb(244 240 233 / 0.10);
-    --v-line-strong: rgb(244 240 233 / 0.20);
+    --v-ink: #f5f7fa;
+    --v-ink-soft: #9ea7b3;
+    --v-ink-faint: #7a8492;
+    --v-line: rgb(255 255 255 / 0.08);
+    --v-line-strong: rgb(255 255 255 / 0.18);
 
-    --v-clay: #e08256;
-    --v-clay-soft: rgb(224 130 86 / 0.16);
-    --v-clay-ink: #f0a179;
+    /* Acá el azul es el de verdad: claro, frío, tranquilo sobre casi negro. */
+    --v-accent: #72c7ff;
+    --v-accent-strong: #4bafef;
+    --v-accent-quiet: #a9deff;
+    --v-accent-soft: rgb(114 199 255 / 0.14);
+    --v-accent-line: rgb(114 199 255 / 0.38);
+    --v-accent-ink: #05121c;
+    --v-accent-glow: rgb(114 199 255 / 0.22);
+    --v-orb-from: #a9deff;
+    --v-orb-to: #4bafef;
+    --v-orb-ink: #05121c;
 
-    --v-sage: #86ae8f;
-    --v-sage-soft: rgb(134 174 143 / 0.16);
-    --v-dusk: #93a4c0;
-    --v-dusk-soft: rgb(147 164 192 / 0.16);
+    --v-ok: #7fc9a6;
+    --v-ok-soft: rgb(127 201 166 / 0.16);
+    --v-warn: #e0b871;
+    --v-warn-soft: rgb(224 184 113 / 0.16);
+    --v-alert: #e8877e;
+    --v-alert-soft: rgb(232 135 126 / 0.16);
 
-  
-  --v-t-desayuno-bg: rgb(214 154 84 / 0.20);
-  --v-t-desayuno-fg: #e0b071;
-  --v-t-snack-bg: rgb(140 176 110 / 0.20);
-  --v-t-snack-fg: #a8c98c;
-  --v-t-almuerzo-bg: rgb(224 130 86 / 0.20);
-  --v-t-almuerzo-fg: #eda07a;
-  --v-t-merienda-bg: rgb(190 140 185 / 0.20);
-  --v-t-merienda-fg: #d2a9cd;
-  --v-t-cena-bg: rgb(147 164 192 / 0.20);
-  --v-t-cena-fg: #aebdd6;
+    --v-t-desayuno-bg: rgb(143 203 224 / 0.16);
+    --v-t-desayuno-fg: #8fcbe0;
+    --v-t-snack-bg: rgb(150 201 168 / 0.16);
+    --v-t-snack-fg: #96c9a8;
+    --v-t-almuerzo-bg: rgb(168 180 221 / 0.16);
+    --v-t-almuerzo-fg: #a8b4dd;
+    --v-t-merienda-bg: rgb(198 169 216 / 0.16);
+    --v-t-merienda-fg: #c6a9d8;
+    --v-t-cena-bg: rgb(142 156 184 / 0.16);
+    --v-t-cena-fg: #8e9cb8;
 
-  --v-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
-    --v-shadow-md: 0 2px 12px -2px rgb(0 0 0 / 0.5);
+    --v-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.45);
+    --v-shadow-md: 0 2px 12px -2px rgb(0 0 0 / 0.55);
     --v-shadow-lg: 0 16px 40px -12px rgb(0 0 0 / 0.7);
-}
+    --v-shadow-orb: 0 10px 30px -10px rgb(114 199 255 / 0.45), 0 0 0 1px rgb(114 199 255 / 0.20);
+  }
 }
 
 @theme inline {
@@ -142,13 +180,22 @@ html.dark {
   --color-ink-faint: var(--v-ink-faint);
   --color-line: var(--v-line);
   --color-line-strong: var(--v-line-strong);
-  --color-clay: var(--v-clay);
-  --color-clay-soft: var(--v-clay-soft);
-  --color-clay-ink: var(--v-clay-ink);
-  --color-sage: var(--v-sage);
-  --color-sage-soft: var(--v-sage-soft);
-  --color-dusk: var(--v-dusk);
-  --color-dusk-soft: var(--v-dusk-soft);
+
+  /* El acento. `accent-ink` es lo que va ENCIMA de un relleno azul: en
+     oscuro es casi negro, porque blanco sobre celeste no se lee. */
+  --color-accent: var(--v-accent);
+  --color-accent-strong: var(--v-accent-strong);
+  --color-accent-quiet: var(--v-accent-quiet);
+  --color-accent-soft: var(--v-accent-soft);
+  --color-accent-line: var(--v-accent-line);
+  --color-accent-ink: var(--v-accent-ink);
+
+  --color-ok: var(--v-ok);
+  --color-ok-soft: var(--v-ok-soft);
+  --color-warn: var(--v-warn);
+  --color-warn-soft: var(--v-warn-soft);
+  --color-alert: var(--v-alert);
+  --color-alert-soft: var(--v-alert-soft);
 
   --radius-card: 14px;
   --radius-hero: 20px;
@@ -158,6 +205,7 @@ html.dark {
   --shadow-sm: var(--v-shadow-sm);
   --shadow-md: var(--v-shadow-md);
   --shadow-lg: var(--v-shadow-lg);
+  --shadow-orb: var(--v-shadow-orb);
 
   /* Tres voces, con roles claros:
        · Space Grotesk — la voz principal. Nombres de comidas y titulares.
@@ -196,7 +244,7 @@ html.dark {
   }
   /* Foco visible sólo por teclado: en mobile no ensucia */
   :focus-visible {
-    outline: 2px solid var(--v-clay);
+    outline: 2px solid var(--v-accent);
     outline-offset: 3px;
     border-radius: 8px;
   }
@@ -269,6 +317,18 @@ html.dark {
   .v-no-scrollbar {
     scrollbar-width: none;
   }
+  /* El punto de «Ahora»: un halo mínimo, del tamaño de una uña. Es el
+     único glow de la app y por eso se nota. */
+  .v-glow {
+    box-shadow: 0 0 0 4px var(--v-accent-glow);
+  }
+
+  /* Azul hielo → azul cielo. El único gradiente, y va en el orb. */
+  .v-orb {
+    background-image: linear-gradient(155deg, var(--v-orb-from), var(--v-orb-to));
+    color: var(--v-orb-ink);
+  }
+
   .v-tap::after {
     content: "";
     position: absolute;

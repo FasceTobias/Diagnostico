@@ -45,7 +45,7 @@ export function Sheet({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.18 }}
-              className="absolute inset-0 bg-[#1c1814]/40"
+              className="absolute inset-0 bg-[color:var(--v-scrim)]"
             />
             <m.div
               role="dialog"

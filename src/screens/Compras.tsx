@@ -96,7 +96,7 @@ export function Compras({ app }: { app: Vianda }) {
                     <span
                       aria-hidden
                       className={`grid size-[20px] shrink-0 place-items-center rounded-[6px] border transition-colors ${
-                        bought ? 'border-clay bg-clay text-white' : 'border-line-strong'
+                        bought ? 'border-accent bg-accent text-accent-ink' : 'border-line-strong'
                       }`}
                     >
                       {bought && (
@@ -137,7 +137,7 @@ export function Compras({ app }: { app: Vianda }) {
               <p className="v-head text-[16px] text-ink first-letter:uppercase">
                 {ingredient}
                 {names.length > 1 && (
-                  <span className="v-label-sm ml-2.5 text-clay">{names.length} comidas</span>
+                  <span className="v-label-sm ml-2.5 text-ink-soft">{names.length} comidas</span>
                 )}
               </p>
               <p className="mt-1 text-[14px] leading-relaxed text-ink-faint">

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { AnimatePresence, LazyMotion, domAnimation, m } from 'motion/react'
 import type { Meal, Step } from '../lib/types'
 import { FREQUENCY_LABEL } from '../lib/types'
-import { CARB_SOURCE_TEXT, CONFIDENCE_TEXT } from '../lib/format'
+import { CARB_SOURCE_TEXT, CATEGORY_TINT, CONFIDENCE_TEXT } from '../lib/format'
 import { ingredientText } from '../lib/foods'
 import { CarbValue, SatietyMark, SectionLabel } from './ui'
 
@@ -35,7 +35,12 @@ export function MealDetail({ meal }: { meal: Meal }) {
 
   return (
     <div>
-      <p className="v-label font-semibold text-clay first-letter:uppercase">{meal.category}</p>
+      <p
+        className="v-label font-semibold first-letter:uppercase"
+        style={{ color: CATEGORY_TINT[meal.category].fg }}
+      >
+        {meal.category}
+      </p>
       <h3 className="v-head mt-1.5 text-[25px] leading-[1.15] text-ink">{meal.name}</h3>
       {meal.drink && <p className="v-label mt-1 text-ink-soft">con {meal.drink}</p>}
       <p className="v-label-sm mt-1.5 text-ink-faint">{meal.portion}</p>
@@ -206,7 +211,7 @@ function Recipe({ steps, minutes }: { steps: Step[]; minutes: number }) {
       {steps.map((step, idx) => (
         <div key={step.text} className="border-b border-line py-3">
           <div className="flex items-baseline gap-3">
-            <span className="v-label-sm w-4 shrink-0 text-clay v-tnum">{idx + 1}</span>
+            <span className="v-label-sm w-4 shrink-0 text-accent v-tnum">{idx + 1}</span>
             <p className="min-w-0 flex-1 text-[16px] leading-snug text-ink">{step.text}</p>
             {step.minutes && (
               <span className="v-label-sm shrink-0 text-ink-faint v-tnum">

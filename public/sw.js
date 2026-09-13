@@ -1,7 +1,7 @@
 /* Service worker mínimo: cachea el shell para que la app abra al instante
    y siga funcionando sin señal. Nada de push ni sincronización todavía. */
 
-const CACHE = 'vianda-v3'
+const CACHE = 'vianda-v4'
 const SHELL = [
   '/',
   '/index.html',

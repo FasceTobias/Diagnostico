@@ -63,7 +63,7 @@ export function Comidas({ app }: { app: Vianda }) {
               key={c}
               onClick={() => setCat(c)}
               className={`v-label min-h-[36px] shrink-0 rounded-lg px-3.5 font-semibold capitalize transition-colors ${
-                c === cat ? 'bg-clay text-white' : 'bg-surface-2 text-ink-soft active:bg-surface'
+                c === cat ? 'bg-accent text-accent-ink' : 'bg-surface-2 text-ink-soft active:bg-surface'
               }`}
             >
               {c}
@@ -120,7 +120,7 @@ export function Comidas({ app }: { app: Vianda }) {
                         {meal.name}
                       </span>
                       {meal.favorite && (
-                        <span aria-label="Favorita" className="shrink-0 text-[12px] text-clay">
+                        <span aria-label="Favorita" className="shrink-0 text-[12px] text-ink-soft">
                           ★
                         </span>
                       )}
@@ -180,7 +180,7 @@ function FilterWord({
       aria-pressed={active}
       className={`v-label-sm min-h-[34px] rounded-lg px-3 transition-colors ${
         active
-          ? 'bg-clay-soft font-semibold text-clay'
+          ? 'bg-accent-soft font-semibold text-accent'
           : 'border border-line text-ink-faint active:bg-surface-2'
       }`}
     >

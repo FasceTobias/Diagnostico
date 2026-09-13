@@ -33,9 +33,9 @@ export function AssistantBar({
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 300, damping: 24, delay: 0.25 }}
         whileTap={{ scale: 0.9 }}
-        className="fixed right-4 z-30 grid size-12 place-items-center rounded-full border border-line bg-surface shadow-lg"
+        className="v-orb fixed right-4 z-30 grid size-12 place-items-center rounded-full shadow-orb"
       >
-        <svg viewBox="0 0 20 20" className="size-[18px] text-clay" aria-hidden>
+        <svg viewBox="0 0 20 20" className="size-[18px]" aria-hidden>
           <path
             d="M10 2.8 11.7 7.2 16 8.9 11.7 10.6 10 15 8.3 10.6 4 8.9 8.3 7.2Z"
             fill="currentColor"
@@ -94,7 +94,7 @@ function AssistantSheet({
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Escribilo como lo pensás"
-          className="w-full border-b border-line-strong bg-transparent pb-3 text-[19px] text-ink outline-none placeholder:text-ink-faint focus:border-clay"
+          className="w-full border-b border-line-strong bg-transparent pb-3 text-[19px] text-ink outline-none placeholder:text-ink-faint focus:border-accent"
         />
       </form>
 
@@ -132,7 +132,7 @@ function AssistantSheet({
                   close()
                   onResolve({ reason: a.reason, slot: a.slot })
                 }}
-                className="mt-5 min-h-[52px] w-full rounded-pill bg-clay text-[16px] font-semibold text-white active:scale-[0.98]"
+                className="mt-5 min-h-[52px] w-full rounded-pill bg-accent text-[16px] font-semibold text-accent-ink active:scale-[0.98]"
               >
                 {answer.action.label}
               </button>
@@ -145,7 +145,7 @@ function AssistantSheet({
                   close()
                 }}
                 className={`mt-2 min-h-[48px] w-full rounded-pill text-[15px] font-semibold active:scale-[0.98] ${
-                  answer.action ? 'border border-line text-ink' : 'bg-clay text-white'
+                  answer.action ? 'border border-line text-ink' : 'bg-accent text-accent-ink'
                 }`}
               >
                 Pasar el día a «{CONTEXT_LABEL[answer.suggestContext]}»

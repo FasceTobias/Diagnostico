@@ -121,8 +121,16 @@ Bundle: ~84 kB gzip.
 
 ## Sistema de diseño
 
-Todo vive en `src/index.css` como tokens. Cálido y sobrio: hueso, tinta cálida
-y arcilla como único acento. Modo oscuro automático según el sistema.
+Todo vive en `src/index.css` como tokens. Calmo y limpio: casi negro, texto
+blanco y gris, y **azul claro como único acento**. Modo oscuro automático según
+el sistema.
+
+El azul es `#72C7FF` sobre el fondo oscuro y `#0A6299` sobre el claro —el mismo
+azul con otra luz—, y marca **sólo lo que se toca**: navegación activa, acción
+principal, selección, foco, indicadores. La metadata queda neutra. Encima de un
+relleno celeste el texto va casi negro (`accent-ink`), porque blanco sobre
+`#72C7FF` no se lee. Hay un solo gradiente —azul hielo a azul cielo, en el orb
+del asistente— y un solo glow, el halo del punto de «Ahora».
 
 **Tres voces tipográficas** con roles claros, todas autoalojadas
 (`scripts/fetch-fonts.mjs`), así que la app abre sin red y sin pedirle nada a un
@@ -163,10 +171,12 @@ Dos reglas que se respetan en toda la app:
    de internet pierde prioridad; no desaparece.
 8. **La bebida es parte de la comida.** Un tostado con café es un tostado con
    café, no un tostado.
-9. **Las recetas se escriben para alguien que nunca las hizo.** Sin jerga de
-   cocina, con la cantidad en cada paso y con la señal de que está listo. Si
-   la receta lleva más tiempo del que decía la comida, se corrige el tiempo
-   de la comida.
+9. **El azul es de lo que se toca.** Nunca decorativo. Todo lo que es dato,
+   etiqueta o metadata se queda en gris.
+10. **Las recetas se escriben para alguien que nunca las hizo.** Sin jerga de
+    cocina, con la cantidad en cada paso y con la señal de que está listo. Si
+    la receta lleva más tiempo del que decía la comida, se corrige el tiempo
+    de la comida.
 
 ## PWA
 

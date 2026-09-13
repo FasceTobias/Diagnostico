@@ -86,7 +86,7 @@ export function SatietyMark({ level, showLabel = true }: { level: Satiety; showL
         {[0, 1, 2].map((i) => (
           <span
             key={i}
-            className={`w-[3px] rounded-full ${i < filled ? 'bg-clay' : 'bg-line-strong'}`}
+            className={`w-[3px] rounded-full ${i < filled ? 'bg-accent' : 'bg-line-strong'}`}
             style={{ height: 4 + i * 3 }}
           />
         ))}
@@ -101,10 +101,10 @@ export function StatusPill({ status }: { status: MealStatus }) {
   if (status === 'pending') return null
   const s = status as Exclude<MealStatus, 'pending'>
   const tone: Record<Exclude<MealStatus, 'pending'>, string> = {
-    prepared: 'text-sage',
+    prepared: 'text-ok',
     eaten: 'text-ink-faint',
     skipped: 'text-ink-faint',
-    replaced: 'text-dusk',
+    replaced: 'text-accent',
   }
   const glyph: Record<Exclude<MealStatus, 'pending'>, string> = {
     prepared: '✓',
@@ -193,7 +193,7 @@ export function ContextSwitch({
             onClick={() => onChange(o)}
             aria-pressed={active}
             className={`v-label min-h-[40px] flex-1 rounded-lg font-semibold transition-colors duration-150 ${
-              active ? 'bg-clay text-white' : 'text-ink-soft active:bg-surface'
+              active ? 'bg-accent text-accent-ink' : 'text-ink-soft active:bg-surface'
             }`}
           >
             {CONTEXT_LABEL[o]}
@@ -224,7 +224,7 @@ export function CheckRow({
     >
       <span
         className={`mt-0.5 grid size-[18px] shrink-0 place-items-center rounded-[5px] border transition-all duration-200 ${
-          done ? 'v-checked border-clay bg-clay text-white' : 'border-line-strong'
+          done ? 'v-checked border-accent bg-accent text-accent-ink' : 'border-line-strong'
         }`}
       >
         {done && (

@@ -52,7 +52,7 @@ export function CarbCalculator({
             value={carbs}
             onChange={(e) => setCarbs(e.target.value)}
             placeholder="0"
-            className="w-28 border-b-[1.5px] border-line-strong bg-transparent pb-2 text-[30px] v-serif text-ink v-tnum outline-none focus:border-clay"
+            className="w-28 border-b-[1.5px] border-line-strong bg-transparent pb-2 text-[30px] v-serif text-ink v-tnum outline-none focus:border-accent"
           />
           <span className="text-[16px] text-ink-soft">{CARB_UNIT}</span>
         </span>
@@ -85,7 +85,7 @@ export function CarbCalculator({
         {onEditRatio && (
           <button
             onClick={onEditRatio}
-            className="v-label-sm shrink-0 border-b border-clay pb-0.5 text-ink-soft active:text-ink"
+            className="v-label-sm shrink-0 border-b border-accent pb-0.5 text-ink-soft active:text-ink"
           >
             Editar
           </button>

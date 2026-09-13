@@ -159,7 +159,7 @@ export function MealSheet({
                 aria-pressed={active}
                 className={`v-label-sm flex min-h-[52px] flex-1 flex-col items-center justify-center gap-1 rounded-[10px] border transition-colors duration-150 active:scale-[0.97] ${
                   active
-                    ? 'border-clay bg-clay text-white'
+                    ? 'border-accent bg-accent text-accent-ink'
                     : 'border-line text-ink-soft'
                 }`}
               >

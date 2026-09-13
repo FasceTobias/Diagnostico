@@ -87,8 +87,9 @@ export const CARB_SOURCE_TEXT: Record<Meal['carbSource'], string> = {
   pendiente: 'Pendiente de confirmar',
 }
 
-/** Tono cálido por momento del día. Colorea el ícono de categoría;
-    ya no hay iniciales ni avatares. */
+/** Un tono frío y apagado por momento del día. Colorea el ícono de
+    categoría y la etiqueta del detalle. Distinguen entre sí sin competir
+    con el azul de marca, que está reservado para lo que se toca. */
 export const CATEGORY_TINT: Record<Meal['category'], { bg: string; fg: string }> = {
   desayuno: { bg: 'var(--v-t-desayuno-bg)', fg: 'var(--v-t-desayuno-fg)' },
   snack: { bg: 'var(--v-t-snack-bg)', fg: 'var(--v-t-snack-fg)' },

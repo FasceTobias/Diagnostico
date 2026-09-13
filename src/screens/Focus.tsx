@@ -34,7 +34,7 @@ export function Focus({ app, onExit }: { app: Vianda; onExit: () => void }) {
 
       {next ? (
         <div className="v-rise flex flex-1 flex-col justify-center py-12">
-          <p className="v-label text-clay">Ahora</p>
+          <p className="v-label text-accent">Ahora</p>
           <h1 className="v-head mt-4 text-[26px] text-ink">
             {SLOT_LABEL[next.planned.slot]}
           </h1>

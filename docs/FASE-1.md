@@ -3,9 +3,9 @@
 > Documento de arquitectura, UX y diseño.
 > **Vianda** es un nombre temporal, no una marca definitiva.
 >
-> *Revisión 10 — las recetas se escriben para alguien que nunca cocinó eso.
-> Nada de jerga, cantidades en cada paso y cómo te das cuenta de que está.
-> «Ver con detalle» abre la explicación entera y queda abierto.*
+> *Revisión 11 — cambio de identidad: el acento pasa de arcilla a azul claro.
+> Calma, confianza y limpieza en lugar de energía. El azul es el color de lo
+> que se toca; todo lo demás queda neutro.*
 
 ---
 
@@ -51,8 +51,12 @@ Todo lo demás es soporte de esas tres preguntas.
 
 ### Identidad visual (resumen)
 
-- **Tono:** cálido, sobrio, doméstico. Nada de blanco clínico ni azul hospital.
-- **Paleta base:** hueso / tinta cálida / arcilla como acento único.
+- **Tono:** calmo, limpio, ligeramente frío. Nada de azul corporativo, azul
+  banco ni celeste infantil: azul hielo, más cerca de un instrumento cuidado
+  que de una clínica.
+- **Paleta base:** casi negro / texto blanco y gris / **azul claro** como acento
+  único. En oscuro el azul es `#72C7FF`; en claro baja a `#0A6299` para que el
+  texto chico siga siendo legible, que es el mismo azul con otra luz.
 - **Tres voces:** *Space Grotesk* para el contenido —nombres de comidas y
   titulares—, *Inter* para datos y cifras, *Fraunces* como acento en los títulos
   de sección. Autoalojadas.
@@ -68,6 +72,22 @@ Todo lo demás es soporte de esas tres preguntas.
 - **Nada de iniciales dentro de círculos:** una letra en un círculo se lee como el avatar de una
   persona, y esto es comida. Un solo ícono de línea por momento del día, sin caja. Cuando haya
   fotos reales, la foto ocupa ese lugar.
+- **El azul marca lo que se toca.** Navegación activa, acción principal, lo
+  seleccionado, el foco, los indicadores, la numeración de los pasos. Lo que
+  es metadata —la estrella de favorita, el contador de comidas, las etiquetas—
+  queda neutro. Si todo fuera azul, el azul no diría nada.
+- **`accent-ink`, no blanco.** Encima de un relleno celeste va un tono casi
+  negro: blanco sobre `#72C7FF` no se lee. Es el cambio que más se nota al
+  pasar de un acento oscuro a uno claro.
+- **Un solo gradiente y un solo glow.** El gradiente (azul hielo → azul cielo)
+  vive en el orb del asistente, que es la firma de la app. El glow es el halo
+  del punto de «Ahora». Nada más brilla.
+- **Los momentos del día bajan el tono.** Los cinco tintes de categoría pasan a
+  una familia fría y desaturada: distinguen desayuno de cena sin pelear con el
+  azul de marca ni traer el naranja de vuelta por la ventana.
+- **Los estados conservan su idioma.** Azul es activo o información; verde
+  discreto, preparada; ámbar y rojo quedan definidos como reserva semántica y
+  hoy no se usan, porque la app no reta a nadie.
 - **Motion:** rápido y corto (120–220ms). La animación confirma, no decora.
 
 ---

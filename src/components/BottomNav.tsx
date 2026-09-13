@@ -22,7 +22,7 @@ export function BottomNav({ tab, onTab }: { tab: Tab; onTab: (t: Tab) => void })
                 onClick={() => onTab(t.id)}
                 aria-current={active ? 'page' : undefined}
                 className={`flex min-h-[52px] w-full flex-col items-center justify-center gap-1 rounded-xl transition-colors duration-150 ${
-                  active ? 'bg-clay-soft text-clay' : 'text-ink-faint active:bg-surface-2'
+                  active ? 'bg-accent-soft text-accent' : 'text-ink-faint active:bg-surface-2'
                 }`}
               >
                 <svg viewBox="0 0 24 24" className="size-[21px]" fill="none" aria-hidden>

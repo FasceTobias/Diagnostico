@@ -9,8 +9,10 @@ import { fileURLToPath } from 'node:url'
 
 const OUT = resolve(dirname(fileURLToPath(import.meta.url)), '..', 'public', 'icons')
 
-const CLAY = [184, 92, 51]
-const CREAM = [255, 251, 245]
+/* Fondo casi negro y la vianda en azul claro: el mismo par que la app.
+   Entre los iconos del teléfono se reconoce por el azul, no por la forma. */
+const GROUND = [10, 12, 15]
+const MARK = [114, 199, 255]
 
 const inRoundedRect = (x, y, x0, y0, x1, y1, r) => {
   if (x < x0 || x > x1 || y < y0 || y > y1) return false
@@ -82,7 +84,7 @@ const render = (size, maskable) => {
           if (!maskable && !inRoundedRect(fx, fy, 0, 0, size - 1, size - 1, size * 0.22)) continue
           const cx = (fx - size / 2) / (1 - 2 * pad) + size / 2
           const cy = (fy - size / 2) / (1 - 2 * pad) + size / 2
-          const c = isMark((cx * 512) / size, (cy * 512) / size) ? CREAM : CLAY
+          const c = isMark((cx * 512) / size, (cy * 512) / size) ? MARK : GROUND
           r += c[0]; g += c[1]; b += c[2]; hits++
         }
       }

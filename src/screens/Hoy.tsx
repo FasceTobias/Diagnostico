@@ -94,8 +94,13 @@ export function Hoy({
               className="rounded-hero bg-surface p-4 shadow-md"
             >
               <div className="flex items-center justify-between gap-3">
-                <span className="v-caps inline-flex items-center gap-1.5 text-clay">
-                  <span aria-hidden className="size-[6px] rounded-full bg-clay" />
+                <span className="v-caps inline-flex items-center gap-2 text-accent">
+                  {/* El punto con halo: el único glow de la app. Marca
+                      qué estás mirando sin necesidad de más color. */}
+                  <span
+                    aria-hidden
+                    className={`size-[6px] rounded-full bg-accent ${next.isNow ? 'v-glow' : ''}`}
+                  />
                   {next.isNow ? 'Ahora' : 'Próximo'}
                 </span>
                 <span className="v-label-sm text-ink-faint v-tnum">
@@ -123,7 +128,7 @@ export function Hoy({
               <div className="mt-4 flex gap-2">
                 <button
                   onClick={() => setTarget({ planned: next.planned, meal: next.meal })}
-                  className="v-label min-h-[44px] flex-1 rounded-xl bg-ink font-semibold text-bg transition-transform duration-150 active:scale-[0.97]"
+                  className="v-label min-h-[44px] flex-1 rounded-xl bg-accent font-semibold text-accent-ink transition-transform duration-150 active:scale-[0.97]"
                 >
                   Ver detalles
                 </button>

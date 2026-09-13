@@ -217,17 +217,17 @@ function ResolveFlow({
                 <button
                   onClick={() => applyContext(c)}
                   className={`w-full rounded-card px-4 py-4 text-left shadow-sm transition-transform duration-150 active:scale-[0.985] ${
-                    c === context ? 'bg-clay text-white' : 'bg-surface'
+                    c === context ? 'bg-accent text-accent-ink' : 'bg-surface'
                   }`}
                 >
                   <span
-                    className={`block text-[16px] font-semibold ${c === context ? 'text-white' : 'text-ink'}`}
+                    className={`block text-[16px] font-semibold ${c === context ? 'text-accent-ink' : 'text-ink'}`}
                   >
                     {CONTEXT_LABEL[c]}
                     {c === context && <span className="ml-2 text-[13px] font-normal">actual</span>}
                   </span>
                   <span
-                    className={`mt-0.5 block text-[13px] ${c === context ? 'text-white/75' : 'text-ink-faint'}`}
+                    className={`mt-0.5 block text-[13px] ${c === context ? 'text-accent-ink/70' : 'text-ink-faint'}`}
                   >
                     {CONTEXT_NOTE[c]}
                   </span>
@@ -250,7 +250,7 @@ function ResolveFlow({
                 className="flex w-full items-center gap-3 rounded-xl border-b border-line px-1 py-3 text-left transition-colors active:bg-surface-2"
               >
                 <span className="v-head flex-1 text-[17px] text-ink">{SLOT_LABEL[s]}</span>
-                {suggested && <span className="v-label-sm text-clay">Ahora</span>}
+                {suggested && <span className="v-label-sm text-accent">Ahora</span>}
               </button>
             )
           })}
@@ -504,7 +504,7 @@ function Filters({
             onClick={() => onToggle(f)}
             aria-pressed={on}
             className={`v-label min-h-[36px] shrink-0 rounded-lg px-3.5 font-semibold transition-colors ${
-              on ? 'bg-clay text-white' : 'bg-surface-2 text-ink-soft active:bg-surface'
+              on ? 'bg-accent text-accent-ink' : 'bg-surface-2 text-ink-soft active:bg-surface'
             }`}
           >
             {RESOLVE_FILTER[f]}
