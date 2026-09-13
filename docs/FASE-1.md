@@ -3,9 +3,9 @@
 > Documento de arquitectura, UX y diseño.
 > **Vianda** es un nombre temporal, no una marca definitiva.
 >
-> *Revisión 9 — las comidas que se preparan traen pasos. Tres a cinco líneas
-> con el tiempo de cada una, y «Ver con detalle» abre la receta entera.
-> Sólo en las comidas que lo necesitan.*
+> *Revisión 10 — las recetas se escriben para alguien que nunca cocinó eso.
+> Nada de jerga, cantidades en cada paso y cómo te das cuenta de que está.
+> «Ver con detalle» abre la explicación entera y queda abierto.*
 
 ---
 
@@ -317,25 +317,45 @@ sigue mostrándose como **sin verificar**; cuando se carga, el DEMO se cae solo.
 
 ### Cómo se hace
 
-Las comidas que se cocinan traen pasos: entre tres y cinco líneas, con los
-minutos de cada una, dentro del detalle. No están en todas. Un tostado, unas
-tostadas con queso untable o una fruta no llevan instrucciones, y ponerle
-instrucciones a eso sería ruido.
+Las comidas que se cocinan traen pasos, con los minutos de cada uno, dentro
+del detalle. No están en todas. Un tostado, unas tostadas con queso untable o
+una fruta no llevan instrucciones, y ponerle instrucciones a eso sería ruido.
+
+**Se escriben para alguien que nunca hizo eso.** Es la regla que manda sobre
+todo lo demás, incluida la brevedad:
+
+- Ningún paso usa una palabra de cocina sin explicarla. Nada de *saltear*,
+  *cuajar*, *en pluma*, *a punto*. Si el gesto no tiene nombre común, se
+  describe: «cortala al medio, apoyá el lado plano en la tabla y hacé tiras».
+- Cada paso dice **cuánto**: seis cucharadas, dos tazas de agua por una de
+  arroz, cubos de tres centímetros. «Un puñado» sólo vale si al lado dice qué
+  es un puñado.
+- Cada paso dice **cómo te das cuenta de que está**: el agua hierve cuando las
+  burbujas son grandes y no paran; la papa está cuando el tenedor entra sin
+  hacer fuerza; el huevo sale cuando todavía se ve húmedo.
+- Un paso, una acción. Antes eran cuatro pasos largos; ahora son seis o siete
+  cortos, y se entiende leyendo una línea a la vez con la sartén en la mano.
+- Donde hay una trampa conocida, está dicha: el pan caliente transpira dentro
+  del papel, el tomate moja el sándwich, la palta se pone marrón, la sal antes
+  de tiempo seca la carne.
 
 Los minutos son los de ese paso y **se solapan**: el horno calienta mientras
 cortás, así que no suman `prepMinutes`. `prepMinutes` sigue siendo el tiempo
 real que te lleva la comida, y los pasos nunca pueden pedir más que eso.
 
 **Dos niveles, y el segundo no se abre solo.** Lo que ves por defecto es la
-versión corta: una línea por paso, que es lo que necesitás si ya sabés cocinar
-eso. Abajo hay un botón, **«Ver con detalle»**, y ahí está la receta entera:
-cantidades, temperaturas, cómo te das cuenta de que algo está listo, qué hacer
-si va a viajar en la mochila. Se cierra con el mismo botón.
+línea de cada paso, que ya trae la cantidad y la acción concreta. Abajo hay un
+botón, **«Ver con detalle»**, y ahí se abre la explicación entera de cada paso.
+Se cierra con el mismo botón.
 
-El orden importa. La app no puede asumir que no sabés hacer fideos, pero
-tampoco puede esconder cómo se hace una tortilla. El default es corto porque
-la mayoría de las veces alcanza; el detalle está a un toque porque las veces
-que hace falta, hace falta entero.
+**Y queda como lo dejaste.** Si abriste el detalle una vez, las demás recetas
+abren en detalle. El que necesita la explicación la necesita siempre, y no
+tiene por qué pedirla comida por comida.
+
+Los tiempos son los de cada paso y **se solapan**: el horno calienta mientras
+cortás. El número de arriba es el tiempo real de la comida, y cuando la receta
+pedía más que eso se corrigió el tiempo de la comida, no la receta. Hervir dos
+huevos son veinte minutos aunque el plan dijera diez.
 
 Esto no convierte a Vianda en una app de recetas. No hay porciones escalables,
 ni fotos de proceso, ni variantes, ni buscador de recetas. Es lo mínimo para

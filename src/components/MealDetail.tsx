@@ -171,9 +171,31 @@ export function MealDetail({ meal }: { meal: Meal }) {
    sabés cocinar eso. «Ver con detalle» abre la receta entera —cantidades,
    temperaturas, cómo te das cuenta de que está— sin cambiar de pantalla.
    Nunca al revés: el detalle no se abre solo. */
+const DETAIL_KEY = 'vianda.receta.detalle'
+
+/* Si lo abriste una vez, queda abierto. El que necesita la explicación la
+   necesita siempre, y no tiene por qué pedirla comida por comida. */
+const readPref = () => {
+  try {
+    return localStorage.getItem(DETAIL_KEY) === '1'
+  } catch {
+    return false
+  }
+}
+
 function Recipe({ steps, minutes }: { steps: Step[]; minutes: number }) {
-  const [full, setFull] = useState(false)
+  const [full, setFull] = useState(readPref)
   const hasDetail = steps.some((s) => s.detail)
+
+  const toggle = () =>
+    setFull((v) => {
+      try {
+        localStorage.setItem(DETAIL_KEY, v ? '0' : '1')
+      } catch {
+        /* modo privado: la preferencia no se guarda, la app funciona igual */
+      }
+      return !v
+    })
 
   return (
     <LazyMotion features={domAnimation}>
@@ -213,7 +235,7 @@ function Recipe({ steps, minutes }: { steps: Step[]; minutes: number }) {
       {hasDetail && (
         <button
           type="button"
-          onClick={() => setFull((v) => !v)}
+          onClick={toggle}
           className="v-label mt-3 flex w-full items-center justify-between gap-3 rounded-xl border border-line px-4 py-3 text-left font-semibold text-ink transition-colors active:bg-surface-2"
         >
           {full ? 'Ver en corto' : 'Ver con detalle'}
