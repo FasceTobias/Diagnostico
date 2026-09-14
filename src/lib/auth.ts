@@ -16,6 +16,23 @@ import { hasBackend, supabase } from './supabase'
 
 export type EstadoCuenta = 'sin-backend' | 'cargando' | 'fuera' | 'dentro'
 
+/* Qué formas de entrar están habilitadas.
+
+   Cada una hay que configurarla del lado de Supabase antes de que sirva:
+   Google necesita un cliente OAuth, Apple una cuenta de desarrollador y
+   un Service ID, y el teléfono un proveedor de SMS que se cobra por
+   mensaje. Un botón que falla es peor que un botón que no está, así que
+   se declaran a mano y sólo se muestran las que existen de verdad.
+
+       VITE_AUTH_PROVIDERS=google,apple,telefono
+*/
+export type Proveedor = 'google' | 'apple' | 'telefono'
+
+export const PROVEEDORES: Proveedor[] = (import.meta.env.VITE_AUTH_PROVIDERS ?? '')
+  .split(',')
+  .map((p: string) => p.trim().toLowerCase())
+  .filter((p: string): p is Proveedor => p === 'google' || p === 'apple' || p === 'telefono')
+
 export interface Resultado {
   /** Texto para mostrar, ya en castellano. */
   error?: string
@@ -38,6 +55,14 @@ const traducir = (msg: string): string => {
     return 'Ese mail no parece un mail.'
   if (m.includes('rate limit') || m.includes('too many'))
     return 'Demasiados intentos seguidos. Esperá un minuto.'
+  if (m.includes('token has expired') || m.includes('otp_expired'))
+    return 'Ese código ya venció. Pedí uno nuevo.'
+  if (m.includes('invalid token') || m.includes('otp') )
+    return 'El código no coincide. Fijate que esté completo.'
+  if (m.includes('provider is not enabled') || m.includes('unsupported provider'))
+    return 'Esa forma de entrar todavía no está habilitada.'
+  if (m.includes('phone') && m.includes('invalid'))
+    return 'Ese número no parece un número. Va con código de país: +598…'
   if (m.includes('failed to fetch') || m.includes('network'))
     return 'No hay conexión con el servidor. Probá de nuevo en un rato.'
   return msg
@@ -108,6 +133,53 @@ export const useSession = () => {
     }
   }, [])
 
+  /* OAuth se va del navegador y vuelve con la sesión en la URL, que
+     `detectSessionInUrl` consume sola. Por eso acá no hay nada que
+     esperar: si todo va bien, esta página ya no existe. */
+  const conProveedor = useCallback(async (quien: 'google' | 'apple'): Promise<Resultado> => {
+    if (!supabase) return { error: 'No hay servidor configurado.' }
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: quien,
+        options: { redirectTo: window.location.origin },
+      })
+      return error ? { error: traducir(error.message) } : {}
+    } catch (e) {
+      return fallo(e)
+    }
+  }, [])
+
+  /* Teléfono: se manda un código de seis dígitos y se vuelve con él. Dos
+     pasos, dos funciones. */
+  const pedirCodigo = useCallback(async (telefono: string): Promise<Resultado> => {
+    if (!supabase) return { error: 'No hay servidor configurado.' }
+    try {
+      const { error } = await supabase.auth.signInWithOtp({ phone: telefono })
+      return error
+        ? { error: traducir(error.message) }
+        : { aviso: 'Te mandamos un código por mensaje.' }
+    } catch (e) {
+      return fallo(e)
+    }
+  }, [])
+
+  const verificarCodigo = useCallback(
+    async (telefono: string, codigo: string): Promise<Resultado> => {
+      if (!supabase) return { error: 'No hay servidor configurado.' }
+      try {
+        const { error } = await supabase.auth.verifyOtp({
+          phone: telefono,
+          token: codigo,
+          type: 'sms',
+        })
+        return error ? { error: traducir(error.message) } : {}
+      } catch (e) {
+        return fallo(e)
+      }
+    },
+    [],
+  )
+
   const salir = useCallback(async (): Promise<Resultado> => {
     if (!supabase) return {}
     try {
@@ -153,6 +225,9 @@ export const useSession = () => {
     recuperando,
     crear,
     entrar,
+    conProveedor,
+    pedirCodigo,
+    verificarCodigo,
     salir,
     recuperar,
     cambiarClave,

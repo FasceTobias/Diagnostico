@@ -5,6 +5,7 @@ import { Semana } from './screens/Semana'
 import { Comidas } from './screens/Comidas'
 import { Compras } from './screens/Compras'
 import { Focus } from './screens/Focus'
+import { Onboarding } from './screens/Onboarding'
 import { BottomNav, type Tab } from './components/BottomNav'
 import { AssistantBar } from './components/Assistant'
 import { ResolveSheet, type ResolveStart } from './components/ResolveSheet'
@@ -36,6 +37,9 @@ export default function App() {
   const [tab, setTab] = useState<Tab>('hoy')
   const [resolve, setResolve] = useState<ResolveStart | null>(null)
   const [hash, setHash] = useHash()
+  /* Para que salir de la presentación se sienta inmediato, sin esperar a
+     que el guardado vuelva. */
+  const [saltado, setSaltado] = useState(false)
 
   if (Direcciones && (hash === '#/direcciones' || hash === '#/conceptos')) {
     return (
@@ -43,6 +47,13 @@ export default function App() {
         <Direcciones app={app} onBack={() => setHash('')} />
       </Suspense>
     )
+  }
+
+  /* La presentación aparece una sola vez y se puede saltear entera. Va
+     antes que cualquier otra cosa: no tiene sentido explicar la app por
+     encima de la app. */
+  if (!app.perfil.listo && !saltado) {
+    return <Onboarding app={app} onSalir={() => setSaltado(true)} />
   }
 
   if (app.focus) {

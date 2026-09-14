@@ -320,3 +320,53 @@ Falta lo que sólo se puede hacer con el proyecto creado: que el mail de
 recuperación llegue, que la redirect URL esté declarada, que la
 confirmación de mail esté como la queramos y que el trigger de alta corra
 en Supabase y no sólo en el Postgres de prueba.
+
+### Entrar con Google, Apple o teléfono ✅ (el código; la configuración no)
+
+`signInWithOAuth` para Google y Apple, y código por SMS para el teléfono
+—pedirlo y verificarlo, dos pasos—.
+
+**Los botones no se muestran por defecto.** Cada forma de entrar hay que
+habilitarla del lado de Supabase antes de que sirva, y cada una tiene su
+costo real:
+
+| | Qué hace falta | Costo |
+| --- | --- | --- |
+| Google | Un cliente OAuth en Google Cloud | Gratis |
+| Apple | Cuenta de desarrollador y un Service ID | **US$ 99 por año** |
+| Teléfono | Un proveedor de SMS (Twilio, MessageBird) | **Se cobra por mensaje** |
+
+Se declaran con `VITE_AUTH_PROVIDERS=google,apple,telefono` y sólo
+aparecen las que estén en esa lista. Un botón que falla es peor que un
+botón que no está.
+
+### Etapa 5 — La presentación ✅
+
+`src/screens/Onboarding.tsx`. Seis pasos, todos salteables, ninguno
+obligatorio: bienvenida, nombre y para quién, tipo de diabetes,
+carbohidratos e insulina, rutina y horarios, cierre.
+
+La regla que ordena todo: **nada de lo que se contesta ahí saca comida de
+la app**. No hay lista negra por tipo de diabetes, no hay modo dieta, no
+hay alimentos prohibidos. Lo que cambia es qué información aparece al
+lado de la comida y qué herramientas se encienden. Se dice en la
+pantalla, con todas las letras, en el primer paso y otra vez en el de
+diabetes, porque es lo primero que alguien con diabetes espera que una
+app le haga.
+
+Otras decisiones:
+
+- **Guarda al pasar de paso, no al final.** Si cerrás la app en el cuarto,
+  mañana seguís en el cuarto y lo contestado sigue ahí.
+- **Saltear no deja nada a medias.** Marca la presentación como vista, la
+  app queda usable y lo que falte se completa en Configuración.
+- **La insulina sólo aparece si tiene sentido** —tipo 1, tipo 2 o
+  gestacional, y sólo si contás carbohidratos— y con la aclaración de
+  siempre: la app no calcula dosis por su cuenta.
+- **«Acompaño a alguien»** cambia las preguntas: no todo el que usa una
+  app de diabetes es quien la tiene.
+
+**Verificación:** 18 pruebas en el navegador. El recorrido completo con
+tipo 1 e insulina, que la relación cargada ahí sobreviva al refresh, que
+saltear lleve directo a la app y no vuelva a aparecer, y que los tres
+proveedores se muestren sólo cuando están declarados.

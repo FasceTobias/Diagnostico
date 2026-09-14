@@ -319,6 +319,72 @@ export interface InsulinSettings {
 
 export type Goal = 'ordenarme' | 'bajar' | 'mantener' | 'subir'
 
+/* ------------------------------------------------------------------
+   EL PERFIL
+
+   Lo que la app sabe de vos. Todo opcional y todo salteable: se pregunta
+   una vez, se puede cambiar siempre, y con cualquier campo vacío la app
+   funciona igual.
+
+   Una aclaración que vale para todo este bloque: **nada de esto cambia
+   qué comida te muestra la app**. No hay comida prohibida, no hay lista
+   negra por tipo de diabetes, no hay modo dieta. Lo que cambia es qué
+   información aparece al lado de la comida y qué herramientas se
+   encienden. La pizza sigue siendo pizza; lo que suma la app es saber
+   cuántos carbohidratos tiene y cuándo te conviene.
+   ------------------------------------------------------------------ */
+
+export type DiabetesType =
+  | 'tipo-1'
+  | 'tipo-2'
+  | 'gestacional'
+  | 'prediabetes'
+  | 'sin-diabetes'
+  | 'prefiero-no-decir'
+
+export const DIABETES_LABEL: Record<DiabetesType, string> = {
+  'tipo-1': 'Tipo 1',
+  'tipo-2': 'Tipo 2',
+  gestacional: 'Gestacional',
+  prediabetes: 'Prediabetes',
+  'sin-diabetes': 'No tengo diabetes',
+  'prefiero-no-decir': 'Prefiero no decirlo',
+}
+
+export const DIABETES_NOTE: Record<DiabetesType, string> = {
+  'tipo-1': 'Contás carbohidratos y usás insulina. La app te muestra los dos.',
+  'tipo-2': 'Algunos usan insulina y otros no. Vos elegís qué ver.',
+  gestacional: 'Suele ser por un tiempo. Lo podés cambiar cuando quieras.',
+  prediabetes: 'Ver los carbohidratos ayuda; no hace falta nada más.',
+  'sin-diabetes': 'La app sirve igual: es organizar la comida del día.',
+  'prefiero-no-decir': 'Perfecto. Podés encender lo que te sirva a mano.',
+}
+
+/** Quién usa la app: vos, o alguien a quien acompañás. */
+export type Rol = 'para-mi' | 'acompanio'
+
+export interface Perfil {
+  /** Cómo querés que te llamemos. Vacío es una respuesta válida. */
+  nombre: string
+  rol: Rol
+  diabetes: DiabetesType | null
+  /** Ver los carbohidratos al lado de cada comida. */
+  contarCarbos: boolean
+  /** Hasta dónde llegó el onboarding. Se puede retomar. */
+  paso: number
+  /** Lo terminó o lo salteó: en los dos casos no vuelve a aparecer solo. */
+  listo: boolean
+}
+
+export const DEFAULT_PERFIL: Perfil = {
+  nombre: '',
+  rol: 'para-mi',
+  diabetes: null,
+  contarCarbos: true,
+  paso: 0,
+  listo: false,
+}
+
 export interface Preferences {
   /** Qué busca. Hoy no cambia nada: queda guardado. */
   goal: Goal
@@ -331,6 +397,8 @@ export interface Preferences {
   /** Cuánto cocina y cuántas horas pasa afuera, de 0 a 3. */
   cooks?: number
   hoursOutside?: number
+  /** Para desempatar cuando la app propone algo suelto. */
+  dulceOSalado?: 'dulce' | 'salado' | 'los dos'
 }
 
 export const DEFAULT_PREFERENCES: Preferences = {

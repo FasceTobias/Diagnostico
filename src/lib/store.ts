@@ -4,12 +4,13 @@ import type {
   DayPlan,
   InsulinSettings,
   MealStatus,
+  Perfil,
   Preferences,
   PackItem,
   PrepTask,
   Slot,
 } from './types'
-import { DEFAULT_INSULIN, DEFAULT_PREFERENCES } from './types'
+import { DEFAULT_INSULIN, DEFAULT_PERFIL, DEFAULT_PREFERENCES } from './types'
 import { addDays, isoDate } from './format'
 import { DEFAULT_TIMES, buildWeek, packListFor, prepTasksFor, reflowDay } from './domain'
 import { getRepo, type Snapshot } from './repo'
@@ -39,6 +40,7 @@ const EMPTY: Snapshot = {
   times: DEFAULT_TIMES,
   insulin: DEFAULT_INSULIN,
   prefs: DEFAULT_PREFERENCES,
+  perfil: DEFAULT_PERFIL,
   checks: {},
   ui: { focus: false },
 }
@@ -182,6 +184,13 @@ export const useVianda = () => {
     [apply],
   )
 
+  const setPerfil = useCallback(
+    (perfil: Perfil) => {
+      apply({ ...ref.current, perfil }, () => repo.savePerfil(perfil))
+    },
+    [apply],
+  )
+
   const setFocus = useCallback(
     (focus: boolean) => {
       const ui = { ...ref.current.ui, focus }
@@ -244,6 +253,8 @@ export const useVianda = () => {
     setInsulin,
     prefs: state.prefs,
     setPrefs,
+    perfil: state.perfil,
+    setPerfil,
     packing,
     prep,
     focus: state.ui.focus,

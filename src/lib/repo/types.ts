@@ -2,6 +2,7 @@ import type {
   DayPlan,
   InsulinSettings,
   Meal,
+  Perfil,
   Preferences,
   Slot,
 } from '../types'
@@ -36,6 +37,8 @@ export interface Snapshot {
   times: Record<Slot, string>
   insulin: InsulinSettings
   prefs: Preferences
+  /** Quién sos, hasta donde quisiste contar. */
+  perfil: Perfil
   /** Marcado de mochila, preparación y compras, por id de línea. */
   checks: Record<string, boolean>
   /** Estado de interfaz. No va a viajar al servidor. */
@@ -56,6 +59,7 @@ export interface ViandaRepo {
   saveDay(day: DayPlan): Promise<void>
   saveTimes(times: Record<Slot, string>): Promise<void>
   savePrefs(prefs: Preferences): Promise<void>
+  savePerfil(perfil: Perfil): Promise<void>
   saveInsulin(insulin: InsulinSettings): Promise<void>
   setCheck(id: string, done: boolean): Promise<void>
   saveUi(ui: Snapshot['ui']): Promise<void>

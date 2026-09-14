@@ -1,5 +1,5 @@
-import type { DayPlan, InsulinSettings, Preferences, Slot } from '../types'
-import { DEFAULT_INSULIN, DEFAULT_PREFERENCES } from '../types'
+import type { DayPlan, InsulinSettings, Perfil, Preferences, Slot } from '../types'
+import { DEFAULT_INSULIN, DEFAULT_PERFIL, DEFAULT_PREFERENCES } from '../types'
 import { DEMO_MEALS } from '../demo'
 import { addDays, isoDate } from '../format'
 import { DEFAULT_TIMES, buildWeek } from '../domain'
@@ -23,6 +23,7 @@ interface Stored {
   times: Record<Slot, string>
   insulin: InsulinSettings
   prefs: Preferences
+  perfil: Perfil
   checks: Record<string, boolean>
   focus: boolean
 }
@@ -59,6 +60,7 @@ const fresh = (): Stored => {
     times: DEFAULT_TIMES,
     insulin: DEFAULT_INSULIN,
     prefs: DEFAULT_PREFERENCES,
+    perfil: DEFAULT_PERFIL,
     checks: {},
     focus: false,
   }
@@ -76,7 +78,14 @@ const current = (): Stored => {
   if (stored?.weekStart === ws) return { ...fresh(), ...stored }
 
   const next = stored
-    ? { ...fresh(), times: stored.times, insulin: stored.insulin, prefs: stored.prefs }
+    ? {
+        ...fresh(),
+        times: stored.times,
+        insulin: stored.insulin,
+        prefs: stored.prefs,
+        // Lo que contaste de vos no se reinicia nunca.
+        perfil: stored.perfil ?? DEFAULT_PERFIL,
+      }
     : fresh()
   write(next)
   return next
@@ -89,6 +98,7 @@ const toSnapshot = (s: Stored): Snapshot => ({
   times: s.times,
   insulin: s.insulin,
   prefs: s.prefs,
+  perfil: s.perfil ?? DEFAULT_PERFIL,
   checks: s.checks,
   ui: { focus: s.focus },
 })
@@ -116,6 +126,7 @@ export const localRepo: ViandaRepo = {
 
   saveTimes: (times) => patch((s) => ({ ...s, times })),
   savePrefs: (prefs) => patch((s) => ({ ...s, prefs })),
+  savePerfil: (perfil) => patch((s) => ({ ...s, perfil })),
   saveInsulin: (insulin) => patch((s) => ({ ...s, insulin })),
   setCheck: (id, done) => patch((s) => ({ ...s, checks: { ...s.checks, [id]: done } })),
   saveUi: (ui) => patch((s) => ({ ...s, focus: ui.focus })),

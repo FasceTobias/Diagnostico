@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react'
-import type { Cuenta } from '../lib/auth'
+import { PROVEEDORES, type Cuenta } from '../lib/auth'
 import { Sheet } from './Sheet'
 import { SectionLabel } from './ui'
 
@@ -7,7 +7,7 @@ import { SectionLabel } from './ui'
    app funciona sin cuenta, y la cuenta se ofrece por lo que hace —que la
    comida sobreviva al teléfono—, no como peaje de entrada. */
 
-type Modo = 'entrar' | 'crear' | 'olvide'
+type Modo = 'entrar' | 'crear' | 'olvide' | 'telefono'
 
 const Campo = ({
   label,
@@ -38,6 +38,68 @@ const Principal = ({
   </button>
 )
 
+/* Los logos van como marca de línea, no como el botón de cada empresa:
+   la app tiene su propio lenguaje y no se convierte en un collage. */
+const MARCAS: Record<string, { texto: string; path: string }> = {
+  google: {
+    texto: 'Seguir con Google',
+    path: 'M12 10.2v3.9h5.5a4.7 4.7 0 0 1-2 3.1l3.2 2.5c1.9-1.7 3-4.3 3-7.3 0-.7-.1-1.4-.2-2zM12 22c2.7 0 5-.9 6.7-2.4l-3.2-2.5c-.9.6-2 1-3.5 1a6 6 0 0 1-5.7-4.2l-3.3 2.6A10 10 0 0 0 12 22M6.3 13.9a6 6 0 0 1 0-3.8L3 7.5a10 10 0 0 0 0 9zM12 5.9c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3 7.5l3.3 2.6A6 6 0 0 1 12 5.9',
+  },
+  apple: {
+    texto: 'Seguir con Apple',
+    path: 'M16.3 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.6 2.1-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.6 2.2 2.7 2.2 1.1 0 1.5-.7 2.8-.7s1.6.7 2.8.7 1.9-1 2.6-2a9 9 0 0 0 1.2-2.4c-.1 0-2.2-.9-2.2-3.4M14.1 6.2c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.7-1 2.6 1 .1 2-.5 2.7-1.2',
+  },
+}
+
+const Proveedores = ({
+  onElegir,
+  onTelefono,
+}: {
+  onElegir: (p: 'google' | 'apple') => void
+  onTelefono: () => void
+}) => {
+  if (PROVEEDORES.length === 0) return null
+  return (
+    <>
+      <div className="mt-6 space-y-2.5">
+        {PROVEEDORES.filter((p) => p !== 'telefono').map((p) => (
+          <button
+            key={p}
+            onClick={() => onElegir(p as 'google' | 'apple')}
+            className="flex min-h-[48px] w-full items-center justify-center gap-2.5 rounded-xl border border-line text-[15px] font-medium text-ink transition-colors active:bg-surface-2"
+          >
+            <svg viewBox="0 0 24 24" className="size-[17px] text-ink-soft" aria-hidden>
+              <path d={MARCAS[p].path} fill="currentColor" />
+            </svg>
+            {MARCAS[p].texto}
+          </button>
+        ))}
+        {PROVEEDORES.includes('telefono') && (
+          <button
+            onClick={onTelefono}
+            className="flex min-h-[48px] w-full items-center justify-center gap-2.5 rounded-xl border border-line text-[15px] font-medium text-ink transition-colors active:bg-surface-2"
+          >
+            <svg viewBox="0 0 24 24" className="size-[17px] text-ink-soft" fill="none" aria-hidden>
+              <path
+                d="M7 3.5h10a1.5 1.5 0 0 1 1.5 1.5v14a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 19V5A1.5 1.5 0 0 1 7 3.5ZM10.5 17.5h3"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+            </svg>
+            Entrar con mi teléfono
+          </button>
+        )}
+      </div>
+      <div className="mt-6 flex items-center gap-3">
+        <span className="h-px flex-1 bg-line" />
+        <span className="v-label-sm text-ink-faint">o con mail</span>
+        <span className="h-px flex-1 bg-line" />
+      </div>
+    </>
+  )
+}
+
 const Aviso = ({ error, aviso }: { error?: string; aviso?: string }) => {
   if (!error && !aviso) return null
   return (
@@ -63,6 +125,9 @@ export function CuentaSheet({
   const [email, setEmail] = useState('')
   const [clave, setClave] = useState('')
   const [nombre, setNombre] = useState('')
+  const [telefono, setTelefono] = useState('')
+  const [codigo, setCodigo] = useState('')
+  const [codigoPedido, setCodigoPedido] = useState(false)
   const [pendiente, setPendiente] = useState(false)
   const [error, setError] = useState<string>()
   const [aviso, setAviso] = useState<string>()
@@ -73,6 +138,7 @@ export function CuentaSheet({
     setModo(m)
     setError(undefined)
     setAviso(undefined)
+    if (m !== 'telefono') setCodigoPedido(false)
   }
 
   const enviar = (fn: () => Promise<{ error?: string; aviso?: string }>) =>
@@ -147,6 +213,10 @@ export function CuentaSheet({
             Con una cuenta, tu comida deja de vivir sólo en este teléfono: sobrevive a
             cambiarlo, a borrar los datos del navegador y a entrar desde otro lado.
           </p>
+          <Proveedores
+            onElegir={(p) => void cuenta.conProveedor(p)}
+            onTelefono={() => ir('telefono')}
+          />
           <form onSubmit={enviar(() => cuenta.entrar(email, clave))}>
             <Campo
               label="Mail"
@@ -187,6 +257,10 @@ export function CuentaSheet({
           <p className="text-[15px] leading-relaxed text-ink-soft">
             Mail y contraseña, nada más. Lo demás lo vamos armando con el uso.
           </p>
+          <Proveedores
+            onElegir={(p) => void cuenta.conProveedor(p)}
+            onTelefono={() => ir('telefono')}
+          />
           <form onSubmit={enviar(() => cuenta.crear(email, clave, nombre))}>
             <Campo
               label="Cómo querés que te llamemos"
@@ -222,6 +296,67 @@ export function CuentaSheet({
             className="v-label mt-5 font-semibold text-accent"
           >
             Ya tengo una
+          </button>
+        </>
+      )}
+
+      {modo === 'telefono' && (
+        <>
+          <p className="text-[15px] leading-relaxed text-ink-soft">
+            {codigoPedido
+              ? `Te mandamos un código de seis dígitos al ${telefono}.`
+              : 'Te mandamos un código por mensaje. No hace falta contraseña.'}
+          </p>
+
+          {!codigoPedido ? (
+            <form
+              onSubmit={enviar(async () => {
+                const r = await cuenta.pedirCodigo(telefono)
+                if (!r.error) setCodigoPedido(true)
+                return r
+              })}
+            >
+              <Campo
+                label="Teléfono"
+                type="tel"
+                autoComplete="tel"
+                required
+                value={telefono}
+                onChange={(e) => setTelefono(e.target.value)}
+                placeholder="+598 99 123 456"
+              />
+              <p className="v-label-sm mt-2 text-ink-faint">Con código de país.</p>
+              <Aviso error={error} aviso={aviso} />
+              <Principal pendiente={pendiente}>Mandarme el código</Principal>
+            </form>
+          ) : (
+            <form onSubmit={enviar(() => cuenta.verificarCodigo(telefono, codigo))}>
+              <Campo
+                label="Código"
+                inputMode="numeric"
+                autoComplete="one-time-code"
+                maxLength={8}
+                required
+                value={codigo}
+                onChange={(e) => setCodigo(e.target.value)}
+                placeholder="123456"
+              />
+              <Aviso error={error} aviso={aviso} />
+              <Principal pendiente={pendiente}>Entrar</Principal>
+              <button
+                onClick={() => {
+                  setCodigoPedido(false)
+                  setCodigo('')
+                }}
+                className="v-label mt-4 w-full text-ink-soft"
+              >
+                Cambiar el número
+              </button>
+            </form>
+          )}
+
+          <button onClick={() => ir('entrar')} className="v-label mt-5 font-semibold text-accent">
+            Volver
           </button>
         </>
       )}
