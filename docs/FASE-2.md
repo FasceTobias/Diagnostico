@@ -269,3 +269,54 @@ regenera nada).
 cambia solo, lo tachado sobrevive al refresh, el horario editado sobrevive,
 el contexto rearma y sobrevive, el modo foco entra— más `tsc`, lint, build
 y una captura comparada con la anterior. Ninguna pantalla cambió.
+
+### Las migraciones, corridas de verdad ✅
+
+El SQL estaba escrito pero nunca se había ejecutado, que es la peor forma
+de tener seguridad: sobre el papel. `npm run db:test` levanta un Postgres
+limpio, reconstruye lo que aporta Supabase (`supabase/tests/00_stub.sql`),
+aplica las tres migraciones en orden y corre **34 pruebas de aislamiento**.
+
+Las pruebas no leen las políticas: crean dos cuentas y desde una intentan
+hacerle cosas a la otra. Ana no ve la comida de Beto, ni sus ingredientes,
+ni sus exclusiones, ni su relación de insulina; pedir la fila por id no
+devuelve nada; no puede editarla, borrarla, ni crear algo a nombre de él.
+El catálogo se lee desde las dos cuentas y no se escribe desde ninguna;
+administración sí, y aun así no ve los datos personales de nadie. Un
+usuario común no puede ascenderse a administración. Las etiquetas: cada
+quien en su carpeta, el bucket privado.
+
+Esto cubre el punto 7 de la sección D antes de tiempo, y de la única
+manera que vale: intentándolo.
+
+### Etapa 2 — Usuarios ✅ (a falta de probarla contra el proyecto real)
+
+`src/lib/auth.ts` y `src/components/Cuenta.tsx`: registro, login, cierre
+de sesión, recuperación de contraseña y sesión persistente.
+
+- **No hay pantalla de login al abrir.** La cuenta vive en Configuración y
+  se ofrece por lo que hace —que la comida sobreviva al teléfono—, no como
+  peaje de entrada. Sin proyecto configurado, la app **no nombra cuentas en
+  ningún lado**: prometer algo que no existe es peor que no tenerlo.
+- **Los errores están traducidos.** Los de Supabase vienen en inglés y
+  algunos son crípticos. Se traducen los que una persona puede provocar
+  sin hacer nada raro; el resto cae en un mensaje honesto en vez de
+  inventar una causa.
+- **La recuperación no confirma si el mail existe.** «Si esa dirección
+  tiene cuenta, te llega un mail» — lo contrario es un buscador de cuentas.
+- **Volver del mail abre solo la pantalla de contraseña nueva**, porque es
+  lo único que corresponde hacer en ese momento.
+- **La pantalla dice la verdad sobre dónde están los datos.** Con sesión
+  iniciada avisa que todavía se guardan en el teléfono. Recién en la etapa
+  4 eso deja de ser cierto, y ahí cambia el texto.
+
+**Verificación:** `scripts/fake-auth.mjs`, un GoTrue de juguete, permite
+correr los flujos completos sin credenciales. Siete pruebas en el
+navegador: el error de login traducido, crear cuenta, la sesión
+sobreviviendo al refresh, cerrar sesión, volver a entrar, el aviso de
+recuperación, y que sin servidor Configuración no nombre cuentas.
+
+Falta lo que sólo se puede hacer con el proyecto creado: que el mail de
+recuperación llegue, que la redirect URL esté declarada, que la
+confirmación de mail esté como la queramos y que el trigger de alta corra
+en Supabase y no sólo en el Postgres de prueba.

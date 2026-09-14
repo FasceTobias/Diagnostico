@@ -41,6 +41,23 @@ Supabase—, pero sirve para lo que sirve: que no se publique SQL que nunca
 corrió, y que un cambio en una política que abra de más se note acá y no
 en producción.
 
+## Probar las pantallas de cuenta sin proyecto
+
+`scripts/fake-auth.mjs` es un GoTrue de juguete: implementa los seis
+endpoints que usa `supabase-js` y contesta con la forma que espera. Sirve
+para comprobar lo que sin credenciales no se puede comprobar —que el
+registro, el login, el error de contraseña equivocada, el cierre de sesión
+y la recuperación llegan bien a la pantalla—, y nada más que eso.
+
+```bash
+node scripts/fake-auth.mjs 54321 &
+VITE_SUPABASE_URL=http://localhost:54321 \
+VITE_SUPABASE_ANON_KEY=clave-de-juguete \
+  npx vite build --outDir dist-auth && npx vite preview --outDir dist-auth
+```
+
+No reemplaza probar contra el proyecto real: reemplaza no probar nada.
+
 ## Dos reglas que no se rompen
 
 **La clave de servicio no entra al frontend.** Ni siquiera como variable de

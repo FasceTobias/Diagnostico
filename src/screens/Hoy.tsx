@@ -10,6 +10,8 @@ import { Rail, type RailItem } from '../components/Rail'
 import { MealSheet, type MealSheetTarget } from '../components/MealSheet'
 import { CarryList } from '../components/CarryList'
 import { SettingsSheet } from '../components/Settings'
+import { CuentaSheet } from '../components/Cuenta'
+import { useSession } from '../lib/auth'
 import { Sheet } from '../components/Sheet'
 import type { ResolveStart } from '../components/ResolveSheet'
 
@@ -36,7 +38,8 @@ export function Hoy({
   onResolve: (start: ResolveStart) => void
 }) {
   const [target, setTarget] = useState<MealSheetTarget | null>(null)
-  const [sheet, setSheet] = useState<'carry' | 'prep' | 'config' | null>(null)
+  const [sheet, setSheet] = useState<'carry' | 'prep' | 'config' | 'cuenta' | null>(null)
+  const cuenta = useSession()
 
   const now = nowMinutes()
   const hour = new Date().getHours()
@@ -253,6 +256,16 @@ export function Hoy({
           onContext={(c) => app.today && app.setContext(app.today.date, c)}
           prefs={app.prefs}
           onPrefs={app.setPrefs}
+          cuenta={cuenta}
+          onCuenta={() => setSheet('cuenta')}
+        />
+
+        {/* Si volvés del mail de recuperación, esto se abre solo: es lo
+            único que corresponde hacer en ese momento. */}
+        <CuentaSheet
+          open={sheet === 'cuenta' || cuenta.recuperando}
+          onClose={() => setSheet(null)}
+          cuenta={cuenta}
         />
       </div>
     </LazyMotion>

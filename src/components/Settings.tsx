@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import type { Cuenta } from '../lib/auth'
 import type { DayContext, InsulinSettings, Preferences, Slot } from '../lib/types'
 import { CONTEXT_NOTE, SLOT_LABEL, SLOT_ORDER } from '../lib/types'
 import { CARB_UNIT } from '../lib/format'
@@ -20,6 +21,8 @@ export function SettingsSheet({
   onContext,
   prefs,
   onPrefs,
+  cuenta,
+  onCuenta,
 }: {
   open: boolean
   onClose: () => void
@@ -31,6 +34,8 @@ export function SettingsSheet({
   onContext: (c: DayContext) => void
   prefs: Preferences
   onPrefs: (next: Preferences) => void
+  cuenta: Cuenta
+  onCuenta: () => void
 }) {
   const [calc, setCalc] = useState(false)
 
@@ -66,6 +71,33 @@ export function SettingsSheet({
           title="Preferir menos azúcar agregada"
           detail="Entre dos opciones parecidas, desempata la que tiene menos. No esconde ni bloquea nada."
         />
+
+        {/* La cuenta sólo aparece si hay proyecto configurado. Sin backend
+            la app no tiene cuentas y nombrarlas sería prometer algo que no
+            existe. */}
+        {cuenta.estado !== 'sin-backend' && (
+          <>
+            <SectionLabel className="mt-10">Cuenta</SectionLabel>
+            <button
+              onClick={onCuenta}
+              className="mt-2 flex w-full items-center justify-between gap-3 rounded-xl border border-line px-4 py-3.5 text-left transition-colors active:bg-surface-2"
+            >
+              <span className="min-w-0">
+                <span className="block text-[16px] text-ink">
+                  {cuenta.estado === 'dentro' ? 'Tu cuenta' : 'Entrar o crear una cuenta'}
+                </span>
+                <span className="v-label-sm mt-0.5 block truncate text-ink-faint">
+                  {cuenta.estado === 'dentro'
+                    ? cuenta.email
+                    : 'Para que tu comida no viva sólo en este teléfono'}
+                </span>
+              </span>
+              <span aria-hidden className="text-[13px] text-ink-faint">
+                ›
+              </span>
+            </button>
+          </>
+        )}
 
         <SectionLabel className="mt-10">Horarios</SectionLabel>
         <p className="mt-1.5 text-[14px] leading-relaxed text-ink-soft">
