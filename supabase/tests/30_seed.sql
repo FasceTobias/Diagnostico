@@ -3,8 +3,8 @@
 -- ==================================================================
 
 select public.ok(
-  (select count(*) from meals where profile_id is null and slug is not null) >= 44,
-  'las 44 entradas del catalogo entraron');
+  (select count(*) from meals where profile_id is null and slug is not null) >= 119,
+  'las entradas del catalogo entraron');
 
 select public.ok(
   (select count(*) from meals
@@ -12,24 +12,24 @@ select public.ok(
   'ninguna entra como verificada: eso es la fase D');
 
 select public.ok(
-  (select carbs_total from meals where slug = 'pizza-muzzarella') = 60,
+  (select carbs_total from meals where slug = 'pizza-casera') = 60,
   'la pizza queda en 2 porciones, que es como se come');
 
 select public.ok(
   (select count(*) from meal_portions p join meals m on m.id = p.meal_id
-     where m.slug = 'pizza-muzzarella') = 3,
+     where m.slug = 'pizza-casera') = 3,
   'y con sus tres porciones, para elegir cuanto');
 
 select public.ok(
   (select carbs from meal_portions p join meals m on m.id = p.meal_id
-     where m.slug = 'pizza-muzzarella' and p.label = '1 porción') = 30,
+     where m.slug = 'pizza-casera' and p.label = '1 porción') = 30,
   'una porcion sola son 30');
 
 -- Las prohibidas están, y no como excepción.
 select public.ok(
   (select count(*) from meals where profile_id is null and slug in (
-     'pizza-muzzarella', 'empanadas-carne', 'hamburguesa-casera', 'medialunas-cafe',
-     'alfajor-simple', 'chocolate-barra', 'helado-bocha', 'flan-dulce-de-leche',
+     'pizza-casera', 'empanadas-caseras', 'hamburguesa-casera', 'medialunas-panaderia',
+     'alfajor-simple', 'chocolate-barra', 'helado-heladeria', 'flan-dulce-de-leche',
      'gaseosa-comun', 'milanesa-completa-rotiseria')) = 10,
   'las diez llamadas prohibidas estan en el catalogo');
 
@@ -40,7 +40,7 @@ select public.ok(
 
 select public.ok(
   (select count(*) from meal_tags t join meals m on m.id = t.meal_id
-     where m.slug = 'medialunas-cafe') >= 3,
+     where m.slug = 'medialunas-panaderia') >= 3,
   'las entradas quedan etiquetadas');
 
 select public.ok(
@@ -51,3 +51,67 @@ select public.ok(
 select public.ok(
   (select count(*) from meals where profile_id is null and buy_outside) >= 6,
   'y opciones de calle de varios lugares');
+
+-- ---------- de dónde viene ----------
+-- La misma comida hecha en casa y comprada hecha son dos entradas, y no
+-- dicen lo mismo: la de rotisería es un número estimado sobre la de
+-- afuera, no una copia de la de casa.
+select public.ok(
+  (select origin from meals where slug = 'empanadas-caseras') = 'casera'
+  and (select origin from meals where slug = 'empanadas-rotiseria') = 'rotiseria',
+  'la empanada de casa y la de rotiseria tienen origen distinto');
+
+select public.ok(
+  (select carbs_total from meals where slug = 'empanadas-caseras')
+  <> (select carbs_total from meals where slug = 'empanadas-rotiseria'),
+  'y numero distinto: la de rotiseria no copia a la de casa');
+
+-- Lo que se compra hecho no genera compra doméstica.
+select public.ok(
+  (select count(*) from meal_items it join meals m on m.id = it.meal_id
+     where m.profile_id is null
+       and m.origin not in ('casera', 'envasada')) = 0,
+  'nada comprado afuera arrastra ingredientes de super');
+
+-- ---------- dulce y salado ----------
+select public.ok(
+  (select count(*) from meals
+     where source_name = 'porción estándar calculada' and flavor is null) = 0,
+  'ninguna entrada quedo sin dulce/salado');
+
+select public.ok(
+  (select count(*) from meals where profile_id is null and flavor = 'salado'
+     and slug in ('milanesa-pure', 'fideos-tuco', 'sandwich-chico', 'pizza-casera')) = 4,
+  '"algo salado" encuentra la milanesa y los fideos, no solo el sandwich');
+
+-- ---------- un tostado sirve para tres momentos ----------
+select public.ok(
+  (select moments from meals where slug = 'tostado-jamon-queso') @> array['desayuno', 'merienda', 'snack']::meal_category[],
+  'el tostado es desayuno, merienda y snack sin repetirse tres veces');
+
+select public.ok(
+  (select count(*) from meals
+     where source_name = 'porción estándar calculada'
+       and not (moments @> array[category])) = 0,
+  'toda entrada aparece en su propio momento');
+
+-- ---------- el tiempo activo no es el total ----------
+select public.ok(
+  (select prep_minutes from meals where slug = 'empanadas-caseras') = 30
+  and (select total_minutes from meals where slug = 'empanadas-caseras') = 90,
+  'las empanadas son 30 minutos de trabajo y 90 de punta a punta');
+
+select public.ok(
+  public.rechazado($q$
+    update meals set total_minutes = 1 where slug = 'empanadas-caseras'
+  $q$),
+  'la base no acepta un total menor que el tiempo activo');
+
+-- ---------- las bebidas no son una merienda ----------
+select public.ok(
+  (select count(*) from meals where profile_id is null and is_drink) >= 5,
+  'el mate, el te, el cafe y el agua estan como bebidas');
+
+select public.ok(
+  (select is_drink from meals where slug = 'cafe-solo'),
+  'un cafe solo es una bebida, no una merienda');

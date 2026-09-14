@@ -107,10 +107,9 @@ src/
   lib/
     types.ts       modelo de dominio (espeja supabase/migrations/)
     catalogo.ts    el catálogo real, desde data/catalogo/*.json
-    demo.ts        99 opciones de demostración (isDemo, carbsVerified: false),
-                   57 caseras y 42 para comprar afuera. Las que se cocinan
-                   traen la receta paso a paso, sin jerga, con la explicación
-                   entera detrás de «Ver con detalle»
+    recetas.ts     cómo se hace cada una, paso a paso y sin jerga, con la
+                   explicación entera detrás de «Ver con detalle». Va
+                   aparte del JSON porque es prosa, no data
     foods.ts       catálogo: en qué sector está cada cosa y cómo se compra
     domain.ts      necesidades del día, rotación, reemplazos, rescate,
                    resolver ahora, tareas de preparación, mochila

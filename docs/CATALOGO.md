@@ -270,38 +270,79 @@ Una sola fuente, dos salidas. Los datos se escriben en
 Así la biblioteca deja de vivir en un `.ts` de demo y empieza a ser el
 catálogo de verdad, **sin esperar a que Supabase esté conectado**.
 
-### Fase B (ahora): 44 entradas representativas
+### Fase B (hecha): 119 entradas
 
-| Momento | Cuántas | Incluye |
-| --- | --- | --- |
-| Desayunos | 6 | Café con tostadas, mate con tostadas, tostado, huevos, yogur, medialunas |
-| Snacks | 6 | Fruta, barra, galletitas con queso, alfajor, maní, yogur bebible |
-| Almuerzos y cenas | 12 | Milanesa con puré, pollo con papas, fideos, arroz con pollo, tortilla, empanadas, pizza, hamburguesa, ensalada completa, tarta, guiso, bife |
-| Meriendas | 5 | Mate con galletitas, café con budín, tostado, yogur con fruta, té con mermelada |
-| Dulces | 5 | Flan con dulce de leche, gelatina light, chocolate, helado, postre lácteo |
-| Calle | 6 | Cafetería, panadería, rotisería (2), estación de servicio, supermercado |
-| Bebidas | 4 | Café, café con leche, gaseosa común, gaseosa zero |
+La primera tanda fueron 44. La devolución sobre esas 44 dejó cinco cosas
+para arreglar, y arreglarlas cambió el modelo, no sólo los datos:
+
+1. **El origen se separó de la comida.** Antes había un `buy_outside`
+   que decía sí o no. Ahora cada entrada dice de dónde sale —casera,
+   envasada, panadería, rotisería, restaurante, kiosco, supermercado,
+   heladería— y eso es lo que decide la compra: la casera suma sus
+   ingredientes, la envasada suma el producto, y lo que comprás hecho no
+   genera nada. Nadie compra harina porque el martes come empanadas de
+   la rotisería.
+2. **Ningún ingrediente se reusa para que la compra funcione.** Cuatro
+   entradas tenían ingredientes que no eran los suyos, y la lista de la
+   semana llegaba a pedir un litro de leche por una bocha de helado. Si
+   falta un alimento en `foods.ts`, se crea.
+3. **Dulce y salado son un dato, no una etiqueta suelta**, con `neutral`
+   y `mixta` para lo que no cae de ningún lado. Ahora «algo salado»
+   encuentra la milanesa y los fideos, no sólo el sándwich.
+4. **Una entrada sirve para varios momentos.** El tostado de jamón y
+   queso es desayuno, merienda y snack: una entrada con tres momentos,
+   no tres entradas repetidas.
+5. **El tiempo activo y el total son dos números.** Las empanadas son
+   media hora de trabajo y hora y media de reloj. Guardar uno solo
+   miente en el otro.
+
+Y las bebidas —café, mate, té, agua— quedaron marcadas como tales: el
+plan no decide que tu merienda es un café.
+
+| Momento | Cuántas |
+| --- | --- |
+| Desayunos | 17 |
+| Snacks | 46 |
+| Almuerzos | 27 |
+| Meriendas | 13 |
+| Cenas | 16 |
+
+| De dónde sale | Cuántas |
+| --- | --- |
+| Casera | 76 |
+| Envasada | 21 |
+| Panadería | 7 |
+| Restaurante | 5 |
+| Rotisería | 4 |
+| Supermercado | 3 |
+| Kiosco | 2 |
+| Heladería | 1 |
+
+Dulce 41 · salado 68 · ni una cosa ni la otra
+9 · las dos 1.
 
 Todas entran como **`estimado`**, con `source_name = 'porción estándar
 calculada'`. Ninguna se marca verificada: para eso hace falta una etiqueta
 o una receta medida, y eso es Fase D.
 
 Pizza, empanadas, hamburguesa, medialunas, alfajor, chocolate, helado,
-flan con dulce de leche y gaseosa común están adentro desde el primer
-seed, con su número. No porque dé lo mismo comerlas todos los días, sino
-porque el día que las comas vas a necesitar el número, y si la app no lo
-tiene, estimás a ojo.
+flan con dulce de leche y gaseosa común están adentro con su número. No
+porque dé lo mismo comerlas todos los días, sino porque el día que las
+comas vas a necesitar el número, y si la app no lo tiene, estimás a ojo.
 
-Doce de las 44 están marcadas **de vez en cuando**. Eso no es una
-etiqueta decorativa: baja su prioridad en la rotación, y el resultado
-medido es que el plan semanal propone una sola comida de ésas en 42. El
-detalle además lo dice: «De vez en cuando. El plan la propone cada tanto,
-no todas las semanas.»
+Las que están marcadas **de vez en cuando** bajan de prioridad en la
+rotación, y el resultado medido es que el plan semanal propone una sola
+comida de ésas en 42. El detalle además lo dice. Ni prohibir ni festejar:
+que el plan se parezca a una semana normal.
 
-Ni prohibir ni festejar. Que el plan se parezca a una semana normal.
+Las recetas no están en el JSON. Viven en `src/lib/recetas.ts`, con el
+slug del catálogo como clave, porque son prosa y no data: una comida sin
+receta simplemente no aparece ahí.
 
 ### Después
 
-- **Fase C**: hasta 180–250, manteniendo la variedad.
+- **Fase C**: hasta 180–250, manteniendo la variedad. Al llegar a ~100
+  y a ~180, un checkpoint de distribución: que no se haya desbalanceado
+  hacia un momento, un origen o un sabor.
 - **Fase D**: reemplazar los estimados que más pesan por etiqueta real,
   empezando por los envasados de kiosco y supermercado.

@@ -52,8 +52,7 @@ export function Comidas({ app }: { app: Vianda }) {
         <header className="v-safe-top pt-5 pb-4">
           <h1 className="v-serif-lg text-[28px] text-ink">Comidas</h1>
           <p className="v-label-sm mt-1.5 text-ink-faint">
-            {count} de {app.meals.length} · {app.meals.filter((m) => !m.isDemo).length} del
-            catálogo real
+            {count} de {app.meals.length}
           </p>
         </header>
 

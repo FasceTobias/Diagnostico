@@ -1,6 +1,5 @@
 import type { DayPlan, InsulinSettings, Perfil, Preferences, Slot } from '../types'
 import { DEFAULT_INSULIN, DEFAULT_PERFIL, DEFAULT_PREFERENCES } from '../types'
-import { DEMO_MEALS } from '../demo'
 import { CATALOGO } from '../catalogo'
 import { addDays, isoDate } from '../format'
 import { DEFAULT_TIMES, buildWeek } from '../domain'
@@ -18,11 +17,12 @@ import type { Snapshot, ViandaRepo } from './types'
 
 const KEY = 'vianda.state.v4'
 
-/* La biblioteca: primero el catálogo real, después lo que queda de los
-   ejemplos. Los de demo siguen ahí porque sacarlos de golpe dejaría la
-   rotación sin de dónde elegir; se van reemplazando por entradas reales
-   y cuando no quede ninguno, esta línea se borra. */
-const BIBLIOTECA = [...CATALOGO, ...DEMO_MEALS]
+/* La biblioteca: el catálogo, y nada más. Durante un tiempo convivió con
+   un set de ejemplos de números inventados, que estaba para que la
+   rotación tuviera de dónde elegir mientras el catálogo crecía. Ya no
+   hace falta: las entradas reales alcanzan para armar la semana, y las
+   recetas que valían la pena se quedaron en `recetas.ts`. */
+const BIBLIOTECA = CATALOGO
 
 interface Stored {
   week: DayPlan[]

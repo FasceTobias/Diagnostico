@@ -45,6 +45,42 @@ export const FOODS: Record<string, Food> = {
   morrón: { plural: 'morrones', aisle: 'verdulería' },
   limón: { plural: 'limones', aisle: 'verdulería', buy: { unit: 'u', per: 3 } },
 
+  // --- agregados para el catálogo v2 ---
+  // Los cuatro que faltaban y obligaban a reusar un ingrediente parecido.
+  maní: { aisle: 'almacén', buy: { unit: 'g', step: 100, label: 'paquete' } },
+  helado: { aisle: 'congelados', buy: { unit: 'g', step: 500, label: 'pote' } },
+  'postre lácteo': { plural: 'postres lácteos', aisle: 'lácteos', buy: { unit: 'u', step: 4 } },
+  gaseosa: { aisle: 'almacén', buy: { unit: 'ml', step: 1500, label: 'botella' } },
+
+  'gaseosa sin azúcar': { aisle: 'almacén', buy: { unit: 'ml', step: 1500, label: 'botella' } },
+  'dulce de leche': { aisle: 'almacén', buy: { unit: 'g', step: 400, label: 'pote' } },
+  azúcar: { aisle: 'almacén', pantry: true },
+  'galletitas dulces': { aisle: 'almacén', buy: { unit: 'paquete', per: 18 } },
+  'galletitas de agua': { aisle: 'almacén', buy: { unit: 'paquete', per: 20 } },
+  té: { aisle: 'almacén', buy: { unit: 'u', per: 25, label: 'caja' } },
+  agua: { aisle: 'almacén', pantry: true },
+  'mate cocido': { aisle: 'almacén', buy: { unit: 'u', per: 25, label: 'caja' } },
+
+  // --- carnicería y rotisería ---
+  asado: { aisle: 'carnicería', buy: { unit: 'kg' } },
+  vacío: { aisle: 'carnicería', buy: { unit: 'kg' } },
+  chorizo: { plural: 'chorizos', aisle: 'carnicería', buy: { unit: 'u', step: 4 } },
+  'milanesa de carne': { plural: 'milanesas de carne', aisle: 'carnicería' },
+  'pechuga de pollo': { plural: 'pechugas de pollo', aisle: 'carnicería', buy: { unit: 'kg' } },
+  'pollo entero': { aisle: 'carnicería', buy: { unit: 'u' } },
+
+  // --- almacén y fideería ---
+  ravioles: { aisle: 'almacén', buy: { unit: 'g', step: 500, label: 'plancha' } },
+  ñoquis: { aisle: 'almacén', buy: { unit: 'g', step: 500, label: 'plancha' } },
+  'pan de pancho': { plural: 'panes de pancho', aisle: 'panadería', buy: { unit: 'u', step: 4 } },
+  'pan francés': { aisle: 'panadería', buy: { unit: 'g', step: 250 } },
+  'pan de miga': { aisle: 'panadería', buy: { unit: 'u', per: 8, label: 'plancha' } },
+  acelga: { aisle: 'verdulería', buy: { unit: 'g', step: 250, label: 'atado' } },
+  arvejas: { aisle: 'almacén', buy: { unit: 'g', per: 300, label: 'lata' } },
+  'crema de leche': { aisle: 'lácteos', buy: { unit: 'ml', step: 200 } },
+  'ricota': { aisle: 'lácteos', buy: { unit: 'g', step: 250, label: 'pote' } },
+  'queso rallado': { aisle: 'lácteos', buy: { unit: 'g', step: 100 } },
+
   // --- carnicería ---
   pollo: { aisle: 'carnicería', buy: { unit: 'kg' } },
   'milanesa de pollo': { plural: 'milanesas de pollo', aisle: 'carnicería' },
@@ -71,7 +107,7 @@ export const FOODS: Record<string, Food> = {
   nuez: { plural: 'nueces', aisle: 'almacén', buy: { unit: 'g', step: 250 } },
   almendra: { plural: 'almendras', aisle: 'almacén', buy: { unit: 'g', step: 250 } },
   'mantequilla de maní': { aisle: 'almacén', buy: { unit: 'g', step: 350, label: 'frasco' } },
-  choclo: { aisle: 'almacén', buy: { unit: 'lata' } },
+  choclo: { plural: 'choclos', aisle: 'almacén', buy: { unit: 'lata' } },
   harina: { aisle: 'almacén', buy: { unit: 'kg' } },
   café: { aisle: 'almacén', buy: { unit: 'g', step: 250 } },
 
@@ -83,11 +119,11 @@ export const FOODS: Record<string, Food> = {
   'frutos secos con chocolate': { aisle: 'almacén', buy: { unit: 'g', step: 150 } },
   'gelatina sin azúcar': { plural: 'gelatinas sin azúcar', aisle: 'almacén', buy: { unit: 'u' } },
   'flan sin azúcar': { plural: 'flanes sin azúcar', aisle: 'lácteos', buy: { unit: 'u' } },
-  'budín sin azúcar': { aisle: 'panadería', buy: { unit: 'g', per: 300, label: 'budín' } },
+  'budín sin azúcar': { plural: 'budines sin azúcar', aisle: 'panadería', buy: { unit: 'u', per: 300 } },
   'mermelada sin azúcar': { aisle: 'almacén', buy: { unit: 'g', per: 350, label: 'frasco' } },
   manteca: { aisle: 'lácteos', buy: { unit: 'g', step: 200 } },
   yerba: { aisle: 'almacén', buy: { unit: 'g', step: 500 } },
-  budín: { aisle: 'panadería', buy: { unit: 'g', per: 300, label: 'budín' } },
+  budín: { plural: 'budines', aisle: 'panadería', buy: { unit: 'u', per: 300 } },
   medialuna: { plural: 'medialunas', aisle: 'panadería', buy: { unit: 'u' } },
   alfajor: { plural: 'alfajores', aisle: 'almacén', buy: { unit: 'u' } },
   'queso untable': { aisle: 'lácteos', buy: { unit: 'g', per: 300, label: 'pote' } },

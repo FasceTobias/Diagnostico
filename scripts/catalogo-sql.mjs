@@ -41,6 +41,19 @@ const TAG = {
   salida: 'calle',
 }
 
+/* El enum de la base no lleva tildes: los tipos se escriben en ASCII para
+   que sean escribibles desde cualquier teclado y cualquier cliente. */
+const ORIGEN = {
+  casera: 'casera',
+  envasada: 'envasada',
+  'panadería': 'panaderia',
+  'rotisería': 'rotiseria',
+  restaurante: 'restaurante',
+  kiosco: 'kiosco',
+  supermercado: 'supermercado',
+  'heladería': 'heladeria',
+}
+
 const MOMENTO = {
   desayuno: 'desayuno',
   snack: 'media_tarde',
@@ -75,6 +88,8 @@ for (const e of entradas) {
       e.satiety,
       ...e.tags.map((t) => TAG[t]).filter(Boolean),
       ...(e.buyOutside ? ['calle', 'comprable'] : []),
+      e.sabor === 'mixta' ? null : e.sabor === 'neutral' ? null : e.sabor,
+      ...e.momentos.map((m) => MOMENTO[m]),
       ...(e.makeNightBefore ? ['preparar_noche_anterior'] : []),
       ...(e.portable ? ['para_llevar'] : []),
       ...(e.prepMinutes === 0 ? ['sin_cocinar'] : []),
@@ -90,6 +105,7 @@ for (const e of entradas) {
     `  portable, needs_cold, needs_reheat, make_night_before, freezable,`,
     `  difficulty, freq, drink, everyday, added_sugar, notes,`,
     `  buy_outside, venues, price_level, handheld, carbs_from_items,`,
+    `  origin, flavor, moments, total_minutes, is_drink,`,
     `  source_name`,
     `) values (`,
     `  null, ${q(e.slug)}, ${q(e.name)}, ${q(e.description)}, ${q(e.category)}, 'estimado',`,
@@ -98,6 +114,7 @@ for (const e of entradas) {
     `  ${b(e.portable)}, ${b(e.needsCold)}, ${b(e.needsReheat)}, ${b(e.makeNightBefore)}, ${b(e.freezable)},`,
     `  ${n(e.difficulty)}, ${q(e.frequency)}, ${q(e.drink)}, ${b(e.everyday)}, ${b(e.addedSugar)}, ${q(e.notes)},`,
     `  ${b(e.buyOutside)}, ${e.venues.length ? `array[${e.venues.map(q).join(', ')}]::venue[]` : `'{}'`}, ${n(e.priceLevel)}, ${b(e.handheld)}, ${b(e.items.length > 0)},`,
+    `  ${q(ORIGEN[e.origen])}::food_origin, ${q(e.sabor)}::flavor, array[${e.momentos.map(q).join(', ')}]::meal_category[], ${n(e.totalMinutes)}, ${b(e.esBebida)},`,
     `  'porción estándar calculada'`,
     `)`,
     // El predicado tiene que coincidir con el del índice parcial, si no
@@ -114,7 +131,10 @@ for (const e of entradas) {
     `  everyday = excluded.everyday, added_sugar = excluded.added_sugar,`,
     `  notes = excluded.notes, buy_outside = excluded.buy_outside,`,
     `  venues = excluded.venues, price_level = excluded.price_level,`,
-    `  handheld = excluded.handheld, updated_at = now();`,
+    `  handheld = excluded.handheld, origin = excluded.origin,`,
+    `  flavor = excluded.flavor, moments = excluded.moments,`,
+    `  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,`,
+    `  updated_at = now();`,
     '',
   )
 

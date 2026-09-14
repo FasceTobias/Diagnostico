@@ -188,7 +188,17 @@ export function MealDetail({ meal }: { meal: Meal }) {
       {!meal.buyOutside && (
         <>
           <SectionLabel className="mt-8 mb-1">Datos</SectionLabel>
-          <Fact label="Preparación" value={`${meal.prepMinutes} min`} />
+          {/* Activo y total no son lo mismo y decir uno solo miente: las
+              empanadas son media hora de trabajo y hora y media de reloj.
+              Cuando coinciden, una línea sola alcanza. */}
+          {meal.totalMinutes && meal.totalMinutes > meal.prepMinutes ? (
+            <Fact
+              label="Preparación"
+              value={`${meal.prepMinutes} min de trabajo · ${meal.totalMinutes} min en total`}
+            />
+          ) : (
+            <Fact label="Preparación" value={`${meal.prepMinutes} min`} />
+          )}
           <Fact
             label="Dificultad"
             value={['Fácil', 'Media', 'Requiere tiempo'][meal.difficulty - 1]}

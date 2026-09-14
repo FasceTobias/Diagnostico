@@ -149,9 +149,64 @@ export type Unit =
   | 'pote'
   | 'lata'
 
-/* Un paso de preparación. Corto: la app no es un blog de cocina.
-   Los minutos son los de ese paso; pueden solaparse con el anterior
-   (el horno calienta mientras cortás). */
+/* ------------------------------------------------------------------
+   DE DÓNDE VIENE
+
+   La misma idea de comida puede existir de varias maneras, y no son la
+   misma entrada: una milanesa que hacés, una que comprás en la rotisería
+   y una congelada del súper tienen otro tiempo, otro número y otra
+   compra.
+
+   El origen decide qué pasa en la lista de compras, y son tres casos:
+
+     · casera        → la lista suma sus ingredientes
+     · envasada      → la lista suma una línea: el producto
+     · comprada afuera → no genera nada doméstico
+
+   Nunca al revés: si falta un ingrediente en el catálogo, se crea. Usar
+   uno parecido para que la compra "funcione" es como el helado que te
+   hacía comprar un litro de leche.
+   ------------------------------------------------------------------ */
+
+export type Origen =
+  | 'casera'
+  | 'envasada'
+  | 'panadería'
+  | 'rotisería'
+  | 'restaurante'
+  | 'kiosco'
+  | 'supermercado'
+  | 'heladería'
+
+export const ORIGEN_LABEL: Record<Origen, string> = {
+  casera: 'La hacés vos',
+  envasada: 'Viene envasada',
+  panadería: 'De panadería',
+  rotisería: 'De rotisería',
+  restaurante: 'De restaurante',
+  kiosco: 'De kiosco',
+  supermercado: 'De supermercado',
+  heladería: 'De heladería',
+}
+
+/** Qué genera en la lista de compras. */
+export const compraDe = (o: Origen): 'ingredientes' | 'producto' | 'nada' =>
+  o === 'casera' ? 'ingredientes' : o === 'envasada' ? 'producto' : 'nada'
+
+/* Dulce, salado, o ninguna de las dos. `neutral` es para lo que no tira
+   para ningún lado —un café solo, un agua— y `mixta` para lo que tiene
+   de las dos, como una tarta con cebolla caramelizada. Ninguna entrada
+   puede quedar sin esto: es lo que hace que «algo salado» encuentre la
+   milanesa y no sólo el sándwich. */
+export type Sabor = 'dulce' | 'salado' | 'neutral' | 'mixta'
+
+export const SABOR_LABEL: Record<Sabor, string> = {
+  dulce: 'Dulce',
+  salado: 'Salado',
+  neutral: 'Ni dulce ni salado',
+  mixta: 'Dulce y salada',
+}
+
 /* Una porción, con su número. La porción ES el dato: una pizza no tiene
    60 g de carbohidratos, tiene 30 por porción y comés dos. */
 export interface Portion {
@@ -160,6 +215,9 @@ export interface Portion {
   grams?: number
 }
 
+/* Un paso de preparación. Corto: la app no es un blog de cocina.
+   Los minutos son los de ese paso; pueden solaparse con el anterior
+   (el horno calienta mientras cortás). */
 export interface Step {
   text: string
   minutes?: number
@@ -201,6 +259,23 @@ export interface Meal {
   tags: Tag[]
   /** Ingrediente principal. Lo usa la rotación para no repetir pollo tres días. */
   mainIngredient: string
+  /** De dónde viene, y qué genera en la compra. */
+  origen: Origen
+  /** Dulce, salado, neutral o mixta. Nunca vacío. */
+  sabor: Sabor
+  /** En qué momentos del día sirve. Un tostado es desayuno, merienda y
+      snack: una sola entrada, no tres. `category` sigue siendo el
+      momento principal —el que decide el ícono y el filtro—, y esto es
+      dónde más puede aparecer. */
+  momentos?: Category[]
+  /** Café, mate, té, agua. Acompañan una comida o se piden a mano;
+      el plan no las propone como si fueran una merienda. */
+  esBebida?: boolean
+  /** Minutos con las manos en la masa. */
+  prepMinutes: number
+  /** Minutos de punta a punta, contando lo que espera solo. Cuando
+      falta, es igual al activo. */
+  totalMinutes?: number
   ingredients: Ingredient[]
   /** Una línea corta sobre qué es. Sólo en las del catálogo. */
   description?: string
@@ -216,7 +291,6 @@ export interface Meal {
   confidence: Confidence
   /** Los carbos fueron revisados contra una fuente real. Los demo, nunca. */
   carbsVerified: boolean
-  prepMinutes: number
   satiety: Satiety
   portable: boolean
   needsCold: boolean

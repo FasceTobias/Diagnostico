@@ -1,4 +1,5 @@
-import type { Drink, Meal, Portion, Tag, Unit, Venue } from './types'
+import type { Category, Drink, Meal, Origen, Portion, Sabor, Tag, Unit, Venue } from './types'
+import { RECETAS } from './recetas'
 import crudo from '../../data/catalogo/v1.json'
 
 /* ------------------------------------------------------------------
@@ -38,11 +39,20 @@ interface EntradaJson {
   slug: string
   name: string
   category: Meal['category']
+  /* De dónde sale la comida. No es lo mismo que dónde se come: define qué
+     genera en la lista de compras —ingredientes, un producto, o nada—. */
+  origen: Origen
+  /* Dulce o salado. Lo que la app busca cuando pedís «algo salado». */
+  sabor: Sabor
+  /* Los momentos en los que sirve. Un tostado no es sólo desayuno. */
+  momentos: string[]
   description: string
   portions: PorcionJson[]
   tags: string[]
   satiety: Meal['satiety']
   prepMinutes: number
+  totalMinutes: number | null
+  esBebida: boolean
   mainIngredient: string
   everyday: boolean
   addedSugar: boolean
@@ -77,6 +87,13 @@ const aMeal = (e: EntradaJson): Meal => {
     name: e.name,
     description: e.description || undefined,
     category: e.category,
+    /* La categoría sigue siendo una —para agrupar y ordenar—, pero el motor
+       arma la semana mirando `momentos`: la misma comida puede servir para
+       más de uno sin necesidad de duplicar la entrada. */
+    momentos: e.momentos.length ? (e.momentos as Category[]) : [e.category],
+    origen: e.origen,
+    sabor: e.sabor,
+    esBebida: e.esBebida || undefined,
     tags: e.tags as Tag[],
     mainIngredient: e.mainIngredient,
     portion: porDefecto.label,
@@ -89,6 +106,9 @@ const aMeal = (e: EntradaJson): Meal => {
     isDemo: false,
     portions: porciones.length > 1 ? porciones : undefined,
     prepMinutes: e.prepMinutes,
+    /* Activo y total no son lo mismo: una empanada son diez minutos de
+       armado y cuarenta de horno. Si sólo guardás uno, mentís en el otro. */
+    totalMinutes: e.totalMinutes ?? undefined,
     satiety: e.satiety,
     portable: e.portable,
     needsCold: e.needsCold,
@@ -106,6 +126,9 @@ const aMeal = (e: EntradaJson): Meal => {
     /* Lo que hay que dejar hecho la noche anterior sale de la comida, no
        de una lista aparte: si se prepara antes, la tarea es prepararla. */
     prepSteps: e.makeNightBefore ? [`Dejar lista: ${e.name.toLowerCase()}`] : [],
+    /* La receta, si la tiene. Vive en `recetas.ts` porque es prosa, no
+       data: el JSON guarda el número, el otro archivo cómo se hace. */
+    steps: RECETAS[e.slug],
     buyOutside: e.buyOutside,
     venues: e.venues.length ? (e.venues as Venue[]) : undefined,
     priceLevel: (e.priceLevel ?? undefined) as Meal['priceLevel'],

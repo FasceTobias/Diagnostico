@@ -14,7 +14,14 @@ import type {
   Unit,
   Venue,
 } from './types'
-import { AISLES, OPTIONAL_SLOTS, SLOT_CATEGORY, SLOT_ORDER, VENUES } from './types'
+import {
+  AISLES,
+  OPTIONAL_SLOTS,
+  SLOT_CATEGORY,
+  SLOT_ORDER,
+  VENUES,
+  compraDe,
+} from './types'
 import { addDays, isoDate, minutesOf, nowMinutes } from './format'
 import { foodOf, shoppingParts } from './foods'
 
@@ -118,7 +125,14 @@ export const candidatesFor = (
   //    Lo comprable afuera queda fuera del plan: el martes no puede decirte
   //    "comprá empanadas". Aparece sólo desde «Resolver ahora».
   const sameMoment = meals.filter(
-    (m) => m.category === need.category && !m.buyOutside,
+    (m) =>
+      /* Una entrada puede servir para varios momentos: el tostado es
+         desayuno, merienda y snack sin ser tres entradas distintas. */
+      (m.momentos ? m.momentos.includes(need.category) : m.category === need.category) &&
+      !m.buyOutside &&
+      /* Las bebidas acompañan o se piden a mano. El plan no decide que
+         tu merienda es un café. */
+      !m.esBebida,
   )
   if (!sameMoment.length) return []
 
@@ -627,7 +641,13 @@ export const buildShoppingList = (week: DayPlan[], meals: Meal[]): ShoppingGroup
     for (const planned of day.meals) {
       if (planned.status === 'skipped') continue
       const meal = meals.find((m) => m.id === planned.mealId)
-      if (!meal || meal.buyOutside) continue
+      if (!meal) continue
+
+      /* El origen decide qué entra en la compra. Lo que comprás hecho
+         afuera no genera ingredientes: nadie compra harina porque el
+         martes va a comer empanadas de la rotisería. */
+      const genera = compraDe(meal.origen)
+      if (genera === 'nada') continue
 
       for (const ing of meal.ingredients) {
         if (foodOf(ing.item).pantry) continue
