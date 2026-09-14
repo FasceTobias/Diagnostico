@@ -21,6 +21,26 @@ supabase db push
 
 O pegando cada archivo en el editor SQL del proyecto, en orden.
 
+## Probarlas
+
+```bash
+npm run db:test
+```
+
+Levanta una base limpia, le pone encima el esqueleto de lo que aporta
+Supabase (`tests/00_stub.sql`: los roles, `auth.users`, `auth.uid()`,
+`auth.jwt()` y `storage`), aplica las migraciones en orden y después crea
+dos cuentas e intenta, desde una, hacerle cosas a la otra. Cada línea que
+dice OK es un intento que la base rechazó.
+
+Necesita un Postgres accesible; por defecto el socket local en el 5433.
+Se apunta a otro con `PGHOST`, `PGPORT` y `PGUSER`.
+
+No reemplaza probarlo contra el proyecto real —el stub es una maqueta, no
+Supabase—, pero sirve para lo que sirve: que no se publique SQL que nunca
+corrió, y que un cambio en una política que abra de más se note acá y no
+en producción.
+
 ## Dos reglas que no se rompen
 
 **La clave de servicio no entra al frontend.** Ni siquiera como variable de
