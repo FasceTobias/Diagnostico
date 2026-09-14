@@ -3,7 +3,7 @@
 -- ==================================================================
 
 select public.ok(
-  (select count(*) from meals where profile_id is null and slug is not null) >= 119,
+  (select count(*) from meals where profile_id is null and slug is not null) >= 200,
   'las entradas del catalogo entraron');
 
 select public.ok(

@@ -15,7 +15,7 @@ del navegador**. Todo lo que parece guardado vive en `localStorage`.
 
 | Qué | Hoy | Dónde |
 | --- | --- | --- |
-| Biblioteca de comidas | 119 entradas del catálogo real, todas `estimado` | `data/catalogo/v1.json` |
+| Biblioteca de comidas | 200 entradas del catálogo real, todas `estimado` | `data/catalogo/v1.json` |
 | Catálogo de alimentos | ~70 entradas (sector, cómo se compra) | `src/lib/foods.ts` |
 | Plan de la semana | Se genera en el teléfono cada vez | `buildWeek()` → `localStorage` |
 | Horarios, contexto, preferencias | Guardados en el navegador | `vianda.state.v4` |

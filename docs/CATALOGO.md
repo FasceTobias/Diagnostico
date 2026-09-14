@@ -270,10 +270,12 @@ Una sola fuente, dos salidas. Los datos se escriben en
 Así la biblioteca deja de vivir en un `.ts` de demo y empieza a ser el
 catálogo de verdad, **sin esperar a que Supabase esté conectado**.
 
-### Fase B (hecha): 119 entradas
+### Fases B y C (hechas): 200 entradas
 
 La primera tanda fueron 44. La devolución sobre esas 44 dejó cinco cosas
-para arreglar, y arreglarlas cambió el modelo, no sólo los datos:
+para arreglar, y arreglarlas cambió el modelo, no sólo los datos. Recién
+después creció la biblioteca, y lo que se agregó salió de los huecos que
+marcó el checkpoint, no de hacer más de lo que ya sobraba.
 
 1. **El origen se separó de la comida.** Antes había un `buy_outside`
    que decía sí o no. Ahora cada entrada dice de dónde sale —casera,
@@ -301,24 +303,24 @@ plan no decide que tu merienda es un café.
 
 | Momento | Cuántas |
 | --- | --- |
-| Desayunos | 17 |
-| Snacks | 46 |
-| Almuerzos | 27 |
-| Meriendas | 13 |
-| Cenas | 16 |
+| Desayunos | 25 |
+| Snacks | 60 |
+| Almuerzos | 46 |
+| Meriendas | 34 |
+| Cenas | 35 |
 
 | De dónde sale | Cuántas |
 | --- | --- |
-| Casera | 76 |
-| Envasada | 21 |
-| Panadería | 7 |
-| Restaurante | 5 |
-| Rotisería | 4 |
-| Supermercado | 3 |
-| Kiosco | 2 |
+| Casera | 137 |
+| Envasada | 24 |
+| Restaurante | 11 |
+| Panadería | 8 |
+| Kiosco | 8 |
+| Rotisería | 7 |
+| Supermercado | 4 |
 | Heladería | 1 |
 
-Dulce 41 · salado 68 · ni una cosa ni la otra
+Dulce 68 · salado 122 · ni una cosa ni la otra
 9 · las dos 1.
 
 Todas entran como **`estimado`**, con `source_name = 'porción estándar
@@ -341,8 +343,16 @@ receta simplemente no aparece ahí.
 
 ### Después
 
-- **Fase C**: hasta 180–250, manteniendo la variedad. Al llegar a ~100
-  y a ~180, un checkpoint de distribución: que no se haya desbalanceado
-  hacia un momento, un origen o un sabor.
+- **Fase C**: hecha. 200 entradas. El checkpoint de distribución se
+  corrió a las 119 y volvió a correrse al cerrar: los grupos que estaban
+  flacos —meriendas, cenas sin cocinar, desayunos para llevar, opciones
+  por lugar— son los que más crecieron.
+
+  Un detalle que apareció recién con la biblioteca grande: la rotación
+  desempataba por orden alfabético, y con doscientas entradas el plan
+  salía en fila —arroz con atún, arroz con pollo, arroz primavera— y lo
+  que empieza con eme no aparecía nunca. Ahora el desempate mezcla el id
+  con el día: sigue siendo determinista, pero deja de depender del
+  abecedario.
 - **Fase D**: reemplazar los estimados que más pesan por etiqueta real,
   empezando por los envasados de kiosco y supermercado.

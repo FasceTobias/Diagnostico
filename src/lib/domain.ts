@@ -206,6 +206,20 @@ const preferenceScore = (
   return score
 }
 
+/* Cuando dos opciones puntúan igual hace falta un criterio, y ordenar por
+   nombre no sirve: con doscientas entradas el plan salía alfabético —arroz
+   con atún, arroz con pollo, arroz primavera— y todo lo que empieza con
+   eme no aparecía nunca. Esto mezcla el id con el día, así que el orden es
+   arbitrario pero siempre el mismo: la semana se puede rearmar igual.
+
+   Nota: sin esto la variedad dependía de dónde estaba cada comida en el
+   abecedario, que no es un criterio, es una casualidad. */
+const desempate = (id: string, dia: number): number => {
+  let h = (dia + 1) * 2654435761
+  for (let i = 0; i < id.length; i++) h = (Math.imul(h, 31) + id.charCodeAt(i)) >>> 0
+  return h
+}
+
 export const pickForSlot = (
   slot: Slot,
   context: DayContext,
@@ -224,7 +238,7 @@ export const pickForSlot = (
   return [...pool].sort(
     (a, b) =>
       preferenceScore(b, ctx, ctx.prefs) - preferenceScore(a, ctx, ctx.prefs) ||
-      a.id.localeCompare(b.id),
+      desempate(a.id, ctx.recentByDay.length) - desempate(b.id, ctx.recentByDay.length),
   )[0]
 }
 
