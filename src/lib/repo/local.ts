@@ -1,6 +1,7 @@
 import type { DayPlan, InsulinSettings, Perfil, Preferences, Slot } from '../types'
 import { DEFAULT_INSULIN, DEFAULT_PERFIL, DEFAULT_PREFERENCES } from '../types'
 import { DEMO_MEALS } from '../demo'
+import { CATALOGO } from '../catalogo'
 import { addDays, isoDate } from '../format'
 import { DEFAULT_TIMES, buildWeek } from '../domain'
 import type { Snapshot, ViandaRepo } from './types'
@@ -16,6 +17,12 @@ import type { Snapshot, ViandaRepo } from './types'
    repositorio de Supabase, sólo cambia quién contesta. */
 
 const KEY = 'vianda.state.v4'
+
+/* La biblioteca: primero el catálogo real, después lo que queda de los
+   ejemplos. Los de demo siguen ahí porque sacarlos de golpe dejaría la
+   rotación sin de dónde elegir; se van reemplazando por entradas reales
+   y cuando no quede ninguno, esta línea se borra. */
+const BIBLIOTECA = [...CATALOGO, ...DEMO_MEALS]
 
 interface Stored {
   week: DayPlan[]
@@ -55,7 +62,7 @@ const fresh = (): Stored => {
   const ws = startOfWeek(new Date())
   return {
     // 'mixto' por defecto: ni asumir que estás en casa ni que estás afuera.
-    week: buildWeek(ws, DEMO_MEALS, 'mixto', DEFAULT_TIMES, DEFAULT_PREFERENCES),
+    week: buildWeek(ws, BIBLIOTECA, 'mixto', DEFAULT_TIMES, DEFAULT_PREFERENCES),
     weekStart: isoDate(ws),
     times: DEFAULT_TIMES,
     insulin: DEFAULT_INSULIN,
@@ -92,7 +99,7 @@ const current = (): Stored => {
 }
 
 const toSnapshot = (s: Stored): Snapshot => ({
-  meals: DEMO_MEALS,
+  meals: BIBLIOTECA,
   week: s.week,
   weekStart: s.weekStart,
   times: s.times,

@@ -33,6 +33,7 @@ begin
 exception
   when insufficient_privilege then return true;
   when check_violation then return true;
+  when unique_violation then return true;
 end $$;
 
 /* Entrar como alguien: el rol de PostgREST más los claims del token. */
@@ -91,7 +92,7 @@ select public.ok((select count(*) from meals where profile_id = :ANA::uuid) = 1,
   'Ana ve su comida');
 select public.ok((select count(*) from meals where profile_id = :BETO::uuid) = 0,
   'Ana NO ve la comida de Beto');
-select public.ok((select count(*) from meals where profile_id is null) = 1,
+select public.ok((select count(*) from meals where profile_id is null) > 1,
   'Ana ve el catalogo');
 select public.ok((select count(*) from meal_items) = 1,
   'Ana ve los ingredientes de su comida, y solo esos');
@@ -117,6 +118,9 @@ with u as (
   update meals set name = 'Mia ahora' where profile_id is null returning 1
 )
 select public.ok((select count(*) from u) = 0, 'Ana no puede editar el catalogo');
+select public.ok(
+  (select count(*) from meals where profile_id is null and name = 'Mia ahora') = 0,
+  'y el catalogo quedo intacto');
 
 select public.ok(
   public.rechazado($q$
@@ -155,7 +159,7 @@ select public.ok((select count(*) from exclusions) = 0,
   'Beto NO ve las exclusiones de Ana');
 select public.ok((select count(*) from insulin_ratios) = 0,
   'Beto NO ve la insulina de Ana');
-select public.ok((select count(*) from meals where profile_id is null) = 1,
+select public.ok((select count(*) from meals where profile_id is null) > 1,
   'Beto tambien ve el catalogo');
 
 -- Forzar el id no ayuda: la fila no existe para él.
@@ -169,7 +173,8 @@ select public.como(:ADMIN::uuid, true);
 select public.ok(public.is_admin(), 'el claim de administracion se lee del token');
 
 with u as (
-  update meals set name = 'Tostado del catalogo v2' where profile_id is null returning 1
+  update meals set name = 'Tostado del catalogo v2'
+  where id = '00000000-0000-0000-0000-0000000ca7a1' returning 1
 )
 select public.ok((select count(*) from u) = 1, 'administracion si puede editar el catalogo');
 

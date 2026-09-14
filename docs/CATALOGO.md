@@ -1,0 +1,296 @@
+# La biblioteca real
+
+> El esquema del catálogo, antes de cargarle datos.
+>
+> Regla de fondo: **la biblioteca informa, no decide**. No hay lista de
+> alimentos prohibidos, no hay «apto diabético», no hay modo dieta. Hay
+> comida, y al lado el número de carbohidratos con de dónde salió.
+
+---
+
+## 0. Qué NO se crea, y por qué
+
+Pediste ocho tablas: `foods`, `food_variants`, `food_portions`,
+`food_nutrition`, `food_tags`, `food_sources`, `food_places`,
+`ingredients`. Cuatro de esas ya existen con otro nombre y dos no hacen
+falta:
+
+| Pedido | Dónde vive | Por qué |
+| --- | --- | --- |
+| `foods` + `ingredients` | `foods` + `meal_items` | Ya está: `foods` es el ingrediente (con cómo se compra) y `meal_items` lo conecta con la preparación. |
+| `food_nutrition` | Columnas de `meal_portions` | La nutrición **es de la porción**, no del alimento. Separarla en otra tabla agrega un join a cada consulta para no ganar nada. |
+| `food_places` | Enum `venue` + `meals.venues` | Los ocho lugares ya son un enum cerrado (kiosco, supermercado, cafetería, panadería, rotisería, restaurante, estación de servicio, casa de comidas). Una tabla se justifica cuando hay lugares concretos con dirección; hoy son categorías. |
+| `food_variants` | `products`, una fila por envase | Otro envase es otra etiqueta con otros números. Tratarlo como «variante» invita a heredar datos que no corresponden. |
+
+Y tres sí se crean: **`meal_portions`**, **`tags` + `meal_tags`** y
+**`meal_prefs`**.
+
+---
+
+## 1. El esquema final
+
+```
+                      ┌──────────────┐
+                      │   products   │  el envase: marca, RNPA, etiqueta
+                      └──────┬───────┘
+                             │ product_id (opcional)
+┌──────────┐  meal_items  ┌──┴───────────┐  meal_portions  ┌──────────┐
+│  foods   ├─────────────►│    meals     │◄────────────────┤ porciones│
+│(ingred.) │  qty + unit  │  la entrada  │  1..n           │ + nutrí. │
+└──────────┘              └──┬────────┬──┘                 └──────────┘
+                             │        │
+                    meal_tags│        │meal_prefs
+                    ┌────────┴──┐  ┌──┴──────────────┐
+                    │   tags    │  │  lo tuyo:       │
+                    │vocabulario│  │  favorita, nota,│
+                    └───────────┘  │  puntuación…    │
+                                   └─────────────────┘
+```
+
+Una fila de `meals` es **una entrada de la biblioteca**: una preparación,
+un producto envasado o una opción de calle. Los tres son lo mismo para la
+app —algo que podés comer, con un número de carbohidratos al lado— y se
+diferencian por cómo llegaron a ese número.
+
+---
+
+## 2. Tablas nuevas y modificadas
+
+### Nuevas
+
+**`meal_portions`** — la porción como entidad de primera clase.
+
+Es el cambio más importante. Hasta ahora una comida tenía un número y una
+descripción de porción, las dos sueltas. Pero *la porción es el dato*: una
+pizza no tiene 60 g de carbohidratos, tiene 30 por porción y comés dos.
+
+```sql
+meal_id, label ('1 porción', '2 porciones', '1 empanada'),
+grams, carbs, sugar, added_sugar, protein, fat, fiber, kcal,
+is_default, sort_order
+```
+
+Cada comida tiene al menos una porción, marcada `is_default`. Un trigger
+copia esa porción a `meals.carbs` y `meals.portion`, que es lo que la app
+lee hoy: el modelo se arregla y **ninguna pantalla cambia**.
+
+**`tags` + `meal_tags`** — vocabulario controlado.
+
+`tags` tiene `slug`, `kind` (momento, contexto, tipo, practicidad,
+saciedad, dato) y `label`. Nada de texto libre: una etiqueta que no está
+en la tabla no se puede poner.
+
+Lo que el motor ya filtra con columnas —categoría, saciedad, portable,
+tiempo— **sigue en columnas**, porque un filtro duro sobre un join es más
+lento y más frágil. Las etiquetas son para lo demás: dulce, salado,
+kiosco, evento, sin azúcar agregada, light, zero, etiqueta verificada.
+
+**`meal_prefs`** — lo tuyo sobre una comida del catálogo.
+
+Esto arregla un error real del modelo actual: `favorite`, `tested` y
+`rating` están hoy como columnas de `meals`. En una biblioteca compartida
+eso significa que si vos marcás favorita la pizza, **le queda marcada a
+todo el mundo**. Se mudan acá:
+
+```sql
+profile_id, meal_id, favorite, tested, rating, frequency,
+usual_portion_id, notes, last_eaten_at, times_eaten
+```
+
+El catálogo global no se duplica por usuario, que es el punto 13. Y como
+guarda `last_eaten_at` y `times_eaten`, el punto 14 —aprender que alguien
+desayuna tostadas y nunca elige avena— es leer esta tabla, sin tocar el
+catálogo.
+
+### Modificadas
+
+`meals` suma: `slug` (identidad estable del catálogo), `description`,
+`data_state`, `source_name`, `source_url`, `source_checked_at`,
+`carbs_from_items`, `active`, `updated_at` y `search` (tsvector).
+
+Pierde: `favorite`, `tested`, `rating` — se van a `meal_prefs`.
+
+`products` suma `rnpa` (el registro nacional del producto) con índice
+único.
+
+---
+
+## 3. Los campos que pediste, y dónde quedan
+
+| Pedido | Dónde |
+| --- | --- |
+| id, nombre, descripción, tipo, categoría, subcategoría | `meals`: `id`, `name`, `description`, `data_state`, `category`, `subcategories` + tags |
+| marca, código de barras | `products.brand`, `products.barcode` |
+| porción, unidad, peso en gramos | `meal_portions`: `label`, `grams` |
+| carbohidratos, azúcar, azúcar agregada | `meal_portions`: `carbs`, `sugar`, `added_sugar` |
+| proteína, grasa, fibra, kcal | `meal_portions`, todas opcionales |
+| fuente, url / id externo | `meals.source_name`, `source_url`; `products.source`, `source_url`, `rnpa` |
+| verified, confidence | `data_state` + `carbs_confidence` |
+| transportable, frío, calentar, prep_time, saciedad | ya son columnas de `meals` |
+| dulce / salado | tags `dulce`, `salado` |
+| purchasable_outside, place_type | `meals.buy_outside`, `meals.venues` |
+| frequency | `meals.freq` (del catálogo) y `meal_prefs.frequency` (tuya) |
+| image_url, active, created_at, updated_at | `meals.photo_url`, `active`, `created_at`, `updated_at` |
+
+---
+
+## 4. Una comida compuesta
+
+Un desayuno de tostadas con queso untable y café con leche **no es un
+alimento nuevo**. Es una entrada con tres items:
+
+```
+meals: slug='tostadas-queso-untable-cafe'
+       name='Tostadas con queso untable'
+       drink='café con leche'
+       carbs_from_items = true
+
+meal_items → foods: pan lactal     2 rebanadas
+             foods: queso untable  30 g
+             foods: leche          100 ml
+```
+
+La función `carbos_de_items(meal_id)` suma usando `foods.carbs_per_100`.
+Con `carbs_from_items = true`, el número sale de ahí y la fuente pasa a
+ser `receta`: es un cálculo, no una estimación a ojo.
+
+Cambiar el queso untable por manteca es cambiar **un item**, no crear una
+entrada nueva. Es lo que pedís en el punto 10: plantilla más items, sin
+cien registros para cada combinación.
+
+---
+
+## 5. Un producto envasado
+
+Dos filas, no una:
+
+```
+products: brand='—', name='Alfajor simple de chocolate',
+          serving_size='1 alfajor (45 g)', carbs_per_serving=…,
+          rnpa=…, source='etiqueta', source_url=…, verified_at=…
+
+meals:    slug='alfajor-simple', product_id=→, data_state='verificado'
+```
+
+El producto es el envase y se verifica **una vez para todos**. La entrada
+de biblioteca es cómo aparece en la app. Un mismo producto puede estar en
+varias entradas (el alfajor solo, y el alfajor como parte de una merienda)
+sin repetir la etiqueta.
+
+Mientras no haya etiqueta cargada, la entrada vive sin `product_id` y
+queda `estimado`.
+
+---
+
+## 6. Una opción de calle
+
+Una entrada normal con `buy_outside = true` y `venues` cargado:
+
+```
+meals: slug='tostado-cafeteria', name='Tostado de jamón y queso',
+       buy_outside=true, venues={cafetería}, price_level=1,
+       data_state='estimado',
+       source_name='porción estándar calculada'
+```
+
+Quedan **fuera de la rotación del plan** —el martes no puede decirte
+«comprá empanadas»— y aparecen sólo desde «Resolver ahora». Eso ya
+funciona así y no cambia.
+
+---
+
+## 7. La fuente
+
+Tres campos en la entrada y tres en el producto:
+
+- `source_name` — de dónde salió: «etiqueta», «porción estándar
+  calculada», «receta calculada», «web del fabricante».
+- `source_url` — el link, cuando existe.
+- `source_checked_at` — **cuándo se miró**. Sin esto, «verificado» no
+  vence nunca, y las etiquetas cambian.
+
+Para productos argentinos, `products.rnpa` guarda el número del registro
+nacional. Es lo que permite volver a buscar el producto en la fuente
+oficial dentro de un año y ver si cambió.
+
+**Open Food Facts queda afuera por ahora.** Su licencia (ODbL) pide
+atribución y tiene condiciones de share-alike sobre bases derivadas, así
+que importarla en bloque comprometería la base propia. Si más adelante se
+integra, va como fuente externa consultada aparte —nunca mezclada en
+silencio— y con la licencia documentada. El modelo ya lo permite:
+`source_name = 'Open Food Facts'` y `source_url` al producto.
+
+---
+
+## 8. Verificado, estimado, demo
+
+Un solo campo, `data_state`, con tres valores:
+
+| | Cuándo | Cómo se ve |
+| --- | --- | --- |
+| `verificado` | Etiqueta real, fuente oficial del fabricante, o receta con cantidades y porción calculadas | `42 g CHO` |
+| `estimado` | Restaurante, panadería, rotisería, preparación genérica, producto sin etiqueta confirmada | **`~42 g CHO`** |
+| `demo` | Contenido de desarrollo, a reemplazar | `~42 g CHO` + cartel DEMO |
+
+Hasta ahora esto eran dos booleanos (`is_demo`, `carbs_verified`) que
+podían contradecirse. Pasan a ser **columnas generadas** a partir de
+`data_state`: un solo lugar donde está la verdad, y todo lo que ya las lee
+sigue funcionando.
+
+---
+
+## 9. Duplicados
+
+Cuatro reglas, todas en la base:
+
+1. `slug` único en el catálogo. Es la identidad: el seed hace
+   `on conflict (slug) do update`, así correrlo dos veces no duplica nada.
+2. `lower(name) + category` único entre las entradas activas del
+   catálogo. Dos «Tostado de jamón y queso» en desayuno no tienen sentido.
+3. `barcode` único en productos.
+4. `rnpa` único en productos.
+
+Lo que **no** es duplicado: el mismo plato casero y comprado afuera
+(«Tostado» y «Tostado de cafetería») son dos entradas, porque tienen otro
+tiempo, otro lugar y otro número. Y una entrada del catálogo y tu copia
+personal tampoco, para eso está `forked_from`.
+
+---
+
+## 10. El plan de seed
+
+Una sola fuente, dos salidas. Los datos se escriben en
+`data/catalogo/*.json` y de ahí salen:
+
+- `supabase/seed/*.sql` para la base, con `on conflict` por slug;
+- la biblioteca que usa la app hoy, que lee el mismo JSON.
+
+Así la biblioteca deja de vivir en un `.ts` de demo y empieza a ser el
+catálogo de verdad, **sin esperar a que Supabase esté conectado**.
+
+### Fase B (ahora): 44 entradas representativas
+
+| Momento | Cuántas | Incluye |
+| --- | --- | --- |
+| Desayunos | 6 | Café con tostadas, mate con tostadas, tostado, huevos, yogur, medialunas |
+| Snacks | 6 | Fruta, barra, galletitas con queso, alfajor, maní, yogur bebible |
+| Almuerzos y cenas | 12 | Milanesa con puré, pollo con papas, fideos, arroz con pollo, tortilla, empanadas, pizza, hamburguesa, ensalada completa, tarta, guiso, bife |
+| Meriendas | 5 | Mate con galletitas, café con budín, tostado, yogur con fruta, té con mermelada |
+| Dulces | 5 | Flan con dulce de leche, gelatina light, chocolate, helado, postre lácteo |
+| Calle | 6 | Cafetería, panadería, rotisería (2), estación de servicio, supermercado |
+| Bebidas | 4 | Café, café con leche, gaseosa común, gaseosa zero |
+
+Todas entran como **`estimado`**, con `source_name = 'porción estándar
+calculada'`. Ninguna se marca verificada: para eso hace falta una etiqueta
+o una receta medida, y eso es Fase D.
+
+Las llamadas prohibidas —pizza, empanadas, hamburguesa, medialunas,
+alfajor, chocolate, helado, flan con dulce de leche, gaseosa común— están
+adentro desde el primer seed. No como excepción ni con advertencias: como
+comida. Lo único que la app agrega es el número al lado.
+
+### Después
+
+- **Fase C**: hasta 180–250, manteniendo la variedad.
+- **Fase D**: reemplazar los estimados que más pesan por etiqueta real,
+  empezando por los envasados de kiosco y supermercado.

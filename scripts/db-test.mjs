@@ -46,9 +46,17 @@ psql(['-c', `drop database if exists ${DB}`], 'postgres')
 psql(['-c', `create database ${DB}`], 'postgres')
 
 const migraciones = readdirSync(resolve(ROOT, 'supabase/migrations')).sort()
+const semillas = readdirSync(resolve(ROOT, 'supabase/seed')).sort()
 const pruebas = readdirSync(resolve(ROOT, 'supabase/tests')).sort()
 
-for (const f of ['supabase/tests/00_stub.sql', ...migraciones.map((m) => `supabase/migrations/${m}`)]) {
+/* Migraciones, después el catálogo, después las pruebas. El seed corre
+   acá también porque un seed que nunca se aplicó no sirve de nada: si
+   rompe, tiene que romper en esta corrida y no en la base de verdad. */
+for (const f of [
+  'supabase/tests/00_stub.sql',
+  ...migraciones.map((m) => `supabase/migrations/${m}`),
+  ...semillas.map((s) => `supabase/seed/${s}`),
+]) {
   psql(['-f', resolve(ROOT, f)])
   console.log('aplicada', f)
 }

@@ -1,0 +1,2305 @@
+[
+  {
+    "slug": "tostadas-queso-untable-cafe",
+    "name": "Tostadas con queso untable",
+    "category": "desayuno",
+    "description": "El desayuno de todos los días. Con café con leche, que también suma.",
+    "portions": [
+      {
+        "label": "2 tostadas",
+        "carbs": 26,
+        "grams": 60,
+        "default": true
+      }
+    ],
+    "tags": [
+      "en casa",
+      "rápido",
+      "salado"
+    ],
+    "satiety": "normal",
+    "prepMinutes": 5,
+    "mainIngredient": "pan",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": "café con leche",
+    "items": [
+      {
+        "item": "pan",
+        "qty": 2,
+        "unit": "u"
+      },
+      {
+        "item": "queso untable",
+        "qty": 30,
+        "unit": "g"
+      },
+      {
+        "item": "leche",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "item": "café",
+        "qty": 1,
+        "unit": "u"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "mate-tostadas-manteca",
+    "name": "Tostadas con manteca y mermelada",
+    "category": "desayuno",
+    "description": "Con mate, que no suma carbohidratos.",
+    "portions": [
+      {
+        "label": "2 tostadas",
+        "carbs": 32,
+        "grams": 60,
+        "default": true
+      }
+    ],
+    "tags": [
+      "en casa",
+      "rápido",
+      "dulce"
+    ],
+    "satiety": "normal",
+    "prepMinutes": 5,
+    "mainIngredient": "pan",
+    "everyday": true,
+    "addedSugar": true,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": "mate",
+    "items": [
+      {
+        "item": "pan",
+        "qty": 2,
+        "unit": "u"
+      },
+      {
+        "item": "manteca",
+        "qty": 15,
+        "unit": "g"
+      },
+      {
+        "item": "mermelada sin azúcar",
+        "qty": 20,
+        "unit": "g"
+      },
+      {
+        "item": "yerba",
+        "qty": 1,
+        "unit": "u"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "tostado-jamon-queso-desayuno",
+    "name": "Tostado de jamón y queso",
+    "category": "desayuno",
+    "description": "Cae bien a cualquier hora. Con café, es un desayuno que aguanta.",
+    "portions": [
+      {
+        "label": "1 tostado",
+        "carbs": 30,
+        "grams": 110,
+        "default": true
+      }
+    ],
+    "tags": [
+      "en casa",
+      "rápido",
+      "salado",
+      "potente"
+    ],
+    "satiety": "potente",
+    "prepMinutes": 7,
+    "mainIngredient": "pan",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": "café con leche",
+    "items": [
+      {
+        "item": "pan",
+        "qty": 2,
+        "unit": "u"
+      },
+      {
+        "item": "jamón",
+        "qty": 40,
+        "unit": "g"
+      },
+      {
+        "item": "queso",
+        "qty": 40,
+        "unit": "g"
+      },
+      {
+        "item": "leche",
+        "qty": 150,
+        "unit": "ml"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "huevos-revueltos-tostadas",
+    "name": "Huevos revueltos con tostadas",
+    "category": "desayuno",
+    "description": "Con dos huevos aguanta hasta el mediodía sin problema.",
+    "portions": [
+      {
+        "label": "1 plato",
+        "carbs": 28,
+        "grams": 200,
+        "default": true
+      }
+    ],
+    "tags": [
+      "en casa",
+      "salado",
+      "potente"
+    ],
+    "satiety": "potente",
+    "prepMinutes": 10,
+    "mainIngredient": "huevo",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": "café",
+    "items": [
+      {
+        "item": "huevo",
+        "qty": 2,
+        "unit": "u"
+      },
+      {
+        "item": "pan",
+        "qty": 2,
+        "unit": "u"
+      },
+      {
+        "item": "queso",
+        "qty": 20,
+        "unit": "g"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "yogur-granola-fruta",
+    "name": "Yogur con granola y fruta",
+    "category": "desayuno",
+    "description": "Rápido y se puede llevar. La granola es lo que más carbohidratos aporta.",
+    "portions": [
+      {
+        "label": "1 pote",
+        "carbs": 38,
+        "grams": 250,
+        "default": true
+      }
+    ],
+    "tags": [
+      "para llevar",
+      "rápido",
+      "dulce"
+    ],
+    "satiety": "normal",
+    "prepMinutes": 3,
+    "mainIngredient": "yogur",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": true,
+    "needsCold": true,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "yogur natural",
+        "qty": 190,
+        "unit": "g"
+      },
+      {
+        "item": "granola",
+        "qty": 40,
+        "unit": "g"
+      },
+      {
+        "item": "banana",
+        "qty": 1,
+        "unit": "u"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "medialunas-cafe",
+    "name": "Medialunas con café con leche",
+    "category": "desayuno",
+    "description": "De las que dicen que no. Comerlas sabiendo el número es distinto a evitarlas.",
+    "portions": [
+      {
+        "label": "2 medialunas",
+        "carbs": 48,
+        "grams": 100,
+        "default": true
+      },
+      {
+        "label": "1 medialuna",
+        "carbs": 24,
+        "grams": 50,
+        "default": false
+      },
+      {
+        "label": "3 medialunas",
+        "carbs": 72,
+        "grams": 150,
+        "default": false
+      }
+    ],
+    "tags": [
+      "dulce",
+      "rápido",
+      "antojo"
+    ],
+    "satiety": "normal",
+    "prepMinutes": 3,
+    "mainIngredient": "medialuna",
+    "everyday": true,
+    "addedSugar": true,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": "café con leche",
+    "items": [
+      {
+        "item": "medialuna",
+        "qty": 2,
+        "unit": "u"
+      },
+      {
+        "item": "leche",
+        "qty": 150,
+        "unit": "ml"
+      },
+      {
+        "item": "café",
+        "qty": 1,
+        "unit": "u"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "banana",
+    "name": "Banana",
+    "category": "snack",
+    "description": "La fruta más práctica que hay: viene con envase.",
+    "portions": [
+      {
+        "label": "1 banana",
+        "carbs": 25,
+        "grams": 120,
+        "default": true
+      }
+    ],
+    "tags": [
+      "para llevar",
+      "rápido",
+      "dulce"
+    ],
+    "satiety": "liviana",
+    "prepMinutes": 1,
+    "mainIngredient": "banana",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": true,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "banana",
+        "qty": 1,
+        "unit": "u"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "barra-cereal",
+    "name": "Barra de cereal",
+    "category": "snack",
+    "description": "Aguanta en la mochila y se come caminando.",
+    "portions": [
+      {
+        "label": "1 barra",
+        "carbs": 17,
+        "grams": 25,
+        "default": true
+      }
+    ],
+    "tags": [
+      "para llevar",
+      "kiosco",
+      "envasado",
+      "dulce",
+      "práctico"
+    ],
+    "satiety": "liviana",
+    "prepMinutes": 1,
+    "mainIngredient": "barra de cereal",
+    "everyday": true,
+    "addedSugar": true,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": true,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "barra de cereal",
+        "qty": 1,
+        "unit": "u"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "galletitas-agua-queso",
+    "name": "Galletitas de agua con queso",
+    "category": "snack",
+    "description": "Salado y práctico. Las galletitas son casi todo el carbohidrato.",
+    "portions": [
+      {
+        "label": "6 galletitas",
+        "carbs": 22,
+        "grams": 60,
+        "default": true
+      },
+      {
+        "label": "3 galletitas",
+        "carbs": 11,
+        "grams": 30,
+        "default": false
+      }
+    ],
+    "tags": [
+      "para llevar",
+      "salado",
+      "práctico"
+    ],
+    "satiety": "normal",
+    "prepMinutes": 3,
+    "mainIngredient": "galletitas sin azúcar",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": true,
+    "needsCold": true,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "galletitas sin azúcar",
+        "qty": 6,
+        "unit": "u"
+      },
+      {
+        "item": "queso",
+        "qty": 40,
+        "unit": "g"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "alfajor-simple",
+    "name": "Alfajor simple",
+    "category": "snack",
+    "description": "El clásico de kiosco. Entra: con el número a la vista se decide mejor.",
+    "portions": [
+      {
+        "label": "1 alfajor",
+        "carbs": 30,
+        "grams": 45,
+        "default": true
+      }
+    ],
+    "tags": [
+      "kiosco",
+      "envasado",
+      "dulce",
+      "antojo"
+    ],
+    "satiety": "liviana",
+    "prepMinutes": 1,
+    "mainIngredient": "alfajor",
+    "everyday": true,
+    "addedSugar": true,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": true,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "alfajor",
+        "qty": 1,
+        "unit": "u"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "puñado-mani",
+    "name": "Puñado de maní",
+    "category": "snack",
+    "description": "Casi sin carbohidratos y aguanta bastante.",
+    "portions": [
+      {
+        "label": "30 g",
+        "carbs": 6,
+        "grams": 30,
+        "default": true
+      }
+    ],
+    "tags": [
+      "para llevar",
+      "salado",
+      "práctico"
+    ],
+    "satiety": "normal",
+    "prepMinutes": 1,
+    "mainIngredient": "nuez",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": true,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "nuez",
+        "qty": 30,
+        "unit": "g"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "yogur-bebible",
+    "name": "Yogur bebible",
+    "category": "snack",
+    "description": "De supermercado o kiosco. Se toma caminando.",
+    "portions": [
+      {
+        "label": "1 botellita",
+        "carbs": 22,
+        "grams": 200,
+        "default": true
+      }
+    ],
+    "tags": [
+      "supermercado",
+      "envasado",
+      "dulce",
+      "para llevar"
+    ],
+    "satiety": "liviana",
+    "prepMinutes": 1,
+    "mainIngredient": "yogur entero",
+    "everyday": true,
+    "addedSugar": true,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": true,
+    "needsCold": true,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "yogur entero",
+        "qty": 200,
+        "unit": "g"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "milanesa-pure",
+    "name": "Milanesa con puré",
+    "category": "almuerzo",
+    "description": "De las comidas más normales que hay. El puré es la mitad del número.",
+    "portions": [
+      {
+        "label": "1 plato",
+        "carbs": 42,
+        "grams": 400,
+        "default": true
+      },
+      {
+        "label": "Con medio puré",
+        "carbs": 27,
+        "grams": 300,
+        "default": false
+      }
+    ],
+    "tags": [
+      "en casa",
+      "potente"
+    ],
+    "satiety": "potente",
+    "prepMinutes": 35,
+    "mainIngredient": "milanesa de pollo",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 2,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": true,
+    "makeNightBefore": false,
+    "freezable": true,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "milanesa de pollo",
+        "qty": 2,
+        "unit": "u"
+      },
+      {
+        "item": "papa",
+        "qty": 300,
+        "unit": "g"
+      },
+      {
+        "item": "leche",
+        "qty": 50,
+        "unit": "ml"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "pollo-horno-papas",
+    "name": "Pollo al horno con papas",
+    "category": "almuerzo",
+    "description": "Se hace una vez y rinde dos comidas.",
+    "portions": [
+      {
+        "label": "1 plato",
+        "carbs": 40,
+        "grams": 450,
+        "default": true
+      }
+    ],
+    "tags": [
+      "en casa",
+      "potente"
+    ],
+    "satiety": "potente",
+    "prepMinutes": 45,
+    "mainIngredient": "pollo",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 2,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": true,
+    "makeNightBefore": true,
+    "freezable": true,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "pollo",
+        "qty": 250,
+        "unit": "g"
+      },
+      {
+        "item": "papa",
+        "qty": 250,
+        "unit": "g"
+      },
+      {
+        "item": "aceite de oliva",
+        "qty": 1,
+        "unit": "u"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "fideos-tuco",
+    "name": "Fideos con tuco",
+    "category": "almuerzo",
+    "description": "De lo que más carbohidratos tiene del día. Conviene mirarlo bien.",
+    "portions": [
+      {
+        "label": "1 plato",
+        "carbs": 62,
+        "grams": 350,
+        "default": true
+      },
+      {
+        "label": "Medio plato",
+        "carbs": 31,
+        "grams": 175,
+        "default": false
+      }
+    ],
+    "tags": [
+      "en casa",
+      "potente"
+    ],
+    "satiety": "potente",
+    "prepMinutes": 20,
+    "mainIngredient": "fideos",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": true,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "fideos",
+        "qty": 100,
+        "unit": "g"
+      },
+      {
+        "item": "salsa de tomate",
+        "qty": 150,
+        "unit": "g"
+      },
+      {
+        "item": "queso",
+        "qty": 30,
+        "unit": "g"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "arroz-con-pollo",
+    "name": "Arroz con pollo",
+    "category": "almuerzo",
+    "description": "Se come frío o caliente y viaja bien en tupper.",
+    "portions": [
+      {
+        "label": "1 plato",
+        "carbs": 50,
+        "grams": 400,
+        "default": true
+      }
+    ],
+    "tags": [
+      "para llevar",
+      "potente"
+    ],
+    "satiety": "potente",
+    "prepMinutes": 30,
+    "mainIngredient": "arroz",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": true,
+    "needsCold": true,
+    "needsReheat": false,
+    "makeNightBefore": true,
+    "freezable": true,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "arroz",
+        "qty": 80,
+        "unit": "g"
+      },
+      {
+        "item": "pollo",
+        "qty": 180,
+        "unit": "g"
+      },
+      {
+        "item": "morrón",
+        "qty": 1,
+        "unit": "u"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "tortilla-papa",
+    "name": "Tortilla de papa",
+    "category": "almuerzo",
+    "description": "Fría al día siguiente está mejor que recién hecha.",
+    "portions": [
+      {
+        "label": "2 porciones",
+        "carbs": 30,
+        "grams": 250,
+        "default": true
+      },
+      {
+        "label": "1 porción",
+        "carbs": 15,
+        "grams": 125,
+        "default": false
+      }
+    ],
+    "tags": [
+      "para llevar",
+      "en casa"
+    ],
+    "satiety": "normal",
+    "prepMinutes": 30,
+    "mainIngredient": "papa",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 2,
+    "portable": true,
+    "needsCold": true,
+    "needsReheat": false,
+    "makeNightBefore": true,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "papa",
+        "qty": 2,
+        "unit": "u"
+      },
+      {
+        "item": "huevo",
+        "qty": 4,
+        "unit": "u"
+      },
+      {
+        "item": "cebolla",
+        "qty": 0.5,
+        "unit": "u"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "empanadas-carne",
+    "name": "Empanadas de carne",
+    "category": "almuerzo",
+    "description": "Otra de las prohibidas. Son 22 gramos cada una: con eso ya se puede decidir.",
+    "portions": [
+      {
+        "label": "3 empanadas",
+        "carbs": 66,
+        "grams": 300,
+        "default": true
+      },
+      {
+        "label": "1 empanada",
+        "carbs": 22,
+        "grams": 100,
+        "default": false
+      },
+      {
+        "label": "2 empanadas",
+        "carbs": 44,
+        "grams": 200,
+        "default": false
+      }
+    ],
+    "tags": [
+      "potente",
+      "antojo"
+    ],
+    "satiety": "potente",
+    "prepMinutes": 15,
+    "mainIngredient": "harina",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": true,
+    "needsCold": false,
+    "needsReheat": true,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "harina",
+        "qty": 150,
+        "unit": "g"
+      },
+      {
+        "item": "carne picada",
+        "qty": 200,
+        "unit": "g"
+      },
+      {
+        "item": "cebolla",
+        "qty": 1,
+        "unit": "u"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "pizza-muzzarella",
+    "name": "Pizza de muzzarella",
+    "category": "cena",
+    "description": "Treinta gramos por porción. La pizza no es el problema: no saber cuánto es, sí.",
+    "portions": [
+      {
+        "label": "2 porciones",
+        "carbs": 60,
+        "grams": 220,
+        "default": true
+      },
+      {
+        "label": "1 porción",
+        "carbs": 30,
+        "grams": 110,
+        "default": false
+      },
+      {
+        "label": "3 porciones",
+        "carbs": 90,
+        "grams": 330,
+        "default": false
+      }
+    ],
+    "tags": [
+      "en casa",
+      "potente",
+      "antojo"
+    ],
+    "satiety": "potente",
+    "prepMinutes": 25,
+    "mainIngredient": "masa de pizza",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "masa de pizza",
+        "qty": 1,
+        "unit": "u"
+      },
+      {
+        "item": "salsa de tomate",
+        "qty": 120,
+        "unit": "g"
+      },
+      {
+        "item": "muzzarella",
+        "qty": 200,
+        "unit": "g"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "hamburguesa-casera",
+    "name": "Hamburguesa con papas",
+    "category": "cena",
+    "description": "El pan y las papas son casi todo el número; la carne no aporta nada.",
+    "portions": [
+      {
+        "label": "1 hamburguesa con papas",
+        "carbs": 75,
+        "grams": 400,
+        "default": true
+      },
+      {
+        "label": "Sin papas",
+        "carbs": 30,
+        "grams": 250,
+        "default": false
+      }
+    ],
+    "tags": [
+      "en casa",
+      "potente",
+      "antojo"
+    ],
+    "satiety": "potente",
+    "prepMinutes": 25,
+    "mainIngredient": "carne picada",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "carne picada",
+        "qty": 180,
+        "unit": "g"
+      },
+      {
+        "item": "pan de hamburguesa",
+        "qty": 1,
+        "unit": "u"
+      },
+      {
+        "item": "papa",
+        "qty": 200,
+        "unit": "g"
+      },
+      {
+        "item": "queso",
+        "qty": 30,
+        "unit": "g"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "ensalada-completa",
+    "name": "Ensalada completa con pollo y huevo",
+    "category": "almuerzo",
+    "description": "Completa de verdad: con papa, huevo y pollo llena igual que un plato caliente.",
+    "portions": [
+      {
+        "label": "1 plato grande",
+        "carbs": 26,
+        "grams": 450,
+        "default": true
+      }
+    ],
+    "tags": [
+      "para llevar"
+    ],
+    "satiety": "potente",
+    "prepMinutes": 20,
+    "mainIngredient": "pollo",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": true,
+    "needsCold": true,
+    "needsReheat": false,
+    "makeNightBefore": true,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "pollo",
+        "qty": 150,
+        "unit": "g"
+      },
+      {
+        "item": "huevo",
+        "qty": 2,
+        "unit": "u"
+      },
+      {
+        "item": "papa",
+        "qty": 150,
+        "unit": "g"
+      },
+      {
+        "item": "lechuga",
+        "qty": 0.5,
+        "unit": "u"
+      },
+      {
+        "item": "tomate",
+        "qty": 1,
+        "unit": "u"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "tarta-jamon-queso",
+    "name": "Tarta de jamón y queso",
+    "category": "cena",
+    "description": "Entera rinde cuatro comidas y se lleva fría sin drama.",
+    "portions": [
+      {
+        "label": "1 porción",
+        "carbs": 30,
+        "grams": 180,
+        "default": true
+      },
+      {
+        "label": "2 porciones",
+        "carbs": 60,
+        "grams": 360,
+        "default": false
+      }
+    ],
+    "tags": [
+      "para llevar",
+      "en casa"
+    ],
+    "satiety": "normal",
+    "prepMinutes": 35,
+    "mainIngredient": "masa de tarta",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 2,
+    "portable": true,
+    "needsCold": true,
+    "needsReheat": false,
+    "makeNightBefore": true,
+    "freezable": true,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "masa de tarta",
+        "qty": 1,
+        "unit": "u"
+      },
+      {
+        "item": "jamón",
+        "qty": 100,
+        "unit": "g"
+      },
+      {
+        "item": "queso",
+        "qty": 150,
+        "unit": "g"
+      },
+      {
+        "item": "huevo",
+        "qty": 2,
+        "unit": "u"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "guiso-lentejas",
+    "name": "Guiso de lentejas",
+    "category": "cena",
+    "description": "Barato, rinde y se congela. De lo más práctico que hay.",
+    "portions": [
+      {
+        "label": "1 plato hondo",
+        "carbs": 48,
+        "grams": 400,
+        "default": true
+      }
+    ],
+    "tags": [
+      "en casa",
+      "potente"
+    ],
+    "satiety": "potente",
+    "prepMinutes": 40,
+    "mainIngredient": "lentejas cocidas",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 2,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": true,
+    "makeNightBefore": false,
+    "freezable": true,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "lentejas cocidas",
+        "qty": 250,
+        "unit": "g"
+      },
+      {
+        "item": "papa",
+        "qty": 150,
+        "unit": "g"
+      },
+      {
+        "item": "zanahoria",
+        "qty": 1,
+        "unit": "u"
+      },
+      {
+        "item": "cebolla",
+        "qty": 1,
+        "unit": "u"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "bife-pure-calabaza",
+    "name": "Bife con puré de calabaza",
+    "category": "cena",
+    "description": "La carne no tiene carbohidratos: el número es todo de la guarnición.",
+    "portions": [
+      {
+        "label": "1 plato",
+        "carbs": 24,
+        "grams": 350,
+        "default": true
+      }
+    ],
+    "tags": [
+      "en casa",
+      "potente"
+    ],
+    "satiety": "potente",
+    "prepMinutes": 25,
+    "mainIngredient": "carne picada",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": true,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "carne picada",
+        "qty": 200,
+        "unit": "g"
+      },
+      {
+        "item": "calabaza",
+        "qty": 300,
+        "unit": "g"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "mate-galletitas-dulces",
+    "name": "Mate con galletitas",
+    "category": "merienda",
+    "description": "La merienda de casi todo el mundo.",
+    "portions": [
+      {
+        "label": "6 galletitas",
+        "carbs": 34,
+        "grams": 60,
+        "default": true
+      },
+      {
+        "label": "3 galletitas",
+        "carbs": 17,
+        "grams": 30,
+        "default": false
+      }
+    ],
+    "tags": [
+      "en casa",
+      "dulce",
+      "rápido"
+    ],
+    "satiety": "normal",
+    "prepMinutes": 2,
+    "mainIngredient": "galletitas sin azúcar",
+    "everyday": true,
+    "addedSugar": true,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": "mate",
+    "items": [
+      {
+        "item": "galletitas sin azúcar",
+        "qty": 6,
+        "unit": "u"
+      },
+      {
+        "item": "yerba",
+        "qty": 1,
+        "unit": "u"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "cafe-budin",
+    "name": "Café con budín",
+    "category": "merienda",
+    "description": "Con el número a la vista, una porción de budín es una porción de budín.",
+    "portions": [
+      {
+        "label": "1 porción de budín",
+        "carbs": 38,
+        "grams": 80,
+        "default": true
+      },
+      {
+        "label": "Media porción",
+        "carbs": 19,
+        "grams": 40,
+        "default": false
+      }
+    ],
+    "tags": [
+      "dulce",
+      "rápido",
+      "antojo"
+    ],
+    "satiety": "normal",
+    "prepMinutes": 2,
+    "mainIngredient": "budín",
+    "everyday": true,
+    "addedSugar": true,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": "café",
+    "items": [
+      {
+        "item": "budín",
+        "qty": 1,
+        "unit": "u"
+      },
+      {
+        "item": "café",
+        "qty": 1,
+        "unit": "u"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "tostado-merienda",
+    "name": "Tostado con café con leche",
+    "category": "merienda",
+    "description": "Cuando la cena va a ser tarde, esto la aguanta.",
+    "portions": [
+      {
+        "label": "1 tostado",
+        "carbs": 30,
+        "grams": 110,
+        "default": true
+      }
+    ],
+    "tags": [
+      "en casa",
+      "salado",
+      "potente"
+    ],
+    "satiety": "potente",
+    "prepMinutes": 7,
+    "mainIngredient": "pan",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": "café con leche",
+    "items": [
+      {
+        "item": "pan",
+        "qty": 2,
+        "unit": "u"
+      },
+      {
+        "item": "jamón",
+        "qty": 40,
+        "unit": "g"
+      },
+      {
+        "item": "queso",
+        "qty": 40,
+        "unit": "g"
+      },
+      {
+        "item": "leche",
+        "qty": 150,
+        "unit": "ml"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "yogur-con-fruta",
+    "name": "Yogur con fruta",
+    "category": "merienda",
+    "description": "Liviana y se prepara en un minuto.",
+    "portions": [
+      {
+        "label": "1 pote con fruta",
+        "carbs": 26,
+        "grams": 280,
+        "default": true
+      }
+    ],
+    "tags": [
+      "rápido",
+      "dulce",
+      "para llevar"
+    ],
+    "satiety": "liviana",
+    "prepMinutes": 3,
+    "mainIngredient": "yogur natural",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": true,
+    "needsCold": true,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "yogur natural",
+        "qty": 190,
+        "unit": "g"
+      },
+      {
+        "item": "frutilla",
+        "qty": 100,
+        "unit": "g"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "te-tostadas-mermelada",
+    "name": "Té con tostadas y mermelada",
+    "category": "merienda",
+    "description": "Liviana, para cuando la cena viene pesada.",
+    "portions": [
+      {
+        "label": "2 tostadas",
+        "carbs": 30,
+        "grams": 60,
+        "default": true
+      }
+    ],
+    "tags": [
+      "en casa",
+      "dulce",
+      "rápido"
+    ],
+    "satiety": "liviana",
+    "prepMinutes": 4,
+    "mainIngredient": "pan",
+    "everyday": true,
+    "addedSugar": true,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": "té",
+    "items": [
+      {
+        "item": "pan",
+        "qty": 2,
+        "unit": "u"
+      },
+      {
+        "item": "mermelada sin azúcar",
+        "qty": 25,
+        "unit": "g"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "flan-dulce-de-leche",
+    "name": "Flan con dulce de leche",
+    "category": "snack",
+    "description": "El postre argentino. Cuarenta gramos: se sabe y se decide.",
+    "portions": [
+      {
+        "label": "1 porción",
+        "carbs": 40,
+        "grams": 150,
+        "default": true
+      },
+      {
+        "label": "Sin dulce de leche",
+        "carbs": 28,
+        "grams": 120,
+        "default": false
+      }
+    ],
+    "tags": [
+      "dulce",
+      "antojo"
+    ],
+    "satiety": "liviana",
+    "prepMinutes": 5,
+    "mainIngredient": "huevo",
+    "everyday": true,
+    "addedSugar": true,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": true,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "huevo",
+        "qty": 2,
+        "unit": "u"
+      },
+      {
+        "item": "leche",
+        "qty": 200,
+        "unit": "ml"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "gelatina-light",
+    "name": "Gelatina light",
+    "category": "snack",
+    "description": "Casi sin carbohidratos. Sirve cuando el antojo es de algo dulce y frío.",
+    "portions": [
+      {
+        "label": "1 pote",
+        "carbs": 1,
+        "grams": 120,
+        "default": true
+      }
+    ],
+    "tags": [
+      "dulce",
+      "envasado",
+      "supermercado"
+    ],
+    "satiety": "liviana",
+    "prepMinutes": 2,
+    "mainIngredient": "gelatina sin azúcar",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": true,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "gelatina sin azúcar",
+        "qty": 1,
+        "unit": "u"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "chocolate-barra",
+    "name": "Chocolate",
+    "category": "snack",
+    "description": "Media barrita son catorce gramos. Sin azúcar agregada sigue teniendo carbohidratos.",
+    "portions": [
+      {
+        "label": "25 g (media barrita)",
+        "carbs": 14,
+        "grams": 25,
+        "default": true
+      },
+      {
+        "label": "1 barrita (50 g)",
+        "carbs": 28,
+        "grams": 50,
+        "default": false
+      }
+    ],
+    "tags": [
+      "kiosco",
+      "dulce",
+      "antojo",
+      "envasado"
+    ],
+    "satiety": "liviana",
+    "prepMinutes": 1,
+    "mainIngredient": "chocolate",
+    "everyday": true,
+    "addedSugar": true,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": true,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "chocolate",
+        "qty": 25,
+        "unit": "g"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "helado-bocha",
+    "name": "Helado",
+    "category": "snack",
+    "description": "Una bocha. Del resto se encarga uno.",
+    "portions": [
+      {
+        "label": "1 bocha",
+        "carbs": 22,
+        "grams": 90,
+        "default": true
+      },
+      {
+        "label": "2 bochas",
+        "carbs": 44,
+        "grams": 180,
+        "default": false
+      }
+    ],
+    "tags": [
+      "dulce",
+      "antojo",
+      "salida"
+    ],
+    "satiety": "liviana",
+    "prepMinutes": 1,
+    "mainIngredient": "leche",
+    "everyday": true,
+    "addedSugar": true,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": true,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "leche",
+        "qty": 90,
+        "unit": "ml"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "postre-lacteo",
+    "name": "Postre lácteo",
+    "category": "snack",
+    "description": "De los que vienen de a cuatro en el supermercado.",
+    "portions": [
+      {
+        "label": "1 pote",
+        "carbs": 20,
+        "grams": 100,
+        "default": true
+      }
+    ],
+    "tags": [
+      "supermercado",
+      "envasado",
+      "dulce"
+    ],
+    "satiety": "liviana",
+    "prepMinutes": 1,
+    "mainIngredient": "yogur entero",
+    "everyday": true,
+    "addedSugar": true,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": true,
+    "needsCold": true,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "yogur entero",
+        "qty": 100,
+        "unit": "g"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "tostado-cafeteria",
+    "name": "Tostado de jamón y queso",
+    "category": "snack",
+    "description": "El de cualquier café. Pan de miga, así que un poco menos que el de casa.",
+    "portions": [
+      {
+        "label": "1 tostado",
+        "carbs": 28,
+        "grams": null,
+        "default": true
+      }
+    ],
+    "tags": [
+      "salida",
+      "salado",
+      "práctico"
+    ],
+    "satiety": "potente",
+    "prepMinutes": 0,
+    "mainIngredient": "pan",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": true,
+    "venues": [
+      "cafetería"
+    ],
+    "priceLevel": 1,
+    "drink": null,
+    "items": [],
+    "notes": ""
+  },
+  {
+    "slug": "sandwich-miga",
+    "name": "Sándwich de miga",
+    "category": "snack",
+    "description": "De panadería. Livianos de comer, no de carbohidratos.",
+    "portions": [
+      {
+        "label": "2 triples",
+        "carbs": 26,
+        "grams": null,
+        "default": true
+      },
+      {
+        "label": "1 triple",
+        "carbs": 13,
+        "grams": null,
+        "default": false
+      }
+    ],
+    "tags": [
+      "salida",
+      "salado"
+    ],
+    "satiety": "normal",
+    "prepMinutes": 0,
+    "mainIngredient": "pan",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": true,
+    "venues": [
+      "panadería"
+    ],
+    "priceLevel": 1,
+    "drink": null,
+    "items": [],
+    "notes": ""
+  },
+  {
+    "slug": "empanadas-rotiseria",
+    "name": "Empanadas de rotisería",
+    "category": "almuerzo",
+    "description": "Veintidós gramos cada una, más o menos, según la masa.",
+    "portions": [
+      {
+        "label": "3 empanadas",
+        "carbs": 66,
+        "grams": null,
+        "default": true
+      },
+      {
+        "label": "1 empanada",
+        "carbs": 22,
+        "grams": null,
+        "default": false
+      },
+      {
+        "label": "2 empanadas",
+        "carbs": 44,
+        "grams": null,
+        "default": false
+      }
+    ],
+    "tags": [
+      "salida",
+      "potente"
+    ],
+    "satiety": "potente",
+    "prepMinutes": 0,
+    "mainIngredient": "harina",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": true,
+    "venues": [
+      "rotisería"
+    ],
+    "priceLevel": 2,
+    "drink": null,
+    "items": [],
+    "notes": ""
+  },
+  {
+    "slug": "milanesa-completa-rotiseria",
+    "name": "Milanesa con papas fritas",
+    "category": "almuerzo",
+    "description": "La de rotisería, con papas. De las prohibidas, otra vez.",
+    "portions": [
+      {
+        "label": "1 porción",
+        "carbs": 58,
+        "grams": null,
+        "default": true
+      },
+      {
+        "label": "Sin papas",
+        "carbs": 14,
+        "grams": null,
+        "default": false
+      }
+    ],
+    "tags": [
+      "salida",
+      "potente",
+      "antojo"
+    ],
+    "satiety": "potente",
+    "prepMinutes": 0,
+    "mainIngredient": "milanesa de pollo",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": true,
+    "venues": [
+      "rotisería"
+    ],
+    "priceLevel": 2,
+    "drink": null,
+    "items": [],
+    "notes": ""
+  },
+  {
+    "slug": "combo-estacion",
+    "name": "Sándwich con bebida sin azúcar",
+    "category": "snack",
+    "description": "Lo que hay a las once de la noche en una estación de servicio.",
+    "portions": [
+      {
+        "label": "1 combo",
+        "carbs": 40,
+        "grams": null,
+        "default": true
+      }
+    ],
+    "tags": [
+      "salida",
+      "emergencia",
+      "envasado",
+      "práctico"
+    ],
+    "satiety": "potente",
+    "prepMinutes": 0,
+    "mainIngredient": "pan",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "emergencia",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": true,
+    "venues": [
+      "estación de servicio"
+    ],
+    "priceLevel": 2,
+    "drink": null,
+    "items": [],
+    "notes": ""
+  },
+  {
+    "slug": "ensalada-supermercado",
+    "name": "Ensalada armada de supermercado",
+    "category": "almuerzo",
+    "description": "Cuando no trajiste nada y no querés otro sándwich.",
+    "portions": [
+      {
+        "label": "1 bandeja",
+        "carbs": 20,
+        "grams": null,
+        "default": true
+      }
+    ],
+    "tags": [
+      "salida",
+      "supermercado",
+      "envasado",
+      "práctico"
+    ],
+    "satiety": "normal",
+    "prepMinutes": 0,
+    "mainIngredient": "lechuga",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": true,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": true,
+    "venues": [
+      "supermercado"
+    ],
+    "priceLevel": 2,
+    "drink": null,
+    "items": [],
+    "notes": ""
+  },
+  {
+    "slug": "cafe-solo",
+    "name": "Café",
+    "category": "snack",
+    "description": "Sin azúcar, cero. Con azúcar son cinco gramos por cucharadita.",
+    "portions": [
+      {
+        "label": "1 taza",
+        "carbs": 0,
+        "grams": 200,
+        "default": true
+      },
+      {
+        "label": "Con una cucharadita de azúcar",
+        "carbs": 5,
+        "grams": 200,
+        "default": false
+      }
+    ],
+    "tags": [
+      "rápido",
+      "práctico"
+    ],
+    "satiety": "liviana",
+    "prepMinutes": 2,
+    "mainIngredient": "café",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "café",
+        "qty": 1,
+        "unit": "u"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "cafe-con-leche",
+    "name": "Café con leche",
+    "category": "snack",
+    "description": "La leche sí suma: diez gramos por taza.",
+    "portions": [
+      {
+        "label": "1 taza",
+        "carbs": 10,
+        "grams": 250,
+        "default": true
+      }
+    ],
+    "tags": [
+      "rápido",
+      "práctico"
+    ],
+    "satiety": "liviana",
+    "prepMinutes": 3,
+    "mainIngredient": "leche",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": false,
+    "buyOutside": false,
+    "venues": [],
+    "priceLevel": null,
+    "drink": null,
+    "items": [
+      {
+        "item": "leche",
+        "qty": 200,
+        "unit": "ml"
+      },
+      {
+        "item": "café",
+        "qty": 1,
+        "unit": "u"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "slug": "gaseosa-comun",
+    "name": "Gaseosa común",
+    "category": "snack",
+    "description": "Medio litro son 53 gramos. Es el número que más sorprende de toda la lista.",
+    "portions": [
+      {
+        "label": "500 ml",
+        "carbs": 53,
+        "grams": null,
+        "default": true
+      },
+      {
+        "label": "1 vaso (250 ml)",
+        "carbs": 26,
+        "grams": null,
+        "default": false
+      }
+    ],
+    "tags": [
+      "kiosco",
+      "envasado",
+      "dulce",
+      "salida"
+    ],
+    "satiety": "liviana",
+    "prepMinutes": 0,
+    "mainIngredient": "chocolate",
+    "everyday": true,
+    "addedSugar": true,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": true,
+    "venues": [
+      "kiosco",
+      "supermercado"
+    ],
+    "priceLevel": 1,
+    "drink": null,
+    "items": [],
+    "notes": ""
+  },
+  {
+    "slug": "gaseosa-zero",
+    "name": "Gaseosa sin azúcar",
+    "category": "snack",
+    "description": "Cero carbohidratos. Sirve para acompañar sin sumar.",
+    "portions": [
+      {
+        "label": "500 ml",
+        "carbs": 0,
+        "grams": null,
+        "default": true
+      }
+    ],
+    "tags": [
+      "kiosco",
+      "envasado",
+      "salida",
+      "práctico"
+    ],
+    "satiety": "liviana",
+    "prepMinutes": 0,
+    "mainIngredient": "chocolate",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": true,
+    "venues": [
+      "kiosco",
+      "supermercado"
+    ],
+    "priceLevel": 1,
+    "drink": null,
+    "items": [],
+    "notes": ""
+  }
+]

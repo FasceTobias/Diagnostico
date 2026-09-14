@@ -44,6 +44,9 @@ export function MealDetail({ meal }: { meal: Meal }) {
       <h3 className="v-head mt-1.5 text-[25px] leading-[1.15] text-ink">{meal.name}</h3>
       {meal.drink && <p className="v-label mt-1 text-ink-soft">con {meal.drink}</p>}
       <p className="v-label-sm mt-1.5 text-ink-faint">{meal.portion}</p>
+      {meal.description && (
+        <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">{meal.description}</p>
+      )}
 
       <div className="mt-5 flex items-end justify-between gap-4 rounded-xl bg-surface px-4 py-4">
         <div>
@@ -59,9 +62,10 @@ export function MealDetail({ meal }: { meal: Meal }) {
 
       {!meal.carbsVerified && (
         <p className="mt-4 text-[14px] leading-relaxed text-ink-soft">
-          <span className="text-ink">Carbohidratos sin verificar.</span> Es un valor
-          de demostración, no medido contra una etiqueta ni una receta calculada.
-          No lo uses para decidir nada.
+          <span className="text-ink">Carbohidratos sin verificar.</span>{' '}
+          {meal.isDemo
+            ? 'Es un valor de demostración, no medido contra nada. No lo uses para decidir.'
+            : 'Está calculado sobre una porción estándar, no medido contra una etiqueta. Sirve para orientarte; si vas a ajustar fino, mirá el envase.'}
         </p>
       )}
 
@@ -120,6 +124,32 @@ export function MealDetail({ meal }: { meal: Meal }) {
               en cuanto carguemos la marca y la porción reales.
             </p>
           )}
+        </>
+      )}
+
+      {/* Las otras porciones de lo mismo. El número de arriba es el de
+          una porción concreta, no el del plato en abstracto: media pizza
+          y tres porciones son la misma comida con otro número. */}
+      {meal.portions && meal.portions.length > 1 && (
+        <>
+          <SectionLabel className="mt-8 mb-1">Según cuánto comas</SectionLabel>
+          {meal.portions.map((p) => {
+            const actual = p.label === meal.portion
+            return (
+              <div
+                key={p.label}
+                className="flex items-baseline justify-between gap-4 border-b border-line py-2.5"
+              >
+                <span className={`text-[16px] ${actual ? 'font-semibold text-ink' : 'text-ink-soft'}`}>
+                  {p.label}
+                  {p.grams ? <span className="v-label-sm text-ink-faint"> · {p.grams} g</span> : null}
+                </span>
+                <span className={`text-[16px] v-tnum ${actual ? 'text-ink' : 'text-ink-soft'}`}>
+                  ~{p.carbs} <span className="v-label-sm text-ink-faint">g CHO</span>
+                </span>
+              </div>
+            )
+          })}
         </>
       )}
 

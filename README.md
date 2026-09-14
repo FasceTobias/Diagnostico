@@ -60,11 +60,15 @@ día de la semana, y no se configura a diario: vive en Configuración y en
 - **Modo foco** — sólo lo que viene ahora.
 - **Asistente** — entrada integrada, resuelta con reglas locales sobre la biblioteca.
 - **SEMANA** — los 7 días, con reemplazo desde cualquier día.
-- **COMIDAS** — biblioteca personal con 99 opciones de demostración, marcadas
-  como tales y con los carbohidratos sin verificar. La base es comida de un
-  martes cualquiera: café con leche y tostadas, tostado, sándwich, mate con
-  galletitas, fideos, pizza, milanesa. Avena, frutos secos y bowls siguen
-  existiendo, pero no son el default. El detalle de las comidas que se cocinan
+- **COMIDAS** — 143 opciones: **44 del catálogo real** (`data/catalogo/`) y 99 de
+  demostración todavía por reemplazar. Las del catálogo tienen la porción
+  documentada, el carbohidrato calculado sobre esa porción y **variantes**: una
+  pizza son 30 g por porción, 60 por dos, 90 por tres. Las llamadas prohibidas
+  —pizza, empanadas, hamburguesa, medialunas, alfajor, chocolate, helado, flan
+  con dulce de leche, gaseosa común— están desde la primera entrada, sin
+  advertencias. Lo que la app agrega es el número al lado.
+
+  El detalle de las comidas que se cocinan
   trae **cómo se hace**, escrito para alguien que nunca lo hizo: un paso por
   acción, sin jerga de cocina, con la cantidad y la señal de que está listo.
   «Ver con detalle» abre la explicación entera de cada paso y queda abierto.
@@ -102,6 +106,7 @@ npm run build && npm run preview
 src/
   lib/
     types.ts       modelo de dominio (espeja supabase/migrations/)
+    catalogo.ts    el catálogo real, desde data/catalogo/*.json
     demo.ts        99 opciones de demostración (isDemo, carbsVerified: false),
                    57 caseras y 42 para comprar afuera. Las que se cocinan
                    traen la receta paso a paso, sin jerga, con la explicación
@@ -117,8 +122,13 @@ src/
     format.ts      fechas, carbohidratos, tintes
   components/      primitivas y sheets
   screens/         HOY, SEMANA, COMIDAS, COMPRAS, FOCO
+data/
+  catalogo/        la biblioteca, en JSON. Fuente única: de acá sale lo que
+                   usa la app y el seed SQL (npm run catalogo:sql)
 supabase/
   migrations/      el esquema, versionado y con RLS
+  seed/            el catálogo para la base, generado
+  tests/           63 pruebas de RLS y catálogo (npm run db:test)
 ```
 
 La UI no sabe de dónde vienen los datos, y `store.ts` tampoco sabe dónde se

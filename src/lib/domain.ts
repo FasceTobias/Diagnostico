@@ -163,6 +163,11 @@ const preferenceScore = (
      pero no es el default: pierde prioridad, no desaparece. */
   score += meal.everyday ? 14 : -22
 
+  /* Una entrada del catálogo real le gana a una de ejemplo. No por
+     calidad de la comida: porque su número salió de una porción
+     documentada y el de la otra es de relleno. */
+  if (meal.isDemo) score -= 18
+
   /* Entre dos opciones parecidas, la de menos azúcar agregada desempata.
      Es un ajuste chico a propósito: no esconde nada ni bloquea nada. */
   if (prefs?.reduceAddedSugar && meal.addedSugar) score -= 8

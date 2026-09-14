@@ -152,6 +152,14 @@ export type Unit =
 /* Un paso de preparación. Corto: la app no es un blog de cocina.
    Los minutos son los de ese paso; pueden solaparse con el anterior
    (el horno calienta mientras cortás). */
+/* Una porción, con su número. La porción ES el dato: una pizza no tiene
+   60 g de carbohidratos, tiene 30 por porción y comés dos. */
+export interface Portion {
+  label: string
+  carbs: number
+  grams?: number
+}
+
 export interface Step {
   text: string
   minutes?: number
@@ -194,7 +202,13 @@ export interface Meal {
   /** Ingrediente principal. Lo usa la rotación para no repetir pollo tres días. */
   mainIngredient: string
   ingredients: Ingredient[]
+  /** Una línea corta sobre qué es. Sólo en las del catálogo. */
+  description?: string
+  /** La porción por defecto, en palabras. */
   portion: string
+  /** Las otras porciones de lo mismo: media pizza, dos, tres. Sólo
+      cuando hay más de una: nadie necesita elegir el tamaño de un café. */
+  portions?: Portion[]
   /** Cuando existan fotos reales, ocupan el lugar del ícono. */
   photoUrl?: string
   carbs: number

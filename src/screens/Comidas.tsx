@@ -52,7 +52,8 @@ export function Comidas({ app }: { app: Vianda }) {
         <header className="v-safe-top pt-5 pb-4">
           <h1 className="v-serif-lg text-[28px] text-ink">Comidas</h1>
           <p className="v-label-sm mt-1.5 text-ink-faint">
-            {count} de {app.meals.length} · todas de demostración
+            {count} de {app.meals.length} · {app.meals.filter((m) => !m.isDemo).length} del
+            catálogo real
           </p>
         </header>
 
@@ -152,9 +153,10 @@ export function Comidas({ app }: { app: Vianda }) {
         )}
 
         <p className="mt-8 px-1 text-[13px] leading-relaxed text-ink-faint">
-          Todas son de demostración: los carbohidratos no están verificados y las
-          comidas no las elegiste vos. La biblioteca real la construimos comida
-          por comida.
+          Las del catálogo tienen la porción documentada y el carbohidrato calculado
+          sobre esa porción; siguen con tilde porque ninguna se midió todavía contra
+          una etiqueta. Las marcadas <span className="text-ink-soft">demo</span> son
+          las que quedan por reemplazar.
         </p>
 
         <Sheet open={open !== null} onClose={() => setOpen(null)}>
