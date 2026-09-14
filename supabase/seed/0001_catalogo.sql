@@ -223,7 +223,7 @@ insert into meals (
   buy_outside, venues, price_level, handheld, carbs_from_items,
   source_name
 ) values (
-  null, 'medialunas-cafe', 'Medialunas con café con leche', 'De las que dicen que no. Comerlas sabiendo el número es distinto a evitarlas.', 'desayuno', 'estimado',
+  null, 'medialunas-cafe', 'Medialunas con café con leche', 'Veinticuatro gramos cada una, y de los que entran rápido. Para un domingo.', 'desayuno', 'estimado',
   48, 'estimacion', 'estimada', '2 medialunas',
   'medialuna', array['dulce', 'rápido', 'antojo'], 3, 'normal',
   false, false, false, false, false,
@@ -396,7 +396,7 @@ insert into meals (
   buy_outside, venues, price_level, handheld, carbs_from_items,
   source_name
 ) values (
-  null, 'alfajor-simple', 'Alfajor simple', 'El clásico de kiosco. Entra: con el número a la vista se decide mejor.', 'snack', 'estimado',
+  null, 'alfajor-simple', 'Alfajor simple', 'Treinta gramos en algo que se come en dos minutos. Mejor saberlo antes.', 'snack', 'estimado',
   30, 'estimacion', 'estimada', '1 alfajor',
   'alfajor', array['kiosco', 'envasado', 'dulce', 'antojo'], 1, 'liviana',
   true, false, false, false, false,
@@ -733,7 +733,7 @@ insert into meals (
   buy_outside, venues, price_level, handheld, carbs_from_items,
   source_name
 ) values (
-  null, 'empanadas-carne', 'Empanadas de carne', 'Otra de las prohibidas. Son 22 gramos cada una: con eso ya se puede decidir.', 'almuerzo', 'estimado',
+  null, 'empanadas-carne', 'Empanadas de carne', 'Veintidós gramos cada una, más o menos según la masa.', 'almuerzo', 'estimado',
   66, 'estimacion', 'estimada', '3 empanadas',
   'harina', array['potente', 'antojo'], 15, 'potente',
   true, false, true, false, false,
@@ -780,7 +780,7 @@ insert into meals (
   buy_outside, venues, price_level, handheld, carbs_from_items,
   source_name
 ) values (
-  null, 'pizza-muzzarella', 'Pizza de muzzarella', 'Treinta gramos por porción. La pizza no es el problema: no saber cuánto es, sí.', 'cena', 'estimado',
+  null, 'pizza-muzzarella', 'Pizza de muzzarella', 'Treinta gramos por porción, sesenta por dos. De las de cada tanto.', 'cena', 'estimado',
   60, 'estimacion', 'estimada', '2 porciones',
   'masa de pizza', array['en casa', 'potente', 'antojo'], 25, 'potente',
   false, false, false, false, false,
@@ -1249,7 +1249,7 @@ insert into meals (
   buy_outside, venues, price_level, handheld, carbs_from_items,
   source_name
 ) values (
-  null, 'flan-dulce-de-leche', 'Flan con dulce de leche', 'El postre argentino. Cuarenta gramos: se sabe y se decide.', 'snack', 'estimado',
+  null, 'flan-dulce-de-leche', 'Flan con dulce de leche', 'Cuarenta gramos con dulce de leche, veintiocho sin.', 'snack', 'estimado',
   40, 'estimacion', 'estimada', '1 porción',
   'huevo', array['dulce', 'antojo'], 5, 'liviana',
   false, true, false, false, false,
@@ -1334,7 +1334,7 @@ insert into meals (
   buy_outside, venues, price_level, handheld, carbs_from_items,
   source_name
 ) values (
-  null, 'chocolate-barra', 'Chocolate', 'Media barrita son catorce gramos. Sin azúcar agregada sigue teniendo carbohidratos.', 'snack', 'estimado',
+  null, 'chocolate-barra', 'Chocolate', 'Media barrita son catorce gramos. Sin azúcar agregada igual tiene carbohidratos.', 'snack', 'estimado',
   14, 'estimacion', 'estimada', '25 g (media barrita)',
   'chocolate', array['kiosco', 'dulce', 'antojo', 'envasado'], 1, 'liviana',
   true, false, false, false, false,
@@ -1378,7 +1378,7 @@ insert into meals (
   buy_outside, venues, price_level, handheld, carbs_from_items,
   source_name
 ) values (
-  null, 'helado-bocha', 'Helado', 'Una bocha. Del resto se encarga uno.', 'snack', 'estimado',
+  null, 'helado-bocha', 'Helado', 'Una bocha, veintidós gramos. Dos bochas, cuarenta y cuatro.', 'snack', 'estimado',
   22, 'estimacion', 'estimada', '1 bocha',
   'leche', array['dulce', 'antojo', 'salida'], 1, 'liviana',
   false, true, false, false, false,
@@ -1595,7 +1595,7 @@ insert into meals (
   buy_outside, venues, price_level, handheld, carbs_from_items,
   source_name
 ) values (
-  null, 'milanesa-completa-rotiseria', 'Milanesa con papas fritas', 'La de rotisería, con papas. De las prohibidas, otra vez.', 'almuerzo', 'estimado',
+  null, 'milanesa-completa-rotiseria', 'Milanesa con papas fritas', 'La de rotisería, con papas. Cincuenta y ocho gramos; sin papas, catorce.', 'almuerzo', 'estimado',
   58, 'estimacion', 'estimada', '1 porción',
   'milanesa de pollo', array['salida', 'potente', 'antojo'], 0, 'potente',
   false, false, false, false, false,
@@ -1806,7 +1806,7 @@ insert into meals (
   buy_outside, venues, price_level, handheld, carbs_from_items,
   source_name
 ) values (
-  null, 'gaseosa-comun', 'Gaseosa común', 'Medio litro son 53 gramos. Es el número que más sorprende de toda la lista.', 'snack', 'estimado',
+  null, 'gaseosa-comun', 'Gaseosa común', 'Medio litro son 53 gramos, y líquidos: entran más rápido que los de un plato.', 'snack', 'estimado',
   53, 'estimacion', 'estimada', '500 ml',
   'chocolate', array['kiosco', 'envasado', 'dulce', 'salida'], 0, 'liviana',
   false, false, false, false, false,

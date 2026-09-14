@@ -289,7 +289,7 @@
     "slug": "medialunas-cafe",
     "name": "Medialunas con café con leche",
     "category": "desayuno",
-    "description": "De las que dicen que no. Comerlas sabiendo el número es distinto a evitarlas.",
+    "description": "Veinticuatro gramos cada una, y de los que entran rápido. Para un domingo.",
     "portions": [
       {
         "label": "2 medialunas",
@@ -500,7 +500,7 @@
     "slug": "alfajor-simple",
     "name": "Alfajor simple",
     "category": "snack",
-    "description": "El clásico de kiosco. Entra: con el número a la vista se decide mejor.",
+    "description": "Treinta gramos en algo que se come en dos minutos. Mejor saberlo antes.",
     "portions": [
       {
         "label": "1 alfajor",
@@ -917,7 +917,7 @@
     "slug": "empanadas-carne",
     "name": "Empanadas de carne",
     "category": "almuerzo",
-    "description": "Otra de las prohibidas. Son 22 gramos cada una: con eso ya se puede decidir.",
+    "description": "Veintidós gramos cada una, más o menos según la masa.",
     "portions": [
       {
         "label": "3 empanadas",
@@ -982,7 +982,7 @@
     "slug": "pizza-muzzarella",
     "name": "Pizza de muzzarella",
     "category": "cena",
-    "description": "Treinta gramos por porción. La pizza no es el problema: no saber cuánto es, sí.",
+    "description": "Treinta gramos por porción, sesenta por dos. De las de cada tanto.",
     "portions": [
       {
         "label": "2 porciones",
@@ -1612,7 +1612,7 @@
     "slug": "flan-dulce-de-leche",
     "name": "Flan con dulce de leche",
     "category": "snack",
-    "description": "El postre argentino. Cuarenta gramos: se sabe y se decide.",
+    "description": "Cuarenta gramos con dulce de leche, veintiocho sin.",
     "portions": [
       {
         "label": "1 porción",
@@ -1710,7 +1710,7 @@
     "slug": "chocolate-barra",
     "name": "Chocolate",
     "category": "snack",
-    "description": "Media barrita son catorce gramos. Sin azúcar agregada sigue teniendo carbohidratos.",
+    "description": "Media barrita son catorce gramos. Sin azúcar agregada igual tiene carbohidratos.",
     "portions": [
       {
         "label": "25 g (media barrita)",
@@ -1761,7 +1761,7 @@
     "slug": "helado-bocha",
     "name": "Helado",
     "category": "snack",
-    "description": "Una bocha. Del resto se encarga uno.",
+    "description": "Una bocha, veintidós gramos. Dos bochas, cuarenta y cuatro.",
     "portions": [
       {
         "label": "1 bocha",
@@ -1991,7 +1991,7 @@
     "slug": "milanesa-completa-rotiseria",
     "name": "Milanesa con papas fritas",
     "category": "almuerzo",
-    "description": "La de rotisería, con papas. De las prohibidas, otra vez.",
+    "description": "La de rotisería, con papas. Cincuenta y ocho gramos; sin papas, catorce.",
     "portions": [
       {
         "label": "1 porción",
@@ -2216,7 +2216,7 @@
     "slug": "gaseosa-comun",
     "name": "Gaseosa común",
     "category": "snack",
-    "description": "Medio litro son 53 gramos. Es el número que más sorprende de toda la lista.",
+    "description": "Medio litro son 53 gramos, y líquidos: entran más rápido que los de un plato.",
     "portions": [
       {
         "label": "500 ml",

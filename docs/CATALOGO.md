@@ -3,8 +3,10 @@
 > El esquema del catálogo, antes de cargarle datos.
 >
 > Regla de fondo: **la biblioteca informa, no decide**. No hay lista de
-> alimentos prohibidos, no hay «apto diabético», no hay modo dieta. Hay
-> comida, y al lado el número de carbohidratos con de dónde salió.
+> alimentos prohibidos ni «apto diabético». Pero tampoco da lo mismo todo:
+> lo que separa una comida de otra es `frequency` —de todos los días o de
+> cada tanto—, y el plan lo respeta. Medido sobre la semana generada: una
+> sola de las 42 comidas es «de vez en cuando».
 
 ---
 
@@ -284,10 +286,19 @@ Todas entran como **`estimado`**, con `source_name = 'porción estándar
 calculada'`. Ninguna se marca verificada: para eso hace falta una etiqueta
 o una receta medida, y eso es Fase D.
 
-Las llamadas prohibidas —pizza, empanadas, hamburguesa, medialunas,
-alfajor, chocolate, helado, flan con dulce de leche, gaseosa común— están
-adentro desde el primer seed. No como excepción ni con advertencias: como
-comida. Lo único que la app agrega es el número al lado.
+Pizza, empanadas, hamburguesa, medialunas, alfajor, chocolate, helado,
+flan con dulce de leche y gaseosa común están adentro desde el primer
+seed, con su número. No porque dé lo mismo comerlas todos los días, sino
+porque el día que las comas vas a necesitar el número, y si la app no lo
+tiene, estimás a ojo.
+
+Doce de las 44 están marcadas **de vez en cuando**. Eso no es una
+etiqueta decorativa: baja su prioridad en la rotación, y el resultado
+medido es que el plan semanal propone una sola comida de ésas en 42. El
+detalle además lo dice: «De vez en cuando. El plan la propone cada tanto,
+no todas las semanas.»
+
+Ni prohibir ni festejar. Que el plan se parezca a una semana normal.
 
 ### Después
 

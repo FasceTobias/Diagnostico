@@ -14,10 +14,17 @@ import crudo from '../../data/catalogo/v1.json'
    midió contra una etiqueta. Para eso hace falta el envase en la mano, y
    por eso la app las muestra con la tilde: ~42 g CHO.
 
-   Lo que NO hay acá: comida prohibida. Pizza, empanadas, medialunas,
-   alfajor, helado, gaseosa común. Están desde la primera entrada, sin
-   advertencias y sin asteriscos. Lo único que la app agrega es el número
-   al lado.
+   Sobre la comida que suele quedar afuera de estas apps —pizza,
+   empanadas, medialunas, alfajor, helado, gaseosa común—: está, con su
+   número. No porque dé lo mismo comerla todos los días, sino porque el
+   día que la comas vas a necesitar el número, y si la app no la tiene,
+   estimás a ojo.
+
+   Lo que las separa no es una advertencia, es `frequency`: las de todos
+   los días y las de cada tanto. El plan propone una comida «de vez en
+   cuando» más o menos una vez por semana, y la app lo dice en el
+   detalle. Ni prohibir ni festejar: que el plan se parezca a una semana
+   normal.
    ------------------------------------------------------------------ */
 
 interface PorcionJson {

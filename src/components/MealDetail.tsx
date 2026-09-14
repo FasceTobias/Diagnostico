@@ -74,6 +74,20 @@ export function MealDetail({ meal }: { meal: Meal }) {
         ni sugiere insulina.
       </p>
 
+      {/* Cada cuánto, dicho aparte. No es un reto: es que el plan lo trate
+          como lo que es. Una comida de cada tanto aparece una vez cada
+          tanto, y conviene saberlo antes de elegirla, no después. */}
+      {meal.frequency !== 'habitual' && (
+        <p className="mt-4 text-[14px] leading-relaxed text-ink-soft">
+          <span className="text-ink">
+            {meal.frequency === 'ocasional' ? 'De vez en cuando.' : 'Para salir del paso.'}
+          </span>{' '}
+          {meal.frequency === 'ocasional'
+            ? 'El plan la propone cada tanto, no todas las semanas.'
+            : 'No entra en el plan: está para cuando el día se rompe.'}
+        </p>
+      )}
+
       {/* Etiquetas: qué es y para qué sirve. Ninguna dice si está bien o mal. */}
       <p className="v-label-sm mt-5 leading-[1.9] text-ink-faint">
         {[FREQUENCY_LABEL[meal.frequency].toLowerCase(), ...meal.tags, ...badges].join(' · ')}

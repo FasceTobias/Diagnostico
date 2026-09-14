@@ -63,10 +63,10 @@ día de la semana, y no se configura a diario: vive en Configuración y en
 - **COMIDAS** — 143 opciones: **44 del catálogo real** (`data/catalogo/`) y 99 de
   demostración todavía por reemplazar. Las del catálogo tienen la porción
   documentada, el carbohidrato calculado sobre esa porción y **variantes**: una
-  pizza son 30 g por porción, 60 por dos, 90 por tres. Las llamadas prohibidas
-  —pizza, empanadas, hamburguesa, medialunas, alfajor, chocolate, helado, flan
-  con dulce de leche, gaseosa común— están desde la primera entrada, sin
-  advertencias. Lo que la app agrega es el número al lado.
+  pizza son 30 g por porción, 60 por dos, 90 por tres. Pizza, empanadas,
+  hamburguesa, medialunas, alfajor, helado y gaseosa común están con su número,
+  y marcadas **de vez en cuando**: el plan de una semana propone una sola comida
+  de ésas en 42. Ni prohibir ni festejar.
 
   El detalle de las comidas que se cocinan
   trae **cómo se hace**, escrito para alguien que nunca lo hizo: un paso por

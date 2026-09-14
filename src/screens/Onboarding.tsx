@@ -210,7 +210,7 @@ function Bienvenida() {
 
       <div className="mt-8 border-t border-line">
         {[
-          ['No hay comida prohibida.', 'Pizza, milanesa, asado, helado. Todo entra. Lo que la app suma es saber cuántos carbohidratos tiene cada cosa.'],
+          ['Ninguna comida se esconde.', 'Pizza, milanesa, helado están, con lo que tienen. Pero no todo es para todos los días, y la app lo dice: hay comida de todos los días y comida de cada tanto.'],
           ['No depende de tu disciplina.', 'Avanza sola con el reloj. Si no marcás nada en tres días, sigue funcionando igual.'],
           ['Todo lo que viene ahora es opcional.', 'Son seis pantallas y se pueden saltear. La app funciona sin contestar nada.'],
         ].map(([t, d]) => (
