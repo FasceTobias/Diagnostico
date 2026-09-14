@@ -30,6 +30,14 @@ No es una app médica ni un recetario. Es logística alimentaria personal.
 [`docs/FASE-1.md`](docs/FASE-1.md): concepto, sitemap, modelo de datos,
 los tres conceptos visuales, la recomendación y el recorte de alcance.
 
+**El sistema visual queda aprobado para MVP.** Sólo se toca por un bug, un
+problema de contraste o algo que no se entiende — no por gusto.
+
+**Fase 2 en marcha:** dejar de ser una demo local y pasar a producto real.
+La auditoría del estado actual, el modelo de Supabase, la revisión de
+seguridad y el plan de migración por etapas están en
+[`docs/FASE-2.md`](docs/FASE-2.md).
+
 ### El día
 
 Seis momentos: desayuno · **snack de mañana** · almuerzo · **snack de tarde** ·
@@ -71,7 +79,9 @@ día de la semana, y no se configura a diario: vive en Configuración y en
 - **COMPRAS** — la compra de la semana con cantidades reales, agrupada por
   sector: «12 huevos», «1,5 kg de pollo», «1 paquete de pan». Más la
   preparación semanal agrupada.
-- **Los tres conceptos visuales** en `#/conceptos`, para compararlos en el teléfono.
+- **Los tres conceptos visuales** quedan como registro del proceso en
+  `src/screens/Direcciones.tsx`. La ruta sólo existe corriendo `npm run dev`:
+  en el build publicado no entra al bundle.
 
 ## Correr
 

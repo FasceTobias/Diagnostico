@@ -1,0 +1,219 @@
+# Vianda — Fase 2
+
+> De demo linda a producto real: persistente, seguro y usable por otra gente.
+>
+> El sistema visual queda **aprobado para MVP**. De acá en adelante sólo se
+> toca diseño si hay un bug, un problema de contraste, algo que no se
+> entiende o una inconsistencia real.
+
+---
+
+## A. Dónde estamos parados
+
+La app funciona de punta a punta, pero **nada sobrevive a borrar los datos
+del navegador**. Todo lo que parece guardado vive en `localStorage`.
+
+| Qué | Hoy | Dónde |
+| --- | --- | --- |
+| Biblioteca de comidas | 99 registros escritos a mano, `isDemo: true` | `src/lib/demo.ts` |
+| Catálogo de alimentos | ~70 entradas (sector, cómo se compra) | `src/lib/foods.ts` |
+| Plan de la semana | Se genera en el teléfono cada vez | `buildWeek()` → `localStorage` |
+| Horarios, contexto, preferencias | Guardados en el navegador | `vianda.state.v4` |
+| Relación insulina/CHO | Guardada en el navegador | `vianda.state.v4` |
+| Marcado (mochila, preparación, compras) | Guardado en el navegador | `vianda.state.v4` |
+| Historial | **No existe.** La semana se regenera sola el lunes | — |
+| Usuarios | No existen. No hay login ni cliente de Supabase | — |
+| Fotos de etiqueta | Campo previsto, sin almacenamiento | — |
+
+Dos cosas que conviene decir en voz alta:
+
+1. **No hay historial.** Cuando cambia la semana, el plan viejo se pierde.
+   Toda la personalización futura —qué comés de verdad, qué salteás, qué
+   repetís— depende de datos que hoy se tiran.
+2. **La biblioteca no se puede editar.** No hay pantalla para cargar una
+   comida. Mientras los datos vivan en un `.ts`, cargar tu comida real es
+   escribir código.
+
+Lo único que está bien donde está: `vianda.receta.detalle` (si preferís ver
+las recetas con detalle). Eso es interfaz, no dato; puede quedarse en el
+navegador para siempre.
+
+---
+
+## B. La decisión que condiciona todo el modelo
+
+En el esquema actual **todo es privado**: `meals.profile_id` y
+`foods.profile_id` son `not null`. Eso significa que:
+
+- cada usuario nuevo arranca con la biblioteca **vacía**;
+- la biblioteca real que vamos a construir habría que copiarla a cada cuenta;
+- un producto envasado —una marca, una etiqueta, un número leído del
+  paquete— se verificaría una vez por usuario.
+
+Eso no escala ni a quince personas en la beta.
+
+**Propuesta: dos niveles.**
+
+- **Catálogo** (`profile_id is null`): las comidas base, los alimentos y los
+  productos envasados verificados. Lectura para cualquier usuario
+  autenticado; escritura sólo para administración.
+- **Personal** (`profile_id = auth.uid()`): tus comidas, tus opiniones, tus
+  planes, tus compras.
+
+Cuando editás una comida del catálogo, se **copia a tu cuenta** con
+`forked_from` apuntando al original. Vos tocás tu copia; el catálogo sigue
+siendo el catálogo. Es el mismo patrón de las recetas de cualquier app que
+funcione, y evita el problema de "actualicé el catálogo y le pisé los
+cambios a todo el mundo".
+
+Cambio concreto: `profile_id` pasa a nullable en `meals` y `foods`, se suma
+`forked_from uuid`, y la policy de lectura pasa a ser
+`profile_id is null or profile_id = auth.uid()`, con la de escritura
+exigiendo `profile_id = auth.uid()`.
+
+---
+
+## C. El modelo: qué ya está y qué falta
+
+### Ya existe (14 tablas, con RLS)
+
+`profiles` · `foods` · `meals` · `meal_items` · `weekly_plans` ·
+`daily_plans` · `prep_tasks` · `packing_items` · `shopping_lists` ·
+`shopping_items` · `meal_history` · `insulin_ratios` · `preferences` ·
+`meal_opinions`
+
+El esquema cubre casi todo lo que pediste y está mejor de lo que esperaba:
+las cantidades de compra ya están modeladas (`buy_unit`, `buy_step`,
+`buy_per`, `buy_label`), el día se guarda entero en `jsonb` para no hacer
+cinco consultas, y la insulina ya nace apagada (`insulin_enabled` en
+`profiles`). **No hay que crear tablas redundantes.**
+
+### Falta
+
+| # | Qué | Por qué |
+| --- | --- | --- |
+| 1 | `products` como tabla propia y global | Hoy son 12 columnas dentro de `meals`. Una barrita es un producto con marca, porción y etiqueta: se verifica **una vez** y sirve para todos. Con `meals.product_id` la verificación deja de repetirse. |
+| 2 | Catálogo compartido | `profile_id` nullable + `forked_from` (sección B). |
+| 3 | `exclusions` | «Qué cosas no comés» no tiene dónde guardarse. Un ingrediente o una etiqueta que no querés ver, con un motivo opcional. |
+| 4 | Onboarding en `profiles` | `onboarding_step`, `onboarding_completed_at`. Sin esto no se puede retomar donde lo dejaste. |
+| 5 | `profiles.timezone` | Toda la app razona con horas locales. Si el plan se genera en el servidor alguna vez, sin esto se corre. |
+| 6 | `profiles.carb_counting_enabled` | La capa de diabetes es opcional. Hoy sólo está el interruptor de insulina; falta el de arriba. |
+| 7 | `preferences.sweet_or_salty` | Lo pediste para el onboarding; `cooks` y `hours_outside` ya están. |
+| 8 | Verificación con dueño y fecha | `meals.carbs_verified_at` existe; a `products` le faltan `verified_at`, `verified_by`, `source_url`. Sin eso «verificado» no se puede auditar. |
+| 9 | Bucket de Storage para etiquetas | Privado, con URL firmada. Hoy `label_photo_url` no tiene dónde apuntar. |
+| 10 | Rol de administración | Alguien tiene que poder escribir el catálogo. Un claim en el JWT, no una columna que el usuario pueda tocar. |
+
+---
+
+## D. Seguridad
+
+### Lo que ya está bien
+
+- RLS activada en las 14 tablas **desde el principio**, no como parche.
+- Políticas por `auth.uid()`, y las tablas hijas heredan el dueño por la
+  relación padre (`meal_items`, `daily_plans`, `shopping_items`).
+- Borrado en cascada desde `auth.users`: si alguien se quiere ir, se va
+  entero.
+- No hay ningún secreto versionado. `.env.example` ya declara las dos
+  variables correctas y `.gitignore` cubre `.env*`.
+
+### Lo que hay que resolver antes de la beta
+
+1. **El catálogo necesita su propia política.** Las de hoy son `for all`
+   contra `auth.uid()`; una fila con `profile_id is null` no la ve nadie.
+   Hace falta una policy de sólo lectura aparte, y que la de escritura
+   nunca acepte `profile_id is null` desde el cliente.
+2. **`service_role` jamás en el frontend.** Ni siquiera como variable de
+   Netlify: todo lo que empieza con `VITE_` termina en el bundle. La carga
+   del catálogo se hace desde un script local o una función de Netlify.
+3. **Redirect URLs del recovery.** Hay que declararlas explícitamente en
+   Supabase. Un allowlist mal configurado convierte el link de recuperación
+   en un problema.
+4. **Confirmación de mail y rate limit** de login: son configuración del
+   proyecto, no código. Hay que decidirlos y dejarlos escritos.
+5. **La sesión vive en `localStorage`** (es como funciona `supabase-js` sin
+   backend propio). Es el token de sesión, no datos: aceptable para el MVP,
+   pero queda anotado como decisión consciente, no como olvido.
+6. **Storage privado.** El bucket de etiquetas nunca público: URL firmada,
+   con la policy mirando el `profile_id` de la ruta.
+7. **Probar el acceso cruzado de verdad.** Dos cuentas, y que la segunda no
+   pueda leer nada de la primera ni forzando `id` en la URL. Es una prueba
+   de QA, no una lectura del esquema.
+
+---
+
+## E. Plan por etapas
+
+Cada etapa termina con la app **funcionando y publicable**. Ninguna deja el
+producto a medio camino.
+
+### Etapa 0 — Andamio (riesgo nulo)
+Instalar `@supabase/supabase-js`, crear el proyecto, pasar `schema.sql` a
+migraciones versionadas, aplicar los cambios de la sección C. La app sigue
+100 % local: todavía nada la usa.
+
+### Etapa 1 — La costura ← *el cambio delicado*
+Extraer una interfaz `ViandaRepo` de `useVianda()` e implementar
+`LocalRepo` con exactamente el código de hoy. Las pantallas no cambian ni
+una línea. **Esta es la etapa que protege a todas las demás**: después,
+cambiar de local a Supabase es cambiar qué implementación se inyecta.
+
+### Etapa 2 — Usuarios
+Registro, login, logout, recuperación de contraseña, sesión persistente.
+Pantallas nuevas; las cuatro actuales no se tocan. Sin sesión, la app corre
+en modo local igual que hoy — así nunca existe una versión rota.
+
+### Etapa 3 — Lectura desde Supabase
+`SupabaseRepo` para perfil, preferencias, horarios y biblioteca. La
+escritura sigue siendo local. Acá se ve si el modelo aguanta.
+
+### Etapa 4 — Escritura y persistencia real
+Plan semanal, marcado, compras, historial. Escritura optimista: la interfaz
+no espera al servidor. Al terminar esta etapa se cumple el punto 12: todo
+sobrevive al refresh, al navegador cerrado y al cambio de dispositivo.
+
+### Etapa 5 — Onboarding
+Corto, humano, progresivo, salteable. Cinco pasos, no un formulario médico.
+Guarda en cada paso (por eso `onboarding_step`).
+
+### Etapa 6 — Biblioteca real
+Reemplazar el demo comida por comida, con pantalla de carga. Productos
+envasados con etiqueta, fuente y fecha. El cartel DEMO desaparece solo
+cuando el dato está verificado: esa lógica ya existe.
+
+### Etapa 7 — QA y beta cerrada
+La matriz completa: Android, iPhone, desktop, PWA instalada, Chrome,
+Safari, refresh en rutas internas, sesión vencida, conexión lenta, errores
+de Supabase, usuario nuevo, usuario sin datos, usuario con muchos datos,
+claro y oscuro. Después, 5 a 15 personas.
+
+---
+
+## F. Riesgos, y cómo no romper lo que funciona
+
+| Riesgo | Mitigación |
+| --- | --- |
+| **Todo pasa de síncrono a asíncrono.** Hoy tocar un interruptor es instantáneo porque no hay red. | El repositorio sigue exponiendo estado, no promesas. Escritura optimista con cola de reintentos. Si falla, se avisa una vez; no se pierde lo que hiciste. |
+| **El plan se genera en el cliente.** Si además se guarda, hay dos fuentes de verdad. | El plan guardado manda. `regenerate()` pasa a ser una acción explícita del usuario, no algo que ocurre solo al cambiar de semana. |
+| **Migrar datos existentes.** | No hay nada que migrar: lo que tenés es demo. Es la mejor ventana posible para cambiar el modelo, y se cierra en cuanto haya un usuario real. |
+| **Romper la versión publicada.** | Con `VITE_SUPABASE_URL` vacío la app corre en modo local, igual que hoy. La rama principal sigue funcionando sin backend hasta la etapa 4. |
+| **Zona horaria.** | Fechas como `date` sin zona y horas como texto `"08:30"` —el esquema ya es así—, más `profiles.timezone` para cuando algo corra en el servidor. |
+| **La capa de diabetes se filtra.** | `carb_counting_enabled` e `insulin_enabled` se leen en un solo lugar y apagan las palabras, no sólo las pantallas. |
+
+---
+
+## G. Lo que **no** entra en Fase 2
+
+Pagos, nombre definitivo, dominio, landing pública, pricing, términos,
+privacidad y soporte. Todo eso es Fase 3 y no se toca hasta que el núcleo
+funcione con gente de verdad usándolo.
+
+---
+
+## H. Lo que ya se hizo de esta fase
+
+- **`#/direcciones` queda fuera del producto.** La ruta sólo existe
+  corriendo en desarrollo; en el build publicado la condición es una
+  constante falsa, así que ni la pantalla ni su tipografía entran en el
+  bundle. No hay URL que un usuario pueda pisar de casualidad, y el trabajo
+  queda como registro de la exploración.
