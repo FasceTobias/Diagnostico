@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type {
   DayContext,
   DayPlan,
@@ -10,83 +10,74 @@ import type {
   Slot,
 } from './types'
 import { DEFAULT_INSULIN, DEFAULT_PREFERENCES } from './types'
-import { DEMO_MEALS } from './demo'
 import { addDays, isoDate } from './format'
-import {
-  DEFAULT_TIMES,
-  buildWeek,
-  packListFor,
-  prepTasksFor,
-  reflowDay,
-} from './domain'
+import { DEFAULT_TIMES, buildWeek, packListFor, prepTasksFor, reflowDay } from './domain'
+import { getRepo, type Snapshot } from './repo'
 
-/* Repositorio local. Misma forma que va a tener el de Supabase, para que
-   cambiar de uno a otro no toque ninguna pantalla. */
+/* El estado de la app en memoria.
 
-const KEY = 'vianda.state.v4'
+   Acá vive lo que las pantallas leen y las funciones que lo cambian. Lo
+   que NO vive acá es dónde se guarda: eso es del repositorio (`./repo`).
+   La diferencia importa porque es lo que permite que mañana los datos
+   vengan de Supabase sin tocar una sola pantalla.
 
-interface Persisted {
-  week: DayPlan[]
-  weekStart: string
-  times: Record<Slot, string>
-  insulin: InsulinSettings
-  prefs: Preferences
-  checks: Record<string, boolean>
-  focus: boolean
-}
+   Cada cambio hace dos cosas, en este orden: actualiza el estado en
+   memoria y le avisa al repositorio. Nunca al revés. La interfaz no
+   espera a que termine de guardar —hoy porque escribir en el navegador es
+   instantáneo, mañana porque con red no se puede esperar—, así que tocar
+   un interruptor se siente igual con señal que sin señal. */
 
-const startOfWeek = (d: Date) => {
-  const x = new Date(d)
-  const dow = (x.getDay() + 6) % 7 // lunes = 0
-  return addDays(x, -dow)
-}
+const repo = getRepo()
 
-const load = (): Persisted | null => {
-  try {
-    const raw = localStorage.getItem(KEY)
-    return raw ? (JSON.parse(raw) as Persisted) : null
-  } catch {
-    return null
-  }
-}
-
-const save = (state: Persisted) => {
-  try {
-    localStorage.setItem(KEY, JSON.stringify(state))
-  } catch {
-    /* modo privado, cuota llena: la app funciona igual, sin recordar */
-  }
-}
-
-const fresh = (): Persisted => {
-  const ws = startOfWeek(new Date())
-  return {
-    // 'mixto' por defecto: ni asumir que estás en casa ni que estás afuera.
-    week: buildWeek(ws, DEMO_MEALS, 'mixto', DEFAULT_TIMES, DEFAULT_PREFERENCES),
-    weekStart: isoDate(ws),
-    times: DEFAULT_TIMES,
-    insulin: DEFAULT_INSULIN,
-    prefs: DEFAULT_PREFERENCES,
-    checks: {},
-    focus: false,
-  }
+/* Con qué arranca la app si el dispositivo no tiene nada guardado y el
+   repositorio todavía no contestó. Dura un cuadro y no se ve: las
+   pantallas ya saben qué hacer con un día vacío. */
+const EMPTY: Snapshot = {
+  meals: [],
+  week: [],
+  weekStart: isoDate(new Date()),
+  times: DEFAULT_TIMES,
+  insulin: DEFAULT_INSULIN,
+  prefs: DEFAULT_PREFERENCES,
+  checks: {},
+  ui: { focus: false },
 }
 
 export const useVianda = () => {
-  const meals = DEMO_MEALS
+  /* Lo que ya está en el dispositivo, sin esperar a nadie: la app abre con
+     datos en el primer cuadro. */
+  const [state, setState] = useState<Snapshot>(() => repo.cached() ?? EMPTY)
 
-  const [state, setState] = useState<Persisted>(() => {
-    const stored = load()
-    const ws = isoDate(startOfWeek(new Date()))
-    if (!stored) return fresh()
-    // La semana se regenera, pero la configuración personal sobrevive.
-    return stored.weekStart === ws
-      ? { ...fresh(), ...stored }
-      : { ...fresh(), times: stored.times, insulin: stored.insulin, prefs: stored.prefs }
-  })
+  /* El estado más reciente, sin esperar al próximo render. Dos toques
+     seguidos —sacar un snack y cambiar el contexto— tienen que partir del
+     estado que dejó el primero, no del que había cuando React dibujó. */
+  const ref = useRef(state)
 
-  useEffect(() => save(state), [state])
+  const apply = useCallback(
+    (next: Snapshot, write: () => Promise<void>) => {
+      ref.current = next
+      setState(next)
+      /* Guardar puede fallar —modo privado, cuota llena, y en su momento
+         la red—. Que falle no puede tirar abajo lo que el usuario acaba de
+         hacer: la etapa 4 suma la cola de reintentos y el aviso. */
+      void write().catch(() => {})
+    },
+    [],
+  )
 
+  /* Y la verdad, que puede tardar. Hoy es lo mismo; el día que el
+     repositorio sea Supabase, acá llega lo que está guardado en la cuenta. */
+  useEffect(() => {
+    let vivo = true
+    void repo.bootstrap().then((snap) => {
+      if (vivo) apply(snap, () => Promise.resolve())
+    })
+    return () => {
+      vivo = false
+    }
+  }, [apply])
+
+  const meals = state.meals
   const todayIso = isoDate(new Date())
   const tomorrowIso = isoDate(addDays(new Date(), 1))
 
@@ -100,16 +91,19 @@ export const useVianda = () => {
   )
 
   const mealById = useCallback((id: string) => meals.find((m) => m.id === id), [meals])
-  const prefsRef = state.prefs
 
   const patchDay = useCallback(
     (date: string, fn: (day: DayPlan) => DayPlan) => {
-      setState((s) => ({
-        ...s,
-        week: s.week.map((day) => (day.date === date ? fn(day) : day)),
-      }))
+      const s = ref.current
+      const day = s.week.find((d) => d.date === date)
+      if (!day) return
+      const next = fn(day)
+      apply(
+        { ...s, week: s.week.map((d) => (d.date === date ? next : d)) },
+        () => repo.saveDay(next),
+      )
     },
-    [],
+    [apply],
   )
 
   const setStatus = useCallback(
@@ -138,59 +132,75 @@ export const useVianda = () => {
      no se toca: la app se adapta al día, no borra lo que ya hiciste. */
   const setContext = useCallback(
     (date: string, context: DayContext) =>
-      patchDay(date, (day) => reflowDay(day, meals, context, [], prefsRef)),
-    [patchDay, meals, prefsRef],
+      patchDay(date, (day) => reflowDay(day, ref.current.meals, context, [], ref.current.prefs)),
+    [patchDay],
   )
 
-  const setTime = useCallback((slot: Slot, time: string) => {
-    setState((s) => ({
-      ...s,
-      times: { ...s.times, [slot]: time },
-      week: s.week.map((day) => ({
+  const setTime = useCallback(
+    (slot: Slot, time: string) => {
+      const s = ref.current
+      const times = { ...s.times, [slot]: time }
+      const week = s.week.map((day) => ({
         ...day,
         meals: day.meals.map((m) => (m.slot === slot ? { ...m, time } : m)),
-      })),
-    }))
-  }, [])
+      }))
+      apply({ ...s, times, week }, async () => {
+        await repo.saveTimes(times)
+        await repo.saveWeek(week, s.weekStart)
+      })
+    },
+    [apply],
+  )
 
-  const toggleCheck = useCallback((id: string) => {
-    setState((s) => ({ ...s, checks: { ...s.checks, [id]: !s.checks[id] } }))
-  }, [])
+  const toggleCheck = useCallback(
+    (id: string) => {
+      const s = ref.current
+      const done = !s.checks[id]
+      apply({ ...s, checks: { ...s.checks, [id]: done } }, () => repo.setCheck(id, done))
+    },
+    [apply],
+  )
 
-  const setInsulin = useCallback((insulin: InsulinSettings) => {
-    setState((s) => ({ ...s, insulin }))
-  }, [])
+  const setInsulin = useCallback(
+    (insulin: InsulinSettings) => {
+      apply({ ...ref.current, insulin }, () => repo.saveInsulin(insulin))
+    },
+    [apply],
+  )
 
   /* Las preferencias rearman lo pendiente: si cambiás el criterio, el plan
      que todavía no pasó tiene que reflejarlo. */
   const setPrefs = useCallback(
     (prefs: Preferences) => {
-      setState((s) => ({
-        ...s,
-        prefs,
-        week: s.week.map((day) => reflowDay(day, meals, day.context, [], prefs)),
-      }))
+      const s = ref.current
+      const week = s.week.map((day) => reflowDay(day, s.meals, day.context, [], prefs))
+      apply({ ...s, prefs, week }, async () => {
+        await repo.savePrefs(prefs)
+        await repo.saveWeek(week, s.weekStart)
+      })
     },
-    [meals],
+    [apply],
   )
 
-  const setFocus = useCallback((focus: boolean) => {
-    setState((s) => ({ ...s, focus }))
-  }, [])
+  const setFocus = useCallback(
+    (focus: boolean) => {
+      const ui = { ...ref.current.ui, focus }
+      apply({ ...ref.current, ui }, () => repo.saveUi(ui))
+    },
+    [apply],
+  )
 
   const regenerate = useCallback(() => {
-    setState((s) => ({
-      ...s,
-      week: buildWeek(
-        new Date(s.weekStart + 'T00:00:00'),
-        meals,
-        today?.context ?? 'mixto',
-        s.times,
-        s.prefs,
-      ),
-      checks: {},
-    }))
-  }, [meals, today?.context])
+    const s = ref.current
+    const week = buildWeek(
+      new Date(s.weekStart + 'T00:00:00'),
+      s.meals,
+      s.week.find((d) => d.date === isoDate(new Date()))?.context ?? 'mixto',
+      s.times,
+      s.prefs,
+    )
+    apply({ ...s, week, checks: {} }, () => repo.saveWeek(week, s.weekStart))
+  }, [apply])
 
   /* Checklists derivadas del menú. El estado marcado se guarda por id. */
   const checks = state.checks
@@ -236,7 +246,7 @@ export const useVianda = () => {
     setPrefs,
     packing,
     prep,
-    focus: state.focus,
+    focus: state.ui.focus,
     setFocus,
     setStatus,
     setContext,

@@ -101,7 +101,7 @@ npm run build && npm run preview
 ```
 src/
   lib/
-    types.ts       modelo de dominio (espeja supabase/schema.sql)
+    types.ts       modelo de dominio (espeja supabase/migrations/)
     demo.ts        99 opciones de demostración (isDemo, carbsVerified: false),
                    57 caseras y 42 para comprar afuera. Las que se cocinan
                    traen la receta paso a paso, sin jerga, con la explicación
@@ -111,16 +111,23 @@ src/
                    resolver ahora, tareas de preparación, mochila
     insulin.ts     la relación configurada y la división. Nada más.
     assistant.ts   contrato del asistente (hoy reglas, mañana un modelo)
-    store.ts       estado + persistencia local
+    store.ts       el estado en memoria y las funciones que lo cambian
+    repo/          dónde se guarda: interfaz + implementación local
+    supabase.ts    el cliente, sólo si están las variables de entorno
     format.ts      fechas, carbohidratos, tintes
   components/      primitivas y sheets
-  screens/         HOY, SEMANA, COMIDAS, COMPRAS, FOCO, CONCEPTOS
+  screens/         HOY, SEMANA, COMIDAS, COMPRAS, FOCO
 supabase/
-  schema.sql       esquema completo con RLS
+  migrations/      el esquema, versionado y con RLS
 ```
 
-La UI no sabe de dónde vienen los datos. Hoy `store.ts` resuelve todo local con
-los datos de ejemplo; conectar Supabase no toca ninguna pantalla.
+La UI no sabe de dónde vienen los datos, y `store.ts` tampoco sabe dónde se
+guardan: eso es de `repo/`. Hoy la única implementación escribe en el
+navegador. Cuando exista la de Supabase, cambia qué implementación devuelve
+`getRepo()` y ninguna pantalla se entera.
+
+Sin `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY` la app corre entera contra
+el repositorio local y el cliente de Supabase ni siquiera entra al bundle.
 
 ## Stack
 

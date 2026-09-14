@@ -212,8 +212,60 @@ funcione con gente de verdad usándolo.
 
 ## H. Lo que ya se hizo de esta fase
 
-- **`#/direcciones` queda fuera del producto.** La ruta sólo existe
-  corriendo en desarrollo; en el build publicado la condición es una
-  constante falsa, así que ni la pantalla ni su tipografía entran en el
-  bundle. No hay URL que un usuario pueda pisar de casualidad, y el trabajo
-  queda como registro de la exploración.
+### `#/direcciones` queda fuera del producto
+
+La ruta sólo existe corriendo en desarrollo; en el build publicado la
+condición es una constante falsa, así que ni la pantalla ni su tipografía
+entran en el bundle. No hay URL que un usuario pueda pisar de casualidad, y
+el trabajo queda como registro de la exploración.
+
+### Etapa 0 — Andamio ✅
+
+- `@supabase/supabase-js` instalado.
+- El esquema pasa a estar versionado en `supabase/migrations/`:
+  `0001_base.sql` es lo que había, `0002_catalogo.sql` aplica los cambios
+  de la sección C y `0003_etiquetas.sql` crea el bucket privado.
+- `src/lib/supabase.ts`: el cliente existe **sólo si están las dos
+  variables de entorno**. Sin ellas es `null` y no pasa nada.
+- `supabase/README.md`: cómo se aplican las migraciones y las dos reglas
+  que no se rompen (la clave de servicio no entra al frontend; la
+  seguridad vive en la base, no en el filtro de una consulta).
+
+Dato que salió de medirlo: **con las variables vacías, `supabase-js`
+desaparece entero del bundle**. Vite reemplaza `import.meta.env.*` por
+`undefined` al compilar, la rama queda muerta y Rollup la borra. Verificado
+en los dos sentidos: 0 menciones sin variables, 7 con variables. O sea que
+tener el cliente instalado no le cuesta un byte a la versión publicada de
+hoy.
+
+### Etapa 1 — La costura ✅
+
+`src/lib/repo/` con la interfaz `ViandaRepo`, `localRepo` como única
+implementación por ahora, y `getRepo()` decidiendo cuál se usa. `store.ts`
+quedó con lo que siempre fue suyo —el estado en memoria y las funciones
+que lo cambian— y perdió lo que no: dónde se guarda.
+
+Tres decisiones que valen la pena:
+
+1. **Los métodos son granulares** (`saveDay`, `saveTimes`, `setCheck`…),
+   aunque el repositorio local los resuelva todos escribiendo el mismo
+   blob. Guardar todo de una alcanza para localStorage y no alcanza para
+   una red: sería mandar la semana entera cada vez que tachás un tomate.
+   Lo que importa es que las pantallas ya hablen en granular.
+2. **`cached()` es sincrónico y `bootstrap()` puede tardar.** La app abre
+   con lo que ya está en el dispositivo y se actualiza después. Así nunca
+   hay pantalla en blanco esperando a la red, ni siquiera en el subte.
+3. **Primero el estado, después el guardado.** La interfaz no espera a que
+   termine de escribir, y si escribir falla no se cae lo que el usuario
+   acaba de hacer. La cola de reintentos y el aviso son de la etapa 4.
+
+Además se arreglaron dos cosas que estaban latentes en el código viejo: la
+semana se regeneraba en cada lectura (ahora se arma una vez y se deja
+escrita, así el plan no puede cambiar entre el primer cuadro y el segundo)
+y cualquier escritura podía dispararla de nuevo (ahora escribir no
+regenera nada).
+
+**Verificación:** siete pruebas en el navegador —abre con datos, el plan no
+cambia solo, lo tachado sobrevive al refresh, el horario editado sobrevive,
+el contexto rearma y sobrevive, el modo foco entra— más `tsc`, lint, build
+y una captura comparada con la anterior. Ninguna pantalla cambió.
