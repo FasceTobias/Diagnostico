@@ -189,6 +189,19 @@ export const ORIGEN_LABEL: Record<Origen, string> = {
   heladería: 'De heladería',
 }
 
+/** La misma idea en dos o tres palabras, para una fila de lista donde
+    no entra «Viene envasada». La casera no dice nada: es el default. */
+export const ORIGEN_CORTO: Record<Origen, string> = {
+  casera: '',
+  envasada: 'envasado',
+  panadería: 'panadería',
+  rotisería: 'rotisería',
+  restaurante: 'restaurante',
+  kiosco: 'kiosco',
+  supermercado: 'súper',
+  heladería: 'heladería',
+}
+
 /** Qué genera en la lista de compras. */
 export const compraDe = (o: Origen): 'ingredientes' | 'producto' | 'nada' =>
   o === 'casera' ? 'ingredientes' : o === 'envasada' ? 'producto' : 'nada'

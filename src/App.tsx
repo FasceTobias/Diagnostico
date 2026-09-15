@@ -1,18 +1,13 @@
 import { Suspense, lazy, useEffect, useState } from 'react'
 import { useVianda } from './lib/store'
-import { Hoy } from './screens/Hoy'
-import { Semana } from './screens/Semana'
-import { Comidas } from './screens/Comidas'
-import { Compras } from './screens/Compras'
-import { Focus } from './screens/Focus'
+import { Inicio } from './screens/Inicio'
+import { EnObra } from './screens/EnObra'
 import { Onboarding } from './screens/Onboarding'
-import { BottomNav, type Tab } from './components/BottomNav'
-import { AssistantBar } from './components/Assistant'
-import { ResolveSheet, type ResolveStart } from './components/ResolveSheet'
+import { Nav, type Tab } from './components/Nav'
 
-/* Router propio: cuatro pantallas no justifican una dependencia.
+/* Router propio: cinco pantallas no justifican una dependencia.
 
-   Las tres direcciones visuales que exploramos quedan como registro del
+   Las direcciones visuales que exploramos quedan como registro del
    proceso, pero fuera del producto: la ruta sólo existe corriendo en
    desarrollo. En el build publicado la condición es una constante falsa,
    así que ni la pantalla ni sus tipografías entran en el bundle, y no hay
@@ -34,8 +29,7 @@ const useHash = () => {
 
 export default function App() {
   const app = useVianda()
-  const [tab, setTab] = useState<Tab>('hoy')
-  const [resolve, setResolve] = useState<ResolveStart | null>(null)
+  const [tab, setTab] = useState<Tab>('inicio')
   const [hash, setHash] = useHash()
   /* Para que salir de la presentación se sienta inmediato, sin esperar a
      que el guardado vuelva. */
@@ -56,28 +50,67 @@ export default function App() {
     return <Onboarding app={app} onSalir={() => setSaltado(true)} />
   }
 
-  if (app.focus) {
-    return <Focus app={app} onExit={() => app.setFocus(false)} />
-  }
-
   return (
     <div className="min-h-dvh bg-bg">
+      {tab === 'inicio' && <Inicio app={app} onIr={setTab} />}
+
       {tab === 'hoy' && (
-        <Hoy app={app} onFocus={() => app.setFocus(true)} onResolve={setResolve} />
+        <EnObra
+          titulo="Hoy"
+          icono="hoy"
+          detalle="El día entero, comida por comida, con lo que hay que dejar hecho la noche anterior."
+          piezas={[
+            'Las cinco comidas con su hora, su foto y sus carbohidratos',
+            'Marcar hecha, cambiarla o correrla de horario',
+            'Lo que conviene dejar preparado esta noche',
+            'Qué llevar en la mochila si el día es afuera',
+          ]}
+        />
       )}
-      {tab === 'semana' && <Semana app={app} />}
-      {tab === 'comidas' && <Comidas app={app} />}
-      {tab === 'compras' && <Compras app={app} />}
 
-      <AssistantBar app={app} bottom={68} onResolve={setResolve} />
-      <BottomNav tab={tab} onTab={setTab} />
+      {tab === 'comidas' && (
+        <EnObra
+          titulo="Comidas"
+          icono="comidas"
+          detalle="La biblioteca entera: 200 comidas reales, con su porción y su número."
+          piezas={[
+            'Por momento: desayunos, almuerzos, meriendas, cenas y snacks',
+            'Por situación: rápidas, para llevar, para comer afuera, sin cocinar',
+            'Por sabor: dulces y saladas',
+            'Cada comida con ingredientes, porción, tiempo y cómo se hace',
+          ]}
+        />
+      )}
 
-      <ResolveSheet
-        open={resolve !== null}
-        onClose={() => setResolve(null)}
-        app={app}
-        start={resolve ?? undefined}
-      />
+      {tab === 'compras' && (
+        <EnObra
+          titulo="Compras"
+          icono="compras"
+          detalle="La lista de la semana, armada con lo que decidiste comer."
+          piezas={[
+            'Agrupada por sector: verdulería, carnicería, lácteos, almacén, freezer',
+            'Con cantidades de verdad: «12 huevos», no «huevo»',
+            'Los ingredientes que se repiten se suman en una sola línea',
+            'Lo que comprás hecho afuera no genera compra',
+          ]}
+        />
+      )}
+
+      {tab === 'perfil' && (
+        <EnObra
+          titulo="Perfil"
+          icono="perfil"
+          detalle="Cómo comés vos, y de dónde sale cada número de la app."
+          piezas={[
+            'Tus horarios y cuántas comidas hacés por día',
+            'Lo que no comés y lo que te gusta',
+            'Diabetes: si contás carbohidratos y cómo querés verlos',
+            'Cuenta, datos y de dónde sale cada estimación',
+          ]}
+        />
+      )}
+
+      <Nav tab={tab} onTab={setTab} />
     </div>
   )
 }

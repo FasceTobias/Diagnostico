@@ -3,170 +3,85 @@
 
 /* ------------------------------------------------------------------
    VIANDA — sistema de diseño
-   Calmo, limpio, frío. El acento es un azul claro: el color de lo
-   activo, lo seleccionado y lo que se puede tocar. Nunca lo decorativo.
+
+   Fuente de verdad: las capturas aprobadas. Papel crema, tarjetas
+   blancas, radios grandes, sombras casi invisibles y una sans
+   redondeada. Lavanda es la app; los pasteles son señales, no adorno.
+
+   Las cuatro reglas que ordenan el color, y que no se negocian:
+
+     · Lavanda      → acción y dato principal
+     · Menta        → SOLO «en rango»
+     · Mantequilla  → alto
+     · Coral        → bajo y alertas suaves
+
+   Máximo un acento pastel por tarjeta. Si una pantalla necesita dos,
+   está diciendo dos cosas y hay que partirla.
+
+   Un solo tema, claro y cálido: es el aprobado. El fondo se pinta
+   siempre, nunca se hereda del que envuelva la página.
    ------------------------------------------------------------------ */
 
 :root {
-  /* Superficies: blanco frío y limpio. Nada de hueso cálido: el acento
-     ahora es azul y el papel tibio lo ensuciaba. */
-  --v-bg: #f2f5f8;
-  --v-bg-deep: #e5eaf0;
+  color-scheme: light;
+
+  /* ---- papel y tinta ---- */
+  --v-bg: #fbf7f1;
+  --v-bg-deep: #f3ede4;
   --v-surface: #ffffff;
-  --v-surface-2: #eaeff5;
-  --v-veil: rgb(255 255 255 / 0.9);
-  --v-scrim: rgb(12 18 26 / 0.38);
+  --v-surface-2: #f7f4ef;
+  --v-veil: rgb(251 247 241 / 0.92);
+  --v-scrim: rgb(59 54 84 / 0.34);
 
-  /* Tinta azulada, nunca negro puro */
-  --v-ink: #0f1620;
-  --v-ink-soft: #4e5a67;
-  --v-ink-faint: #646e7a;
-  --v-line: rgb(15 22 32 / 0.09);
-  --v-line-strong: rgb(15 22 32 / 0.17);
+  /* Tinta violácea. Nunca negro: al lado del crema, el negro es un agujero. */
+  --v-ink: #3b3654;
+  --v-ink-soft: #6a6484;
+  --v-ink-faint: #8b86a2;
+  --v-line: rgb(59 54 84 / 0.08);
+  --v-line-strong: rgb(59 54 84 / 0.16);
 
-  /* Acento: azul claro. Sobre fondo claro hay que bajarlo bastante para
-     que el texto chico se lea; el celeste vive en el modo oscuro. */
-  --v-accent: #0a6299;
-  --v-accent-strong: #084f7d;
-  --v-accent-quiet: #5ba3d4;
-  --v-accent-soft: rgb(10 98 153 / 0.10);
-  --v-accent-line: rgb(10 98 153 / 0.28);
-  --v-accent-ink: #ffffff;
-  --v-accent-glow: rgb(10 98 153 / 0.16);
-  /* El orb es el único lugar donde el celeste va a full en modo claro:
-     es la firma de la app y tiene que ser el mismo azul en los dos modos. */
-  --v-orb-from: #8ed5ff;
-  --v-orb-to: #1e88c8;
-  --v-orb-ink: #05121c;
+  /* ---- lavanda: la acción y el dato principal ---- */
+  --v-lavanda: #7c6bd6;
+  --v-lavanda-fuerte: #6353c4;
+  --v-lavanda-tenue: #ede9fb;
+  --v-lavanda-soft: rgb(124 107 214 / 0.10);
+  --v-lavanda-line: rgb(124 107 214 / 0.26);
+  --v-lavanda-ink: #ffffff;
 
-  /* Estados. El azul es «activo»; lo demás conserva su propio idioma. */
-  --v-ok: #2f7d5c;
-  --v-ok-soft: rgb(47 125 92 / 0.12);
-  --v-warn: #9a6a12;
-  --v-warn-soft: rgb(154 106 18 / 0.12);
-  --v-alert: #a53b32;
-  --v-alert-soft: rgb(165 59 50 / 0.12);
+  /* ---- los pasteles, con su tinta legible al lado ---- */
+  --v-menta: #ade0c6;
+  --v-menta-tenue: #e7f6ee;
+  --v-menta-ink: #2c7a58;
 
-  /* Momentos del día: familia fría y desaturada. Distinguen sin competir
-     con el acento ni volver a traer el naranja por la ventana. */
-  --v-t-desayuno-bg: rgb(47 126 155 / 0.14);
-  --v-t-desayuno-fg: #2f7e9b;
-  --v-t-snack-bg: rgb(58 125 92 / 0.14);
-  --v-t-snack-fg: #3a7d5c;
-  --v-t-almuerzo-bg: rgb(79 98 168 / 0.14);
-  --v-t-almuerzo-fg: #4f62a8;
-  --v-t-merienda-bg: rgb(122 78 150 / 0.14);
-  --v-t-merienda-fg: #7a4e96;
-  --v-t-cena-bg: rgb(70 88 122 / 0.14);
-  --v-t-cena-fg: #46587a;
+  --v-mantequilla: #f2ce6b;
+  --v-mantequilla-tenue: #fdf2d8;
+  --v-mantequilla-ink: #8a6410;
 
-  --v-shadow-sm: 0 1px 2px rgb(15 22 32 / 0.05);
-  --v-shadow-md: 0 1px 3px rgb(15 22 32 / 0.07);
-  --v-shadow-lg: 0 18px 44px -20px rgb(15 22 32 / 0.30), 0 2px 8px rgb(15 22 32 / 0.05);
-  --v-shadow-orb: 0 10px 26px -12px rgb(10 98 153 / 0.55), 0 2px 6px rgb(15 22 32 / 0.10);
-}
+  --v-coral: #f0866b;
+  --v-coral-tenue: #fdeae4;
+  --v-coral-ink: #c04e31;
 
-:root[data-theme="dark"],
-html.dark {
-  --v-bg: #0a0c0f;
-  --v-bg-deep: #06080a;
-  --v-surface: #11151a;
-  --v-surface-2: #1a2028;
-  --v-veil: rgb(10 12 15 / 0.9);
-  --v-scrim: rgb(3 5 8 / 0.55);
+  --v-rosa: #f6c9da;
+  --v-rosa-tenue: #fdeef4;
+  --v-rosa-ink: #b04a72;
 
-  --v-ink: #f5f7fa;
-  --v-ink-soft: #9ea7b3;
-  --v-ink-faint: #7a8492;
-  --v-line: rgb(255 255 255 / 0.08);
-  --v-line-strong: rgb(255 255 255 / 0.18);
+  --v-azul: #c2dff5;
+  --v-azul-tenue: #eaf4fc;
+  --v-azul-ink: #2f6d99;
 
-  /* Acá el azul es el de verdad: claro, frío, tranquilo sobre casi negro. */
-  --v-accent: #72c7ff;
-  --v-accent-strong: #4bafef;
-  --v-accent-quiet: #a9deff;
-  --v-accent-soft: rgb(114 199 255 / 0.14);
-  --v-accent-line: rgb(114 199 255 / 0.38);
-  --v-accent-ink: #05121c;
-  --v-accent-glow: rgb(114 199 255 / 0.22);
-  --v-orb-from: #a9deff;
-  --v-orb-to: #4bafef;
-  --v-orb-ink: #05121c;
+  /* ---- glucosa: los tres estados, y nada más ---- */
+  --v-rango: var(--v-menta-ink);
+  --v-rango-bg: var(--v-menta-tenue);
+  --v-alto: var(--v-mantequilla-ink);
+  --v-alto-bg: var(--v-mantequilla-tenue);
+  --v-bajo: var(--v-coral-ink);
+  --v-bajo-bg: var(--v-coral-tenue);
 
-  --v-ok: #7fc9a6;
-  --v-ok-soft: rgb(127 201 166 / 0.16);
-  --v-warn: #e0b871;
-  --v-warn-soft: rgb(224 184 113 / 0.16);
-  --v-alert: #e8877e;
-  --v-alert-soft: rgb(232 135 126 / 0.16);
-
-  --v-t-desayuno-bg: rgb(143 203 224 / 0.16);
-  --v-t-desayuno-fg: #8fcbe0;
-  --v-t-snack-bg: rgb(150 201 168 / 0.16);
-  --v-t-snack-fg: #96c9a8;
-  --v-t-almuerzo-bg: rgb(168 180 221 / 0.16);
-  --v-t-almuerzo-fg: #a8b4dd;
-  --v-t-merienda-bg: rgb(198 169 216 / 0.16);
-  --v-t-merienda-fg: #c6a9d8;
-  --v-t-cena-bg: rgb(142 156 184 / 0.16);
-  --v-t-cena-fg: #8e9cb8;
-
-  --v-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.45);
-  --v-shadow-md: 0 2px 12px -2px rgb(0 0 0 / 0.55);
-  --v-shadow-lg: 0 16px 40px -12px rgb(0 0 0 / 0.7);
-  --v-shadow-orb: 0 10px 30px -10px rgb(114 199 255 / 0.45), 0 0 0 1px rgb(114 199 255 / 0.20);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --v-bg: #0a0c0f;
-    --v-bg-deep: #06080a;
-    --v-surface: #11151a;
-    --v-surface-2: #1a2028;
-    --v-veil: rgb(10 12 15 / 0.9);
-    --v-scrim: rgb(3 5 8 / 0.55);
-
-    --v-ink: #f5f7fa;
-    --v-ink-soft: #9ea7b3;
-    --v-ink-faint: #7a8492;
-    --v-line: rgb(255 255 255 / 0.08);
-    --v-line-strong: rgb(255 255 255 / 0.18);
-
-    /* Acá el azul es el de verdad: claro, frío, tranquilo sobre casi negro. */
-    --v-accent: #72c7ff;
-    --v-accent-strong: #4bafef;
-    --v-accent-quiet: #a9deff;
-    --v-accent-soft: rgb(114 199 255 / 0.14);
-    --v-accent-line: rgb(114 199 255 / 0.38);
-    --v-accent-ink: #05121c;
-    --v-accent-glow: rgb(114 199 255 / 0.22);
-    --v-orb-from: #a9deff;
-    --v-orb-to: #4bafef;
-    --v-orb-ink: #05121c;
-
-    --v-ok: #7fc9a6;
-    --v-ok-soft: rgb(127 201 166 / 0.16);
-    --v-warn: #e0b871;
-    --v-warn-soft: rgb(224 184 113 / 0.16);
-    --v-alert: #e8877e;
-    --v-alert-soft: rgb(232 135 126 / 0.16);
-
-    --v-t-desayuno-bg: rgb(143 203 224 / 0.16);
-    --v-t-desayuno-fg: #8fcbe0;
-    --v-t-snack-bg: rgb(150 201 168 / 0.16);
-    --v-t-snack-fg: #96c9a8;
-    --v-t-almuerzo-bg: rgb(168 180 221 / 0.16);
-    --v-t-almuerzo-fg: #a8b4dd;
-    --v-t-merienda-bg: rgb(198 169 216 / 0.16);
-    --v-t-merienda-fg: #c6a9d8;
-    --v-t-cena-bg: rgb(142 156 184 / 0.16);
-    --v-t-cena-fg: #8e9cb8;
-
-    --v-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.45);
-    --v-shadow-md: 0 2px 12px -2px rgb(0 0 0 / 0.55);
-    --v-shadow-lg: 0 16px 40px -12px rgb(0 0 0 / 0.7);
-    --v-shadow-orb: 0 10px 30px -10px rgb(114 199 255 / 0.45), 0 0 0 1px rgb(114 199 255 / 0.20);
-  }
+  /* Sombras mínimas: se nota que la tarjeta está apoyada, no que flota. */
+  --v-shadow-sm: 0 1px 2px rgb(59 54 84 / 0.04);
+  --v-shadow-md: 0 2px 8px -2px rgb(59 54 84 / 0.08), 0 1px 2px rgb(59 54 84 / 0.04);
+  --v-shadow-lg: 0 18px 44px -20px rgb(59 54 84 / 0.28), 0 2px 8px rgb(59 54 84 / 0.05);
+  --v-shadow-fab: 0 10px 22px -8px rgb(124 107 214 / 0.55), 0 2px 6px rgb(59 54 84 / 0.10);
 }
 
 @theme inline {
@@ -181,41 +96,64 @@ html.dark {
   --color-line: var(--v-line);
   --color-line-strong: var(--v-line-strong);
 
-  /* El acento. `accent-ink` es lo que va ENCIMA de un relleno azul: en
-     oscuro es casi negro, porque blanco sobre celeste no se lee. */
-  --color-accent: var(--v-accent);
-  --color-accent-strong: var(--v-accent-strong);
-  --color-accent-quiet: var(--v-accent-quiet);
-  --color-accent-soft: var(--v-accent-soft);
-  --color-accent-line: var(--v-accent-line);
-  --color-accent-ink: var(--v-accent-ink);
+  --color-lavanda: var(--v-lavanda);
+  --color-lavanda-fuerte: var(--v-lavanda-fuerte);
+  --color-lavanda-tenue: var(--v-lavanda-tenue);
+  --color-lavanda-soft: var(--v-lavanda-soft);
+  --color-lavanda-line: var(--v-lavanda-line);
+  --color-lavanda-ink: var(--v-lavanda-ink);
 
-  --color-ok: var(--v-ok);
-  --color-ok-soft: var(--v-ok-soft);
-  --color-warn: var(--v-warn);
-  --color-warn-soft: var(--v-warn-soft);
-  --color-alert: var(--v-alert);
-  --color-alert-soft: var(--v-alert-soft);
+  --color-menta: var(--v-menta);
+  --color-menta-tenue: var(--v-menta-tenue);
+  --color-menta-ink: var(--v-menta-ink);
+  --color-mantequilla: var(--v-mantequilla);
+  --color-mantequilla-tenue: var(--v-mantequilla-tenue);
+  --color-mantequilla-ink: var(--v-mantequilla-ink);
+  --color-coral: var(--v-coral);
+  --color-coral-tenue: var(--v-coral-tenue);
+  --color-coral-ink: var(--v-coral-ink);
+  --color-rosa: var(--v-rosa);
+  --color-rosa-tenue: var(--v-rosa-tenue);
+  --color-rosa-ink: var(--v-rosa-ink);
+  --color-azul: var(--v-azul);
+  --color-azul-tenue: var(--v-azul-tenue);
+  --color-azul-ink: var(--v-azul-ink);
 
-  --radius-card: 14px;
-  --radius-hero: 20px;
-  --radius-sheet: 26px;
+  /* Compatibilidad: las pantallas que todavía no se rehicieron hablan en
+     `accent`, `ok`, `warn` y `alert`. Apuntan al sistema nuevo para que no
+     quede media app con la identidad vieja mientras se migra. */
+  --color-accent: var(--v-lavanda);
+  --color-accent-strong: var(--v-lavanda-fuerte);
+  --color-accent-quiet: var(--v-lavanda);
+  --color-accent-soft: var(--v-lavanda-soft);
+  --color-accent-line: var(--v-lavanda-line);
+  --color-accent-ink: var(--v-lavanda-ink);
+  --color-ok: var(--v-menta-ink);
+  --color-ok-soft: var(--v-menta-tenue);
+  --color-warn: var(--v-mantequilla-ink);
+  --color-warn-soft: var(--v-mantequilla-tenue);
+  --color-alert: var(--v-coral-ink);
+  --color-alert-soft: var(--v-coral-tenue);
+
+  /* Radios grandes: es la mitad del carácter del sistema. */
+  --radius-card: 20px;
+  --radius-hero: 24px;
+  --radius-tile: 16px;
+  --radius-sheet: 28px;
   --radius-pill: 999px;
 
   --shadow-sm: var(--v-shadow-sm);
   --shadow-md: var(--v-shadow-md);
   --shadow-lg: var(--v-shadow-lg);
-  --shadow-orb: var(--v-shadow-orb);
+  --shadow-fab: var(--v-shadow-fab);
 
-  /* Tres voces, con roles claros:
-       · Space Grotesk — la voz principal. Nombres de comidas y titulares.
-         Tiene carácter y se lee bien chica en un teléfono.
-       · Inter — datos, rótulos, cifras tabulares. No compite.
-       · Fraunces — acento. Sólo los títulos de sección, nada más.
-     Autoalojadas: la app abre sin red y sin pedirle nada a nadie. */
-  --font-head: "Space Grotesk", "Inter", system-ui, sans-serif;
-  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
-  --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+  /* Una sola voz. Nunito hace de titular y de dato: con los números
+     tabulares encendidos, una cifra que cambia no mueve lo que tiene al
+     lado. Autoalojada: la app abre sin red. */
+  --font-sans: "Nunito", ui-rounded, "SF Pro Rounded", -apple-system, "Segoe UI",
+    system-ui, sans-serif;
+  --font-head: var(--font-sans);
+  --font-display: var(--font-sans);
 
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -242,61 +180,47 @@ html.dark {
     cursor: pointer;
     touch-action: manipulation;
   }
-  /* Foco visible sólo por teclado: en mobile no ensucia */
   :focus-visible {
-    outline: 2px solid var(--v-accent);
+    outline: 2px solid var(--v-lavanda);
     outline-offset: 3px;
-    border-radius: 8px;
+    border-radius: 10px;
   }
 }
 
 @layer utilities {
-  /* La voz principal: grotesca con carácter, apretada. Nombres de comidas,
-     titulares y cualquier cosa que el usuario lea como contenido. */
+  /* ---- las tres voces tipográficas, que son una sola familia ---- */
+
+  /* El número que importa: glucosa, carbohidratos, unidades. */
+  .v-display {
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  /* Titulares: saludo, títulos de sección, nombre de una comida. */
   .v-head {
-    font-family: var(--font-head);
-    font-weight: 600;
-    letter-spacing: -0.018em;
+    font-weight: 700;
+    letter-spacing: -0.015em;
   }
-
-  /* Acento serif. Sólo títulos de sección: es condimento, no la base. */
-  .v-serif {
-    font-family: var(--font-display);
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    font-optical-sizing: auto;
-  }
-  .v-serif-lg {
-    font-family: var(--font-display);
-    font-weight: 500;
-    letter-spacing: -0.026em;
-    line-height: 1.05;
-    font-optical-sizing: auto;
-  }
-
-  /* Rótulos en caja baja. Las versalitas anchas se ven bien en una revista
-     y cansan en una app que se abre seis veces por día. */
+  /* Rótulo de un dato. Caja baja, nunca versalitas: se leen seis veces
+     por día y las mayúsculas anchas cansan. */
   .v-label {
-    font-size: 12.5px;
-    font-weight: 500;
-    letter-spacing: 0;
+    font-size: 13px;
+    font-weight: 600;
     line-height: 1.35;
   }
   .v-label-sm {
-    font-size: 11.5px;
-    font-weight: 500;
-    letter-spacing: 0;
+    font-size: 12px;
+    font-weight: 600;
     line-height: 1.35;
   }
-  /* Versalitas: quedan para lo poquísimo que las gana (el estado «Ahora»). */
   .v-caps {
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     line-height: 1.3;
   }
-
   .v-tnum {
     font-variant-numeric: tabular-nums;
   }
@@ -304,7 +228,6 @@ html.dark {
   .v-rule {
     border-top: 1px solid var(--v-line);
   }
-
   .v-safe-top {
     margin-top: env(safe-area-inset-top, 0px);
   }
@@ -317,18 +240,6 @@ html.dark {
   .v-no-scrollbar {
     scrollbar-width: none;
   }
-  /* El punto de «Ahora»: un halo mínimo, del tamaño de una uña. Es el
-     único glow de la app y por eso se nota. */
-  .v-glow {
-    box-shadow: 0 0 0 4px var(--v-accent-glow);
-  }
-
-  /* Azul hielo → azul cielo. El único gradiente, y va en el orb. */
-  .v-orb {
-    background-image: linear-gradient(155deg, var(--v-orb-from), var(--v-orb-to));
-    color: var(--v-orb-ink);
-  }
-
   .v-tap::after {
     content: "";
     position: absolute;

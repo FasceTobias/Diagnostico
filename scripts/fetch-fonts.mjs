@@ -13,6 +13,10 @@ const UA =
   'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36'
 
 const FAMILIES = [
+  /* Nunito es la voz de la app: una sans redondeada, limpia y adulta.
+     Redondeada sin ser infantil, que es justo lo que pide una app que se
+     abre seis veces por día y muestra un número que importa. */
+  { q: 'Nunito:wght@400..800', name: 'Nunito', file: 'nunito', out: 'app' },
   { q: 'Fraunces:opsz,wght@9..144,400..700', name: 'Fraunces', file: 'fraunces', out: 'app' },
   { q: 'Inter:opsz,wght@14..32,400..700', name: 'Inter', file: 'inter', out: 'app' },
   { q: 'Space+Grotesk:wght@400..700', name: 'Space Grotesk', file: 'space-grotesk', out: 'app' },
