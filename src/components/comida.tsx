@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import type { Category, Meal, MealStatus, PlannedMeal, Slot } from '../lib/types'
 import { SLOT_CATEGORY } from '../lib/types'
 import { ORIGEN_CORTO, ORIGEN_LABEL, SLOT_LABEL } from '../lib/types'
@@ -44,6 +45,7 @@ export function FilaComida({
   hora,
   estado,
   porOrigen = false,
+  pie,
   onClick,
 }: {
   meal: Meal
@@ -55,6 +57,9 @@ export function FilaComida({
       es lo que distingue una fila de otra cuando todas son del mismo
       momento. */
   porOrigen?: boolean
+  /** Una línea extra abajo de la fila: lo que falta para hacerla, por
+      ejemplo. Va adentro de la misma tarjeta y no en otra. */
+  pie?: ReactNode
   onClick?: () => void
 }) {
   const cat = momento ?? meal.category
@@ -64,6 +69,7 @@ export function FilaComida({
     : { icono: ICONO_MOMENTO[cat], tono: TONO_MOMENTO[cat] }
 
   const cuerpo = (
+    <>
     <div className="flex items-center gap-3">
       <Tile name={baldosa.icono} tono={baldosa.tono} size={42} icon={22} />
       <div className="min-w-0 flex-1">
@@ -81,6 +87,8 @@ export function FilaComida({
         <Icono name="flecha" size={19} className="shrink-0 text-ink-faint" />
       ) : null}
     </div>
+    {pie && <div className="mt-2 pl-[54px]">{pie}</div>}
+    </>
   )
 
   return onClick ? (

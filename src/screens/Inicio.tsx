@@ -9,6 +9,7 @@ import { Card, CardButton, Chip, FilaChips, Icono, Sheet, Tile, TituloSeccion, V
 import type { IconName, Tono } from '../components/tokens'
 import { FilaComida, ProximaComida, ResumenDelDia } from '../components/comida'
 import { DetalleComida } from '../components/Detalle'
+import { BarraAsistente, PanelAsistente } from '../components/Asistente'
 
 /* ------------------------------------------------------------------
    INICIO
@@ -70,6 +71,7 @@ const FILTROS_SNACK: FiltroSnack[] = ['llevar', 'dulces', 'salados', 'rapidos', 
 type Hoja =
   | { tipo: 'lista'; titulo: string; bajada?: string; meals: Meal[]; elegir?: (m: Meal) => void }
   | { tipo: 'detalle'; meal: Meal }
+  | { tipo: 'ayuda' }
   | null
 
 export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comidas') => void }) {
@@ -174,6 +176,12 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comida
       {/* 3. QUÉ NECESITÁS — los atajos de verdad */}
       <section className="mt-7">
         <TituloSeccion chispa>¿Qué necesitás?</TituloSeccion>
+
+        {/* La misma pregunta de la sección, pero escrita. Va arriba de
+            los atajos porque es la que cubre lo que los atajos no:
+            «tengo yogur y avena», «estoy en una panadería». */}
+        <BarraAsistente onAbrir={() => setHoja({ tipo: 'ayuda' })} />
+
         <div className="grid grid-cols-2 gap-3">
           {NECESIDADES.map((n) => (
             <CardButton
@@ -276,9 +284,33 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comida
       <Sheet
         abierta={hoja !== null}
         onCerrar={() => setHoja(null)}
-        titulo={hoja?.tipo === 'detalle' ? hoja.meal.name : (hoja?.titulo ?? '')}
-        bajada={hoja?.tipo === 'lista' ? hoja.bajada : undefined}
+        titulo={
+          hoja?.tipo === 'detalle'
+            ? hoja.meal.name
+            : hoja?.tipo === 'ayuda'
+              ? 'Decime qué necesitás'
+              : (hoja?.titulo ?? '')
+        }
+        bajada={
+          hoja?.tipo === 'lista'
+            ? hoja.bajada
+            : hoja?.tipo === 'ayuda'
+              ? 'Escribilo como lo dirías. Te contesto con comidas de la biblioteca.'
+              : undefined
+        }
       >
+        {hoja?.tipo === 'ayuda' && (
+          <PanelAsistente
+            meals={app.meals}
+            momento={catAhora}
+            onComida={(m) => setHoja({ tipo: 'detalle', meal: m })}
+            onCambiarContexto={(ctx) => {
+              if (dia) app.setContext(dia.date, ctx)
+              setSituacion(ctx === 'calle' ? 'calle' : ctx === 'casa' ? 'casa' : 'trabajo')
+              setHoja(null)
+            }}
+          />
+        )}
         {hoja?.tipo === 'detalle' && <DetalleComida meal={hoja.meal} />}
         {hoja?.tipo === 'lista' &&
           (hoja.meals.length ? (
