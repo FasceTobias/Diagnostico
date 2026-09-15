@@ -862,4 +862,455 @@ export const RECETAS: Record<string, Step[]> = {
         'Papel, nunca film: el film no deja salir el vapor y a las dos horas el tostado está blando y húmedo.',
     },
   ],
+
+  /* ------------------------------------------------------------------
+     TANDA 2 — los platos que se cocinan
+
+     Más cortas que las de arriba a propósito. Las primeras se escribieron
+     para alguien que nunca cocinó nada; éstas son para alguien que ya
+     está parado en la cocina y necesita el orden y los números, no una
+     clase. Un paso, una acción, el número adentro de la línea.
+
+     El `detail` aparece sólo donde hay una trampa de verdad —la que hace
+     que te salga mal la primera vez— y nunca pasa de una oración.
+     ------------------------------------------------------------------ */
+
+  'empanadas-caseras': [
+    {
+      text: 'Picá la cebolla y cocinala 5 min, hasta que se ponga transparente.',
+      minutes: 6,
+    },
+    {
+      text: 'Sumá la carne con sal y pimentón, cociná 8 min y dejá enfriar el relleno.',
+      minutes: 8,
+      detail:
+        'Frío o tibio: caliente moja la masa y se abre al cerrar.',
+    },
+    {
+      text: 'Hacé un bollo con la harina, agua tibia y sal, y dejalo descansar 20 min.',
+      minutes: 8,
+    },
+    {
+      text: 'Estiralo fino y cortá 6 discos con un plato chico.',
+      minutes: 8,
+    },
+    {
+      text: 'Poné 1 cucharada de relleno en cada disco, cerrá y repulgá con el tenedor.',
+      minutes: 10,
+      detail:
+        'Poco relleno. Si la llenás, se abre en el horno.',
+    },
+    {
+      text: 'Pintá con huevo batido y horneá 20 min a 200°.',
+      minutes: 20,
+    },
+  ],
+  'pastel-de-papa': [
+    {
+      text: 'Pelá y herví las papas 20 min, hasta que entre el tenedor sin fuerza.',
+      minutes: 20,
+    },
+    {
+      text: 'Pisalas con la leche y sal.',
+      minutes: 3,
+    },
+    {
+      text: 'Picá la cebolla, cocinala 5 min y sumá la carne 8 min más.',
+      minutes: 13,
+    },
+    {
+      text: 'Poné la carne en una fuente y cubrila con el puré.',
+      minutes: 3,
+    },
+    {
+      text: 'Horno 20 min a 200°, hasta que se dore arriba.',
+      minutes: 20,
+    },
+  ],
+  'tarta-verdura': [
+    {
+      text: 'Herví la acelga 5 min y escurrila apretando con las manos.',
+      minutes: 8,
+      detail:
+        'Toda el agua que le dejes te queda adentro de la tarta.',
+    },
+    {
+      text: 'Picala y mezclala con los 2 huevos y el queso.',
+      minutes: 5,
+    },
+    {
+      text: 'Forrá la tartera con la masa y pinchá el fondo con un tenedor.',
+      minutes: 3,
+    },
+    {
+      text: 'Volcá el relleno y emparejá.',
+      minutes: 2,
+    },
+    {
+      text: 'Horno 30 min a 180°, hasta que la masa esté dorada abajo.',
+      minutes: 30,
+    },
+  ],
+  'guiso-lentejas': [
+    {
+      text: 'Cortá la cebolla, la zanahoria y la papa en cubos chicos.',
+      minutes: 8,
+    },
+    {
+      text: 'Cocinalos juntos en la olla 8 min con un chorro de aceite.',
+      minutes: 8,
+    },
+    {
+      text: 'Escurrí y enjuagá las lentejas, y sumalas.',
+      minutes: 2,
+    },
+    {
+      text: 'Agregá agua justo hasta taparlo todo y cociná 20 min.',
+      minutes: 20,
+      detail:
+        'Justo hasta tapar. Si le ponés de más, te queda sopa.',
+    },
+    {
+      text: 'Sal, pimentón, y listo.',
+      minutes: 1,
+    },
+  ],
+  'pollo-horno-papas': [
+    {
+      text: 'Cortá las papas en gajos y ponelas en la asadera.',
+      minutes: 5,
+    },
+    {
+      text: 'Sumá el pollo, el aceite, sal y orégano, y mezclá con la mano.',
+      minutes: 3,
+    },
+    {
+      text: 'Horno 40 min a 200°.',
+      minutes: 40,
+    },
+    {
+      text: 'A la mitad, dale vuelta las papas.',
+      minutes: 2,
+      detail:
+        'Si no, se doran de un lado solo.',
+    },
+  ],
+  'berenjenas-parmesana': [
+    {
+      text: 'Cortá las berenjenas en rodajas de 1 cm, saladas y dejalas 10 min.',
+      minutes: 12,
+      detail:
+        'La sal les saca el agua amarga. Después se secan con papel.',
+    },
+    {
+      text: 'Secalas y pasalas por el pan rallado.',
+      minutes: 5,
+    },
+    {
+      text: 'Doralas en la sartén, 3 min de cada lado.',
+      minutes: 10,
+    },
+    {
+      text: 'Armá capas en una fuente: berenjena, salsa, muzzarella.',
+      minutes: 5,
+    },
+    {
+      text: 'Horno 20 min a 180°.',
+      minutes: 20,
+    },
+  ],
+  'merluza-pure': [
+    {
+      text: 'Pelá y herví las papas 20 min.',
+      minutes: 20,
+    },
+    {
+      text: 'Pisalas con la leche y sal.',
+      minutes: 3,
+    },
+    {
+      text: 'Salá la merluza y cocinala 4 min de cada lado en la sartén.',
+      minutes: 8,
+      detail:
+        'Está lista cuando se abre en láminas al tocarla con el tenedor.',
+    },
+    {
+      text: 'Servila sobre el puré con un chorro de limón.',
+      minutes: 1,
+    },
+  ],
+  'zapallitos-rellenos': [
+    {
+      text: 'Cortá los zapallitos al medio y sacales el centro con una cuchara.',
+      minutes: 6,
+    },
+    {
+      text: 'Herví el arroz 15 min.',
+      minutes: 15,
+    },
+    {
+      text: 'Cociná la carne 8 min con sal y mezclala con el arroz.',
+      minutes: 8,
+    },
+    {
+      text: 'Rellená los zapallitos y tapá con el queso rallado.',
+      minutes: 4,
+    },
+    {
+      text: 'Horno 25 min a 180°.',
+      minutes: 25,
+    },
+  ],
+  'milanesa-napolitana': [
+    {
+      text: 'Cortá las papas en bastones y metelas al horno a 200°.',
+      minutes: 5,
+      detail:
+        'Van primero: tardan más que la milanesa.',
+    },
+    {
+      text: 'Dorá las milanesas 3 min de cada lado.',
+      minutes: 8,
+    },
+    {
+      text: 'Ponelas en una fuente y cubrilas con salsa, jamón y muzzarella.',
+      minutes: 4,
+    },
+    {
+      text: 'Horno 12 min, hasta que el queso se derrita.',
+      minutes: 12,
+    },
+  ],
+  'guiso-garbanzos': [
+    {
+      text: 'Cortá la cebolla, la zanahoria y la papa en cubos.',
+      minutes: 8,
+    },
+    {
+      text: 'Cocinalos 8 min en la olla con un chorro de aceite.',
+      minutes: 8,
+    },
+    {
+      text: 'Escurrí los garbanzos, enjuagalos y sumalos.',
+      minutes: 2,
+    },
+    {
+      text: 'Agua justo hasta taparlo y cociná 25 min.',
+      minutes: 25,
+    },
+    {
+      text: 'Sal, pimentón y comino.',
+      minutes: 1,
+    },
+  ],
+  'pastel-calabaza': [
+    {
+      text: 'Pelá la calabaza, cortala en cubos y hervila 20 min.',
+      minutes: 20,
+    },
+    {
+      text: 'Pisala con sal. No lleva leche: la calabaza ya es cremosa.',
+      minutes: 3,
+    },
+    {
+      text: 'Picá la cebolla, cocinala 5 min y sumá la carne 8 min más.',
+      minutes: 13,
+    },
+    {
+      text: 'Carne en una fuente, calabaza arriba.',
+      minutes: 3,
+    },
+    {
+      text: 'Horno 20 min a 200°.',
+      minutes: 20,
+    },
+  ],
+  'tarta-atun': [
+    {
+      text: 'Picá la cebolla y cocinala 5 min.',
+      minutes: 6,
+    },
+    {
+      text: 'Escurrí bien las dos latas de atún.',
+      minutes: 2,
+      detail:
+        'Sin escurrir, la tarta queda aguada.',
+    },
+    {
+      text: 'Mezclá el atún con la cebolla y los 2 huevos.',
+      minutes: 3,
+    },
+    {
+      text: 'Forrá la tartera con la masa y volcá el relleno.',
+      minutes: 4,
+    },
+    {
+      text: 'Horno 30 min a 180°.',
+      minutes: 30,
+    },
+  ],
+  'bife-pure-calabaza': [
+    {
+      text: 'Pelá la calabaza, cortala en cubos y hervila 15 min.',
+      minutes: 15,
+    },
+    {
+      text: 'Pisala con sal.',
+      minutes: 2,
+    },
+    {
+      text: 'Salá el bife y cocinalo 4 min de cada lado a fuego fuerte.',
+      minutes: 8,
+      detail:
+        'Fuego fuerte y no lo muevas: así se dora en vez de hervirse.',
+    },
+  ],
+  'sopa-verduras': [
+    {
+      text: 'Cortá la zanahoria y la papa en cubos chicos.',
+      minutes: 8,
+    },
+    {
+      text: 'Hervilas en el caldo 15 min.',
+      minutes: 15,
+    },
+    {
+      text: 'Sumá los fideos y cociná 8 min más.',
+      minutes: 8,
+    },
+    {
+      text: 'Probá la sal antes de servir.',
+      minutes: 1,
+      detail:
+        'El caldo ya trae bastante.',
+    },
+  ],
+  'tortilla-verduras': [
+    {
+      text: 'Cortá el zapallito y la cebolla en cubos chicos.',
+      minutes: 5,
+    },
+    {
+      text: 'Cocinalos 8 min en la sartén, hasta que se ablanden.',
+      minutes: 8,
+    },
+    {
+      text: 'Batí los 4 huevos con el queso rallado y sal.',
+      minutes: 2,
+    },
+    {
+      text: 'Volcá el huevo sobre la verdura y cociná 5 min a fuego bajo.',
+      minutes: 5,
+    },
+    {
+      text: 'Dala vuelta con un plato y 3 min más.',
+      minutes: 4,
+      detail:
+        'Plato encima, girá la sartén, y de vuelta adentro.',
+    },
+  ],
+  'revuelto-espinaca': [
+    {
+      text: 'Lavá la espinaca y cocinala 3 min en la sartén, hasta que se achique.',
+      minutes: 5,
+    },
+    {
+      text: 'Batí los 3 huevos con sal.',
+      minutes: 1,
+    },
+    {
+      text: 'Volcalos sobre la espinaca y revolvé 3 min a fuego bajo.',
+      minutes: 3,
+      detail:
+        'Fuego bajo. A fuego fuerte queda seco y con olor a huevo quemado.',
+    },
+    {
+      text: 'Queso arriba y listo.',
+      minutes: 1,
+    },
+  ],
+  'polenta-salsa': [
+    {
+      text: 'Calentá 400 ml de agua con sal hasta que hierva.',
+      minutes: 4,
+    },
+    {
+      text: 'Volcá la polenta en lluvia, revolviendo.',
+      minutes: 2,
+      detail:
+        'En lluvia y revolviendo. Si la tirás de golpe se hace grumos.',
+    },
+    {
+      text: 'Cociná 5 min sin dejar de revolver.',
+      minutes: 5,
+    },
+    {
+      text: 'Servila con la salsa caliente y el queso arriba.',
+      minutes: 2,
+    },
+  ],
+  'arroz-primavera': [
+    {
+      text: 'Herví el arroz 15 min.',
+      minutes: 15,
+    },
+    {
+      text: 'Salteá las verduras congeladas 8 min, sin descongelarlas.',
+      minutes: 8,
+      detail:
+        'Directo del freezer. Si las descongelás antes, sueltan agua.',
+    },
+    {
+      text: 'Hacé el huevo revuelto en la misma sartén.',
+      minutes: 3,
+    },
+    {
+      text: 'Mezclá todo con el arroz escurrido.',
+      minutes: 2,
+    },
+  ],
+  'pollo-brocoli': [
+    {
+      text: 'Cortá las papas en cubos y el brócoli en ramitos.',
+      minutes: 8,
+    },
+    {
+      text: 'Poné todo en una asadera con el pollo, aceite y sal.',
+      minutes: 4,
+    },
+    {
+      text: 'Horno 35 min a 200°.',
+      minutes: 35,
+    },
+    {
+      text: 'Sacá el brócoli a los 20 min si ya está tierno.',
+      minutes: 1,
+      detail:
+        'Se pasa antes que el resto y queda gris.',
+    },
+  ],
+  'empanadas-verdura': [
+    {
+      text: 'Herví la acelga 5 min y escurrila apretando con las manos.',
+      minutes: 8,
+      detail:
+        'Bien escurrida, o la tapa se moja y se rompe.',
+    },
+    {
+      text: 'Picá la cebolla y cocinala 5 min.',
+      minutes: 6,
+    },
+    {
+      text: 'Picá la acelga y mezclala con la cebolla y el queso.',
+      minutes: 4,
+    },
+    {
+      text: 'Poné 1 cucharada en cada tapa, cerrá y repulgá.',
+      minutes: 6,
+    },
+    {
+      text: 'Horno 20 min a 200°.',
+      minutes: 20,
+    },
+  ],
 }
