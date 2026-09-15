@@ -20,7 +20,6 @@ import {
   SLOT_CATEGORY,
   SLOT_ORDER,
   VENUES,
-  compraDe,
 } from './types'
 import { addDays, isoDate, minutesOf, nowMinutes } from './format'
 import { esBasico, foodOf, shoppingParts } from './foods'
@@ -657,12 +656,11 @@ export const buildShoppingList = (week: DayPlan[], meals: Meal[]): ShoppingGroup
       const meal = meals.find((m) => m.id === planned.mealId)
       if (!meal) continue
 
-      /* El origen decide qué entra en la compra. Lo que comprás hecho
-         afuera no genera ingredientes: nadie compra harina porque el
-         martes va a comer empanadas de la rotisería. */
-      const genera = compraDe(meal.origen)
-      if (genera === 'nada') continue
-
+      /* La compra sale de los ingredientes que la comida necesita, y de
+         nada más. No hace falta preguntarle al origen: lo que comés
+         hecho afuera no tiene ingredientes cargados —nadie compra
+         harina porque el martes va a comer empanadas de la rotisería— y
+         lo que traés hecho pero completás en casa sí los tiene. */
       for (const ing of meal.ingredients) {
         if (esBasico(ing.item)) continue
         const key = `${ing.item}|${ing.unit}`

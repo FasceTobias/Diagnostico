@@ -147,3 +147,26 @@ const aMeal = (e: EntradaJson): Meal => {
 }
 
 export const CATALOGO: Meal[] = (crudo as EntradaJson[]).map(aMeal)
+
+/* ------------------------------------------------------------------
+   ENTRADAS QUE SE FUSIONARON
+
+   Cuando dos entradas eran la misma comida cargada dos veces, una se
+   queda y la otra desaparece. Pero lo que ya está guardado en el
+   teléfono —el plan de esta semana, tus favoritas— sigue nombrando a la
+   que se fue, y una comida que no existe se dibuja como un renglón
+   vacío.
+
+   Por eso el id viejo no se borra: se redirige. Es una línea por
+   fusión, y es lo que permite corregir el catálogo sin romperle la
+   semana a nadie.
+   ------------------------------------------------------------------ */
+
+export const FUSIONES: Record<string, string> = {
+  /* Misma yerba, misma porción, mismos dos minutos: lo único que
+     cambiaba era el momento del día, y para eso está `momentos`. */
+  'mate-solo-manana': 'mate',
+}
+
+/** El id que hay que usar hoy para algo guardado ayer. */
+export const idVigente = (id: string): string => FUSIONES[id] ?? id

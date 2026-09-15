@@ -161,6 +161,7 @@ export const carbs = (meal: Meal) =>
 
 export const TILE_ORIGEN: Record<Origen, { icono: IconName; tono: Tono }> = {
   casera: { icono: 'plato', tono: 'lavanda' },
+  mixta: { icono: 'plato', tono: 'lavanda' },
   envasada: { icono: 'paquete', tono: 'azul' },
   'panadería': { icono: 'pan', tono: 'mantequilla' },
   'rotisería': { icono: 'lugar', tono: 'coral' },

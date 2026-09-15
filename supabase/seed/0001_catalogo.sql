@@ -1,7 +1,7 @@
 -- ==================================================================
 -- Catálogo v1 — generado por scripts/catalogo-sql.mjs. No editar.
 --
--- 200 entradas, todas ESTIMADAS: la porción está
+-- 199 entradas, todas ESTIMADAS: la porción está
 -- documentada y el número calculado sobre esa porción, pero ninguna
 -- se midió contra una etiqueta. Eso es la fase D.
 --
@@ -661,55 +661,6 @@ insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
   where m.slug = 'tostadas-palta' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'casa', 'rapido', 'salado', 'merienda')
-  on conflict do nothing;
-
--- Sólo mate
-insert into meals (
-  profile_id, slug, name, description, category, data_state,
-  carbs_total, carbs_source, carbs_confidence, portion,
-  main_ingredient, subcategories, prep_minutes, satiety,
-  portable, needs_cold, needs_reheat, make_night_before, freezable,
-  difficulty, freq, drink, everyday, added_sugar, notes,
-  buy_outside, venues, price_level, handheld, carbs_from_items,
-  origin, flavor, moments, total_minutes, is_drink,
-  prep_type, yields,
-  source_name
-) values (
-  null, 'mate-solo-manana', 'Sólo mate', 'Mucha gente no desayuna. Está bien que la app lo sepa y no te invente un plato.', 'desayuno', 'estimado',
-  0, 'estimacion', 'estimada', '1 mate',
-  'yerba', array['en casa', 'rápido'], 2, 'liviana',
-  false, false, false, false, false,
-  1, 'habitual', null, true, false, null,
-  false, '{}', null, false, true,
-  'casera'::food_origin, 'neutral'::flavor, array['desayuno']::meal_category[], 2, true,
-  'assemble'::prep_type, null,
-  'porción estándar calculada'
-)
-on conflict (slug) where profile_id is null and slug is not null do update set
-  name = excluded.name, description = excluded.description,
-  category = excluded.category, carbs_total = excluded.carbs_total,
-  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
-  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
-  satiety = excluded.satiety, portable = excluded.portable,
-  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
-  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
-  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
-  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
-  notes = excluded.notes, buy_outside = excluded.buy_outside,
-  venues = excluded.venues, price_level = excluded.price_level,
-  handheld = excluded.handheld, origin = excluded.origin,
-  flavor = excluded.flavor, moments = excluded.moments,
-  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
-  prep_type = excluded.prep_type, yields = excluded.yields,
-  updated_at = now();
-
-delete from meal_portions where meal_id = (select id from meals where slug = 'mate-solo-manana' and profile_id is null);
-insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 mate', null, 0, true, 0
-  from meals where slug = 'mate-solo-manana' and profile_id is null;
-insert into meal_tags (meal_id, tag_slug)
-  select m.id, t.slug from meals m, tags t
-  where m.slug = 'mate-solo-manana' and m.profile_id is null and t.slug in ('desayuno', 'liviana', 'casa', 'rapido')
   on conflict do nothing;
 
 -- Avena con banana y nueces
@@ -2467,9 +2418,9 @@ insert into meals (
   12, 'estimacion', 'estimada', '1/4 de pollo',
   'pollo entero', array['en casa', 'potente', 'rápido'], 5, 'potente',
   false, false, true, false, false,
-  1, 'habitual', null, true, false, 'El pollo se compra hecho. Lo único que se prepara es la ensalada.',
+  1, 'habitual', null, true, false, 'El pollo se compra hecho en la rotisería; la ensalada la hacés vos. La compra igual lleva el pollo, la lechuga y el tomate: la lista sale de los ingredientes, no del origen.',
   false, '{}', null, false, true,
-  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 5, false,
+  'mixta'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 5, false,
   'assemble'::prep_type, null,
   'porción estándar calculada'
 )
@@ -2568,7 +2519,7 @@ insert into meals (
   1, 'habitual', null, true, false, null,
   false, '{}', null, true, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 20, false,
-  'cook'::prep_type, null,
+  'assemble'::prep_type, null,
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -2666,7 +2617,7 @@ insert into meals (
   1, 'habitual', null, true, false, null,
   false, '{}', null, false, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 20, false,
-  'cook'::prep_type, null,
+  'assemble'::prep_type, null,
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -5582,13 +5533,13 @@ insert into meals (
   prep_type, yields,
   source_name
 ) values (
-  null, 'mate', 'Mate', 'Cero carbohidratos. Con azúcar, cinco por cucharadita.', 'snack', 'estimado',
+  null, 'mate', 'Mate', 'Cero carbohidratos. Con azúcar, cinco por cucharadita. Y sirve de desayuno: mucha gente no desayuna otra cosa.', 'snack', 'estimado',
   0, 'estimacion', 'estimada', '1 mate',
-  'yerba', array['rápido', 'práctico'], 2, 'liviana',
+  'yerba', array['rápido', 'práctico', 'en casa'], 2, 'liviana',
   false, false, false, false, false,
-  1, 'habitual', null, true, false, null,
+  1, 'habitual', null, true, false, 'Absorbió a «mate-solo-manana», que era la misma entrada cargada dos veces: mismo ingrediente, misma porción, mismos dos minutos. Lo único que cambiaba era el momento, y eso ahora vive en momentos.',
   false, '{}', null, false, true,
-  'casera'::food_origin, 'neutral'::flavor, array['snack']::meal_category[], 2, true,
+  'casera'::food_origin, 'neutral'::flavor, array['desayuno', 'snack']::meal_category[], 2, true,
   'assemble'::prep_type, null,
   'porción estándar calculada'
 )
@@ -5616,7 +5567,7 @@ insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
   from meals where slug = 'mate' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
-  where m.slug = 'mate' and m.profile_id is null and t.slug in ('media_tarde', 'liviana', 'rapido')
+  where m.slug = 'mate' and m.profile_id is null and t.slug in ('media_tarde', 'liviana', 'rapido', 'casa', 'desayuno')
   on conflict do nothing;
 
 -- Mate cocido
@@ -6232,7 +6183,7 @@ insert into meals (
   1, 'habitual', null, true, false, null,
   false, '{}', null, true, true,
   'casera'::food_origin, 'salado'::flavor, array['desayuno', 'snack', 'almuerzo']::meal_category[], 15, false,
-  'cook'::prep_type, null,
+  'assemble'::prep_type, null,
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -7604,7 +7555,7 @@ insert into meals (
   1, 'habitual', null, true, false, null,
   false, '{}', null, false, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 20, false,
-  'cook'::prep_type, null,
+  'cook'::prep_type, '2 milanesas',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -8389,11 +8340,11 @@ insert into meals (
 ) values (
   null, 'sopa-crema-pan', 'Sopa crema con pan', 'Sobre de sopa y dos tostadas. Cinco minutos de cocina.', 'cena', 'estimado',
   34, 'estimacion', 'estimada', '1 plato',
-  'sopa crema', array['en casa', 'rápido', 'salado'], 5, 'normal',
+  'sopa crema', array['en casa', 'rápido', 'salado'], 6, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', null, false, true,
-  'casera'::food_origin, 'salado'::flavor, array['cena']::meal_category[], 8, false,
+  'casera'::food_origin, 'salado'::flavor, array['cena']::meal_category[], 10, false,
   'cook'::prep_type, null,
   'porción estándar calculada'
 )
@@ -8541,7 +8492,7 @@ insert into meals (
   1, 'ocasional', null, true, false, null,
   false, '{}', null, false, true,
   'casera'::food_origin, 'salado'::flavor, array['cena', 'almuerzo']::meal_category[], 20, false,
-  'cook'::prep_type, null,
+  'cook'::prep_type, '4 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -8596,7 +8547,7 @@ insert into meals (
   1, 'habitual', null, true, false, null,
   false, '{}', null, false, true,
   'casera'::food_origin, 'salado'::flavor, array['cena', 'almuerzo']::meal_category[], 20, false,
-  'cook'::prep_type, null,
+  'assemble'::prep_type, null,
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -8840,7 +8791,7 @@ insert into meals (
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', null, false, true,
-  'casera'::food_origin, 'salado'::flavor, array['cena', 'almuerzo']::meal_category[], 8, false,
+  'casera'::food_origin, 'salado'::flavor, array['cena', 'almuerzo']::meal_category[], 12, false,
   'cook'::prep_type, null,
   'porción estándar calculada'
 )
@@ -8885,12 +8836,12 @@ insert into meals (
 ) values (
   null, 'milanesa-congelada', 'Milanesa congelada al horno', 'La de freezer, directo al horno. Es la cena de un martes.', 'cena', 'estimado',
   34, 'estimacion', 'estimada', '1 milanesa con puré',
-  'milanesa de pollo', array['en casa', 'salado', 'potente'], 5, 'potente',
+  'milanesa de pollo', array['en casa', 'salado', 'potente'], 12, 'potente',
   false, false, false, false, false,
-  1, 'habitual', null, true, false, null,
+  1, 'habitual', null, true, false, 'La porción dice «con puré» y el puré no sale en cinco minutos: hervir y pisar las papas son doce de trabajo. Se sumó la leche del puré, que no estaba.',
   false, '{}', null, false, true,
   'casera'::food_origin, 'salado'::flavor, array['cena', 'almuerzo']::meal_category[], 30, false,
-  'cook'::prep_type, null,
+  'cook'::prep_type, '2 platos',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set

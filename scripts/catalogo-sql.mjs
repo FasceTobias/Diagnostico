@@ -45,6 +45,7 @@ const TAG = {
    que sean escribibles desde cualquier teclado y cualquier cliente. */
 const ORIGEN = {
   casera: 'casera',
+  mixta: 'mixta',
   envasada: 'envasada',
   'panadería': 'panaderia',
   'rotisería': 'rotiseria',

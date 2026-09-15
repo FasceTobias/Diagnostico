@@ -131,8 +131,12 @@ export const entender = (texto: string): Entendido => {
   }
   if (tiene(t, 'mcdonald', 'burger', 'fast food', 'comida rapida')) e.lugar = 'restaurante'
 
-  if (tiene(t, 'dulce', 'postre', 'chocolate', 'antojo')) e.sabor = 'dulce'
-  if (tiene(t, 'salado', 'salada')) e.sabor = 'salado'
+  /* Palabra entera, o «milanesa con ensalada» pide algo salado: la
+     palabra «salada» está adentro de «ensalada». */
+  if (['dulce', 'postre', 'chocolate', 'antojo'].some((w) => palabraEntera(t, w)))
+    e.sabor = 'dulce'
+  if (['salado', 'salada', 'salados', 'saladas'].some((w) => palabraEntera(t, w)))
+    e.sabor = 'salado'
 
   e.minutos = minutosDe(t)
   if (tiene(t, 'que llene', 'mucha hambre', 'contundente', 'no me llena', 'mas hambre'))

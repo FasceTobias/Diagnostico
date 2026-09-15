@@ -45,7 +45,8 @@ for (const e of catalogo) {
   if (e.totalMinutes < e.activeMinutes) mal(e.slug, 'el total es menor que el tiempo activo')
 
   // Lo que se compra hecho no se cocina, y no genera ingredientes.
-  const afuera = !['casera', 'envasada'].includes(e.origen)
+  // `mixta` no entra acá: trae algo hecho pero se completa en casa.
+  const afuera = !['casera', 'mixta', 'envasada'].includes(e.origen)
   if (afuera && e.prepType === 'cook') mal(e.slug, 'se compra hecha pero está marcada como que se cocina')
   if (afuera && e.items.length) mal(e.slug, 'se compra hecha pero arrastra ingredientes')
 

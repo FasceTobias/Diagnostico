@@ -14,6 +14,13 @@ import type { Aisle, Unit } from './types'
 export interface Food {
   plural?: string
   aisle: Aisle
+  /** Carbohidratos de referencia por 100 g (o por 100 ml, para lo
+      líquido). Sirve para derivar el número de un plato a partir de lo
+      que lleva, en vez de estimarlo a ojo. */
+  carbsPer100g?: number
+  /** Carbohidratos de una unidad, cuando la receta cuenta unidades y no
+      gramos: una rebanada de pan, un huevo, un tomate. */
+  carbsPerUnit?: number
   /** Cómo se cuenta una unidad cuando el nombre no se puede contar:
       «2 rebanadas de pan», no «2 pan». Sólo para `unit: 'u'`. */
   unidad?: { uno: string; varios: string }
@@ -32,175 +39,185 @@ export interface Food {
   }
 }
 
+/* Los carbohidratos que lleva cada ingrediente son de tablas de
+   composición estándar, redondeados. Son una referencia, no una
+   etiqueta: sirven para derivar el número de un plato a partir de lo
+   que lleva y para discutir con el número que ya tenía, no para
+   declararlo verificado. Un valor pasa a verificado cuando alguien tuvo
+   el envase en la mano.
+
+   Los frutos secos van con el carbohidrato disponible, sin fibra: una
+   nuez tiene 14 g por cada 100 y la mitad no se absorbe. */
+
 export const FOODS: Record<string, Food> = {
   // --- verdulería ---
-  banana: { plural: 'bananas', aisle: 'verdulería' },
-  manzana: { plural: 'manzanas', aisle: 'verdulería' },
-  frutilla: { plural: 'frutillas', aisle: 'verdulería', buy: { unit: 'g', step: 250 } },
-  tomate: { plural: 'tomates', aisle: 'verdulería' },
-  lechuga: { plural: 'lechugas', aisle: 'verdulería', buy: { unit: 'u', per: 4 } },
-  palta: { plural: 'paltas', aisle: 'verdulería' },
-  cebolla: { plural: 'cebollas', aisle: 'verdulería' },
-  'cebolla morada': { plural: 'cebollas moradas', aisle: 'verdulería' },
-  zanahoria: { plural: 'zanahorias', aisle: 'verdulería' },
-  papa: { plural: 'papas', aisle: 'verdulería', buy: { unit: 'kg' } },
-  calabaza: { aisle: 'verdulería', buy: { unit: 'kg' } },
-  zapallito: { plural: 'zapallitos', aisle: 'verdulería' },
-  espinaca: { aisle: 'verdulería', buy: { unit: 'g', step: 250, label: 'atado' } },
-  morrón: { plural: 'morrones', aisle: 'verdulería' },
-  limón: { plural: 'limones', aisle: 'verdulería', buy: { unit: 'u', per: 3 } },
+  banana: { plural: 'bananas', aisle: 'verdulería', carbsPer100g: 22, carbsPerUnit: 25 },
+  manzana: { plural: 'manzanas', aisle: 'verdulería', carbsPer100g: 12, carbsPerUnit: 18 },
+  frutilla: { plural: 'frutillas', aisle: 'verdulería', buy: { unit: 'g', step: 250 }, carbsPer100g: 6 },
+  tomate: { plural: 'tomates', aisle: 'verdulería', carbsPer100g: 3.5, carbsPerUnit: 4 },
+  lechuga: { plural: 'lechugas', aisle: 'verdulería', buy: { unit: 'u', per: 4 }, carbsPer100g: 2, carbsPerUnit: 6 },
+  palta: { plural: 'paltas', aisle: 'verdulería', carbsPer100g: 2, carbsPerUnit: 4 },
+  cebolla: { plural: 'cebollas', aisle: 'verdulería', carbsPer100g: 8, carbsPerUnit: 9 },
+  'cebolla morada': { plural: 'cebollas moradas', aisle: 'verdulería', carbsPer100g: 8, carbsPerUnit: 9 },
+  zanahoria: { plural: 'zanahorias', aisle: 'verdulería', carbsPer100g: 8, carbsPerUnit: 6 },
+  papa: { plural: 'papas', aisle: 'verdulería', buy: { unit: 'kg' }, carbsPer100g: 17 },
+  calabaza: { aisle: 'verdulería', buy: { unit: 'kg' }, carbsPer100g: 8 },
+  zapallito: { plural: 'zapallitos', aisle: 'verdulería', carbsPer100g: 3, carbsPerUnit: 5 },
+  espinaca: { aisle: 'verdulería', buy: { unit: 'g', step: 250, label: 'atado' }, carbsPer100g: 1.5 },
+  morrón: { plural: 'morrones', aisle: 'verdulería', carbsPer100g: 6, carbsPerUnit: 9 },
+  limón: { plural: 'limones', aisle: 'verdulería', buy: { unit: 'u', per: 3 }, carbsPer100g: 3, carbsPerUnit: 2 },
 
   // --- agregados para el catálogo v2 ---
   // Los cuatro que faltaban y obligaban a reusar un ingrediente parecido.
-  maní: { aisle: 'almacén', buy: { unit: 'g', step: 100, label: 'paquete' } },
-  helado: { aisle: 'congelados', buy: { unit: 'g', step: 500, label: 'pote' } },
-  'postre lácteo': { plural: 'postres lácteos', aisle: 'lácteos', buy: { unit: 'u', step: 4 } },
-  gaseosa: { aisle: 'almacén', buy: { unit: 'ml', step: 1500, label: 'botella' } },
+  maní: { aisle: 'almacén', buy: { unit: 'g', step: 100, label: 'paquete' }, carbsPer100g: 12 },
+  helado: { aisle: 'congelados', buy: { unit: 'g', step: 500, label: 'pote' }, carbsPer100g: 24 },
+  'postre lácteo': { plural: 'postres lácteos', aisle: 'lácteos', buy: { unit: 'u', step: 4 }, carbsPer100g: 17, carbsPerUnit: 20 },
+  gaseosa: { aisle: 'almacén', buy: { unit: 'ml', step: 1500, label: 'botella' }, carbsPer100g: 11 },
 
-  'gaseosa sin azúcar': { aisle: 'almacén', buy: { unit: 'ml', step: 1500, label: 'botella' } },
-  'dulce de leche': { aisle: 'almacén', buy: { unit: 'g', step: 400, label: 'pote' } },
-  'galletitas dulces': { aisle: 'almacén', buy: { unit: 'paquete', per: 18 } },
-  'galletitas de agua': { aisle: 'almacén', buy: { unit: 'paquete', per: 20 } },
-  té: { aisle: 'almacén', buy: { unit: 'u', per: 25, label: 'caja' }, unidad: { uno: 'saquito', varios: 'saquitos' } },
-  'mate cocido': { aisle: 'almacén', buy: { unit: 'u', per: 25, label: 'caja' }, unidad: { uno: 'saquito', varios: 'saquitos' } },
+  'gaseosa sin azúcar': { aisle: 'almacén', buy: { unit: 'ml', step: 1500, label: 'botella' }, carbsPer100g: 0 },
+  'dulce de leche': { aisle: 'almacén', buy: { unit: 'g', step: 400, label: 'pote' }, carbsPer100g: 55 },
+  'galletitas dulces': { aisle: 'almacén', buy: { unit: 'paquete', per: 18 }, carbsPer100g: 70, carbsPerUnit: 5 },
+  'galletitas de agua': { aisle: 'almacén', buy: { unit: 'paquete', per: 20 }, carbsPer100g: 72, carbsPerUnit: 4.5 },
+  té: { aisle: 'almacén', buy: { unit: 'u', per: 25, label: 'caja' }, unidad: { uno: 'saquito', varios: 'saquitos' }, carbsPer100g: 0, carbsPerUnit: 0 },
+  'mate cocido': { aisle: 'almacén', buy: { unit: 'u', per: 25, label: 'caja' }, unidad: { uno: 'saquito', varios: 'saquitos' }, carbsPer100g: 0, carbsPerUnit: 0 },
 
   // --- carnicería y rotisería ---
-  asado: { aisle: 'carnicería', buy: { unit: 'kg' } },
-  vacío: { aisle: 'carnicería', buy: { unit: 'kg' } },
-  chorizo: { plural: 'chorizos', aisle: 'carnicería', buy: { unit: 'u', step: 4 } },
-  'milanesa de carne': { plural: 'milanesas de carne', aisle: 'carnicería' },
-  'pechuga de pollo': { plural: 'pechugas de pollo', aisle: 'carnicería', buy: { unit: 'kg' } },
-  'pollo entero': { aisle: 'carnicería', buy: { unit: 'u' } },
+  asado: { aisle: 'carnicería', buy: { unit: 'kg' }, carbsPer100g: 0 },
+  vacío: { aisle: 'carnicería', buy: { unit: 'kg' }, carbsPer100g: 0 },
+  chorizo: { plural: 'chorizos', aisle: 'carnicería', buy: { unit: 'u', step: 4 }, carbsPer100g: 1, carbsPerUnit: 1 },
+  'milanesa de carne': { plural: 'milanesas de carne', aisle: 'carnicería', carbsPer100g: 10, carbsPerUnit: 12 },
+  'pechuga de pollo': { plural: 'pechugas de pollo', aisle: 'carnicería', buy: { unit: 'kg' }, carbsPer100g: 0 },
+  'pollo entero': { aisle: 'carnicería', buy: { unit: 'u' }, carbsPer100g: 0, carbsPerUnit: 0 },
 
   // --- almacén y fideería ---
-  ravioles: { aisle: 'almacén', buy: { unit: 'g', step: 500, label: 'plancha' } },
-  ñoquis: { aisle: 'almacén', buy: { unit: 'g', step: 500, label: 'plancha' } },
-  'pan de pancho': { plural: 'panes de pancho', aisle: 'panadería', buy: { unit: 'u', step: 4 } },
-  'pan francés': { aisle: 'panadería', buy: { unit: 'g', step: 250 } },
-  'pan de miga': { aisle: 'panadería', buy: { unit: 'u', per: 8, label: 'plancha' }, unidad: { uno: 'rebanada', varios: 'rebanadas' } },
-  acelga: { aisle: 'verdulería', buy: { unit: 'g', step: 250, label: 'atado' } },
-  arvejas: { aisle: 'almacén', buy: { unit: 'g', per: 300, label: 'lata' } },
-  'crema de leche': { aisle: 'lácteos', buy: { unit: 'ml', step: 200 } },
-  'ricota': { aisle: 'lácteos', buy: { unit: 'g', step: 250, label: 'pote' } },
-  'queso rallado': { aisle: 'lácteos', buy: { unit: 'g', step: 100 } },
+  ravioles: { aisle: 'almacén', buy: { unit: 'g', step: 500, label: 'plancha' }, carbsPer100g: 30 },
+  ñoquis: { aisle: 'almacén', buy: { unit: 'g', step: 500, label: 'plancha' }, carbsPer100g: 30 },
+  'pan de pancho': { plural: 'panes de pancho', aisle: 'panadería', buy: { unit: 'u', step: 4 }, carbsPer100g: 50, carbsPerUnit: 30 },
+  'pan francés': { aisle: 'panadería', buy: { unit: 'g', step: 250 }, carbsPer100g: 55 },
+  'pan de miga': { aisle: 'panadería', buy: { unit: 'u', per: 8, label: 'plancha' }, unidad: { uno: 'rebanada', varios: 'rebanadas' }, carbsPer100g: 50, carbsPerUnit: 12 },
+  acelga: { aisle: 'verdulería', buy: { unit: 'g', step: 250, label: 'atado' }, carbsPer100g: 2 },
+  arvejas: { aisle: 'almacén', buy: { unit: 'g', per: 300, label: 'lata' }, carbsPer100g: 12 },
+  'crema de leche': { aisle: 'lácteos', buy: { unit: 'ml', step: 200 }, carbsPer100g: 3 },
+  'ricota': { aisle: 'lácteos', buy: { unit: 'g', step: 250, label: 'pote' }, carbsPer100g: 3 },
+  'queso rallado': { aisle: 'lácteos', buy: { unit: 'g', step: 100 }, carbsPer100g: 2 },
 
   // --- carnicería ---
-  pollo: { aisle: 'carnicería', buy: { unit: 'kg' } },
-  'milanesa de pollo': { plural: 'milanesas de pollo', aisle: 'carnicería' },
-  jamón: { aisle: 'carnicería', buy: { unit: 'g', step: 100 } },
+  pollo: { aisle: 'carnicería', buy: { unit: 'kg' }, carbsPer100g: 0 },
+  'milanesa de pollo': { plural: 'milanesas de pollo', aisle: 'carnicería', carbsPer100g: 10, carbsPerUnit: 12 },
+  jamón: { aisle: 'carnicería', buy: { unit: 'g', step: 100 }, carbsPer100g: 1 },
 
   // --- lácteos ---
-  huevo: { plural: 'huevos', aisle: 'lácteos', buy: { unit: 'u', step: 6 } },
-  'yogur natural': { plural: 'yogures naturales', aisle: 'lácteos', buy: { unit: 'g', per: 200, label: 'pote' } },
-  'yogur entero': { plural: 'yogures enteros', aisle: 'lácteos', buy: { unit: 'g', per: 200, label: 'pote' } },
-  leche: { aisle: 'lácteos', buy: { unit: 'ml', step: 1000, label: 'litro' } },
-  queso: { aisle: 'lácteos', buy: { unit: 'g', step: 100 } },
+  huevo: { plural: 'huevos', aisle: 'lácteos', buy: { unit: 'u', step: 6 }, carbsPer100g: 0.7, carbsPerUnit: 0.4 },
+  'yogur natural': { plural: 'yogures naturales', aisle: 'lácteos', buy: { unit: 'g', per: 200, label: 'pote' }, carbsPer100g: 5 },
+  'yogur entero': { plural: 'yogures enteros', aisle: 'lácteos', buy: { unit: 'g', per: 200, label: 'pote' }, carbsPer100g: 5 },
+  leche: { aisle: 'lácteos', buy: { unit: 'ml', step: 1000, label: 'litro' }, carbsPer100g: 5 },
+  queso: { aisle: 'lácteos', buy: { unit: 'g', step: 100 }, carbsPer100g: 2 },
 
   // --- panadería ---
-  pan: { aisle: 'panadería', buy: { unit: 'paquete', per: 18 }, unidad: { uno: 'rebanada', varios: 'rebanadas' } },
-  'pan integral': { aisle: 'panadería', buy: { unit: 'paquete', per: 18 }, unidad: { uno: 'rebanada', varios: 'rebanadas' } },
-  'tortilla de trigo': { plural: 'tortillas de trigo', aisle: 'panadería', buy: { unit: 'paquete', per: 6 } },
+  pan: { aisle: 'panadería', buy: { unit: 'paquete', per: 18 }, unidad: { uno: 'rebanada', varios: 'rebanadas' }, carbsPer100g: 50, carbsPerUnit: 15 },
+  'pan integral': { aisle: 'panadería', buy: { unit: 'paquete', per: 18 }, unidad: { uno: 'rebanada', varios: 'rebanadas' }, carbsPer100g: 45, carbsPerUnit: 12 },
+  'tortilla de trigo': { plural: 'tortillas de trigo', aisle: 'panadería', buy: { unit: 'paquete', per: 6 }, carbsPer100g: 50, carbsPerUnit: 25 },
 
   // --- almacén ---
-  avena: { aisle: 'almacén', buy: { unit: 'g', step: 500 } },
-  granola: { aisle: 'almacén', buy: { unit: 'g', step: 500 } },
-  arroz: { aisle: 'almacén', buy: { unit: 'kg' } },
-  'lentejas cocidas': { aisle: 'almacén', buy: { unit: 'g', per: 400, label: 'lata' } },
-  atún: { aisle: 'almacén', buy: { unit: 'lata' }, unidad: { uno: 'lata', varios: 'latas' } },
-  nuez: { plural: 'nueces', aisle: 'almacén', buy: { unit: 'g', step: 250 } },
-  almendra: { plural: 'almendras', aisle: 'almacén', buy: { unit: 'g', step: 250 } },
-  'mantequilla de maní': { aisle: 'almacén', buy: { unit: 'g', step: 350, label: 'frasco' } },
-  choclo: { plural: 'choclos', aisle: 'almacén', buy: { unit: 'lata' } },
-  harina: { aisle: 'almacén', buy: { unit: 'kg' } },
-  café: { aisle: 'almacén', buy: { unit: 'g', step: 250 } },
+  avena: { aisle: 'almacén', buy: { unit: 'g', step: 500 }, carbsPer100g: 60 },
+  granola: { aisle: 'almacén', buy: { unit: 'g', step: 500 }, carbsPer100g: 65 },
+  arroz: { aisle: 'almacén', buy: { unit: 'kg' }, carbsPer100g: 78 },
+  'lentejas cocidas': { aisle: 'almacén', buy: { unit: 'g', per: 400, label: 'lata' }, carbsPer100g: 17 },
+  atún: { aisle: 'almacén', buy: { unit: 'lata' }, unidad: { uno: 'lata', varios: 'latas' }, carbsPer100g: 0, carbsPerUnit: 0 },
+  nuez: { plural: 'nueces', aisle: 'almacén', buy: { unit: 'g', step: 250 }, carbsPer100g: 7 },
+  almendra: { plural: 'almendras', aisle: 'almacén', buy: { unit: 'g', step: 250 }, carbsPer100g: 9 },
+  'mantequilla de maní': { aisle: 'almacén', buy: { unit: 'g', step: 350, label: 'frasco' }, carbsPer100g: 20 },
+  choclo: { plural: 'choclos', aisle: 'almacén', buy: { unit: 'lata' }, carbsPer100g: 19, carbsPerUnit: 27 },
+  harina: { aisle: 'almacén', buy: { unit: 'kg' }, carbsPer100g: 73 },
+  café: { aisle: 'almacén', buy: { unit: 'g', step: 250 }, carbsPer100g: 0 },
 
   // --- agregados para la fase C ---
-  merluza: { aisle: 'carnicería', buy: { unit: 'g', step: 250, label: 'filete' } },
-  'pan rallado': { aisle: 'almacén', buy: { unit: 'g', step: 500 } },
-  berenjena: { plural: 'berenjenas', aisle: 'verdulería' },
-  'brócoli': { aisle: 'verdulería', buy: { unit: 'u', per: 1 } },
-  'garbanzos cocidos': { aisle: 'almacén', buy: { unit: 'g', per: 400, label: 'lata' } },
-  polenta: { aisle: 'almacén', buy: { unit: 'g', step: 500 } },
-  'dulce de membrillo': { aisle: 'almacén', buy: { unit: 'g', step: 500 } },
-  salchicha: { plural: 'salchichas', aisle: 'carnicería', buy: { unit: 'u', per: 6, label: 'paquete' } },
-  panceta: { aisle: 'carnicería', buy: { unit: 'g', step: 200 } },
-  remolacha: { plural: 'remolachas', aisle: 'verdulería' },
-  pepino: { plural: 'pepinos', aisle: 'verdulería' },
-  naranja: { plural: 'naranjas', aisle: 'verdulería', buy: { unit: 'u', per: 6 } },
-  mandarina: { plural: 'mandarinas', aisle: 'verdulería', buy: { unit: 'u', per: 6 } },
-  pera: { plural: 'peras', aisle: 'verdulería' },
-  durazno: { plural: 'duraznos', aisle: 'verdulería' },
-  uva: { plural: 'uvas', aisle: 'verdulería', buy: { unit: 'g', step: 500 } },
-  bizcochos: { aisle: 'panadería', buy: { unit: 'g', step: 250, label: 'paquete' } },
-  'prepizza': { plural: 'prepizzas', aisle: 'panadería', buy: { unit: 'u', per: 2 } },
-  'tapas de empanada': { aisle: 'congelados', buy: { unit: 'u', per: 12, label: 'paquete' } },
-  'verduras congeladas': { aisle: 'congelados', buy: { unit: 'g', step: 500, label: 'paquete' } },
-  'sopa crema': { aisle: 'almacén', buy: { unit: 'u', per: 1, label: 'sobre' }, unidad: { uno: 'sobre', varios: 'sobres' } },
-  'atún al natural': { aisle: 'almacén', buy: { unit: 'lata' }, unidad: { uno: 'lata', varios: 'latas' } },
-  'fideos integrales': { aisle: 'almacén', buy: { unit: 'g', per: 500, label: 'paquete' } },
-  'pan de salvado': { aisle: 'panadería', buy: { unit: 'paquete', per: 18 } },
+  merluza: { aisle: 'carnicería', buy: { unit: 'g', step: 250, label: 'filete' }, carbsPer100g: 0 },
+  'pan rallado': { aisle: 'almacén', buy: { unit: 'g', step: 500 }, carbsPer100g: 70 },
+  berenjena: { plural: 'berenjenas', aisle: 'verdulería', carbsPer100g: 6, carbsPerUnit: 15 },
+  'brócoli': { aisle: 'verdulería', buy: { unit: 'u', per: 1 }, carbsPer100g: 4, carbsPerUnit: 16 },
+  'garbanzos cocidos': { aisle: 'almacén', buy: { unit: 'g', per: 400, label: 'lata' }, carbsPer100g: 22 },
+  polenta: { aisle: 'almacén', buy: { unit: 'g', step: 500 }, carbsPer100g: 79 },
+  'dulce de membrillo': { aisle: 'almacén', buy: { unit: 'g', step: 500 }, carbsPer100g: 60 },
+  salchicha: { plural: 'salchichas', aisle: 'carnicería', buy: { unit: 'u', per: 6, label: 'paquete' }, carbsPer100g: 3, carbsPerUnit: 2 },
+  panceta: { aisle: 'carnicería', buy: { unit: 'g', step: 200 }, carbsPer100g: 0 },
+  remolacha: { plural: 'remolachas', aisle: 'verdulería', carbsPer100g: 8 },
+  pepino: { plural: 'pepinos', aisle: 'verdulería', carbsPer100g: 2, carbsPerUnit: 4 },
+  naranja: { plural: 'naranjas', aisle: 'verdulería', buy: { unit: 'u', per: 6 }, carbsPer100g: 9, carbsPerUnit: 17 },
+  mandarina: { plural: 'mandarinas', aisle: 'verdulería', buy: { unit: 'u', per: 6 }, carbsPer100g: 11, carbsPerUnit: 8 },
+  pera: { plural: 'peras', aisle: 'verdulería', carbsPer100g: 12, carbsPerUnit: 21 },
+  durazno: { plural: 'duraznos', aisle: 'verdulería', carbsPer100g: 9, carbsPerUnit: 13 },
+  uva: { plural: 'uvas', aisle: 'verdulería', buy: { unit: 'g', step: 500 }, carbsPer100g: 16 },
+  bizcochos: { aisle: 'panadería', buy: { unit: 'g', step: 250, label: 'paquete' }, carbsPer100g: 60 },
+  'prepizza': { plural: 'prepizzas', aisle: 'panadería', buy: { unit: 'u', per: 2 }, carbsPer100g: 50, carbsPerUnit: 90 },
+  'tapas de empanada': { aisle: 'congelados', buy: { unit: 'u', per: 12, label: 'paquete' }, carbsPer100g: 45, carbsPerUnit: 16 },
+  'verduras congeladas': { aisle: 'congelados', buy: { unit: 'g', step: 500, label: 'paquete' }, carbsPer100g: 8 },
+  'sopa crema': { aisle: 'almacén', buy: { unit: 'u', per: 1, label: 'sobre' }, unidad: { uno: 'sobre', varios: 'sobres' }, carbsPer100g: 60, carbsPerUnit: 12 },
+  'atún al natural': { aisle: 'almacén', buy: { unit: 'lata' }, unidad: { uno: 'lata', varios: 'latas' }, carbsPer100g: 0, carbsPerUnit: 0 },
+  'fideos integrales': { aisle: 'almacén', buy: { unit: 'g', per: 500, label: 'paquete' }, carbsPer100g: 70 },
+  'pan de salvado': { aisle: 'panadería', buy: { unit: 'paquete', per: 18 }, carbsPer100g: 45, carbsPerUnit: 12 },
 
-  'galletas de arroz': { aisle: 'almacén', buy: { unit: 'u', per: 12, label: 'paquete' } },
-  'pizza congelada': { plural: 'pizzas congeladas', aisle: 'congelados', buy: { unit: 'u', per: 1 } },
-  grasa: { aisle: 'almacén', buy: { unit: 'g', step: 250 } },
+  'galletas de arroz': { aisle: 'almacén', buy: { unit: 'u', per: 12, label: 'paquete' }, carbsPer100g: 78, carbsPerUnit: 6 },
+  'pizza congelada': { plural: 'pizzas congeladas', aisle: 'congelados', buy: { unit: 'u', per: 1 }, carbsPer100g: 28, carbsPerUnit: 120 },
+  grasa: { aisle: 'almacén', buy: { unit: 'g', step: 250 }, carbsPer100g: 0 },
 
   // --- envasados y cosas de góndola ---
-  'galletitas sin azúcar': { aisle: 'almacén', buy: { unit: 'g', per: 150, label: 'paquete' } },
-  'barra proteica': { plural: 'barras proteicas', aisle: 'almacén', buy: { unit: 'u' } },
-  'barra de cereal': { plural: 'barras de cereal', aisle: 'almacén', buy: { unit: 'u' } },
-  chocolate: { aisle: 'almacén', buy: { unit: 'g', step: 100 } },
-  'frutos secos con chocolate': { aisle: 'almacén', buy: { unit: 'g', step: 150 } },
-  'gelatina sin azúcar': { plural: 'gelatinas sin azúcar', aisle: 'almacén', buy: { unit: 'u' } },
-  'flan sin azúcar': { plural: 'flanes sin azúcar', aisle: 'lácteos', buy: { unit: 'u' } },
-  'budín sin azúcar': { plural: 'budines sin azúcar', aisle: 'panadería', buy: { unit: 'u', per: 300 } },
-  'mermelada sin azúcar': { aisle: 'almacén', buy: { unit: 'g', per: 350, label: 'frasco' } },
-  manteca: { aisle: 'lácteos', buy: { unit: 'g', step: 200 } },
-  yerba: { aisle: 'almacén', buy: { unit: 'g', step: 500 } },
-  budín: { plural: 'budines', aisle: 'panadería', buy: { unit: 'u', per: 300 } },
-  medialuna: { plural: 'medialunas', aisle: 'panadería', buy: { unit: 'u' } },
-  alfajor: { plural: 'alfajores', aisle: 'almacén', buy: { unit: 'u' } },
-  'queso untable': { aisle: 'lácteos', buy: { unit: 'g', per: 300, label: 'pote' } },
-  'yogur bebible': { plural: 'yogures bebibles', aisle: 'lácteos', buy: { unit: 'g', per: 200, label: 'botellita' } },
-  'yogur saborizado sin azúcar': { plural: 'yogures saborizados sin azúcar', aisle: 'lácteos', buy: { unit: 'g', per: 200, label: 'pote' } },
+  'galletitas sin azúcar': { aisle: 'almacén', buy: { unit: 'g', per: 150, label: 'paquete' }, carbsPer100g: 60, carbsPerUnit: 4 },
+  'barra proteica': { plural: 'barras proteicas', aisle: 'almacén', buy: { unit: 'u' }, carbsPer100g: 40, carbsPerUnit: 20 },
+  'barra de cereal': { plural: 'barras de cereal', aisle: 'almacén', buy: { unit: 'u' }, carbsPer100g: 65, carbsPerUnit: 18 },
+  chocolate: { aisle: 'almacén', buy: { unit: 'g', step: 100 }, carbsPer100g: 50 },
+  'frutos secos con chocolate': { aisle: 'almacén', buy: { unit: 'g', step: 150 }, carbsPer100g: 35 },
+  'gelatina sin azúcar': { plural: 'gelatinas sin azúcar', aisle: 'almacén', buy: { unit: 'u' }, carbsPer100g: 0, carbsPerUnit: 0 },
+  'flan sin azúcar': { plural: 'flanes sin azúcar', aisle: 'lácteos', buy: { unit: 'u' }, carbsPer100g: 10, carbsPerUnit: 12 },
+  'budín sin azúcar': { plural: 'budines sin azúcar', aisle: 'panadería', buy: { unit: 'u', per: 300 }, carbsPer100g: 30, carbsPerUnit: 25 },
+  'mermelada sin azúcar': { aisle: 'almacén', buy: { unit: 'g', per: 350, label: 'frasco' }, carbsPer100g: 12 },
+  manteca: { aisle: 'lácteos', buy: { unit: 'g', step: 200 }, carbsPer100g: 0 },
+  yerba: { aisle: 'almacén', buy: { unit: 'g', step: 500 }, carbsPer100g: 0 },
+  budín: { plural: 'budines', aisle: 'panadería', buy: { unit: 'u', per: 300 }, carbsPer100g: 55, carbsPerUnit: 44 },
+  medialuna: { plural: 'medialunas', aisle: 'panadería', buy: { unit: 'u' }, carbsPer100g: 48, carbsPerUnit: 24 },
+  alfajor: { plural: 'alfajores', aisle: 'almacén', buy: { unit: 'u' }, carbsPer100g: 58, carbsPerUnit: 32 },
+  'queso untable': { aisle: 'lácteos', buy: { unit: 'g', per: 300, label: 'pote' }, carbsPer100g: 4 },
+  'yogur bebible': { plural: 'yogures bebibles', aisle: 'lácteos', buy: { unit: 'g', per: 200, label: 'botellita' }, carbsPer100g: 12 },
+  'yogur saborizado sin azúcar': { plural: 'yogures saborizados sin azúcar', aisle: 'lácteos', buy: { unit: 'g', per: 200, label: 'pote' }, carbsPer100g: 4 },
 
   // --- más cosas de todos los días ---
-  fideos: { aisle: 'almacén', buy: { unit: 'g', per: 500, label: 'paquete' } },
-  'salsa de tomate': { aisle: 'almacén', buy: { unit: 'g', per: 400, label: 'lata' } },
-  muzzarella: { aisle: 'lácteos', buy: { unit: 'g', step: 100 } },
-  'carne picada': { aisle: 'carnicería', buy: { unit: 'g', step: 250 } },
-  'pan de hamburguesa': { plural: 'panes de hamburguesa', aisle: 'panadería', buy: { unit: 'u', per: 4 } },
-  'masa de tarta': { plural: 'masas de tarta', aisle: 'congelados', buy: { unit: 'u', per: 2 } },
-  'masa de pizza': { plural: 'masas de pizza', aisle: 'panadería', buy: { unit: 'u' } },
+  fideos: { aisle: 'almacén', buy: { unit: 'g', per: 500, label: 'paquete' }, carbsPer100g: 75 },
+  'salsa de tomate': { aisle: 'almacén', buy: { unit: 'g', per: 400, label: 'lata' }, carbsPer100g: 6 },
+  muzzarella: { aisle: 'lácteos', buy: { unit: 'g', step: 100 }, carbsPer100g: 3 },
+  'carne picada': { aisle: 'carnicería', buy: { unit: 'g', step: 250 }, carbsPer100g: 0 },
+  'pan de hamburguesa': { plural: 'panes de hamburguesa', aisle: 'panadería', buy: { unit: 'u', per: 4 }, carbsPer100g: 50, carbsPerUnit: 28 },
+  'masa de tarta': { plural: 'masas de tarta', aisle: 'congelados', buy: { unit: 'u', per: 2 }, carbsPer100g: 45, carbsPerUnit: 112 },
+  'masa de pizza': { plural: 'masas de pizza', aisle: 'panadería', buy: { unit: 'u' }, carbsPer100g: 50, carbsPerUnit: 140 },
 
   // --- productos que faltaban y obligaban a usar uno parecido ---
   // Cada uno reemplaza a un "parecido" que la lista de compras hacía
   // comprar mal: pochoclo compraba harina, el mousse compraba una barra
   // de chocolate, los duraznos en almíbar compraban una manzana.
-  'maíz para pochoclo': { aisle: 'almacén', buy: { unit: 'g', step: 500, label: 'paquete' } },
-  'duraznos en almíbar': { aisle: 'almacén', buy: { unit: 'u', label: 'lata' }, unidad: { uno: 'lata', varios: 'latas' } },
-  'papas fritas de paquete': { aisle: 'almacén', buy: { unit: 'g', step: 100, label: 'paquete' } },
-  turrón: { plural: 'turrones', aisle: 'almacén', buy: { unit: 'u', step: 3 } },
-  'mousse de chocolate': { plural: 'mousses de chocolate', aisle: 'lácteos', buy: { unit: 'u', step: 4 } },
-  'bocadito de chocolate': { plural: 'bocaditos de chocolate', aisle: 'almacén', buy: { unit: 'u', step: 6 } },
-  'mezcla de frutos secos': { aisle: 'almacén', buy: { unit: 'g', step: 200, label: 'paquete' } },
+  'maíz para pochoclo': { aisle: 'almacén', buy: { unit: 'g', step: 500, label: 'paquete' }, carbsPer100g: 72 },
+  'duraznos en almíbar': { aisle: 'almacén', buy: { unit: 'u', label: 'lata' }, unidad: { uno: 'lata', varios: 'latas' }, carbsPer100g: 15, carbsPerUnit: 60 },
+  'papas fritas de paquete': { aisle: 'almacén', buy: { unit: 'g', step: 100, label: 'paquete' }, carbsPer100g: 52 },
+  turrón: { plural: 'turrones', aisle: 'almacén', buy: { unit: 'u', step: 3 }, carbsPer100g: 55, carbsPerUnit: 22 },
+  'mousse de chocolate': { plural: 'mousses de chocolate', aisle: 'lácteos', buy: { unit: 'u', step: 4 }, carbsPer100g: 20, carbsPerUnit: 20 },
+  'bocadito de chocolate': { plural: 'bocaditos de chocolate', aisle: 'almacén', buy: { unit: 'u', step: 6 }, carbsPer100g: 55, carbsPerUnit: 10 },
+  'mezcla de frutos secos': { aisle: 'almacén', buy: { unit: 'g', step: 200, label: 'paquete' }, carbsPer100g: 10 },
 
   // --- básicos de alacena ---
   // No van a la lista semanal. Una receta los nombra y los cuenta, pero
   // la compra los ignora: si aparecieran, todas las semanas arrancarían
   // con "agua, sal, aceite" y la lista dejaría de servir.
-  agua: { aisle: 'almacén', pantryBasic: true },
-  sal: { aisle: 'almacén', pantryBasic: true },
-  aceite: { aisle: 'almacén', pantryBasic: true },
-  'aceite de oliva': { aisle: 'almacén', pantryBasic: true },
-  azúcar: { aisle: 'almacén', pantryBasic: true },
-  canela: { aisle: 'almacén', pantryBasic: true },
-  orégano: { aisle: 'almacén', pantryBasic: true },
-  pimentón: { aisle: 'almacén', pantryBasic: true },
-  comino: { aisle: 'almacén', pantryBasic: true },
-  pimienta: { aisle: 'almacén', pantryBasic: true },
-  vinagre: { aisle: 'almacén', pantryBasic: true },
-  mayonesa: { aisle: 'almacén', pantryBasic: true },
-  caldo: { aisle: 'almacén', pantryBasic: true, unidad: { uno: 'cubito', varios: 'cubitos' } },
+  agua: { aisle: 'almacén', pantryBasic: true, carbsPer100g: 0 },
+  sal: { aisle: 'almacén', pantryBasic: true, carbsPer100g: 0, carbsPerUnit: 0 },
+  aceite: { aisle: 'almacén', pantryBasic: true, carbsPer100g: 0 },
+  'aceite de oliva': { aisle: 'almacén', pantryBasic: true, carbsPer100g: 0 },
+  azúcar: { aisle: 'almacén', pantryBasic: true, carbsPer100g: 100 },
+  canela: { aisle: 'almacén', pantryBasic: true, carbsPer100g: 0, carbsPerUnit: 0 },
+  orégano: { aisle: 'almacén', pantryBasic: true, carbsPer100g: 0, carbsPerUnit: 0 },
+  pimentón: { aisle: 'almacén', pantryBasic: true, carbsPer100g: 0, carbsPerUnit: 0 },
+  comino: { aisle: 'almacén', pantryBasic: true, carbsPer100g: 0, carbsPerUnit: 0 },
+  pimienta: { aisle: 'almacén', pantryBasic: true, carbsPer100g: 0, carbsPerUnit: 0 },
+  vinagre: { aisle: 'almacén', pantryBasic: true, carbsPer100g: 0 },
+  mayonesa: { aisle: 'almacén', pantryBasic: true, carbsPer100g: 5 },
+  caldo: { aisle: 'almacén', pantryBasic: true, unidad: { uno: 'cubito', varios: 'cubitos' }, carbsPer100g: 0, carbsPerUnit: 1 },
 }
 
 /** Los que no entran en la lista semanal. */

@@ -1,6 +1,6 @@
 import type { DayPlan, InsulinSettings, Perfil, Preferences, Slot } from '../types'
 import { DEFAULT_INSULIN, DEFAULT_PERFIL, DEFAULT_PREFERENCES } from '../types'
-import { CATALOGO } from '../catalogo'
+import { CATALOGO, idVigente } from '../catalogo'
 import { addDays, isoDate } from '../format'
 import { DEFAULT_TIMES, buildWeek } from '../domain'
 import type { Snapshot, ViandaRepo } from './types'
@@ -42,10 +42,31 @@ const startOfWeek = (d: Date) => {
   return addDays(x, -dow)
 }
 
+/* Lo guardado puede nombrar entradas que ya no existen porque se
+   fusionaron con otra. Se redirigen al leer, una sola vez: a partir de
+   ahí lo que hay en el dispositivo vuelve a apuntar a algo real. */
+const alDia = (s: Stored): Stored => ({
+  ...s,
+  week: s.week.map((d) => ({
+    ...d,
+    meals: d.meals.map((m) => ({
+      ...m,
+      mealId: idVigente(m.mealId),
+      replacedFrom: m.replacedFrom ? idVigente(m.replacedFrom) : m.replacedFrom,
+    })),
+  })),
+  prefs: {
+    ...s.prefs,
+    likes: [...new Set((s.prefs?.likes ?? []).map(idVigente))],
+    dislikes: [...new Set((s.prefs?.dislikes ?? []).map(idVigente))],
+  },
+  extras: [...new Set((s.extras ?? []).map(idVigente))],
+})
+
 const read = (): Stored | null => {
   try {
     const raw = localStorage.getItem(KEY)
-    return raw ? (JSON.parse(raw) as Stored) : null
+    return raw ? alDia(JSON.parse(raw) as Stored) : null
   } catch {
     return null
   }

@@ -183,11 +183,17 @@ export const PREP_TYPE_LABEL: Record<PrepType, string> = {
    y una congelada del súper tienen otro tiempo, otro número y otra
    compra.
 
-   El origen decide qué pasa en la lista de compras, y son tres casos:
+   El origen dice de dónde viene, y nada más. Cuánto trabajo pide es
+   otra cosa —`prepType`— y qué hay que comprar es una tercera: la
+   lista sale de los ingredientes que la comida necesita, no de esta
+   etiqueta.
 
-     · casera        → la lista suma sus ingredientes
-     · envasada      → la lista suma una línea: el producto
-     · comprada afuera → no genera nada doméstico
+   Esa separación tiene un motivo concreto. El pollo al spiedo con
+   ensalada trae el pollo hecho de la rotisería y la ensalada la hacés
+   vos: si para que la lechuga y el tomate entren en la compra hay que
+   declararlo «casero», la etiqueta pasa a mentir para hacer funcionar
+   otra cosa. Por eso existe `mixta`, y por eso la compra mira los
+   ingredientes.
 
    Nunca al revés: si falta un ingrediente en el catálogo, se crea. Usar
    uno parecido para que la compra "funcione" es como el helado que te
@@ -196,6 +202,8 @@ export const PREP_TYPE_LABEL: Record<PrepType, string> = {
 
 export type Origen =
   | 'casera'
+  /** Una parte viene hecha y la otra la armás vos. */
+  | 'mixta'
   | 'envasada'
   | 'panadería'
   | 'rotisería'
@@ -206,6 +214,7 @@ export type Origen =
 
 export const ORIGEN_LABEL: Record<Origen, string> = {
   casera: 'La hacés vos',
+  mixta: 'Parte comprada, parte en casa',
   envasada: 'Viene envasada',
   panadería: 'De panadería',
   rotisería: 'De rotisería',
@@ -219,6 +228,7 @@ export const ORIGEN_LABEL: Record<Origen, string> = {
     no entra «Viene envasada». La casera no dice nada: es el default. */
 export const ORIGEN_CORTO: Record<Origen, string> = {
   casera: '',
+  mixta: 'medio y medio',
   envasada: 'envasado',
   panadería: 'panadería',
   rotisería: 'rotisería',
@@ -228,9 +238,10 @@ export const ORIGEN_CORTO: Record<Origen, string> = {
   heladería: 'heladería',
 }
 
-/** Qué genera en la lista de compras. */
-export const compraDe = (o: Origen): 'ingredientes' | 'producto' | 'nada' =>
-  o === 'casera' ? 'ingredientes' : o === 'envasada' ? 'producto' : 'nada'
+/** Lo que se come afuera no tiene ingredientes cargados, y por eso no
+    genera compra: eso lo decide la comida, no una tabla aparte. */
+export const seCompraHecha = (o: Origen): boolean =>
+  o !== 'casera' && o !== 'mixta' && o !== 'envasada'
 
 /* Dulce, salado, o ninguna de las dos. `neutral` es para lo que no tira
    para ningún lado —un café solo, un agua— y `mixta` para lo que tiene

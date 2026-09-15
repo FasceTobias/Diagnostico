@@ -1,0 +1,466 @@
+{
+  "_": "Comidas donde los carbohidratos declarados y los que dan sus ingredientes no coinciden. Generado por scripts/catalogo-carbs.mjs. Nada de esto está corregido: es la lista para revisar a mano. El número derivado sale de tablas de composición, no de etiquetas, así que tampoco es la verdad: es con qué discutir el declarado.",
+  "generado": "2026-09-15",
+  "regla": "importante = ocho gramos o más de diferencia, y al menos un quinto del número declarado",
+  "comidas": [
+    {
+      "slug": "budin-casero",
+      "nombre": "Budín casero",
+      "porcion": "1 porción",
+      "rinde": null,
+      "declarado": 35,
+      "derivado": 297,
+      "diferencia": 262
+    },
+    {
+      "slug": "bizcochuelo",
+      "nombre": "Porción de bizcochuelo",
+      "porcion": "1 porción",
+      "rinde": null,
+      "declarado": 38,
+      "derivado": 297,
+      "diferencia": 259
+    },
+    {
+      "slug": "tortas-fritas",
+      "nombre": "Tortas fritas",
+      "porcion": "2 tortas fritas",
+      "rinde": null,
+      "declarado": 40,
+      "derivado": 183,
+      "diferencia": 143
+    },
+    {
+      "slug": "galletitas-avena-caseras",
+      "nombre": "Galletitas de avena caseras",
+      "porcion": "3 galletitas",
+      "rinde": null,
+      "declarado": 22,
+      "derivado": 144,
+      "diferencia": 122
+    },
+    {
+      "slug": "flan-dulce-de-leche",
+      "nombre": "Flan con dulce de leche",
+      "porcion": "1 porción",
+      "rinde": null,
+      "declarado": 40,
+      "derivado": 143,
+      "diferencia": 103
+    },
+    {
+      "slug": "pizza-casera",
+      "nombre": "Pizza de muzzarella casera",
+      "porcion": "2 porciones",
+      "rinde": null,
+      "declarado": 60,
+      "derivado": 153,
+      "diferencia": 93
+    },
+    {
+      "slug": "pizza-congelada",
+      "nombre": "Pizza congelada",
+      "porcion": "2 porciones",
+      "rinde": null,
+      "declarado": 58,
+      "derivado": 120,
+      "diferencia": 62
+    },
+    {
+      "slug": "arroz-con-leche",
+      "nombre": "Arroz con leche",
+      "porcion": "1 pote",
+      "rinde": null,
+      "declarado": 38,
+      "derivado": 94,
+      "diferencia": 56
+    },
+    {
+      "slug": "sandwich-milanesa-completo",
+      "nombre": "Sándwich de milanesa completo",
+      "porcion": "1 sándwich",
+      "rinde": null,
+      "declarado": 52,
+      "derivado": 100,
+      "diferencia": 48
+    },
+    {
+      "slug": "panqueques-dulce",
+      "nombre": "Panqueques con dulce de leche",
+      "porcion": "2 panqueques",
+      "rinde": null,
+      "declarado": 46,
+      "derivado": 91,
+      "diferencia": 45
+    },
+    {
+      "slug": "milanesa-pure",
+      "nombre": "Milanesa con puré",
+      "porcion": "1 plato",
+      "rinde": null,
+      "declarado": 42,
+      "derivado": 78,
+      "diferencia": 36
+    },
+    {
+      "slug": "arroz-primavera",
+      "nombre": "Arroz primavera",
+      "porcion": "1 plato",
+      "rinde": null,
+      "declarado": 52,
+      "derivado": 87,
+      "diferencia": 35
+    },
+    {
+      "slug": "sopa-calabaza",
+      "nombre": "Sopa de calabaza con pan",
+      "porcion": "1 plato hondo",
+      "rinde": null,
+      "declarado": 34,
+      "derivado": 65,
+      "diferencia": 31
+    },
+    {
+      "slug": "fruta-almibar",
+      "nombre": "Duraznos en almíbar",
+      "porcion": "2 mitades",
+      "rinde": null,
+      "declarado": 30,
+      "derivado": 60,
+      "diferencia": 30
+    },
+    {
+      "slug": "arroz-atun",
+      "nombre": "Arroz con atún",
+      "porcion": "1 tupper",
+      "rinde": null,
+      "declarado": 48,
+      "derivado": 76,
+      "diferencia": 28
+    },
+    {
+      "slug": "tortilla-papa",
+      "nombre": "Tortilla de papa",
+      "porcion": "2 porciones",
+      "rinde": null,
+      "declarado": 30,
+      "derivado": 57,
+      "diferencia": 27
+    },
+    {
+      "slug": "sandwich-milanesa",
+      "nombre": "Sándwich de milanesa",
+      "porcion": "1 sándwich",
+      "rinde": null,
+      "declarado": 48,
+      "derivado": 73,
+      "diferencia": 25
+    },
+    {
+      "slug": "polenta-salsa",
+      "nombre": "Polenta con salsa y queso",
+      "porcion": "1 plato",
+      "rinde": null,
+      "declarado": 48,
+      "derivado": 73,
+      "diferencia": 25
+    },
+    {
+      "slug": "tostadas-dulce-membrillo",
+      "nombre": "Tostadas con dulce de membrillo",
+      "porcion": "2 tostadas",
+      "rinde": null,
+      "declarado": 36,
+      "derivado": 60,
+      "diferencia": 24
+    },
+    {
+      "slug": "panchos",
+      "nombre": "Panchos",
+      "porcion": "2 panchos",
+      "rinde": null,
+      "declarado": 40,
+      "derivado": 64,
+      "diferencia": 24
+    },
+    {
+      "slug": "yogur-granola-fruta",
+      "nombre": "Yogur con granola y fruta",
+      "porcion": "1 pote",
+      "rinde": null,
+      "declarado": 38,
+      "derivado": 61,
+      "diferencia": 23
+    },
+    {
+      "slug": "budincitos-huevo",
+      "nombre": "Budincitos de huevo, queso y espinaca",
+      "porcion": "3 budincitos",
+      "rinde": null,
+      "declarado": 6,
+      "derivado": 29,
+      "diferencia": 23
+    },
+    {
+      "slug": "fideos-integrales-salsa",
+      "nombre": "Fideos integrales con salsa",
+      "porcion": "1 plato",
+      "rinde": null,
+      "declarado": 56,
+      "derivado": 79,
+      "diferencia": 23
+    },
+    {
+      "slug": "ensalada-atun-garbanzos",
+      "nombre": "Ensalada de atún y garbanzos",
+      "porcion": "1 plato",
+      "rinde": null,
+      "declarado": 30,
+      "derivado": 53,
+      "diferencia": 23
+    },
+    {
+      "slug": "fideos-tuco",
+      "nombre": "Fideos con tuco",
+      "porcion": "1 plato",
+      "rinde": null,
+      "declarado": 62,
+      "derivado": 84,
+      "diferencia": 22
+    },
+    {
+      "slug": "pollo-arroz-integral",
+      "nombre": "Pollo con arroz integral",
+      "porcion": "1 plato",
+      "rinde": null,
+      "declarado": 46,
+      "derivado": 68,
+      "diferencia": 22
+    },
+    {
+      "slug": "ensalada-frutas",
+      "nombre": "Ensalada de frutas",
+      "porcion": "1 pote",
+      "rinde": null,
+      "declarado": 28,
+      "derivado": 49,
+      "diferencia": 21
+    },
+    {
+      "slug": "arroz-con-pollo",
+      "nombre": "Arroz con pollo",
+      "porcion": "1 plato",
+      "rinde": null,
+      "declarado": 50,
+      "derivado": 71,
+      "diferencia": 21
+    },
+    {
+      "slug": "milanesa-napolitana",
+      "nombre": "Milanesa a la napolitana con papas",
+      "porcion": "1 plato",
+      "rinde": null,
+      "declarado": 56,
+      "derivado": 75,
+      "diferencia": 19
+    },
+    {
+      "slug": "ensalada-lentejas",
+      "nombre": "Ensalada de lentejas con huevo y palta",
+      "porcion": "1 plato",
+      "rinde": null,
+      "declarado": 28,
+      "derivado": 47,
+      "diferencia": 19
+    },
+    {
+      "slug": "sandwich-tortilla",
+      "nombre": "Sándwich de tortilla de papa",
+      "porcion": "1 sándwich",
+      "rinde": null,
+      "declarado": 38,
+      "derivado": 56,
+      "diferencia": 18
+    },
+    {
+      "slug": "pochoclo",
+      "nombre": "Pochoclo",
+      "porcion": "1 bol chico",
+      "rinde": null,
+      "declarado": 18,
+      "derivado": 36,
+      "diferencia": 18
+    },
+    {
+      "slug": "queso-dulce-membrillo",
+      "nombre": "Queso con dulce de membrillo",
+      "porcion": "1 porción",
+      "rinde": null,
+      "declarado": 24,
+      "derivado": 7,
+      "diferencia": -17
+    },
+    {
+      "slug": "avena-nocturna",
+      "nombre": "Avena con banana y nueces",
+      "porcion": "1 frasco de 400 ml",
+      "rinde": null,
+      "declarado": 58,
+      "derivado": 74,
+      "diferencia": 16
+    },
+    {
+      "slug": "ravioles-salsa",
+      "nombre": "Ravioles con salsa",
+      "porcion": "1 plato",
+      "rinde": null,
+      "declarado": 68,
+      "derivado": 84,
+      "diferencia": 16
+    },
+    {
+      "slug": "jugo-exprimido",
+      "nombre": "Jugo de naranja exprimido",
+      "porcion": "1 vaso",
+      "rinde": null,
+      "declarado": 22,
+      "derivado": 6,
+      "diferencia": -16
+    },
+    {
+      "slug": "zapallitos-rellenos",
+      "nombre": "Zapallitos rellenos",
+      "porcion": "2 zapallitos",
+      "rinde": null,
+      "declarado": 26,
+      "derivado": 42,
+      "diferencia": 16
+    },
+    {
+      "slug": "merluza-pure",
+      "nombre": "Merluza con puré",
+      "porcion": "1 plato",
+      "rinde": null,
+      "declarado": 32,
+      "derivado": 46,
+      "diferencia": 14
+    },
+    {
+      "slug": "noquis-manteca",
+      "nombre": "Ñoquis con manteca y queso",
+      "porcion": "1 plato",
+      "rinde": null,
+      "declarado": 62,
+      "derivado": 76,
+      "diferencia": 14
+    },
+    {
+      "slug": "licuado-banana-avena",
+      "nombre": "Licuado de banana con avena",
+      "porcion": "1 vaso grande",
+      "rinde": null,
+      "declarado": 44,
+      "derivado": 56,
+      "diferencia": 12
+    },
+    {
+      "slug": "budin-envasado",
+      "nombre": "Budín envasado",
+      "porcion": "1 porción",
+      "rinde": null,
+      "declarado": 32,
+      "derivado": 44,
+      "diferencia": 12
+    },
+    {
+      "slug": "pan-dulce-de-leche",
+      "nombre": "Pan con dulce de leche",
+      "porcion": "2 rebanadas",
+      "rinde": null,
+      "declarado": 40,
+      "derivado": 52,
+      "diferencia": 12
+    },
+    {
+      "slug": "tostadas-dulce-de-leche",
+      "nombre": "Tostadas con dulce de leche",
+      "porcion": "2 tostadas",
+      "rinde": null,
+      "declarado": 37,
+      "derivado": 47,
+      "diferencia": 10
+    },
+    {
+      "slug": "yogur-con-fruta",
+      "nombre": "Yogur con fruta",
+      "porcion": "1 pote con fruta",
+      "rinde": null,
+      "declarado": 26,
+      "derivado": 16,
+      "diferencia": -10
+    },
+    {
+      "slug": "budin-merienda",
+      "nombre": "Porción de budín",
+      "porcion": "1 porción",
+      "rinde": null,
+      "declarado": 35,
+      "derivado": 44,
+      "diferencia": 9
+    },
+    {
+      "slug": "pastel-calabaza",
+      "nombre": "Pastel de calabaza",
+      "porcion": "1 porción",
+      "rinde": null,
+      "declarado": 40,
+      "derivado": 49,
+      "diferencia": 9
+    },
+    {
+      "slug": "picada-liviana",
+      "nombre": "Picada liviana",
+      "porcion": "1 tabla chica",
+      "rinde": null,
+      "declarado": 20,
+      "derivado": 29,
+      "diferencia": 9
+    },
+    {
+      "slug": "asado",
+      "nombre": "Asado con ensalada",
+      "porcion": "1 plato",
+      "rinde": null,
+      "declarado": 14,
+      "derivado": 22,
+      "diferencia": 8
+    },
+    {
+      "slug": "tostadas-queso-tomate",
+      "nombre": "Tostadas con queso y tomate",
+      "porcion": "2 tostadas",
+      "rinde": null,
+      "declarado": 27,
+      "derivado": 35,
+      "diferencia": 8
+    },
+    {
+      "slug": "sopa-crema-pan",
+      "nombre": "Sopa crema con pan",
+      "porcion": "1 plato",
+      "rinde": null,
+      "declarado": 34,
+      "derivado": 42,
+      "diferencia": 8
+    },
+    {
+      "slug": "pepino-zanahoria",
+      "nombre": "Bastones de pepino y zanahoria",
+      "porcion": "1 bowl",
+      "rinde": null,
+      "declarado": 8,
+      "derivado": 16,
+      "diferencia": 8
+    }
+  ]
+}

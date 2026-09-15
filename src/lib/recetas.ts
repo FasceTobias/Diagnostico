@@ -61,51 +61,18 @@ export const RECETAS: Record<string, Step[]> = {
   ],
   'sandwich-completo': [
     {
-      text: 'Poné los 2 huevos en una olla chica con agua fría',
-      minutes: 1,
-      detail:
-        'Agua fría desde el arranque, que los tape dos dedos por encima. Si los tirás en agua que ya está hirviendo, la cáscara se raja.',
+      text: 'Herví los huevos 10 min, pelalos y cortalos en rodajas.',
+      minutes: 12,
     },
     {
-      text: 'Prendé fuego fuerte y esperá a que el agua hierva',
-      minutes: 4,
-      detail:
-        'Está hirviendo cuando ves burbujas grandes que suben sin parar y el agua se mueve sola. Las burbujitas chicas del principio no cuentan.',
+      text: 'Tostá el pan y cortá el tomate en rodajas finas.',
+      minutes: 3,
     },
     {
-      text: 'Contá 8 minutos y apagá el fuego',
-      minutes: 8,
-      detail:
-        'Ocho minutos desde que hierve: la clara queda firme y la yema amarilla hasta el centro. Si te pasás de diez, la yema se pone gris verdosa en el borde.',
-    },
-    {
-      text: 'Pasá los huevos por agua fría y pelalos',
+      text: 'Armalo con el queso pegado al pan, y la palta al final.',
       minutes: 2,
       detail:
-        'Tiralos en un bol con agua de la canilla un minuto. Después golpeá la cáscara contra la mesada para rajarla toda y pelalos abajo del chorro: sale limpia.',
-    },
-    {
-      text: 'Tostá las 2 rebanadas de pan',
-      minutes: 2,
-      detail:
-        'Apenas doradas. Si el sándwich es para llevar, dejá que el pan se enfríe antes de armarlo: el pan caliente larga vapor y se ablanda solo adentro del papel.',
-    },
-    {
-      text: 'Cortá el tomate en rodajas finas y secalas con papel',
-      minutes: 1,
-      detail:
-        'Apoyá las rodajas sobre un papel de cocina y palmealas. El agua del tomate es lo que te arruina el pan a las tres horas.',
-    },
-    {
-      text: 'Armá el sándwich: el queso pegado al pan, el resto en el medio',
-      minutes: 2,
-      detail:
-        'El orden importa: queso abajo, después huevo en rodajas, después tomate, y otra vez queso arriba si te queda. El queso hace de barrera y el pan no se moja. Sal y orégano encima del huevo.',
-    },
-    {
-      text: 'La palta, recién cuando lo vayas a comer',
-      detail:
-        'Cortada se pone marrón en veinte minutos. Si el sándwich es para más tarde, llevá el medio palta entero con el carozo y agregala ahí, o pisala con unas gotas de limón y sumala igual.',
+        'El queso contra el pan hace de barrera: si el tomate lo toca, se moja.',
     },
   ],
   'budincitos-huevo': [
@@ -357,40 +324,18 @@ export const RECETAS: Record<string, Step[]> = {
   ],
   'ensalada-lentejas': [
     {
-      text: 'Herví los 2 huevos: agua fría, 10 minutos desde el hervor',
-      minutes: 15,
-      detail:
-        'Si ya tenés huevos duros hechos en la heladera, saltá este paso y arrancá por el siguiente: esta comida pasa a ser de diez minutos.',
+      text: 'Herví los huevos 10 min y pelalos.',
+      minutes: 12,
     },
     {
-      text: 'Escurrí las lentejas y enjuagalas bajo el chorro',
-      minutes: 2,
-      detail:
-        'Volcalas en un colador y pasales agua un rato moviéndolas con la mano. Sacás el líquido espeso de la lata, que es el que deja sabor a lata y suma mucha sal.',
+      text: 'Escurrí y enjuagá las lentejas; cortá la cebolla finita y el tomate en cubos.',
+      minutes: 5,
     },
     {
-      text: 'Cortá media cebolla morada bien finita',
+      text: 'Mezclá todo con limón, aceite, sal y orégano, y sumá la palta al final.',
       minutes: 3,
       detail:
-        'Lo más fina que puedas. Si te resulta muy fuerte de gusto, dejala cinco minutos en un bol con agua fría y después escurrila: pierde el picor y queda igual de crocante.',
-    },
-    {
-      text: 'Cortá el tomate en cubos y el huevo en cuartos',
-      minutes: 3,
-      detail:
-        'Al huevo cortalo con el cuchillo mojado y no se te desarma la yema.',
-    },
-    {
-      text: 'Mezclá todo con limón, aceite, sal y orégano',
-      minutes: 3,
-      detail:
-        'El jugo de medio limón y un chorro de aceite. Probá y corregí: las lentejas de lata vienen sosas y aguantan más sal de la que pensás.',
-    },
-    {
-      text: 'La palta, en cubos y al final',
-      minutes: 1,
-      detail:
-        'Si el tupper es para mañana, no le pongas la palta hoy: se pone marrón. Llevala aparte o sumala a la mañana.',
+        'La palta al final y en cubos: si la mezclás antes se deshace.',
     },
   ],
   'arroz-atun': [
@@ -1311,6 +1256,336 @@ export const RECETAS: Record<string, Step[]> = {
     {
       text: 'Horno 20 min a 200°.',
       minutes: 20,
+    },
+  ],
+  'ravioles-salsa': [
+    {
+      text: 'Poné una olla con agua y sal a fuego fuerte.',
+      minutes: 5,
+    },
+    {
+      text: 'Mientras hierve, calentá la salsa en una sartén.',
+      minutes: 5,
+    },
+    {
+      text: 'Tirá los ravioles y sacalos cuando suban, 3 min.',
+      minutes: 4,
+      detail:
+        'Cuando flotan están listos. Un minuto más y se abren.',
+    },
+    {
+      text: 'Escurrilos y mezclalos con la salsa.',
+      minutes: 1,
+    },
+  ],
+  'noquis-salsa': [
+    {
+      text: 'Poné una olla con agua y sal a fuego fuerte.',
+      minutes: 5,
+    },
+    {
+      text: 'Mientras hierve, calentá la salsa en una sartén.',
+      minutes: 5,
+    },
+    {
+      text: 'Tirá los ñoquis y sacalos apenas suben.',
+      minutes: 3,
+      detail:
+        'Suben en dos minutos. Si los dejás, se deshacen.',
+    },
+    {
+      text: 'Escurrilos y mezclalos con la salsa.',
+      minutes: 1,
+    },
+  ],
+  'pollo-arroz-integral': [
+    {
+      text: 'Poné el arroz integral a hervir: tarda 40 min.',
+      minutes: 40,
+      detail:
+        'El integral tarda el doble que el blanco. Si lo sacás antes, queda duro.',
+    },
+    {
+      text: 'Mientras se hace, cortá el pollo en tiras y la zanahoria en rodajas finas.',
+      minutes: 6,
+    },
+    {
+      text: 'Cociná el pollo 8 min en la sartén con aceite y sal.',
+      minutes: 8,
+    },
+    {
+      text: 'Sumá la zanahoria y cociná 5 min más.',
+      minutes: 5,
+    },
+    {
+      text: 'Mezclá todo con el arroz escurrido.',
+      minutes: 2,
+    },
+  ],
+  'fideos-integrales-salsa': [
+    {
+      text: 'Poné una olla con agua y sal a fuego fuerte.',
+      minutes: 5,
+    },
+    {
+      text: 'Mientras hierve, calentá la salsa en una sartén.',
+      minutes: 5,
+    },
+    {
+      text: 'Herví los fideos integrales 10 min.',
+      minutes: 10,
+    },
+    {
+      text: 'Escurrilos, mezclá con la salsa y el queso rallado arriba.',
+      minutes: 2,
+    },
+  ],
+  'milanesa-ensalada': [
+    {
+      text: 'Calentá aceite en la sartén, que cubra el fondo.',
+      minutes: 3,
+    },
+    {
+      text: 'Freí las milanesas 3 min de cada lado.',
+      minutes: 12,
+      detail:
+        'De a una. Dos juntas le bajan la temperatura al aceite y salen aceitosas.',
+    },
+    {
+      text: 'Sacalas sobre papel de cocina.',
+      minutes: 1,
+    },
+    {
+      text: 'Cortá la lechuga y el tomate, con aceite y sal.',
+      minutes: 4,
+    },
+  ],
+  'ensalada-completa': [
+    {
+      text: 'Herví la papa en cubos y los huevos juntos, 12 min.',
+      minutes: 15,
+      detail:
+        'La papa en cubos tarda lo mismo que el huevo: van en la misma olla.',
+    },
+    {
+      text: 'Mientras tanto, cociná el pollo 8 min en la sartén con sal.',
+      minutes: 8,
+    },
+    {
+      text: 'Cortá la lechuga y el tomate.',
+      minutes: 4,
+    },
+    {
+      text: 'Cortá el pollo, la papa y el huevo, y mezclá todo con aceite y sal.',
+      minutes: 4,
+    },
+  ],
+  'ensalada-cesar-cena': [
+    {
+      text: 'Cortá el pan en cubos y tostalos 8 min en el horno.',
+      minutes: 10,
+    },
+    {
+      text: 'Mientras tanto, cociná el pollo 8 min con sal y cortalo en tiras.',
+      minutes: 10,
+    },
+    {
+      text: 'Cortá la lechuga en trozos grandes y mezclala con el queso rallado.',
+      minutes: 3,
+    },
+    {
+      text: 'Sumá el pollo y los cubos de pan arriba, con aceite.',
+      minutes: 2,
+    },
+  ],
+  'pizza-prepizza': [
+    {
+      text: 'Prendé el horno al máximo.',
+      minutes: 2,
+    },
+    {
+      text: 'Untá la prepizza con la salsa, sin llegar al borde.',
+      minutes: 3,
+      detail:
+        'Dejá dos dedos de borde limpio: si la salsa llega hasta el final, se chorrea y se pega.',
+    },
+    {
+      text: 'Cubrila con la muzzarella en rodajas.',
+      minutes: 3,
+    },
+    {
+      text: 'Horno 12 min, hasta que el queso burbujee.',
+      minutes: 12,
+    },
+  ],
+  'asado': [
+    {
+      text: 'Prendé el fuego y esperá a que la leña se haga brasa.',
+      minutes: 45,
+      detail:
+        'Brasa, no llama. Con llama la carne se quema afuera y queda cruda adentro.',
+    },
+    {
+      text: 'Salá la carne de los dos lados justo antes de ponerla.',
+      minutes: 3,
+    },
+    {
+      text: 'Poné el asado del lado del hueso 40 min, y 20 del otro.',
+      minutes: 60,
+    },
+    {
+      text: 'Mientras tanto, cortá la lechuga y el tomate.',
+      minutes: 5,
+    },
+    {
+      text: 'Dejá descansar la carne 5 min antes de cortarla.',
+      minutes: 5,
+    },
+  ],
+  'choripan': [
+    {
+      text: 'Poné el chorizo a fuego medio, 15 min, dándolo vuelta cada tanto.',
+      minutes: 16,
+      detail:
+        'Fuego medio y sin pincharlo: el pinchazo le saca el jugo y queda seco.',
+    },
+    {
+      text: 'Abrilo al medio a lo largo con un cuchillo.',
+      minutes: 1,
+    },
+    {
+      text: 'Ponelo en el pan.',
+      minutes: 1,
+    },
+  ],
+  'milanesa-congelada': [
+    {
+      text: 'Prendé el horno fuerte y poné las milanesas congeladas en la asadera con un chorrito de aceite.',
+      minutes: 4,
+      detail:
+        'Sin descongelar. Descongelada, el rebozado se moja y no queda crocante.',
+    },
+    {
+      text: 'Pelá y herví las papas 20 min.',
+      minutes: 20,
+    },
+    {
+      text: 'Dales vuelta a las milanesas a los 10 min.',
+      minutes: 2,
+    },
+    {
+      text: 'Pisá las papas con la leche y sal.',
+      minutes: 4,
+    },
+    {
+      text: 'Sacá las milanesas cuando estén doradas, a los 20 min.',
+      minutes: 1,
+    },
+  ],
+  'sopa-crema-pan': [
+    {
+      text: 'Calentá 500 ml de agua en una olla.',
+      minutes: 4,
+    },
+    {
+      text: 'Volcá el sobre en lluvia, revolviendo.',
+      minutes: 1,
+      detail:
+        'En lluvia y revolviendo. De golpe se hace grumos y no salen más.',
+    },
+    {
+      text: 'Cociná 3 min sin dejar de revolver.',
+      minutes: 3,
+    },
+    {
+      text: 'Tostá el pan, cortalo en cubos y tiralos arriba.',
+      minutes: 2,
+    },
+  ],
+  'ravioles-cena-rapida': [
+    {
+      text: 'Poné una olla con agua y sal a fuego fuerte.',
+      minutes: 5,
+    },
+    {
+      text: 'Herví los ravioles: salen cuando flotan, 3 min.',
+      minutes: 4,
+    },
+    {
+      text: 'Escurrilos y mezclalos con la manteca en la olla todavía caliente.',
+      minutes: 3,
+      detail:
+        'Con la olla caliente la manteca se derrite sola y cubre todo.',
+    },
+    {
+      text: 'Queso rallado arriba.',
+      minutes: 1,
+    },
+  ],
+  'noquis-manteca': [
+    {
+      text: 'Poné una olla con agua y sal a fuego fuerte.',
+      minutes: 5,
+    },
+    {
+      text: 'Tirá los ñoquis y sacalos apenas suben.',
+      minutes: 3,
+    },
+    {
+      text: 'Escurrilos y mezclalos con la manteca en la olla todavía caliente.',
+      minutes: 3,
+    },
+    {
+      text: 'Queso rallado arriba.',
+      minutes: 1,
+    },
+  ],
+  'tostadas-palta-huevo': [
+    {
+      text: 'Freí los 2 huevos a fuego medio con un poco de aceite.',
+      minutes: 5,
+    },
+    {
+      text: 'Tostá el pan mientras tanto.',
+      minutes: 2,
+    },
+    {
+      text: 'Pisá la palta con sal y untala sobre las tostadas.',
+      minutes: 2,
+    },
+    {
+      text: 'El huevo arriba.',
+      minutes: 1,
+    },
+  ],
+  'tomate-atun-cena': [
+    {
+      text: 'Herví el huevo 10 min y pelalo.',
+      minutes: 12,
+    },
+    {
+      text: 'Ahuecá los tomates con una cuchara.',
+      minutes: 4,
+    },
+    {
+      text: 'Mezclá el atún escurrido con el huevo picado y la mayonesa, y rellenalos.',
+      minutes: 4,
+    },
+  ],
+  'sandwich-huevo-llevar': [
+    {
+      text: 'Herví los huevos 10 min, pelalos y pisalos con la mayonesa.',
+      minutes: 12,
+    },
+    {
+      text: 'Poné la mezcla sobre el pan, con la lechuga entre el huevo y el pan.',
+      minutes: 3,
+      detail:
+        'La lechuga hace de barrera: así el pan no se moja hasta el mediodía.',
+    },
+    {
+      text: 'Envolvelo apretado si lo vas a llevar.',
+      minutes: 1,
     },
   ],
 }

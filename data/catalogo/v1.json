@@ -817,58 +817,6 @@
     "rinde": null
   },
   {
-    "slug": "mate-solo-manana",
-    "name": "Sólo mate",
-    "category": "desayuno",
-    "origen": "casera",
-    "sabor": "neutral",
-    "description": "Mucha gente no desayuna. Está bien que la app lo sepa y no te invente un plato.",
-    "momentos": [
-      "desayuno"
-    ],
-    "portions": [
-      {
-        "label": "1 mate",
-        "carbs": 0,
-        "grams": null,
-        "default": true
-      }
-    ],
-    "tags": [
-      "en casa",
-      "rápido"
-    ],
-    "satiety": "liviana",
-    "totalMinutes": 2,
-    "mainIngredient": "yerba",
-    "everyday": true,
-    "addedSugar": false,
-    "frequency": "habitual",
-    "difficulty": 1,
-    "portable": false,
-    "needsCold": false,
-    "needsReheat": false,
-    "makeNightBefore": false,
-    "freezable": false,
-    "handheld": false,
-    "buyOutside": false,
-    "venues": [],
-    "priceLevel": null,
-    "drink": null,
-    "esBebida": true,
-    "items": [
-      {
-        "item": "yerba",
-        "qty": 30,
-        "unit": "g"
-      }
-    ],
-    "notes": "",
-    "prepType": "assemble",
-    "activeMinutes": 2,
-    "rinde": null
-  },
-  {
     "slug": "avena-nocturna",
     "name": "Avena con banana y nueces",
     "category": "desayuno",
@@ -1004,6 +952,16 @@
         "item": "huevo",
         "qty": 2,
         "unit": "u"
+      },
+      {
+        "item": "aceite",
+        "qty": 1,
+        "unit": "cda"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
     "notes": "",
@@ -2438,6 +2396,11 @@
         "item": "salsa de tomate",
         "qty": 150,
         "unit": "g"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
     "notes": "",
@@ -2496,6 +2459,11 @@
         "item": "salsa de tomate",
         "qty": 150,
         "unit": "g"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
     "notes": "",
@@ -2801,6 +2769,16 @@
         "item": "tomate",
         "qty": 1,
         "unit": "u"
+      },
+      {
+        "item": "aceite",
+        "qty": 1,
+        "unit": "cda"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
     "notes": "",
@@ -3104,7 +3082,7 @@
     "slug": "pollo-spiedo-casa",
     "name": "Pollo al spiedo con ensalada",
     "category": "almuerzo",
-    "origen": "casera",
+    "origen": "mixta",
     "sabor": "salado",
     "description": "Comprado hecho y con ensalada al lado: doce gramos, casi todo de la ensalada.",
     "momentos": [
@@ -3159,7 +3137,7 @@
         "unit": "u"
       }
     ],
-    "notes": "El pollo se compra hecho. Lo único que se prepara es la ensalada.",
+    "notes": "El pollo se compra hecho en la rotisería; la ensalada la hacés vos. La compra igual lleva el pollo, la lechuga y el tomate: la lista sale de los ingredientes, no del origen.",
     "prepType": "assemble",
     "activeMinutes": 5,
     "rinde": null
@@ -3319,10 +3297,15 @@
         "item": "palta",
         "qty": 0.5,
         "unit": "u"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
     "notes": "",
-    "prepType": "cook",
+    "prepType": "assemble",
     "activeMinutes": 15,
     "rinde": null
   },
@@ -3476,10 +3459,20 @@
         "item": "aceite de oliva",
         "qty": 1,
         "unit": "cda"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
+      },
+      {
+        "item": "orégano",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
     "notes": "",
-    "prepType": "cook",
+    "prepType": "assemble",
     "activeMinutes": 15,
     "rinde": null
   },
@@ -4589,6 +4582,11 @@
         "item": "pan",
         "qty": 1,
         "unit": "u"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
     "notes": "",
@@ -5050,6 +5048,11 @@
         "item": "queso rallado",
         "qty": 20,
         "unit": "g"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
     "notes": "",
@@ -6901,8 +6904,9 @@
     "category": "snack",
     "origen": "casera",
     "sabor": "neutral",
-    "description": "Cero carbohidratos. Con azúcar, cinco por cucharadita.",
+    "description": "Cero carbohidratos. Con azúcar, cinco por cucharadita. Y sirve de desayuno: mucha gente no desayuna otra cosa.",
     "momentos": [
+      "desayuno",
       "snack"
     ],
     "portions": [
@@ -6915,7 +6919,8 @@
     ],
     "tags": [
       "rápido",
-      "práctico"
+      "práctico",
+      "en casa"
     ],
     "satiety": "liviana",
     "totalMinutes": 2,
@@ -6942,7 +6947,7 @@
         "unit": "g"
       }
     ],
-    "notes": "",
+    "notes": "Absorbió a «mate-solo-manana», que era la misma entrada cargada dos veces: mismo ingrediente, misma porción, mismos dos minutos. Lo único que cambiaba era el momento, y eso ahora vive en momentos.",
     "prepType": "assemble",
     "activeMinutes": 2,
     "rinde": null
@@ -7707,10 +7712,15 @@
         "item": "lechuga",
         "qty": 0.25,
         "unit": "u"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
     "notes": "",
-    "prepType": "cook",
+    "prepType": "assemble",
     "activeMinutes": 5,
     "rinde": null
   },
@@ -9133,6 +9143,16 @@
         "item": "zanahoria",
         "qty": 1,
         "unit": "u"
+      },
+      {
+        "item": "aceite",
+        "qty": 1,
+        "unit": "cda"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
     "notes": "",
@@ -9197,6 +9217,11 @@
         "item": "queso rallado",
         "qty": 20,
         "unit": "g"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
     "notes": "",
@@ -9429,12 +9454,22 @@
         "item": "tomate",
         "qty": 1,
         "unit": "u"
+      },
+      {
+        "item": "aceite",
+        "qty": 3,
+        "unit": "cda"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
     "notes": "",
     "prepType": "cook",
     "activeMinutes": 20,
-    "rinde": null
+    "rinde": "2 milanesas"
   },
   {
     "slug": "zapallitos-rellenos",
@@ -10468,7 +10503,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "totalMinutes": 8,
+    "totalMinutes": 10,
     "mainIngredient": "sopa crema",
     "everyday": true,
     "addedSugar": false,
@@ -10495,11 +10530,16 @@
         "item": "pan",
         "qty": 2,
         "unit": "u"
+      },
+      {
+        "item": "agua",
+        "qty": 500,
+        "unit": "ml"
       }
     ],
     "notes": "",
     "prepType": "cook",
-    "activeMinutes": 5,
+    "activeMinutes": 6,
     "rinde": null
   },
   {
@@ -10564,6 +10604,16 @@
         "item": "pan",
         "qty": 1,
         "unit": "u"
+      },
+      {
+        "item": "aceite",
+        "qty": 1,
+        "unit": "cda"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
     "notes": "",
@@ -10718,7 +10768,7 @@
     "notes": "",
     "prepType": "cook",
     "activeMinutes": 8,
-    "rinde": null
+    "rinde": "4 porciones"
   },
   {
     "slug": "tomate-atun-cena",
@@ -10782,10 +10832,15 @@
         "item": "mayonesa",
         "qty": 1,
         "unit": "cda"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
     "notes": "",
-    "prepType": "cook",
+    "prepType": "assemble",
     "activeMinutes": 10,
     "rinde": null
   },
@@ -11072,7 +11127,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "totalMinutes": 8,
+    "totalMinutes": 12,
     "mainIngredient": "ñoquis",
     "everyday": true,
     "addedSugar": false,
@@ -11104,6 +11159,11 @@
         "item": "queso rallado",
         "qty": 30,
         "unit": "g"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
     "notes": "",
@@ -11163,12 +11223,27 @@
         "item": "papa",
         "qty": 200,
         "unit": "g"
+      },
+      {
+        "item": "leche",
+        "qty": 50,
+        "unit": "ml"
+      },
+      {
+        "item": "aceite",
+        "qty": 1,
+        "unit": "cda"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
-    "notes": "",
+    "notes": "La porción dice «con puré» y el puré no sale en cinco minutos: hervir y pisar las papas son doce de trabajo. Se sumó la leche del puré, que no estaba.",
     "prepType": "cook",
-    "activeMinutes": 5,
-    "rinde": null
+    "activeMinutes": 12,
+    "rinde": "2 platos"
   },
   {
     "slug": "sopa-verduras",
