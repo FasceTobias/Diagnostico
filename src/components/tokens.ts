@@ -1,4 +1,5 @@
 import type { Category, Meal, Origen } from '../lib/types'
+import { ORIGEN_CORTO } from '../lib/types'
 
 /* ------------------------------------------------------------------
    LAS CONSTANTES DEL KIT
@@ -168,3 +169,14 @@ export const TILE_ORIGEN: Record<Origen, { icono: IconName; tono: Tono }> = {
   supermercado: { icono: 'compras', tono: 'azul' },
   'heladería': { icono: 'dulce', tono: 'rosa' },
 }
+
+/** «~30 g CH · 10 min · panadería». Lo secundario, en una sola línea.
+    El tiempo es el de reloj: la diferencia entre activo y total es un
+    dato de la ficha, no de una fila que se lee de reojo. */
+export const meta = (meal: Meal): string => {
+  const minutos = meal.totalMinutes ?? meal.prepMinutes
+  return [`${carbs(meal)} CH`, minutos > 0 ? `${minutos} min` : null, ORIGEN_CORTO[meal.origen] || null]
+    .filter(Boolean)
+    .join(' · ')
+}
+

@@ -5,21 +5,27 @@ import type { IconName, Tono } from './tokens'
 /* ------------------------------------------------------------------
    EL KIT
 
-   Todo lo que se dibuje de acá en adelante sale de estas piezas. La
-   prueba para cualquier componente nuevo es una sola: ¿podría estar en
-   la pantalla de inicio sin que se note que llegó después? Si no, se
-   rehace con estas piezas hasta que sí.
+   Tres piezas, y no hay una cuarta:
 
-   Cuatro cosas hacen el sistema, y son las cuatro que no se tocan:
-   papel crema, tarjeta blanca de esquinas grandes, sombra que casi no
-   está, y un solo acento pastel por tarjeta.
+     A. tarjeta héroe   — una por pantalla, la que manda
+     B. tarjeta normal  — todo lo demás
+     C. chip            — lo que se toca en fila
+
+   Antes había seis variantes de tarjeta con cuatro paddings y dos
+   radios, y el resultado era una pantalla donde nada terminaba a la
+   misma altura que lo de al lado. La regla nueva es aburrida a
+   propósito: mismo radio, misma sombra, mismo borde, y el padding sale
+   de la escala de espacio.
+
+   Del color, una sola cosa: lavanda es la acción. Los otros pasteles
+   dicen el momento del día y va uno por tarjeta.
    ------------------------------------------------------------------ */
 
 export function Icono({
   name,
-  size = 22,
+  size = 20,
   className = '',
-  strokeWidth = 1.7,
+  strokeWidth = 1.6,
 }: {
   name: IconName
   size?: number
@@ -47,37 +53,44 @@ export function Icono({
   )
 }
 
-/* ---------------- tarjeta ---------------- */
+/* ---------------- A y B: la tarjeta ---------------- */
 
-/** La tarjeta blanca. Es el 90% de la app: todo lo que se muestre vive
-    adentro de una, y el papel crema se ve entre ellas. */
-export function Card({
-  children,
-  className = '',
-  padding = 'p-5',
-}: {
-  children: ReactNode
-  className?: string
-  padding?: string
-}) {
-  return (
-    <div className={`rounded-[var(--radius-hero)] bg-surface shadow-sm ${padding} ${className}`}>
-      {children}
-    </div>
-  )
+/** El padding sale de la escala y no de la inspiración del momento.
+    `lista` es para una fila; `normal` para una tarjeta; `hero` para la
+    única tarjeta grande de la pantalla. */
+type Aire = 'lista' | 'normal' | 'hero'
+
+const AIRE: Record<Aire, string> = {
+  lista: 'p-3',
+  normal: 'p-4',
+  hero: 'p-5',
 }
 
-/** Una tarjeta que se toca. Misma caja, con respuesta al tacto. */
+const CAJA = 'rounded-[var(--radius-card)] bg-surface shadow-sm'
+
+export function Card({
+  children,
+  aire = 'normal',
+  className = '',
+}: {
+  children: ReactNode
+  aire?: Aire
+  className?: string
+}) {
+  return <div className={`${CAJA} ${AIRE[aire]} ${className}`}>{children}</div>
+}
+
+/** La misma caja, que además se toca. */
 export function CardButton({
   children,
+  aire = 'normal',
   className = '',
-  padding = 'p-5',
   onClick,
   label,
 }: {
   children: ReactNode
+  aire?: Aire
   className?: string
-  padding?: string
   onClick: () => void
   label?: string
 }) {
@@ -86,104 +99,38 @@ export function CardButton({
       type="button"
       onClick={onClick}
       aria-label={label}
-      className={`w-full rounded-[var(--radius-hero)] bg-surface text-left shadow-sm transition-transform duration-150 active:scale-[0.985] ${padding} ${className}`}
+      className={`${CAJA} ${AIRE[aire]} w-full text-left transition-transform duration-150 active:scale-[0.99] ${className}`}
     >
       {children}
     </button>
   )
 }
 
-/* ---------------- pastilla ---------------- */
+/* ---------------- C: chips y pastillas ---------------- */
 
-/** Una etiqueta corta: el momento del día, un dato de la comida, el
-    lugar donde se compra. Con punto cuando marca un estado. */
+/** Un dato corto y quieto: el momento del día, un número, una etiqueta.
+    No se toca. */
 export function Pill({
   tono = 'neutro',
   children,
-  dot = false,
   className = '',
 }: {
   tono?: Tono
   children: ReactNode
-  dot?: boolean
   className?: string
 }) {
   const t = TONO[tono]
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-pill px-2.5 py-1 text-[13px] font-bold ${t.bg} ${t.fg} ${className}`}
+      className={`inline-flex items-center rounded-pill px-2.5 py-1 t-label ${t.bg} ${t.fg} ${className}`}
     >
-      {dot && <span className={`size-1.5 rounded-full ${t.fill}`} />}
       {children}
     </span>
   )
 }
 
-/* ---------------- baldosa de ícono ---------------- */
-
-/** El cuadrado redondeado con el ícono adentro. Es el único lugar donde
-    entra el pastel en una tarjeta, y por eso hay uno solo. */
-export function Tile({
-  name,
-  tono,
-  size = 40,
-  icon = 21,
-}: {
-  name: IconName
-  tono: Tono
-  size?: number
-  icon?: number
-}) {
-  const t = TONO[tono]
-  return (
-    <span
-      className={`grid shrink-0 place-items-center rounded-[var(--radius-tile)] ${t.bg} ${t.fg}`}
-      style={{ width: size, height: size }}
-    >
-      <Icono name={name} size={icon} strokeWidth={1.8} />
-    </span>
-  )
-}
-
-/* ---------------- título de sección ---------------- */
-
-export function TituloSeccion({
-  children,
-  chispa = false,
-  accion,
-  className = '',
-}: {
-  children: ReactNode
-  /** La chispa amarilla. Una sola por pantalla, en la sección que manda. */
-  chispa?: boolean
-  accion?: { label: string; onClick: () => void }
-  className?: string
-}) {
-  return (
-    <div className={`mb-3 flex items-center justify-between gap-3 ${className}`}>
-      <h2 className="v-head flex items-center gap-1.5 text-[20px] text-ink">
-        {children}
-        {chispa && <Icono name="chispa" size={15} className="text-mantequilla" />}
-      </h2>
-      {accion && (
-        <button
-          type="button"
-          onClick={accion.onClick}
-          className="shrink-0 text-[14px] font-bold text-lavanda active:opacity-70"
-        >
-          {accion.label}
-        </button>
-      )}
-    </div>
-  )
-}
-
-/* ---------------- chips ----------------
-
-   La fila de pastillas seleccionables: la situación, los lugares, los
-   filtros de snacks. La activa va rellena de lavanda; las otras son
-   blancas con un borde finito. Es el mismo gesto en toda la app. */
-
+/** Lo mismo, pero se toca. Activo = lavanda lleno; el resto, blanco con
+    un borde finito. Es el mismo gesto en toda la app. */
 export function Chip({
   children,
   icono,
@@ -200,28 +147,108 @@ export function Chip({
       type="button"
       onClick={onClick}
       aria-pressed={activo}
-      className={`inline-flex min-h-[40px] shrink-0 items-center gap-2 rounded-pill px-3.5 text-[14.5px] font-bold transition-colors duration-150 ${
+      className={`inline-flex h-9 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-pill px-3.5 text-[13.5px] font-medium transition-colors duration-150 ${
         activo
           ? 'bg-lavanda text-lavanda-ink'
           : 'border border-line bg-surface text-ink-soft active:bg-surface-2'
       }`}
     >
-      {icono && <Icono name={icono} size={18} strokeWidth={activo ? 2 : 1.8} />}
+      {icono && <Icono name={icono} size={16} strokeWidth={1.7} />}
       {children}
     </button>
   )
 }
 
-/** La fila que se desliza. El padding a los costados va acá adentro para
-    que el primer y el último chip no queden pegados al borde. */
+/** La fila que se desliza. El sangrado a los costados es exactamente el
+    margen de la pantalla, así el primer chip arranca donde arrancan las
+    tarjetas y no un poco más adentro. */
 export function FilaChips({ children, label }: { children: ReactNode; label: string }) {
   return (
     <div
       role="group"
       aria-label={label}
-      className="v-no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4 pb-1"
+      className="v-no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 pb-0.5"
     >
       {children}
+    </div>
+  )
+}
+
+/* ---------------- la baldosa del ícono ---------------- */
+
+export function Tile({
+  name,
+  tono,
+  size = 38,
+  icon = 19,
+}: {
+  name: IconName
+  tono: Tono
+  size?: number
+  icon?: number
+}) {
+  const t = TONO[tono]
+  return (
+    <span
+      className={`grid shrink-0 place-items-center rounded-[var(--radius-tile)] ${t.bg} ${t.fg}`}
+      style={{ width: size, height: size }}
+    >
+      <Icono name={name} size={icon} strokeWidth={1.7} />
+    </span>
+  )
+}
+
+/* ---------------- títulos ---------------- */
+
+/** Título de sección. Dieciséis píxeles hasta el contenido, treinta y
+    dos hasta la sección anterior: es lo que hace que se lean como
+    bloques y no como una lista larga de cosas. */
+export function TituloSeccion({
+  children,
+  accion,
+  className = '',
+}: {
+  children: ReactNode
+  accion?: { label: string; onClick: () => void }
+  className?: string
+}) {
+  return (
+    <div className={`mb-4 flex items-baseline justify-between gap-3 ${className}`}>
+      <h2 className="t-title text-ink">{children}</h2>
+      {accion && (
+        <button
+          type="button"
+          onClick={accion.onClick}
+          className="shrink-0 text-[13.5px] font-medium text-lavanda active:opacity-70"
+        >
+          {accion.label}
+        </button>
+      )}
+    </div>
+  )
+}
+
+/** El rótulo de un bloque secundario: más chico que un título, para que
+    «Comer afuera» no pese lo mismo que «Lo que sigue hoy». */
+export function Rotulo({
+  children,
+  accion,
+}: {
+  children: ReactNode
+  accion?: { label: string; onClick: () => void }
+}) {
+  return (
+    <div className="mb-3 flex items-baseline justify-between gap-3">
+      <h3 className="t-label text-ink-faint">{children}</h3>
+      {accion && (
+        <button
+          type="button"
+          onClick={accion.onClick}
+          className="shrink-0 t-label text-lavanda active:opacity-70"
+        >
+          {accion.label}
+        </button>
+      )}
     </div>
   )
 }
@@ -245,7 +272,7 @@ export function Boton({
 }) {
   const estilo =
     variante === 'principal'
-      ? 'bg-lavanda text-lavanda-ink shadow-sm'
+      ? 'bg-lavanda text-lavanda-ink'
       : variante === 'suave'
         ? 'bg-lavanda-tenue text-lavanda'
         : 'text-lavanda'
@@ -253,18 +280,15 @@ export function Boton({
     <button
       type={type}
       onClick={onClick}
-      className={`inline-flex min-h-[46px] items-center justify-center gap-2 rounded-pill px-4 text-[15px] font-extrabold transition-transform duration-150 active:scale-[0.97] ${estilo} ${className}`}
+      className={`inline-flex h-11 items-center justify-center gap-2 rounded-pill px-4 text-[14.5px] font-semibold transition-transform duration-150 active:scale-[0.98] ${estilo} ${className}`}
     >
-      {icono && <Icono name={icono} size={19} strokeWidth={2} />}
+      {icono && <Icono name={icono} size={17} strokeWidth={1.9} />}
       {children}
     </button>
   )
 }
 
-/* ---------------- vacío ----------------
-
-   Una sección sin nada no es un error: es un día que todavía no armaste.
-   Dice qué falta y ofrece el camino, sin rellenar con datos de mentira. */
+/* ---------------- vacío ---------------- */
 
 export function Vacio({
   icono,
@@ -280,10 +304,10 @@ export function Vacio({
   accion?: { label: string; onClick: () => void }
 }) {
   return (
-    <div className="flex flex-col items-center px-4 py-5 text-center">
-      <Tile name={icono} tono={tono} size={48} icon={24} />
-      <p className="v-head mt-3 text-[17px] text-ink">{titulo}</p>
-      {detalle && <p className="mt-1 max-w-[34ch] text-[14px] text-ink-faint">{detalle}</p>}
+    <div className="flex flex-col items-center px-4 py-4 text-center">
+      <Tile name={icono} tono={tono} size={44} icon={22} />
+      <p className="t-title mt-3 text-ink">{titulo}</p>
+      {detalle && <p className="t-meta mt-1.5 max-w-[32ch] text-ink-faint">{detalle}</p>}
       {accion && (
         <Boton variante="suave" onClick={accion.onClick} className="mt-4">
           {accion.label}
@@ -293,12 +317,7 @@ export function Vacio({
   )
 }
 
-/* ---------------- hoja ----------------
-
-   Sube desde abajo, ocupa lo que necesita y se va tocando afuera. Las
-   respuestas largas —«mostrame todos los snacks dulces»— viven acá y no
-   en otra pantalla: la pregunta se hizo en Inicio y la respuesta vuelve
-   a Inicio. */
+/* ---------------- la hoja ---------------- */
 
 export function Sheet({
   abierta,
@@ -323,23 +342,23 @@ export function Sheet({
         className="v-fade absolute inset-0 bg-[var(--v-scrim)]"
       />
       <div className="v-sheet-in relative flex max-h-[86vh] w-full max-w-md flex-col rounded-t-[var(--radius-sheet)] bg-bg">
-        <div className="shrink-0 px-5 pt-3 pb-2">
-          <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-line-strong" />
+        <div className="shrink-0 px-5 pt-3 pb-4">
+          <div className="mx-auto mb-4 h-1 w-9 rounded-full bg-line-strong" />
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <h2 className="v-head text-[20px] text-ink">{titulo}</h2>
-              {bajada && <p className="mt-0.5 text-[14px] text-ink-faint">{bajada}</p>}
+              <h2 className="t-title text-ink">{titulo}</h2>
+              {bajada && <p className="t-meta mt-1 text-ink-faint">{bajada}</p>}
             </div>
             <button
               type="button"
               onClick={onCerrar}
-              className="-mt-1 shrink-0 rounded-pill px-3 py-1.5 text-[14px] font-bold text-lavanda active:bg-surface-2"
+              className="-mt-0.5 shrink-0 rounded-pill px-3 py-1.5 text-[13.5px] font-semibold text-lavanda active:bg-surface-2"
             >
               Listo
             </button>
           </div>
         </div>
-        <div className="v-no-scrollbar min-h-0 flex-1 overflow-y-auto px-4 pb-8 v-safe-bottom">
+        <div className="v-no-scrollbar min-h-0 flex-1 overflow-y-auto px-5 pb-8 v-safe-bottom">
           {children}
         </div>
       </div>

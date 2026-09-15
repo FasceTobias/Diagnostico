@@ -23,7 +23,7 @@ export function DetalleComida({ meal }: { meal: Meal }) {
         </div>
 
         {meal.description && (
-          <p className="mt-3 text-[15px] leading-snug text-ink-soft">{meal.description}</p>
+          <p className="t-body mt-3 text-ink-soft">{meal.description}</p>
         )}
 
         <dl className="mt-4 divide-y divide-line">
@@ -54,10 +54,10 @@ export function DetalleComida({ meal }: { meal: Meal }) {
       {meal.ingredients.length > 0 && (
         <section>
           <TituloSeccion>Qué lleva</TituloSeccion>
-          <Card padding="p-4">
+          <Card aire="normal">
             <ul className="space-y-1.5">
               {meal.ingredients.map((i) => (
-                <li key={i.item} className="text-[15px] text-ink-soft">
+                <li key={i.item} className="t-body text-ink-soft">
                   {ingredientText(i.item, i.qty, i.unit)}
                 </li>
               ))}
@@ -72,19 +72,19 @@ export function DetalleComida({ meal }: { meal: Meal }) {
           <ol className="space-y-2">
             {meal.steps.map((paso, i) => (
               <li key={paso.text}>
-                <Card padding="p-4">
+                <Card aire="normal">
                   <div className="flex gap-3">
-                    <span className="grid size-6 shrink-0 place-items-center rounded-full bg-lavanda-tenue text-[13px] font-extrabold text-lavanda">
+                    <span className="grid size-6 shrink-0 place-items-center rounded-full bg-lavanda-tenue text-[12px] font-semibold text-lavanda">
                       {i + 1}
                     </span>
                     <div className="min-w-0">
-                      <p className="text-[15px] font-bold text-ink">{paso.text}</p>
+                      <p className="text-[14.5px] font-semibold text-ink">{paso.text}</p>
                       {paso.detail && (
-                        <p className="mt-1 text-[14px] leading-snug text-ink-faint">{paso.detail}</p>
+                        <p className="t-meta mt-1 text-ink-faint">{paso.detail}</p>
                       )}
                     </div>
                     {paso.minutes && (
-                      <span className="v-tnum ml-auto shrink-0 text-[13px] font-bold text-ink-faint">
+                      <span className="t-num ml-auto shrink-0 text-[12px] text-ink-faint">
                         {paso.minutes} min
                       </span>
                     )}
@@ -103,10 +103,10 @@ function Fila({ rotulo, valor, nota }: { rotulo: string; valor: string; nota?: s
   return (
     <div className="py-2.5">
       <div className="flex items-baseline justify-between gap-4">
-        <dt className="v-label-sm text-ink-faint">{rotulo}</dt>
-        <dd className="text-right text-[15px] font-bold text-ink">{valor}</dd>
+        <dt className="t-label text-ink-faint">{rotulo}</dt>
+        <dd className="text-right text-[14.5px] font-semibold text-ink">{valor}</dd>
       </div>
-      {nota && <p className="mt-1 text-[13px] text-ink-faint">{nota}</p>}
+      {nota && <p className="t-meta mt-1 text-ink-faint">{nota}</p>}
     </div>
   )
 }

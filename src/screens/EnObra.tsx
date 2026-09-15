@@ -25,22 +25,22 @@ export function EnObra({
   piezas: string[]
 }) {
   return (
-    <div className="mx-auto max-w-md px-4 pb-40">
+    <div className="mx-auto max-w-md px-5 pb-28">
       <header className="v-safe-top pt-6 pb-5">
-        <h1 className="v-head text-[26px] text-ink">{titulo}</h1>
+        <h1 className="t-title text-ink">{titulo}</h1>
       </header>
 
       <Card>
         <Vacio icono={icono} titulo="Esta pantalla se está construyendo" detalle={detalle} />
       </Card>
 
-      <section className="mt-7">
+      <section className="mt-8">
         <TituloSeccion>Lo que va acá</TituloSeccion>
-        <ul className="space-y-2">
+        <ul className="space-y-3">
           {piezas.map((p) => (
             <li key={p}>
-              <Card padding="px-4 py-3">
-                <p className="text-[15px] text-ink-soft">{p}</p>
+              <Card aire="lista">
+                <p className="t-body text-ink-soft">{p}</p>
               </Card>
             </li>
           ))}

@@ -4,19 +4,16 @@
 /* ------------------------------------------------------------------
    VIANDA — sistema de diseño
 
-   Fuente de verdad: las capturas aprobadas. Papel crema, tarjetas
-   blancas, radios grandes, sombras casi invisibles y una sans
-   redondeada. Lavanda es la app; los pasteles son señales, no adorno.
+   Papel crema, tarjetas blancas, radios grandes, sombras casi
+   invisibles y una sans con carácter. Lavanda es la app; los pasteles
+   son señales, no adorno.
 
-   Las cuatro reglas que ordenan el color, y que no se negocian:
+   Las dos reglas del color, y no se negocian:
 
-     · Lavanda      → acción y dato principal
-     · Menta        → SOLO «en rango»
-     · Mantequilla  → alto
-     · Coral        → bajo y alertas suaves
-
-   Máximo un acento pastel por tarjeta. Si una pantalla necesita dos,
-   está diciendo dos cosas y hay que partirla.
+     · Lavanda es la acción y lo seleccionado. Siempre.
+     · Los otros cinco pasteles sólo dicen el momento del día, y va uno
+       por tarjeta. Seis tarjetas seguidas con seis pasteles distintos
+       no son un sistema: son un arcoíris.
 
    Un solo tema, claro y cálido: es el aprobado. El fondo se pinta
    siempre, nunca se hereda del que envuelva la página.
@@ -68,14 +65,6 @@
   --v-azul: #c2dff5;
   --v-azul-tenue: #eaf4fc;
   --v-azul-ink: #2f6d99;
-
-  /* ---- glucosa: los tres estados, y nada más ---- */
-  --v-rango: var(--v-menta-ink);
-  --v-rango-bg: var(--v-menta-tenue);
-  --v-alto: var(--v-mantequilla-ink);
-  --v-alto-bg: var(--v-mantequilla-tenue);
-  --v-bajo: var(--v-coral-ink);
-  --v-bajo-bg: var(--v-coral-tenue);
 
   /* Sombras mínimas: se nota que la tarjeta está apoyada, no que flota. */
   --v-shadow-sm: 0 1px 2px rgb(59 54 84 / 0.04);
@@ -135,23 +124,43 @@
   --color-alert: var(--v-coral-ink);
   --color-alert-soft: var(--v-coral-tenue);
 
-  /* Radios grandes: es la mitad del carácter del sistema. */
-  --radius-card: 20px;
-  --radius-hero: 24px;
-  --radius-tile: 16px;
+  /* Un solo radio para las tarjetas. Antes había dos —20 y 24— y la
+     diferencia no comunicaba nada: sólo hacía que dos tarjetas pegadas
+     no terminaran igual. */
+  --radius-card: 22px;
+  --radius-hero: 22px;
+  --radius-tile: 14px;
   --radius-sheet: 28px;
   --radius-pill: 999px;
+
+  /* La escala de espacio. Cinco valores y ninguno más: en cuanto entra
+     un 14 o un 18, las secciones dejan de respirar parejo y la pantalla
+     se siente desalineada sin que se pueda señalar por qué.
+
+       8   dentro de una fila
+       12  entre tarjetas hermanas
+       16  padding de tarjeta · título de sección → contenido
+       20  padding de la tarjeta héroe · margen lateral
+       32  entre secciones                                          */
+  --gap-1: 8px;
+  --gap-2: 12px;
+  --gap-3: 16px;
+  --gap-4: 24px;
+  --gap-5: 32px;
+
+  /* El margen lateral de toda la app. Vive acá para que ninguna pantalla
+     lo invente de nuevo. */
+  --gutter: 20px;
 
   --shadow-sm: var(--v-shadow-sm);
   --shadow-md: var(--v-shadow-md);
   --shadow-lg: var(--v-shadow-lg);
   --shadow-fab: var(--v-shadow-fab);
 
-  /* Una sola voz. Nunito hace de titular y de dato: con los números
-     tabulares encendidos, una cifra que cambia no mueve lo que tiene al
-     lado. Autoalojada: la app abre sin red. */
-  --font-sans: "Nunito", ui-rounded, "SF Pro Rounded", -apple-system, "Segoe UI",
-    system-ui, sans-serif;
+  /* Una sola familia, Plus Jakarta Sans, en toda la app. Variable, así
+     que los pesos intermedios —450 para el cuerpo, 650 para un titular—
+     existen de verdad. Autoalojada: la app abre sin red. */
+  --font-sans: "Plus Jakarta Sans", -apple-system, "Segoe UI", system-ui, sans-serif;
   --font-head: var(--font-sans);
   --font-display: var(--font-sans);
 
@@ -188,42 +197,69 @@
 }
 
 @layer utilities {
-  /* ---- las tres voces tipográficas, que son una sola familia ---- */
+  /* ---- la escala ----
 
-  /* El número que importa: glucosa, carbohidratos, unidades. */
-  .v-display {
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    font-variant-numeric: tabular-nums;
+     Cinco tamaños con cinco pesos, y la regla que los ordena: cuanto más
+     importante es algo, más pesado y más apretado. Si todo pesa 700 —que
+     era el problema— no hay jerarquía, hay ruido.
+
+       display 28/650   el nombre de la comida que toca
+       title   19/600   títulos de sección
+       body    15/450   texto corriente
+       meta    13/400   el dato de al lado, en gris
+       label   12/500   rótulos y versalitas                        */
+
+  .t-display {
+    font-size: 28px;
+    font-weight: 650;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
   }
-  /* Titulares: saludo, títulos de sección, nombre de una comida. */
-  .v-head {
-    font-weight: 700;
+  .t-title {
+    font-size: 19px;
+    font-weight: 600;
     letter-spacing: -0.015em;
+    line-height: 1.25;
   }
-  /* Rótulo de un dato. Caja baja, nunca versalitas: se leen seis veces
-     por día y las mayúsculas anchas cansan. */
-  .v-label {
+  .t-body {
+    font-size: 15px;
+    font-weight: 450;
+    line-height: 1.45;
+  }
+  .t-meta {
     font-size: 13px;
-    font-weight: 600;
-    line-height: 1.35;
+    font-weight: 400;
+    line-height: 1.4;
   }
-  .v-label-sm {
+  .t-label {
     font-size: 12px;
-    font-weight: 600;
-    line-height: 1.35;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1.3;
   }
-  .v-caps {
+  /* Versalitas para el momento del día: es lo único que las gana, porque
+     es una categoría y no una frase. */
+  .t-caps {
     font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
+    font-weight: 600;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     line-height: 1.3;
   }
-  .v-tnum {
+  /* Los números van 600 y tabulares: una cifra que cambia no mueve lo
+     que tiene al lado. */
+  .t-num {
+    font-weight: 600;
     font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
   }
+
+  /* Compatibilidad con lo que todavía no se migró. */
+  .v-head { font-weight: 600; letter-spacing: -0.015em; }
+  .v-display { font-weight: 650; letter-spacing: -0.025em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .v-label { font-size: 13px; font-weight: 500; line-height: 1.35; }
+  .v-label-sm { font-size: 12px; font-weight: 500; line-height: 1.3; }
+  .v-tnum { font-variant-numeric: tabular-nums; }
 
   .v-rule {
     border-top: 1px solid var(--v-line);

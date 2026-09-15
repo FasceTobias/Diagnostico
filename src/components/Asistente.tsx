@@ -30,10 +30,10 @@ export function BarraAsistente({ onAbrir }: { onAbrir: () => void }) {
     <button
       type="button"
       onClick={onAbrir}
-      className="mb-3 flex w-full items-center gap-2.5 rounded-pill bg-surface px-4 py-3 text-left shadow-sm transition-transform duration-150 active:scale-[0.99]"
+      className="flex h-12 w-full items-center gap-2.5 rounded-pill bg-surface px-4 text-left shadow-sm transition-transform duration-150 active:scale-[0.99]"
     >
-      <Icono name="chispa" size={17} className="shrink-0 text-lavanda" />
-      <span className="flex-1 truncate text-[15px] font-semibold text-ink-faint">
+      <Icono name="chispa" size={16} className="shrink-0 text-lavanda" />
+      <span className="flex-1 truncate text-[14px] font-medium text-ink-faint">
         Decime qué necesitás o qué tenés
       </span>
     </button>
@@ -78,14 +78,14 @@ export function PanelAsistente({
   const afinar = (extra: string) => preguntarPor(`${texto} ${extra}`.trim())
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 pb-2">
       <div ref={arriba} className="scroll-mt-2" />
       <form
         onSubmit={(ev) => {
           ev.preventDefault()
           if (texto.trim()) preguntarPor(texto.trim())
         }}
-        className="flex items-center gap-2 rounded-pill bg-surface px-4 py-2 shadow-sm"
+        className="flex h-12 items-center gap-2.5 rounded-pill bg-surface px-4 shadow-sm"
       >
         <Icono name="chispa" size={17} className="shrink-0 text-lavanda" />
         <input
@@ -94,7 +94,7 @@ export function PanelAsistente({
           onChange={(ev) => setTexto(ev.target.value)}
           placeholder="Tengo hambre y estoy en el trabajo"
           enterKeyHint="search"
-          className="min-w-0 flex-1 bg-transparent py-1.5 text-[15px] font-semibold text-ink outline-none placeholder:font-normal placeholder:text-ink-faint"
+          className="min-w-0 flex-1 bg-transparent text-[14.5px] font-medium text-ink outline-none placeholder:font-normal placeholder:text-ink-faint"
         />
         {texto && (
           <button
@@ -111,7 +111,7 @@ export function PanelAsistente({
           escriben, y se tocan en vez de tipearse. */}
       {!respuesta && (
         <div>
-          <p className="mb-2 px-1 text-[13.5px] text-ink-faint">Por ejemplo</p>
+          <p className="mb-3 t-label text-ink-faint">Por ejemplo</p>
           <div className="flex flex-wrap gap-2">
             {EJEMPLOS.map((e) => (
               <Chip key={e} onClick={() => preguntarPor(e)}>
@@ -158,20 +158,20 @@ function Resultado({
           corregir en un toque en vez de pelearse con la caja. */}
       <div className="flex items-start gap-2.5 rounded-[var(--radius-card)] bg-lavanda-tenue px-4 py-3">
         <Icono name="chispa" size={16} className="mt-0.5 shrink-0 text-lavanda" />
-        <p className="text-[14px] font-semibold leading-snug text-lavanda">{r.resumen}</p>
+        <p className="text-[13.5px] font-medium leading-snug text-lavanda">{r.resumen}</p>
       </div>
 
       {/* Cuando el pedido es de todo el día, el arreglo de fondo es el
           contexto y no un plato suelto. */}
       {r.cambiarA && (
-        <Card padding="p-4">
-          <p className="text-[14.5px] leading-snug text-ink-soft">
+        <Card aire="normal">
+          <p className="t-body text-ink-soft">
             Si es por todo el día, te rearmo lo que queda con ese criterio.
           </p>
           <button
             type="button"
             onClick={() => onCambiarContexto(r.cambiarA!)}
-            className="mt-3 inline-flex min-h-[42px] items-center gap-2 rounded-pill bg-lavanda px-4 text-[14.5px] font-extrabold text-lavanda-ink active:scale-[0.97]"
+            className="mt-3 inline-flex h-11 items-center gap-2 rounded-pill bg-lavanda px-4 text-[13.5px] font-semibold text-lavanda-ink active:scale-[0.98]"
           >
             <Icono name="cambiar" size={17} strokeWidth={2} />
             Pasar el día a{' '}
@@ -181,7 +181,7 @@ function Resultado({
       )}
 
       {r.opciones.length ? (
-        <ul className="space-y-2">
+        <ul className="space-y-3">
           {r.opciones.map(({ meal, faltan }) => (
             <li key={meal.id}>
               <FilaComida
@@ -220,7 +220,7 @@ function Resultado({
       {/* Afinar sin volver a escribir. */}
       {r.ajustes.length > 0 && (
         <div className="pt-1">
-          <p className="mb-2 px-1 text-[13.5px] text-ink-faint">¿No era esto?</p>
+          <p className="mb-3 t-label text-ink-faint">¿No era esto?</p>
           <FilaChips label="Ajustar la búsqueda">
             {r.ajustes.map((a) => (
               <Chip key={a.label} onClick={() => onAfinar(a.texto)}>
