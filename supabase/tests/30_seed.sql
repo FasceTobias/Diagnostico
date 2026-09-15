@@ -115,3 +115,50 @@ select public.ok(
 select public.ok(
   (select is_drink from meals where slug = 'cafe-solo'),
   'un cafe solo es una bebida, no una merienda');
+
+-- ---------- qué clase de preparación pide cada comida ----------
+select public.ok(
+  (select count(*) from meals
+     where source_name = 'porción estándar calculada' and prep_type is null) = 0,
+  'ninguna entrada del catalogo quedo sin prep_type');
+
+select public.ok(
+  (select prep_type from meals where slug = 'pastel-de-papa') = 'cook'
+  and (select prep_type from meals where slug = 'tostadas-palta') = 'assemble'
+  and (select prep_type from meals where slug = 'banana') = 'ready',
+  'el pastel se cocina, la tostada se arma y la banana esta lista');
+
+-- Lo comprado hecho no puede pedir cocina: es el error que hacia que la
+-- ficha de un pollo al spiedo dijera "todavia no tiene la preparacion".
+select public.ok(
+  (select count(*) from meals
+     where source_name = 'porción estándar calculada'
+       and origin in ('rotiseria', 'panaderia', 'kiosco', 'heladeria', 'restaurante')
+       and prep_type = 'cook') = 0,
+  'nada que se compra hecho quedo marcado como que se cocina');
+
+select public.ok(
+  (select prep_type from meals where slug = 'pollo-spiedo-casa') = 'assemble',
+  'el pollo al spiedo de casa se arma, no se cocina');
+
+-- ---------- ningún tiempo total vacío ----------
+select public.ok(
+  (select count(*) from meals
+     where source_name = 'porción estándar calculada'
+       and total_minutes is null) = 0,
+  'ninguna entrada muestra el tiempo activo como si fuera el total');
+
+select public.ok(
+  (select total_minutes from meals where slug = 'merluza-pure') = 35
+  and (select prep_minutes from meals where slug = 'merluza-pure') = 20,
+  'la merluza son 20 minutos de trabajo y 35 hasta el plato');
+
+-- ---------- cuánto rinde la receta ----------
+select public.ok(
+  (select yields from meals where slug = 'empanadas-caseras') = '6 empanadas',
+  'las empanadas dicen que rinden 6');
+
+select public.ok(
+  (select carbs from meal_portions p join meals m on m.id = p.meal_id
+     where m.slug = 'empanadas-caseras' and p.label = '1 empanada') = 20,
+  'y cada una es 20 g, calculado sobre la receta');

@@ -12,7 +12,8 @@
     "lint": "oxlint",
     "typecheck": "tsc -b --noEmit",
     "db:test": "node scripts/db-test.mjs",
-    "catalogo:sql": "node scripts/catalogo-sql.mjs"
+    "catalogo:sql": "node scripts/catalogo-sql.mjs",
+    "catalogo:check": "node scripts/catalogo-check.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.116.0",

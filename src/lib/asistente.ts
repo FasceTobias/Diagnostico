@@ -1,6 +1,6 @@
 import type { Category, DayContext, Meal, Venue } from './types'
 import { VENUES } from './types'
-import { FOODS } from './foods'
+import { FOODS, esBasico } from './foods'
 import { sirveEn } from './busquedas'
 
 /* ------------------------------------------------------------------
@@ -260,7 +260,7 @@ const lleva = (meal: Meal, cosas: string[]) =>
 
 const faltantes = (meal: Meal, tengo: string[]): string[] =>
   meal.ingredients
-    .filter((i) => !FOODS[i.item]?.pantry && !tengo.includes(i.item))
+    .filter((i) => !esBasico(i.item) && !tengo.includes(i.item))
     .map((i) => i.item)
 
 /** Si la frase nombra una comida del catálogo, eso es la respuesta.
@@ -331,7 +331,7 @@ export const buscar = (
         (a, b) =>
           a.faltan.length - b.faltan.length ||
           Number(sirveEn(b.meal, momento)) - Number(sirveEn(a.meal, momento)) ||
-          a.meal.prepMinutes - b.meal.prepMinutes,
+          a.meal.activeMinutes - b.meal.activeMinutes,
       )
       .filter(({ faltan }) => faltan.length <= 2)
       .slice(0, limite)
@@ -349,8 +349,8 @@ export const buscar = (
   if (e.paraLlevar || e.situacion === 'mixto') pool = pool.filter((m) => m.portable)
   if (e.sabor === 'dulce') pool = pool.filter((m) => m.sabor === 'dulce')
   if (e.sabor === 'salado') pool = pool.filter((m) => m.sabor === 'salado' || m.sabor === 'mixta')
-  if (e.minutos !== undefined) pool = pool.filter((m) => (m.totalMinutes ?? m.prepMinutes) <= e.minutos!)
-  if (e.sinCocinar) pool = pool.filter((m) => m.prepMinutes <= 5 && !m.needsReheat)
+  if (e.minutos !== undefined) pool = pool.filter((m) => m.totalMinutes <= e.minutos!)
+  if (e.sinCocinar) pool = pool.filter((m) => m.activeMinutes <= 5 && !m.needsReheat)
   if (e.saciedad === 'potente') pool = pool.filter((m) => m.satiety === 'potente')
   if (e.saciedad === 'liviana') pool = pool.filter((m) => m.satiety !== 'potente')
   if (e.sinEsto.length) pool = pool.filter((m) => !lleva(m, e.sinEsto))
@@ -363,7 +363,7 @@ export const buscar = (
         (sinLugar ? Number(a.buyOutside) - Number(b.buyOutside) : 0) ||
         Number(b.everyday) - Number(a.everyday) ||
         Number(a.frequency === 'ocasional') - Number(b.frequency === 'ocasional') ||
-        a.prepMinutes - b.prepMinutes,
+        a.activeMinutes - b.activeMinutes,
     )
     .slice(0, limite)
     .map((meal) => ({ meal, faltan: [] as string[] }))

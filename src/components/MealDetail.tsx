@@ -182,7 +182,7 @@ export function MealDetail({ meal }: { meal: Meal }) {
       )}
 
       {meal.steps && meal.steps.length > 0 && (
-        <Recipe steps={meal.steps} minutes={meal.prepMinutes} />
+        <Recipe steps={meal.steps} minutes={meal.activeMinutes} />
       )}
 
       {!meal.buyOutside && (
@@ -191,13 +191,13 @@ export function MealDetail({ meal }: { meal: Meal }) {
           {/* Activo y total no son lo mismo y decir uno solo miente: las
               empanadas son media hora de trabajo y hora y media de reloj.
               Cuando coinciden, una línea sola alcanza. */}
-          {meal.totalMinutes && meal.totalMinutes > meal.prepMinutes ? (
+          {meal.totalMinutes && meal.totalMinutes > meal.activeMinutes ? (
             <Fact
               label="Preparación"
-              value={`${meal.prepMinutes} min de trabajo · ${meal.totalMinutes} min en total`}
+              value={`${meal.activeMinutes} min de trabajo · ${meal.totalMinutes} min en total`}
             />
           ) : (
-            <Fact label="Preparación" value={`${meal.prepMinutes} min`} />
+            <Fact label="Preparación" value={`${meal.activeMinutes} min`} />
           )}
           <Fact
             label="Dificultad"

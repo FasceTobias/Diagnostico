@@ -131,7 +131,7 @@ export function Comidas({ app }: { app: Vianda }) {
                       parts={[
                         meal.satiety,
                         meal.drink,
-                        meal.buyOutside ? meal.venues?.[0] : `${meal.prepMinutes} min`,
+                        meal.buyOutside ? meal.venues?.[0] : `${meal.activeMinutes} min`,
                         meal.frequency === 'ocasional' && 'de vez en cuando',
                       ]}
                     />

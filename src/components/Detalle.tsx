@@ -1,6 +1,6 @@
 import type { Meal } from '../lib/types'
 import { ORIGEN_LABEL, SLOT_CATEGORY, SLOT_LABEL, SLOT_ORDER } from '../lib/types'
-import { ingredientText, sustitutosDe } from '../lib/foods'
+import { esBasico, ingredientText, sustitutosDe } from '../lib/foods'
 import { Card, Icono, Pill, Rotulo } from './base'
 import { TONO_MOMENTO, carbs } from './tokens'
 
@@ -46,6 +46,10 @@ export function DetalleComida({
     ),
   ]
 
+  /* Los básicos no ocupan un renglón: sal y aceite no son la receta. */
+  const principales = meal.ingredients.filter((i) => !esBasico(i.item))
+  const basicos = meal.ingredients.filter((i) => esBasico(i.item))
+
   const sustituciones = meal.ingredients
     .map((i) => ({ item: i.item, con: sustitutosDe(i.item) }))
     .filter((x) => x.con.length > 0)
@@ -56,8 +60,8 @@ export function DetalleComida({
       <Card>
         <div className="flex flex-wrap gap-1.5">
           <Pill tono={TONO_MOMENTO[meal.category]}>{carbs(meal)} CH</Pill>
-          {(meal.totalMinutes ?? meal.prepMinutes) > 0 && (
-            <Pill>{meal.totalMinutes ?? meal.prepMinutes} min</Pill>
+          {meal.totalMinutes > 0 && (
+            <Pill>{meal.totalMinutes} min</Pill>
           )}
           <Pill>{meal.portion}</Pill>
         </div>
@@ -66,15 +70,37 @@ export function DetalleComida({
 
         <dl className="mt-4 divide-y divide-line">
           <Fila rotulo="Momento" valor={momentos.join(' · ')} />
-          <Fila rotulo="De dónde sale" valor={ORIGEN_LABEL[meal.origen]} />
-          {meal.prepMinutes > 0 && (
+          <Fila
+            rotulo="De dónde sale"
+            /* «La hacés vos» en una banana no dice nada: no la hacés,
+               la tenés. El origen sólo informa cuando hay algo que
+               hacer o cuando se compró en algún lado. */
+            valor={
+              meal.origen === 'casera' && meal.prepType === 'ready'
+                ? 'Ya la tenés en casa'
+                : ORIGEN_LABEL[meal.origen]
+            }
+          />
+          {meal.totalMinutes > 0 && (
             <Fila
               rotulo="Tiempo"
               valor={
-                meal.totalMinutes && meal.totalMinutes > meal.prepMinutes
-                  ? `${meal.prepMinutes} min de trabajo · ${meal.totalMinutes} en total`
-                  : `${meal.prepMinutes} min`
+                meal.totalMinutes > meal.activeMinutes
+                  ? `${meal.activeMinutes} min de trabajo · ${meal.totalMinutes} en total`
+                  : `${meal.activeMinutes} min`
               }
+              nota={
+                meal.totalMinutes > meal.activeMinutes
+                  ? 'El resto es horno, hervor o heladera: espera solo.'
+                  : undefined
+              }
+            />
+          )}
+          {meal.rinde && meal.rinde !== meal.portion && (
+            <Fila
+              rotulo="Rinde"
+              valor={meal.rinde}
+              nota={`Los ingredientes son los de toda la receta. Una porción es ${meal.portion.toLowerCase()}.`}
             />
           )}
           <Fila
@@ -97,18 +123,26 @@ export function DetalleComida({
         )}
       </Card>
 
-      {/* ---- ingredientes ---- */}
+      {/* ---- ingredientes ----
+          Los básicos de alacena van abajo y en una sola línea: son
+          parte de la receta, pero nadie los va a buscar al súper y no
+          merecen un renglón cada uno. */}
       {meal.ingredients.length > 0 ? (
         <section>
           <Rotulo>Qué lleva</Rotulo>
           <Card>
             <ul className="divide-y divide-line">
-              {meal.ingredients.map((i) => (
+              {principales.map((i) => (
                 <li key={i.item} className="t-body py-2 text-ink-soft first:pt-0 last:pb-0">
                   {ingredientText(i.item, i.qty, i.unit)}
                 </li>
               ))}
             </ul>
+            {basicos.length > 0 && (
+              <p className="t-meta mt-3 border-t border-line pt-3 text-ink-faint">
+                Y de la alacena: {basicos.map((i) => i.item).join(' · ')}.
+              </p>
+            )}
           </Card>
         </section>
       ) : !meal.buyOutside ? (
@@ -122,10 +156,24 @@ export function DetalleComida({
         </section>
       ) : null}
 
-      {/* ---- preparación ---- */}
-      {meal.steps && meal.steps.length > 0 ? (
+      {/* ---- preparación ----
+          Lo que se muestra acá depende de qué clase de comida es. Una
+          banana no tiene receta y no le falta ninguna: decirle «todavía
+          no tiene la preparación escrita» era tratar de error algo que
+          está completo. */}
+      {meal.prepType === 'ready' ? (
         <section>
-          <Rotulo>Cómo se hace</Rotulo>
+          <Rotulo>Preparación</Rotulo>
+          <Card>
+            <p className="t-body text-ink-soft">
+              {meal.esBebida ? 'Listo para tomar.' : 'Listo para comer.'}
+              {meal.needsReheat ? ' Calentalo antes.' : ''}
+            </p>
+          </Card>
+        </section>
+      ) : meal.steps && meal.steps.length > 0 ? (
+        <section>
+          <Rotulo>{meal.prepType === 'assemble' ? 'Cómo se arma' : 'Cómo se hace'}</Rotulo>
           <Card>
             <ol className="divide-y divide-line">
               {meal.steps.map((paso, i) => (
@@ -147,7 +195,7 @@ export function DetalleComida({
             </ol>
           </Card>
         </section>
-      ) : meal.origen === 'casera' && meal.prepMinutes > 3 ? (
+      ) : meal.prepType === 'cook' ? (
         <section>
           <Rotulo>Cómo se hace</Rotulo>
           <Card>
@@ -157,7 +205,16 @@ export function DetalleComida({
             </p>
           </Card>
         </section>
-      ) : null}
+      ) : (
+        <section>
+          <Rotulo>Cómo se arma</Rotulo>
+          <Card>
+            <p className="t-meta text-ink-faint">
+              Todavía no están escritos los pasos, pero son dos o tres: mirá qué lleva.
+            </p>
+          </Card>
+        </section>
+      )}
 
       {/* ---- si te falta algo ---- */}
       {sustituciones.length > 0 && (

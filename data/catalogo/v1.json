@@ -36,8 +36,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 5,
-    "totalMinutes": null,
+    "totalMinutes": 5,
     "mainIngredient": "pan",
     "everyday": true,
     "addedSugar": false,
@@ -66,7 +65,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 5,
+    "rinde": null
   },
   {
     "slug": "tostadas-manteca-mermelada",
@@ -99,8 +101,7 @@
       "dulce"
     ],
     "satiety": "normal",
-    "prepMinutes": 5,
-    "totalMinutes": null,
+    "totalMinutes": 5,
     "mainIngredient": "pan",
     "everyday": true,
     "addedSugar": true,
@@ -134,7 +135,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 5,
+    "rinde": null
   },
   {
     "slug": "tostadas-dulce-de-leche",
@@ -161,8 +165,7 @@
       "dulce"
     ],
     "satiety": "normal",
-    "prepMinutes": 4,
-    "totalMinutes": null,
+    "totalMinutes": 4,
     "mainIngredient": "pan",
     "everyday": true,
     "addedSugar": true,
@@ -191,7 +194,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 4,
+    "rinde": null
   },
   {
     "slug": "tostado-jamon-queso",
@@ -220,8 +226,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 7,
-    "totalMinutes": null,
+    "totalMinutes": 7,
     "mainIngredient": "pan",
     "everyday": true,
     "addedSugar": false,
@@ -255,7 +260,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 7,
+    "rinde": null
   },
   {
     "slug": "huevos-revueltos-tostadas",
@@ -281,8 +289,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 10,
-    "totalMinutes": null,
+    "totalMinutes": 10,
     "mainIngredient": "huevo",
     "everyday": true,
     "addedSugar": false,
@@ -316,7 +323,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 10,
+    "rinde": null
   },
   {
     "slug": "huevo-duro-pan",
@@ -343,8 +353,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 3,
     "mainIngredient": "huevo",
     "everyday": true,
     "addedSugar": false,
@@ -373,7 +382,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "yogur-granola-fruta",
@@ -407,8 +419,7 @@
       "dulce"
     ],
     "satiety": "potente",
-    "prepMinutes": 3,
-    "totalMinutes": null,
+    "totalMinutes": 3,
     "mainIngredient": "yogur natural",
     "everyday": true,
     "addedSugar": false,
@@ -442,7 +453,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 3,
+    "rinde": null
   },
   {
     "slug": "medialunas-panaderia",
@@ -481,8 +495,7 @@
       "salida"
     ],
     "satiety": "normal",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "medialuna",
     "everyday": true,
     "addedSugar": true,
@@ -502,7 +515,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "factura-panaderia",
@@ -529,8 +545,7 @@
       "salida"
     ],
     "satiety": "liviana",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "medialuna",
     "everyday": true,
     "addedSugar": true,
@@ -550,7 +565,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "sandwich-queso-manana",
@@ -578,8 +596,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 3,
-    "totalMinutes": null,
+    "totalMinutes": 3,
     "mainIngredient": "pan",
     "everyday": true,
     "addedSugar": false,
@@ -608,7 +625,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 3,
+    "rinde": null
   },
   {
     "slug": "cereales-leche",
@@ -634,8 +654,7 @@
       "dulce"
     ],
     "satiety": "normal",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "granola",
     "everyday": true,
     "addedSugar": true,
@@ -664,7 +683,10 @@
         "unit": "ml"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "budin-casero",
@@ -691,7 +713,6 @@
       "dulce"
     ],
     "satiety": "liviana",
-    "prepMinutes": 15,
     "totalMinutes": 60,
     "mainIngredient": "budín",
     "everyday": true,
@@ -731,7 +752,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 15,
+    "rinde": null
   },
   {
     "slug": "tostadas-palta",
@@ -758,8 +782,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 5,
-    "totalMinutes": null,
+    "totalMinutes": 5,
     "mainIngredient": "pan",
     "everyday": true,
     "addedSugar": false,
@@ -788,7 +811,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 5,
+    "rinde": null
   },
   {
     "slug": "mate-solo-manana",
@@ -813,8 +839,7 @@
       "rápido"
     ],
     "satiety": "liviana",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "yerba",
     "everyday": true,
     "addedSugar": false,
@@ -834,11 +859,14 @@
     "items": [
       {
         "item": "yerba",
-        "qty": 1,
-        "unit": "u"
+        "qty": 30,
+        "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "avena-nocturna",
@@ -865,8 +893,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 8,
-    "totalMinutes": null,
+    "totalMinutes": 8,
     "mainIngredient": "avena",
     "everyday": false,
     "addedSugar": false,
@@ -915,7 +942,10 @@
         "unit": "cda"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 8,
+    "rinde": null
   },
   {
     "slug": "tostadas-palta-huevo",
@@ -942,8 +972,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 10,
-    "totalMinutes": null,
+    "totalMinutes": 10,
     "mainIngredient": "huevo",
     "everyday": true,
     "addedSugar": false,
@@ -977,7 +1006,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 10,
+    "rinde": null
   },
   {
     "slug": "sandwich-tortilla",
@@ -1005,8 +1037,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 5,
-    "totalMinutes": null,
+    "totalMinutes": 5,
     "mainIngredient": "papa",
     "everyday": true,
     "addedSugar": false,
@@ -1040,7 +1071,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 5,
+    "rinde": null
   },
   {
     "slug": "banana",
@@ -1066,8 +1100,7 @@
       "dulce"
     ],
     "satiety": "liviana",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "banana",
     "everyday": true,
     "addedSugar": false,
@@ -1091,7 +1124,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "manzana",
@@ -1117,8 +1153,7 @@
       "dulce"
     ],
     "satiety": "liviana",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "manzana",
     "everyday": true,
     "addedSugar": false,
@@ -1142,7 +1177,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "punado-mani",
@@ -1169,8 +1207,7 @@
       "envasado"
     ],
     "satiety": "normal",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "maní",
     "everyday": true,
     "addedSugar": false,
@@ -1194,7 +1231,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "frutos-secos",
@@ -1220,8 +1260,7 @@
       "envasado"
     ],
     "satiety": "normal",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "nuez",
     "everyday": true,
     "addedSugar": false,
@@ -1240,12 +1279,15 @@
     "esBebida": false,
     "items": [
       {
-        "item": "nuez",
+        "item": "mezcla de frutos secos",
         "qty": 30,
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "barra-cereal",
@@ -1273,8 +1315,7 @@
       "práctico"
     ],
     "satiety": "liviana",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "barra de cereal",
     "everyday": true,
     "addedSugar": true,
@@ -1298,7 +1339,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "barra-proteica",
@@ -1325,8 +1369,7 @@
       "práctico"
     ],
     "satiety": "normal",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "barra proteica",
     "everyday": true,
     "addedSugar": false,
@@ -1350,7 +1393,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "galletitas-agua-queso",
@@ -1382,8 +1428,7 @@
       "práctico"
     ],
     "satiety": "normal",
-    "prepMinutes": 3,
-    "totalMinutes": null,
+    "totalMinutes": 3,
     "mainIngredient": "galletitas de agua",
     "everyday": true,
     "addedSugar": false,
@@ -1412,7 +1457,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 3,
+    "rinde": null
   },
   {
     "slug": "galletitas-dulces",
@@ -1446,8 +1494,7 @@
       "supermercado"
     ],
     "satiety": "liviana",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "galletitas dulces",
     "everyday": true,
     "addedSugar": true,
@@ -1471,7 +1518,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "alfajor-simple",
@@ -1498,8 +1548,7 @@
       "antojo"
     ],
     "satiety": "liviana",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "alfajor",
     "everyday": true,
     "addedSugar": true,
@@ -1523,7 +1572,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "yogur-bebible",
@@ -1550,8 +1602,7 @@
       "para llevar"
     ],
     "satiety": "liviana",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "yogur entero",
     "everyday": true,
     "addedSugar": true,
@@ -1570,12 +1621,15 @@
     "esBebida": false,
     "items": [
       {
-        "item": "yogur entero",
+        "item": "yogur bebible",
         "qty": 200,
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "yogur-natural",
@@ -1602,8 +1656,7 @@
       "supermercado"
     ],
     "satiety": "liviana",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "yogur natural",
     "everyday": true,
     "addedSugar": false,
@@ -1627,7 +1680,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "queso-cubos",
@@ -1653,8 +1709,7 @@
       "práctico"
     ],
     "satiety": "normal",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "queso",
     "everyday": true,
     "addedSugar": false,
@@ -1678,7 +1733,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "huevos-duros-snack",
@@ -1704,7 +1762,6 @@
       "práctico"
     ],
     "satiety": "normal",
-    "prepMinutes": 3,
     "totalMinutes": 20,
     "mainIngredient": "huevo",
     "everyday": true,
@@ -1729,7 +1786,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 3,
+    "rinde": null
   },
   {
     "slug": "sandwich-chico",
@@ -1755,8 +1815,7 @@
       "rápido"
     ],
     "satiety": "normal",
-    "prepMinutes": 3,
-    "totalMinutes": null,
+    "totalMinutes": 3,
     "mainIngredient": "pan",
     "everyday": true,
     "addedSugar": false,
@@ -1790,7 +1849,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 3,
+    "rinde": null
   },
   {
     "slug": "turron-mani",
@@ -1817,8 +1879,7 @@
       "antojo"
     ],
     "satiety": "liviana",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "maní",
     "everyday": true,
     "addedSugar": true,
@@ -1837,12 +1898,15 @@
     "esBebida": false,
     "items": [
       {
-        "item": "maní",
-        "qty": 35,
-        "unit": "g"
+        "item": "turrón",
+        "qty": 1,
+        "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "tostadas-arroz",
@@ -1867,8 +1931,7 @@
       "práctico"
     ],
     "satiety": "liviana",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "galletitas de agua",
     "everyday": true,
     "addedSugar": false,
@@ -1887,7 +1950,7 @@
     "esBebida": false,
     "items": [
       {
-        "item": "galletitas de agua",
+        "item": "galletas de arroz",
         "qty": 3,
         "unit": "u"
       },
@@ -1897,7 +1960,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "pochoclo",
@@ -1923,8 +1989,7 @@
       "antojo"
     ],
     "satiety": "liviana",
-    "prepMinutes": 5,
-    "totalMinutes": null,
+    "totalMinutes": 5,
     "mainIngredient": "harina",
     "everyday": true,
     "addedSugar": false,
@@ -1943,12 +2008,25 @@
     "esBebida": false,
     "items": [
       {
-        "item": "harina",
-        "qty": 25,
+        "item": "maíz para pochoclo",
+        "qty": 50,
         "unit": "g"
+      },
+      {
+        "item": "aceite",
+        "qty": 1,
+        "unit": "cda"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 5,
+    "rinde": null
   },
   {
     "slug": "ensalada-frutas",
@@ -1974,8 +2052,7 @@
       "dulce"
     ],
     "satiety": "liviana",
-    "prepMinutes": 8,
-    "totalMinutes": null,
+    "totalMinutes": 8,
     "mainIngredient": "manzana",
     "everyday": true,
     "addedSugar": false,
@@ -2009,7 +2086,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 8,
+    "rinde": null
   },
   {
     "slug": "milanesa-pure",
@@ -2041,7 +2121,6 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 20,
     "totalMinutes": 35,
     "mainIngredient": "milanesa de pollo",
     "everyday": true,
@@ -2076,7 +2155,10 @@
         "unit": "ml"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 20,
+    "rinde": null
   },
   {
     "slug": "milanesa-napolitana",
@@ -2103,7 +2185,6 @@
       "antojo"
     ],
     "satiety": "potente",
-    "prepMinutes": 20,
     "totalMinutes": 40,
     "mainIngredient": "milanesa de carne",
     "everyday": true,
@@ -2146,9 +2227,22 @@
         "item": "papa",
         "qty": 250,
         "unit": "g"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
+      },
+      {
+        "item": "aceite",
+        "qty": 1,
+        "unit": "cda"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 20,
+    "rinde": null
   },
   {
     "slug": "pollo-horno-papas",
@@ -2174,8 +2268,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 10,
-    "totalMinutes": 45,
+    "totalMinutes": 50,
     "mainIngredient": "pollo",
     "everyday": true,
     "addedSugar": false,
@@ -2207,9 +2300,22 @@
         "item": "aceite de oliva",
         "qty": 1,
         "unit": "cda"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
+      },
+      {
+        "item": "orégano",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 10,
+    "rinde": "1 plato"
   },
   {
     "slug": "fideos-tuco",
@@ -2241,7 +2347,6 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 10,
     "totalMinutes": 20,
     "mainIngredient": "fideos",
     "everyday": true,
@@ -2276,7 +2381,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 10,
+    "rinde": null
   },
   {
     "slug": "ravioles-salsa",
@@ -2303,7 +2411,6 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepMinutes": 10,
     "totalMinutes": 15,
     "mainIngredient": "ravioles",
     "everyday": true,
@@ -2333,7 +2440,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 10,
+    "rinde": null
   },
   {
     "slug": "noquis-salsa",
@@ -2359,7 +2469,6 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 10,
     "totalMinutes": 15,
     "mainIngredient": "ñoquis",
     "everyday": true,
@@ -2389,7 +2498,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 10,
+    "rinde": null
   },
   {
     "slug": "arroz-con-pollo",
@@ -2415,7 +2527,6 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 15,
     "totalMinutes": 30,
     "mainIngredient": "arroz",
     "everyday": true,
@@ -2450,7 +2561,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 15,
+    "rinde": null
   },
   {
     "slug": "tortilla-papa",
@@ -2483,7 +2597,6 @@
       "en casa"
     ],
     "satiety": "normal",
-    "prepMinutes": 20,
     "totalMinutes": 30,
     "mainIngredient": "papa",
     "everyday": true,
@@ -2518,7 +2631,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 20,
+    "rinde": null
   },
   {
     "slug": "empanadas-caseras",
@@ -2526,29 +2642,29 @@
     "category": "almuerzo",
     "origen": "casera",
     "sabor": "salado",
-    "description": "Veintidós gramos cada una, calculado sobre la receta.",
+    "description": "Veinte gramos cada una: 150 g de harina rinden 6, y comés la mitad.",
     "momentos": [
       "almuerzo",
       "cena"
     ],
     "portions": [
       {
-        "label": "3 empanadas",
-        "carbs": 66,
-        "grams": 300,
-        "default": true
-      },
-      {
         "label": "1 empanada",
-        "carbs": 22,
-        "grams": 100,
+        "carbs": 20,
+        "grams": 75,
         "default": false
       },
       {
         "label": "2 empanadas",
-        "carbs": 44,
-        "grams": 200,
+        "carbs": 40,
+        "grams": 150,
         "default": false
+      },
+      {
+        "label": "3 empanadas",
+        "carbs": 60,
+        "grams": 225,
+        "default": true
       }
     ],
     "tags": [
@@ -2556,7 +2672,6 @@
       "antojo"
     ],
     "satiety": "potente",
-    "prepMinutes": 30,
     "totalMinutes": 90,
     "mainIngredient": "harina",
     "everyday": true,
@@ -2594,9 +2709,32 @@
         "item": "huevo",
         "qty": 1,
         "unit": "u"
+      },
+      {
+        "item": "manteca",
+        "qty": 30,
+        "unit": "g"
+      },
+      {
+        "item": "agua",
+        "qty": 75,
+        "unit": "ml"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
+      },
+      {
+        "item": "pimentón",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
-    "notes": ""
+    "notes": "Carbohidratos calculados sobre la receta: 150 g de harina (≈110 g CH) más 1 cebolla (≈10 g), dividido 6 empanadas. La masa lleva 30 g de manteca y 75 ml de agua, que antes no estaban.",
+    "prepType": "cook",
+    "activeMinutes": 30,
+    "rinde": "6 empanadas"
   },
   {
     "slug": "ensalada-completa",
@@ -2621,7 +2759,6 @@
       "para llevar"
     ],
     "satiety": "potente",
-    "prepMinutes": 20,
     "totalMinutes": 25,
     "mainIngredient": "pollo",
     "everyday": true,
@@ -2666,7 +2803,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 20,
+    "rinde": null
   },
   {
     "slug": "pastel-de-papa",
@@ -2692,7 +2832,6 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 25,
     "totalMinutes": 60,
     "mainIngredient": "papa",
     "everyday": true,
@@ -2730,9 +2869,22 @@
         "item": "leche",
         "qty": 50,
         "unit": "ml"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
+      },
+      {
+        "item": "aceite",
+        "qty": 1,
+        "unit": "cda"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 25,
+    "rinde": "2 porciones"
   },
   {
     "slug": "sandwich-milanesa",
@@ -2758,8 +2910,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 5,
-    "totalMinutes": null,
+    "totalMinutes": 5,
     "mainIngredient": "pan francés",
     "everyday": true,
     "addedSugar": false,
@@ -2798,7 +2949,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 5,
+    "rinde": null
   },
   {
     "slug": "tarta-verdura",
@@ -2830,7 +2984,6 @@
       "en casa"
     ],
     "satiety": "normal",
-    "prepMinutes": 20,
     "totalMinutes": 50,
     "mainIngredient": "masa de tarta",
     "everyday": true,
@@ -2868,9 +3021,17 @@
         "item": "queso",
         "qty": 80,
         "unit": "g"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 20,
+    "rinde": "4 porciones"
   },
   {
     "slug": "arroz-atun",
@@ -2895,7 +3056,6 @@
       "para llevar"
     ],
     "satiety": "potente",
-    "prepMinutes": 10,
     "totalMinutes": 25,
     "mainIngredient": "arroz",
     "everyday": true,
@@ -2935,7 +3095,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 10,
+    "rinde": null
   },
   {
     "slug": "pollo-spiedo-casa",
@@ -2962,8 +3125,7 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepMinutes": 5,
-    "totalMinutes": null,
+    "totalMinutes": 5,
     "mainIngredient": "pollo entero",
     "everyday": true,
     "addedSugar": false,
@@ -2997,7 +3159,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "El pollo se compra hecho. Lo único que se prepara es la ensalada.",
+    "prepType": "assemble",
+    "activeMinutes": 5,
+    "rinde": null
   },
   {
     "slug": "guiso-lentejas",
@@ -3023,7 +3188,6 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 20,
     "totalMinutes": 40,
     "mainIngredient": "lentejas cocidas",
     "everyday": true,
@@ -3061,9 +3225,32 @@
         "item": "cebolla",
         "qty": 1,
         "unit": "u"
+      },
+      {
+        "item": "aceite",
+        "qty": 1,
+        "unit": "cda"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
+      },
+      {
+        "item": "pimentón",
+        "qty": 1,
+        "unit": "pizca"
+      },
+      {
+        "item": "agua",
+        "qty": 400,
+        "unit": "ml"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 20,
+    "rinde": "2 platos"
   },
   {
     "slug": "sandwich-completo",
@@ -3090,8 +3277,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 15,
-    "totalMinutes": null,
+    "totalMinutes": 20,
     "mainIngredient": "pan",
     "everyday": true,
     "addedSugar": false,
@@ -3135,7 +3321,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 15,
+    "rinde": null
   },
   {
     "slug": "wrap-pollo",
@@ -3161,8 +3350,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 12,
-    "totalMinutes": null,
+    "totalMinutes": 15,
     "mainIngredient": "pollo",
     "everyday": true,
     "addedSugar": false,
@@ -3206,7 +3394,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 12,
+    "rinde": null
   },
   {
     "slug": "ensalada-lentejas",
@@ -3233,8 +3424,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 15,
-    "totalMinutes": null,
+    "totalMinutes": 20,
     "mainIngredient": "lentejas cocidas",
     "everyday": true,
     "addedSugar": false,
@@ -3288,7 +3478,10 @@
         "unit": "cda"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 15,
+    "rinde": null
   },
   {
     "slug": "mate-galletitas",
@@ -3320,8 +3513,7 @@
       "rápido"
     ],
     "satiety": "normal",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "galletitas dulces",
     "everyday": true,
     "addedSugar": true,
@@ -3346,11 +3538,14 @@
       },
       {
         "item": "yerba",
-        "qty": 1,
-        "unit": "u"
+        "qty": 30,
+        "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "budin-merienda",
@@ -3382,8 +3577,7 @@
       "antojo"
     ],
     "satiety": "normal",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "budín",
     "everyday": true,
     "addedSugar": true,
@@ -3407,7 +3601,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "yogur-con-fruta",
@@ -3434,8 +3631,7 @@
       "para llevar"
     ],
     "satiety": "liviana",
-    "prepMinutes": 3,
-    "totalMinutes": null,
+    "totalMinutes": 3,
     "mainIngredient": "yogur natural",
     "everyday": true,
     "addedSugar": false,
@@ -3464,7 +3660,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 3,
+    "rinde": null
   },
   {
     "slug": "tostadas-mermelada-merienda",
@@ -3491,8 +3690,7 @@
       "rápido"
     ],
     "satiety": "liviana",
-    "prepMinutes": 4,
-    "totalMinutes": null,
+    "totalMinutes": 4,
     "mainIngredient": "pan",
     "everyday": true,
     "addedSugar": true,
@@ -3521,7 +3719,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 4,
+    "rinde": null
   },
   {
     "slug": "panqueques-dulce",
@@ -3553,7 +3754,6 @@
       "antojo"
     ],
     "satiety": "normal",
-    "prepMinutes": 20,
     "totalMinutes": 30,
     "mainIngredient": "harina",
     "everyday": true,
@@ -3593,7 +3793,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 20,
+    "rinde": null
   },
   {
     "slug": "pan-queso-merienda",
@@ -3620,8 +3823,7 @@
       "rápido"
     ],
     "satiety": "normal",
-    "prepMinutes": 3,
-    "totalMinutes": null,
+    "totalMinutes": 3,
     "mainIngredient": "pan",
     "everyday": true,
     "addedSugar": false,
@@ -3650,7 +3852,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 3,
+    "rinde": null
   },
   {
     "slug": "licuado-banana",
@@ -3678,8 +3883,7 @@
       "para llevar"
     ],
     "satiety": "liviana",
-    "prepMinutes": 4,
-    "totalMinutes": null,
+    "totalMinutes": 4,
     "mainIngredient": "banana",
     "everyday": true,
     "addedSugar": false,
@@ -3708,7 +3912,10 @@
         "unit": "ml"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 4,
+    "rinde": null
   },
   {
     "slug": "sandwich-merienda-llevar",
@@ -3735,8 +3942,7 @@
       "salado"
     ],
     "satiety": "potente",
-    "prepMinutes": 5,
-    "totalMinutes": null,
+    "totalMinutes": 5,
     "mainIngredient": "pan",
     "everyday": true,
     "addedSugar": false,
@@ -3770,7 +3976,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 5,
+    "rinde": null
   },
   {
     "slug": "churros-cafe",
@@ -3796,8 +4005,7 @@
       "salida"
     ],
     "satiety": "liviana",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "harina",
     "everyday": true,
     "addedSugar": true,
@@ -3817,7 +4025,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "bizcochos-mate",
@@ -3843,8 +4054,7 @@
       "rápido"
     ],
     "satiety": "liviana",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "pan",
     "everyday": true,
     "addedSugar": false,
@@ -3864,7 +4074,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "queso-dulce-membrillo",
@@ -3890,8 +4103,7 @@
       "rápido"
     ],
     "satiety": "liviana",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "queso",
     "everyday": true,
     "addedSugar": true,
@@ -3920,7 +4132,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "alfajor-maicena",
@@ -3947,8 +4162,7 @@
       "salida"
     ],
     "satiety": "liviana",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "alfajor",
     "everyday": true,
     "addedSugar": true,
@@ -3968,7 +4182,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "scon-queso",
@@ -3994,8 +4211,7 @@
       "salida"
     ],
     "satiety": "liviana",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "harina",
     "everyday": true,
     "addedSugar": false,
@@ -4015,7 +4231,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "pizza-casera",
@@ -4053,7 +4272,6 @@
       "antojo"
     ],
     "satiety": "potente",
-    "prepMinutes": 10,
     "totalMinutes": 25,
     "mainIngredient": "masa de pizza",
     "everyday": true,
@@ -4088,7 +4306,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 10,
+    "rinde": null
   },
   {
     "slug": "hamburguesa-casera",
@@ -4120,7 +4341,6 @@
       "antojo"
     ],
     "satiety": "potente",
-    "prepMinutes": 15,
     "totalMinutes": 25,
     "mainIngredient": "carne picada",
     "everyday": true,
@@ -4160,7 +4380,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 15,
+    "rinde": null
   },
   {
     "slug": "tarta-jamon-queso",
@@ -4192,7 +4415,6 @@
       "en casa"
     ],
     "satiety": "normal",
-    "prepMinutes": 15,
     "totalMinutes": 45,
     "mainIngredient": "masa de tarta",
     "everyday": true,
@@ -4232,7 +4454,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 15,
+    "rinde": "4 porciones"
   },
   {
     "slug": "bife-pure-calabaza",
@@ -4258,7 +4483,6 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 10,
     "totalMinutes": 25,
     "mainIngredient": "vacío",
     "everyday": true,
@@ -4286,9 +4510,17 @@
         "item": "calabaza",
         "qty": 300,
         "unit": "g"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 10,
+    "rinde": "1 plato"
   },
   {
     "slug": "asado",
@@ -4320,7 +4552,6 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 15,
     "totalMinutes": 120,
     "mainIngredient": "asado",
     "everyday": true,
@@ -4360,7 +4591,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 15,
+    "rinde": null
   },
   {
     "slug": "revuelto-zapallitos",
@@ -4385,8 +4619,7 @@
       "rápido"
     ],
     "satiety": "normal",
-    "prepMinutes": 15,
-    "totalMinutes": null,
+    "totalMinutes": 15,
     "mainIngredient": "zapallito",
     "everyday": true,
     "addedSugar": false,
@@ -4420,7 +4653,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 15,
+    "rinde": null
   },
   {
     "slug": "sopa-calabaza",
@@ -4450,7 +4686,6 @@
       "en casa"
     ],
     "satiety": "normal",
-    "prepMinutes": 10,
     "totalMinutes": 30,
     "mainIngredient": "calabaza",
     "everyday": true,
@@ -4490,7 +4725,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 10,
+    "rinde": null
   },
   {
     "slug": "omelette-queso",
@@ -4517,8 +4755,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 10,
-    "totalMinutes": null,
+    "totalMinutes": 10,
     "mainIngredient": "huevo",
     "everyday": true,
     "addedSugar": false,
@@ -4552,7 +4789,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 10,
+    "rinde": null
   },
   {
     "slug": "picada-cena",
@@ -4578,8 +4818,7 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepMinutes": 8,
-    "totalMinutes": null,
+    "totalMinutes": 8,
     "mainIngredient": "queso",
     "everyday": true,
     "addedSugar": false,
@@ -4613,7 +4852,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 8,
+    "rinde": null
   },
   {
     "slug": "ensalada-atun-cena",
@@ -4639,8 +4881,7 @@
       "en casa"
     ],
     "satiety": "potente",
-    "prepMinutes": 12,
-    "totalMinutes": null,
+    "totalMinutes": 30,
     "mainIngredient": "atún",
     "everyday": true,
     "addedSugar": false,
@@ -4679,7 +4920,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 12,
+    "rinde": null
   },
   {
     "slug": "sandwich-cena-rapido",
@@ -4706,8 +4950,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 10,
-    "totalMinutes": null,
+    "totalMinutes": 10,
     "mainIngredient": "pan",
     "everyday": true,
     "addedSugar": false,
@@ -4746,7 +4989,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 10,
+    "rinde": null
   },
   {
     "slug": "ravioles-cena-rapida",
@@ -4772,7 +5018,6 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 8,
     "totalMinutes": 15,
     "mainIngredient": "ravioles",
     "everyday": true,
@@ -4807,7 +5052,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 8,
+    "rinde": null
   },
   {
     "slug": "ensalada-caprese-cena",
@@ -4832,8 +5080,7 @@
       "rápido"
     ],
     "satiety": "normal",
-    "prepMinutes": 6,
-    "totalMinutes": null,
+    "totalMinutes": 6,
     "mainIngredient": "tomate",
     "everyday": true,
     "addedSugar": false,
@@ -4867,7 +5114,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 6,
+    "rinde": null
   },
   {
     "slug": "choripan",
@@ -4894,7 +5144,6 @@
       "antojo"
     ],
     "satiety": "potente",
-    "prepMinutes": 5,
     "totalMinutes": 20,
     "mainIngredient": "chorizo",
     "everyday": true,
@@ -4924,7 +5173,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 5,
+    "rinde": null
   },
   {
     "slug": "budincitos-huevo",
@@ -4952,7 +5204,6 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 15,
     "totalMinutes": 35,
     "mainIngredient": "huevo",
     "everyday": true,
@@ -4992,7 +5243,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 15,
+    "rinde": null
   },
   {
     "slug": "flan-dulce-de-leche",
@@ -5024,7 +5278,6 @@
       "antojo"
     ],
     "satiety": "normal",
-    "prepMinutes": 10,
     "totalMinutes": 60,
     "mainIngredient": "huevo",
     "everyday": true,
@@ -5064,7 +5317,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 10,
+    "rinde": null
   },
   {
     "slug": "gelatina-light",
@@ -5091,8 +5347,7 @@
       "supermercado"
     ],
     "satiety": "liviana",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "gelatina sin azúcar",
     "everyday": true,
     "addedSugar": false,
@@ -5116,7 +5371,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "chocolate-barra",
@@ -5150,8 +5408,7 @@
       "envasado"
     ],
     "satiety": "liviana",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "chocolate",
     "everyday": true,
     "addedSugar": true,
@@ -5175,7 +5432,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "helado-heladeria",
@@ -5214,8 +5474,7 @@
       "salida"
     ],
     "satiety": "liviana",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "helado",
     "everyday": true,
     "addedSugar": true,
@@ -5235,7 +5494,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "helado-pote",
@@ -5269,8 +5531,7 @@
       "supermercado"
     ],
     "satiety": "liviana",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "helado",
     "everyday": true,
     "addedSugar": true,
@@ -5294,7 +5555,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "postre-lacteo",
@@ -5321,8 +5585,7 @@
       "dulce"
     ],
     "satiety": "liviana",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "postre lácteo",
     "everyday": true,
     "addedSugar": true,
@@ -5346,7 +5609,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "arroz-con-leche",
@@ -5372,7 +5638,6 @@
       "en casa"
     ],
     "satiety": "normal",
-    "prepMinutes": 10,
     "totalMinutes": 35,
     "mainIngredient": "arroz",
     "everyday": true,
@@ -5407,7 +5672,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 10,
+    "rinde": null
   },
   {
     "slug": "budin-sin-azucar",
@@ -5435,8 +5703,7 @@
       "para llevar"
     ],
     "satiety": "liviana",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "budín sin azúcar",
     "everyday": true,
     "addedSugar": false,
@@ -5460,7 +5727,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "flan-sin-azucar",
@@ -5487,8 +5757,7 @@
       "supermercado"
     ],
     "satiety": "liviana",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "flan sin azúcar",
     "everyday": true,
     "addedSugar": false,
@@ -5512,7 +5781,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "bocadito-chocolate",
@@ -5539,8 +5811,7 @@
       "antojo"
     ],
     "satiety": "liviana",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "chocolate",
     "everyday": true,
     "addedSugar": true,
@@ -5559,12 +5830,15 @@
     "esBebida": false,
     "items": [
       {
-        "item": "chocolate",
-        "qty": 30,
-        "unit": "g"
+        "item": "bocadito de chocolate",
+        "qty": 1,
+        "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "fruta-almibar",
@@ -5591,8 +5865,7 @@
       "supermercado"
     ],
     "satiety": "liviana",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "manzana",
     "everyday": true,
     "addedSugar": true,
@@ -5611,12 +5884,15 @@
     "esBebida": false,
     "items": [
       {
-        "item": "manzana",
+        "item": "duraznos en almíbar",
         "qty": 1,
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "mousse-chocolate",
@@ -5644,8 +5920,7 @@
       "antojo"
     ],
     "satiety": "liviana",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "chocolate",
     "everyday": true,
     "addedSugar": true,
@@ -5664,12 +5939,15 @@
     "esBebida": false,
     "items": [
       {
-        "item": "chocolate",
-        "qty": 30,
-        "unit": "g"
+        "item": "mousse de chocolate",
+        "qty": 1,
+        "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "tostado-cafeteria",
@@ -5697,8 +5975,7 @@
       "práctico"
     ],
     "satiety": "potente",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "pan de miga",
     "everyday": true,
     "addedSugar": false,
@@ -5718,7 +5995,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "sandwich-miga",
@@ -5751,8 +6031,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "pan de miga",
     "everyday": true,
     "addedSugar": false,
@@ -5772,7 +6051,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "empanadas-rotiseria",
@@ -5810,8 +6092,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "harina",
     "everyday": true,
     "addedSugar": false,
@@ -5831,7 +6112,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "milanesa-completa-rotiseria",
@@ -5864,8 +6148,7 @@
       "antojo"
     ],
     "satiety": "potente",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "milanesa de carne",
     "everyday": true,
     "addedSugar": false,
@@ -5885,7 +6168,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "pollo-spiedo-rotiseria",
@@ -5923,8 +6209,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "pollo entero",
     "everyday": true,
     "addedSugar": false,
@@ -5944,7 +6229,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "combo-estacion",
@@ -5973,8 +6261,7 @@
       "práctico"
     ],
     "satiety": "potente",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "pan de miga",
     "everyday": true,
     "addedSugar": false,
@@ -5994,7 +6281,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "ensalada-supermercado",
@@ -6022,8 +6312,7 @@
       "práctico"
     ],
     "satiety": "normal",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "lechuga",
     "everyday": true,
     "addedSugar": false,
@@ -6043,7 +6332,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "sandwich-supermercado",
@@ -6071,8 +6363,7 @@
       "práctico"
     ],
     "satiety": "potente",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "pan de miga",
     "everyday": true,
     "addedSugar": false,
@@ -6092,7 +6383,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "pizza-restaurante",
@@ -6131,8 +6425,7 @@
       "antojo"
     ],
     "satiety": "potente",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "masa de pizza",
     "everyday": true,
     "addedSugar": false,
@@ -6152,7 +6445,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "pasta-restaurante",
@@ -6184,8 +6480,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "fideos",
     "everyday": true,
     "addedSugar": false,
@@ -6205,7 +6500,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "carne-guarnicion-restaurante",
@@ -6237,8 +6535,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "vacío",
     "everyday": true,
     "addedSugar": false,
@@ -6258,7 +6555,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "empanada-kiosco",
@@ -6286,8 +6586,7 @@
       "práctico"
     ],
     "satiety": "normal",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "harina",
     "everyday": true,
     "addedSugar": false,
@@ -6307,7 +6606,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "pancho-kiosco",
@@ -6336,8 +6638,7 @@
       "emergencia"
     ],
     "satiety": "normal",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "pan de pancho",
     "everyday": true,
     "addedSugar": false,
@@ -6357,7 +6658,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "papas-fritas-paquete",
@@ -6390,8 +6694,7 @@
       "antojo"
     ],
     "satiety": "liviana",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "papa",
     "everyday": true,
     "addedSugar": false,
@@ -6410,12 +6713,15 @@
     "esBebida": false,
     "items": [
       {
-        "item": "papa",
+        "item": "papas fritas de paquete",
         "qty": 60,
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "pizza-porcion-kiosco",
@@ -6449,8 +6755,7 @@
       "práctico"
     ],
     "satiety": "normal",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "masa de pizza",
     "everyday": true,
     "addedSugar": false,
@@ -6470,7 +6775,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "cafe-solo",
@@ -6501,8 +6809,7 @@
       "práctico"
     ],
     "satiety": "liviana",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "café",
     "everyday": true,
     "addedSugar": false,
@@ -6522,11 +6829,14 @@
     "items": [
       {
         "item": "café",
-        "qty": 1,
-        "unit": "u"
+        "qty": 10,
+        "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "cafe-con-leche",
@@ -6551,8 +6861,7 @@
       "práctico"
     ],
     "satiety": "liviana",
-    "prepMinutes": 3,
-    "totalMinutes": null,
+    "totalMinutes": 3,
     "mainIngredient": "leche",
     "everyday": true,
     "addedSugar": false,
@@ -6577,11 +6886,14 @@
       },
       {
         "item": "café",
-        "qty": 1,
-        "unit": "u"
+        "qty": 10,
+        "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 3,
+    "rinde": null
   },
   {
     "slug": "mate",
@@ -6606,8 +6918,7 @@
       "práctico"
     ],
     "satiety": "liviana",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "yerba",
     "everyday": true,
     "addedSugar": false,
@@ -6627,11 +6938,14 @@
     "items": [
       {
         "item": "yerba",
-        "qty": 1,
-        "unit": "u"
+        "qty": 30,
+        "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "mate-cocido",
@@ -6662,8 +6976,7 @@
       "práctico"
     ],
     "satiety": "liviana",
-    "prepMinutes": 3,
-    "totalMinutes": null,
+    "totalMinutes": 3,
     "mainIngredient": "mate cocido",
     "everyday": true,
     "addedSugar": false,
@@ -6687,7 +7000,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 3,
+    "rinde": null
   },
   {
     "slug": "te",
@@ -6712,8 +7028,7 @@
       "práctico"
     ],
     "satiety": "liviana",
-    "prepMinutes": 3,
-    "totalMinutes": null,
+    "totalMinutes": 3,
     "mainIngredient": "té",
     "everyday": true,
     "addedSugar": false,
@@ -6737,7 +7052,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 3,
+    "rinde": null
   },
   {
     "slug": "agua",
@@ -6762,8 +7080,7 @@
       "práctico"
     ],
     "satiety": "liviana",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "agua",
     "everyday": true,
     "addedSugar": false,
@@ -6787,7 +7104,10 @@
         "unit": "ml"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "gaseosa-comun",
@@ -6820,8 +7140,7 @@
       "salida"
     ],
     "satiety": "liviana",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "gaseosa",
     "everyday": true,
     "addedSugar": true,
@@ -6845,7 +7164,10 @@
         "unit": "ml"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "gaseosa-zero",
@@ -6872,8 +7194,7 @@
       "práctico"
     ],
     "satiety": "liviana",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "gaseosa sin azúcar",
     "everyday": true,
     "addedSugar": false,
@@ -6897,7 +7218,10 @@
         "unit": "ml"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "jugo-exprimido",
@@ -6922,8 +7246,7 @@
       "dulce"
     ],
     "satiety": "liviana",
-    "prepMinutes": 5,
-    "totalMinutes": null,
+    "totalMinutes": 5,
     "mainIngredient": "limón",
     "everyday": true,
     "addedSugar": false,
@@ -6947,7 +7270,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 5,
+    "rinde": null
   },
   {
     "slug": "tostadas-queso-tomate",
@@ -6974,8 +7300,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 6,
-    "totalMinutes": null,
+    "totalMinutes": 6,
     "mainIngredient": "pan",
     "everyday": true,
     "addedSugar": false,
@@ -7009,7 +7334,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 6,
+    "rinde": null
   },
   {
     "slug": "yogur-avena",
@@ -7037,8 +7365,7 @@
       "dulce"
     ],
     "satiety": "potente",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "yogur natural",
     "everyday": true,
     "addedSugar": false,
@@ -7067,7 +7394,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "licuado-banana-avena",
@@ -7094,8 +7424,7 @@
       "dulce"
     ],
     "satiety": "potente",
-    "prepMinutes": 4,
-    "totalMinutes": null,
+    "totalMinutes": 4,
     "mainIngredient": "banana",
     "everyday": true,
     "addedSugar": false,
@@ -7129,7 +7458,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 4,
+    "rinde": null
   },
   {
     "slug": "tostadas-ricota-mermelada",
@@ -7156,8 +7488,7 @@
       "dulce"
     ],
     "satiety": "normal",
-    "prepMinutes": 5,
-    "totalMinutes": null,
+    "totalMinutes": 5,
     "mainIngredient": "pan",
     "everyday": true,
     "addedSugar": false,
@@ -7191,7 +7522,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 5,
+    "rinde": null
   },
   {
     "slug": "huevo-frito-pan",
@@ -7217,8 +7551,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 6,
-    "totalMinutes": null,
+    "totalMinutes": 6,
     "mainIngredient": "huevo",
     "everyday": true,
     "addedSugar": false,
@@ -7247,7 +7580,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 6,
+    "rinde": null
   },
   {
     "slug": "tostadas-integrales-queso",
@@ -7274,8 +7610,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 4,
-    "totalMinutes": null,
+    "totalMinutes": 4,
     "mainIngredient": "pan integral",
     "everyday": true,
     "addedSugar": false,
@@ -7304,7 +7639,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 4,
+    "rinde": null
   },
   {
     "slug": "sandwich-huevo-llevar",
@@ -7332,8 +7670,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 5,
-    "totalMinutes": null,
+    "totalMinutes": 15,
     "mainIngredient": "huevo",
     "everyday": true,
     "addedSugar": false,
@@ -7372,7 +7709,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 5,
+    "rinde": null
   },
   {
     "slug": "desayuno-estacion",
@@ -7400,8 +7740,7 @@
       "emergencia"
     ],
     "satiety": "liviana",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "medialuna",
     "everyday": true,
     "addedSugar": true,
@@ -7421,7 +7760,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "mate-bizcochos",
@@ -7448,8 +7790,7 @@
       "salado"
     ],
     "satiety": "liviana",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "bizcochos",
     "everyday": true,
     "addedSugar": false,
@@ -7469,8 +7810,8 @@
     "items": [
       {
         "item": "yerba",
-        "qty": 1,
-        "unit": "u"
+        "qty": 30,
+        "unit": "g"
       },
       {
         "item": "bizcochos",
@@ -7478,7 +7819,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "mate-pan-manteca",
@@ -7505,8 +7849,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 3,
-    "totalMinutes": null,
+    "totalMinutes": 3,
     "mainIngredient": "pan",
     "everyday": true,
     "addedSugar": false,
@@ -7526,8 +7869,8 @@
     "items": [
       {
         "item": "yerba",
-        "qty": 1,
-        "unit": "u"
+        "qty": 30,
+        "unit": "g"
       },
       {
         "item": "pan",
@@ -7540,7 +7883,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 3,
+    "rinde": null
   },
   {
     "slug": "te-galletitas",
@@ -7567,8 +7913,7 @@
       "dulce"
     ],
     "satiety": "liviana",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "galletitas dulces",
     "everyday": true,
     "addedSugar": true,
@@ -7597,7 +7942,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "cafe-galletitas-agua",
@@ -7624,8 +7972,7 @@
       "salado"
     ],
     "satiety": "liviana",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "galletitas de agua",
     "everyday": true,
     "addedSugar": false,
@@ -7645,8 +7992,8 @@
     "items": [
       {
         "item": "café",
-        "qty": 1,
-        "unit": "u"
+        "qty": 10,
+        "unit": "g"
       },
       {
         "item": "galletitas de agua",
@@ -7654,7 +8001,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "tostadas-dulce-membrillo",
@@ -7681,8 +8031,7 @@
       "dulce"
     ],
     "satiety": "normal",
-    "prepMinutes": 3,
-    "totalMinutes": null,
+    "totalMinutes": 3,
     "mainIngredient": "pan",
     "everyday": true,
     "addedSugar": true,
@@ -7711,7 +8060,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 3,
+    "rinde": null
   },
   {
     "slug": "yogur-galletitas",
@@ -7738,8 +8090,7 @@
       "dulce"
     ],
     "satiety": "normal",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "yogur saborizado sin azúcar",
     "everyday": true,
     "addedSugar": true,
@@ -7768,7 +8119,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "licuado-frutilla",
@@ -7795,8 +8149,7 @@
       "dulce"
     ],
     "satiety": "liviana",
-    "prepMinutes": 5,
-    "totalMinutes": null,
+    "totalMinutes": 5,
     "mainIngredient": "frutilla",
     "everyday": true,
     "addedSugar": false,
@@ -7825,7 +8178,10 @@
         "unit": "ml"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 5,
+    "rinde": null
   },
   {
     "slug": "chipa",
@@ -7853,8 +8209,7 @@
       "práctico"
     ],
     "satiety": "normal",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "chipá",
     "everyday": true,
     "addedSugar": false,
@@ -7874,7 +8229,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "tortas-fritas",
@@ -7899,7 +8257,6 @@
       "antojo"
     ],
     "satiety": "potente",
-    "prepMinutes": 20,
     "totalMinutes": 40,
     "mainIngredient": "harina",
     "everyday": false,
@@ -7929,7 +8286,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 20,
+    "rinde": null
   },
   {
     "slug": "bizcochuelo",
@@ -7956,7 +8316,6 @@
       "dulce"
     ],
     "satiety": "liviana",
-    "prepMinutes": 15,
     "totalMinutes": 55,
     "mainIngredient": "bizcochuelo",
     "everyday": true,
@@ -7996,7 +8355,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 15,
+    "rinde": null
   },
   {
     "slug": "galletitas-avena-caseras",
@@ -8022,7 +8384,6 @@
       "dulce"
     ],
     "satiety": "liviana",
-    "prepMinutes": 15,
     "totalMinutes": 35,
     "mainIngredient": "avena",
     "everyday": true,
@@ -8057,7 +8418,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 15,
+    "rinde": null
   },
   {
     "slug": "submarino",
@@ -8084,8 +8448,7 @@
       "antojo"
     ],
     "satiety": "liviana",
-    "prepMinutes": 5,
-    "totalMinutes": null,
+    "totalMinutes": 5,
     "mainIngredient": "leche",
     "everyday": true,
     "addedSugar": true,
@@ -8114,7 +8477,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 5,
+    "rinde": null
   },
   {
     "slug": "torta-cafeteria",
@@ -8141,8 +8507,7 @@
       "antojo"
     ],
     "satiety": "normal",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "torta",
     "everyday": false,
     "addedSugar": true,
@@ -8162,7 +8527,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "budin-envasado",
@@ -8191,8 +8559,7 @@
       "práctico"
     ],
     "satiety": "liviana",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "budín",
     "everyday": true,
     "addedSugar": true,
@@ -8216,7 +8583,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "galletitas-queso-untable",
@@ -8243,8 +8613,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 3,
-    "totalMinutes": null,
+    "totalMinutes": 3,
     "mainIngredient": "galletitas de agua",
     "everyday": true,
     "addedSugar": false,
@@ -8273,7 +8642,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 3,
+    "rinde": null
   },
   {
     "slug": "pan-dulce-de-leche",
@@ -8301,8 +8673,7 @@
       "antojo"
     ],
     "satiety": "normal",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "pan",
     "everyday": true,
     "addedSugar": true,
@@ -8331,7 +8702,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "mate-frutos-secos",
@@ -8357,8 +8731,7 @@
       "rápido"
     ],
     "satiety": "liviana",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "nuez",
     "everyday": true,
     "addedSugar": false,
@@ -8378,8 +8751,8 @@
     "items": [
       {
         "item": "yerba",
-        "qty": 1,
-        "unit": "u"
+        "qty": 30,
+        "unit": "g"
       },
       {
         "item": "nuez",
@@ -8392,7 +8765,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "yogur-cereales",
@@ -8419,8 +8795,7 @@
       "dulce"
     ],
     "satiety": "normal",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "granola",
     "everyday": true,
     "addedSugar": true,
@@ -8449,7 +8824,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "tostado-miga-merienda",
@@ -8476,8 +8854,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 5,
-    "totalMinutes": null,
+    "totalMinutes": 5,
     "mainIngredient": "pan de miga",
     "everyday": true,
     "addedSugar": false,
@@ -8511,7 +8888,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 5,
+    "rinde": null
   },
   {
     "slug": "fruta-queso",
@@ -8537,8 +8917,7 @@
       "rápido"
     ],
     "satiety": "normal",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "manzana",
     "everyday": true,
     "addedSugar": false,
@@ -8567,7 +8946,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "merienda-kiosco",
@@ -8596,8 +8978,7 @@
       "emergencia"
     ],
     "satiety": "liviana",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "alfajor",
     "everyday": true,
     "addedSugar": true,
@@ -8617,7 +8998,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "merluza-pure",
@@ -8643,8 +9027,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 20,
-    "totalMinutes": null,
+    "totalMinutes": 35,
     "mainIngredient": "merluza",
     "everyday": true,
     "addedSugar": false,
@@ -8676,9 +9059,22 @@
         "item": "leche",
         "qty": 50,
         "unit": "ml"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
+      },
+      {
+        "item": "limón",
+        "qty": 0.5,
+        "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 20,
+    "rinde": null
   },
   {
     "slug": "pollo-arroz-integral",
@@ -8705,8 +9101,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 30,
-    "totalMinutes": null,
+    "totalMinutes": 45,
     "mainIngredient": "pollo",
     "everyday": true,
     "addedSugar": false,
@@ -8740,7 +9135,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 30,
+    "rinde": null
   },
   {
     "slug": "fideos-integrales-salsa",
@@ -8767,8 +9165,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 20,
-    "totalMinutes": null,
+    "totalMinutes": 25,
     "mainIngredient": "fideos integrales",
     "everyday": true,
     "addedSugar": false,
@@ -8802,7 +9199,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 20,
+    "rinde": null
   },
   {
     "slug": "polenta-salsa",
@@ -8829,8 +9229,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 10,
-    "totalMinutes": null,
+    "totalMinutes": 15,
     "mainIngredient": "polenta",
     "everyday": true,
     "addedSugar": false,
@@ -8862,9 +9261,22 @@
         "item": "queso",
         "qty": 40,
         "unit": "g"
+      },
+      {
+        "item": "agua",
+        "qty": 400,
+        "unit": "ml"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 10,
+    "rinde": null
   },
   {
     "slug": "guiso-garbanzos",
@@ -8891,7 +9303,6 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 15,
     "totalMinutes": 45,
     "mainIngredient": "garbanzos cocidos",
     "everyday": true,
@@ -8929,9 +9340,37 @@
         "item": "zanahoria",
         "qty": 1,
         "unit": "u"
+      },
+      {
+        "item": "aceite",
+        "qty": 1,
+        "unit": "cda"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
+      },
+      {
+        "item": "pimentón",
+        "qty": 1,
+        "unit": "pizca"
+      },
+      {
+        "item": "comino",
+        "qty": 1,
+        "unit": "pizca"
+      },
+      {
+        "item": "agua",
+        "qty": 400,
+        "unit": "ml"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 15,
+    "rinde": "2 platos"
   },
   {
     "slug": "milanesa-ensalada",
@@ -8958,8 +9397,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 20,
-    "totalMinutes": null,
+    "totalMinutes": 20,
     "mainIngredient": "milanesa de carne",
     "everyday": true,
     "addedSugar": false,
@@ -8993,7 +9431,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 20,
+    "rinde": null
   },
   {
     "slug": "zapallitos-rellenos",
@@ -9019,8 +9460,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 20,
-    "totalMinutes": 50,
+    "totalMinutes": 55,
     "mainIngredient": "zapallito",
     "everyday": true,
     "addedSugar": false,
@@ -9057,9 +9497,17 @@
         "item": "queso rallado",
         "qty": 20,
         "unit": "g"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 20,
+    "rinde": null
   },
   {
     "slug": "berenjenas-parmesana",
@@ -9085,7 +9533,6 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 25,
     "totalMinutes": 55,
     "mainIngredient": "berenjena",
     "everyday": true,
@@ -9123,9 +9570,22 @@
         "item": "pan rallado",
         "qty": 40,
         "unit": "g"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
+      },
+      {
+        "item": "aceite",
+        "qty": 1,
+        "unit": "cda"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 25,
+    "rinde": "2 porciones"
   },
   {
     "slug": "ensalada-atun-garbanzos",
@@ -9152,8 +9612,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 8,
-    "totalMinutes": null,
+    "totalMinutes": 8,
     "mainIngredient": "garbanzos cocidos",
     "everyday": true,
     "addedSugar": false,
@@ -9192,7 +9651,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 8,
+    "rinde": null
   },
   {
     "slug": "arroz-primavera",
@@ -9219,8 +9681,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 20,
-    "totalMinutes": null,
+    "totalMinutes": 25,
     "mainIngredient": "arroz",
     "everyday": true,
     "addedSugar": false,
@@ -9252,9 +9713,22 @@
         "item": "huevo",
         "qty": 1,
         "unit": "u"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
+      },
+      {
+        "item": "aceite",
+        "qty": 1,
+        "unit": "cda"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 20,
+    "rinde": null
   },
   {
     "slug": "tarta-atun",
@@ -9280,7 +9754,6 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 15,
     "totalMinutes": 50,
     "mainIngredient": "masa de tarta",
     "everyday": true,
@@ -9318,9 +9791,22 @@
         "item": "cebolla",
         "qty": 1,
         "unit": "u"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
+      },
+      {
+        "item": "aceite",
+        "qty": 1,
+        "unit": "cda"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 15,
+    "rinde": "4 porciones"
   },
   {
     "slug": "pollo-brocoli",
@@ -9347,7 +9833,6 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 15,
     "totalMinutes": 50,
     "mainIngredient": "pollo",
     "everyday": true,
@@ -9380,9 +9865,22 @@
         "item": "papa",
         "qty": 250,
         "unit": "g"
+      },
+      {
+        "item": "aceite",
+        "qty": 1,
+        "unit": "cda"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 15,
+    "rinde": "2 platos"
   },
   {
     "slug": "empanadas-verdura",
@@ -9421,7 +9919,6 @@
       "salado"
     ],
     "satiety": "potente",
-    "prepMinutes": 20,
     "totalMinutes": 50,
     "mainIngredient": "tapas de empanada",
     "everyday": true,
@@ -9459,9 +9956,22 @@
         "item": "cebolla",
         "qty": 1,
         "unit": "u"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
+      },
+      {
+        "item": "aceite",
+        "qty": 1,
+        "unit": "cda"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 20,
+    "rinde": "3 empanadas"
   },
   {
     "slug": "sandwich-milanesa-completo",
@@ -9488,8 +9998,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 20,
-    "totalMinutes": null,
+    "totalMinutes": 20,
     "mainIngredient": "milanesa de carne",
     "everyday": true,
     "addedSugar": false,
@@ -9533,7 +10042,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 20,
+    "rinde": null
   },
   {
     "slug": "pastel-calabaza",
@@ -9560,7 +10072,6 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 20,
     "totalMinutes": 60,
     "mainIngredient": "calabaza",
     "everyday": true,
@@ -9593,9 +10104,17 @@
         "item": "cebolla",
         "qty": 1,
         "unit": "u"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 20,
+    "rinde": null
   },
   {
     "slug": "ravioles-rotiseria",
@@ -9622,8 +10141,7 @@
       "salado"
     ],
     "satiety": "potente",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "ravioles",
     "everyday": true,
     "addedSugar": false,
@@ -9643,7 +10161,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "pollo-spiedo-papas",
@@ -9670,8 +10191,7 @@
       "salado"
     ],
     "satiety": "potente",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "pollo entero",
     "everyday": true,
     "addedSugar": false,
@@ -9691,7 +10211,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "tarta-rotiseria",
@@ -9718,8 +10241,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "masa de tarta",
     "everyday": true,
     "addedSugar": false,
@@ -9739,7 +10261,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "menu-restaurante",
@@ -9766,8 +10291,7 @@
       "salado"
     ],
     "satiety": "potente",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "menú",
     "everyday": true,
     "addedSugar": false,
@@ -9787,7 +10311,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "wok-restaurante",
@@ -9814,8 +10341,7 @@
       "salado"
     ],
     "satiety": "potente",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "arroz",
     "everyday": true,
     "addedSugar": false,
@@ -9835,7 +10361,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "tortilla-verduras",
@@ -9861,8 +10390,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 15,
-    "totalMinutes": null,
+    "totalMinutes": 25,
     "mainIngredient": "huevo",
     "everyday": true,
     "addedSugar": false,
@@ -9899,9 +10427,22 @@
         "item": "queso rallado",
         "qty": 30,
         "unit": "g"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
+      },
+      {
+        "item": "aceite",
+        "qty": 1,
+        "unit": "cda"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 15,
+    "rinde": "2 porciones"
   },
   {
     "slug": "sopa-crema-pan",
@@ -9927,8 +10468,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 5,
-    "totalMinutes": null,
+    "totalMinutes": 8,
     "mainIngredient": "sopa crema",
     "everyday": true,
     "addedSugar": false,
@@ -9957,7 +10497,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 5,
+    "rinde": null
   },
   {
     "slug": "ensalada-cesar-cena",
@@ -9984,8 +10527,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 15,
-    "totalMinutes": null,
+    "totalMinutes": 25,
     "mainIngredient": "pollo",
     "everyday": true,
     "addedSugar": false,
@@ -10024,7 +10566,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 15,
+    "rinde": null
   },
   {
     "slug": "revuelto-espinaca",
@@ -10050,8 +10595,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 10,
-    "totalMinutes": null,
+    "totalMinutes": 10,
     "mainIngredient": "espinaca",
     "everyday": true,
     "addedSugar": false,
@@ -10083,9 +10627,22 @@
         "item": "queso",
         "qty": 30,
         "unit": "g"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
+      },
+      {
+        "item": "aceite",
+        "qty": 1,
+        "unit": "cda"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 10,
+    "rinde": null
   },
   {
     "slug": "pizza-prepizza",
@@ -10124,7 +10681,6 @@
       "antojo"
     ],
     "satiety": "potente",
-    "prepMinutes": 8,
     "totalMinutes": 20,
     "mainIngredient": "prepizza",
     "everyday": true,
@@ -10159,7 +10715,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 8,
+    "rinde": null
   },
   {
     "slug": "tomate-atun-cena",
@@ -10186,8 +10745,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 10,
-    "totalMinutes": null,
+    "totalMinutes": 20,
     "mainIngredient": "tomate",
     "everyday": true,
     "addedSugar": false,
@@ -10226,7 +10784,10 @@
         "unit": "cda"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 10,
+    "rinde": null
   },
   {
     "slug": "picada-liviana",
@@ -10253,8 +10814,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 5,
-    "totalMinutes": null,
+    "totalMinutes": 5,
     "mainIngredient": "queso",
     "everyday": true,
     "addedSugar": false,
@@ -10288,7 +10848,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 5,
+    "rinde": null
   },
   {
     "slug": "sandwich-panceta-queso",
@@ -10315,8 +10878,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 8,
-    "totalMinutes": null,
+    "totalMinutes": 8,
     "mainIngredient": "pan",
     "everyday": true,
     "addedSugar": false,
@@ -10350,7 +10912,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 8,
+    "rinde": null
   },
   {
     "slug": "panchos",
@@ -10378,8 +10943,7 @@
       "antojo"
     ],
     "satiety": "normal",
-    "prepMinutes": 8,
-    "totalMinutes": null,
+    "totalMinutes": 8,
     "mainIngredient": "salchicha",
     "everyday": false,
     "addedSugar": false,
@@ -10408,7 +10972,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 8,
+    "rinde": null
   },
   {
     "slug": "ensalada-pollo-palta",
@@ -10436,8 +11003,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 10,
-    "totalMinutes": null,
+    "totalMinutes": 20,
     "mainIngredient": "pechuga de pollo",
     "everyday": true,
     "addedSugar": false,
@@ -10476,7 +11042,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 10,
+    "rinde": null
   },
   {
     "slug": "noquis-manteca",
@@ -10503,8 +11072,7 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 8,
-    "totalMinutes": null,
+    "totalMinutes": 8,
     "mainIngredient": "ñoquis",
     "everyday": true,
     "addedSugar": false,
@@ -10538,7 +11106,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 8,
+    "rinde": null
   },
   {
     "slug": "milanesa-congelada",
@@ -10565,7 +11136,6 @@
       "potente"
     ],
     "satiety": "potente",
-    "prepMinutes": 5,
     "totalMinutes": 30,
     "mainIngredient": "milanesa de pollo",
     "everyday": true,
@@ -10595,7 +11165,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 5,
+    "rinde": null
   },
   {
     "slug": "sopa-verduras",
@@ -10620,7 +11193,6 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 15,
     "totalMinutes": 40,
     "mainIngredient": "caldo",
     "everyday": true,
@@ -10658,9 +11230,22 @@
         "item": "fideos",
         "qty": 40,
         "unit": "g"
+      },
+      {
+        "item": "sal",
+        "qty": 1,
+        "unit": "pizca"
+      },
+      {
+        "item": "agua",
+        "qty": 800,
+        "unit": "ml"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 15,
+    "rinde": "2 platos"
   },
   {
     "slug": "empanadas-cena-kiosco",
@@ -10688,8 +11273,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "empanada",
     "everyday": true,
     "addedSugar": false,
@@ -10709,7 +11293,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "hamburguesa-delivery",
@@ -10742,8 +11329,7 @@
       "antojo"
     ],
     "satiety": "potente",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "hamburguesa",
     "everyday": false,
     "addedSugar": false,
@@ -10763,7 +11349,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "sushi-delivery",
@@ -10788,8 +11377,7 @@
       "antojo"
     ],
     "satiety": "normal",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "arroz",
     "everyday": false,
     "addedSugar": false,
@@ -10809,7 +11397,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "rotiseria-cena-milanesa",
@@ -10836,8 +11427,7 @@
       "salado"
     ],
     "satiety": "potente",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "milanesa de carne",
     "everyday": true,
     "addedSugar": false,
@@ -10857,7 +11447,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "cena-supermercado",
@@ -10886,8 +11479,7 @@
       "emergencia"
     ],
     "satiety": "normal",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "ensalada",
     "everyday": true,
     "addedSugar": false,
@@ -10907,7 +11499,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "pizza-congelada",
@@ -10939,7 +11534,6 @@
       "antojo"
     ],
     "satiety": "potente",
-    "prepMinutes": 2,
     "totalMinutes": 25,
     "mainIngredient": "pizza congelada",
     "everyday": false,
@@ -10964,7 +11558,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "cook",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "naranja",
@@ -10990,8 +11587,7 @@
       "dulce"
     ],
     "satiety": "liviana",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "naranja",
     "everyday": true,
     "addedSugar": false,
@@ -11015,7 +11611,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "mandarina",
@@ -11041,8 +11640,7 @@
       "dulce"
     ],
     "satiety": "liviana",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "mandarina",
     "everyday": true,
     "addedSugar": false,
@@ -11066,7 +11664,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "pera",
@@ -11092,8 +11693,7 @@
       "dulce"
     ],
     "satiety": "liviana",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "pera",
     "everyday": true,
     "addedSugar": false,
@@ -11117,7 +11717,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "uvas",
@@ -11142,8 +11745,7 @@
       "dulce"
     ],
     "satiety": "liviana",
-    "prepMinutes": 2,
-    "totalMinutes": null,
+    "totalMinutes": 2,
     "mainIngredient": "uva",
     "everyday": true,
     "addedSugar": false,
@@ -11167,7 +11769,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 2,
+    "rinde": null
   },
   {
     "slug": "durazno",
@@ -11193,8 +11798,7 @@
       "dulce"
     ],
     "satiety": "liviana",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "durazno",
     "everyday": true,
     "addedSugar": false,
@@ -11218,7 +11822,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "huevo-duro-snack",
@@ -11244,8 +11851,7 @@
       "salado"
     ],
     "satiety": "normal",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "huevo",
     "everyday": true,
     "addedSugar": false,
@@ -11269,7 +11875,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "tomatitos-queso",
@@ -11296,8 +11905,7 @@
       "salado"
     ],
     "satiety": "liviana",
-    "prepMinutes": 3,
-    "totalMinutes": null,
+    "totalMinutes": 3,
     "mainIngredient": "tomate",
     "everyday": true,
     "addedSugar": false,
@@ -11326,7 +11934,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 3,
+    "rinde": null
   },
   {
     "slug": "pepino-zanahoria",
@@ -11351,8 +11962,7 @@
       "salado"
     ],
     "satiety": "liviana",
-    "prepMinutes": 5,
-    "totalMinutes": null,
+    "totalMinutes": 5,
     "mainIngredient": "zanahoria",
     "everyday": true,
     "addedSugar": false,
@@ -11381,7 +11991,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 5,
+    "rinde": null
   },
   {
     "slug": "tostadas-arroz-palta",
@@ -11408,8 +12021,7 @@
       "salado"
     ],
     "satiety": "liviana",
-    "prepMinutes": 3,
-    "totalMinutes": null,
+    "totalMinutes": 3,
     "mainIngredient": "palta",
     "everyday": true,
     "addedSugar": false,
@@ -11438,7 +12050,10 @@
         "unit": "u"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "assemble",
+    "activeMinutes": 3,
+    "rinde": null
   },
   {
     "slug": "mix-frutos-secos-pasas",
@@ -11465,8 +12080,7 @@
       "práctico"
     ],
     "satiety": "normal",
-    "prepMinutes": 1,
-    "totalMinutes": null,
+    "totalMinutes": 1,
     "mainIngredient": "frutos secos con chocolate",
     "everyday": true,
     "addedSugar": false,
@@ -11490,7 +12104,10 @@
         "unit": "g"
       }
     ],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 1,
+    "rinde": null
   },
   {
     "slug": "turron-kiosco",
@@ -11517,8 +12134,7 @@
       "antojo"
     ],
     "satiety": "liviana",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "turrón",
     "everyday": true,
     "addedSugar": true,
@@ -11538,7 +12154,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "barrita-cereal-kiosco",
@@ -11566,8 +12185,7 @@
       "emergencia"
     ],
     "satiety": "liviana",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "barra de cereal",
     "everyday": true,
     "addedSugar": true,
@@ -11587,7 +12205,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "sandwich-miga-kiosco",
@@ -11616,8 +12237,7 @@
       "práctico"
     ],
     "satiety": "normal",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "pan de miga",
     "everyday": true,
     "addedSugar": false,
@@ -11637,7 +12257,10 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   },
   {
     "slug": "helado-palito",
@@ -11664,8 +12287,7 @@
       "antojo"
     ],
     "satiety": "liviana",
-    "prepMinutes": 0,
-    "totalMinutes": null,
+    "totalMinutes": 0,
     "mainIngredient": "helado",
     "everyday": true,
     "addedSugar": true,
@@ -11685,6 +12307,9 @@
     "drink": null,
     "esBebida": false,
     "items": [],
-    "notes": ""
+    "notes": "",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "rinde": null
   }
 ]

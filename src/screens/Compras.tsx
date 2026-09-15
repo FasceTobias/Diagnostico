@@ -24,7 +24,7 @@ export function Compras({ app }: { app: Vianda }) {
       for (const planned of day.meals) {
         if (planned.status === 'skipped') continue
         const meal = mealById(planned.mealId)
-        if (!meal || meal.buyOutside || meal.prepMinutes < 15) continue
+        if (!meal || meal.buyOutside || meal.activeMinutes < 15) continue
         const set = byIngredient.get(meal.mainIngredient) ?? new Set<string>()
         set.add(meal.name)
         byIngredient.set(meal.mainIngredient, set)

@@ -23,7 +23,7 @@ import {
   compraDe,
 } from './types'
 import { addDays, isoDate, minutesOf, nowMinutes } from './format'
-import { foodOf, shoppingParts } from './foods'
+import { esBasico, foodOf, shoppingParts } from './foods'
 
 /* Horarios por defecto de la rutina. Son editables: salen del perfil,
    no están clavados en la UI. */
@@ -107,7 +107,7 @@ export interface RotationContext {
   /** ingredientes principales ya usados hoy */
   usedToday: Meal[]
   /** minutos disponibles para cocinar, si el día aprieta */
-  maxPrepMinutes?: number
+  maxActiveMinutes?: number
   /** Preferencias del usuario. Hoy sólo desempata; mañana va a pesar más. */
   prefs?: Preferences
 }
@@ -117,7 +117,7 @@ export const candidatesFor = (
   slot: Slot,
   context: DayContext,
   meals: Meal[],
-  maxPrepMinutes?: number,
+  maxActiveMinutes?: number,
 ): Meal[] => {
   const need = needsFor(slot, context)
 
@@ -145,7 +145,7 @@ export const candidatesFor = (
   if (need.requirePortable) pool = narrow(pool, (m) => m.portable)
 
   // 4. Disponibilidad: que entre en el tiempo que hay.
-  if (maxPrepMinutes) pool = narrow(pool, (m) => m.prepMinutes <= maxPrepMinutes)
+  if (maxActiveMinutes) pool = narrow(pool, (m) => m.activeMinutes <= maxActiveMinutes)
 
   return pool
 }
@@ -226,7 +226,7 @@ export const pickForSlot = (
   meals: Meal[],
   ctx: RotationContext,
 ): Meal | undefined => {
-  const all = candidatesFor(slot, context, meals, ctx.maxPrepMinutes)
+  const all = candidatesFor(slot, context, meals, ctx.maxActiveMinutes)
   if (!all.length) return undefined
 
   // La misma comida dos veces en el mismo día no va. Los dos snacks son el
@@ -348,7 +348,7 @@ export const compatibleReplacements = (
 
   return pool
     .filter((m) => m.id !== current.id)
-    .filter((m) => (opts.maxMinutes ? m.prepMinutes <= opts.maxMinutes : true))
+    .filter((m) => (opts.maxMinutes ? m.activeMinutes <= opts.maxMinutes : true))
     .map((meal) => {
       let score = 0
       const why: string[] = []
@@ -375,7 +375,7 @@ export const compatibleReplacements = (
         why.push(meal.carbs > current.carbs ? 'más carbos' : 'menos carbos')
       }
 
-      if (meal.prepMinutes < current.prepMinutes) {
+      if (meal.activeMinutes < current.activeMinutes) {
         score += 8
         why.push('más rápida')
       }
@@ -404,15 +404,15 @@ export interface RescueOption {
 }
 
 const bySpeed = (a: RescueOption, b: RescueOption) =>
-  a.meal.prepMinutes - b.meal.prepMinutes || (b.meal.rating ?? 0) - (a.meal.rating ?? 0)
+  a.meal.activeMinutes - b.meal.activeMinutes || (b.meal.rating ?? 0) - (a.meal.rating ?? 0)
 
 export const rescueOptions = (slot: Slot, meals: Meal[], limit = 4): RescueOption[] => {
   const category = SLOT_CATEGORY[slot]
 
   const sameMoment = (max: number) =>
     meals
-      .filter((m) => m.category === category && !m.buyOutside && m.prepMinutes <= max)
-      .map((meal) => ({ meal, why: `${meal.prepMinutes} min` }))
+      .filter((m) => m.category === category && !m.buyOutside && m.activeMinutes <= max)
+      .map((meal) => ({ meal, why: `${meal.activeMinutes} min` }))
 
   // 1. Cero preparación. 2. Casi cero.
   for (const max of [8, 15]) {
@@ -426,10 +426,10 @@ export const rescueOptions = (slot: Slot, meals: Meal[], limit = 4): RescueOptio
       (m) =>
         m.category !== category &&
         !m.buyOutside &&
-        m.prepMinutes <= 8 &&
+        m.activeMinutes <= 8 &&
         m.satiety !== 'liviana',
     )
-    .map((meal) => ({ meal, why: `es ${meal.category}, pero sale en ${meal.prepMinutes} min` }))
+    .map((meal) => ({ meal, why: `es ${meal.category}, pero sale en ${meal.activeMinutes} min` }))
     .sort(bySpeed)
     .slice(0, limit)
 }
@@ -567,7 +567,7 @@ const matchesFilters = (meal: Meal, filters: ResolveFilter[]): boolean => {
         if (meal.satiety !== 'potente') return false
         break
       case 'rapido':
-        if (meal.prepMinutes > 10) return false
+        if (meal.activeMinutes > 10) return false
         break
       case 'barato':
         if ((meal.priceLevel ?? 1) > 1) return false
@@ -591,7 +591,7 @@ const searchRelaxing = (pool: Meal[], filters: ResolveFilter[]): Meal[] => {
 const rank = (a: Meal, b: Meal) =>
   Number(b.favorite) - Number(a.favorite) ||
   (b.rating ?? 0) - (a.rating ?? 0) ||
-  a.prepMinutes - b.prepMinutes
+  a.activeMinutes - b.activeMinutes
 
 export const resolveNow = (
   slot: Slot,
@@ -664,7 +664,7 @@ export const buildShoppingList = (week: DayPlan[], meals: Meal[]): ShoppingGroup
       if (genera === 'nada') continue
 
       for (const ing of meal.ingredients) {
-        if (foodOf(ing.item).pantry) continue
+        if (esBasico(ing.item)) continue
         const key = `${ing.item}|${ing.unit}`
         const acc = totals.get(key) ?? {
           item: ing.item,
@@ -828,7 +828,7 @@ export const eventCombos = (
         m.satiety !== 'liviana' &&
         !m.tags.includes('dulce') &&
         m.carbs <= 45 &&
-        m.prepMinutes <= 10,
+        m.activeMinutes <= 10,
     )
     .sort((a, b) => outsideFirst(a, b) || quality(a, b))
 

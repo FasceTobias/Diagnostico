@@ -887,7 +887,7 @@ export const RECETAS: Record<string, Step[]> = {
         'Frío o tibio: caliente moja la masa y se abre al cerrar.',
     },
     {
-      text: 'Hacé un bollo con la harina, agua tibia y sal, y dejalo descansar 20 min.',
+      text: 'Hacé un bollo con la harina, la manteca blanda, el agua tibia y sal, y dejalo descansar 20 min.',
       minutes: 8,
     },
     {

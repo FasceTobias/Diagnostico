@@ -196,13 +196,13 @@ export const askAssistant = ({ text, app }: AssistantQuery): AssistantAnswer => 
   if (has(t, 'salgo', 'temprano', '6:30', '6.30', 'apurado', 'sin tiempo')) {
     const options = meals
       .filter((m) => m.category === 'desayuno' && m.portable)
-      .sort((a, b) => a.prepMinutes - b.prepMinutes)
+      .sort((a, b) => a.activeMinutes - b.activeMinutes)
       .slice(0, 3)
       .map((meal) => ({
         meal,
         why: meal.makeNightBefore
           ? 'se deja listo la noche anterior'
-          : `${meal.prepMinutes} min a la mañana`,
+          : `${meal.activeMinutes} min a la mañana`,
       }))
     return {
       title: 'Desayunos para salir temprano',

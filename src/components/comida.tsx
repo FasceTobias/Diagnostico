@@ -127,8 +127,8 @@ export function ProximaComida({
 
       <div className="mt-3 flex flex-wrap gap-1.5">
         <Pill tono={TONO_MOMENTO[SLOT_CATEGORY[slot]]}>{carbs(meal)} CH</Pill>
-        {(meal.totalMinutes ?? meal.prepMinutes) > 0 && (
-          <Pill>{meal.totalMinutes ?? meal.prepMinutes} min</Pill>
+        {meal.totalMinutes > 0 && (
+          <Pill>{meal.totalMinutes} min</Pill>
         )}
         {meal.portable && <Pill>para llevar</Pill>}
         {ORIGEN_CORTO[meal.origen] && <Pill>{ORIGEN_CORTO[meal.origen]}</Pill>}

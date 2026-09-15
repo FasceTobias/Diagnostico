@@ -62,8 +62,11 @@ const MOMENTO = {
   cena: 'cena',
 }
 
+/* Sólo los archivos de catálogo, que son los versionados: en esa
+   carpeta también viven revisiones —duplicados.json— que no son
+   entradas y no tienen por qué terminar en el seed. */
 const entradas = readdirSync(resolve(ROOT, 'data/catalogo'))
-  .filter((f) => f.endsWith('.json'))
+  .filter((f) => /^v\d+\.json$/.test(f))
   .sort()
   .flatMap((f) => JSON.parse(readFileSync(resolve(ROOT, 'data/catalogo', f), 'utf8')))
 
@@ -92,7 +95,7 @@ for (const e of entradas) {
       ...e.momentos.map((m) => MOMENTO[m]),
       ...(e.makeNightBefore ? ['preparar_noche_anterior'] : []),
       ...(e.portable ? ['para_llevar'] : []),
-      ...(e.prepMinutes === 0 ? ['sin_cocinar'] : []),
+      ...(e.activeMinutes === 0 ? ['sin_cocinar'] : []),
     ]),
   ].filter(Boolean)
 
@@ -106,15 +109,17 @@ for (const e of entradas) {
     `  difficulty, freq, drink, everyday, added_sugar, notes,`,
     `  buy_outside, venues, price_level, handheld, carbs_from_items,`,
     `  origin, flavor, moments, total_minutes, is_drink,`,
+    `  prep_type, yields,`,
     `  source_name`,
     `) values (`,
     `  null, ${q(e.slug)}, ${q(e.name)}, ${q(e.description)}, ${q(e.category)}, 'estimado',`,
     `  ${n(porDefecto.carbs)}, 'estimacion', 'estimada', ${q(porDefecto.label)},`,
-    `  ${q(e.mainIngredient)}, ${arr(e.tags)}, ${n(e.prepMinutes)}, ${q(e.satiety)},`,
+    `  ${q(e.mainIngredient)}, ${arr(e.tags)}, ${n(e.activeMinutes)}, ${q(e.satiety)},`,
     `  ${b(e.portable)}, ${b(e.needsCold)}, ${b(e.needsReheat)}, ${b(e.makeNightBefore)}, ${b(e.freezable)},`,
     `  ${n(e.difficulty)}, ${q(e.frequency)}, ${q(e.drink)}, ${b(e.everyday)}, ${b(e.addedSugar)}, ${q(e.notes)},`,
     `  ${b(e.buyOutside)}, ${e.venues.length ? `array[${e.venues.map(q).join(', ')}]::venue[]` : `'{}'`}, ${n(e.priceLevel)}, ${b(e.handheld)}, ${b(e.items.length > 0)},`,
     `  ${q(ORIGEN[e.origen])}::food_origin, ${q(e.sabor)}::flavor, array[${e.momentos.map(q).join(', ')}]::meal_category[], ${n(e.totalMinutes)}, ${b(e.esBebida)},`,
+    `  ${q(e.prepType)}::prep_type, ${q(e.rinde)},`,
     `  'porción estándar calculada'`,
     `)`,
     // El predicado tiene que coincidir con el del índice parcial, si no
@@ -134,6 +139,7 @@ for (const e of entradas) {
     `  handheld = excluded.handheld, origin = excluded.origin,`,
     `  flavor = excluded.flavor, moments = excluded.moments,`,
     `  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,`,
+    `  prep_type = excluded.prep_type, yields = excluded.yields,`,
     `  updated_at = now();`,
     '',
   )

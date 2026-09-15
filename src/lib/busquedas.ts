@@ -25,7 +25,7 @@ const orden = (a: Meal, b: Meal) =>
   Number(!!a.esBebida) - Number(!!b.esBebida) ||
   Number(b.everyday) - Number(a.everyday) ||
   Number(a.frequency === 'ocasional') - Number(b.frequency === 'ocasional') ||
-  a.prepMinutes - b.prepMinutes ||
+  a.activeMinutes - b.activeMinutes ||
   (b.rating ?? 0) - (a.rating ?? 0)
 
 export type Pregunta =
@@ -76,7 +76,7 @@ export const responder = (
   const pool = meals.filter((m) => {
     switch (pregunta) {
       case 'hambre':
-        return sirveEn(m, cat) && !m.esBebida && m.prepMinutes <= 15
+        return sirveEn(m, cat) && !m.esBebida && m.activeMinutes <= 15
       case 'dulce':
         return m.sabor === 'dulce' && !m.esBebida
       case 'salado':
@@ -84,9 +84,9 @@ export const responder = (
       case 'snack':
         return sirveEn(m, 'snack') && !m.esBebida
       case 'rapido':
-        return m.prepMinutes <= 10 && !m.esBebida
+        return m.activeMinutes <= 10 && !m.esBebida
       case 'sin-cocinar':
-        return m.prepMinutes <= 5 && !m.needsReheat && !m.esBebida
+        return m.activeMinutes <= 5 && !m.needsReheat && !m.esBebida
     }
   })
 
@@ -139,9 +139,9 @@ export const snacks = (meals: Meal[], filtro: FiltroSnack, limite = 12): Meal[] 
       case 'salados':
         return m.sabor === 'salado' || m.sabor === 'mixta'
       case 'rapidos':
-        return m.prepMinutes <= 5
+        return m.activeMinutes <= 5
       case 'sin-cocinar':
-        return m.prepMinutes === 0
+        return m.activeMinutes === 0
       case 'trabajo':
         /* En el trabajo no hay cocina: tiene que viajar y comerse como
            viene, sin pasar por el microondas de nadie. */

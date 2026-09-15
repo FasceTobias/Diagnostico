@@ -338,7 +338,7 @@ function Results({
     <section key="propias" className="mt-7">
       <SectionLabel>{buyFirst ? 'Si llegás a casa' : 'De tu biblioteca'}</SectionLabel>
       <OptionList
-        options={propias.map((meal) => ({ meal, why: `${meal.prepMinutes} min` }))}
+        options={propias.map((meal) => ({ meal, why: `${meal.activeMinutes} min` }))}
         onPick={onPick}
       />
     </section>

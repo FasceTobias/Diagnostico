@@ -50,8 +50,11 @@ interface EntradaJson {
   portions: PorcionJson[]
   tags: string[]
   satiety: Meal['satiety']
-  prepMinutes: number
-  totalMinutes: number | null
+  prepType: Meal['prepType']
+  activeMinutes: number
+  totalMinutes: number
+  /** Cuánto rinde la receta, si no coincide con la porción. */
+  rinde: string | null
   esBebida: boolean
   mainIngredient: string
   everyday: boolean
@@ -105,10 +108,12 @@ const aMeal = (e: EntradaJson): Meal => {
     carbsVerified: false,
     isDemo: false,
     portions: porciones.length > 1 ? porciones : undefined,
-    prepMinutes: e.prepMinutes,
+    prepType: e.prepType,
+    activeMinutes: e.activeMinutes,
     /* Activo y total no son lo mismo: una empanada son diez minutos de
        armado y cuarenta de horno. Si sólo guardás uno, mentís en el otro. */
-    totalMinutes: e.totalMinutes ?? undefined,
+    totalMinutes: e.totalMinutes,
+    rinde: e.rinde ?? undefined,
     satiety: e.satiety,
     portable: e.portable,
     needsCold: e.needsCold,

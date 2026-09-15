@@ -1,0 +1,68 @@
+{
+  "_": "Pares parecidos del catálogo, revisados uno por uno. Nada se borra acá: esto es la marca, y la decisión de fusionar es aparte. duplicado = son la misma comida y una sobra. variante = se parecen pero cambian en algo que importa (ingrediente, carbohidratos, saciedad, uso, momento o preparación), y separadas sirven. dudoso = la única diferencia es el nombre, el momento o un minuto, y hace falta decidir.",
+  "revisado": "2026-09-15",
+  "pares": [
+    { "a": "mate-solo-manana", "b": "mate", "veredicto": "duplicado",
+      "razon": "Mismo ingrediente, misma porción, mismos 0 g, mismos 2 minutos. Lo único distinto es el momento, y para eso está `momentos`: alcanza con que `mate` sirva también para desayuno." },
+
+    { "a": "tostadas-dulce-de-leche", "b": "pan-dulce-de-leche", "veredicto": "dudoso",
+      "razon": "Pan con dulce de leche, tostado o no. Cambian 3 g de carbohidrato porque uno lleva 30 g de dulce y el otro 40: es la porción, no la comida. Si se fusionan, van las dos porciones en una sola entrada." },
+
+    { "a": "sandwich-queso-manana", "b": "pan-queso-merienda", "veredicto": "dudoso",
+      "razon": "Mismos ingredientes y mismas cantidades. Uno se arma para llevar y el otro se come en casa, y eso ya lo dice `portable`. Los 2 g de diferencia no son una comida distinta." },
+
+    { "a": "huevos-duros-snack", "b": "huevo-duro-snack", "veredicto": "dudoso",
+      "razon": "Uno los hierve (3 min de trabajo, 20 en total) y el otro asume que ya están hechos (1 min). Es una distinción real —el segundo existe para el día que abrís la heladera— pero los nombres no la comunican: en la lista se leen igual." },
+
+    { "a": "empanada-kiosco", "b": "empanadas-cena-kiosco", "veredicto": "dudoso",
+      "razon": "La misma empanada de kiosco, una o dos. Eso es una porción, no dos entradas; salvo que una sea snack y la otra cena a propósito, en cuyo caso alcanza con los momentos." },
+
+    { "a": "tostadas-manteca-mermelada", "b": "tostadas-mermelada-merienda", "veredicto": "variante",
+      "razon": "Parecían el mismo par pero no lo son: una lleva manteca y la otra no. Son 2 g y una diferencia de gusto real. Se quedan las dos." },
+
+    { "a": "tostadas-arroz", "b": "galletitas-queso-untable", "veredicto": "variante",
+      "razon": "Eran idénticas por un error, no por parecidas: «Galletas de arroz con queso untable» tenía cargadas galletitas de agua. Corregido el ingrediente, son dos cosas distintas." },
+
+    { "a": "licuado-banana", "b": "licuado-banana-avena", "veredicto": "variante",
+      "razon": "La avena suma 8 g y cambia cuánto llena. Es otra merienda." },
+
+    { "a": "sandwich-milanesa", "b": "sandwich-milanesa-completo", "veredicto": "variante",
+      "razon": "Cinco minutos contra veinte, 48 g contra 52, y el completo lleva huevo. No es el mismo sándwich ni el mismo día." },
+
+    { "a": "ravioles-salsa", "b": "ravioles-cena-rapida", "veredicto": "variante",
+      "razon": "Salsa de tomate contra manteca y queso: cambia el ingrediente, el tiempo y para qué se usa." },
+
+    { "a": "noquis-salsa", "b": "noquis-manteca", "veredicto": "variante",
+      "razon": "Lo mismo que los ravioles. Separadas sirven, fusionadas no se puede elegir." },
+
+    { "a": "guiso-lentejas", "b": "guiso-garbanzos", "veredicto": "variante",
+      "razon": "Distinta legumbre, distinto número, y rotan en semanas distintas." },
+
+    { "a": "tostado-jamon-queso", "b": "sandwich-chico", "veredicto": "variante",
+      "razon": "Uno va a la sandwichera y el otro no, y son 8 g de diferencia." },
+
+    { "a": "tostado-jamon-queso", "b": "picada-cena", "veredicto": "variante",
+      "razon": "Mismos tres ingredientes, uso completamente distinto: un tostado no es una picada." },
+
+    { "a": "huevos-revueltos-tostadas", "b": "omelette-queso", "veredicto": "variante",
+      "razon": "Revuelto y omelette no se hacen igual ni se comen en el mismo momento." },
+
+    { "a": "budin-casero", "b": "bizcochuelo", "veredicto": "variante",
+      "razon": "Mismos cuatro ingredientes en proporciones distintas. Son dos cosas que nadie confunde." },
+
+    { "a": "milanesa-pure", "b": "milanesa-congelada", "veredicto": "variante",
+      "razon": "Veinte minutos de trabajo contra cinco. Es el ejemplo de por qué el origen y el tiempo van por entrada." },
+
+    { "a": "pollo-spiedo-casa", "b": "pollo-spiedo-rotiseria", "veredicto": "variante",
+      "razon": "El de casa arma una ensalada y genera compra; el de rotisería se come ahí y no genera nada." },
+
+    { "a": "pollo-spiedo-rotiseria", "b": "pollo-spiedo-papas", "veredicto": "variante",
+      "razon": "Con papas son 46 g más. Para alguien que cuenta carbohidratos no es la misma comida." },
+
+    { "a": "sandwich-miga", "b": "sandwich-miga-kiosco", "veredicto": "variante",
+      "razon": "Panadería y kiosco: distinto lugar, distinto precio, distinto tamaño." },
+
+    { "a": "turron-mani", "b": "turron-kiosco", "veredicto": "variante",
+      "razon": "Uno está en tu casa y el otro lo comprás al paso. La diferencia es dónde, y eso es justo lo que la app tiene que poder contestar." }
+  ]
+}

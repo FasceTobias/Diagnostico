@@ -146,8 +146,34 @@ export type Unit =
   | 'rebanada'
   | 'cda'
   | 'puñado'
+  | 'pizca'
   | 'pote'
   | 'lata'
+
+/* ------------------------------------------------------------------
+   QUÉ CLASE DE PREPARACIÓN PIDE
+
+   Tres casos, y la diferencia importa porque decide qué tiene que
+   mostrar «Ver preparación»:
+
+     · cook     → se cocina. Va la receta completa.
+     · assemble → se arma. Dos o tres líneas alcanzan: una tostada no
+                  necesita una receta, pero sí decir qué lleva encima.
+     · ready    → se compra hecho y se sirve. No hay nada que escribir,
+                  y la ficha no tiene que disculparse por eso.
+
+   Sin esto, la ficha de una banana decía «todavía no tiene la
+   preparación escrita», como si faltara algo. No falta nada: una
+   banana se pela.
+   ------------------------------------------------------------------ */
+
+export type PrepType = 'cook' | 'assemble' | 'ready'
+
+export const PREP_TYPE_LABEL: Record<PrepType, string> = {
+  cook: 'Se cocina',
+  assemble: 'Se arma',
+  ready: 'Listo para comer',
+}
 
 /* ------------------------------------------------------------------
    DE DÓNDE VIENE
@@ -284,11 +310,18 @@ export interface Meal {
   /** Café, mate, té, agua. Acompañan una comida o se piden a mano;
       el plan no las propone como si fueran una merienda. */
   esBebida?: boolean
+  /** Qué clase de preparación pide. Decide qué muestra la ficha: una
+      receta, dos líneas de armado, o nada. */
+  prepType: PrepType
   /** Minutos con las manos en la masa. */
-  prepMinutes: number
-  /** Minutos de punta a punta, contando lo que espera solo. Cuando
-      falta, es igual al activo. */
-  totalMinutes?: number
+  activeMinutes: number
+  /** Minutos de punta a punta, contando lo que espera solo. Nunca menor
+      que el activo, y nunca vacío: si no espera nada, son iguales. */
+  totalMinutes: number
+  /** Cuánto sale de la receta, cuando no es lo mismo que una porción:
+      «6 empanadas», «2 platos». Vacío quiere decir que la receta hace
+      exactamente la porción. */
+  rinde?: string
   ingredients: Ingredient[]
   /** Una línea corta sobre qué es. Sólo en las del catálogo. */
   description?: string

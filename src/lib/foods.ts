@@ -14,8 +14,13 @@ import type { Aisle, Unit } from './types'
 export interface Food {
   plural?: string
   aisle: Aisle
-  /** Cosas que ya tenés en casa. No van a la lista. */
-  pantry?: boolean
+  /** Cómo se cuenta una unidad cuando el nombre no se puede contar:
+      «2 rebanadas de pan», no «2 pan». Sólo para `unit: 'u'`. */
+  unidad?: { uno: string; varios: string }
+  /** Básico de alacena: sal, aceite, agua, especias. Existe como
+      ingrediente —una receta lo puede nombrar y contar— pero no entra
+      en la lista semanal. Nadie compra sal todas las semanas. */
+  pantryBasic?: boolean
   /** Cómo se compra. Si falta, se compra en la unidad de la receta. */
   buy?: {
     unit: Unit | 'kg' | 'paquete'
@@ -54,12 +59,10 @@ export const FOODS: Record<string, Food> = {
 
   'gaseosa sin azúcar': { aisle: 'almacén', buy: { unit: 'ml', step: 1500, label: 'botella' } },
   'dulce de leche': { aisle: 'almacén', buy: { unit: 'g', step: 400, label: 'pote' } },
-  azúcar: { aisle: 'almacén', pantry: true },
   'galletitas dulces': { aisle: 'almacén', buy: { unit: 'paquete', per: 18 } },
   'galletitas de agua': { aisle: 'almacén', buy: { unit: 'paquete', per: 20 } },
-  té: { aisle: 'almacén', buy: { unit: 'u', per: 25, label: 'caja' } },
-  agua: { aisle: 'almacén', pantry: true },
-  'mate cocido': { aisle: 'almacén', buy: { unit: 'u', per: 25, label: 'caja' } },
+  té: { aisle: 'almacén', buy: { unit: 'u', per: 25, label: 'caja' }, unidad: { uno: 'saquito', varios: 'saquitos' } },
+  'mate cocido': { aisle: 'almacén', buy: { unit: 'u', per: 25, label: 'caja' }, unidad: { uno: 'saquito', varios: 'saquitos' } },
 
   // --- carnicería y rotisería ---
   asado: { aisle: 'carnicería', buy: { unit: 'kg' } },
@@ -74,7 +77,7 @@ export const FOODS: Record<string, Food> = {
   ñoquis: { aisle: 'almacén', buy: { unit: 'g', step: 500, label: 'plancha' } },
   'pan de pancho': { plural: 'panes de pancho', aisle: 'panadería', buy: { unit: 'u', step: 4 } },
   'pan francés': { aisle: 'panadería', buy: { unit: 'g', step: 250 } },
-  'pan de miga': { aisle: 'panadería', buy: { unit: 'u', per: 8, label: 'plancha' } },
+  'pan de miga': { aisle: 'panadería', buy: { unit: 'u', per: 8, label: 'plancha' }, unidad: { uno: 'rebanada', varios: 'rebanadas' } },
   acelga: { aisle: 'verdulería', buy: { unit: 'g', step: 250, label: 'atado' } },
   arvejas: { aisle: 'almacén', buy: { unit: 'g', per: 300, label: 'lata' } },
   'crema de leche': { aisle: 'lácteos', buy: { unit: 'ml', step: 200 } },
@@ -94,8 +97,8 @@ export const FOODS: Record<string, Food> = {
   queso: { aisle: 'lácteos', buy: { unit: 'g', step: 100 } },
 
   // --- panadería ---
-  pan: { aisle: 'panadería', buy: { unit: 'paquete', per: 18 } },
-  'pan integral': { aisle: 'panadería', buy: { unit: 'paquete', per: 18 } },
+  pan: { aisle: 'panadería', buy: { unit: 'paquete', per: 18 }, unidad: { uno: 'rebanada', varios: 'rebanadas' } },
+  'pan integral': { aisle: 'panadería', buy: { unit: 'paquete', per: 18 }, unidad: { uno: 'rebanada', varios: 'rebanadas' } },
   'tortilla de trigo': { plural: 'tortillas de trigo', aisle: 'panadería', buy: { unit: 'paquete', per: 6 } },
 
   // --- almacén ---
@@ -103,7 +106,7 @@ export const FOODS: Record<string, Food> = {
   granola: { aisle: 'almacén', buy: { unit: 'g', step: 500 } },
   arroz: { aisle: 'almacén', buy: { unit: 'kg' } },
   'lentejas cocidas': { aisle: 'almacén', buy: { unit: 'g', per: 400, label: 'lata' } },
-  atún: { aisle: 'almacén', buy: { unit: 'lata' } },
+  atún: { aisle: 'almacén', buy: { unit: 'lata' }, unidad: { uno: 'lata', varios: 'latas' } },
   nuez: { plural: 'nueces', aisle: 'almacén', buy: { unit: 'g', step: 250 } },
   almendra: { plural: 'almendras', aisle: 'almacén', buy: { unit: 'g', step: 250 } },
   'mantequilla de maní': { aisle: 'almacén', buy: { unit: 'g', step: 350, label: 'frasco' } },
@@ -132,8 +135,8 @@ export const FOODS: Record<string, Food> = {
   'prepizza': { plural: 'prepizzas', aisle: 'panadería', buy: { unit: 'u', per: 2 } },
   'tapas de empanada': { aisle: 'congelados', buy: { unit: 'u', per: 12, label: 'paquete' } },
   'verduras congeladas': { aisle: 'congelados', buy: { unit: 'g', step: 500, label: 'paquete' } },
-  'sopa crema': { aisle: 'almacén', buy: { unit: 'u', per: 1, label: 'sobre' } },
-  'atún al natural': { aisle: 'almacén', buy: { unit: 'lata' } },
+  'sopa crema': { aisle: 'almacén', buy: { unit: 'u', per: 1, label: 'sobre' }, unidad: { uno: 'sobre', varios: 'sobres' } },
+  'atún al natural': { aisle: 'almacén', buy: { unit: 'lata' }, unidad: { uno: 'lata', varios: 'latas' } },
   'fideos integrales': { aisle: 'almacén', buy: { unit: 'g', per: 500, label: 'paquete' } },
   'pan de salvado': { aisle: 'panadería', buy: { unit: 'paquete', per: 18 } },
 
@@ -157,6 +160,7 @@ export const FOODS: Record<string, Food> = {
   medialuna: { plural: 'medialunas', aisle: 'panadería', buy: { unit: 'u' } },
   alfajor: { plural: 'alfajores', aisle: 'almacén', buy: { unit: 'u' } },
   'queso untable': { aisle: 'lácteos', buy: { unit: 'g', per: 300, label: 'pote' } },
+  'yogur bebible': { plural: 'yogures bebibles', aisle: 'lácteos', buy: { unit: 'g', per: 200, label: 'botellita' } },
   'yogur saborizado sin azúcar': { plural: 'yogures saborizados sin azúcar', aisle: 'lácteos', buy: { unit: 'g', per: 200, label: 'pote' } },
 
   // --- más cosas de todos los días ---
@@ -168,14 +172,39 @@ export const FOODS: Record<string, Food> = {
   'masa de tarta': { plural: 'masas de tarta', aisle: 'congelados', buy: { unit: 'u', per: 2 } },
   'masa de pizza': { plural: 'masas de pizza', aisle: 'panadería', buy: { unit: 'u' } },
 
-  // --- ya está en casa ---
-  'aceite de oliva': { aisle: 'almacén', pantry: true },
-  sal: { aisle: 'almacén', pantry: true },
-  canela: { aisle: 'almacén', pantry: true },
-  orégano: { aisle: 'almacén', pantry: true },
-  mayonesa: { aisle: 'almacén', pantry: true },
-  caldo: { aisle: 'almacén', pantry: true },
+  // --- productos que faltaban y obligaban a usar uno parecido ---
+  // Cada uno reemplaza a un "parecido" que la lista de compras hacía
+  // comprar mal: pochoclo compraba harina, el mousse compraba una barra
+  // de chocolate, los duraznos en almíbar compraban una manzana.
+  'maíz para pochoclo': { aisle: 'almacén', buy: { unit: 'g', step: 500, label: 'paquete' } },
+  'duraznos en almíbar': { aisle: 'almacén', buy: { unit: 'u', label: 'lata' }, unidad: { uno: 'lata', varios: 'latas' } },
+  'papas fritas de paquete': { aisle: 'almacén', buy: { unit: 'g', step: 100, label: 'paquete' } },
+  turrón: { plural: 'turrones', aisle: 'almacén', buy: { unit: 'u', step: 3 } },
+  'mousse de chocolate': { plural: 'mousses de chocolate', aisle: 'lácteos', buy: { unit: 'u', step: 4 } },
+  'bocadito de chocolate': { plural: 'bocaditos de chocolate', aisle: 'almacén', buy: { unit: 'u', step: 6 } },
+  'mezcla de frutos secos': { aisle: 'almacén', buy: { unit: 'g', step: 200, label: 'paquete' } },
+
+  // --- básicos de alacena ---
+  // No van a la lista semanal. Una receta los nombra y los cuenta, pero
+  // la compra los ignora: si aparecieran, todas las semanas arrancarían
+  // con "agua, sal, aceite" y la lista dejaría de servir.
+  agua: { aisle: 'almacén', pantryBasic: true },
+  sal: { aisle: 'almacén', pantryBasic: true },
+  aceite: { aisle: 'almacén', pantryBasic: true },
+  'aceite de oliva': { aisle: 'almacén', pantryBasic: true },
+  azúcar: { aisle: 'almacén', pantryBasic: true },
+  canela: { aisle: 'almacén', pantryBasic: true },
+  orégano: { aisle: 'almacén', pantryBasic: true },
+  pimentón: { aisle: 'almacén', pantryBasic: true },
+  comino: { aisle: 'almacén', pantryBasic: true },
+  pimienta: { aisle: 'almacén', pantryBasic: true },
+  vinagre: { aisle: 'almacén', pantryBasic: true },
+  mayonesa: { aisle: 'almacén', pantryBasic: true },
+  caldo: { aisle: 'almacén', pantryBasic: true, unidad: { uno: 'cubito', varios: 'cubitos' } },
 }
+
+/** Los que no entran en la lista semanal. */
+export const esBasico = (item: string): boolean => foodOf(item).pantryBasic === true
 
 export const foodOf = (item: string): Food =>
   FOODS[item] ?? { aisle: 'otros' }
@@ -194,14 +223,19 @@ export const ingredientText = (item: string, qty: number, unit: Unit): string =>
   const name = qty === 1 || qty === 0.5 ? item : (food.plural ?? item)
 
   switch (unit) {
-    case 'u':
-      return `${nice(qty)} ${name}`
+    case 'u': {
+      const u = food.unidad
+      if (!u) return `${nice(qty)} ${name}`
+      return `${nice(qty)} ${qty === 1 ? u.uno : u.varios} de ${item}`
+    }
     case 'rebanada':
       return `${nice(qty)} ${qty === 1 ? 'rebanada' : 'rebanadas'} de ${item}`
     case 'cda':
       return `${nice(qty)} ${qty === 1 ? 'cucharada' : 'cucharadas'} de ${item}`
     case 'puñado':
       return `${nice(qty)} ${qty === 1 ? 'puñado' : 'puñados'} de ${item}`
+    case 'pizca':
+      return `${qty === 1 ? 'Una pizca' : `${nice(qty)} pizcas`} de ${item}`
     case 'pote':
       return `${nice(qty)} ${qty === 1 ? 'pote' : 'potes'} de ${item}`
     case 'lata':
@@ -296,7 +330,7 @@ export const SUSTITUTOS: Record<string, string[]> = {
   granola: ['avena', 'nuez', 'galletitas de agua'],
   avena: ['granola'],
   leche: ['yogur natural', 'agua'],
-  manteca: ['aceite de oliva', 'queso untable'],
+  manteca: ['aceite de oliva'],
   'mermelada sin azúcar': ['dulce de membrillo', 'banana'],
   'milanesa de pollo': ['milanesa de carne', 'pechuga de pollo'],
   'milanesa de carne': ['milanesa de pollo'],
