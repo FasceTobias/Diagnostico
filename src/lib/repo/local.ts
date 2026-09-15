@@ -33,6 +33,7 @@ interface Stored {
   perfil: Perfil
   checks: Record<string, boolean>
   focus: boolean
+  extras: string[]
 }
 
 const startOfWeek = (d: Date) => {
@@ -70,6 +71,7 @@ const fresh = (): Stored => {
     perfil: DEFAULT_PERFIL,
     checks: {},
     focus: false,
+    extras: [],
   }
 }
 
@@ -92,6 +94,8 @@ const current = (): Stored => {
         prefs: stored.prefs,
         // Lo que contaste de vos no se reinicia nunca.
         perfil: stored.perfil ?? DEFAULT_PERFIL,
+        /* Lo que anotaste para comprar no se borra un lunes. */
+        extras: stored.extras ?? [],
       }
     : fresh()
   write(next)
@@ -107,6 +111,7 @@ const toSnapshot = (s: Stored): Snapshot => ({
   prefs: s.prefs,
   perfil: s.perfil ?? DEFAULT_PERFIL,
   checks: s.checks,
+  extras: s.extras ?? [],
   ui: { focus: s.focus },
 })
 
@@ -137,4 +142,5 @@ export const localRepo: ViandaRepo = {
   saveInsulin: (insulin) => patch((s) => ({ ...s, insulin })),
   setCheck: (id, done) => patch((s) => ({ ...s, checks: { ...s.checks, [id]: done } })),
   saveUi: (ui) => patch((s) => ({ ...s, focus: ui.focus })),
+  saveExtras: (extras) => patch((s) => ({ ...s, extras })),
 }

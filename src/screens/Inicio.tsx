@@ -2,14 +2,14 @@ import { useMemo, useState } from 'react'
 import type { Category, DayContext, Meal, Venue } from '../lib/types'
 import { SLOT_CATEGORY, SLOT_LABEL, VENUES } from '../lib/types'
 import type { Vianda } from '../lib/store'
-import { findNext } from '../lib/domain'
+import { comidaActual, comidasDelDia } from '../lib/dia'
 import type { FiltroSnack, Pregunta } from '../lib/busquedas'
 import { FILTRO_SNACK, PREGUNTA, alternativas, porLugar, responder, snacks } from '../lib/busquedas'
-import { Card, Chip, FilaChips, Icono, Rotulo, Sheet, TituloSeccion, Vacio } from '../components/base'
+import { Card, Chip, FilaChips, Icono, Rotulo, TituloSeccion, Vacio } from '../components/base'
 import type { IconName } from '../components/tokens'
-import { FilaComida, FilaProxima, ProximaComida, TiraDelDia } from '../components/comida'
-import { DetalleComida } from '../components/Detalle'
-import { BarraAsistente, PanelAsistente } from '../components/Asistente'
+import { FilaProxima, ProximaComida, TiraDelDia } from '../components/comida'
+import { Hojas, type Hoja } from '../components/Hojas'
+import { BarraAsistente } from '../components/Asistente'
 
 /* ------------------------------------------------------------------
    INICIO
@@ -71,12 +71,6 @@ const ATAJOS: { id: Pregunta; label: string; icono: IconName }[] = [
 
 const FILTROS_SNACK: FiltroSnack[] = ['llevar', 'dulces', 'salados', 'rapidos', 'sin-cocinar', 'trabajo']
 
-type Hoja =
-  | { tipo: 'lista'; titulo: string; bajada?: string; meals: Meal[]; elegir?: (m: Meal) => void }
-  | { tipo: 'detalle'; meal: Meal }
-  | { tipo: 'ayuda' }
-  | null
-
 /** Una tarjeta chica de una sola línea: el ícono a la izquierda y la
     palabra al lado. Es la misma en las dos grillas de abajo, y por eso
     las dos terminan a la misma altura. */
@@ -124,17 +118,17 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comida
   const nombre = app.perfil.nombre.trim()
   const dia = app.today
 
-  const proxima = useMemo(() => (dia ? findNext(dia, app.meals) : undefined), [dia, app.meals])
-  const catAhora: Category = proxima ? SLOT_CATEGORY[proxima.planned.slot] : 'snack'
+  /* El estado de cada comida sale del reloj, no de lo que hayas
+     marcado. Es la misma función que usa Hoy: una sola verdad sobre en
+     qué momento del día estás. */
+  const comidas = useMemo(() => (dia ? comidasDelDia(dia, app.meals) : []), [dia, app.meals])
+  const actual = comidaActual(comidas)
+  const catAhora: Category = actual ? SLOT_CATEGORY[actual.planned.slot] : 'snack'
 
-  const siguen = useMemo(() => {
-    if (!dia) return []
-    const desde = proxima ? dia.meals.findIndex((m) => m.slot === proxima.planned.slot) + 1 : 0
-    return dia.meals
-      .slice(desde)
-      .filter((m) => m.status !== 'eaten' && m.status !== 'skipped')
-      .slice(0, 3)
-  }, [dia, proxima])
+  /* Las dos o tres que vienen después de la que toca ahora. */
+  const siguen = comidas
+    .filter((c) => c.estado === 'proxima' || c.estado === 'mas-tarde')
+    .slice(0, 3)
 
   const verLista = (
     titulo: string,
@@ -165,24 +159,28 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comida
 
       {/* ══════════════ TU DÍA ══════════════ */}
 
-      {dia && <TiraDelDia plan={dia.meals} ahoraSlot={proxima?.planned.slot} />}
+      {dia && <TiraDelDia dia={comidas} />}
 
       <section className="mt-8">
-        <TituloSeccion>{proxima?.isNow ? 'Te toca ahora' : 'Tu próxima comida'}</TituloSeccion>
-        {proxima ? (
+        <TituloSeccion>{actual?.estado === 'ahora' ? 'Te toca ahora' : 'Tu próxima comida'}</TituloSeccion>
+        {actual?.meal ? (
           <ProximaComida
-            meal={proxima.meal}
-            slot={proxima.planned.slot}
-            hora={proxima.planned.time}
-            onAbrir={() => setHoja({ tipo: 'detalle', meal: proxima.meal })}
-            onComida={() => app.setStatus(dia.date, proxima.planned.slot, 'eaten')}
+            meal={actual.meal}
+            slot={actual.planned.slot}
+            hora={actual.planned.time}
+            onAbrir={() =>
+              setHoja({ tipo: 'detalle', meal: actual.meal!, slot: actual.planned.slot })
+            }
+            onRegistrar={() =>
+              setHoja({ tipo: 'registrar', slot: actual.planned.slot, meal: actual.meal! })
+            }
             onAlternativa={() =>
               verLista(
                 'Cambiar esta comida',
-                `Otras opciones para ${SLOT_LABEL[proxima.planned.slot].toLowerCase()}. Tocá una y queda puesta.`,
-                alternativas(app.meals, SLOT_CATEGORY[proxima.planned.slot], proxima.meal.id),
+                `Otras opciones para ${SLOT_LABEL[actual.planned.slot].toLowerCase()}. Tocá una y queda puesta.`,
+                alternativas(app.meals, SLOT_CATEGORY[actual.planned.slot], actual.meal!.id),
                 (m) => {
-                  app.replaceMeal(dia.date, proxima.planned.slot, m.id)
+                  app.replaceMeal(dia.date, actual.planned.slot, m.id)
                   setHoja(null)
                 },
               )
@@ -191,9 +189,9 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comida
         ) : (
           <Card>
             <Vacio
-              icono="plato"
-              titulo="Ya comiste todo lo del día"
-              detalle="Mañana el plan se arma solo. Si te dio hambre igual, resolvelo más abajo."
+              icono="luna"
+              titulo="Terminó el día"
+              detalle="Ya pasaron todas las comidas. Mañana el plan se arma solo."
             />
           </Card>
         )}
@@ -205,20 +203,20 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comida
           {siguen.length ? (
             <>
               <ul className="space-y-3">
-                {siguen.map((p) => {
-                  const meal = app.mealById(p.mealId)
-                  if (!meal) return null
-                  return (
-                    <li key={p.slot}>
+                {siguen.map((c) =>
+                  c.meal ? (
+                    <li key={c.planned.slot}>
                       <FilaProxima
-                        meal={meal}
-                        slot={p.slot}
-                        hora={p.time}
-                        onClick={() => setHoja({ tipo: 'detalle', meal })}
+                        meal={c.meal}
+                        slot={c.planned.slot}
+                        hora={c.planned.time}
+                        onClick={() =>
+                          setHoja({ tipo: 'detalle', meal: c.meal!, slot: c.planned.slot })
+                        }
                       />
                     </li>
-                  )
-                })}
+                  ) : null,
+                )}
               </ul>
               <button
                 type="button"
@@ -231,9 +229,7 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comida
           ) : (
             <Card>
               <p className="t-body text-ink-soft">
-                {proxima
-                  ? 'Es la última comida del día.'
-                  : 'No queda ninguna comida pendiente para hoy.'}
+                {actual ? 'Es la última comida del día.' : 'Ya pasaron todas las comidas de hoy.'}
               </p>
             </Card>
           )}
@@ -328,61 +324,7 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comida
         </div>
       </section>
 
-      {/* ---------------- la hoja de respuestas ---------------- */}
-      <Sheet
-        abierta={hoja !== null}
-        onCerrar={() => setHoja(null)}
-        titulo={
-          hoja?.tipo === 'detalle'
-            ? hoja.meal.name
-            : hoja?.tipo === 'ayuda'
-              ? 'Decime qué necesitás'
-              : (hoja?.titulo ?? '')
-        }
-        bajada={
-          hoja?.tipo === 'lista'
-            ? hoja.bajada
-            : hoja?.tipo === 'ayuda'
-              ? 'Escribilo como lo dirías. Te contesto con comidas de la biblioteca.'
-              : undefined
-        }
-      >
-        {hoja?.tipo === 'ayuda' && (
-          <PanelAsistente
-            meals={app.meals}
-            momento={catAhora}
-            onComida={(m) => setHoja({ tipo: 'detalle', meal: m })}
-            onCambiarContexto={(ctx) => {
-              if (dia) app.setContext(dia.date, ctx)
-              setSituacion(ctx === 'calle' ? 'calle' : ctx === 'casa' ? 'casa' : 'trabajo')
-              setHoja(null)
-            }}
-          />
-        )}
-        {hoja?.tipo === 'detalle' && <DetalleComida meal={hoja.meal} />}
-        {hoja?.tipo === 'lista' &&
-          (hoja.meals.length ? (
-            <ul className="space-y-3">
-              {hoja.meals.map((m) => (
-                <li key={m.id}>
-                  <FilaComida
-                    meal={m}
-                    porOrigen
-                    onClick={() => (hoja.elegir ? hoja.elegir(m) : setHoja({ tipo: 'detalle', meal: m }))}
-                  />
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <Card>
-              <Vacio
-                icono="plato"
-                titulo="No encontré nada con eso"
-                detalle="Puede que falte esa comida en la biblioteca. Probá con otra opción."
-              />
-            </Card>
-          ))}
-      </Sheet>
+      <Hojas hoja={hoja} setHoja={setHoja} app={app} momento={catAhora} />
     </div>
   )
 }

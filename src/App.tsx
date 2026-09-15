@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useState } from 'react'
 import { useVianda } from './lib/store'
 import { Inicio } from './screens/Inicio'
+import { Hoy } from './screens/Hoy'
 import { EnObra } from './screens/EnObra'
 import { Onboarding } from './screens/Onboarding'
 import { Nav, type Tab } from './components/Nav'
@@ -54,19 +55,7 @@ export default function App() {
     <div className="min-h-dvh bg-bg">
       {tab === 'inicio' && <Inicio app={app} onIr={setTab} />}
 
-      {tab === 'hoy' && (
-        <EnObra
-          titulo="Hoy"
-          icono="hoy"
-          detalle="El día entero, comida por comida, con lo que hay que dejar hecho la noche anterior."
-          piezas={[
-            'Las cinco comidas con su hora, su foto y sus carbohidratos',
-            'Marcar hecha, cambiarla o correrla de horario',
-            'Lo que conviene dejar preparado esta noche',
-            'Qué llevar en la mochila si el día es afuera',
-          ]}
-        />
-      )}
+      {tab === 'hoy' && <Hoy app={app} />}
 
       {tab === 'comidas' && (
         <EnObra

@@ -272,6 +272,69 @@ export const shoppingParts = (item: string, qty: number, unit: Unit): ShoppingPa
   return buy.unit === 'u' ? count(n) : { value: String(n), unit: buy.unit, label: item }
 }
 
+/* ------------------------------------------------------------------
+   SI NO TENÉS
+
+   Con qué se reemplaza un ingrediente cuando falta. Es una de las
+   preguntas que más se hace alguien parado frente a la heladera, y no
+   se puede deducir del catálogo: que dos cosas estén en la misma
+   góndola no las hace intercambiables.
+
+   Por eso esto es una tabla escrita a mano y está lejos de completa.
+   Sólo entran reemplazos que funcionan de verdad en el plato, y cada
+   uno se escribió pensando en esa comida, no en la categoría. Lo que
+   no está, no está: la ficha simplemente no muestra la sección.
+   ------------------------------------------------------------------ */
+
+export const SUSTITUTOS: Record<string, string[]> = {
+  palta: ['queso untable', 'ricota', 'huevo duro pisado'],
+  pan: ['pan integral', 'galletas de arroz', 'tortilla de trigo'],
+  'pan integral': ['pan', 'galletas de arroz'],
+  'queso untable': ['ricota', 'palta', 'queso'],
+  ricota: ['queso untable', 'queso'],
+  'yogur natural': ['yogur entero', 'leche'],
+  granola: ['avena', 'frutos secos', 'galletitas de agua'],
+  avena: ['granola', 'cereales'],
+  leche: ['yogur natural', 'agua'],
+  manteca: ['aceite de oliva', 'queso untable'],
+  'mermelada sin azúcar': ['dulce de membrillo', 'banana pisada'],
+  'milanesa de pollo': ['milanesa de carne', 'pechuga de pollo'],
+  'milanesa de carne': ['milanesa de pollo'],
+  pollo: ['pechuga de pollo', 'atún al natural', 'huevo'],
+  'pechuga de pollo': ['pollo', 'atún'],
+  atún: ['atún al natural', 'pollo', 'huevo'],
+  'atún al natural': ['atún', 'pollo'],
+  papa: ['calabaza', 'batata'],
+  calabaza: ['papa'],
+  arroz: ['fideos', 'polenta', 'papa'],
+  fideos: ['arroz', 'fideos integrales', 'ñoquis'],
+  'fideos integrales': ['fideos', 'arroz'],
+  'salsa de tomate': ['tomate', 'crema de leche'],
+  muzzarella: ['queso', 'queso rallado'],
+  queso: ['muzzarella', 'queso untable'],
+  'queso rallado': ['queso', 'muzzarella'],
+  'lentejas cocidas': ['garbanzos cocidos', 'arvejas'],
+  'garbanzos cocidos': ['lentejas cocidas', 'arvejas'],
+  espinaca: ['acelga', 'zapallito'],
+  acelga: ['espinaca'],
+  zapallito: ['berenjena', 'zanahoria'],
+  tomate: ['morrón', 'zanahoria'],
+  lechuga: ['espinaca', 'acelga'],
+  banana: ['manzana', 'pera', 'durazno'],
+  manzana: ['pera', 'banana'],
+  nuez: ['almendra', 'maní'],
+  almendra: ['nuez', 'maní'],
+  'maní': ['almendra', 'nuez'],
+  'dulce de leche': ['mermelada sin azúcar', 'dulce de membrillo'],
+  huevo: ['queso', 'atún al natural'],
+  'masa de tarta': ['masa de pizza', 'prepizza'],
+  'tortilla de trigo': ['pan', 'pan de miga'],
+}
+
+/** Con qué se reemplaza, si está escrito. Vacío quiere decir que no lo
+    sabemos, no que no exista. */
+export const sustitutosDe = (item: string): string[] => SUSTITUTOS[item] ?? []
+
 /** "12 huevos" · "1,5 kg de pollo" — para donde haga falta una sola línea. */
 export const shoppingText = (item: string, qty: number, unit: Unit): string => {
   const { value, unit: u, label } = shoppingParts(item, qty, unit)

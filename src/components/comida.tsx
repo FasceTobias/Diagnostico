@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
-import type { Category, Meal, MealStatus, PlannedMeal, Slot } from '../lib/types'
+import type { Category, Meal, MealStatus, Slot } from '../lib/types'
 import { ORIGEN_CORTO, SLOT_CATEGORY, SLOT_LABEL } from '../lib/types'
+import type { ComidaDelDia } from '../lib/dia'
 import { Card, CardButton, Icono, Pill, Tile } from './base'
 import { ICONO_MOMENTO, TILE_ORIGEN, TONO_MOMENTO, carbs, meta } from './tokens'
 
@@ -35,20 +36,20 @@ const TIRA: Record<Slot, string> = {
   dinner: 'Cena',
 }
 
-export function TiraDelDia({ plan, ahoraSlot }: { plan: PlannedMeal[]; ahoraSlot?: Slot }) {
-  const hechas = plan.filter((p) => p.status === 'eaten').length
-  const faltan = plan.filter((p) => p.status !== 'eaten' && p.status !== 'skipped').length
+export function TiraDelDia({ dia }: { dia: ComidaDelDia[] }) {
+  const faltan = dia.filter((c) => c.estado !== 'pasada').length
 
   return (
     <section aria-label="Cómo viene el día">
       <div className="flex items-baseline justify-between gap-3">
         <p className="t-label text-ink-soft">
           {faltan === 0
-            ? 'Ya comiste todo'
+            ? 'Ya pasaron todas las comidas'
             : `Te ${faltan === 1 ? 'queda' : 'quedan'} ${faltan} ${faltan === 1 ? 'comida' : 'comidas'}`}
         </p>
         <p className="t-label text-ink-faint">
-          <span className="t-num">{hechas}</span> de <span className="t-num">{plan.length}</span>
+          <span className="t-num">{dia.length - faltan}</span> de{' '}
+          <span className="t-num">{dia.length}</span>
         </p>
       </div>
 
@@ -57,32 +58,33 @@ export function TiraDelDia({ plan, ahoraSlot }: { plan: PlannedMeal[]; ahoraSlot
             leerlas como una secuencia, no para decorar. */}
         <span className="absolute inset-x-3 top-[5px] h-px bg-line" aria-hidden />
 
-        {plan.map((p) => {
-          const hecha = p.status === 'eaten'
-          const ahora = p.slot === ahoraSlot
+        {dia.map((c) => {
+          const pasada = c.estado === 'pasada'
+          const ahora = c.estado === 'ahora'
           return (
-            <li key={p.slot} className="relative flex min-w-0 flex-1 flex-col items-center gap-2">
+            <li
+              key={c.planned.slot}
+              className="relative flex min-w-0 flex-1 flex-col items-center gap-2"
+            >
               <span
-                className={`grid size-[11px] place-items-center rounded-full ${
-                  hecha
-                    ? 'bg-lavanda'
+                className={`size-[11px] rounded-full ${
+                  pasada
+                    ? 'bg-line-strong'
                     : ahora
                       ? 'bg-lavanda ring-4 ring-lavanda-tenue'
                       : 'border border-line-strong bg-bg'
                 }`}
-              >
-                {hecha && <Icono name="check" size={7} strokeWidth={4} className="text-lavanda-ink" />}
-              </span>
+              />
               <span
                 className={`w-full text-center text-[10.5px] leading-tight ${
                   ahora
                     ? 'font-semibold text-lavanda'
-                    : hecha
-                      ? 'font-medium text-ink-soft'
-                      : 'font-medium text-ink-faint'
+                    : pasada
+                      ? 'font-medium text-ink-faint'
+                      : 'font-medium text-ink-soft'
                 }`}
               >
-                {TIRA[p.slot]}
+                {TIRA[c.planned.slot]}
               </span>
             </li>
           )
@@ -103,14 +105,16 @@ export function ProximaComida({
   hora,
   onAlternativa,
   onAbrir,
-  onComida,
+  onRegistrar,
 }: {
   meal: Meal
   slot: Slot
   hora: string
   onAlternativa: () => void
   onAbrir: () => void
-  onComida: () => void
+  /** Opcional de verdad: el día avanza igual sin esto. Sirve para
+      dejar el historial derecho cuando comiste otra cosa. */
+  onRegistrar: () => void
 }) {
   return (
     <Card aire="hero">
@@ -149,16 +153,16 @@ export function ProximaComida({
         </button>
       </div>
 
-      {/* Marcarla es lo que hace posible saber qué comiste. Es una
-          acción secundaria de verdad —gris, sin caja— pero con su línea
-          propia y su ícono, no un texto suelto. */}
+      {/* Registrar es opcional y se nota que lo es: gris, sin caja, al
+          final. El día avanza con el reloj; esto sirve el día que comiste
+          otra cosa y querés que quede anotado. */}
       <button
         type="button"
-        onClick={onComida}
+        onClick={onRegistrar}
         className="mt-2 flex h-10 w-full items-center justify-center gap-1.5 rounded-pill text-[13.5px] font-medium text-ink-faint active:bg-surface-2"
       >
         <Icono name="check" size={15} strokeWidth={2} />
-        Ya comí esto
+        Registrar lo que comí
       </button>
     </Card>
   )

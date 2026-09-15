@@ -41,6 +41,9 @@ export interface Snapshot {
   perfil: Perfil
   /** Marcado de mochila, preparación y compras, por id de línea. */
   checks: Record<string, boolean>
+  /** Comidas que se agregaron a la compra a mano, fuera del plan de la
+      semana. Ids del catálogo. */
+  extras: string[]
   /** Estado de interfaz. No va a viajar al servidor. */
   ui: { focus: boolean }
 }
@@ -63,4 +66,5 @@ export interface ViandaRepo {
   saveInsulin(insulin: InsulinSettings): Promise<void>
   setCheck(id: string, done: boolean): Promise<void>
   saveUi(ui: Snapshot['ui']): Promise<void>
+  saveExtras(extras: string[]): Promise<void>
 }

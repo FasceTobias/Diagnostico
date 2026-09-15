@@ -42,6 +42,7 @@ const EMPTY: Snapshot = {
   prefs: DEFAULT_PREFERENCES,
   perfil: DEFAULT_PERFIL,
   checks: {},
+  extras: [],
   ui: { focus: false },
 }
 
@@ -237,6 +238,33 @@ export const useVianda = () => {
   const isBought = useCallback((id: string) => !!checks[`shop:${id}`], [checks])
   const toggleBought = useCallback((id: string) => toggleCheck(`shop:${id}`), [toggleCheck])
 
+  /* Favorita y «agregar a compras» son dos listas de ids y nada más.
+     No hace falta una tabla para guardar que te gusta la tarta. */
+  const toggleFavorita = useCallback(
+    (id: string) => {
+      const s = ref.current
+      const likes = s.prefs.likes.includes(id)
+        ? s.prefs.likes.filter((x) => x !== id)
+        : [...s.prefs.likes, id]
+      const prefs = { ...s.prefs, likes }
+      apply({ ...s, prefs }, () => repo.savePrefs(prefs))
+    },
+    [apply],
+  )
+
+  const esExtra = useCallback((id: string) => state.extras.includes(id), [state.extras])
+
+  const toggleExtra = useCallback(
+    (id: string) => {
+      const s = ref.current
+      const extras = s.extras.includes(id)
+        ? s.extras.filter((x) => x !== id)
+        : [...s.extras, id]
+      apply({ ...s, extras }, () => repo.saveExtras(extras))
+    },
+    [apply],
+  )
+
   const checkPrep = useCallback(
     (id: string) => toggleCheck(`prep:${tomorrowIso}:${id}`),
     [toggleCheck, tomorrowIso],
@@ -268,6 +296,10 @@ export const useVianda = () => {
     isBought,
     toggleBought,
     regenerate,
+    extras: state.extras,
+    esExtra,
+    toggleExtra,
+    toggleFavorita,
   }
 }
 

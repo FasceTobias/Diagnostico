@@ -1,325 +1,192 @@
 import { useMemo, useState } from 'react'
-import { AnimatePresence, LazyMotion, domAnimation, m } from 'motion/react'
+import type { Category } from '../lib/types'
+import { SLOT_CATEGORY, SLOT_LABEL } from '../lib/types'
 import type { Vianda } from '../lib/store'
-import type { MealStatus, Slot } from '../lib/types'
-import { SLOT_LABEL } from '../lib/types'
-import { findNext } from '../lib/domain'
-import { longDate, nowMinutes, relativeTime } from '../lib/format'
-import { CarbValue, CheckRow, SectionLabel, StatusPill } from '../components/ui'
-import { Rail, type RailItem } from '../components/Rail'
-import { MealSheet, type MealSheetTarget } from '../components/MealSheet'
-import { CarryList } from '../components/CarryList'
-import { SettingsSheet } from '../components/Settings'
-import { CuentaSheet } from '../components/Cuenta'
-import { useSession } from '../lib/auth'
-import { Sheet } from '../components/Sheet'
-import type { ResolveStart } from '../components/ResolveSheet'
+import type { ComidaDelDia } from '../lib/dia'
+import { comidaActual, comidasDelDia } from '../lib/dia'
+import { alternativas } from '../lib/busquedas'
+import { Card, CardButton, Icono, Rotulo, Tile, TituloSeccion, Vacio } from '../components/base'
+import { FilaProxima, ProximaComida, TiraDelDia } from '../components/comida'
+import { Hojas, type Hoja } from '../components/Hojas'
+import { ICONO_MOMENTO, TONO_MOMENTO } from '../components/tokens'
 
 /* ------------------------------------------------------------------
    HOY
 
-   Arriba, la comida que toca: una sola superficie elevada con el nombre
-   grande y dos acciones visibles —ver y cambiar—. Es la zona de trabajo
-   de la pantalla, no una portada.
+   El día entero, y una sola idea detrás: la app lo sigue con el reloj.
+   Nadie tiene que marcar nada para que avance.
 
-   Abajo, el día como línea de tiempo: filas de 56px, tocables, con la
-   flecha que dice que se abren.
+   Por eso acá no hay casillas. Hay tres bloques que se leen de arriba
+   abajo como se lee un día: lo que toca ahora, lo que viene, y lo que
+   ya pasó —en gris, sin cara de tarea sin hacer—.
 
-   Nada de esto exige marcar: la pantalla avanza sola con el reloj.
+   Registrar qué comiste sigue existiendo, abajo y en voz baja, para el
+   día que comiste otra cosa y querés que quede anotado.
    ------------------------------------------------------------------ */
 
-export function Hoy({
-  app,
-  onFocus,
-  onResolve,
-}: {
-  app: Vianda
-  onFocus: () => void
-  onResolve: (start: ResolveStart) => void
-}) {
-  const [target, setTarget] = useState<MealSheetTarget | null>(null)
-  const [sheet, setSheet] = useState<'carry' | 'prep' | 'config' | 'cuenta' | null>(null)
-  const cuenta = useSession()
+const FECHA = new Intl.DateTimeFormat('es-AR', { weekday: 'long', day: 'numeric', month: 'long' })
+const fechaLarga = (d: Date) => {
+  const t = FECHA.format(d).replace(',', '')
+  return t.charAt(0).toUpperCase() + t.slice(1)
+}
 
-  const now = nowMinutes()
-  const hour = new Date().getHours()
+export function Hoy({ app }: { app: Vianda }) {
+  const [hoja, setHoja] = useState<Hoja>(null)
+  const dia = app.today
 
-  const next = useMemo(
-    () => (app.today ? findNext(app.today, app.meals, now) : undefined),
-    [app.today, app.meals, now],
+  const comidas = useMemo(
+    () => (dia ? comidasDelDia(dia, app.meals) : []),
+    [dia, app.meals],
   )
+  const actual = comidaActual(comidas)
+  const momento: Category = actual ? SLOT_CATEGORY[actual.planned.slot] : 'snack'
 
-  const items: RailItem[] = (app.today?.meals ?? [])
-    .map((planned) => ({ planned, meal: app.mealById(planned.mealId) }))
-    .filter((r): r is RailItem => !!r.meal)
+  const siguientes = comidas.filter((c) => c.estado === 'proxima' || c.estado === 'mas-tarde')
+  const pasadas = comidas.filter((c) => c.estado === 'pasada')
 
-  const carryMeals = app.packing.filter((p) => p.kind === 'meal').length
-  const morning = hour < 13
-  const evening = hour >= 18
-
-  const setStatus = (slot: Slot, status: MealStatus) =>
-    app.today && app.setStatus(app.today.date, slot, status)
+  if (!dia) {
+    return (
+      <div className="mx-auto max-w-md px-5 pb-28">
+        <Cabecera />
+        <Card>
+          <Vacio icono="hoy" titulo="Todavía no hay plan para hoy" />
+        </Card>
+      </div>
+    )
+  }
 
   return (
-    <LazyMotion features={domAnimation}>
-      <div className="mx-auto max-w-md px-4 pb-40">
-        <header className="v-safe-top flex items-center justify-between gap-3 py-3">
-          <p className="v-label truncate text-ink-soft">
-            <span className="font-semibold text-ink">Hoy</span> · {longDate(new Date())}
-          </p>
-          <div className="flex shrink-0 gap-0.5">
-            <IconButton label="Configuración" onClick={() => setSheet('config')}>
-              <path
-                d="M3 6h5.5M11.5 6H17M3 14h2.5M8.5 14H17"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-              />
-              <circle cx="10" cy="6" r="2" stroke="currentColor" strokeWidth="1.6" />
-              <circle cx="7" cy="14" r="2" stroke="currentColor" strokeWidth="1.6" />
-            </IconButton>
-            <IconButton label="Modo foco" onClick={onFocus}>
-              <circle cx="10" cy="10" r="7" stroke="currentColor" strokeWidth="1.6" />
-              <circle cx="10" cy="10" r="2.6" fill="currentColor" />
-            </IconButton>
-          </div>
-        </header>
+    <div className="mx-auto max-w-md px-5 pb-28">
+      <Cabecera />
 
-        {/* La zona de trabajo: una superficie, dos acciones */}
-        <AnimatePresence mode="wait">
-          {next ? (
-            <m.section
-              key={next.meal.id}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -4 }}
-              transition={{ type: 'spring', stiffness: 260, damping: 28 }}
-              className="rounded-hero bg-surface p-4 shadow-md"
-            >
-              <div className="flex items-center justify-between gap-3">
-                <span className="v-caps inline-flex items-center gap-2 text-accent">
-                  {/* El punto con halo: el único glow de la app. Marca
-                      qué estás mirando sin necesidad de más color. */}
-                  <span
-                    aria-hidden
-                    className={`size-[6px] rounded-full bg-accent ${next.isNow ? 'v-glow' : ''}`}
+      <TiraDelDia dia={comidas} />
+
+      {/* ---- lo que toca ahora ---- */}
+      <section className="mt-8">
+        <TituloSeccion>{actual?.estado === 'ahora' ? 'Ahora' : 'Tu próxima comida'}</TituloSeccion>
+        {actual?.meal ? (
+          <ProximaComida
+            meal={actual.meal}
+            slot={actual.planned.slot}
+            hora={actual.planned.time}
+            onAbrir={() =>
+              setHoja({ tipo: 'detalle', meal: actual.meal!, slot: actual.planned.slot })
+            }
+            onRegistrar={() =>
+              setHoja({ tipo: 'registrar', slot: actual.planned.slot, meal: actual.meal! })
+            }
+            onAlternativa={() =>
+              setHoja({
+                tipo: 'lista',
+                titulo: 'Cambiar esta comida',
+                bajada: `Otras opciones para ${SLOT_LABEL[actual.planned.slot].toLowerCase()}. Tocá una y queda puesta.`,
+                meals: alternativas(
+                  app.meals,
+                  SLOT_CATEGORY[actual.planned.slot],
+                  actual.meal!.id,
+                ),
+                elegir: (m) => {
+                  app.replaceMeal(dia.date, actual.planned.slot, m.id)
+                  setHoja(null)
+                },
+              })
+            }
+          />
+        ) : (
+          <Card>
+            <Vacio
+              icono="luna"
+              titulo="Terminó el día"
+              detalle="Ya pasaron todas las comidas. Mañana el plan se arma solo."
+            />
+          </Card>
+        )}
+      </section>
+
+      {/* ---- lo que viene ---- */}
+      {siguientes.length > 0 && (
+        <section className="mt-8">
+          <TituloSeccion>Lo que sigue</TituloSeccion>
+          <ul className="space-y-3">
+            {siguientes.map((c) =>
+              c.meal ? (
+                <li key={c.planned.slot}>
+                  <FilaProxima
+                    meal={c.meal}
+                    slot={c.planned.slot}
+                    hora={c.planned.time}
+                    onClick={() =>
+                      setHoja({ tipo: 'detalle', meal: c.meal!, slot: c.planned.slot })
+                    }
                   />
-                  {next.isNow ? 'Ahora' : 'Próximo'}
-                </span>
-                <span className="v-label-sm text-ink-faint v-tnum">
-                  {SLOT_LABEL[next.planned.slot]} {next.planned.time}
-                </span>
-              </div>
+                </li>
+              ) : null,
+            )}
+          </ul>
+        </section>
+      )}
 
-              <p className="v-head mt-2.5 text-[26px] leading-[1.15] text-ink">
-                {next.meal.name}
-              </p>
-              {next.meal.drink && (
-                <p className="v-label mt-1 text-ink-soft">con {next.meal.drink}</p>
-              )}
+      {/* ---- lo que ya pasó ----
+          En gris y sin flecha de urgencia: son cosas que ya fueron, no
+          tareas sin hacer. Se tocan igual, por si querés anotar qué
+          comiste de verdad. */}
+      {pasadas.length > 0 && (
+        <section className="mt-8">
+          <Rotulo>Antes de ahora</Rotulo>
+          <ul className="space-y-2">
+            {pasadas.map((c) => (c.meal ? <FilaPasada key={c.planned.slot} c={c} onClick={() => setHoja({ tipo: 'registrar', slot: c.planned.slot, meal: c.meal! })} /> : null))}
+          </ul>
+        </section>
+      )}
 
-              <div className="mt-2 flex flex-wrap items-center gap-x-2.5 gap-y-1">
-                <CarbValue meal={next.meal} size="md" />
-                <span className="v-label-sm text-ink-faint">
-                  · {next.meal.satiety}
-                  {next.planned.optional ? ' · opcional' : ''} ·{' '}
-                  {relativeTime(next.minutes, now)}
-                </span>
-                <StatusPill status={next.planned.status} />
-              </div>
+      <Hojas hoja={hoja} setHoja={setHoja} app={app} momento={momento} />
+    </div>
+  )
+}
 
-              <div className="mt-4 flex gap-2">
-                <button
-                  onClick={() => setTarget({ planned: next.planned, meal: next.meal })}
-                  className="v-label min-h-[44px] flex-1 rounded-xl bg-accent font-semibold text-accent-ink transition-transform duration-150 active:scale-[0.97]"
-                >
-                  Ver detalles
-                </button>
-                <button
-                  onClick={() =>
-                    setTarget({ planned: next.planned, meal: next.meal, replace: true })
-                  }
-                  className="v-label min-h-[44px] flex-1 rounded-xl border border-line-strong font-semibold text-ink transition-transform duration-150 active:scale-[0.97]"
-                >
-                  Cambiar
-                </button>
-              </div>
-            </m.section>
-          ) : (
-            <m.section
-              key="done"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="rounded-hero bg-surface p-5 shadow-md"
+function Cabecera() {
+  return (
+    <header className="v-safe-top pt-6 pb-5">
+      <h1 className="t-title text-ink">Hoy</h1>
+      <p className="t-meta mt-1 text-ink-faint">{fechaLarga(new Date())}</p>
+    </header>
+  )
+}
+
+/** Una comida que ya pasó. Misma anatomía que las otras filas, bajada
+    de tono: la baldosa sin color y el texto en gris. */
+function FilaPasada({ c, onClick }: { c: ComidaDelDia; onClick: () => void }) {
+  const meal = c.meal!
+  const cat = SLOT_CATEGORY[c.planned.slot]
+  const registrada = c.planned.status === 'eaten'
+  const salteada = c.planned.status === 'skipped'
+
+  return (
+    <li>
+      <CardButton aire="lista" onClick={onClick} label={`${SLOT_LABEL[c.planned.slot]}: ${meal.name}`}>
+        <div className="flex items-center gap-3 opacity-70">
+          <Tile name={ICONO_MOMENTO[cat]} tono={registrada ? TONO_MOMENTO[cat] : 'neutro'} />
+          <div className="min-w-0 flex-1">
+            <p className="t-caps text-ink-faint">
+              <span className="t-num">{c.planned.time}</span>{' '}
+              <span className="text-line-strong">·</span> {SLOT_LABEL[c.planned.slot]}
+            </p>
+            <p
+              className={`mt-1 text-[14.5px] font-medium leading-tight text-ink-soft ${
+                salteada ? 'line-through' : ''
+              }`}
             >
-              <p className="v-head text-[22px] text-ink">El día está resuelto</p>
-              <p className="mt-1.5 text-[15px] text-ink-soft">No queda nada pendiente.</p>
-            </m.section>
-          )}
-        </AnimatePresence>
-
-        {/* La acción del momento, según la hora */}
-        {morning && carryMeals > 0 && (
-          <ActionRow
-            title="Hoy llevate"
-            detail={`${carryMeals} ${carryMeals === 1 ? 'comida' : 'comidas'} + botella, termo y cubiertos`}
-            onClick={() => setSheet('carry')}
-          />
-        )}
-        {evening && (
-          <ActionRow
-            title="Preparar para mañana"
-            detail={`${app.prep.length} cosas, del menú de mañana`}
-            onClick={() => setSheet('prep')}
-          />
-        )}
-
-        {/* El día */}
-        <SectionLabel className="mt-7 mb-1 px-1" aside="g CHO">
-          El día
-        </SectionLabel>
-        <Rail
-          items={items}
-          activeSlot={next?.planned.slot}
-          onOpen={(item) => setTarget({ planned: item.planned, meal: item.meal })}
-          onRestore={(item) => setStatus(item.planned.slot, 'pending')}
-        />
-
-        {/* Salidas */}
-        <div className="mt-6 space-y-2">
-          <ActionRow
-            title="Resolver ahora"
-            detail="Cuando el plan no coincide con el día"
-            onClick={() => onResolve({})}
-            tone="quiet"
-          />
-          {!(morning && carryMeals > 0) && carryMeals > 0 && (
-            <ActionRow
-              title="Hoy llevate"
-              detail={`${carryMeals} comidas + lo de siempre`}
-              onClick={() => setSheet('carry')}
-              tone="quiet"
-            />
-          )}
-          {!evening && (
-            <ActionRow
-              title="Preparar para mañana"
-              detail={`${app.prep.length} cosas`}
-              onClick={() => setSheet('prep')}
-              tone="quiet"
-            />
+              {meal.name}
+            </p>
+          </div>
+          <span className="t-label shrink-0 text-ink-faint">
+            {salteada ? 'salteada' : registrada ? 'anotada' : 'pasada'}
+          </span>
+          {registrada && (
+            <Icono name="check" size={15} className="shrink-0 text-lavanda" strokeWidth={2.2} />
           )}
         </div>
-
-        <MealSheet
-          target={target}
-          meals={app.meals}
-          context={app.today?.context ?? 'mixto'}
-          insulin={app.insulin}
-          onClose={() => setTarget(null)}
-          onStatus={(status) => target && setStatus(target.planned.slot, status)}
-          onReplace={(mealId) =>
-            target && app.today && app.replaceMeal(app.today.date, target.planned.slot, mealId)
-          }
-        />
-
-        <CarryList
-          open={sheet === 'carry'}
-          onClose={() => setSheet(null)}
-          items={app.packing}
-          onCheck={app.checkPack}
-        />
-
-        <Sheet open={sheet === 'prep'} onClose={() => setSheet(null)} title="Preparar para mañana">
-          <p className="text-[15px] text-ink-soft">Sale del menú de mañana.</p>
-          <div className="mt-4 border-t border-line">
-            {app.prep.map((task) => (
-              <CheckRow
-                key={task.id}
-                label={task.label}
-                hint={task.sourceMealIds.length > 1 ? 'Para varias comidas' : undefined}
-                done={task.done}
-                onToggle={() => app.checkPrep(task.id)}
-              />
-            ))}
-          </div>
-        </Sheet>
-
-        <SettingsSheet
-          open={sheet === 'config'}
-          onClose={() => setSheet(null)}
-          times={app.times}
-          onTime={app.setTime}
-          insulin={app.insulin}
-          onInsulin={app.setInsulin}
-          context={app.today?.context ?? 'mixto'}
-          onContext={(c) => app.today && app.setContext(app.today.date, c)}
-          prefs={app.prefs}
-          onPrefs={app.setPrefs}
-          cuenta={cuenta}
-          onCuenta={() => setSheet('cuenta')}
-        />
-
-        {/* Si volvés del mail de recuperación, esto se abre solo: es lo
-            único que corresponde hacer en ese momento. */}
-        <CuentaSheet
-          open={sheet === 'cuenta' || cuenta.recuperando}
-          onClose={() => setSheet(null)}
-          cuenta={cuenta}
-        />
-      </div>
-    </LazyMotion>
-  )
-}
-
-function IconButton({
-  label,
-  onClick,
-  children,
-}: {
-  label: string
-  onClick: () => void
-  children: React.ReactNode
-}) {
-  return (
-    <button
-      onClick={onClick}
-      aria-label={label}
-      className="grid size-11 place-items-center rounded-xl text-ink-soft transition-colors active:bg-surface-2"
-    >
-      <svg viewBox="0 0 20 20" className="size-[18px]" fill="none" aria-hidden>
-        {children}
-      </svg>
-    </button>
-  )
-}
-
-/** Fila de acción: superficie completa, dos líneas y flecha. */
-function ActionRow({
-  title,
-  detail,
-  onClick,
-  tone = 'solid',
-}: {
-  title: string
-  detail: string
-  onClick: () => void
-  tone?: 'solid' | 'quiet'
-}) {
-  return (
-    <button
-      onClick={onClick}
-      className={`mt-3 flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left transition-colors active:bg-surface-2 ${
-        tone === 'solid' ? 'bg-surface shadow-md' : 'border border-line'
-      }`}
-    >
-      <span className="min-w-0 flex-1">
-        <span className="v-head block text-[16px] text-ink">{title}</span>
-        <span className="v-label-sm mt-0.5 block truncate text-ink-faint">{detail}</span>
-      </span>
-      <svg viewBox="0 0 12 12" className="size-3 shrink-0 text-ink-faint" aria-hidden>
-        <path d="M4 2l4 4-4 4" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" />
-      </svg>
-    </button>
+      </CardButton>
+    </li>
   )
 }

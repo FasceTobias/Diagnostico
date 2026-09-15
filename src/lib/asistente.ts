@@ -263,16 +263,53 @@ const faltantes = (meal: Meal, tengo: string[]): string[] =>
     .filter((i) => !FOODS[i.item]?.pantry && !tengo.includes(i.item))
     .map((i) => i.item)
 
+/** Si la frase nombra una comida del catálogo, eso es la respuesta.
+    Parece obvio y no lo estaba: escribir «milanesa con puré» devolvía
+    «no entendí», porque el intérprete buscaba situaciones y no platos.
+    Alguien que escribe el nombre de algo quiere eso. */
+const porNombre = (texto: string, meals: Meal[]): Meal[] => {
+  const t = norm(texto).trim()
+  if (t.length < 4) return []
+  const palabras = t.split(/\s+/).filter((p) => p.length > 3)
+  if (!palabras.length) return []
+
+  return meals
+    .map((m) => {
+      const n = norm(m.name)
+      if (n === t) return { m, punto: 100 }
+      if (n.includes(t)) return { m, punto: 60 }
+      const pegan = palabras.filter((p) => n.includes(p)).length
+      return { m, punto: pegan === palabras.length ? 40 + pegan : pegan >= 2 ? 20 + pegan : 0 }
+    })
+    .filter((x) => x.punto > 0)
+    .sort((a, b) => b.punto - a.punto)
+    .slice(0, 8)
+    .map((x) => x.m)
+}
+
 export const buscar = (
   e: Entendido,
   meals: Meal[],
   momentoPorDefecto: Category,
   limite = 10,
+  /** El texto original, para poder buscar por nombre si no se entendió
+      ninguna condición. */
+  texto?: string,
 ): Respuesta => {
   const resumen = resumir(e, momentoPorDefecto)
   const ajustes = AJUSTES.filter((a) => a.cuando(e)).slice(0, 4).map(({ label, texto }) => ({ label, texto }))
 
   if (!entendioAlgo(e)) {
+    /* Antes de rendirse: capaz escribió el nombre de una comida. */
+    const porNombreTexto = texto ? porNombre(texto, meals) : []
+    if (porNombreTexto.length) {
+      return {
+        entendido: e,
+        resumen: `Comidas que se llaman así.`,
+        opciones: porNombreTexto.map((meal) => ({ meal, faltan: [] as string[] })),
+        ajustes,
+      }
+    }
     return { entendido: e, resumen: '', opciones: [], ajustes, sinEntender: true }
   }
 
@@ -346,7 +383,7 @@ export const buscar = (
 /** La puerta única: texto adentro, respuesta afuera. El día que haya un
     modelo, cambia lo que hay entre estas dos líneas y nada más. */
 export const preguntar = (texto: string, meals: Meal[], momento: Category): Respuesta =>
-  buscar(entender(texto), meals, momento)
+  buscar(entender(texto), meals, momento, 10, texto)
 
 /* Ejemplos para cuando la caja está vacía. Son los que de verdad se
    escriben, no una demostración de lo que el sistema puede parsear. */
