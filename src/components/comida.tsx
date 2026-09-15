@@ -100,6 +100,133 @@ export function FilaComida({
   )
 }
 
+/* ---------------- la tira del día ----------------
+
+   Lo primero que se lee, y en un segundo: por dónde vas. Sin esto hay
+   que entrar a otra pantalla para saber si te queda la cena, que es
+   justo lo que nadie va a hacer con el celular en una mano. */
+
+/* En la tira no entra «Media mañana» sin partirse en dos líneas, y una
+   tira despareja deja de leerse de un vistazo, que es su único trabajo. */
+const TIRA_LABEL: Record<Slot, string> = {
+  breakfast: 'Desayuno',
+  snack_am: 'Mañana',
+  lunch: 'Almuerzo',
+  snack_pm: 'Tarde',
+  merienda: 'Merienda',
+  dinner: 'Cena',
+}
+
+export function TiraDelDia({
+  plan,
+  ahoraSlot,
+}: {
+  plan: PlannedMeal[]
+  ahoraSlot?: Slot
+}) {
+  const hechas = plan.filter((p) => p.status === 'eaten').length
+  const faltan = plan.filter((p) => p.status !== 'eaten' && p.status !== 'skipped').length
+
+  return (
+    <Card padding="p-4">
+      <p className="v-head text-[16px] text-ink">
+        {faltan === 0
+          ? 'Ya comiste todo lo del día'
+          : faltan === 1
+            ? 'Te queda 1 comida hoy'
+            : `Te quedan ${faltan} comidas hoy`}
+        {hechas > 0 && (
+          <span className="font-semibold text-ink-faint">
+            {' '}· {hechas} {hechas === 1 ? 'hecha' : 'hechas'}
+          </span>
+        )}
+      </p>
+
+      <ol className="mt-3 flex items-start justify-between gap-1">
+        {plan.map((p) => {
+          const hecha = p.status === 'eaten'
+          const saltada = p.status === 'skipped'
+          const ahora = p.slot === ahoraSlot
+          return (
+            <li key={p.slot} className="flex min-w-0 flex-1 flex-col items-center gap-1.5">
+              <span
+                className={`grid size-5 place-items-center rounded-full ${
+                  hecha
+                    ? 'bg-menta-tenue text-menta-ink'
+                    : ahora
+                      ? 'bg-lavanda text-lavanda-ink'
+                      : 'border-[1.5px] border-line-strong'
+                }`}
+              >
+                {hecha && <Icono name="check" size={12} strokeWidth={3} />}
+                {ahora && <span className="size-1.5 rounded-full bg-lavanda-ink" />}
+              </span>
+              <span
+                className={`w-full text-center text-[10px] leading-tight ${
+                  ahora
+                    ? 'font-extrabold text-lavanda'
+                    : hecha
+                      ? 'font-semibold text-menta-ink'
+                      : saltada
+                        ? 'font-semibold text-ink-faint line-through'
+                        : 'font-semibold text-ink-faint'
+                }`}
+              >
+                {TIRA_LABEL[p.slot]}
+              </span>
+              {/* La línea existe siempre, con o sin texto: si apareciera
+                  sólo en la activa, esa columna quedaría más alta que las
+                  otras cinco. */}
+              <span className="h-[13px] text-[10px] font-extrabold leading-[13px] text-lavanda">
+                {ahora ? 'ahora' : ''}
+              </span>
+            </li>
+          )
+        })}
+      </ol>
+    </Card>
+  )
+}
+
+/* ---------------- lo que sigue ----------------
+
+   Una fila más explícita que la de una lista cualquiera: la hora y el
+   momento arriba, el nombre abajo, el número al final. Los cinco datos
+   que hacen falta para saber si eso te sirve, sin abrir nada. */
+
+export function FilaProxima({
+  meal,
+  slot,
+  hora,
+  onClick,
+}: {
+  meal: Meal
+  slot: Slot
+  hora: string
+  onClick: () => void
+}) {
+  const cat = SLOT_CATEGORY[slot]
+  return (
+    <CardButton padding="p-3.5" onClick={onClick} label={`${SLOT_LABEL[slot]}: ${meal.name}`}>
+      <div className="flex items-center gap-3">
+        <Tile name={ICONO_MOMENTO[cat]} tono={TONO_MOMENTO[cat]} size={42} icon={22} />
+        <div className="min-w-0 flex-1">
+          <p className="v-label-sm text-ink-faint">
+            <span className="v-tnum">{hora}</span> · {SLOT_LABEL[slot].toUpperCase()}
+          </p>
+          <p className="v-head mt-0.5 text-[15.5px] leading-tight text-ink">{meal.name}</p>
+          <p className="mt-1 text-[13.5px] text-ink-faint">
+            {carbs(meal)} CH
+            {(meal.totalMinutes ?? meal.prepMinutes) > 0 &&
+              ` · ${meal.totalMinutes ?? meal.prepMinutes} min`}
+          </p>
+        </div>
+        <Icono name="flecha" size={19} className="shrink-0 text-ink-faint" />
+      </div>
+    </CardButton>
+  )
+}
+
 /* ---------------- la próxima comida ---------------- */
 
 /** La tarjeta de arriba de todo, y la razón por la que alguien abre la
@@ -109,26 +236,22 @@ export function ProximaComida({
   meal,
   slot,
   hora,
-  ahora,
   onAlternativa,
   onAbrir,
+  onComida,
 }: {
   meal: Meal
   slot: Slot
   hora: string
-  /** Es el momento de comerla, no una que viene más tarde. */
-  ahora: boolean
   onAlternativa: () => void
   onAbrir: () => void
+  onComida: () => void
 }) {
   return (
     <Card padding="p-5">
-      <div className="flex items-center justify-between gap-3">
-        <p className="v-label text-ink-faint">{ahora ? 'Te toca ahora' : 'Próxima comida'}</p>
-        <div className="flex items-center gap-2">
-          <Pill tono={TONO_MOMENTO[meal.category]}>{SLOT_LABEL[slot]}</Pill>
-          <span className="v-tnum text-[15px] font-extrabold text-ink">{hora}</span>
-        </div>
+      <div className="flex items-center gap-2">
+        <Pill tono={TONO_MOMENTO[SLOT_CATEGORY[slot]]}>{SLOT_LABEL[slot]}</Pill>
+        <span className="v-tnum text-[15px] font-extrabold text-ink">{hora}</span>
       </div>
 
       <h2 className="v-head mt-3 text-[26px] leading-[1.15] text-ink">{meal.name}</h2>
@@ -145,24 +268,36 @@ export function ProximaComida({
         {meal.origen !== 'casera' && <Pill tono="neutro">{ORIGEN_LABEL[meal.origen].toLowerCase()}</Pill>}
       </div>
 
-      <div className="mt-4 flex gap-2">
+      <div className="mt-4 space-y-2">
         <button
           type="button"
           onClick={onAlternativa}
-          className="inline-flex min-h-[46px] flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-pill bg-lavanda-tenue px-3 text-[15px] font-extrabold text-lavanda transition-transform duration-150 active:scale-[0.97]"
+          className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-pill bg-lavanda-tenue px-3 text-[15px] font-extrabold text-lavanda transition-transform duration-150 active:scale-[0.98]"
         >
           <Icono name="cambiar" size={18} strokeWidth={2} />
-          Otra opción
+          Cambiar esta comida
         </button>
         <button
           type="button"
           onClick={onAbrir}
-          className="inline-flex min-h-[46px] flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-pill bg-lavanda px-3 text-[15px] font-extrabold text-lavanda-ink shadow-sm transition-transform duration-150 active:scale-[0.97]"
+          className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-pill bg-lavanda px-3 text-[15px] font-extrabold text-lavanda-ink shadow-sm transition-transform duration-150 active:scale-[0.98]"
         >
-          Ver comida
+          {meal.origen === 'casera' ? 'Ver preparación' : 'Ver detalle'}
           <Icono name="flecha" size={18} strokeWidth={2} />
         </button>
       </div>
+
+      {/* Sin esto, «qué comidas ya hice» no se puede contestar: la app
+          no tiene forma de saberlo. Va abajo y en voz baja, porque es
+          la acción que menos apura. */}
+      <button
+        type="button"
+        onClick={onComida}
+        className="mt-2 flex min-h-[42px] w-full items-center justify-center gap-2 rounded-pill text-[14.5px] font-bold text-ink-faint active:bg-surface-2"
+      >
+        <Icono name="check" size={17} strokeWidth={2.2} />
+        Ya comí esto
+      </button>
     </Card>
   )
 }

@@ -1,13 +1,13 @@
 import { useMemo, useState } from 'react'
-import type { Category, DayContext, Meal, Slot, Venue } from '../lib/types'
-import { SLOT_CATEGORY, VENUES } from '../lib/types'
+import type { Category, DayContext, Meal, Venue } from '../lib/types'
+import { SLOT_CATEGORY, SLOT_LABEL, VENUES } from '../lib/types'
 import type { Vianda } from '../lib/store'
 import { findNext } from '../lib/domain'
 import type { FiltroSnack, Pregunta } from '../lib/busquedas'
 import { FILTRO_SNACK, PREGUNTA, alternativas, porLugar, responder, snacks } from '../lib/busquedas'
 import { Card, CardButton, Chip, FilaChips, Icono, Sheet, Tile, TituloSeccion, Vacio } from '../components/base'
 import type { IconName, Tono } from '../components/tokens'
-import { FilaComida, ProximaComida, ResumenDelDia } from '../components/comida'
+import { FilaComida, FilaProxima, ProximaComida, TiraDelDia } from '../components/comida'
 import { DetalleComida } from '../components/Detalle'
 import { BarraAsistente, PanelAsistente } from '../components/Asistente'
 
@@ -90,6 +90,17 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comida
   )
   const catAhora: Category = proxima ? SLOT_CATEGORY[proxima.planned.slot] : 'snack'
 
+  /* Las que vienen después de la que toca ahora. Tres alcanzan: más que
+     eso ya es la pantalla del día entero, y para eso está el botón. */
+  const siguen = useMemo(() => {
+    if (!dia) return []
+    const desde = proxima ? dia.meals.findIndex((m) => m.slot === proxima.planned.slot) + 1 : 0
+    return dia.meals
+      .slice(desde)
+      .filter((m) => m.status !== 'eaten' && m.status !== 'skipped')
+      .slice(0, 3)
+  }, [dia, proxima])
+
   const verLista = (titulo: string, bajada: string | undefined, meals: Meal[], elegir?: (m: Meal) => void) =>
     setHoja({ tipo: 'lista', titulo, bajada, meals, elegir })
 
@@ -113,39 +124,99 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comida
         <p className="mt-0.5 text-[15px] text-ink-faint">{fechaLarga(hoy)}</p>
       </header>
 
-      {/* 1. QUÉ COMÉS AHORA — la razón por la que se abre la app */}
-      {proxima ? (
-        <ProximaComida
-          meal={proxima.meal}
-          slot={proxima.planned.slot}
-          hora={proxima.planned.time}
-          ahora={proxima.isNow}
-          onAbrir={() => setHoja({ tipo: 'detalle', meal: proxima.meal })}
-          onAlternativa={() =>
-            verLista(
-              'Otra cosa para esta comida',
-              `Alternativas para ${proxima.planned.time}. Tocá una y queda puesta.`,
-              alternativas(app.meals, SLOT_CATEGORY[proxima.planned.slot], proxima.meal.id),
-              (m) => {
-                app.replaceMeal(dia.date, proxima.planned.slot, m.id)
-                setHoja(null)
-              },
-            )
-          }
-        />
-      ) : (
-        <Card>
-          <Vacio
-            icono="plato"
-            titulo="No queda nada planificado para hoy"
-            detalle="Mañana vuelve a armarse solo. Mientras tanto, resolvé con lo de abajo."
+      {/* ================= TU DÍA =================
+          Todo lo de acá arriba contesta las tres preguntas que se hace
+          alguien que abre la app cinco segundos: qué como ahora, qué me
+          queda, qué ya hice. Nada de esto depende de la ayuda. */}
+
+      {dia && <TiraDelDia plan={dia.meals} ahoraSlot={proxima?.planned.slot} />}
+
+      <section className="mt-6">
+        <TituloSeccion>{proxima?.isNow ? 'Te toca ahora' : 'Tu próxima comida'}</TituloSeccion>
+        {proxima ? (
+          <ProximaComida
+            meal={proxima.meal}
+            slot={proxima.planned.slot}
+            hora={proxima.planned.time}
+            onAbrir={() => setHoja({ tipo: 'detalle', meal: proxima.meal })}
+            onComida={() => app.setStatus(dia.date, proxima.planned.slot, 'eaten')}
+            onAlternativa={() =>
+              verLista(
+                'Cambiar esta comida',
+                `Otras opciones para ${SLOT_LABEL[proxima.planned.slot].toLowerCase()} de las ${proxima.planned.time}. Tocá una y queda puesta.`,
+                alternativas(app.meals, SLOT_CATEGORY[proxima.planned.slot], proxima.meal.id),
+                (m) => {
+                  app.replaceMeal(dia.date, proxima.planned.slot, m.id)
+                  setHoja(null)
+                },
+              )
+            }
           />
-        </Card>
+        ) : (
+          <Card>
+            <Vacio
+              icono="plato"
+              titulo="Ya comiste todo lo del día"
+              detalle="Mañana el plan se arma solo. Si te dio hambre igual, resolvelo más abajo."
+            />
+          </Card>
+        )}
+      </section>
+
+      {/* LO QUE SIGUE HOY — obligatorio y a la vista, no detrás de un
+          «ver el día». Es la pregunta que la pantalla no contestaba. */}
+      {dia && (
+        <section className="mt-6">
+          <TituloSeccion>Lo que sigue hoy</TituloSeccion>
+          {siguen.length ? (
+            <>
+              <ul className="space-y-2">
+                {siguen.map((p) => {
+                  const meal = app.mealById(p.mealId)
+                  if (!meal) return null
+                  return (
+                    <li key={p.slot}>
+                      <FilaProxima
+                        meal={meal}
+                        slot={p.slot}
+                        hora={p.time}
+                        onClick={() => setHoja({ tipo: 'detalle', meal })}
+                      />
+                    </li>
+                  )
+                })}
+              </ul>
+              <button
+                type="button"
+                onClick={() => onIr('hoy')}
+                className="mt-3 w-full rounded-pill border border-line bg-surface px-4 py-3 text-[14.5px] font-bold text-lavanda active:bg-surface-2"
+              >
+                Ver todas las comidas de hoy
+              </button>
+            </>
+          ) : (
+            <Card padding="p-4">
+              <p className="text-[15px] text-ink-soft">
+                {proxima
+                  ? 'Es la última comida del día.'
+                  : 'No queda ninguna comida pendiente para hoy.'}
+              </p>
+            </Card>
+          )}
+        </section>
       )}
 
-      {/* 2. DÓNDE ESTÁS — cambia lo que la app recomienda */}
-      <section className="mt-7">
-        <TituloSeccion>¿Dónde estás?</TituloSeccion>
+      {/* ================= HASTA ACÁ, EL PLAN =================
+          Abajo de esta línea empieza otra cosa: cambiar lo que hay. La
+          separación es a propósito y tiene que verse. */}
+      <div className="v-rule mt-9 mb-7" />
+
+      {/* CAMBIAR EL DÍA ENTERO */}
+      <section>
+        <TituloSeccion>¿Vas a comer en otro lugar?</TituloSeccion>
+        <p className="mb-3 -mt-1 text-[14px] text-ink-faint">
+          Cambia lo que te propone para el resto del día.
+        </p>
         <div className="grid grid-cols-2 gap-3">
           {SITUACIONES.map((s) => {
             const activo = situacion === s.id
@@ -173,9 +244,9 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comida
         </div>
       </section>
 
-      {/* 3. QUÉ NECESITÁS — los atajos de verdad */}
+      {/* RESOLVER UNA EXCEPCIÓN */}
       <section className="mt-7">
-        <TituloSeccion chispa>¿Qué necesitás?</TituloSeccion>
+        <TituloSeccion chispa>¿Querés cambiar o resolver algo?</TituloSeccion>
 
         {/* La misma pregunta de la sección, pero escrita. Va arriba de
             los atajos porque es la que cubre lo que los atajos no:
@@ -203,30 +274,7 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comida
         </div>
       </section>
 
-      {/* 4. EL DÍA */}
-      <section className="mt-7">
-        <TituloSeccion accion={{ label: 'Ver el día', onClick: () => onIr('hoy') }}>
-          Hoy
-        </TituloSeccion>
-        {dia ? (
-          <ResumenDelDia
-            plan={dia.meals}
-            mealById={app.mealById}
-            ahoraSlot={proxima?.planned.slot}
-            onComida={(slot: Slot) => {
-              const p = dia.meals.find((m) => m.slot === slot)
-              const meal = p && app.mealById(p.mealId)
-              if (meal) setHoja({ tipo: 'detalle', meal })
-            }}
-          />
-        ) : (
-          <Card>
-            <Vacio icono="hoy" titulo="Todavía no hay plan para hoy" />
-          </Card>
-        )}
-      </section>
-
-      {/* 5. COMER AFUERA */}
+      {/* ACCESOS SECUNDARIOS */}
       <section className="mt-7">
         <TituloSeccion>Comer afuera</TituloSeccion>
         <p className="mb-3 -mt-1 text-[14px] text-ink-faint">
@@ -251,7 +299,7 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comida
         </FilaChips>
       </section>
 
-      {/* 6. SNACKS */}
+
       <section className="mt-7">
         <TituloSeccion
           accion={{
