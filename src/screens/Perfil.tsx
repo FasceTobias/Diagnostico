@@ -1,9 +1,18 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Card, TituloSeccion } from '../components/base'
 import { CuentaSheet } from '../components/Cuenta'
 import { useSession } from '../lib/auth'
 import { DIABETES_LABEL, type DiabetesType } from '../lib/types'
 import type { Vianda } from '../lib/store'
+import {
+  PROVINCIAS,
+  defaultPurchaseLocation,
+  loadPurchaseLocation,
+  provinceByCode,
+  purchaseLocationLabel,
+  savePurchaseLocation,
+  type PurchaseLocation,
+} from '../lib/zonas'
 
 const diabetesOpciones: DiabetesType[] = [
   'tipo-1',
@@ -17,11 +26,46 @@ const diabetesOpciones: DiabetesType[] = [
 export function Perfil({ app }: { app: Vianda }) {
   const cuenta = useSession()
   const [cuentaAbierta, setCuentaAbierta] = useState(false)
+  const [zona, setZona] = useState<PurchaseLocation>(defaultPurchaseLocation)
+  const [zonaEstado, setZonaEstado] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle')
+
+  useEffect(() => {
+    let alive = true
+    void loadPurchaseLocation().then((next) => {
+      if (alive) setZona(next)
+    })
+    return () => {
+      alive = false
+    }
+  }, [])
+
+  const persistirZona = async (next: PurchaseLocation) => {
+    setZona(next)
+    setZonaEstado('saving')
+    try {
+      await savePurchaseLocation(next)
+      setZonaEstado('saved')
+    } catch {
+      setZonaEstado('error')
+    }
+  }
+
+  const cambiarProvincia = (provinceCode: string) => {
+    const province = provinceByCode(provinceCode)
+    if (!province) return
+    void persistirZona({
+      provinceCode: province.code,
+      provinceName: province.name,
+      locality: undefined,
+    })
+  }
 
   const cambiarNombre = (nombre: string) => app.setPerfil({ ...app.perfil, nombre })
   const cambiarCarbos = () => app.setPerfil({ ...app.perfil, contarCarbos: !app.perfil.contarCarbos })
   const cambiarDiabetes = (diabetes: DiabetesType | null) =>
     app.setPerfil({ ...app.perfil, diabetes })
+
+  const province = provinceByCode(zona.provinceCode)
 
   return (
     <div className="mx-auto max-w-md px-5 pb-28">
@@ -57,6 +101,50 @@ export function Perfil({ app }: { app: Vianda }) {
               </button>
             )}
           </div>
+        </Card>
+      </section>
+
+      <section className="mt-8">
+        <TituloSeccion>Zona de compra</TituloSeccion>
+        <Card>
+          <p className="text-[15px] leading-relaxed text-ink-soft">
+            La usamos sólo para estimar precios. No es tu domicilio y no necesitamos GPS.
+          </p>
+
+          <label className="mt-4 block">
+            <span className="v-label-sm text-ink-faint">Provincia</span>
+            <select
+              value={zona.provinceCode}
+              onChange={(e) => cambiarProvincia(e.target.value)}
+              className="mt-2 w-full rounded-xl border border-line bg-bg px-3.5 py-3 text-[16px] text-ink outline-none focus:border-accent"
+            >
+              {PROVINCIAS.map((p) => (
+                <option key={p.code} value={p.code}>{p.name}</option>
+              ))}
+            </select>
+          </label>
+
+          <label className="mt-4 block">
+            <span className="v-label-sm text-ink-faint">Ciudad o localidad · opcional</span>
+            <input
+              value={zona.locality ?? ''}
+              onChange={(e) => setZona({ ...zona, locality: e.target.value })}
+              onBlur={() => void persistirZona({ ...zona, locality: zona.locality?.trim() || undefined })}
+              placeholder={zona.provinceCode === 'AR-Q' ? 'Ej. Neuquén capital' : 'Ej. Rosario, Lanús, Córdoba capital'}
+              className="mt-2 w-full rounded-xl border border-line bg-bg px-3.5 py-3 text-[16px] text-ink outline-none focus:border-accent"
+            />
+          </label>
+
+          <p className="mt-3 text-[13px] leading-relaxed text-ink-faint">
+            Precios para {purchaseLocationLabel(zona)}. Si no hay suficiente dato local,
+            usamos {province?.regionName ?? 'la región'} y después una referencia nacional,
+            siempre aclarando el nivel de precisión.
+          </p>
+          {zonaEstado === 'error' && (
+            <p className="mt-2 text-[13px] text-red-600">
+              La zona quedó guardada en este dispositivo, pero no se pudo sincronizar ahora.
+            </p>
+          )}
         </Card>
       </section>
 
