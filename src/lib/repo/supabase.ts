@@ -1,6 +1,6 @@
 import { CATALOGO } from '../catalogo'
 import { buildWeek, DEFAULT_TIMES } from '../domain'
-import { addDays, isoDate } from '../format'
+import { isoDate } from '../format'
 import { supabase } from '../supabase'
 import type {
   DayPlan,
@@ -47,6 +47,19 @@ let activeUserId: string | null = null
 let auxChecks: Record<string, boolean> = {}
 let auxExtras: string[] = []
 let importedLocalAt: string | null = null
+
+// Mantiene el destino de las escrituras alineado con login/logout sin
+// obligar a recargar la aplicación.
+if (supabase) {
+  supabase.auth.onAuthStateChange((_event, session) => {
+    activeUserId = session?.user.id ?? null
+    if (!session) {
+      auxChecks = {}
+      auxExtras = []
+      importedLocalAt = null
+    }
+  })
+}
 
 const client = () => {
   if (!supabase) throw new Error('Supabase no está configurado')
