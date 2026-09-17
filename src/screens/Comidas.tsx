@@ -6,43 +6,33 @@ import { CarbValue, MetaLine } from '../components/ui'
 import { Sheet } from '../components/Sheet'
 import { MealDetail } from '../components/MealDetail'
 
-/* COMIDAS — un índice, no un catálogo.
-
-   Las opciones se agrupan por momento del día con encabezados en serif y
-   cada una ocupa un renglón: nombre a la izquierda, carbohidratos a la
-   derecha, datos abajo en versalitas. Sin tarjetas y sin cápsulas: los
-   filtros son palabras que se subrayan. */
-
-const CATEGORIES: (Category | 'todas')[] = [
-  'todas',
-  'desayuno',
-  'snack',
-  'almuerzo',
-  'merienda',
-  'cena',
-]
-
+const CATEGORIES: (Category | 'todas')[] = ['todas', 'desayuno', 'snack', 'almuerzo', 'merienda', 'cena']
 const ORDER: Category[] = ['desayuno', 'snack', 'almuerzo', 'merienda', 'cena']
+
+const normalizar = (value: string) =>
+  value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim()
 
 export function Comidas({ app }: { app: Vianda }) {
   const [cat, setCat] = useState<Category | 'todas'>('todas')
   const [portable, setPortable] = useState(false)
   const [outside, setOutside] = useState<'todas' | 'casa' | 'afuera'>('todas')
+  const [query, setQuery] = useState('')
   const [open, setOpen] = useState<Meal | null>(null)
 
   const groups = useMemo(() => {
+    const q = normalizar(query)
     const list = app.meals
       .filter((m) => (cat === 'todas' ? true : m.category === cat))
       .filter((m) => (portable ? m.portable : true))
-      .filter((m) =>
-        outside === 'todas' ? true : outside === 'afuera' ? m.buyOutside : !m.buyOutside,
-      )
-      .sort((a, b) => Number(b.favorite) - Number(a.favorite) || a.name.localeCompare(b.name))
+      .filter((m) => outside === 'todas' ? true : outside === 'afuera' ? m.buyOutside : !m.buyOutside)
+      .filter((m) => {
+        if (!q) return true
+        return normalizar([m.name, m.description ?? '', m.mainIngredient, ...m.ingredients.map((i) => i.item)].join(' ')).includes(q)
+      })
+      .sort((a, b) => Number(b.favorite) - Number(a.favorite) || Number(b.everyday) - Number(a.everyday) || a.name.localeCompare(b.name))
 
-    return ORDER.map((c) => ({ category: c, meals: list.filter((m) => m.category === c) })).filter(
-      (g) => g.meals.length > 0,
-    )
-  }, [app.meals, cat, portable, outside])
+    return ORDER.map((c) => ({ category: c, meals: list.filter((m) => m.category === c) })).filter((g) => g.meals.length > 0)
+  }, [app.meals, cat, portable, outside, query])
 
   const count = groups.reduce((n, g) => n + g.meals.length, 0)
 
@@ -50,13 +40,24 @@ export function Comidas({ app }: { app: Vianda }) {
     <LazyMotion features={domAnimation}>
       <div className="mx-auto max-w-md px-4 pb-40">
         <header className="v-safe-top pt-5 pb-4">
-          <h1 className="v-serif-lg text-[28px] text-ink">Comidas</h1>
-          <p className="v-label-sm mt-1.5 text-ink-faint">
-            {count} de {app.meals.length}
+          <p className="v-label font-semibold text-accent">CUANDO NO SABÉS QUÉ COMER</p>
+          <h1 className="v-serif-lg mt-1 text-[28px] text-ink">Encontrá algo que te cierre</h1>
+          <p className="mt-1.5 text-[14px] leading-relaxed text-ink-soft">
+            Buscá por comida o ingrediente, o filtrá según lo que necesitás hoy.
           </p>
         </header>
 
-        {/* Filtros como palabras, no como botones */}
+        <label className="mb-4 block">
+          <span className="sr-only">Buscar comidas</span>
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Ej. pollo, arroz, tostado…"
+            className="w-full rounded-xl border border-line bg-surface px-4 py-3 text-[16px] text-ink outline-none placeholder:text-ink-faint focus:border-accent"
+          />
+        </label>
+
         <div className="v-no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4 pb-2">
           {CATEGORIES.map((c) => (
             <button
@@ -72,22 +73,12 @@ export function Comidas({ app }: { app: Vianda }) {
         </div>
 
         <div className="flex gap-1.5 pb-3">
-          <FilterWord active={portable} onClick={() => setPortable((v) => !v)}>
-            se lleva
-          </FilterWord>
-          <FilterWord
-            active={outside === 'casa'}
-            onClick={() => setOutside((v) => (v === 'casa' ? 'todas' : 'casa'))}
-          >
-            la cocinás
-          </FilterWord>
-          <FilterWord
-            active={outside === 'afuera'}
-            onClick={() => setOutside((v) => (v === 'afuera' ? 'todas' : 'afuera'))}
-          >
-            se compra
-          </FilterWord>
+          <FilterWord active={portable} onClick={() => setPortable((v) => !v)}>para llevar</FilterWord>
+          <FilterWord active={outside === 'casa'} onClick={() => setOutside((v) => (v === 'casa' ? 'todas' : 'casa'))}>la cocinás</FilterWord>
+          <FilterWord active={outside === 'afuera'} onClick={() => setOutside((v) => (v === 'afuera' ? 'todas' : 'afuera'))}>se compra</FilterWord>
         </div>
+
+        <p className="v-label-sm mt-1 text-ink-faint">{count} opciones</p>
 
         <AnimatePresence mode="popLayout">
           {groups.map((group) => (
@@ -100,11 +91,9 @@ export function Comidas({ app }: { app: Vianda }) {
               className="mt-6"
             >
               <div className="flex items-baseline justify-between gap-3 border-b border-line px-1 pb-1.5">
-                <h2 className="v-serif text-[18px] text-ink first-letter:uppercase">
-                  {group.category}
-                </h2>
+                <h2 className="v-serif text-[18px] text-ink first-letter:uppercase">{group.category}</h2>
                 <span className="v-label-sm text-ink-faint">
-                  {group.meals.length} · g CHO
+                  {group.meals.length}{app.perfil.contarCarbos ? ' · g CHO' : ''}
                 </span>
               </div>
 
@@ -116,21 +105,15 @@ export function Comidas({ app }: { app: Vianda }) {
                 >
                   <span className="min-w-0 flex-1">
                     <span className="flex items-baseline gap-2">
-                      <span className="v-head min-w-0 flex-1 truncate text-[16px] text-ink">
-                        {meal.name}
-                      </span>
-                      {meal.favorite && (
-                        <span aria-label="Favorita" className="shrink-0 text-[12px] text-ink-soft">
-                          ★
-                        </span>
-                      )}
-                      <CarbValue meal={meal} unit={false} />
+                      <span className="v-head min-w-0 flex-1 truncate text-[16px] text-ink">{meal.name}</span>
+                      {meal.favorite && <span aria-label="Favorita" className="shrink-0 text-[12px] text-ink-soft">★</span>}
+                      {app.perfil.contarCarbos && <CarbValue meal={meal} unit={false} />}
                     </span>
                     <MetaLine
                       className="mt-0.5"
                       parts={[
-                        meal.satiety,
-                        meal.drink,
+                        meal.portion,
+                        meal.portable && 'se lleva',
                         meal.buyOutside ? meal.venues?.[0] : `${meal.activeMinutes} min`,
                         meal.frequency === 'ocasional' && 'de vez en cuando',
                       ]}
@@ -147,15 +130,12 @@ export function Comidas({ app }: { app: Vianda }) {
 
         {count === 0 && (
           <p className="mt-10 border-y border-line py-10 text-center text-[16px] text-ink-faint">
-            No hay comidas con esos filtros.
+            No encontramos una comida con esos filtros. Probá sacar uno o buscar otra palabra.
           </p>
         )}
 
         <p className="mt-8 px-1 text-[13px] leading-relaxed text-ink-faint">
-          Las del catálogo tienen la porción documentada y el carbohidrato calculado
-          sobre esa porción; siguen con tilde porque ninguna se midió todavía contra
-          una etiqueta. Las marcadas <span className="text-ink-soft">demo</span> son
-          las que quedan por reemplazar.
+          Cuando un dato de hidratos todavía no está verificado, Vianda lo marca dentro de la ficha de la comida.
         </p>
 
         <Sheet open={open !== null} onClose={() => setOpen(null)}>
@@ -166,23 +146,13 @@ export function Comidas({ app }: { app: Vianda }) {
   )
 }
 
-function FilterWord({
-  active,
-  onClick,
-  children,
-}: {
-  active: boolean
-  onClick: () => void
-  children: React.ReactNode
-}) {
+function FilterWord({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
     <button
       onClick={onClick}
       aria-pressed={active}
       className={`v-label-sm min-h-[34px] rounded-lg px-3 transition-colors ${
-        active
-          ? 'bg-accent-soft font-semibold text-accent'
-          : 'border border-line text-ink-faint active:bg-surface-2'
+        active ? 'bg-accent-soft font-semibold text-accent' : 'border border-line text-ink-faint active:bg-surface-2'
       }`}
     >
       {children}
