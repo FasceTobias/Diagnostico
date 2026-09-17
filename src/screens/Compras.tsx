@@ -8,6 +8,12 @@ import {
   money,
   type PriceReference,
 } from '../lib/precios'
+import {
+  defaultPurchaseLocation,
+  loadPurchaseLocation,
+  purchaseLocationLabel,
+  type PurchaseLocation,
+} from '../lib/zonas'
 
 /* COMPRAS — un ticket, no una lista de texto.
 
@@ -21,13 +27,17 @@ import {
 export function Compras({ app }: { app: Vianda }) {
   const { week, mealById } = app
   const [prices, setPrices] = useState<Map<string, PriceReference>>(new Map())
+  const [zona, setZona] = useState<PurchaseLocation>(defaultPurchaseLocation)
 
   const groups = useMemo(() => buildShoppingList(week, app.meals), [week, app.meals])
   const estimate = useMemo(() => estimateShopping(groups, prices), [groups, prices])
 
   useEffect(() => {
     let alive = true
-    void loadFoodPrices().then((next) => {
+    void loadPurchaseLocation().then(async (location) => {
+      if (!alive) return
+      setZona(location)
+      const next = await loadFoodPrices(location)
       if (alive) setPrices(next)
     })
     return () => {
@@ -85,9 +95,10 @@ export function Compras({ app }: { app: Vianda }) {
               Referencia central: {money(estimate.median)}
             </p>
             <p className="mt-2 text-[12px] leading-relaxed text-ink-faint">
-              AMBA · {estimate.pricedLines} de {estimate.totalLines} productos con precio
-              {observed ? ` · referencia ${observed}` : ''}. Es un rango orientativo, no el
-              precio de caja de un comercio puntual.
+              {purchaseLocationLabel(zona)} · {estimate.pricedLines} de {estimate.totalLines} productos con precio
+              {observed ? ` · referencia ${observed}` : ''}. Si falta información específica de tu localidad,
+              la app usa provincia, región y finalmente una referencia nacional. Es orientativo, no el precio
+              de caja de un comercio puntual.
             </p>
           </section>
         )}
