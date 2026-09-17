@@ -13,9 +13,11 @@ No es una app médica ni un recetario. Es logística alimentaria personal.
 > de cada comida y de dónde sale ese número. **No calcula insulina ni reemplaza
 > ninguna indicación médica.**
 >
-> Los carbohidratos de las comidas de ejemplo **no están verificados** y la app
-> lo dice en todas las pantallas. Se escriben siempre igual: `34 g CHO`. No hay
-> totales diarios: el carbo es por comida, no una meta a cumplir.
+> Los carbohidratos **no están verificados contra etiquetas** y la app lo dice
+> en todas las pantallas: la porción está documentada y el número calculado
+> sobre ella, pero nadie tuvo el envase en la mano. Se escriben siempre igual,
+> con la tilde adelante: `~34 g CH`. No hay totales diarios: el carbo es por
+> comida, no una meta a cumplir.
 >
 > La relación insulina/carbohidratos se guarda si vos la configurás, y la
 > calculadora hace **una división** cuando se la pedís. La app no calcula dosis
@@ -24,19 +26,45 @@ No es una app médica ni un recetario. Es logística alimentaria personal.
 
 ---
 
+## Empezar
+
+**¿Venís a esto desde otra computadora?** Está todo acá adentro:
+[`docs/TRABAJAR.md`](docs/TRABAJAR.md) explica cómo arrancar en una máquina
+nueva, cómo no pisarte entre dos, y qué hace cada comando.
+
+```bash
+npm install && npm run dev
+```
+
+Node 22 (fijado en `.nvmrc`). La app funciona entera sin base de datos y sin
+cuenta: los datos se guardan en el navegador.
+
 ## Estado
 
-**Fase 1 completa.** El documento de arquitectura, UX y diseño está en
-[`docs/FASE-1.md`](docs/FASE-1.md): concepto, sitemap, modelo de datos,
-los tres conceptos visuales, la recomendación y el recorte de alcance.
+**El catálogo está terminado y limpio:** 199 comidas reales, ningún dato de
+relleno. Cada una dice de dónde viene, cuánto trabajo pide, cuánto tarda de
+verdad, qué lleva y cuánto rinde. El modelo entero está explicado en
+[`docs/MODELO.md`](docs/MODELO.md), y dos comandos lo vigilan:
+`npm run catalogo:check` y `npm run catalogo:carbs`.
 
-**El sistema visual queda aprobado para MVP.** Sólo se toca por un bug, un
-problema de contraste o algo que no se entiende — no por gusto.
+**Las recetas van por la mitad:** 60 escritas. De las que se cocinan quedan 14
+sin escribir; de las que se arman, 53. Las que no necesitan ninguna —fruta,
+kiosco, rotisería— están cerradas y la ficha ya no se disculpa por no tener
+pasos.
 
-**Fase 2 en marcha:** dejar de ser una demo local y pasar a producto real.
-La auditoría del estado actual, el modelo de Supabase, la revisión de
-seguridad y el plan de migración por etapas están en
-[`docs/FASE-2.md`](docs/FASE-2.md).
+**Dos pantallas construidas** sobre el sistema visual actual, INICIO y HOY.
+COMIDAS, COMPRAS y PERFIL siguen en obra: la pantalla existe y dice
+honestamente qué va a haber ahí.
+
+**Supabase preparado, no conectado.** El esquema, las políticas de RLS y el
+seed del catálogo están versionados y se prueban contra un Postgres de verdad
+(88 pruebas, `npm run db:test`). Falta enchufar las credenciales.
+
+El registro de cómo se llegó hasta acá está en
+[`docs/FASE-1.md`](docs/FASE-1.md) —concepto, sitemap, modelo de datos— y
+[`docs/FASE-2.md`](docs/FASE-2.md) —Supabase, seguridad, plan de migración—.
+Los dos describen decisiones que siguen en pie; las pantallas y el sistema
+visual que muestran quedaron atrás.
 
 ### El día
 
@@ -52,42 +80,39 @@ día de la semana, y no se configura a diario: vive en Configuración y en
 
 ### Construido
 
-- **HOY** — qué toca ahora, qué viene después y el resto del día. Avanza sola
-  con el reloj: **no hace falta marcar nada**. Debajo, una acción según la hora
-  (la mochila de mañana, la preparación de noche).
-- **HOY LLEVATE** — lo que va en el bolso, como lectura. Las casillas existen
-  pero están apagadas.
-- **Modo foco** — sólo lo que viene ahora.
-- **Asistente** — entrada integrada, resuelta con reglas locales sobre la biblioteca.
-- **SEMANA** — los 7 días, con reemplazo desde cualquier día.
-- **COMIDAS** — 143 opciones: **44 del catálogo real** (`data/catalogo/`) y 99 de
-  demostración todavía por reemplazar. Las del catálogo tienen la porción
-  documentada, el carbohidrato calculado sobre esa porción y **variantes**: una
-  pizza son 30 g por porción, 60 por dos, 90 por tres. Pizza, empanadas,
-  hamburguesa, medialunas, alfajor, helado y gaseosa común están con su número,
-  y marcadas **de vez en cuando**: el plan de una semana propone una sola comida
-  de ésas en 42. Ni prohibir ni festejar.
+- **INICIO** — la pantalla que contesta «¿qué me queda por comer hoy?» sin que
+  tengas que pensar. Arriba, tu día: cómo viene, qué comés ahora, qué sigue.
+  Abajo, cómo cambiarlo: dónde vas a comer, seis atajos y una caja de texto.
+  La línea que separa las dos mitades es el orden de la pantalla.
+- **HOY** — el día entero, leído de arriba abajo: lo que toca ahora, lo que
+  viene, y lo que ya pasó en gris. **No es una checklist**: el estado de cada
+  comida sale del reloj, no de lo que hayas marcado. Registrar qué comiste
+  existe, abajo y en voz baja, para el día que comiste otra cosa.
+- **La ficha de una comida** — qué es, qué lleva, cómo se hace y con qué se
+  reemplaza lo que falta. Dos cosas que no hace: no inventa —si falta la
+  preparación, lo dice— y no presenta una estimación como un dato.
+- **El asistente** — una caja de texto que entiende una frase escrita como la
+  dirías y contesta con comidas de la biblioteca. Hoy son reglas locales, no un
+  modelo, y la app se entiende entera con el asistente apagado.
+- **La biblioteca** — 199 comidas con la porción documentada, el carbohidrato
+  calculado sobre esa porción y **variantes**: una pizza son 30 g por porción,
+  60 por dos, 90 por tres. Pizza, empanadas, medialunas, alfajor, helado y
+  gaseosa común están con su número y marcadas **de vez en cuando**. Ni
+  prohibir ni festejar.
 
-  El detalle de las comidas que se cocinan
-  trae **cómo se hace**, escrito para alguien que nunca lo hizo: un paso por
-  acción, sin jerga de cocina, con la cantidad y la señal de que está listo.
-  «Ver con detalle» abre la explicación entera de cada paso y queda abierto.
-  Sólo donde hace falta: un tostado no lleva instrucciones.
-- **RESOLVER AHORA** — la salida cuando el plan falla: no traje comida, tengo
-  hambre, cambió mi día, no preparé nada, quiero reemplazar. Tres toques hasta
-  ver opciones, agrupadas por lugar concreto (rotisería, panadería,
-  supermercado…) con platos de verdad.
-- **CONFIGURACIÓN** — cómo viene el día, horarios editables y relación
-  insulina/carbohidratos con una calculadora que se abre a mano. Apagada por
-  defecto.
-- **COMPRAS** — la compra de la semana con cantidades reales, agrupada por
-  sector: «12 huevos», «1,5 kg de pollo», «1 paquete de pan». Más la
-  preparación semanal agrupada.
-- **Los tres conceptos visuales** quedan como registro del proceso en
-  `src/screens/Direcciones.tsx`. La ruta sólo existe corriendo `npm run dev`:
-  en el build publicado no entra al bundle.
+### En obra
+
+COMIDAS, COMPRAS y PERFIL. La pantalla existe y dice qué va a haber ahí en vez
+de fingir que funciona. La lógica de la lista de compras —cantidades reales
+agrupadas por sector— ya está escrita en `domain.ts`; falta la pantalla.
+
+SEMANA, modo foco y los tres conceptos visuales del principio siguen en el
+repositorio como registro del proceso, sobre el sistema visual viejo.
 
 ## Correr
+
+Todo el detalle —máquina nueva, dos máquinas, cada comando, cómo levantar el
+Postgres de las pruebas— está en [`docs/TRABAJAR.md`](docs/TRABAJAR.md).
 
 ```bash
 npm install
@@ -100,34 +125,47 @@ Build de producción:
 npm run build && npm run preview
 ```
 
+Antes de pushear:
+
+```bash
+npm run typecheck && npm run lint
+npm run catalogo:check     # si tocaste el catálogo
+```
+
 ## Cómo está armado
 
 ```
 src/
   lib/
     types.ts       modelo de dominio (espeja supabase/migrations/)
-    catalogo.ts    el catálogo real, desde data/catalogo/*.json
-    recetas.ts     cómo se hace cada una, paso a paso y sin jerga, con la
-                   explicación entera detrás de «Ver con detalle». Va
-                   aparte del JSON porque es prosa, no data
-    foods.ts       catálogo: en qué sector está cada cosa y cómo se compra
-    domain.ts      necesidades del día, rotación, reemplazos, rescate,
-                   resolver ahora, tareas de preparación, mochila
+    catalogo.ts    el JSON convertido a lo que usa la app, y las fusiones
+    recetas.ts     cómo se hace cada comida. Va aparte del JSON porque es
+                   prosa, no data
+    foods.ts       los ingredientes: sector, cómo se compran, carbohidratos
+                   de referencia, básicos de alacena y reemplazos
+    carbos.ts      derivar el carbohidrato de un plato desde lo que lleva
+    dia.ts         en qué momento del día estás, según el reloj
+    busquedas.ts   las preguntas que contestan los atajos de INICIO
+    asistente.ts   entender una frase y buscar, con reglas locales
+    domain.ts      rotación, reemplazos, lista de compras, tareas
     insulin.ts     la relación configurada y la división. Nada más.
-    assistant.ts   contrato del asistente (hoy reglas, mañana un modelo)
     store.ts       el estado en memoria y las funciones que lo cambian
     repo/          dónde se guarda: interfaz + implementación local
     supabase.ts    el cliente, sólo si están las variables de entorno
     format.ts      fechas, carbohidratos, tintes
-  components/      primitivas y sheets
-  screens/         HOY, SEMANA, COMIDAS, COMPRAS, FOCO
+  components/      primitivas, hojas y la ficha de una comida
+  screens/         Inicio y Hoy construidas; el resto en obra
 data/
-  catalogo/        la biblioteca, en JSON. Fuente única: de acá sale lo que
-                   usa la app y el seed SQL (npm run catalogo:sql)
+  catalogo/        la biblioteca en JSON. Fuente única: de acá salen la app
+                   y el seed SQL (npm run catalogo:sql). Al lado, las
+                   revisiones: duplicados y carbohidratos a mirar
 supabase/
   migrations/      el esquema, versionado y con RLS
   seed/            el catálogo para la base, generado
-  tests/           63 pruebas de RLS y catálogo (npm run db:test)
+  tests/           88 pruebas de RLS, catálogo y fusiones (npm run db:test)
+scripts/           generadores y chequeos del catálogo
+docs/              TRABAJAR.md (dos máquinas), MODELO.md (el catálogo),
+                   FASE-1 y FASE-2 (el registro del proceso)
 ```
 
 La UI no sabe de dónde vienen los datos, y `store.ts` tampoco sabe dónde se
@@ -143,40 +181,30 @@ el repositorio local y el cliente de Supabase ni siquiera entra al bundle.
 React 19 · TypeScript · Vite · Tailwind CSS v4 · PWA · Supabase (preparado) · Netlify
 
 Sin librería de componentes, sin router, sin librería de estado.
-Bundle: ~84 kB gzip.
+Bundle: ~150 kB gzip.
 
 ## Sistema de diseño
 
-Todo vive en `src/index.css` como tokens. Calmo y limpio: casi negro, texto
-blanco y gris, y **azul claro como único acento**. Modo oscuro automático según
-el sistema.
+Todo vive en `src/index.css` como tokens. Fondo crema, tarjetas blancas,
+bordes suaves, sombras mínimas y radios grandes. **Lavanda** es el color
+principal —lo que se toca— y menta, mantequilla, coral, rosa y azul son
+acentos secundarios, uno por tarjeta: seis pasteles juntos no son un sistema
+de color, son un arcoíris.
 
-El azul es `#72C7FF` sobre el fondo oscuro y `#0A6299` sobre el claro —el mismo
-azul con otra luz—, y marca **sólo lo que se toca**: navegación activa, acción
-principal, selección, foco, indicadores. La metadata queda neutra. Encima de un
-relleno celeste el texto va casi negro (`accent-ink`), porque blanco sobre
-`#72C7FF` no se lee. Hay un solo gradiente —azul hielo a azul cielo, en el orb
-del asistente— y un solo glow, el halo del punto de «Ahora».
+**Una sola tipografía**: Plus Jakarta Sans, autoalojada
+(`scripts/fetch-fonts.mjs`), así que la app abre sin red y sin pedirle nada a
+un tercero. La escala es corta y con roles fijos —display, título, cuerpo,
+meta, rótulo, versalita, número tabular— y no se inventan tamaños sueltos.
 
-**Tres voces tipográficas** con roles claros, todas autoalojadas
-(`scripts/fetch-fonts.mjs`), así que la app abre sin red y sin pedirle nada a un
-tercero:
+**El ritmo vertical es siempre el mismo**: 32 entre secciones, 16 del título a
+su contenido, 12 entre tarjetas hermanas. El problema que tenía la pantalla no
+era de contenido: era que cada bloque respiraba distinto y se sentía armada de
+a pedazos.
 
-- **Space Grotesk** — la voz principal: nombres de comidas y titulares. Tiene
-  carácter y se lee bien chica en un teléfono.
-- **Inter** — datos, rótulos y cifras tabulares. No compite.
-- **Fraunces** — acento. Sólo los títulos de sección.
+**Tres piezas y nada más**: la tarjeta hero, la tarjeta normal y el chip. Un
+solo radio. Si algo necesita una cuarta pieza, casi siempre es que está de más.
 
-**Es una app, no una revista.** Rótulos en caja baja, no versalitas anchas. Cada
-fila es una superficie táctil con su flecha. Las acciones importantes —ver,
-cambiar, resolver— están a la vista, no escondidas en un gesto.
-
-**Menos cajas, más lista.** El separador de la casa es una regla de 1px. La
-única superficie elevada de HOY es la zona de trabajo: la comida que toca ahora
-con sus dos acciones. El día se lee como una línea de tiempo, la biblioteca como
-un índice y la compra como un ticket.
-
-Dos reglas que se respetan en toda la app:
+Diez reglas que se respetan en toda la app:
 
 1. **Ningún estado se comunica sólo con color.** Siempre hay además forma,
    texto o posición.
@@ -197,12 +225,16 @@ Dos reglas que se respetan en toda la app:
    de internet pierde prioridad; no desaparece.
 8. **La bebida es parte de la comida.** Un tostado con café es un tostado con
    café, no un tostado.
-9. **El azul es de lo que se toca.** Nunca decorativo. Todo lo que es dato,
-   etiqueta o metadata se queda en gris.
-10. **Las recetas se escriben para alguien que nunca las hizo.** Sin jerga de
-    cocina, con la cantidad en cada paso y con la señal de que está listo. Si
-    la receta lleva más tiempo del que decía la comida, se corrige el tiempo
-    de la comida.
+9. **La lavanda es de lo que se toca.** Nunca decorativa. Todo lo que es
+   dato, etiqueta o metadata se queda en gris.
+10. **Las recetas se escriben para alguien que nunca las hizo.** Entre tres y
+    seis pasos, una acción por paso, la cantidad adentro y sin jerga de
+    cocina. La aclaración gris aparece sólo donde hay una trampa concreta.
+    Si la receta lleva más tiempo del que decía la comida, se corrige el
+    tiempo de la comida — no al revés.
+11. **Nada se inventa en silencio.** Si falta una receta, la ficha lo dice.
+    Si un número es estimado, dice «estimado». Una duda se marca y se
+    reporta; no se tapa con un dato plausible.
 
 ## PWA
 
