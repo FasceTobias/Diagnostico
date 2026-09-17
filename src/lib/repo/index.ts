@@ -1,22 +1,21 @@
 import { hasBackend } from '../supabase'
 import { localRepo } from './local'
+import { supabaseRepo } from './supabase'
 import type { ViandaRepo } from './types'
 
 export type { Snapshot, ViandaRepo, RepoKind } from './types'
 
 /* Quién guarda los datos.
 
-   Hoy siempre el dispositivo. Cuando exista el repositorio de Supabase
-   (etapa 3), la regla va a ser: hay backend configurado Y hay sesión
-   iniciada → Supabase; si no, el local.
+   Sin variables de Supabase: dispositivo, exactamente como antes.
 
-   Ese "si no" no es un plan B provisorio. La app tiene que abrir y servir
-   para algo sin cuenta y sin señal: alguien que la prueba por primera vez
-   no debería toparse con un formulario de registro antes de ver de qué se
-   trata. */
+   Con backend configurado: repositorio cloud local-first. Ese repositorio
+   abre desde la copia del dispositivo, comprueba la sesión en bootstrap y,
+   sólo si hay una cuenta iniciada, sincroniza con Supabase. Sin sesión sigue
+   siendo una app útil y no obliga a registrarse antes de probarla. */
 
-export const getRepo = (): ViandaRepo => localRepo
+export const getRepo = (): ViandaRepo => hasBackend ? supabaseRepo : localRepo
 
-/** Para la pantalla de configuración, cuando cuente de dónde salen los
-    datos. Hoy alcanza para saber si el proyecto está conectado. */
+/** Para Perfil/diagnóstico: dice si el build conoce un proyecto Supabase,
+    no si existe una sesión iniciada. */
 export const backendConfigured = hasBackend
