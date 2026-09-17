@@ -1,5 +1,10 @@
 import { supabase } from './supabase'
 import type { ShoppingGroup, ShoppingLine } from './domain'
+import {
+  defaultPurchaseLocation,
+  priceRegionChain,
+  type PurchaseLocation,
+} from './zonas'
 
 export const DEFAULT_PRICE_REGION = 'AR-BA-AMBA'
 
@@ -59,47 +64,79 @@ type DbPriceReference = {
   confidence: 'alta' | 'media' | 'estimada'
 }
 
+const normalize = (value?: string | null) => value?.trim().toLocaleLowerCase('es-AR') ?? ''
+
+const toReference = (raw: DbPriceReference): PriceReference => ({
+  foodKey: raw.food_key ?? '',
+  regionCode: raw.region_code,
+  locality: raw.locality ?? undefined,
+  currency: raw.currency,
+  minPrice: Number(raw.min_price),
+  medianPrice: Number(raw.median_price),
+  maxPrice: Number(raw.max_price),
+  purchaseUnit: raw.purchase_unit,
+  purchaseQty: Number(raw.purchase_qty),
+  sourceName: raw.source_name,
+  sourceUrl: raw.source_url ?? undefined,
+  observedOn: raw.observed_on,
+  validUntil: raw.valid_until ?? undefined,
+  sampleSize: raw.sample_size ?? undefined,
+  confidence: raw.confidence,
+})
+
 /**
- * Trae una sola referencia vigente por ingrediente, priorizando la más
- * reciente. Los precios son datos públicos: funciona también sin sesión.
+ * Trae una referencia por ingrediente usando la zona elegida por la persona.
+ * Prioridad: localidad exacta -> provincia -> AMBA cuando corresponde ->
+ * región -> nacional. Si no hay localidad elegida, nunca toma por accidente
+ * un precio específico de otra ciudad.
  */
 export async function loadFoodPrices(
-  regionCode = DEFAULT_PRICE_REGION,
+  location: PurchaseLocation = defaultPurchaseLocation,
 ): Promise<Map<string, PriceReference>> {
   if (!supabase) return new Map()
 
+  const regions = priceRegionChain(location)
   const { data, error } = await supabase
     .from('price_references')
     .select(
       'food_key,region_code,locality,currency,min_price,median_price,max_price,purchase_unit,purchase_qty,source_name,source_url,observed_on,valid_until,sample_size,confidence',
     )
-    .eq('region_code', regionCode)
+    .in('region_code', regions)
     .not('food_key', 'is', null)
     .order('observed_on', { ascending: false })
     .order('created_at', { ascending: false })
 
   if (error || !data) return new Map()
 
+  const targetLocality = normalize(location.locality)
+  const rows = data as DbPriceReference[]
+  const grouped = new Map<string, DbPriceReference[]>()
+  for (const row of rows) {
+    if (!row.food_key) continue
+    grouped.set(row.food_key, [...(grouped.get(row.food_key) ?? []), row])
+  }
+
   const result = new Map<string, PriceReference>()
-  for (const raw of data as DbPriceReference[]) {
-    if (!raw.food_key || result.has(raw.food_key)) continue
-    result.set(raw.food_key, {
-      foodKey: raw.food_key,
-      regionCode: raw.region_code,
-      locality: raw.locality ?? undefined,
-      currency: raw.currency,
-      minPrice: Number(raw.min_price),
-      medianPrice: Number(raw.median_price),
-      maxPrice: Number(raw.max_price),
-      purchaseUnit: raw.purchase_unit,
-      purchaseQty: Number(raw.purchase_qty),
-      sourceName: raw.source_name,
-      sourceUrl: raw.source_url ?? undefined,
-      observedOn: raw.observed_on,
-      validUntil: raw.valid_until ?? undefined,
-      sampleSize: raw.sample_size ?? undefined,
-      confidence: raw.confidence,
+  for (const [foodKey, candidates] of grouped) {
+    const usable = candidates.filter((row) => {
+      const rowLocality = normalize(row.locality)
+      if (!rowLocality) return true
+      return !!targetLocality && rowLocality === targetLocality
     })
+
+    const ranked = usable.sort((a, b) => {
+      const aLocal = targetLocality && normalize(a.locality) === targetLocality ? -100 : 0
+      const bLocal = targetLocality && normalize(b.locality) === targetLocality ? -100 : 0
+      const aRegion = regions.indexOf(a.region_code)
+      const bRegion = regions.indexOf(b.region_code)
+      const scoreA = aLocal + (aRegion === -1 ? 999 : aRegion * 10)
+      const scoreB = bLocal + (bRegion === -1 ? 999 : bRegion * 10)
+      if (scoreA !== scoreB) return scoreA - scoreB
+      return b.observed_on.localeCompare(a.observed_on)
+    })
+
+    const best = ranked[0]
+    if (best) result.set(foodKey, toReference(best))
   }
   return result
 }
