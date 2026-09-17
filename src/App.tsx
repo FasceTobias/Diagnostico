@@ -4,6 +4,7 @@ import { Inicio } from './screens/Inicio'
 import { Hoy } from './screens/Hoy'
 import { EnObra } from './screens/EnObra'
 import { Onboarding } from './screens/Onboarding'
+import { Perfil } from './screens/Perfil'
 import { Nav, type Tab } from './components/Nav'
 
 /* Router propio: cinco pantallas no justifican una dependencia.
@@ -85,19 +86,7 @@ export default function App() {
         />
       )}
 
-      {tab === 'perfil' && (
-        <EnObra
-          titulo="Perfil"
-          icono="perfil"
-          detalle="Cómo comés vos, y de dónde sale cada número de la app."
-          piezas={[
-            'Tus horarios y cuántas comidas hacés por día',
-            'Lo que no comés y lo que te gusta',
-            'Diabetes: si contás carbohidratos y cómo querés verlos',
-            'Cuenta, datos y de dónde sale cada estimación',
-          ]}
-        />
-      )}
+      {tab === 'perfil' && <Perfil app={app} />}
 
       <Nav tab={tab} onTab={setTab} />
     </div>
