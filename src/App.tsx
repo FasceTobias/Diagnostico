@@ -2,7 +2,8 @@ import { Suspense, lazy, useEffect, useState } from 'react'
 import { useVianda } from './lib/store'
 import { Inicio } from './screens/Inicio'
 import { Hoy } from './screens/Hoy'
-import { EnObra } from './screens/EnObra'
+import { Comidas } from './screens/Comidas'
+import { Compras } from './screens/Compras'
 import { Onboarding } from './screens/Onboarding'
 import { Perfil } from './screens/Perfil'
 import { Nav, type Tab } from './components/Nav'
@@ -55,39 +56,10 @@ export default function App() {
   return (
     <div className="min-h-dvh bg-bg">
       {tab === 'inicio' && <Inicio app={app} onIr={setTab} />}
-
       {tab === 'hoy' && <Hoy app={app} />}
-
-      {tab === 'comidas' && (
-        <EnObra
-          titulo="Comidas"
-          icono="comidas"
-          detalle="La biblioteca entera: 200 comidas reales, con su porción y su número."
-          piezas={[
-            'Por momento: desayunos, almuerzos, meriendas, cenas y snacks',
-            'Por situación: rápidas, para llevar, para comer afuera, sin cocinar',
-            'Por sabor: dulces y saladas',
-            'Cada comida con ingredientes, porción, tiempo y cómo se hace',
-          ]}
-        />
-      )}
-
-      {tab === 'compras' && (
-        <EnObra
-          titulo="Compras"
-          icono="compras"
-          detalle="La lista de la semana, armada con lo que decidiste comer."
-          piezas={[
-            'Agrupada por sector: verdulería, carnicería, lácteos, almacén, freezer',
-            'Con cantidades de verdad: «12 huevos», no «huevo»',
-            'Los ingredientes que se repiten se suman en una sola línea',
-            'Lo que comprás hecho afuera no genera compra',
-          ]}
-        />
-      )}
-
+      {tab === 'comidas' && <Comidas app={app} />}
+      {tab === 'compras' && <Compras app={app} />}
       {tab === 'perfil' && <Perfil app={app} />}
-
       <Nav tab={tab} onTab={setTab} />
     </div>
   )

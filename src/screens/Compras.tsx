@@ -1,7 +1,13 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { LazyMotion, domAnimation, m } from 'motion/react'
 import type { Vianda } from '../lib/store'
 import { buildShoppingList } from '../lib/domain'
+import {
+  estimateShopping,
+  loadFoodPrices,
+  money,
+  type PriceReference,
+} from '../lib/precios'
 
 /* COMPRAS — un ticket, no una lista de texto.
 
@@ -14,8 +20,20 @@ import { buildShoppingList } from '../lib/domain'
 
 export function Compras({ app }: { app: Vianda }) {
   const { week, mealById } = app
+  const [prices, setPrices] = useState<Map<string, PriceReference>>(new Map())
 
   const groups = useMemo(() => buildShoppingList(week, app.meals), [week, app.meals])
+  const estimate = useMemo(() => estimateShopping(groups, prices), [groups, prices])
+
+  useEffect(() => {
+    let alive = true
+    void loadFoodPrices().then((next) => {
+      if (alive) setPrices(next)
+    })
+    return () => {
+      alive = false
+    }
+  }, [])
 
   /* Preparaciones compartidas: si varias comidas llevan pollo, se dice una vez. */
   const prep = useMemo(() => {
@@ -41,6 +59,12 @@ export function Compras({ app }: { app: Vianda }) {
     0,
   )
 
+  const observed = estimate.latestObservedOn
+    ? new Intl.DateTimeFormat('es-AR', { month: 'long', year: 'numeric' }).format(
+        new Date(`${estimate.latestObservedOn}T12:00:00`),
+      )
+    : null
+
   return (
     <LazyMotion features={domAnimation}>
       <div className="mx-auto max-w-md px-4 pb-40">
@@ -50,6 +74,23 @@ export function Compras({ app }: { app: Vianda }) {
             {total} cosas para la semana · {done} en el changuito
           </p>
         </header>
+
+        {estimate.pricedLines > 0 && (
+          <section className="mb-7 rounded-2xl border border-line bg-surface px-4 py-4">
+            <p className="v-label-sm text-ink-faint">Gasto estimado de esta compra</p>
+            <p className="v-serif mt-1 text-[25px] text-ink v-tnum">
+              {money(estimate.min)}–{money(estimate.max)}
+            </p>
+            <p className="mt-1 text-[14px] text-ink-soft">
+              Referencia central: {money(estimate.median)}
+            </p>
+            <p className="mt-2 text-[12px] leading-relaxed text-ink-faint">
+              AMBA · {estimate.pricedLines} de {estimate.totalLines} productos con precio
+              {observed ? ` · referencia ${observed}` : ''}. Es un rango orientativo, no el
+              precio de caja de un comercio puntual.
+            </p>
+          </section>
+        )}
 
         {groups.map((group, gi) => {
           const gDone = group.lines.filter((l) => app.isBought(l.id)).length
@@ -66,6 +107,7 @@ export function Compras({ app }: { app: Vianda }) {
 
               {group.lines.map((line, li) => {
                 const bought = app.isBought(line.id)
+                const priced = estimate.lines.find((x) => x.line.id === line.id)
                 return (
                   <m.button
                     key={line.id}
@@ -92,6 +134,11 @@ export function Compras({ app }: { app: Vianda }) {
                       }`}
                     >
                       {line.label}
+                      {priced && !bought && (
+                        <span className="mt-0.5 block text-[12px] text-ink-faint v-tnum">
+                          aprox. {money(priced.min)}–{money(priced.max)}
+                        </span>
+                      )}
                     </span>
                     <span
                       aria-hidden
@@ -121,7 +168,8 @@ export function Compras({ app }: { app: Vianda }) {
         <p className="px-1 text-[13px] leading-relaxed text-ink-faint">
           Cantidades aproximadas, redondeadas a cómo se compra. Lo que se come
           afuera no entra, y lo que siempre tenés en casa —sal, aceite, caldo—
-          tampoco.
+          tampoco. Los precios son referencias regionales y pueden cambiar por
+          comercio, marca, promoción y fecha.
         </p>
 
         <section className="mt-12">
