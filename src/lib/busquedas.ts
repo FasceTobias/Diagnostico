@@ -159,7 +159,7 @@ export const alternativas = (
   meals: Meal[],
   cat: Category,
   exceptoId: string,
-  limite = 12,
+  limite = Number.POSITIVE_INFINITY,
 ): Meal[] =>
   meals
     .filter((m) => sirveEn(m, cat) && m.id !== exceptoId && !m.esBebida && !m.buyOutside)

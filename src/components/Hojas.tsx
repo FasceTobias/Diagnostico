@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { Meal, Slot } from '../lib/types'
 import { SLOT_CATEGORY, SLOT_LABEL } from '../lib/types'
 import type { Vianda } from '../lib/store'
@@ -133,7 +134,7 @@ export function Hojas({
                 tipo: 'lista',
                 titulo: 'Comí otra cosa',
                 bajada: 'Elegila de la biblioteca y queda anotada en este lugar del día.',
-                meals: alternativas(app.meals, SLOT_CATEGORY[hoja.slot], hoja.meal.id, 40),
+                meals: alternativas(app.meals, SLOT_CATEGORY[hoja.slot], hoja.meal.id),
                 elegir: (m) => poner(hoja.slot, m, true),
               })
             }
@@ -166,28 +167,30 @@ export function Hojas({
         </div>
       )}
 
-      {hoja?.tipo === 'lista' &&
-        (hoja.meals.length ? (
-          <ul className="space-y-3">
-            {hoja.meals.map((m) => (
-              <li key={m.id}>
-                <FilaComida
-                  meal={m}
-                  porOrigen
-                  onClick={() => (hoja.elegir ? hoja.elegir(m) : setHoja({ tipo: 'detalle', meal: m }))}
-                />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <Card>
-            <Vacio
-              icono="plato"
-              titulo="No encontré nada con eso"
-              detalle="Puede que falte esa comida en la biblioteca. Probá con otra opción."
-            />
-          </Card>
-        ))}
+      {hoja?.tipo === 'lista' && <ListaComidas key={hoja.titulo} meals={hoja.meals}
+        onElegir={(m) => hoja.elegir ? hoja.elegir(m) : setHoja({ tipo: 'detalle', meal: m })} />}
     </Sheet>
   )
+}
+
+function ListaComidas({ meals, onElegir }: { meals: Meal[]; onElegir: (m: Meal) => void }) {
+  const [query, setQuery] = useState('')
+  const [limit, setLimit] = useState(30)
+  const term = query.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim()
+  const found = term ? meals.filter((m) =>
+    [m.name, ...m.ingredients.map((i) => i.item)].join(' ').normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(term)) : meals
+  return <>
+    <label className="mb-4 block">
+      <span className="sr-only">Buscar comida o ingrediente</span>
+      <input type="search" value={query} onChange={(e) => { setQuery(e.target.value); setLimit(30) }}
+        placeholder="Buscar comida o ingrediente" className="w-full rounded-xl border border-line bg-bg px-4 py-3 text-[16px] text-ink" />
+    </label>
+    <p className="mb-3 text-[13px] text-ink-faint">{found.length} opciones para este momento</p>
+    {found.length ? <ul className="space-y-3">{found.slice(0, limit).map((m) =>
+      <li key={m.id}><FilaComida meal={m} porOrigen onClick={() => onElegir(m)} /></li>)}</ul>
+      : <Card><Vacio icono="plato" titulo="No encontré nada con eso" detalle="Probá otra comida o ingrediente." /></Card>}
+    {found.length > limit && <button className="mt-4 min-h-11 w-full rounded-xl border border-line text-[14px] font-semibold text-ink"
+      onClick={() => setLimit((n) => n + 30)}>Ver más opciones</button>}
+  </>
 }

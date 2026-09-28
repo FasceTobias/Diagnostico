@@ -38,6 +38,13 @@ export function Comidas({ app }: { app: Vianda }) {
   const [outside, setOutside] = useState<'todas' | 'casa' | 'afuera'>('todas')
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState<Meal | null>(null)
+  const [planDate, setPlanDate] = useState(app.today?.date ?? app.week[0]?.date ?? '')
+  const [planSlot, setPlanSlot] = useState<Slot>('lunch')
+  const abrir = (meal: Meal) => {
+    setOpen(meal)
+    setPlanDate(app.today?.date ?? app.week[0]?.date ?? '')
+    setPlanSlot(SLOT_ORDER.find((slot) => (meal.momentos ?? [meal.category]).includes(SLOT_CATEGORY[slot])) ?? 'lunch')
+  }
 
   const groups = useMemo(() => {
     const q = normalizar(query)
@@ -130,7 +137,7 @@ export function Comidas({ app }: { app: Vianda }) {
               {group.meals.slice(0, expanded.includes(group.category) ? undefined : 24).map((meal) => (
                 <button
                   key={meal.id}
-                  onClick={() => setOpen(meal)}
+                  onClick={() => abrir(meal)}
                   className="flex w-full items-center gap-3 rounded-xl border-b border-line px-1 py-2.5 text-left transition-colors active:bg-surface-2"
                 >
                   <span className="min-w-0 flex-1">
@@ -173,7 +180,33 @@ export function Comidas({ app }: { app: Vianda }) {
         </p>
 
         <Sheet open={open !== null} onClose={() => setOpen(null)}>
-          {open && <MealDetail meal={open} />}
+          {open && <>
+            <MealDetail meal={open} />
+            {!open.buyOutside && !open.esBebida && <section className="mt-8 border-t border-line pt-5">
+              <h4 className="v-head text-[18px] text-ink">Ponerla en mi semana</h4>
+              <div className="mt-3 grid grid-cols-2 gap-2">
+                <label className="min-w-0 text-[13px] text-ink-soft">Día
+                  <select value={planDate} onChange={(e) => setPlanDate(e.target.value)}
+                    className="mt-1 w-full rounded-lg border border-line bg-bg px-2 py-3 text-[15px] text-ink">
+                    {app.week.map((day) => <option key={day.date} value={day.date}>
+                      {new Intl.DateTimeFormat('es-AR', { weekday: 'short', day: 'numeric', month: 'short' }).format(new Date(`${day.date}T12:00:00`))}
+                    </option>)}
+                  </select>
+                </label>
+                <label className="min-w-0 text-[13px] text-ink-soft">Momento
+                  <select value={planSlot} onChange={(e) => setPlanSlot(e.target.value as Slot)}
+                    className="mt-1 w-full rounded-lg border border-line bg-bg px-2 py-3 text-[15px] text-ink">
+                    {SLOT_ORDER.filter((slot) => (open.momentos ?? [open.category]).includes(SLOT_CATEGORY[slot])).map((slot) =>
+                      <option key={slot} value={slot}>{SLOT_LABEL[slot]}</option>)}
+                  </select>
+                </label>
+              </div>
+              <button className="mt-3 min-h-[48px] w-full rounded-xl bg-accent px-4 text-[15px] font-semibold text-accent-ink"
+                onClick={() => { app.replaceMeal(planDate, planSlot, open.id); setOpen(null) }}>
+                Agregar al plan
+              </button>
+            </section>}
+          </>}
         </Sheet>
       </div>
     </LazyMotion>

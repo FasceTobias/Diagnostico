@@ -16,6 +16,7 @@ try {
   const { normalizarPerfil } = await vite.ssrLoadModule('/src/lib/perfil.ts')
   const { candidatesFor } = await vite.ssrLoadModule('/src/lib/domain.ts')
   const { FOODS } = await vite.ssrLoadModule('/src/lib/foods.ts')
+  const { alternativas } = await vite.ssrLoadModule('/src/lib/busquedas.ts')
   const snap = localRepo.cached()
   assert.equal(snap.meals.length, 410)
   assert(snap.meals.every((m) => Number.isFinite(m.carbs) && (m.portions ?? []).every((p) => Number.isFinite(p.carbs))), 'ninguna porción puede mostrar NaN')
@@ -48,6 +49,7 @@ try {
   assert(snap.meals.filter((m) => m.name.toLowerCase().includes('pollo')).length > 10)
   assert(snap.meals.filter((m) => m.ingredients.some((i) => i.item === 'papa')).length > 10)
   assert(candidatesFor('lunch', 'mixto', snap.meals).some((m) => m.id === recipe.id))
+  assert(alternativas(snap.meals, 'almuerzo', 'pollo-arroz-integral').some((m) => m.id === recipe.id), 'las alternativas deben incluir todo el catálogo')
   assert(recipe.ingredients.every((i) => FOODS[i.item]), 'todos los ingredientes nuevos deben llegar a Compras')
   const planned = { ...day, meals: day.meals.map((m) => m.slot === 'lunch' ? { ...m, mealId: recipe.id } : m) }
   await localRepo.saveDay(planned)
