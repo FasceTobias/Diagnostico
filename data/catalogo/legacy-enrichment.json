@@ -1,0 +1,3349 @@
+{
+  "tostadas-queso-untable": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 219.9,
+      "protein": 7.6,
+      "fat": 8.1,
+      "carbs": 29.2,
+      "fiber": 2.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "tostadas-manteca-mermelada": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 289.1,
+      "protein": 5.7,
+      "fat": 13.9,
+      "carbs": 35.3,
+      "fiber": 2.4
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "tostadas-dulce-de-leche": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 240.9,
+      "protein": 7.6,
+      "fat": 3.3,
+      "carbs": 45.2,
+      "fiber": 2.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "tostado-jamon-queso": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 313.2,
+      "protein": 21.2,
+      "fat": 12.4,
+      "carbs": 29.4,
+      "fiber": 2.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "huevos-revueltos-tostadas": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 380,
+      "protein": 22.9,
+      "fat": 19.2,
+      "carbs": 29,
+      "fiber": 2.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Cociná los huevos completamente y dejá enfriar si lo vas a llevar."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "huevo-duro-pan": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 159,
+      "protein": 9.4,
+      "fat": 7.2,
+      "carbs": 14.2,
+      "fiber": 1.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Poné los huevos en agua fría, llevá a hervor y cociná 10 min. Enfriá bajo agua y pelá."
+      },
+      {
+        "text": "Acompañá con el pan o las verduras medidos en la lista."
+      }
+    ]
+  },
+  "yogur-granola-fruta": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 404.8,
+      "protein": 13.5,
+      "fat": 16.2,
+      "carbs": 50.4,
+      "fiber": 6.6
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+      },
+      {
+        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+      }
+    ]
+  },
+  "sandwich-queso-manana": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 301.4,
+      "protein": 15.8,
+      "fat": 13.5,
+      "carbs": 29.3,
+      "fiber": 2.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "cereales-leche": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 348.5,
+      "protein": 13.3,
+      "fat": 18.8,
+      "carbs": 32.1,
+      "fiber": 4.5
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+      },
+      {
+        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+      }
+    ]
+  },
+  "budin-casero": {
+    "servings": 8,
+    "nutrition": {
+      "kcal": 284.2,
+      "protein": 5.1,
+      "fat": 13.2,
+      "carbs": 36.3,
+      "fiber": 1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "horno",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Precalentá el horno a 180 °C y forrá un molde de budín o moldes individuales."
+      },
+      {
+        "text": "Mezclá ingredientes húmedos por un lado y harina por otro; uní sin batir de más."
+      },
+      {
+        "text": "Volcá en el molde y horneá 30–40 min (individuales: 20–25); un palillo debe salir sin masa cruda."
+      },
+      {
+        "text": "Enfriá sobre rejilla y cortá en el número de porciones indicado."
+      }
+    ]
+  },
+  "tostadas-palta": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 317.4,
+      "protein": 7.4,
+      "fat": 18.9,
+      "carbs": 29.6,
+      "fiber": 8.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "avena-nocturna": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 636.8,
+      "protein": 21.9,
+      "fat": 26,
+      "carbs": 74.1,
+      "fiber": 18.5
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+      },
+      {
+        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+      }
+    ]
+  },
+  "tostadas-palta-huevo": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 624,
+      "protein": 20.5,
+      "fat": 46.9,
+      "carbs": 30.1,
+      "fiber": 8.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Cociná los huevos completamente y dejá enfriar si lo vas a llevar."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "sandwich-tortilla": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 436.5,
+      "protein": 22.9,
+      "fat": 14.5,
+      "carbs": 53.8,
+      "fiber": 5.7
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá papa cuando corresponda."
+      },
+      {
+        "text": "Cociná los huevos completamente y dejá enfriar si lo vas a llevar."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "galletitas-agua-queso": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 281.7,
+      "protein": 12.6,
+      "fat": 13.9,
+      "carbs": 26.7,
+      "fiber": 1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+      },
+      {
+        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+      }
+    ]
+  },
+  "queso-cubos": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 124,
+      "protein": 8.2,
+      "fat": 9.7,
+      "carbs": 1,
+      "fiber": 0
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+      },
+      {
+        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+      }
+    ]
+  },
+  "huevos-duros-snack": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 171.6,
+      "protein": 13.2,
+      "fat": 13,
+      "carbs": 0.4,
+      "fiber": 0
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Poné los huevos en agua fría, llevá a hervor y cociná 10 min. Enfriá bajo agua y pelá."
+      },
+      {
+        "text": "Acompañá con el pan o las verduras medidos en la lista."
+      }
+    ]
+  },
+  "sandwich-chico": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 198.3,
+      "protein": 14.5,
+      "fat": 8.9,
+      "carbs": 15.1,
+      "fiber": 1.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "tostadas-arroz": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 154.9,
+      "protein": 3.6,
+      "fat": 6.8,
+      "carbs": 19.8,
+      "fiber": 0.4
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+      },
+      {
+        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+      }
+    ]
+  },
+  "pochoclo": {
+    "servings": 2,
+    "nutrition": {
+      "kcal": 146.8,
+      "protein": 2.4,
+      "fat": 7.7,
+      "carbs": 16.9,
+      "fiber": 1.8
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Calentá aceite medido en olla con tapa y agregá los granos en una sola capa."
+      },
+      {
+        "text": "Tapá y agitá cada tanto; apagá al espaciarse los estallidos."
+      },
+      {
+        "text": "Dejá enfriar, mezclá con maní y dividí en bolsitas del mismo tamaño."
+      }
+    ]
+  },
+  "ensalada-frutas": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 208.8,
+      "protein": 2.6,
+      "fat": 1.1,
+      "carbs": 46.3,
+      "fiber": 8.6
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+      },
+      {
+        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+      }
+    ]
+  },
+  "milanesa-pure": {
+    "servings": 2,
+    "nutrition": {
+      "kcal": 345.7,
+      "protein": 28.6,
+      "fat": 6,
+      "carbs": 44.1,
+      "fiber": 4.8
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá papa cuando corresponda."
+      },
+      {
+        "text": "Calentá el horno a 200 °C. Acomodá las milanesas ya empanadas en placa apenas aceitada."
+      },
+      {
+        "text": "Horneá 20–25 min, girando a mitad; comprobá que la carne esté completamente cocida."
+      },
+      {
+        "text": "Cociná la papa u otra guarnición indicada y repartí milanesas y guarnición entre las porciones."
+      }
+    ]
+  },
+  "milanesa-napolitana": {
+    "servings": 2,
+    "nutrition": {
+      "kcal": 640.7,
+      "protein": 48.4,
+      "fat": 30.4,
+      "carbs": 43.4,
+      "fiber": 5.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá papa cuando corresponda."
+      },
+      {
+        "text": "Calentá el horno a 200 °C. Acomodá las milanesas ya empanadas en placa apenas aceitada."
+      },
+      {
+        "text": "Horneá 20–25 min, girando a mitad; comprobá que la carne esté completamente cocida."
+      },
+      {
+        "text": "Cociná la papa u otra guarnición indicada y repartí milanesas y guarnición entre las porciones."
+      }
+    ]
+  },
+  "pollo-horno-papas": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 598.8,
+      "protein": 57.5,
+      "fat": 22,
+      "carbs": 42.4,
+      "fiber": 6.2
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "horno",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá papa cuando corresponda."
+      },
+      {
+        "text": "Prepará papa en trozos parejos y precalentá el horno a 200 °C."
+      },
+      {
+        "text": "Distribuí la proteína (pollo) y las verduras en fuente sin amontonar; agregá aceite medido."
+      },
+      {
+        "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
+      },
+      {
+        "text": "Dividí en porciones iguales antes de guardar o servir."
+      }
+    ]
+  },
+  "fideos-tuco": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 491.5,
+      "protein": 21.2,
+      "fat": 7.4,
+      "carbs": 84.9,
+      "fiber": 6.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Herví la pasta en abundante agua según el paquete y reservá media taza del agua de cocción."
+      },
+      {
+        "text": "Rehogá el relleno de la salsa y sumá tomate o lácteos según los ingredientes."
+      },
+      {
+        "text": "Mezclá la pasta con la salsa; ajustá textura con un poco del agua reservada y repartí en platos."
+      }
+    ]
+  },
+  "ravioles-salsa": {
+    "servings": 2,
+    "nutrition": {
+      "kcal": 396.5,
+      "protein": 18.4,
+      "fat": 10.2,
+      "carbs": 58,
+      "fiber": 4.8
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Herví la pasta en abundante agua según el paquete y reservá media taza del agua de cocción."
+      },
+      {
+        "text": "Rehogá el relleno de la salsa y sumá tomate o lácteos según los ingredientes."
+      },
+      {
+        "text": "Mezclá la pasta con la salsa; ajustá textura con un poco del agua reservada y repartí en platos."
+      }
+    ]
+  },
+  "noquis-salsa": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 418.8,
+      "protein": 15.3,
+      "fat": 2.6,
+      "carbs": 83.9,
+      "fiber": 9.6
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Herví la pasta en abundante agua según el paquete y reservá media taza del agua de cocción."
+      },
+      {
+        "text": "Rehogá el relleno de la salsa y sumá tomate o lácteos según los ingredientes."
+      },
+      {
+        "text": "Mezclá la pasta con la salsa; ajustá textura con un poco del agua reservada y repartí en platos."
+      }
+    ]
+  },
+  "arroz-con-pollo": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 484,
+      "protein": 43.1,
+      "fat": 5.3,
+      "carbs": 65.9,
+      "fiber": 3.5
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá morrón cuando corresponda."
+      },
+      {
+        "text": "Rehogá morrón 5 min en olla amplia; dorá pollo si corresponde."
+      },
+      {
+        "text": "Sumá arroz,  agua suficiente para apenas cubrir."
+      },
+      {
+        "text": "Cociná a hervor suave hasta que arroz esté tierno; incorporá legumbres ya cocidas al final."
+      },
+      {
+        "text": "Probá la sazón y serví dividido en las porciones indicadas."
+      }
+    ]
+  },
+  "tortilla-papa": {
+    "servings": 2,
+    "nutrition": {
+      "kcal": 300.9,
+      "protein": 17.6,
+      "fat": 13.2,
+      "carbs": 28.1,
+      "fiber": 4.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá papa, cebolla cuando corresponda."
+      },
+      {
+        "text": "Cociná papa, cebolla hasta que estén tiernas; escurrí el líquido si lo hay."
+      },
+      {
+        "text": "Batí los huevos, mezclalos con el relleno y volcá en una sartén apenas aceitada."
+      },
+      {
+        "text": "Cociná a fuego medio y tapado 6–8 min; da vuelta con un plato y cociná otros 5 min hasta que el centro esté firme."
+      }
+    ]
+  },
+  "empanadas-caseras": {
+    "servings": 2,
+    "nutrition": {
+      "kcal": 650.6,
+      "protein": 40,
+      "fat": 29.2,
+      "carbs": 57.1,
+      "fiber": 4.2
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "horno",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá cebolla cuando corresponda."
+      },
+      {
+        "text": "Cociná la cebolla y el relleno en sartén hasta que no quede líquido; dejá enfriar antes de armar."
+      },
+      {
+        "text": "Repartí el relleno en 12 tapas, humedecé los bordes y cerrá con repulgue firme."
+      },
+      {
+        "text": "Acomodá en placa y horneá a 200 °C durante 20–25 min hasta dorar; cada porción son 2 empanadas."
+      }
+    ]
+  },
+  "ensalada-completa": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 615.7,
+      "protein": 50.1,
+      "fat": 32.6,
+      "carbs": 30.5,
+      "fiber": 6.4
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá papa, tomate cuando corresponda."
+      },
+      {
+        "text": "Cociná papa por separado hasta que esté listo; enfriá rápidamente."
+      },
+      {
+        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+      },
+      {
+        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+      }
+    ]
+  },
+  "pastel-de-papa": {
+    "servings": 2,
+    "nutrition": {
+      "kcal": 543.6,
+      "protein": 42.1,
+      "fat": 24.2,
+      "carbs": 39.6,
+      "fiber": 5.8
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "horno",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá papa, cebolla cuando corresponda."
+      },
+      {
+        "text": "Cociná por separado el relleno con cebolla hasta que no quede líquido y ablandá la cobertura de papa, calabaza o berenjena."
+      },
+      {
+        "text": "Poné el relleno en fuente de 24 × 20 cm, cubrí con el puré o las láminas y distribuí el queso."
+      },
+      {
+        "text": "Horneá a 190 °C durante 20–25 min, hasta gratinar. Dejá reposar 10 min para cortar las porciones."
+      }
+    ]
+  },
+  "sandwich-milanesa": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 616.9,
+      "protein": 41.2,
+      "fat": 15.3,
+      "carbs": 78.6,
+      "fiber": 6.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+      },
+      {
+        "text": "Calentá el horno a 200 °C. Acomodá las milanesas ya empanadas en placa apenas aceitada."
+      },
+      {
+        "text": "Horneá 20–25 min, girando a mitad; comprobá que la carne esté completamente cocida."
+      },
+      {
+        "text": "Cociná la papa u otra guarnición indicada y repartí milanesas y guarnición entre las porciones."
+      }
+    ]
+  },
+  "tarta-verdura": {
+    "servings": 4,
+    "nutrition": {
+      "kcal": 362.9,
+      "protein": 13.2,
+      "fat": 21.2,
+      "carbs": 29.8,
+      "fiber": 3.2
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "horno",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá acelga cuando corresponda."
+      },
+      {
+        "text": "Rehogá acelga y escurrilo; dejá entibiar."
+      },
+      {
+        "text": "Estirá la masa en tartera de 24 cm, pinchá la base y precocinala 8 min a 190 °C."
+      },
+      {
+        "text": "Mezclá el relleno con huevo y queso o ricota; distribuí en la base."
+      },
+      {
+        "text": "Horneá 25–30 min a 190 °C hasta que la base dore y el relleno esté firme. Entibiá antes de cortar."
+      }
+    ]
+  },
+  "arroz-atun": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 544,
+      "protein": 38.2,
+      "fat": 9.6,
+      "carbs": 76.3,
+      "fiber": 3.5
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Herví el arroz en agua hasta que esté tierno; escurrí y enfriá si se comerá frío."
+      },
+      {
+        "text": "Prepará y cortá los acompañamientos; mezclá con el arroz y dividí en las porciones indicadas."
+      }
+    ]
+  },
+  "guiso-lentejas": {
+    "servings": 2,
+    "nutrition": {
+      "kcal": 275.1,
+      "protein": 14.4,
+      "fat": 8.2,
+      "carbs": 36,
+      "fiber": 13.9
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá papa, zanahoria, cebolla cuando corresponda."
+      },
+      {
+        "text": "Rehogá papa, zanahoria, cebolla 5 min en olla amplia; dorá el relleno si corresponde."
+      },
+      {
+        "text": "Sumá papa,  agua suficiente para apenas cubrir."
+      },
+      {
+        "text": "Cociná a hervor suave hasta que papa esté tierno; incorporá legumbres ya cocidas al final."
+      },
+      {
+        "text": "Probá la sazón y serví dividido en las porciones indicadas."
+      }
+    ]
+  },
+  "sandwich-completo": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 632.6,
+      "protein": 29.9,
+      "fat": 41.8,
+      "carbs": 34.4,
+      "fiber": 9.5
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+      },
+      {
+        "text": "Cociná los huevos completamente y dejá enfriar si lo vas a llevar."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "wrap-pollo": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 437.4,
+      "protein": 32.4,
+      "fat": 5.3,
+      "carbs": 65.1,
+      "fiber": 5.7
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá zanahoria, tomate cuando corresponda."
+      },
+      {
+        "text": "Cociná pollo hasta que esté listo; cortá las verduras finas."
+      },
+      {
+        "text": "Calentá las tortillas 30 segundos por lado sin resecar; distribuí el relleno medido."
+      },
+      {
+        "text": "Doblá los laterales y enrollá firme. Para llevar, envolvé y conservá frío."
+      }
+    ]
+  },
+  "ensalada-lentejas": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 713.5,
+      "protein": 35.2,
+      "fat": 47,
+      "carbs": 37.6,
+      "fiber": 26
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+      },
+      {
+        "text": "Cociná los huevos por separado hasta que esté listo; enfriá rápidamente."
+      },
+      {
+        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+      },
+      {
+        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+      }
+    ]
+  },
+  "mate-galletitas": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 189,
+      "protein": 3.6,
+      "fat": 5.8,
+      "carbs": 30.7,
+      "fiber": 0.5
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "yogur-con-fruta": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 148.8,
+      "protein": 7.5,
+      "fat": 6.9,
+      "carbs": 14.6,
+      "fiber": 2
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+      },
+      {
+        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+      }
+    ]
+  },
+  "tostadas-mermelada-merienda": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 182.7,
+      "protein": 5.6,
+      "fat": 1.3,
+      "carbs": 37,
+      "fiber": 2.5
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "panqueques-dulce": {
+    "servings": 2,
+    "nutrition": {
+      "kcal": 341.4,
+      "protein": 15.2,
+      "fat": 11.5,
+      "carbs": 44.4,
+      "fiber": 1.6
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Batí huevos, leche y harina hasta lograr una mezcla fluida sin grumos; dejá reposar 5 min."
+      },
+      {
+        "text": "Verté una capa fina en sartén apenas aceitada y cociná 1–2 min de cada lado."
+      },
+      {
+        "text": "Prepará la fruta o el relleno y distribuí parejo sobre los panqueques terminados."
+      }
+    ]
+  },
+  "pan-queso-merienda": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 301.4,
+      "protein": 15.8,
+      "fat": 13.5,
+      "carbs": 29.3,
+      "fiber": 2.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "licuado-banana": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 258.3,
+      "protein": 9.4,
+      "fat": 8.5,
+      "carbs": 35.5,
+      "fiber": 3
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "sandwich-merienda-llevar": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 321,
+      "protein": 17,
+      "fat": 13.7,
+      "carbs": 32.6,
+      "fiber": 3.5
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "queso-dulce-membrillo": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 227.5,
+      "protein": 10.2,
+      "fat": 12.2,
+      "carbs": 19.3,
+      "fiber": 0.8
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+      },
+      {
+        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+      }
+    ]
+  },
+  "pizza-casera": {
+    "servings": 4,
+    "nutrition": {
+      "kcal": 344.9,
+      "protein": 17.6,
+      "fat": 13.2,
+      "carbs": 39,
+      "fiber": 2.6
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "horno",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Precalentá el horno fuerte a 220 °C con la placa adentro."
+      },
+      {
+        "text": "Extendé la masa, distribuí salsa y relleno sin sobrecargar; agregá queso."
+      },
+      {
+        "text": "Horneá 15–20 min hasta base dorada y queso fundido. Cortá las porciones indicadas."
+      }
+    ]
+  },
+  "hamburguesa-casera": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 814.6,
+      "protein": 68.4,
+      "fat": 31.4,
+      "carbs": 64.9,
+      "fiber": 7.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá papa cuando corresponda."
+      },
+      {
+        "text": "Pisá las legumbres o picá la carne; mezclá con verduras cocidas, huevo y pan rallado según la lista."
+      },
+      {
+        "text": "Formá medallones iguales y dejalos 10 min en heladera para que mantengan la forma."
+      },
+      {
+        "text": "Cociná 5–7 min por lado en sartén o 20 min a 200 °C, hasta que el centro esté bien cocido."
+      }
+    ]
+  },
+  "tarta-jamon-queso": {
+    "servings": 4,
+    "nutrition": {
+      "kcal": 425.9,
+      "protein": 19.6,
+      "fat": 26.1,
+      "carbs": 28.4,
+      "fiber": 1.6
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "horno",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Rehogá el relleno y escurrilo; dejá entibiar."
+      },
+      {
+        "text": "Estirá la masa en tartera de 24 cm, pinchá la base y precocinala 8 min a 190 °C."
+      },
+      {
+        "text": "Mezclá el relleno con huevo y queso o ricota; distribuí en la base."
+      },
+      {
+        "text": "Horneá 25–30 min a 190 °C hasta que la base dore y el relleno esté firme. Entibiá antes de cortar."
+      }
+    ]
+  },
+  "bife-pure-calabaza": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 558,
+      "protein": 59.4,
+      "fat": 25.3,
+      "carbs": 23.4,
+      "fiber": 3.9
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "horno",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza cuando corresponda."
+      },
+      {
+        "text": "Prepará calabaza en trozos parejos y precalentá el horno a 200 °C."
+      },
+      {
+        "text": "Distribuí la proteína  y las verduras en fuente sin amontonar; agregá aceite medido."
+      },
+      {
+        "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
+      },
+      {
+        "text": "Dividí en porciones iguales antes de guardar o servir."
+      }
+    ]
+  },
+  "asado": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 1004.8,
+      "protein": 118,
+      "fat": 51.1,
+      "carbs": 18.7,
+      "fiber": 3.8
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+      },
+      {
+        "text": "Calentá bien la parrilla o plancha. Cociná la carne o chorizo de ambos lados hasta que esté bien cocido."
+      },
+      {
+        "text": "Prepará la ensalada o el pan según los ingredientes y serví dividido en porciones."
+      }
+    ]
+  },
+  "revuelto-zapallitos": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 309,
+      "protein": 22.1,
+      "fat": 20.1,
+      "carbs": 9.4,
+      "fiber": 3
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá zapallito, cebolla cuando corresponda."
+      },
+      {
+        "text": "Cociná zapallito, cebolla hasta que estén tiernas; escurrí el líquido si lo hay."
+      },
+      {
+        "text": "Batí los huevos, mezclalos con el relleno y volcá en una sartén apenas aceitada."
+      },
+      {
+        "text": "Cociná a fuego medio y tapado 6–8 min; da vuelta con un plato y cociná otros 5 min hasta que el centro esté firme."
+      }
+    ]
+  },
+  "sopa-calabaza": {
+    "servings": 2,
+    "nutrition": {
+      "kcal": 484.5,
+      "protein": 10.1,
+      "fat": 26.4,
+      "carbs": 51.7,
+      "fiber": 4.8
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza, cebolla cuando corresponda."
+      },
+      {
+        "text": "Rehogá la cebolla 4 min. Sumá verduras troceadas y agua hasta apenas cubrir."
+      },
+      {
+        "text": "Cociná a hervor suave 20–25 min; agregá las legumbres ya cocidas o los fideos según su tiempo de cocción."
+      },
+      {
+        "text": "Si es crema, procesá fuera del fuego y agregá leche o queso al final. Dividí en los platos indicados."
+      }
+    ]
+  },
+  "omelette-queso": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 454.6,
+      "protein": 30.8,
+      "fat": 29.9,
+      "carbs": 15.7,
+      "fiber": 1.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Batí los huevos. Volcá en sartén antiadherente caliente y cociná 2–3 min a fuego medio."
+      },
+      {
+        "text": "Distribuí el queso, doblá a la mitad y cociná hasta que el huevo esté firme. Serví con el pan indicado."
+      }
+    ]
+  },
+  "picada-cena": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 542,
+      "protein": 40.8,
+      "fat": 28.3,
+      "carbs": 31.3,
+      "fiber": 2.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+      },
+      {
+        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+      }
+    ]
+  },
+  "ensalada-atun-cena": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 405.3,
+      "protein": 41.7,
+      "fat": 14.5,
+      "carbs": 27.2,
+      "fiber": 5
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá papa cuando corresponda."
+      },
+      {
+        "text": "Cociná papa por separado hasta que esté listo; enfriá rápidamente."
+      },
+      {
+        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+      },
+      {
+        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+      }
+    ]
+  },
+  "sandwich-cena-rapido": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 484.8,
+      "protein": 34.4,
+      "fat": 25.3,
+      "carbs": 29.9,
+      "fiber": 2.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Cociná los huevos completamente y dejá enfriar si lo vas a llevar."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "ravioles-cena-rapida": {
+    "servings": 2,
+    "nutrition": {
+      "kcal": 486.6,
+      "protein": 20,
+      "fat": 21.2,
+      "carbs": 54,
+      "fiber": 3.4
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Herví la pasta en abundante agua según el paquete y reservá media taza del agua de cocción."
+      },
+      {
+        "text": "Rehogá el relleno de la salsa y sumá tomate o lácteos según los ingredientes."
+      },
+      {
+        "text": "Mezclá la pasta con la salsa; ajustá textura con un poco del agua reservada y repartí en platos."
+      }
+    ]
+  },
+  "ensalada-caprese-cena": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 390.3,
+      "protein": 28.7,
+      "fat": 20.4,
+      "carbs": 23.1,
+      "fiber": 3.8
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "choripan": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 442.4,
+      "protein": 19.2,
+      "fat": 26.4,
+      "carbs": 31.8,
+      "fiber": 2.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Calentá bien la parrilla o plancha. Cociná la carne o chorizo de ambos lados hasta que esté bien cocido."
+      },
+      {
+        "text": "Prepará la ensalada o el pan según los ingredientes y serví dividido en porciones."
+      }
+    ]
+  },
+  "budincitos-huevo": {
+    "servings": 6,
+    "nutrition": {
+      "kcal": 165.3,
+      "protein": 11.9,
+      "fat": 10.4,
+      "carbs": 6,
+      "fiber": 0.9
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá espinaca cuando corresponda."
+      },
+      {
+        "text": "Cociná y escurrí bien la espinaca. Batí los huevos y mezclá con la harina, el queso y la verdura."
+      },
+      {
+        "text": "Distribuí en moldes individuales apenas aceitados y horneá a 180 °C 20–25 min hasta que el centro esté firme."
+      },
+      {
+        "text": "Dejá entibiar y repartí según el número de porciones."
+      }
+    ]
+  },
+  "flan-dulce-de-leche": {
+    "servings": 4,
+    "nutrition": {
+      "kcal": 264.2,
+      "protein": 9.4,
+      "fat": 9.5,
+      "carbs": 35.5,
+      "fiber": 0
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Calentá la leche sin hervir; batí huevos con azúcar y mezclá lentamente."
+      },
+      {
+        "text": "Volcá en seis moldes y colocá en fuente con agua caliente hasta media altura."
+      },
+      {
+        "text": "Cociná a baño María a 160 °C 35–40 min hasta cuajar; enfriá y refrigerá."
+      }
+    ]
+  },
+  "arroz-con-leche": {
+    "servings": 2,
+    "nutrition": {
+      "kcal": 256.3,
+      "protein": 6.5,
+      "fat": 5,
+      "carbs": 46.6,
+      "fiber": 0.4
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Poné la leche en una olla con el arroz y la canela; calentá hasta hervor suave."
+      },
+      {
+        "text": "Cociná 25–30 min revolviendo para que no se pegue; agregá azúcar hacia el final."
+      },
+      {
+        "text": "Repartí en porciones y enfriá en heladera."
+      }
+    ]
+  },
+  "cafe-solo": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 0,
+      "protein": 0,
+      "fat": 0,
+      "carbs": 0,
+      "fiber": 0
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "cafe-con-leche": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 122,
+      "protein": 6.4,
+      "fat": 6.6,
+      "carbs": 9.6,
+      "fiber": 0
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "mate": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 0,
+      "protein": 0,
+      "fat": 0,
+      "carbs": 0,
+      "fiber": 0
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "mate-cocido": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 0,
+      "protein": 0,
+      "fat": 0,
+      "carbs": 0,
+      "fiber": 0
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "te": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 0,
+      "protein": 0,
+      "fat": 0,
+      "carbs": 0,
+      "fiber": 0
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "jugo-exprimido": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 63,
+      "protein": 1.6,
+      "fat": 1.1,
+      "carbs": 11.7,
+      "fiber": 5
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "tostadas-queso-tomate": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 290,
+      "protein": 15,
+      "fat": 11.3,
+      "carbs": 32.4,
+      "fiber": 3.5
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "yogur-avena": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 260.6,
+      "protein": 12.9,
+      "fat": 9.3,
+      "carbs": 31.7,
+      "fiber": 4.2
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+      },
+      {
+        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+      }
+    ]
+  },
+  "licuado-banana-avena": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 365.4,
+      "protein": 14.1,
+      "fat": 10.7,
+      "carbs": 52.5,
+      "fiber": 6.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "tostadas-ricota-mermelada": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 276.8,
+      "protein": 12.6,
+      "fat": 8.4,
+      "carbs": 37.6,
+      "fiber": 2.4
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "huevo-frito-pan": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 232.2,
+      "protein": 12.2,
+      "fat": 7.8,
+      "carbs": 28.2,
+      "fiber": 2.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Calentá una sartén antiadherente con apenas aceite; cascá los huevos y cociná hasta que la clara esté firme."
+      },
+      {
+        "text": "Tostá o cortá el pan de la lista y serví enseguida."
+      }
+    ]
+  },
+  "tostadas-integrales-queso": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 208.5,
+      "protein": 8.5,
+      "fat": 8,
+      "carbs": 25.6,
+      "fiber": 4.4
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "sandwich-huevo-llevar": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 382.7,
+      "protein": 19.5,
+      "fat": 20.4,
+      "carbs": 30.2,
+      "fiber": 2.8
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Cociná los huevos completamente y dejá enfriar si lo vas a llevar."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "mate-bizcochos": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 299.4,
+      "protein": 5.4,
+      "fat": 15.4,
+      "carbs": 34.7,
+      "fiber": 2
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "mate-pan-manteca": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 260.1,
+      "protein": 5.7,
+      "fat": 13.9,
+      "carbs": 28,
+      "fiber": 2.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "te-galletitas": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 157.5,
+      "protein": 3,
+      "fat": 4.8,
+      "carbs": 25.6,
+      "fiber": 0.4
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "cafe-galletitas-agua": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 131.4,
+      "protein": 3.7,
+      "fat": 3.5,
+      "carbs": 21.4,
+      "fiber": 0.8
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "tostadas-dulce-membrillo": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 280.9,
+      "protein": 5.8,
+      "fat": 1.4,
+      "carbs": 61.4,
+      "fiber": 4.2
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "yogur-galletitas": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 243.8,
+      "protein": 9,
+      "fat": 10.1,
+      "carbs": 29.4,
+      "fiber": 0.3
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+      },
+      {
+        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+      }
+    ]
+  },
+  "licuado-frutilla": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 168.5,
+      "protein": 7.6,
+      "fat": 7.5,
+      "carbs": 18.2,
+      "fiber": 3
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "tortas-fritas": {
+    "servings": 4,
+    "nutrition": {
+      "kcal": 318.1,
+      "protein": 6.4,
+      "fat": 13.1,
+      "carbs": 43.6,
+      "fiber": 2.5
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Uní harina, grasa y agua de a poco hasta formar una masa suave; reposá 15 min."
+      },
+      {
+        "text": "Dividí en discos, hacé un pequeño corte central y freí en aceite caliente de ambos lados hasta dorar. Escurrí y repartí."
+      }
+    ]
+  },
+  "bizcochuelo": {
+    "servings": 8,
+    "nutrition": {
+      "kcal": 265.2,
+      "protein": 5.1,
+      "fat": 11.1,
+      "carbs": 36.3,
+      "fiber": 1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "horno",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Precalentá el horno a 180 °C y forrá un molde de budín o moldes individuales."
+      },
+      {
+        "text": "Mezclá ingredientes húmedos por un lado y harina por otro; uní sin batir de más."
+      },
+      {
+        "text": "Volcá en el molde y horneá 30–40 min (individuales: 20–25); un palillo debe salir sin masa cruda."
+      },
+      {
+        "text": "Enfriá sobre rejilla y cortá en el número de porciones indicado."
+      }
+    ]
+  },
+  "galletitas-avena-caseras": {
+    "servings": 6,
+    "nutrition": {
+      "kcal": 182,
+      "protein": 5.5,
+      "fat": 7.6,
+      "carbs": 22.6,
+      "fiber": 4.2
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "horno",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Precalentá el horno a 180 °C. Mezclá ingredientes secos y luego los húmedos hasta formar masa."
+      },
+      {
+        "text": "Formá galletitas del mismo tamaño sobre placa con papel o aceitada, separadas entre sí."
+      },
+      {
+        "text": "Horneá 12–16 min hasta bordes apenas dorados; dejá enfriar completamente antes de guardar."
+      }
+    ]
+  },
+  "submarino": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 238.6,
+      "protein": 8.6,
+      "fat": 13.2,
+      "carbs": 21.8,
+      "fiber": 0.7
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "galletitas-queso-untable": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 229.4,
+      "protein": 6.3,
+      "fat": 12.5,
+      "carbs": 23,
+      "fiber": 0.8
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "horno",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Precalentá el horno a 180 °C. Mezclá ingredientes secos y luego los húmedos hasta formar masa."
+      },
+      {
+        "text": "Formá galletitas del mismo tamaño sobre placa con papel o aceitada, separadas entre sí."
+      },
+      {
+        "text": "Horneá 12–16 min hasta bordes apenas dorados; dejá enfriar completamente antes de guardar."
+      }
+    ]
+  },
+  "pan-dulce-de-leche": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 272.4,
+      "protein": 8.2,
+      "fat": 4,
+      "carbs": 51,
+      "fiber": 2.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "mate-frutos-secos": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 252,
+      "protein": 7,
+      "fat": 23.5,
+      "carbs": 3.2,
+      "fiber": 3.8
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "yogur-cereales": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 321.7,
+      "protein": 12.8,
+      "fat": 17.2,
+      "carbs": 29.2,
+      "fiber": 4
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+      },
+      {
+        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+      }
+    ]
+  },
+  "tostado-miga-merienda": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 245.6,
+      "protein": 15.2,
+      "fat": 9.3,
+      "carbs": 25.2,
+      "fiber": 1.5
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "fruta-queso": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 196,
+      "protein": 8.6,
+      "fat": 10,
+      "carbs": 18.1,
+      "fiber": 3.6
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+      },
+      {
+        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+      }
+    ]
+  },
+  "merluza-pure": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 398.5,
+      "protein": 42.8,
+      "fat": 4.7,
+      "carbs": 46.6,
+      "fiber": 6.8
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "horno",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá papa cuando corresponda."
+      },
+      {
+        "text": "Prepará papa en trozos parejos y precalentá el horno a 200 °C."
+      },
+      {
+        "text": "Distribuí la proteína (merluza) y las verduras en fuente sin amontonar; agregá aceite medido."
+      },
+      {
+        "text": "Horneá 15–20 min (precociná la papa aparte si la hay), hasta que la proteína esté cocida y las verduras tiernas."
+      },
+      {
+        "text": "Dividí en porciones iguales antes de guardar o servir."
+      }
+    ]
+  },
+  "pollo-arroz-integral": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 650.5,
+      "protein": 46.9,
+      "fat": 20.7,
+      "carbs": 68.9,
+      "fiber": 3.5
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá zanahoria cuando corresponda."
+      },
+      {
+        "text": "Rehogá zanahoria 5 min en olla amplia; dorá pollo si corresponde."
+      },
+      {
+        "text": "Sumá arroz,  agua suficiente para apenas cubrir."
+      },
+      {
+        "text": "Cociná a hervor suave hasta que arroz esté tierno; incorporá legumbres ya cocidas al final."
+      },
+      {
+        "text": "Probá la sazón y serví dividido en las porciones indicadas."
+      }
+    ]
+  },
+  "fideos-integrales-salsa": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 491.5,
+      "protein": 21.2,
+      "fat": 7.4,
+      "carbs": 84.9,
+      "fiber": 6.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Herví la pasta en abundante agua según el paquete y reservá media taza del agua de cocción."
+      },
+      {
+        "text": "Rehogá el relleno de la salsa y sumá tomate o lácteos según los ingredientes."
+      },
+      {
+        "text": "Mezclá la pasta con la salsa; ajustá textura con un poco del agua reservada y repartí en platos."
+      }
+    ]
+  },
+  "polenta-salsa": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 425.1,
+      "protein": 18,
+      "fat": 11.1,
+      "carbs": 63.3,
+      "fiber": 10
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Herví agua según las instrucciones de la polenta y agregala en forma de lluvia, revolviendo para que no queden grumos."
+      },
+      {
+        "text": "Cociná la salsa por separado, serví la polenta en platos y distribuí salsa y queso medidos."
+      }
+    ]
+  },
+  "guiso-garbanzos": {
+    "servings": 2,
+    "nutrition": {
+      "kcal": 338.2,
+      "protein": 14.2,
+      "fat": 11,
+      "carbs": 45.6,
+      "fiber": 13.6
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá papa, cebolla, zanahoria cuando corresponda."
+      },
+      {
+        "text": "Rehogá papa, cebolla, zanahoria 5 min en olla amplia; dorá el relleno si corresponde."
+      },
+      {
+        "text": "Sumá papa,  agua suficiente para apenas cubrir."
+      },
+      {
+        "text": "Cociná a hervor suave hasta que papa esté tierno; incorporá legumbres ya cocidas al final."
+      },
+      {
+        "text": "Probá la sazón y serví dividido en las porciones indicadas."
+      }
+    ]
+  },
+  "milanesa-ensalada": {
+    "servings": 2,
+    "nutrition": {
+      "kcal": 541.6,
+      "protein": 32.2,
+      "fat": 37,
+      "carbs": 19.9,
+      "fiber": 2.6
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+      },
+      {
+        "text": "Calentá el horno a 200 °C. Acomodá las milanesas ya empanadas en placa apenas aceitada."
+      },
+      {
+        "text": "Horneá 20–25 min, girando a mitad; comprobá que la carne esté completamente cocida."
+      },
+      {
+        "text": "Cociná la papa u otra guarnición indicada y repartí milanesas y guarnición entre las porciones."
+      }
+    ]
+  },
+  "zapallitos-rellenos": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 587.1,
+      "protein": 52.3,
+      "fat": 25,
+      "carbs": 38,
+      "fiber": 2.7
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "horno",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá zapallito cuando corresponda."
+      },
+      {
+        "text": "Prepará zapallito en trozos parejos y precalentá el horno a 200 °C."
+      },
+      {
+        "text": "Ablandá las piezas principales, ahuecalas y mezclá su pulpa con el relleno ya cocido; rellená y cubrí con queso."
+      },
+      {
+        "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
+      },
+      {
+        "text": "Dividí en porciones iguales antes de guardar o servir."
+      }
+    ]
+  },
+  "berenjenas-parmesana": {
+    "servings": 2,
+    "nutrition": {
+      "kcal": 296.7,
+      "protein": 14.5,
+      "fat": 16.6,
+      "carbs": 22.3,
+      "fiber": 5.3
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "horno",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá berenjena cuando corresponda."
+      },
+      {
+        "text": "Prepará berenjena en trozos parejos y precalentá el horno a 200 °C."
+      },
+      {
+        "text": "Distribuí la proteína  y las verduras en fuente sin amontonar; agregá aceite medido."
+      },
+      {
+        "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
+      },
+      {
+        "text": "Dividí en porciones iguales antes de guardar o servir."
+      }
+    ]
+  },
+  "ensalada-atun-garbanzos": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 416.8,
+      "protein": 42.8,
+      "fat": 6.7,
+      "carbs": 46.7,
+      "fiber": 17.4
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+      },
+      {
+        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+      },
+      {
+        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+      }
+    ]
+  },
+  "arroz-primavera": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 555.9,
+      "protein": 14.4,
+      "fat": 22.3,
+      "carbs": 74.2,
+      "fiber": 3.5
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Herví el arroz en agua hasta que esté tierno; escurrí y enfriá si se comerá frío."
+      },
+      {
+        "text": "Prepará y cortá los acompañamientos; mezclá con el arroz y dividí en las porciones indicadas."
+      }
+    ]
+  },
+  "tarta-atun": {
+    "servings": 4,
+    "nutrition": {
+      "kcal": 379.1,
+      "protein": 19.3,
+      "fat": 20.5,
+      "carbs": 29.5,
+      "fiber": 2.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "horno",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá cebolla cuando corresponda."
+      },
+      {
+        "text": "Rehogá cebolla y escurrilo; dejá entibiar."
+      },
+      {
+        "text": "Estirá la masa en tartera de 24 cm, pinchá la base y precocinala 8 min a 190 °C."
+      },
+      {
+        "text": "Mezclá el relleno con huevo; distribuí en la base."
+      },
+      {
+        "text": "Horneá 25–30 min a 190 °C hasta que la base dore y el relleno esté firme. Entibiá antes de cortar."
+      }
+    ]
+  },
+  "pollo-brocoli": {
+    "servings": 2,
+    "nutrition": {
+      "kcal": 312.3,
+      "protein": 30.4,
+      "fat": 11.1,
+      "carbs": 22.6,
+      "fiber": 4.3
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "horno",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá brócoli, papa cuando corresponda."
+      },
+      {
+        "text": "Prepará brócoli, papa en trozos parejos y precalentá el horno a 200 °C."
+      },
+      {
+        "text": "Distribuí la proteína (pollo) y las verduras en fuente sin amontonar; agregá aceite medido."
+      },
+      {
+        "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
+      },
+      {
+        "text": "Dividí en porciones iguales antes de guardar o servir."
+      }
+    ]
+  },
+  "empanadas-verdura": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 812.9,
+      "protein": 26,
+      "fat": 49.8,
+      "carbs": 64.6,
+      "fiber": 9.6
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "horno",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá acelga, cebolla cuando corresponda."
+      },
+      {
+        "text": "Cociná la cebolla y el relleno en sartén hasta que no quede líquido; dejá enfriar antes de armar."
+      },
+      {
+        "text": "Repartí el relleno en 12 tapas, humedecé los bordes y cerrá con repulgue firme."
+      },
+      {
+        "text": "Acomodá en placa y horneá a 200 °C durante 20–25 min hasta dorar; cada porción son 2 empanadas."
+      }
+    ]
+  },
+  "sandwich-milanesa-completo": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 836.7,
+      "protein": 52,
+      "fat": 22.2,
+      "carbs": 107.3,
+      "fiber": 7.5
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+      },
+      {
+        "text": "Calentá el horno a 200 °C. Acomodá las milanesas ya empanadas en placa apenas aceitada."
+      },
+      {
+        "text": "Horneá 20–25 min, girando a mitad; comprobá que la carne esté completamente cocida."
+      },
+      {
+        "text": "Cociná la papa u otra guarnición indicada y repartí milanesas y guarnición entre las porciones."
+      }
+    ]
+  },
+  "pastel-calabaza": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 785.7,
+      "protein": 76.8,
+      "fat": 31.9,
+      "carbs": 48.1,
+      "fiber": 8.5
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "horno",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza, cebolla cuando corresponda."
+      },
+      {
+        "text": "Cociná por separado el relleno con cebolla hasta que no quede líquido y ablandá la cobertura de papa, calabaza o berenjena."
+      },
+      {
+        "text": "Poné el relleno en fuente de 24 × 20 cm, cubrí con el puré o las láminas y distribuí el queso."
+      },
+      {
+        "text": "Horneá a 190 °C durante 20–25 min, hasta gratinar. Dejá reposar 10 min para cortar las porciones."
+      }
+    ]
+  },
+  "tortilla-verduras": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 655.8,
+      "protein": 37.2,
+      "fat": 50,
+      "carbs": 13.8,
+      "fiber": 3
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá zapallito, cebolla cuando corresponda."
+      },
+      {
+        "text": "Cociná zapallito, cebolla hasta que estén tiernas; escurrí el líquido si lo hay."
+      },
+      {
+        "text": "Batí los huevos, mezclalos con el relleno y volcá en una sartén apenas aceitada."
+      },
+      {
+        "text": "Cociná a fuego medio y tapado 6–8 min; da vuelta con un plato y cociná otros 5 min hasta que el centro esté firme."
+      }
+    ]
+  },
+  "sopa-crema-pan": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 188.6,
+      "protein": 7.2,
+      "fat": 2.2,
+      "carbs": 35,
+      "fiber": 3.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Rehogá la cebolla 4 min. Sumá verduras troceadas y agua hasta apenas cubrir."
+      },
+      {
+        "text": "Cociná a hervor suave 20–25 min; agregá las legumbres ya cocidas o los fideos según su tiempo de cocción."
+      },
+      {
+        "text": "Si es crema, procesá fuera del fuego y agregá leche o queso al final. Dividí en los platos indicados."
+      }
+    ]
+  },
+  "ensalada-cesar-cena": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 475.2,
+      "protein": 41.4,
+      "fat": 25.7,
+      "carbs": 19.6,
+      "fiber": 3.9
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Cociná pollo por separado hasta que esté listo; enfriá rápidamente."
+      },
+      {
+        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+      },
+      {
+        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+      }
+    ]
+  },
+  "revuelto-espinaca": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 537.9,
+      "protein": 33.1,
+      "fat": 42.7,
+      "carbs": 5,
+      "fiber": 5.5
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá espinaca cuando corresponda."
+      },
+      {
+        "text": "Cociná espinaca hasta que estén tiernas; escurrí el líquido si lo hay."
+      },
+      {
+        "text": "Batí los huevos, mezclalos con el relleno y volcá en una sartén apenas aceitada."
+      },
+      {
+        "text": "Cociná a fuego medio y tapado 6–8 min; da vuelta con un plato y cociná otros 5 min hasta que el centro esté firme."
+      }
+    ]
+  },
+  "pizza-prepizza": {
+    "servings": 2,
+    "nutrition": {
+      "kcal": 551.6,
+      "protein": 27.3,
+      "fat": 20.5,
+      "carbs": 64.7,
+      "fiber": 4.3
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "horno",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Precalentá el horno fuerte a 220 °C con la placa adentro."
+      },
+      {
+        "text": "Extendé la masa, distribuí salsa y relleno sin sobrecargar; agregá queso."
+      },
+      {
+        "text": "Horneá 15–20 min hasta base dorada y queso fundido. Cortá las porciones indicadas."
+      }
+    ]
+  },
+  "tomate-atun-cena": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 286.8,
+      "protein": 32.3,
+      "fat": 14.2,
+      "carbs": 8,
+      "fiber": 2.8
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "picada-liviana": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 469.9,
+      "protein": 31.8,
+      "fat": 25.6,
+      "carbs": 28.3,
+      "fiber": 1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+      },
+      {
+        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+      }
+    ]
+  },
+  "sandwich-panceta-queso": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 495.9,
+      "protein": 22.7,
+      "fat": 32,
+      "carbs": 29.3,
+      "fiber": 2.1
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+      },
+      {
+        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+      }
+    ]
+  },
+  "panchos": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 541.4,
+      "protein": 28.1,
+      "fat": 21.6,
+      "carbs": 58.9,
+      "fiber": 4.2
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Calentá las salchichas en agua a hervor suave 5 min hasta que estén bien calientes."
+      },
+      {
+        "text": "Abrí y calentá los panes; repartí salchichas y acompañamientos según la lista."
+      }
+    ]
+  },
+  "ensalada-pollo-palta": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 373.6,
+      "protein": 37.8,
+      "fat": 21.9,
+      "carbs": 6.4,
+      "fiber": 8.8
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+      },
+      {
+        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+      },
+      {
+        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+      }
+    ]
+  },
+  "noquis-manteca": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 640.9,
+      "protein": 21.4,
+      "fat": 27.4,
+      "carbs": 77.4,
+      "fiber": 6.8
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Herví la pasta en abundante agua según el paquete y reservá media taza del agua de cocción."
+      },
+      {
+        "text": "Rehogá el relleno de la salsa y sumá tomate o lácteos según los ingredientes."
+      },
+      {
+        "text": "Mezclá la pasta con la salsa; ajustá textura con un poco del agua reservada y repartí en platos."
+      }
+    ]
+  },
+  "milanesa-congelada": {
+    "servings": 2,
+    "nutrition": {
+      "kcal": 373.7,
+      "protein": 27.3,
+      "fat": 13.5,
+      "carbs": 35.7,
+      "fiber": 3.6
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá papa cuando corresponda."
+      },
+      {
+        "text": "Calentá el horno a 200 °C. Acomodá las milanesas ya empanadas en placa apenas aceitada."
+      },
+      {
+        "text": "Horneá 20–25 min, girando a mitad; comprobá que la carne esté completamente cocida."
+      },
+      {
+        "text": "Cociná la papa u otra guarnición indicada y repartí milanesas y guarnición entre las porciones."
+      }
+    ]
+  },
+  "sopa-verduras": {
+    "servings": 2,
+    "nutrition": {
+      "kcal": 498.2,
+      "protein": 11,
+      "fat": 26.3,
+      "carbs": 54.5,
+      "fiber": 4.5
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá zanahoria, papa cuando corresponda."
+      },
+      {
+        "text": "Rehogá la cebolla 4 min. Sumá verduras troceadas y agua hasta apenas cubrir."
+      },
+      {
+        "text": "Cociná a hervor suave 20–25 min; agregá las legumbres ya cocidas o los fideos según su tiempo de cocción."
+      },
+      {
+        "text": "Si es crema, procesá fuera del fuego y agregá leche o queso al final. Dividí en los platos indicados."
+      }
+    ]
+  },
+  "tomatitos-queso": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 163.1,
+      "protein": 10.5,
+      "fat": 10.2,
+      "carbs": 7.7,
+      "fiber": 2.8
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+      },
+      {
+        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+      },
+      {
+        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+      }
+    ]
+  },
+  "pepino-zanahoria": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 76.5,
+      "protein": 2.3,
+      "fat": 0.4,
+      "carbs": 15.8,
+      "fiber": 4.9
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Refrigerar hasta 2 días y transportar con frío si lleva ingredientes perecederos.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá zanahoria cuando corresponda."
+      },
+      {
+        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+      },
+      {
+        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+      }
+    ]
+  },
+  "tostadas-arroz-palta": {
+    "servings": 1,
+    "nutrition": {
+      "kcal": 252.4,
+      "protein": 3.4,
+      "fat": 17.6,
+      "carbs": 20.2,
+      "fiber": 6.4
+    },
+    "nutritionSource": "Estimación por ingredientes de SARA 2 (Ministerio de Salud de Argentina); envasados y unidades domésticas aproximados: revisar etiqueta y porción real.",
+    "equipment": "hornalla, sartén o armado en frío",
+    "storage": "Consumir recién preparado o refrigerar hasta 2 días.",
+    "reheat": null,
+    "steps": [
+      {
+        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+      },
+      {
+        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+      },
+      {
+        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+      }
+    ]
+  }
+}

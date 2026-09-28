@@ -14,6 +14,7 @@ import type {
 } from '../types'
 import { DEFAULT_INSULIN, DEFAULT_PERFIL, DEFAULT_PREFERENCES } from '../types'
 import { localRepo } from './local'
+import { normalizarPerfil } from '../perfil'
 import type { Snapshot, ViandaRepo } from './types'
 
 /* ------------------------------------------------------------------
@@ -216,7 +217,8 @@ const saveTimesRemote = async (uid: string, times: Record<Slot, string>) => {
 }
 
 const savePerfilRemote = async (uid: string, perfil: Perfil) => {
-  const { error } = await client().from('profiles').update({
+  const c = client()
+  const { error } = await c.from('profiles').update({
     display_name: perfil.nombre || null,
     rol: perfil.rol,
     diabetes: perfil.diabetes,
@@ -225,6 +227,19 @@ const savePerfilRemote = async (uid: string, perfil: Perfil) => {
     onboarding_completed_at: perfil.listo ? new Date().toISOString() : null,
   }).eq('id', uid)
   if (error) throw error
+  const { data, error: readError } = await c.from('preferences').select('extra').eq('profile_id', uid).maybeSingle()
+  if (readError) throw readError
+  const previous = data?.extra && typeof data.extra === 'object' ? data.extra as Record<string, unknown> : {}
+  const { error: extraError } = await c.from('preferences').upsert({
+    profile_id: uid,
+    extra: {
+      ...previous,
+      usaInsulina: perfil.usaInsulina,
+      esquemaInsulina: perfil.esquemaInsulina,
+      medicacionAdicional: perfil.medicacionAdicional,
+    },
+  }, { onConflict: 'profile_id' })
+  if (extraError) throw extraError
 }
 
 const savePrefsRemote = async (uid: string, prefs: Preferences) => {
@@ -335,17 +350,19 @@ const loadRemote = async (uid: string): Promise<Snapshot> => {
       : undefined,
   }
 
-  const perfil: Perfil = {
-    ...DEFAULT_PERFIL,
+  const perfil: Perfil = normalizarPerfil({
     nombre: typeof profile.display_name === 'string' ? profile.display_name : '',
     rol: (profile.rol as Rol | undefined) ?? DEFAULT_PERFIL.rol,
     diabetes: (profile.diabetes as DiabetesType | null | undefined) ?? null,
+    usaInsulina: extra.usaInsulina as Perfil['usaInsulina'],
+    esquemaInsulina: extra.esquemaInsulina as Perfil['esquemaInsulina'],
+    medicacionAdicional: extra.medicacionAdicional as Perfil['medicacionAdicional'],
     contarCarbos: typeof profile.carb_counting_enabled === 'boolean'
       ? profile.carb_counting_enabled
       : true,
     paso: typeof profile.onboarding_step === 'number' ? profile.onboarding_step : 0,
     listo: !!profile.onboarding_completed_at || profile.onboarding_skipped === true,
-  }
+  }, profile.insulin_enabled === true)
 
   const ratios = (insulinResult.data ?? []).map((row) => ({
     id: row.id as string,

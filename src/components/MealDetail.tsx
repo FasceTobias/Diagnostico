@@ -50,6 +50,7 @@ export function MealDetail({ meal }: { meal: Meal }) {
 
       <div className="mt-5 flex items-end justify-between gap-4 rounded-xl bg-surface px-4 py-4">
         <div>
+          <p className="v-label-sm mb-1 text-ink-faint">Carbohidratos aproximados por porción</p>
           <CarbValue meal={meal} size="lg" />
           <p className="v-label-sm mt-2 text-ink-faint">
             {meal.carbsVerified
@@ -59,6 +60,15 @@ export function MealDetail({ meal }: { meal: Meal }) {
         </div>
         <SatietyMark level={meal.satiety} />
       </div>
+
+      {meal.nutrition && <>
+        <SectionLabel className="mt-7 mb-1">Nutrición aproximada por porción</SectionLabel>
+        <Fact label="Energía" value={`${Math.round(meal.nutrition.kcal)} kcal`} />
+        <Fact label="Proteínas" value={`${meal.nutrition.protein.toFixed(1)} g`} />
+        <Fact label="Grasas" value={`${meal.nutrition.fat.toFixed(1)} g`} />
+        <Fact label="Fibra" value={`${meal.nutrition.fiber.toFixed(1)} g`} />
+        <p className="mt-2 text-[12px] leading-relaxed text-ink-faint">{meal.nutritionSource}</p>
+      </>}
 
       {!meal.carbsVerified && (
         <p className="mt-4 text-[14px] leading-relaxed text-ink-soft">
@@ -180,6 +190,15 @@ export function MealDetail({ meal }: { meal: Meal }) {
           ))}
         </>
       )}
+
+      {meal.servings && <Fact label="Rinde" value={`${meal.servings} porciones; valores por una porción`} />}
+      {meal.equipment && <Fact label="Método / equipo" value={meal.equipment} />}
+      {meal.cookMinutes !== undefined && <Fact label="Cocción" value={`${meal.cookMinutes} min aprox.`} />}
+      {meal.storage && <Fact label="Conservación" value={meal.storage} />}
+      {meal.reheat && <Fact label="Recalentado" value={meal.reheat} />}
+      {meal.researchSource && <p className="mt-4 text-[12px] text-ink-faint">
+        Inspiración culinaria: <a href={meal.researchSource} target="_blank" rel="noreferrer" className="underline">ver fuente</a>
+      </p>}
 
       {meal.steps && meal.steps.length > 0 && (
         <Recipe steps={meal.steps} minutes={meal.activeMinutes} />

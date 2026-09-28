@@ -1,12 +1,10351 @@
 -- ==================================================================
 -- Catálogo v1 — generado por scripts/catalogo-sql.mjs. No editar.
 --
--- 199 entradas, todas ESTIMADAS: la porción está
+-- 410 entradas, todas ESTIMADAS: la porción está
 -- documentada y el número calculado sobre esa porción, pero ninguna
 -- se midió contra una etiqueta. Eso es la fase D.
 --
 -- Idempotente: se puede correr las veces que haga falta.
 -- ==================================================================
+
+-- Tortilla de batata y cebolla
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tortilla-de-batata-y-cebolla', 'Tortilla de batata y cebolla', 'Tortilla de batata y cebolla con batata, cebolla, huevo; rinde 3 porciones.', 'almuerzo', 'estimado',
+  23, 'estimacion', 'estimada', '1 de 3 porciones',
+  'batata', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'cook'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tortilla-de-batata-y-cebolla' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 23, true, 0
+  from meals where slug = 'tortilla-de-batata-y-cebolla' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tortilla-de-batata-y-cebolla' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Tortilla de acelga y queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tortilla-de-acelga-y-queso', 'Tortilla de acelga y queso', 'Tortilla de acelga y queso con acelga, cebolla, huevo; rinde 3 porciones.', 'cena', 'estimado',
+  5, 'estimacion', 'estimada', '1 de 3 porciones',
+  'acelga', array['para llevar', 'rápido'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
+  'cook'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tortilla-de-acelga-y-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 5, true, 0
+  from meals where slug = 'tortilla-de-acelga-y-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tortilla-de-acelga-y-queso' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'rapido', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Tortilla de arvejas y papa
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tortilla-de-arvejas-y-papa', 'Tortilla de arvejas y papa', 'Tortilla de arvejas y papa con papa, arvejas, huevo; rinde 3 porciones.', 'almuerzo', 'estimado',
+  29, 'estimacion', 'estimada', '1 de 3 porciones',
+  'papa', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'cook'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tortilla-de-arvejas-y-papa' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 29, true, 0
+  from meals where slug = 'tortilla-de-arvejas-y-papa' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tortilla-de-arvejas-y-papa' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Frittata de brócoli y ricota
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'frittata-de-brocoli-y-ricota', 'Frittata de brócoli y ricota', 'Frittata de brócoli y ricota con brócoli, ricota, huevo; rinde 3 porciones.', 'cena', 'estimado',
+  7, 'estimacion', 'estimada', '1 de 3 porciones',
+  'brócoli', array['para llevar', 'rápido'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
+  'cook'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'frittata-de-brocoli-y-ricota' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 7, true, 0
+  from meals where slug = 'frittata-de-brocoli-y-ricota' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'frittata-de-brocoli-y-ricota' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'rapido', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Frittata de tomate y muzzarella
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'frittata-de-tomate-y-muzzarella', 'Frittata de tomate y muzzarella', 'Frittata de tomate y muzzarella con tomate, muzzarella, huevo; rinde 3 porciones.', 'cena', 'estimado',
+  5, 'estimacion', 'estimada', '1 de 3 porciones',
+  'tomate', array['para llevar', 'rápido'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 25, false,
+  'cook'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'frittata-de-tomate-y-muzzarella' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 5, true, 0
+  from meals where slug = 'frittata-de-tomate-y-muzzarella' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'frittata-de-tomate-y-muzzarella' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'rapido', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Tarta de zapallitos y choclo
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tarta-de-zapallitos-y-choclo', 'Tarta de zapallitos y choclo', 'Tarta de zapallitos y choclo con masa de tarta, zapallito, choclo; rinde 6 porciones.', 'almuerzo', 'estimado',
+  25, 'estimacion', 'estimada', '1 de 6 porciones',
+  'masa de tarta', array['para llevar', 'casero'], 25, 'potente',
+  true, true, false, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 50, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tarta-de-zapallitos-y-choclo' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 25, true, 0
+  from meals where slug = 'tarta-de-zapallitos-y-choclo' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tarta-de-zapallitos-y-choclo' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Tarta de calabaza y ricota
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tarta-de-calabaza-y-ricota', 'Tarta de calabaza y ricota', 'Tarta de calabaza y ricota con masa de tarta, calabaza, ricota; rinde 6 porciones.', 'almuerzo', 'estimado',
+  29, 'estimacion', 'estimada', '1 de 6 porciones',
+  'masa de tarta', array['para llevar', 'casero'], 25, 'potente',
+  true, true, false, true, true,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tarta-de-calabaza-y-ricota' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 29, true, 0
+  from meals where slug = 'tarta-de-calabaza-y-ricota' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tarta-de-calabaza-y-ricota' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Tarta de acelga y queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tarta-de-acelga-y-queso', 'Tarta de acelga y queso', 'Tarta de acelga y queso con masa de tarta, acelga, queso; rinde 6 porciones.', 'almuerzo', 'estimado',
+  22, 'estimacion', 'estimada', '1 de 6 porciones',
+  'masa de tarta', array['para llevar', 'casero'], 25, 'potente',
+  true, true, false, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 50, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tarta-de-acelga-y-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 22, true, 0
+  from meals where slug = 'tarta-de-acelga-y-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tarta-de-acelga-y-queso' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Tarta de cebolla y queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tarta-de-cebolla-y-queso', 'Tarta de cebolla y queso', 'Tarta de cebolla y queso con masa de tarta, cebolla, queso; rinde 6 porciones.', 'cena', 'estimado',
+  25, 'estimacion', 'estimada', '1 de 6 porciones',
+  'masa de tarta', array['para llevar', 'casero'], 25, 'potente',
+  true, true, false, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 50, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tarta-de-cebolla-y-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 25, true, 0
+  from meals where slug = 'tarta-de-cebolla-y-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tarta-de-cebolla-y-queso' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Tarta de brócoli y pollo
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tarta-de-brocoli-y-pollo', 'Tarta de brócoli y pollo', 'Tarta de brócoli y pollo con masa de tarta, brócoli, pollo; rinde 6 porciones.', 'almuerzo', 'estimado',
+  21, 'estimacion', 'estimada', '1 de 6 porciones',
+  'masa de tarta', array['para llevar', 'casero'], 25, 'potente',
+  true, true, false, true, true,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tarta-de-brocoli-y-pollo' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 21, true, 0
+  from meals where slug = 'tarta-de-brocoli-y-pollo' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tarta-de-brocoli-y-pollo' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Tarta de berenjena y tomate
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tarta-de-berenjena-y-tomate', 'Tarta de berenjena y tomate', 'Tarta de berenjena y tomate con masa de tarta, berenjena, tomate; rinde 6 porciones.', 'cena', 'estimado',
+  22, 'estimacion', 'estimada', '1 de 6 porciones',
+  'masa de tarta', array['para llevar', 'casero'], 25, 'potente',
+  true, true, false, true, true,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tarta-de-berenjena-y-tomate' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 22, true, 0
+  from meals where slug = 'tarta-de-berenjena-y-tomate' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tarta-de-berenjena-y-tomate' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Tarta de espinaca y ricota
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tarta-de-espinaca-y-ricota', 'Tarta de espinaca y ricota', 'Tarta de espinaca y ricota con masa de tarta, espinaca, ricota; rinde 6 porciones.', 'almuerzo', 'estimado',
+  22, 'estimacion', 'estimada', '1 de 6 porciones',
+  'masa de tarta', array['para llevar', 'casero'], 25, 'potente',
+  true, true, false, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 50, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tarta-de-espinaca-y-ricota' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 22, true, 0
+  from meals where slug = 'tarta-de-espinaca-y-ricota' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tarta-de-espinaca-y-ricota' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Tarta de zanahoria y atún
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tarta-de-zanahoria-y-atun', 'Tarta de zanahoria y atún', 'Tarta de zanahoria y atún con masa de tarta, zanahoria, atún; rinde 6 porciones.', 'almuerzo', 'estimado',
+  24, 'estimacion', 'estimada', '1 de 6 porciones',
+  'masa de tarta', array['para llevar', 'casero'], 25, 'potente',
+  true, true, false, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 50, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tarta-de-zanahoria-y-atun' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 24, true, 0
+  from meals where slug = 'tarta-de-zanahoria-y-atun' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tarta-de-zanahoria-y-atun' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Tarta de choclo y jamón
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tarta-de-choclo-y-jamon', 'Tarta de choclo y jamón', 'Tarta de choclo y jamón con masa de tarta, choclo, jamón; rinde 6 porciones.', 'cena', 'estimado',
+  25, 'estimacion', 'estimada', '1 de 6 porciones',
+  'masa de tarta', array['para llevar', 'casero'], 25, 'potente',
+  true, true, false, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 50, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tarta-de-choclo-y-jamon' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 25, true, 0
+  from meals where slug = 'tarta-de-choclo-y-jamon' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tarta-de-choclo-y-jamon' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Empanadas de humita
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'empanadas-de-humita', 'Empanadas de humita', 'Empanadas de humita con tapas de empanada, choclo, cebolla; rinde 6 porciones.', 'almuerzo', 'estimado',
+  44, 'estimacion', 'estimada', '1 de 6 porciones',
+  'tapas de empanada', array['para llevar', 'casero'], 25, 'potente',
+  true, true, false, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'empanadas-de-humita' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 44, true, 0
+  from meals where slug = 'empanadas-de-humita' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'empanadas-de-humita' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Empanadas de pollo y morrón
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'empanadas-de-pollo-y-morron', 'Empanadas de pollo y morrón', 'Empanadas de pollo y morrón con tapas de empanada, pollo, cebolla; rinde 6 porciones.', 'almuerzo', 'estimado',
+  36, 'estimacion', 'estimada', '1 de 6 porciones',
+  'tapas de empanada', array['para llevar', 'casero'], 25, 'potente',
+  true, true, false, true, true,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'empanadas-de-pollo-y-morron' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 36, true, 0
+  from meals where slug = 'empanadas-de-pollo-y-morron' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'empanadas-de-pollo-y-morron' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Empanadas de carne cortada a cuchillo
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'empanadas-de-carne-cortada-a-cuchillo', 'Empanadas de carne cortada a cuchillo', 'Empanadas de carne cortada a cuchillo con tapas de empanada, lomo, cebolla; rinde 6 porciones.', 'cena', 'estimado',
+  36, 'estimacion', 'estimada', '1 de 6 porciones',
+  'tapas de empanada', array['para llevar', 'casero'], 25, 'potente',
+  true, true, false, true, true,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 2, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 65, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'empanadas-de-carne-cortada-a-cuchillo' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 36, true, 0
+  from meals where slug = 'empanadas-de-carne-cortada-a-cuchillo' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'empanadas-de-carne-cortada-a-cuchillo' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Empanadas de acelga y salsa blanca
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'empanadas-de-acelga-y-salsa-blanca', 'Empanadas de acelga y salsa blanca', 'Empanadas de acelga y salsa blanca con tapas de empanada, acelga, leche; rinde 6 porciones.', 'almuerzo', 'estimado',
+  39, 'estimacion', 'estimada', '1 de 6 porciones',
+  'tapas de empanada', array['para llevar', 'casero'], 25, 'potente',
+  true, true, false, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 50, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'empanadas-de-acelga-y-salsa-blanca' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 39, true, 0
+  from meals where slug = 'empanadas-de-acelga-y-salsa-blanca' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'empanadas-de-acelga-y-salsa-blanca' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Empanadas de jamón, queso y tomate
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'empanadas-de-jamon-queso-y-tomate', 'Empanadas de jamón, queso y tomate', 'Empanadas de jamón, queso y tomate con tapas de empanada, jamón, queso; rinde 6 porciones.', 'cena', 'estimado',
+  34, 'estimacion', 'estimada', '1 de 6 porciones',
+  'tapas de empanada', array['para llevar', 'casero'], 25, 'potente',
+  true, true, false, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'empanadas-de-jamon-queso-y-tomate' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 34, true, 0
+  from meals where slug = 'empanadas-de-jamon-queso-y-tomate' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'empanadas-de-jamon-queso-y-tomate' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Empanadas de lentejas especiadas
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'empanadas-de-lentejas-especiadas', 'Empanadas de lentejas especiadas', 'Empanadas de lentejas especiadas con tapas de empanada, lentejas cocidas, cebolla; rinde 6 porciones.', 'almuerzo', 'estimado',
+  48, 'estimacion', 'estimada', '1 de 6 porciones',
+  'tapas de empanada', array['para llevar', 'casero'], 25, 'potente',
+  true, false, false, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 50, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'empanadas-de-lentejas-especiadas' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 48, true, 0
+  from meals where slug = 'empanadas-de-lentejas-especiadas' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'empanadas-de-lentejas-especiadas' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Guiso de arroz y lentejas
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'guiso-de-arroz-y-lentejas', 'Guiso de arroz y lentejas', 'Guiso de arroz y lentejas con arroz, lentejas cocidas, cebolla; rinde 4 porciones.', 'almuerzo', 'estimado',
+  54, 'estimacion', 'estimada', '1 de 4 porciones',
+  'arroz', array['para llevar', 'casero'], 25, 'potente',
+  true, false, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'guiso-de-arroz-y-lentejas' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 54, true, 0
+  from meals where slug = 'guiso-de-arroz-y-lentejas' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'guiso-de-arroz-y-lentejas' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Guiso de porotos con calabaza
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'guiso-de-porotos-con-calabaza', 'Guiso de porotos con calabaza', 'Guiso de porotos con calabaza con porotos cocidos, calabaza, cebolla; rinde 4 porciones.', 'cena', 'estimado',
+  40, 'estimacion', 'estimada', '1 de 4 porciones',
+  'porotos cocidos', array['para llevar', 'casero'], 25, 'potente',
+  true, false, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'guiso-de-porotos-con-calabaza' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 40, true, 0
+  from meals where slug = 'guiso-de-porotos-con-calabaza' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'guiso-de-porotos-con-calabaza' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Guiso de fideos y pollo
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'guiso-de-fideos-y-pollo', 'Guiso de fideos y pollo', 'Guiso de fideos y pollo con fideos, pollo, zanahoria; rinde 4 porciones.', 'almuerzo', 'estimado',
+  52, 'estimacion', 'estimada', '1 de 4 porciones',
+  'fideos', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'guiso-de-fideos-y-pollo' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 52, true, 0
+  from meals where slug = 'guiso-de-fideos-y-pollo' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'guiso-de-fideos-y-pollo' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Guiso de garbanzos y espinaca
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'guiso-de-garbanzos-y-espinaca', 'Guiso de garbanzos y espinaca', 'Guiso de garbanzos y espinaca con garbanzos cocidos, espinaca, cebolla; rinde 4 porciones.', 'cena', 'estimado',
+  29, 'estimacion', 'estimada', '1 de 4 porciones',
+  'garbanzos cocidos', array['para llevar', 'casero'], 25, 'potente',
+  true, false, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 40, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'guiso-de-garbanzos-y-espinaca' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 29, true, 0
+  from meals where slug = 'guiso-de-garbanzos-y-espinaca' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'guiso-de-garbanzos-y-espinaca' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Carbonada de carne y zapallo
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'carbonada-de-carne-y-zapallo', 'Carbonada de carne y zapallo', 'Carbonada de carne y zapallo con carne picada, calabaza, papa; rinde 4 porciones.', 'almuerzo', 'estimado',
+  32, 'estimacion', 'estimada', '1 de 4 porciones',
+  'carne picada', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'carbonada-de-carne-y-zapallo' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 32, true, 0
+  from meals where slug = 'carbonada-de-carne-y-zapallo' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'carbonada-de-carne-y-zapallo' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Locro sencillo de porotos y maíz
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'locro-sencillo-de-porotos-y-maiz', 'Locro sencillo de porotos y maíz', 'Locro sencillo de porotos y maíz con porotos cocidos, choclo, calabaza; rinde 5 porciones.', 'almuerzo', 'estimado',
+  36, 'estimacion', 'estimada', '1 de 5 porciones',
+  'porotos cocidos', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 65, false,
+  'cook'::prep_type, '5 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'locro-sencillo-de-porotos-y-maiz' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 5 porciones', null, 36, true, 0
+  from meals where slug = 'locro-sencillo-de-porotos-y-maiz' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'locro-sencillo-de-porotos-y-maiz' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Estofado de carne con papas
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'estofado-de-carne-con-papas', 'Estofado de carne con papas', 'Estofado de carne con papas con lomo, papa, cebolla; rinde 4 porciones.', 'cena', 'estimado',
+  35, 'estimacion', 'estimada', '1 de 4 porciones',
+  'lomo', array['para llevar', 'casero'], 25, 'potente',
+  true, false, true, true, true,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 65, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'estofado-de-carne-con-papas' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 35, true, 0
+  from meals where slug = 'estofado-de-carne-con-papas' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'estofado-de-carne-con-papas' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Pollo a la cacerola con zanahoria
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pollo-a-la-cacerola-con-zanahoria', 'Pollo a la cacerola con zanahoria', 'Pollo a la cacerola con zanahoria con pollo, zanahoria, cebolla; rinde 4 porciones.', 'almuerzo', 'estimado',
+  30, 'estimacion', 'estimada', '1 de 4 porciones',
+  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 50, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pollo-a-la-cacerola-con-zanahoria' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 30, true, 0
+  from meals where slug = 'pollo-a-la-cacerola-con-zanahoria' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pollo-a-la-cacerola-con-zanahoria' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Lentejas con chorizo y verduras
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'lentejas-con-chorizo-y-verduras', 'Lentejas con chorizo y verduras', 'Lentejas con chorizo y verduras con lentejas cocidas, chorizo, calabaza; rinde 4 porciones.', 'cena', 'estimado',
+  30, 'estimacion', 'estimada', '1 de 4 porciones',
+  'lentejas cocidas', array['para llevar', 'casero'], 25, 'potente',
+  true, false, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'lentejas-con-chorizo-y-verduras' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 30, true, 0
+  from meals where slug = 'lentejas-con-chorizo-y-verduras' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'lentejas-con-chorizo-y-verduras' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Arroz caldoso con merluza
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'arroz-caldoso-con-merluza', 'Arroz caldoso con merluza', 'Arroz caldoso con merluza con arroz, merluza, tomate; rinde 4 porciones.', 'almuerzo', 'estimado',
+  41, 'estimacion', 'estimada', '1 de 4 porciones',
+  'arroz', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 40, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'arroz-caldoso-con-merluza' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 41, true, 0
+  from meals where slug = 'arroz-caldoso-con-merluza' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'arroz-caldoso-con-merluza' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Sopa de verduras con garbanzos
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'sopa-de-verduras-con-garbanzos', 'Sopa de verduras con garbanzos', 'Sopa de verduras con garbanzos con garbanzos cocidos, calabaza, zanahoria; rinde 4 porciones.', 'cena', 'estimado',
+  31, 'estimacion', 'estimada', '1 de 4 porciones',
+  'garbanzos cocidos', array['para llevar', 'casero'], 25, 'potente',
+  true, false, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'sopa-de-verduras-con-garbanzos' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 31, true, 0
+  from meals where slug = 'sopa-de-verduras-con-garbanzos' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'sopa-de-verduras-con-garbanzos' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Sopa de tomate y arroz
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'sopa-de-tomate-y-arroz', 'Sopa de tomate y arroz', 'Sopa de tomate y arroz con tomate, arroz, cebolla; rinde 4 porciones.', 'cena', 'estimado',
+  28, 'estimacion', 'estimada', '1 de 4 porciones',
+  'tomate', array['para llevar', 'casero'], 25, 'potente',
+  true, false, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'sopa-de-tomate-y-arroz' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 28, true, 0
+  from meals where slug = 'sopa-de-tomate-y-arroz' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'sopa-de-tomate-y-arroz' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Sopa de pollo con fideos
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'sopa-de-pollo-con-fideos', 'Sopa de pollo con fideos', 'Sopa de pollo con fideos con pollo, fideos, zanahoria; rinde 4 porciones.', 'cena', 'estimado',
+  29, 'estimacion', 'estimada', '1 de 4 porciones',
+  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 40, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'sopa-de-pollo-con-fideos' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 29, true, 0
+  from meals where slug = 'sopa-de-pollo-con-fideos' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'sopa-de-pollo-con-fideos' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Crema de zanahoria y calabaza
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'crema-de-zanahoria-y-calabaza', 'Crema de zanahoria y calabaza', 'Crema de zanahoria y calabaza con calabaza, zanahoria, cebolla; rinde 4 porciones.', 'cena', 'estimado',
+  22, 'estimacion', 'estimada', '1 de 4 porciones',
+  'calabaza', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'crema-de-zanahoria-y-calabaza' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 22, true, 0
+  from meals where slug = 'crema-de-zanahoria-y-calabaza' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'crema-de-zanahoria-y-calabaza' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Sopa de lentejas y verduras
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'sopa-de-lentejas-y-verduras', 'Sopa de lentejas y verduras', 'Sopa de lentejas y verduras con lentejas cocidas, zanahoria, tomate; rinde 4 porciones.', 'cena', 'estimado',
+  23, 'estimacion', 'estimada', '1 de 4 porciones',
+  'lentejas cocidas', array['para llevar', 'casero'], 25, 'potente',
+  true, false, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'sopa-de-lentejas-y-verduras' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 23, true, 0
+  from meals where slug = 'sopa-de-lentejas-y-verduras' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'sopa-de-lentejas-y-verduras' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Crema de brócoli con queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'crema-de-brocoli-con-queso', 'Crema de brócoli con queso', 'Crema de brócoli con queso con brócoli, papa, leche; rinde 4 porciones.', 'cena', 'estimado',
+  15, 'estimacion', 'estimada', '1 de 4 porciones',
+  'brócoli', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'crema-de-brocoli-con-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 15, true, 0
+  from meals where slug = 'crema-de-brocoli-con-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'crema-de-brocoli-con-queso' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Sopa de batata y puerro
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'sopa-de-batata-y-puerro', 'Sopa de batata y puerro', 'Sopa de batata y puerro con batata, cebolla, leche; rinde 4 porciones.', 'cena', 'estimado',
+  27, 'estimacion', 'estimada', '1 de 4 porciones',
+  'batata', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'sopa-de-batata-y-puerro' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 27, true, 0
+  from meals where slug = 'sopa-de-batata-y-puerro' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'sopa-de-batata-y-puerro' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Puchero rápido de pollo
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'puchero-rapido-de-pollo', 'Puchero rápido de pollo', 'Puchero rápido de pollo con pollo, papa, calabaza; rinde 4 porciones.', 'almuerzo', 'estimado',
+  40, 'estimacion', 'estimada', '1 de 4 porciones',
+  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'puchero-rapido-de-pollo' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 40, true, 0
+  from meals where slug = 'puchero-rapido-de-pollo' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'puchero-rapido-de-pollo' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Pastel de lentejas y puré de papa
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pastel-de-lentejas-y-pure-de-papa', 'Pastel de lentejas y puré de papa', 'Pastel de lentejas y puré de papa con lentejas cocidas, papa, cebolla; rinde 5 porciones.', 'almuerzo', 'estimado',
+  43, 'estimacion', 'estimada', '1 de 5 porciones',
+  'lentejas cocidas', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '5 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pastel-de-lentejas-y-pure-de-papa' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 5 porciones', null, 43, true, 0
+  from meals where slug = 'pastel-de-lentejas-y-pure-de-papa' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pastel-de-lentejas-y-pure-de-papa' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Pastel de pollo y calabaza
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pastel-de-pollo-y-calabaza', 'Pastel de pollo y calabaza', 'Pastel de pollo y calabaza con pollo, calabaza, cebolla; rinde 5 porciones.', 'almuerzo', 'estimado',
+  17, 'estimacion', 'estimada', '1 de 5 porciones',
+  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '5 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pastel-de-pollo-y-calabaza' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 5 porciones', null, 17, true, 0
+  from meals where slug = 'pastel-de-pollo-y-calabaza' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pastel-de-pollo-y-calabaza' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Pastel de berenjena y carne
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pastel-de-berenjena-y-carne', 'Pastel de berenjena y carne', 'Pastel de berenjena y carne con berenjena, carne picada, tomate; rinde 5 porciones.', 'cena', 'estimado',
+  9, 'estimacion', 'estimada', '1 de 5 porciones',
+  'berenjena', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '5 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pastel-de-berenjena-y-carne' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 5 porciones', null, 9, true, 0
+  from meals where slug = 'pastel-de-berenjena-y-carne' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pastel-de-berenjena-y-carne' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Pastel de choclo y carne
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pastel-de-choclo-y-carne', 'Pastel de choclo y carne', 'Pastel de choclo y carne con choclo, carne picada, calabaza; rinde 5 porciones.', 'almuerzo', 'estimado',
+  21, 'estimacion', 'estimada', '1 de 5 porciones',
+  'choclo', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '5 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pastel-de-choclo-y-carne' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 5 porciones', null, 21, true, 0
+  from meals where slug = 'pastel-de-choclo-y-carne' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pastel-de-choclo-y-carne' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Cazuela de cerdo y batata
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'cazuela-de-cerdo-y-batata', 'Cazuela de cerdo y batata', 'Cazuela de cerdo y batata con cerdo, batata, cebolla; rinde 4 porciones.', 'cena', 'estimado',
+  31, 'estimacion', 'estimada', '1 de 4 porciones',
+  'cerdo', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'cazuela-de-cerdo-y-batata' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 31, true, 0
+  from meals where slug = 'cazuela-de-cerdo-y-batata' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'cazuela-de-cerdo-y-batata' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Cazuela de merluza y tomate
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'cazuela-de-merluza-y-tomate', 'Cazuela de merluza y tomate', 'Cazuela de merluza y tomate con merluza, papa, tomate; rinde 4 porciones.', 'cena', 'estimado',
+  25, 'estimacion', 'estimada', '1 de 4 porciones',
+  'merluza', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'cazuela-de-merluza-y-tomate' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 25, true, 0
+  from meals where slug = 'cazuela-de-merluza-y-tomate' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'cazuela-de-merluza-y-tomate' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Humita en olla
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'humita-en-olla', 'Humita en olla', 'Humita en olla con choclo, calabaza, cebolla; rinde 5 porciones.', 'almuerzo', 'estimado',
+  29, 'estimacion', 'estimada', '1 de 5 porciones',
+  'choclo', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 50, false,
+  'cook'::prep_type, '5 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'humita-en-olla' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 5 porciones', null, 29, true, 0
+  from meals where slug = 'humita-en-olla' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'humita-en-olla' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Risotto de calabaza y queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'risotto-de-calabaza-y-queso', 'Risotto de calabaza y queso', 'Risotto de calabaza y queso con arroz, calabaza, cebolla; rinde 4 porciones.', 'cena', 'estimado',
+  56, 'estimacion', 'estimada', '1 de 4 porciones',
+  'arroz', array['en casa', 'casero'], 25, 'potente',
+  false, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 40, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'risotto-de-calabaza-y-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 56, true, 0
+  from meals where slug = 'risotto-de-calabaza-y-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'risotto-de-calabaza-y-queso' and m.profile_id is null and t.slug in ('cena', 'potente', 'casa', 'salado', 'almuerzo')
+  on conflict do nothing;
+
+-- Risotto de hongos y pollo
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'risotto-de-hongos-y-pollo', 'Risotto de hongos y pollo', 'Risotto de hongos y pollo con arroz, champiñones, pollo; rinde 4 porciones.', 'cena', 'estimado',
+  49, 'estimacion', 'estimada', '1 de 4 porciones',
+  'arroz', array['en casa', 'casero'], 25, 'potente',
+  false, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'risotto-de-hongos-y-pollo' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 49, true, 0
+  from meals where slug = 'risotto-de-hongos-y-pollo' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'risotto-de-hongos-y-pollo' and m.profile_id is null and t.slug in ('cena', 'potente', 'casa', 'salado', 'almuerzo')
+  on conflict do nothing;
+
+-- Arroz salteado con huevo y arvejas
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'arroz-salteado-con-huevo-y-arvejas', 'Arroz salteado con huevo y arvejas', 'Arroz salteado con huevo y arvejas con arroz, huevo, arvejas; rinde 4 porciones.', 'almuerzo', 'estimado',
+  52, 'estimacion', 'estimada', '1 de 4 porciones',
+  'arroz', array['para llevar', 'rápido'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'arroz-salteado-con-huevo-y-arvejas' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 52, true, 0
+  from meals where slug = 'arroz-salteado-con-huevo-y-arvejas' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'arroz-salteado-con-huevo-y-arvejas' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Arroz salteado con cerdo y morrón
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'arroz-salteado-con-cerdo-y-morron', 'Arroz salteado con cerdo y morrón', 'Arroz salteado con cerdo y morrón con arroz, cerdo, morrón; rinde 4 porciones.', 'almuerzo', 'estimado',
+  43, 'estimacion', 'estimada', '1 de 4 porciones',
+  'arroz', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'arroz-salteado-con-cerdo-y-morron' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 43, true, 0
+  from meals where slug = 'arroz-salteado-con-cerdo-y-morron' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'arroz-salteado-con-cerdo-y-morron' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Arroz con atún y tomate al horno
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'arroz-con-atun-y-tomate-al-horno', 'Arroz con atún y tomate al horno', 'Arroz con atún y tomate al horno con arroz, atún, tomate; rinde 4 porciones.', 'almuerzo', 'estimado',
+  44, 'estimacion', 'estimada', '1 de 4 porciones',
+  'arroz', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 40, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'arroz-con-atun-y-tomate-al-horno' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 44, true, 0
+  from meals where slug = 'arroz-con-atun-y-tomate-al-horno' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'arroz-con-atun-y-tomate-al-horno' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Ensalada fría de arroz, pollo y zanahoria
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'ensalada-fria-de-arroz-pollo-y-zanahoria', 'Ensalada fría de arroz, pollo y zanahoria', 'Ensalada fría de arroz, pollo y zanahoria con arroz, pollo, zanahoria; rinde 3 porciones.', 'almuerzo', 'estimado',
+  47, 'estimacion', 'estimada', '1 de 3 porciones',
+  'arroz', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-fria-de-arroz-pollo-y-zanahoria' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 47, true, 0
+  from meals where slug = 'ensalada-fria-de-arroz-pollo-y-zanahoria' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'ensalada-fria-de-arroz-pollo-y-zanahoria' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Ensalada de pasta con atún y choclo
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'ensalada-de-pasta-con-atun-y-choclo', 'Ensalada de pasta con atún y choclo', 'Ensalada de pasta con atún y choclo con fideos, atún, choclo; rinde 3 porciones.', 'almuerzo', 'estimado',
+  51, 'estimacion', 'estimada', '1 de 3 porciones',
+  'fideos', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 25, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-de-pasta-con-atun-y-choclo' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 51, true, 0
+  from meals where slug = 'ensalada-de-pasta-con-atun-y-choclo' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'ensalada-de-pasta-con-atun-y-choclo' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Ensalada de papa, huevo y arvejas
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'ensalada-de-papa-huevo-y-arvejas', 'Ensalada de papa, huevo y arvejas', 'Ensalada de papa, huevo y arvejas con papa, huevo, arvejas; rinde 3 porciones.', 'almuerzo', 'estimado',
+  42, 'estimacion', 'estimada', '1 de 3 porciones',
+  'papa', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-de-papa-huevo-y-arvejas' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 42, true, 0
+  from meals where slug = 'ensalada-de-papa-huevo-y-arvejas' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'ensalada-de-papa-huevo-y-arvejas' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Ensalada de garbanzos con pollo y pepino
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'ensalada-de-garbanzos-con-pollo-y-pepino', 'Ensalada de garbanzos con pollo y pepino', 'Ensalada de garbanzos con pollo y pepino con garbanzos cocidos, pollo, pepino; rinde 3 porciones.', 'almuerzo', 'estimado',
+  27, 'estimacion', 'estimada', '1 de 3 porciones',
+  'garbanzos cocidos', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 25, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-de-garbanzos-con-pollo-y-pepino' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 27, true, 0
+  from meals where slug = 'ensalada-de-garbanzos-con-pollo-y-pepino' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'ensalada-de-garbanzos-con-pollo-y-pepino' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Ensalada de porotos con huevo y tomate
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'ensalada-de-porotos-con-huevo-y-tomate', 'Ensalada de porotos con huevo y tomate', 'Ensalada de porotos con huevo y tomate con porotos cocidos, huevo, tomate; rinde 3 porciones.', 'almuerzo', 'estimado',
+  30, 'estimacion', 'estimada', '1 de 3 porciones',
+  'porotos cocidos', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 20, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-de-porotos-con-huevo-y-tomate' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 30, true, 0
+  from meals where slug = 'ensalada-de-porotos-con-huevo-y-tomate' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'ensalada-de-porotos-con-huevo-y-tomate' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena')
+  on conflict do nothing;
+
+-- Ensalada tibia de batata, espinaca y ricota
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'ensalada-tibia-de-batata-espinaca-y-ricota', 'Ensalada tibia de batata, espinaca y ricota', 'Ensalada tibia de batata, espinaca y ricota con batata, espinaca, ricota; rinde 3 porciones.', 'almuerzo', 'estimado',
+  29, 'estimacion', 'estimada', '1 de 3 porciones',
+  'batata', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-tibia-de-batata-espinaca-y-ricota' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 29, true, 0
+  from meals where slug = 'ensalada-tibia-de-batata-espinaca-y-ricota' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'ensalada-tibia-de-batata-espinaca-y-ricota' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Ensalada de lentejas y remolacha
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'ensalada-de-lentejas-y-remolacha', 'Ensalada de lentejas y remolacha', 'Ensalada de lentejas y remolacha con lentejas cocidas, remolacha, zanahoria; rinde 3 porciones.', 'almuerzo', 'estimado',
+  30, 'estimacion', 'estimada', '1 de 3 porciones',
+  'lentejas cocidas', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 25, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-de-lentejas-y-remolacha' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 30, true, 0
+  from meals where slug = 'ensalada-de-lentejas-y-remolacha' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'ensalada-de-lentejas-y-remolacha' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Ensalada de arroz y sardinas
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'ensalada-de-arroz-y-sardinas', 'Ensalada de arroz y sardinas', 'Ensalada de arroz y sardinas con arroz, sardina, tomate; rinde 3 porciones.', 'almuerzo', 'estimado',
+  45, 'estimacion', 'estimada', '1 de 3 porciones',
+  'arroz', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 25, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-de-arroz-y-sardinas' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 45, true, 0
+  from meals where slug = 'ensalada-de-arroz-y-sardinas' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'ensalada-de-arroz-y-sardinas' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Ensalada de pollo, naranja y zanahoria
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'ensalada-de-pollo-naranja-y-zanahoria', 'Ensalada de pollo, naranja y zanahoria', 'Ensalada de pollo, naranja y zanahoria con pollo, naranja, zanahoria; rinde 3 porciones.', 'almuerzo', 'estimado',
+  13, 'estimacion', 'estimada', '1 de 3 porciones',
+  'pollo', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 25, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-de-pollo-naranja-y-zanahoria' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 13, true, 0
+  from meals where slug = 'ensalada-de-pollo-naranja-y-zanahoria' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'ensalada-de-pollo-naranja-y-zanahoria' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Ensalada de fideos, brócoli y queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'ensalada-de-fideos-brocoli-y-queso', 'Ensalada de fideos, brócoli y queso', 'Ensalada de fideos, brócoli y queso con fideos, brócoli, queso; rinde 3 porciones.', 'almuerzo', 'estimado',
+  49, 'estimacion', 'estimada', '1 de 3 porciones',
+  'fideos', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 25, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-de-fideos-brocoli-y-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 49, true, 0
+  from meals where slug = 'ensalada-de-fideos-brocoli-y-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'ensalada-de-fideos-brocoli-y-queso' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Ensalada caprese con garbanzos
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'ensalada-caprese-con-garbanzos', 'Ensalada caprese con garbanzos', 'Ensalada caprese con garbanzos con garbanzos cocidos, tomate, muzzarella; rinde 3 porciones.', 'almuerzo', 'estimado',
+  29, 'estimacion', 'estimada', '1 de 3 porciones',
+  'garbanzos cocidos', array['para llevar', 'rápido'], 15, 'potente',
+  true, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 15, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-caprese-con-garbanzos' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 29, true, 0
+  from meals where slug = 'ensalada-caprese-con-garbanzos' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'ensalada-caprese-con-garbanzos' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena')
+  on conflict do nothing;
+
+-- Ensalada de papa, merluza y tomate
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'ensalada-de-papa-merluza-y-tomate', 'Ensalada de papa, merluza y tomate', 'Ensalada de papa, merluza y tomate con papa, merluza, tomate; rinde 3 porciones.', 'almuerzo', 'estimado',
+  28, 'estimacion', 'estimada', '1 de 3 porciones',
+  'papa', array['para llevar', 'casero'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-de-papa-merluza-y-tomate' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 28, true, 0
+  from meals where slug = 'ensalada-de-papa-merluza-y-tomate' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'ensalada-de-papa-merluza-y-tomate' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Ensalada de pollo con arroz y palta
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'ensalada-de-pollo-con-arroz-y-palta', 'Ensalada de pollo con arroz y palta', 'Ensalada de pollo con arroz y palta con pollo, arroz, palta; rinde 3 porciones.', 'almuerzo', 'estimado',
+  42, 'estimacion', 'estimada', '1 de 3 porciones',
+  'pollo', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-de-pollo-con-arroz-y-palta' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 42, true, 0
+  from meals where slug = 'ensalada-de-pollo-con-arroz-y-palta' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'ensalada-de-pollo-con-arroz-y-palta' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Ensalada de remolacha, huevo y ricota
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'ensalada-de-remolacha-huevo-y-ricota', 'Ensalada de remolacha, huevo y ricota', 'Ensalada de remolacha, huevo y ricota con remolacha, huevo, ricota; rinde 3 porciones.', 'almuerzo', 'estimado',
+  14, 'estimacion', 'estimada', '1 de 3 porciones',
+  'remolacha', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 25, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-de-remolacha-huevo-y-ricota' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 14, true, 0
+  from meals where slug = 'ensalada-de-remolacha-huevo-y-ricota' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'ensalada-de-remolacha-huevo-y-ricota' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Ensalada de garbanzos, zanahoria y atún
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'ensalada-de-garbanzos-zanahoria-y-atun', 'Ensalada de garbanzos, zanahoria y atún', 'Ensalada de garbanzos, zanahoria y atún con garbanzos cocidos, atún, zanahoria; rinde 3 porciones.', 'almuerzo', 'estimado',
+  32, 'estimacion', 'estimada', '1 de 3 porciones',
+  'garbanzos cocidos', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 20, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-de-garbanzos-zanahoria-y-atun' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 32, true, 0
+  from meals where slug = 'ensalada-de-garbanzos-zanahoria-y-atun' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'ensalada-de-garbanzos-zanahoria-y-atun' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena')
+  on conflict do nothing;
+
+-- Wrap de carne salteada y morrón
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'wrap-de-carne-salteada-y-morron', 'Wrap de carne salteada y morrón', 'Wrap de carne salteada y morrón con tortilla de trigo, lomo, morrón; rinde 3 porciones.', 'almuerzo', 'estimado',
+  35, 'estimacion', 'estimada', '1 de 3 porciones',
+  'tortilla de trigo', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'wrap-de-carne-salteada-y-morron' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 35, true, 0
+  from meals where slug = 'wrap-de-carne-salteada-y-morron' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'wrap-de-carne-salteada-y-morron' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Wrap de atún, huevo y tomate
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'wrap-de-atun-huevo-y-tomate', 'Wrap de atún, huevo y tomate', 'Wrap de atún, huevo y tomate con tortilla de trigo, atún, huevo; rinde 3 porciones.', 'almuerzo', 'estimado',
+  30, 'estimacion', 'estimada', '1 de 3 porciones',
+  'tortilla de trigo', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 20, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'wrap-de-atun-huevo-y-tomate' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 30, true, 0
+  from meals where slug = 'wrap-de-atun-huevo-y-tomate' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'wrap-de-atun-huevo-y-tomate' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena')
+  on conflict do nothing;
+
+-- Wrap de garbanzos pisados y verduras
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'wrap-de-garbanzos-pisados-y-verduras', 'Wrap de garbanzos pisados y verduras', 'Wrap de garbanzos pisados y verduras con tortilla de trigo, garbanzos cocidos, zanahoria; rinde 3 porciones.', 'almuerzo', 'estimado',
+  57, 'estimacion', 'estimada', '1 de 3 porciones',
+  'tortilla de trigo', array['para llevar', 'rápido'], 15, 'potente',
+  true, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 20, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'wrap-de-garbanzos-pisados-y-verduras' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 57, true, 0
+  from meals where slug = 'wrap-de-garbanzos-pisados-y-verduras' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'wrap-de-garbanzos-pisados-y-verduras' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena')
+  on conflict do nothing;
+
+-- Wrap de cerdo con repollo y zanahoria
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'wrap-de-cerdo-con-repollo-y-zanahoria', 'Wrap de cerdo con repollo y zanahoria', 'Wrap de cerdo con repollo y zanahoria con tortilla de trigo, cerdo, repollo; rinde 3 porciones.', 'almuerzo', 'estimado',
+  36, 'estimacion', 'estimada', '1 de 3 porciones',
+  'tortilla de trigo', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'wrap-de-cerdo-con-repollo-y-zanahoria' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 36, true, 0
+  from meals where slug = 'wrap-de-cerdo-con-repollo-y-zanahoria' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'wrap-de-cerdo-con-repollo-y-zanahoria' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Wrap de milanesa de berenjena y queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'wrap-de-milanesa-de-berenjena-y-queso', 'Wrap de milanesa de berenjena y queso', 'Wrap de milanesa de berenjena y queso con tortilla de trigo, berenjena, huevo; rinde 3 porciones.', 'almuerzo', 'estimado',
+  51, 'estimacion', 'estimada', '1 de 3 porciones',
+  'tortilla de trigo', array['para llevar', 'casero'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'wrap-de-milanesa-de-berenjena-y-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 51, true, 0
+  from meals where slug = 'wrap-de-milanesa-de-berenjena-y-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'wrap-de-milanesa-de-berenjena-y-queso' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Sándwich de pollo al horno y tomate
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'sandwich-de-pollo-al-horno-y-tomate', 'Sándwich de pollo al horno y tomate', 'Sándwich de pollo al horno y tomate con pan, pollo, tomate; rinde 3 porciones.', 'almuerzo', 'estimado',
+  31, 'estimacion', 'estimada', '1 de 3 porciones',
+  'pan', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 25, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'sandwich-de-pollo-al-horno-y-tomate' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 31, true, 0
+  from meals where slug = 'sandwich-de-pollo-al-horno-y-tomate' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'sandwich-de-pollo-al-horno-y-tomate' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Sándwich de atún y huevo duro
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'sandwich-de-atun-y-huevo-duro', 'Sándwich de atún y huevo duro', 'Sándwich de atún y huevo duro con pan, atún, huevo; rinde 3 porciones.', 'almuerzo', 'estimado',
+  30, 'estimacion', 'estimada', '1 de 3 porciones',
+  'pan', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 20, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'sandwich-de-atun-y-huevo-duro' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 30, true, 0
+  from meals where slug = 'sandwich-de-atun-y-huevo-duro' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'sandwich-de-atun-y-huevo-duro' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena')
+  on conflict do nothing;
+
+-- Sándwich de carne fría y morrón asado
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'sandwich-de-carne-fria-y-morron-asado', 'Sándwich de carne fría y morrón asado', 'Sándwich de carne fría y morrón asado con pan, lomo, morrón; rinde 3 porciones.', 'almuerzo', 'estimado',
+  32, 'estimacion', 'estimada', '1 de 3 porciones',
+  'pan', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'sandwich-de-carne-fria-y-morron-asado' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 32, true, 0
+  from meals where slug = 'sandwich-de-carne-fria-y-morron-asado' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'sandwich-de-carne-fria-y-morron-asado' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Sándwich de ricota, espinaca y tomate
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'sandwich-de-ricota-espinaca-y-tomate', 'Sándwich de ricota, espinaca y tomate', 'Sándwich de ricota, espinaca y tomate con pan, ricota, espinaca; rinde 3 porciones.', 'almuerzo', 'estimado',
+  34, 'estimacion', 'estimada', '1 de 3 porciones',
+  'pan', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 15, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'sandwich-de-ricota-espinaca-y-tomate' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 34, true, 0
+  from meals where slug = 'sandwich-de-ricota-espinaca-y-tomate' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'sandwich-de-ricota-espinaca-y-tomate' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena')
+  on conflict do nothing;
+
+-- Sándwich de cerdo desmenuzado y repollo
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'sandwich-de-cerdo-desmenuzado-y-repollo', 'Sándwich de cerdo desmenuzado y repollo', 'Sándwich de cerdo desmenuzado y repollo con pan, cerdo, repollo; rinde 3 porciones.', 'almuerzo', 'estimado',
+  35, 'estimacion', 'estimada', '1 de 3 porciones',
+  'pan', array['para llevar', 'casero'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'sandwich-de-cerdo-desmenuzado-y-repollo' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 35, true, 0
+  from meals where slug = 'sandwich-de-cerdo-desmenuzado-y-repollo' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'sandwich-de-cerdo-desmenuzado-y-repollo' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Pan árabe relleno de pollo y verduras
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pan-arabe-relleno-de-pollo-y-verduras', 'Pan árabe relleno de pollo y verduras', 'Pan árabe relleno de pollo y verduras con tortilla de trigo, pollo, tomate; rinde 3 porciones.', 'almuerzo', 'estimado',
+  32, 'estimacion', 'estimada', '1 de 3 porciones',
+  'tortilla de trigo', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 25, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pan-arabe-relleno-de-pollo-y-verduras' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 32, true, 0
+  from meals where slug = 'pan-arabe-relleno-de-pollo-y-verduras' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pan-arabe-relleno-de-pollo-y-verduras' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Sándwich de omelette y queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'sandwich-de-omelette-y-queso', 'Sándwich de omelette y queso', 'Sándwich de omelette y queso con pan, huevo, queso; rinde 3 porciones.', 'almuerzo', 'estimado',
+  30, 'estimacion', 'estimada', '1 de 3 porciones',
+  'pan', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 15, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'sandwich-de-omelette-y-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 30, true, 0
+  from meals where slug = 'sandwich-de-omelette-y-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'sandwich-de-omelette-y-queso' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena')
+  on conflict do nothing;
+
+-- Sándwich de garbanzos con palta
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'sandwich-de-garbanzos-con-palta', 'Sándwich de garbanzos con palta', 'Sándwich de garbanzos con palta con pan integral, garbanzos cocidos, palta; rinde 3 porciones.', 'almuerzo', 'estimado',
+  47, 'estimacion', 'estimada', '1 de 3 porciones',
+  'pan integral', array['para llevar', 'rápido'], 15, 'potente',
+  true, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 15, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'sandwich-de-garbanzos-con-palta' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 47, true, 0
+  from meals where slug = 'sandwich-de-garbanzos-con-palta' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'sandwich-de-garbanzos-con-palta' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena')
+  on conflict do nothing;
+
+-- Pan de miga con pollo, huevo y lechuga
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pan-de-miga-con-pollo-huevo-y-lechuga', 'Pan de miga con pollo, huevo y lechuga', 'Pan de miga con pollo, huevo y lechuga con pan de miga, pollo, huevo; rinde 3 porciones.', 'almuerzo', 'estimado',
+  38, 'estimacion', 'estimada', '1 de 3 porciones',
+  'pan de miga', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 25, false,
+  'assemble'::prep_type, '3 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pan-de-miga-con-pollo-huevo-y-lechuga' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 3 porciones', null, 38, true, 0
+  from meals where slug = 'pan-de-miga-con-pollo-huevo-y-lechuga' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pan-de-miga-con-pollo-huevo-y-lechuga' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Hamburguesas de lentejas y zanahoria
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'hamburguesas-de-lentejas-y-zanahoria', 'Hamburguesas de lentejas y zanahoria', 'Hamburguesas de lentejas y zanahoria con lentejas cocidas, zanahoria, cebolla; rinde 4 porciones.', 'almuerzo', 'estimado',
+  32, 'estimacion', 'estimada', '1 de 4 porciones',
+  'lentejas cocidas', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'hamburguesas-de-lentejas-y-zanahoria' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 32, true, 0
+  from meals where slug = 'hamburguesas-de-lentejas-y-zanahoria' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'hamburguesas-de-lentejas-y-zanahoria' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Hamburguesas de garbanzos y espinaca
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'hamburguesas-de-garbanzos-y-espinaca', 'Hamburguesas de garbanzos y espinaca', 'Hamburguesas de garbanzos y espinaca con garbanzos cocidos, espinaca, cebolla; rinde 4 porciones.', 'almuerzo', 'estimado',
+  36, 'estimacion', 'estimada', '1 de 4 porciones',
+  'garbanzos cocidos', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'hamburguesas-de-garbanzos-y-espinaca' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 36, true, 0
+  from meals where slug = 'hamburguesas-de-garbanzos-y-espinaca' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'hamburguesas-de-garbanzos-y-espinaca' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Hamburguesas de pollo y calabaza
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'hamburguesas-de-pollo-y-calabaza', 'Hamburguesas de pollo y calabaza', 'Hamburguesas de pollo y calabaza con pollo, calabaza, cebolla; rinde 4 porciones.', 'almuerzo', 'estimado',
+  16, 'estimacion', 'estimada', '1 de 4 porciones',
+  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 40, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'hamburguesas-de-pollo-y-calabaza' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 16, true, 0
+  from meals where slug = 'hamburguesas-de-pollo-y-calabaza' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'hamburguesas-de-pollo-y-calabaza' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Hamburguesas de atún y papa
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'hamburguesas-de-atun-y-papa', 'Hamburguesas de atún y papa', 'Hamburguesas de atún y papa con atún, papa, huevo; rinde 4 porciones.', 'almuerzo', 'estimado',
+  27, 'estimacion', 'estimada', '1 de 4 porciones',
+  'atún', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 40, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'hamburguesas-de-atun-y-papa' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 27, true, 0
+  from meals where slug = 'hamburguesas-de-atun-y-papa' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'hamburguesas-de-atun-y-papa' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Hamburguesas de carne y remolacha
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'hamburguesas-de-carne-y-remolacha', 'Hamburguesas de carne y remolacha', 'Hamburguesas de carne y remolacha con carne picada, remolacha, cebolla; rinde 4 porciones.', 'cena', 'estimado',
+  8, 'estimacion', 'estimada', '1 de 4 porciones',
+  'carne picada', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'hamburguesas-de-carne-y-remolacha' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 8, true, 0
+  from meals where slug = 'hamburguesas-de-carne-y-remolacha' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'hamburguesas-de-carne-y-remolacha' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Hamburguesas de porotos y arroz
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'hamburguesas-de-porotos-y-arroz', 'Hamburguesas de porotos y arroz', 'Hamburguesas de porotos y arroz con porotos cocidos, arroz, cebolla; rinde 4 porciones.', 'almuerzo', 'estimado',
+  53, 'estimacion', 'estimada', '1 de 4 porciones',
+  'porotos cocidos', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 40, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'hamburguesas-de-porotos-y-arroz' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 53, true, 0
+  from meals where slug = 'hamburguesas-de-porotos-y-arroz' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'hamburguesas-de-porotos-y-arroz' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Albóndigas de carne con salsa y arroz
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'albondigas-de-carne-con-salsa-y-arroz', 'Albóndigas de carne con salsa y arroz', 'Albóndigas de carne con salsa y arroz con carne picada, arroz, salsa de tomate; rinde 4 porciones.', 'almuerzo', 'estimado',
+  44, 'estimacion', 'estimada', '1 de 4 porciones',
+  'carne picada', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'albondigas-de-carne-con-salsa-y-arroz' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 44, true, 0
+  from meals where slug = 'albondigas-de-carne-con-salsa-y-arroz' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'albondigas-de-carne-con-salsa-y-arroz' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Albóndigas de pollo con puré de calabaza
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'albondigas-de-pollo-con-pure-de-calabaza', 'Albóndigas de pollo con puré de calabaza', 'Albóndigas de pollo con puré de calabaza con pollo, calabaza, cebolla; rinde 4 porciones.', 'almuerzo', 'estimado',
+  25, 'estimacion', 'estimada', '1 de 4 porciones',
+  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'albondigas-de-pollo-con-pure-de-calabaza' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 25, true, 0
+  from meals where slug = 'albondigas-de-pollo-con-pure-de-calabaza' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'albondigas-de-pollo-con-pure-de-calabaza' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Albóndigas de lentejas en salsa
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'albondigas-de-lentejas-en-salsa', 'Albóndigas de lentejas en salsa', 'Albóndigas de lentejas en salsa con lentejas cocidas, salsa de tomate, cebolla; rinde 4 porciones.', 'cena', 'estimado',
+  38, 'estimacion', 'estimada', '1 de 4 porciones',
+  'lentejas cocidas', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'albondigas-de-lentejas-en-salsa' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 38, true, 0
+  from meals where slug = 'albondigas-de-lentejas-en-salsa' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'albondigas-de-lentejas-en-salsa' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Albóndigas de cerdo y zanahoria
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'albondigas-de-cerdo-y-zanahoria', 'Albóndigas de cerdo y zanahoria', 'Albóndigas de cerdo y zanahoria con cerdo, zanahoria, cebolla; rinde 4 porciones.', 'cena', 'estimado',
+  17, 'estimacion', 'estimada', '1 de 4 porciones',
+  'cerdo', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 40, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'albondigas-de-cerdo-y-zanahoria' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 17, true, 0
+  from meals where slug = 'albondigas-de-cerdo-y-zanahoria' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'albondigas-de-cerdo-y-zanahoria' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Milanesas de berenjena con ensalada
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'milanesas-de-berenjena-con-ensalada', 'Milanesas de berenjena con ensalada', 'Milanesas de berenjena con ensalada con berenjena, huevo, pan rallado; rinde 4 porciones.', 'almuerzo', 'estimado',
+  28, 'estimacion', 'estimada', '1 de 4 porciones',
+  'berenjena', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 40, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'milanesas-de-berenjena-con-ensalada' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 28, true, 0
+  from meals where slug = 'milanesas-de-berenjena-con-ensalada' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'milanesas-de-berenjena-con-ensalada' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Milanesas de merluza al horno con papas
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'milanesas-de-merluza-al-horno-con-papas', 'Milanesas de merluza al horno con papas', 'Milanesas de merluza al horno con papas con merluza, huevo, pan rallado; rinde 4 porciones.', 'almuerzo', 'estimado',
+  45, 'estimacion', 'estimada', '1 de 4 porciones',
+  'merluza', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'milanesas-de-merluza-al-horno-con-papas' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 45, true, 0
+  from meals where slug = 'milanesas-de-merluza-al-horno-con-papas' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'milanesas-de-merluza-al-horno-con-papas' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Milanesas de pollo en air fryer
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'milanesas-de-pollo-en-air-fryer', 'Milanesas de pollo en air fryer', 'Milanesas de pollo en air fryer con pollo, huevo, pan rallado; rinde 4 porciones.', 'almuerzo', 'estimado',
+  27, 'estimacion', 'estimada', '1 de 4 porciones',
+  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'milanesas-de-pollo-en-air-fryer' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 27, true, 0
+  from meals where slug = 'milanesas-de-pollo-en-air-fryer' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'milanesas-de-pollo-en-air-fryer' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Milanesas de cerdo al horno con batata
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'milanesas-de-cerdo-al-horno-con-batata', 'Milanesas de cerdo al horno con batata', 'Milanesas de cerdo al horno con batata con cerdo, huevo, pan rallado; rinde 4 porciones.', 'cena', 'estimado',
+  46, 'estimacion', 'estimada', '1 de 4 porciones',
+  'cerdo', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 50, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'milanesas-de-cerdo-al-horno-con-batata' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 46, true, 0
+  from meals where slug = 'milanesas-de-cerdo-al-horno-con-batata' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'milanesas-de-cerdo-al-horno-con-batata' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Milanesas de calabaza rellenas con queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'milanesas-de-calabaza-rellenas-con-queso', 'Milanesas de calabaza rellenas con queso', 'Milanesas de calabaza rellenas con queso con calabaza, queso, huevo; rinde 4 porciones.', 'cena', 'estimado',
+  35, 'estimacion', 'estimada', '1 de 4 porciones',
+  'calabaza', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'milanesas-de-calabaza-rellenas-con-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 35, true, 0
+  from meals where slug = 'milanesas-de-calabaza-rellenas-con-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'milanesas-de-calabaza-rellenas-con-queso' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Merluza en papillote con verduras
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'merluza-en-papillote-con-verduras', 'Merluza en papillote con verduras', 'Merluza en papillote con verduras con merluza, zapallito, zanahoria; rinde 4 porciones.', 'cena', 'estimado',
+  9, 'estimacion', 'estimada', '1 de 4 porciones',
+  'merluza', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'merluza-en-papillote-con-verduras' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 9, true, 0
+  from meals where slug = 'merluza-en-papillote-con-verduras' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'merluza-en-papillote-con-verduras' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Merluza al horno con salsa criolla
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'merluza-al-horno-con-salsa-criolla', 'Merluza al horno con salsa criolla', 'Merluza al horno con salsa criolla con merluza, morrón, cebolla; rinde 4 porciones.', 'almuerzo', 'estimado',
+  27, 'estimacion', 'estimada', '1 de 4 porciones',
+  'merluza', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'merluza-al-horno-con-salsa-criolla' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 27, true, 0
+  from meals where slug = 'merluza-al-horno-con-salsa-criolla' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'merluza-al-horno-con-salsa-criolla' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Pollo al limón con batatas
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pollo-al-limon-con-batatas', 'Pollo al limón con batatas', 'Pollo al limón con batatas con pollo, batata, limón; rinde 4 porciones.', 'almuerzo', 'estimado',
+  30, 'estimacion', 'estimada', '1 de 4 porciones',
+  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pollo-al-limon-con-batatas' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 30, true, 0
+  from meals where slug = 'pollo-al-limon-con-batatas' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pollo-al-limon-con-batatas' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Pollo al horno con calabaza y cebolla
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pollo-al-horno-con-calabaza-y-cebolla', 'Pollo al horno con calabaza y cebolla', 'Pollo al horno con calabaza y cebolla con pollo, calabaza, cebolla; rinde 4 porciones.', 'cena', 'estimado',
+  17, 'estimacion', 'estimada', '1 de 4 porciones',
+  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pollo-al-horno-con-calabaza-y-cebolla' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 17, true, 0
+  from meals where slug = 'pollo-al-horno-con-calabaza-y-cebolla' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pollo-al-horno-con-calabaza-y-cebolla' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Cerdo al horno con manzana y batata
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'cerdo-al-horno-con-manzana-y-batata', 'Cerdo al horno con manzana y batata', 'Cerdo al horno con manzana y batata con cerdo, manzana, batata; rinde 4 porciones.', 'cena', 'estimado',
+  32, 'estimacion', 'estimada', '1 de 4 porciones',
+  'cerdo', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'cerdo-al-horno-con-manzana-y-batata' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 32, true, 0
+  from meals where slug = 'cerdo-al-horno-con-manzana-y-batata' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'cerdo-al-horno-con-manzana-y-batata' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Bifes al horno con papa y tomate
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'bifes-al-horno-con-papa-y-tomate', 'Bifes al horno con papa y tomate', 'Bifes al horno con papa y tomate con lomo, papa, tomate; rinde 4 porciones.', 'cena', 'estimado',
+  30, 'estimacion', 'estimada', '1 de 4 porciones',
+  'lomo', array['para llevar', 'casero'], 25, 'potente',
+  true, false, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'bifes-al-horno-con-papa-y-tomate' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 30, true, 0
+  from meals where slug = 'bifes-al-horno-con-papa-y-tomate' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'bifes-al-horno-con-papa-y-tomate' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Zapallitos rellenos de arroz y carne
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'zapallitos-rellenos-de-arroz-y-carne', 'Zapallitos rellenos de arroz y carne', 'Zapallitos rellenos de arroz y carne con zapallito, carne picada, arroz; rinde 4 porciones.', 'almuerzo', 'estimado',
+  33, 'estimacion', 'estimada', '1 de 4 porciones',
+  'zapallito', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'zapallitos-rellenos-de-arroz-y-carne' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 33, true, 0
+  from meals where slug = 'zapallitos-rellenos-de-arroz-y-carne' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'zapallitos-rellenos-de-arroz-y-carne' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Papas rellenas de pollo y queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'papas-rellenas-de-pollo-y-queso', 'Papas rellenas de pollo y queso', 'Papas rellenas de pollo y queso con papa, pollo, queso; rinde 4 porciones.', 'cena', 'estimado',
+  38, 'estimacion', 'estimada', '1 de 4 porciones',
+  'papa', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'papas-rellenas-de-pollo-y-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 38, true, 0
+  from meals where slug = 'papas-rellenas-de-pollo-y-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'papas-rellenas-de-pollo-y-queso' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Batatas rellenas de lentejas y queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'batatas-rellenas-de-lentejas-y-queso', 'Batatas rellenas de lentejas y queso', 'Batatas rellenas de lentejas y queso con batata, lentejas cocidas, queso; rinde 4 porciones.', 'cena', 'estimado',
+  47, 'estimacion', 'estimada', '1 de 4 porciones',
+  'batata', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'batatas-rellenas-de-lentejas-y-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 47, true, 0
+  from meals where slug = 'batatas-rellenas-de-lentejas-y-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'batatas-rellenas-de-lentejas-y-queso' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Berenjenas rellenas de arroz y atún
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'berenjenas-rellenas-de-arroz-y-atun', 'Berenjenas rellenas de arroz y atún', 'Berenjenas rellenas de arroz y atún con berenjena, arroz, atún; rinde 4 porciones.', 'almuerzo', 'estimado',
+  33, 'estimacion', 'estimada', '1 de 4 porciones',
+  'berenjena', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 50, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'berenjenas-rellenas-de-arroz-y-atun' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 33, true, 0
+  from meals where slug = 'berenjenas-rellenas-de-arroz-y-atun' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'berenjenas-rellenas-de-arroz-y-atun' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Morrones rellenos de carne y arroz
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'morrones-rellenos-de-carne-y-arroz', 'Morrones rellenos de carne y arroz', 'Morrones rellenos de carne y arroz con morrón, carne picada, arroz; rinde 4 porciones.', 'cena', 'estimado',
+  41, 'estimacion', 'estimada', '1 de 4 porciones',
+  'morrón', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'morrones-rellenos-de-carne-y-arroz' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 41, true, 0
+  from meals where slug = 'morrones-rellenos-de-carne-y-arroz' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'morrones-rellenos-de-carne-y-arroz' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Calabaza rellena de pollo y choclo
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'calabaza-rellena-de-pollo-y-choclo', 'Calabaza rellena de pollo y choclo', 'Calabaza rellena de pollo y choclo con calabaza, pollo, choclo; rinde 4 porciones.', 'cena', 'estimado',
+  27, 'estimacion', 'estimada', '1 de 4 porciones',
+  'calabaza', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'calabaza-rellena-de-pollo-y-choclo' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 27, true, 0
+  from meals where slug = 'calabaza-rellena-de-pollo-y-choclo' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'calabaza-rellena-de-pollo-y-choclo' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Fideos con salsa de atún y tomate
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'fideos-con-salsa-de-atun-y-tomate', 'Fideos con salsa de atún y tomate', 'Fideos con salsa de atún y tomate con fideos, atún, salsa de tomate; rinde 4 porciones.', 'almuerzo', 'estimado',
+  64, 'estimacion', 'estimada', '1 de 4 porciones',
+  'fideos', array['para llevar', 'rápido'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'fideos-con-salsa-de-atun-y-tomate' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 64, true, 0
+  from meals where slug = 'fideos-con-salsa-de-atun-y-tomate' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'fideos-con-salsa-de-atun-y-tomate' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Fideos con brócoli, ajo y queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'fideos-con-brocoli-ajo-y-queso', 'Fideos con brócoli, ajo y queso', 'Fideos con brócoli, ajo y queso con fideos, brócoli, ajo; rinde 4 porciones.', 'almuerzo', 'estimado',
+  59, 'estimacion', 'estimada', '1 de 4 porciones',
+  'fideos', array['para llevar', 'rápido'], 25, 'potente',
+  true, false, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'fideos-con-brocoli-ajo-y-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 59, true, 0
+  from meals where slug = 'fideos-con-brocoli-ajo-y-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'fideos-con-brocoli-ajo-y-queso' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Fideos con pollo y crema de espinaca
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'fideos-con-pollo-y-crema-de-espinaca', 'Fideos con pollo y crema de espinaca', 'Fideos con pollo y crema de espinaca con fideos, pollo, espinaca; rinde 4 porciones.', 'almuerzo', 'estimado',
+  56, 'estimacion', 'estimada', '1 de 4 porciones',
+  'fideos', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'fideos-con-pollo-y-crema-de-espinaca' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 56, true, 0
+  from meals where slug = 'fideos-con-pollo-y-crema-de-espinaca' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'fideos-con-pollo-y-crema-de-espinaca' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Fideos con berenjena y salsa roja
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'fideos-con-berenjena-y-salsa-roja', 'Fideos con berenjena y salsa roja', 'Fideos con berenjena y salsa roja con fideos, berenjena, salsa de tomate; rinde 4 porciones.', 'cena', 'estimado',
+  64, 'estimacion', 'estimada', '1 de 4 porciones',
+  'fideos', array['para llevar', 'casero'], 25, 'potente',
+  true, false, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'fideos-con-berenjena-y-salsa-roja' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 64, true, 0
+  from meals where slug = 'fideos-con-berenjena-y-salsa-roja' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'fideos-con-berenjena-y-salsa-roja' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Fideos con albóndigas de cerdo
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'fideos-con-albondigas-de-cerdo', 'Fideos con albóndigas de cerdo', 'Fideos con albóndigas de cerdo con fideos, cerdo, salsa de tomate; rinde 4 porciones.', 'cena', 'estimado',
+  64, 'estimacion', 'estimada', '1 de 4 porciones',
+  'fideos', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'fideos-con-albondigas-de-cerdo' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 64, true, 0
+  from meals where slug = 'fideos-con-albondigas-de-cerdo' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'fideos-con-albondigas-de-cerdo' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Pasta fría con pollo y palta
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pasta-fria-con-pollo-y-palta', 'Pasta fría con pollo y palta', 'Pasta fría con pollo y palta con fideos, pollo, palta; rinde 4 porciones.', 'almuerzo', 'estimado',
+  49, 'estimacion', 'estimada', '1 de 4 porciones',
+  'fideos', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
+  'assemble'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pasta-fria-con-pollo-y-palta' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 49, true, 0
+  from meals where slug = 'pasta-fria-con-pollo-y-palta' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pasta-fria-con-pollo-y-palta' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Ravioles con salsa de espinaca y queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'ravioles-con-salsa-de-espinaca-y-queso', 'Ravioles con salsa de espinaca y queso', 'Ravioles con salsa de espinaca y queso con ravioles, espinaca, queso; rinde 4 porciones.', 'cena', 'estimado',
+  67, 'estimacion', 'estimada', '1 de 4 porciones',
+  'ravioles', array['en casa', 'rápido'], 25, 'potente',
+  false, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'ravioles-con-salsa-de-espinaca-y-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 67, true, 0
+  from meals where slug = 'ravioles-con-salsa-de-espinaca-y-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'ravioles-con-salsa-de-espinaca-y-queso' and m.profile_id is null and t.slug in ('cena', 'potente', 'casa', 'rapido', 'salado', 'almuerzo')
+  on conflict do nothing;
+
+-- Ñoquis con tuco de carne
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'noquis-con-tuco-de-carne', 'Ñoquis con tuco de carne', 'Ñoquis con tuco de carne con ñoquis, carne picada, salsa de tomate; rinde 4 porciones.', 'cena', 'estimado',
+  54, 'estimacion', 'estimada', '1 de 4 porciones',
+  'ñoquis', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 40, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'noquis-con-tuco-de-carne' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 54, true, 0
+  from meals where slug = 'noquis-con-tuco-de-carne' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'noquis-con-tuco-de-carne' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Polenta gratinada con hongos
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'polenta-gratinada-con-hongos', 'Polenta gratinada con hongos', 'Polenta gratinada con hongos con polenta, champiñones, leche; rinde 4 porciones.', 'cena', 'estimado',
+  48, 'estimacion', 'estimada', '1 de 4 porciones',
+  'polenta', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 40, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'polenta-gratinada-con-hongos' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 48, true, 0
+  from meals where slug = 'polenta-gratinada-con-hongos' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'polenta-gratinada-con-hongos' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Polenta con estofado de pollo
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'polenta-con-estofado-de-pollo', 'Polenta con estofado de pollo', 'Polenta con estofado de pollo con polenta, pollo, salsa de tomate; rinde 4 porciones.', 'almuerzo', 'estimado',
+  48, 'estimacion', 'estimada', '1 de 4 porciones',
+  'polenta', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'polenta-con-estofado-de-pollo' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 48, true, 0
+  from meals where slug = 'polenta-con-estofado-de-pollo' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'polenta-con-estofado-de-pollo' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Tostadas francesas con manzana salteada
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tostadas-francesas-con-manzana-salteada', 'Tostadas francesas con manzana salteada', 'Tostadas francesas con manzana salteada con pan, huevo, leche; rinde 2 porciones.', 'desayuno', 'estimado',
+  45, 'estimacion', 'estimada', '1 de 2 porciones',
+  'pan', array['en casa', 'rápido'], 20, 'normal',
+  false, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 20, false,
+  'cook'::prep_type, '2 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tostadas-francesas-con-manzana-salteada' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 2 porciones', null, 45, true, 0
+  from meals where slug = 'tostadas-francesas-con-manzana-salteada' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tostadas-francesas-con-manzana-salteada' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'casa', 'rapido', 'dulce', 'merienda')
+  on conflict do nothing;
+
+-- Tostadas francesas con frutilla y ricota
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tostadas-francesas-con-frutilla-y-ricota', 'Tostadas francesas con frutilla y ricota', 'Tostadas francesas con frutilla y ricota con pan, huevo, leche; rinde 2 porciones.', 'desayuno', 'estimado',
+  40, 'estimacion', 'estimada', '1 de 2 porciones',
+  'pan', array['en casa', 'rápido'], 20, 'normal',
+  false, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 20, false,
+  'cook'::prep_type, '2 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tostadas-francesas-con-frutilla-y-ricota' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 2 porciones', null, 40, true, 0
+  from meals where slug = 'tostadas-francesas-con-frutilla-y-ricota' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tostadas-francesas-con-frutilla-y-ricota' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'casa', 'rapido', 'dulce', 'merienda')
+  on conflict do nothing;
+
+-- Panqueques de ricota y banana
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'panqueques-de-ricota-y-banana', 'Panqueques de ricota y banana', 'Panqueques de ricota y banana con ricota, banana, huevo; rinde 4 porciones.', 'desayuno', 'estimado',
+  30, 'estimacion', 'estimada', '1 de 4 porciones',
+  'ricota', array['para llevar', 'rápido'], 25, 'normal',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 25, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'panqueques-de-ricota-y-banana' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 30, true, 0
+  from meals where slug = 'panqueques-de-ricota-y-banana' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'panqueques-de-ricota-y-banana' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'para_llevar', 'rapido', 'dulce', 'merienda', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Panqueques de manzana y canela
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'panqueques-de-manzana-y-canela', 'Panqueques de manzana y canela', 'Panqueques de manzana y canela con manzana, huevo, harina; rinde 4 porciones.', 'merienda', 'estimado',
+  34, 'estimacion', 'estimada', '1 de 4 porciones',
+  'manzana', array['para llevar', 'rápido'], 25, 'normal',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 25, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'panqueques-de-manzana-y-canela' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 34, true, 0
+  from meals where slug = 'panqueques-de-manzana-y-canela' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'panqueques-de-manzana-y-canela' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'rapido', 'dulce', 'desayuno', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Panqueques salados de espinaca y queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'panqueques-salados-de-espinaca-y-queso', 'Panqueques salados de espinaca y queso', 'Panqueques salados de espinaca y queso con espinaca, queso, huevo; rinde 4 porciones.', 'merienda', 'estimado',
+  25, 'estimacion', 'estimada', '1 de 4 porciones',
+  'espinaca', array['para llevar', 'rápido'], 25, 'normal',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 25, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'panqueques-salados-de-espinaca-y-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 25, true, 0
+  from meals where slug = 'panqueques-salados-de-espinaca-y-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'panqueques-salados-de-espinaca-y-queso' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'rapido', 'dulce', 'desayuno', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Crepes de ricota y frutilla
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'crepes-de-ricota-y-frutilla', 'Crepes de ricota y frutilla', 'Crepes de ricota y frutilla con ricota, frutilla, huevo; rinde 4 porciones.', 'merienda', 'estimado',
+  31, 'estimacion', 'estimada', '1 de 4 porciones',
+  'ricota', array['para llevar', 'rápido'], 25, 'normal',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 25, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'crepes-de-ricota-y-frutilla' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 31, true, 0
+  from meals where slug = 'crepes-de-ricota-y-frutilla' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'crepes-de-ricota-y-frutilla' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'rapido', 'dulce', 'desayuno', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Waffles caseros con yogur y pera
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'waffles-caseros-con-yogur-y-pera', 'Waffles caseros con yogur y pera', 'Waffles caseros con yogur y pera con harina, huevo, leche; rinde 4 porciones.', 'desayuno', 'estimado',
+  34, 'estimacion', 'estimada', '1 de 4 porciones',
+  'harina', array['en casa', 'rápido'], 25, 'normal',
+  false, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 25, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'waffles-caseros-con-yogur-y-pera' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 34, true, 0
+  from meals where slug = 'waffles-caseros-con-yogur-y-pera' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'waffles-caseros-con-yogur-y-pera' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'casa', 'rapido', 'dulce', 'merienda')
+  on conflict do nothing;
+
+-- Omelette de jamón y tomate
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'omelette-de-jamon-y-tomate', 'Omelette de jamón y tomate', 'Omelette de jamón y tomate con huevo, jamón, tomate; rinde 1 porciones.', 'desayuno', 'estimado',
+  6, 'estimacion', 'estimada', '1 de 1 porciones',
+  'huevo', array['en casa', 'rápido'], 12, 'normal',
+  false, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 12, false,
+  'cook'::prep_type, '1 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'omelette-de-jamon-y-tomate' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 1 porciones', null, 6, true, 0
+  from meals where slug = 'omelette-de-jamon-y-tomate' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'omelette-de-jamon-y-tomate' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'casa', 'rapido', 'salado', 'merienda')
+  on conflict do nothing;
+
+-- Omelette de espinaca y queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'omelette-de-espinaca-y-queso', 'Omelette de espinaca y queso', 'Omelette de espinaca y queso con huevo, espinaca, queso; rinde 1 porciones.', 'desayuno', 'estimado',
+  3, 'estimacion', 'estimada', '1 de 1 porciones',
+  'huevo', array['en casa', 'rápido'], 12, 'normal',
+  false, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 12, false,
+  'cook'::prep_type, '1 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'omelette-de-espinaca-y-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 1 porciones', null, 3, true, 0
+  from meals where slug = 'omelette-de-espinaca-y-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'omelette-de-espinaca-y-queso' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'casa', 'rapido', 'salado', 'merienda')
+  on conflict do nothing;
+
+-- Omelette de champiñones y queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'omelette-de-champinones-y-queso', 'Omelette de champiñones y queso', 'Omelette de champiñones y queso con huevo, champiñones, queso; rinde 1 porciones.', 'desayuno', 'estimado',
+  5, 'estimacion', 'estimada', '1 de 1 porciones',
+  'huevo', array['en casa', 'rápido'], 15, 'normal',
+  false, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 15, false,
+  'cook'::prep_type, '1 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'omelette-de-champinones-y-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 1 porciones', null, 5, true, 0
+  from meals where slug = 'omelette-de-champinones-y-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'omelette-de-champinones-y-queso' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'casa', 'rapido', 'salado', 'merienda')
+  on conflict do nothing;
+
+-- Revuelto de huevo, tomate y cebolla
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'revuelto-de-huevo-tomate-y-cebolla', 'Revuelto de huevo, tomate y cebolla', 'Revuelto de huevo, tomate y cebolla con huevo, tomate, cebolla; rinde 1 porciones.', 'desayuno', 'estimado',
+  39, 'estimacion', 'estimada', '1 de 1 porciones',
+  'huevo', array['en casa', 'rápido'], 15, 'normal',
+  false, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 15, false,
+  'cook'::prep_type, '1 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'revuelto-de-huevo-tomate-y-cebolla' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 1 porciones', null, 39, true, 0
+  from meals where slug = 'revuelto-de-huevo-tomate-y-cebolla' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'revuelto-de-huevo-tomate-y-cebolla' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'casa', 'rapido', 'salado', 'merienda')
+  on conflict do nothing;
+
+-- Revuelto de huevo y arvejas sobre pan
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'revuelto-de-huevo-y-arvejas-sobre-pan', 'Revuelto de huevo y arvejas sobre pan', 'Revuelto de huevo y arvejas sobre pan con huevo, arvejas, pan; rinde 1 porciones.', 'desayuno', 'estimado',
+  48, 'estimacion', 'estimada', '1 de 1 porciones',
+  'huevo', array['en casa', 'rápido'], 15, 'normal',
+  false, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 15, false,
+  'cook'::prep_type, '1 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'revuelto-de-huevo-y-arvejas-sobre-pan' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 1 porciones', null, 48, true, 0
+  from meals where slug = 'revuelto-de-huevo-y-arvejas-sobre-pan' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'revuelto-de-huevo-y-arvejas-sobre-pan' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'casa', 'rapido', 'salado', 'merienda')
+  on conflict do nothing;
+
+-- Sándwich de ricota y durazno
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'sandwich-de-ricota-y-durazno', 'Sándwich de ricota y durazno', 'Sándwich de ricota y durazno con pan, ricota, durazno; rinde 2 porciones.', 'merienda', 'estimado',
+  41, 'estimacion', 'estimada', '1 de 2 porciones',
+  'pan', array['para llevar', 'rápido'], 10, 'normal',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 10, false,
+  'assemble'::prep_type, '2 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'sandwich-de-ricota-y-durazno' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 2 porciones', null, 41, true, 0
+  from meals where slug = 'sandwich-de-ricota-y-durazno' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'sandwich-de-ricota-y-durazno' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'rapido', 'salado', 'desayuno')
+  on conflict do nothing;
+
+-- Sándwich de queso, pera y nueces
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'sandwich-de-queso-pera-y-nueces', 'Sándwich de queso, pera y nueces', 'Sándwich de queso, pera y nueces con pan integral, queso, pera; rinde 2 porciones.', 'merienda', 'estimado',
+  37, 'estimacion', 'estimada', '1 de 2 porciones',
+  'pan integral', array['para llevar', 'rápido'], 10, 'normal',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 10, false,
+  'assemble'::prep_type, '2 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'sandwich-de-queso-pera-y-nueces' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 2 porciones', null, 37, true, 0
+  from meals where slug = 'sandwich-de-queso-pera-y-nueces' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'sandwich-de-queso-pera-y-nueces' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'rapido', 'salado', 'desayuno')
+  on conflict do nothing;
+
+-- Sándwich de huevo y palta con pan integral
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'sandwich-de-huevo-y-palta-con-pan-integral', 'Sándwich de huevo y palta con pan integral', 'Sándwich de huevo y palta con pan integral con pan integral, huevo, palta; rinde 2 porciones.', 'desayuno', 'estimado',
+  28, 'estimacion', 'estimada', '1 de 2 porciones',
+  'pan integral', array['para llevar', 'rápido'], 15, 'normal',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 18, false,
+  'assemble'::prep_type, '2 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'sandwich-de-huevo-y-palta-con-pan-integral' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 2 porciones', null, 28, true, 0
+  from meals where slug = 'sandwich-de-huevo-y-palta-con-pan-integral' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'sandwich-de-huevo-y-palta-con-pan-integral' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'para_llevar', 'rapido', 'salado', 'merienda')
+  on conflict do nothing;
+
+-- Tostado de tomate, muzzarella y orégano
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tostado-de-tomate-muzzarella-y-oregano', 'Tostado de tomate, muzzarella y orégano', 'Tostado de tomate, muzzarella y orégano con pan, tomate, muzzarella; rinde 2 porciones.', 'merienda', 'estimado',
+  32, 'estimacion', 'estimada', '1 de 2 porciones',
+  'pan', array['para llevar', 'rápido'], 12, 'normal',
+  true, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 12, false,
+  'assemble'::prep_type, '2 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tostado-de-tomate-muzzarella-y-oregano' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 2 porciones', null, 32, true, 0
+  from meals where slug = 'tostado-de-tomate-muzzarella-y-oregano' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tostado-de-tomate-muzzarella-y-oregano' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'rapido', 'salado', 'desayuno')
+  on conflict do nothing;
+
+-- Tostado de pollo y queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tostado-de-pollo-y-queso', 'Tostado de pollo y queso', 'Tostado de pollo y queso con pan, pollo, queso; rinde 2 porciones.', 'merienda', 'estimado',
+  31, 'estimacion', 'estimada', '1 de 2 porciones',
+  'pan', array['para llevar', 'rápido'], 15, 'normal',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 15, false,
+  'assemble'::prep_type, '2 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tostado-de-pollo-y-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 2 porciones', null, 31, true, 0
+  from meals where slug = 'tostado-de-pollo-y-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tostado-de-pollo-y-queso' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'rapido', 'salado', 'desayuno')
+  on conflict do nothing;
+
+-- Tostado de espinaca y ricota
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tostado-de-espinaca-y-ricota', 'Tostado de espinaca y ricota', 'Tostado de espinaca y ricota con pan, espinaca, ricota; rinde 2 porciones.', 'merienda', 'estimado',
+  33, 'estimacion', 'estimada', '1 de 2 porciones',
+  'pan', array['para llevar', 'rápido'], 15, 'normal',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 15, false,
+  'assemble'::prep_type, '2 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tostado-de-espinaca-y-ricota' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 2 porciones', null, 33, true, 0
+  from meals where slug = 'tostado-de-espinaca-y-ricota' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tostado-de-espinaca-y-ricota' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'rapido', 'salado', 'desayuno')
+  on conflict do nothing;
+
+-- Tostado de jamón, queso y huevo
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tostado-de-jamon-queso-y-huevo', 'Tostado de jamón, queso y huevo', 'Tostado de jamón, queso y huevo con pan, jamón, queso; rinde 2 porciones.', 'desayuno', 'estimado',
+  30, 'estimacion', 'estimada', '1 de 2 porciones',
+  'pan', array['para llevar', 'rápido'], 15, 'normal',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 15, false,
+  'assemble'::prep_type, '2 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tostado-de-jamon-queso-y-huevo' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 2 porciones', null, 30, true, 0
+  from meals where slug = 'tostado-de-jamon-queso-y-huevo' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tostado-de-jamon-queso-y-huevo' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'para_llevar', 'rapido', 'salado', 'merienda')
+  on conflict do nothing;
+
+-- Sándwich de atún con queso untable
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'sandwich-de-atun-con-queso-untable', 'Sándwich de atún con queso untable', 'Sándwich de atún con queso untable con pan, atún, queso untable; rinde 2 porciones.', 'merienda', 'estimado',
+  32, 'estimacion', 'estimada', '1 de 2 porciones',
+  'pan', array['para llevar', 'rápido'], 12, 'normal',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 12, false,
+  'assemble'::prep_type, '2 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'sandwich-de-atun-con-queso-untable' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 2 porciones', null, 32, true, 0
+  from meals where slug = 'sandwich-de-atun-con-queso-untable' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'sandwich-de-atun-con-queso-untable' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'rapido', 'salado', 'desayuno')
+  on conflict do nothing;
+
+-- Bocaditos de huevo y brócoli al horno
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'bocaditos-de-huevo-y-brocoli-al-horno', 'Bocaditos de huevo y brócoli al horno', 'Bocaditos de huevo y brócoli al horno con huevo, brócoli, queso rallado; rinde 6 porciones.', 'snack', 'estimado',
+  7, 'estimacion', 'estimada', '1 de 6 porciones',
+  'huevo', array['para llevar', 'rápido'], 25, 'normal',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['snack']::meal_category[], 25, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'bocaditos-de-huevo-y-brocoli-al-horno' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 7, true, 0
+  from meals where slug = 'bocaditos-de-huevo-y-brocoli-al-horno' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'bocaditos-de-huevo-y-brocoli-al-horno' and m.profile_id is null and t.slug in ('media_tarde', 'normal', 'para_llevar', 'rapido', 'salado', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Muffins salados de choclo y queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'muffins-salados-de-choclo-y-queso', 'Muffins salados de choclo y queso', 'Muffins salados de choclo y queso con choclo, queso, huevo; rinde 6 porciones.', 'snack', 'estimado',
+  20, 'estimacion', 'estimada', '1 de 6 porciones',
+  'choclo', array['para llevar', 'casero'], 25, 'normal',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['snack']::meal_category[], 35, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'muffins-salados-de-choclo-y-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 20, true, 0
+  from meals where slug = 'muffins-salados-de-choclo-y-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'muffins-salados-de-choclo-y-queso' and m.profile_id is null and t.slug in ('media_tarde', 'normal', 'para_llevar', 'dulce', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Muffins salados de zanahoria y jamón
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'muffins-salados-de-zanahoria-y-jamon', 'Muffins salados de zanahoria y jamón', 'Muffins salados de zanahoria y jamón con zanahoria, jamón, huevo; rinde 6 porciones.', 'snack', 'estimado',
+  20, 'estimacion', 'estimada', '1 de 6 porciones',
+  'zanahoria', array['para llevar', 'casero'], 25, 'normal',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['snack']::meal_category[], 35, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'muffins-salados-de-zanahoria-y-jamon' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 20, true, 0
+  from meals where slug = 'muffins-salados-de-zanahoria-y-jamon' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'muffins-salados-de-zanahoria-y-jamon' and m.profile_id is null and t.slug in ('media_tarde', 'normal', 'para_llevar', 'dulce', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Muffins salados de espinaca y ricota
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'muffins-salados-de-espinaca-y-ricota', 'Muffins salados de espinaca y ricota', 'Muffins salados de espinaca y ricota con espinaca, ricota, huevo; rinde 6 porciones.', 'snack', 'estimado',
+  16, 'estimacion', 'estimada', '1 de 6 porciones',
+  'espinaca', array['para llevar', 'casero'], 25, 'normal',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['snack']::meal_category[], 35, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'muffins-salados-de-espinaca-y-ricota' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 16, true, 0
+  from meals where slug = 'muffins-salados-de-espinaca-y-ricota' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'muffins-salados-de-espinaca-y-ricota' and m.profile_id is null and t.slug in ('media_tarde', 'normal', 'para_llevar', 'dulce', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Galletitas caseras de banana y maní
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'galletitas-caseras-de-banana-y-mani', 'Galletitas caseras de banana y maní', 'Galletitas caseras de banana y maní con banana, harina, maní; rinde 8 porciones.', 'snack', 'estimado',
+  19, 'estimacion', 'estimada', '1 de 8 porciones',
+  'banana', array['para llevar', 'rápido'], 25, 'normal',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'dulce'::flavor, array['snack']::meal_category[], 25, false,
+  'cook'::prep_type, '8 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'galletitas-caseras-de-banana-y-mani' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 8 porciones', null, 19, true, 0
+  from meals where slug = 'galletitas-caseras-de-banana-y-mani' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'galletitas-caseras-de-banana-y-mani' and m.profile_id is null and t.slug in ('media_tarde', 'normal', 'para_llevar', 'rapido', 'dulce', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Galletitas de avena y manzana
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'galletitas-de-avena-y-manzana', 'Galletitas de avena y manzana', 'Galletitas de avena y manzana con avena, manzana, huevo; rinde 10 porciones.', 'merienda', 'estimado',
+  13, 'estimacion', 'estimada', '1 de 10 porciones',
+  'avena', array['para llevar', 'rápido'], 25, 'normal',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 30, false,
+  'cook'::prep_type, '10 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'galletitas-de-avena-y-manzana' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 10 porciones', null, 13, true, 0
+  from meals where slug = 'galletitas-de-avena-y-manzana' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'galletitas-de-avena-y-manzana' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'rapido', 'dulce', 'desayuno', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Galletitas de cacao y nueces
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'galletitas-de-cacao-y-nueces', 'Galletitas de cacao y nueces', 'Galletitas de cacao y nueces con harina, cacao amargo, nuez; rinde 12 porciones.', 'merienda', 'estimado',
+  16, 'estimacion', 'estimada', '1 de 12 porciones',
+  'harina', array['para llevar', 'rápido'], 25, 'normal',
+  true, true, false, true, false,
+  1, 'ocasional', null, true, true, null,
+  false, '{}', 2, true, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 30, false,
+  'cook'::prep_type, '12 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'galletitas-de-cacao-y-nueces' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 12 porciones', null, 16, true, 0
+  from meals where slug = 'galletitas-de-cacao-y-nueces' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'galletitas-de-cacao-y-nueces' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'rapido', 'dulce', 'desayuno', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Galletitas de limón y ricota
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'galletitas-de-limon-y-ricota', 'Galletitas de limón y ricota', 'Galletitas de limón y ricota con harina, ricota, limón; rinde 10 porciones.', 'snack', 'estimado',
+  19, 'estimacion', 'estimada', '1 de 10 porciones',
+  'harina', array['para llevar', 'rápido'], 25, 'normal',
+  true, true, false, true, false,
+  1, 'ocasional', null, true, true, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'dulce'::flavor, array['snack']::meal_category[], 30, false,
+  'cook'::prep_type, '10 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'galletitas-de-limon-y-ricota' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 10 porciones', null, 19, true, 0
+  from meals where slug = 'galletitas-de-limon-y-ricota' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'galletitas-de-limon-y-ricota' and m.profile_id is null and t.slug in ('media_tarde', 'normal', 'para_llevar', 'rapido', 'dulce', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Galletitas saladas de queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'galletitas-saladas-de-queso', 'Galletitas saladas de queso', 'Galletitas saladas de queso con harina, queso rallado, manteca; rinde 10 porciones.', 'snack', 'estimado',
+  13, 'estimacion', 'estimada', '1 de 10 porciones',
+  'harina', array['para llevar', 'rápido'], 25, 'normal',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'dulce'::flavor, array['snack']::meal_category[], 30, false,
+  'cook'::prep_type, '10 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'galletitas-saladas-de-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 10 porciones', null, 13, true, 0
+  from meals where slug = 'galletitas-saladas-de-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'galletitas-saladas-de-queso' and m.profile_id is null and t.slug in ('media_tarde', 'normal', 'para_llevar', 'rapido', 'dulce', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Bizcochitos caseros de queso y orégano
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'bizcochitos-caseros-de-queso-y-oregano', 'Bizcochitos caseros de queso y orégano', 'Bizcochitos caseros de queso y orégano con harina, queso rallado, manteca; rinde 10 porciones.', 'merienda', 'estimado',
+  16, 'estimacion', 'estimada', '1 de 10 porciones',
+  'harina', array['para llevar', 'casero'], 25, 'normal',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 35, false,
+  'cook'::prep_type, '10 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'bizcochitos-caseros-de-queso-y-oregano' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 10 porciones', null, 16, true, 0
+  from meals where slug = 'bizcochitos-caseros-de-queso-y-oregano' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'bizcochitos-caseros-de-queso-y-oregano' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'dulce', 'desayuno', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Budín de banana y nuez
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'budin-de-banana-y-nuez', 'Budín de banana y nuez', 'Budín de banana y nuez con banana, harina, huevo; rinde 10 porciones.', 'merienda', 'estimado',
+  30, 'estimacion', 'estimada', '1 de 10 porciones',
+  'banana', array['para llevar', 'casero'], 25, 'normal',
+  true, true, false, true, false,
+  2, 'ocasional', null, true, true, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 55, false,
+  'cook'::prep_type, '10 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'budin-de-banana-y-nuez' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 10 porciones', null, 30, true, 0
+  from meals where slug = 'budin-de-banana-y-nuez' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'budin-de-banana-y-nuez' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'dulce', 'desayuno', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Budín de limón y yogur
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'budin-de-limon-y-yogur', 'Budín de limón y yogur', 'Budín de limón y yogur con harina, huevo, yogur natural; rinde 10 porciones.', 'merienda', 'estimado',
+  27, 'estimacion', 'estimada', '1 de 10 porciones',
+  'harina', array['para llevar', 'casero'], 25, 'normal',
+  true, true, false, true, false,
+  2, 'ocasional', null, true, true, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 55, false,
+  'cook'::prep_type, '10 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'budin-de-limon-y-yogur' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 10 porciones', null, 27, true, 0
+  from meals where slug = 'budin-de-limon-y-yogur' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'budin-de-limon-y-yogur' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'dulce', 'desayuno', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Budín de manzana y canela
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'budin-de-manzana-y-canela', 'Budín de manzana y canela', 'Budín de manzana y canela con manzana, harina, huevo; rinde 10 porciones.', 'merienda', 'estimado',
+  28, 'estimacion', 'estimada', '1 de 10 porciones',
+  'manzana', array['para llevar', 'casero'], 25, 'normal',
+  true, true, false, true, false,
+  2, 'ocasional', null, true, true, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 55, false,
+  'cook'::prep_type, '10 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'budin-de-manzana-y-canela' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 10 porciones', null, 28, true, 0
+  from meals where slug = 'budin-de-manzana-y-canela' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'budin-de-manzana-y-canela' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'dulce', 'desayuno', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Budín de zanahoria y naranja
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'budin-de-zanahoria-y-naranja', 'Budín de zanahoria y naranja', 'Budín de zanahoria y naranja con zanahoria, naranja, harina; rinde 10 porciones.', 'merienda', 'estimado',
+  29, 'estimacion', 'estimada', '1 de 10 porciones',
+  'zanahoria', array['para llevar', 'casero'], 25, 'normal',
+  true, true, false, true, false,
+  2, 'ocasional', null, true, true, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 55, false,
+  'cook'::prep_type, '10 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'budin-de-zanahoria-y-naranja' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 10 porciones', null, 29, true, 0
+  from meals where slug = 'budin-de-zanahoria-y-naranja' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'budin-de-zanahoria-y-naranja' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'dulce', 'desayuno', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Budín de chocolate y ricota
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'budin-de-chocolate-y-ricota', 'Budín de chocolate y ricota', 'Budín de chocolate y ricota con ricota, harina, cacao amargo; rinde 10 porciones.', 'merienda', 'estimado',
+  26, 'estimacion', 'estimada', '1 de 10 porciones',
+  'ricota', array['para llevar', 'casero'], 25, 'normal',
+  true, true, false, true, false,
+  2, 'ocasional', null, true, true, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 55, false,
+  'cook'::prep_type, '10 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'budin-de-chocolate-y-ricota' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 10 porciones', null, 26, true, 0
+  from meals where slug = 'budin-de-chocolate-y-ricota' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'budin-de-chocolate-y-ricota' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'dulce', 'desayuno', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Budín de pera y almendras
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'budin-de-pera-y-almendras', 'Budín de pera y almendras', 'Budín de pera y almendras con pera, harina, almendra; rinde 10 porciones.', 'merienda', 'estimado',
+  28, 'estimacion', 'estimada', '1 de 10 porciones',
+  'pera', array['para llevar', 'casero'], 25, 'normal',
+  true, true, false, true, false,
+  2, 'ocasional', null, true, true, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 55, false,
+  'cook'::prep_type, '10 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'budin-de-pera-y-almendras' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 10 porciones', null, 28, true, 0
+  from meals where slug = 'budin-de-pera-y-almendras' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'budin-de-pera-y-almendras' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'dulce', 'desayuno', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Budín salado de verduras y queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'budin-salado-de-verduras-y-queso', 'Budín salado de verduras y queso', 'Budín salado de verduras y queso con zapallito, zanahoria, queso; rinde 6 porciones.', 'almuerzo', 'estimado',
+  24, 'estimacion', 'estimada', '1 de 6 porciones',
+  'zapallito', array['para llevar', 'casero'], 25, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'budin-salado-de-verduras-y-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 24, true, 0
+  from meals where slug = 'budin-salado-de-verduras-y-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'budin-salado-de-verduras-y-queso' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Budín salado de atún y choclo
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'budin-salado-de-atun-y-choclo', 'Budín salado de atún y choclo', 'Budín salado de atún y choclo con atún, choclo, huevo; rinde 6 porciones.', 'almuerzo', 'estimado',
+  23, 'estimacion', 'estimada', '1 de 6 porciones',
+  'atún', array['para llevar', 'casero'], 25, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'budin-salado-de-atun-y-choclo' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 23, true, 0
+  from meals where slug = 'budin-salado-de-atun-y-choclo' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'budin-salado-de-atun-y-choclo' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Barritas caseras de avena y maní
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'barritas-caseras-de-avena-y-mani', 'Barritas caseras de avena y maní', 'Barritas caseras de avena y maní con avena, maní, miel; rinde 10 porciones.', 'snack', 'estimado',
+  22, 'estimacion', 'estimada', '1 de 10 porciones',
+  'avena', array['para llevar', 'rápido'], 15, 'normal',
+  true, false, false, false, false,
+  1, 'habitual', null, true, true, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'dulce'::flavor, array['snack']::meal_category[], 140, false,
+  'assemble'::prep_type, '10 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'barritas-caseras-de-avena-y-mani' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 10 porciones', null, 22, true, 0
+  from meals where slug = 'barritas-caseras-de-avena-y-mani' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'barritas-caseras-de-avena-y-mani' and m.profile_id is null and t.slug in ('media_tarde', 'normal', 'para_llevar', 'rapido', 'dulce')
+  on conflict do nothing;
+
+-- Barritas de banana, avena y nueces
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'barritas-de-banana-avena-y-nueces', 'Barritas de banana, avena y nueces', 'Barritas de banana, avena y nueces con banana, avena, nuez; rinde 10 porciones.', 'snack', 'estimado',
+  22, 'estimacion', 'estimada', '1 de 10 porciones',
+  'banana', array['para llevar', 'rápido'], 15, 'normal',
+  true, false, false, true, false,
+  1, 'habitual', null, true, true, null,
+  false, '{}', 2, true, true,
+  'casera'::food_origin, 'dulce'::flavor, array['snack']::meal_category[], 150, false,
+  'assemble'::prep_type, '10 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'barritas-de-banana-avena-y-nueces' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 10 porciones', null, 22, true, 0
+  from meals where slug = 'barritas-de-banana-avena-y-nueces' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'barritas-de-banana-avena-y-nueces' and m.profile_id is null and t.slug in ('media_tarde', 'normal', 'para_llevar', 'rapido', 'dulce', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Bocaditos de yogur congelado y frutilla
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'bocaditos-de-yogur-congelado-y-frutilla', 'Bocaditos de yogur congelado y frutilla', 'Bocaditos de yogur congelado y frutilla con yogur natural, frutilla, chocolate; rinde 8 porciones.', 'snack', 'estimado',
+  9, 'estimacion', 'estimada', '1 de 8 porciones',
+  'yogur natural', array['para llevar', 'rápido'], 15, 'normal',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['snack']::meal_category[], 135, false,
+  'assemble'::prep_type, '8 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'bocaditos-de-yogur-congelado-y-frutilla' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 8 porciones', null, 9, true, 0
+  from meals where slug = 'bocaditos-de-yogur-congelado-y-frutilla' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'bocaditos-de-yogur-congelado-y-frutilla' and m.profile_id is null and t.slug in ('media_tarde', 'normal', 'para_llevar', 'rapido', 'dulce')
+  on conflict do nothing;
+
+-- Vasitos de ricota, fruta y cacao
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'vasitos-de-ricota-fruta-y-cacao', 'Vasitos de ricota, fruta y cacao', 'Vasitos de ricota, fruta y cacao con ricota, banana, cacao amargo; rinde 4 porciones.', 'snack', 'estimado',
+  13, 'estimacion', 'estimada', '1 de 4 porciones',
+  'ricota', array['para llevar', 'rápido'], 10, 'normal',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['snack']::meal_category[], 10, false,
+  'assemble'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'vasitos-de-ricota-fruta-y-cacao' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 13, true, 0
+  from meals where slug = 'vasitos-de-ricota-fruta-y-cacao' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'vasitos-de-ricota-fruta-y-cacao' and m.profile_id is null and t.slug in ('media_tarde', 'normal', 'para_llevar', 'rapido', 'dulce')
+  on conflict do nothing;
+
+-- Pera asada con ricota y nueces
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pera-asada-con-ricota-y-nueces', 'Pera asada con ricota y nueces', 'Pera asada con ricota y nueces con pera, ricota, nuez; rinde 4 porciones.', 'merienda', 'estimado',
+  15, 'estimacion', 'estimada', '1 de 4 porciones',
+  'pera', array['en casa', 'rápido'], 25, 'normal',
+  false, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 30, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pera-asada-con-ricota-y-nueces' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 15, true, 0
+  from meals where slug = 'pera-asada-con-ricota-y-nueces' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pera-asada-con-ricota-y-nueces' and m.profile_id is null and t.slug in ('merienda', 'normal', 'casa', 'rapido', 'salado', 'desayuno')
+  on conflict do nothing;
+
+-- Manzana al horno con canela y yogur
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'manzana-al-horno-con-canela-y-yogur', 'Manzana al horno con canela y yogur', 'Manzana al horno con canela y yogur con manzana, yogur natural, canela; rinde 4 porciones.', 'merienda', 'estimado',
+  18, 'estimacion', 'estimada', '1 de 4 porciones',
+  'manzana', array['en casa', 'rápido'], 25, 'normal',
+  false, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 30, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'manzana-al-horno-con-canela-y-yogur' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 18, true, 0
+  from meals where slug = 'manzana-al-horno-con-canela-y-yogur' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'manzana-al-horno-con-canela-y-yogur' and m.profile_id is null and t.slug in ('merienda', 'normal', 'casa', 'rapido', 'salado', 'desayuno')
+  on conflict do nothing;
+
+-- Ensalada de frutas y yogur en frasco
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'ensalada-de-frutas-y-yogur-en-frasco', 'Ensalada de frutas y yogur en frasco', 'Ensalada de frutas y yogur en frasco con banana, manzana, frutilla; rinde 4 porciones.', 'snack', 'estimado',
+  22, 'estimacion', 'estimada', '1 de 4 porciones',
+  'banana', array['para llevar', 'rápido'], 12, 'normal',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['snack']::meal_category[], 12, false,
+  'assemble'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-de-frutas-y-yogur-en-frasco' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 22, true, 0
+  from meals where slug = 'ensalada-de-frutas-y-yogur-en-frasco' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'ensalada-de-frutas-y-yogur-en-frasco' and m.profile_id is null and t.slug in ('media_tarde', 'normal', 'para_llevar', 'rapido', 'salado')
+  on conflict do nothing;
+
+-- Vaso de yogur, pera y nueces
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'vaso-de-yogur-pera-y-nueces', 'Vaso de yogur, pera y nueces', 'Vaso de yogur, pera y nueces con yogur natural, pera, nuez; rinde 2 porciones.', 'desayuno', 'estimado',
+  22, 'estimacion', 'estimada', '1 de 2 porciones',
+  'yogur natural', array['para llevar', 'rápido'], 8, 'normal',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 8, false,
+  'assemble'::prep_type, '2 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'vaso-de-yogur-pera-y-nueces' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 2 porciones', null, 22, true, 0
+  from meals where slug = 'vaso-de-yogur-pera-y-nueces' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'vaso-de-yogur-pera-y-nueces' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'para_llevar', 'rapido', 'dulce', 'merienda')
+  on conflict do nothing;
+
+-- Yogur con banana y mantequilla de maní
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'yogur-con-banana-y-mantequilla-de-mani', 'Yogur con banana y mantequilla de maní', 'Yogur con banana y mantequilla de maní con yogur natural, banana, mantequilla de maní; rinde 2 porciones.', 'desayuno', 'estimado',
+  33, 'estimacion', 'estimada', '1 de 2 porciones',
+  'yogur natural', array['para llevar', 'rápido'], 8, 'normal',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 8, false,
+  'assemble'::prep_type, '2 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'yogur-con-banana-y-mantequilla-de-mani' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 2 porciones', null, 33, true, 0
+  from meals where slug = 'yogur-con-banana-y-mantequilla-de-mani' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'yogur-con-banana-y-mantequilla-de-mani' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'para_llevar', 'rapido', 'dulce', 'merienda')
+  on conflict do nothing;
+
+-- Ricota batida con durazno y canela
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'ricota-batida-con-durazno-y-canela', 'Ricota batida con durazno y canela', 'Ricota batida con durazno y canela con ricota, durazno, canela; rinde 2 porciones.', 'merienda', 'estimado',
+  20, 'estimacion', 'estimada', '1 de 2 porciones',
+  'ricota', array['para llevar', 'rápido'], 8, 'normal',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 8, false,
+  'assemble'::prep_type, '2 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'ricota-batida-con-durazno-y-canela' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 2 porciones', null, 20, true, 0
+  from meals where slug = 'ricota-batida-con-durazno-y-canela' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'ricota-batida-con-durazno-y-canela' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'rapido', 'dulce', 'desayuno')
+  on conflict do nothing;
+
+-- Postre de yogur, frutilla y chocolate
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'postre-de-yogur-frutilla-y-chocolate', 'Postre de yogur, frutilla y chocolate', 'Postre de yogur, frutilla y chocolate con yogur natural, frutilla, chocolate; rinde 4 porciones.', 'merienda', 'estimado',
+  14, 'estimacion', 'estimada', '1 de 4 porciones',
+  'yogur natural', array['para llevar', 'rápido'], 10, 'normal',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 10, false,
+  'assemble'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'postre-de-yogur-frutilla-y-chocolate' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 14, true, 0
+  from meals where slug = 'postre-de-yogur-frutilla-y-chocolate' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'postre-de-yogur-frutilla-y-chocolate' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'rapido', 'dulce', 'desayuno')
+  on conflict do nothing;
+
+-- Pochoclo casero con maní tostado
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pochoclo-casero-con-mani-tostado', 'Pochoclo casero con maní tostado', 'Pochoclo casero con maní tostado con maíz para pochoclo, maní, aceite; rinde 4 porciones.', 'snack', 'estimado',
+  20, 'estimacion', 'estimada', '1 de 4 porciones',
+  'maíz para pochoclo', array['para llevar', 'rápido'], 15, 'normal',
+  true, false, true, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['snack']::meal_category[], 15, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pochoclo-casero-con-mani-tostado' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 20, true, 0
+  from meals where slug = 'pochoclo-casero-con-mani-tostado' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pochoclo-casero-con-mani-tostado' and m.profile_id is null and t.slug in ('media_tarde', 'normal', 'para_llevar', 'rapido', 'salado')
+  on conflict do nothing;
+
+-- Pollo salteado con berenjena y arroz
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pollo-salteado-con-berenjena-y-arroz', 'Pollo salteado con berenjena y arroz', 'Pollo salteado con berenjena y arroz con pollo, berenjena, arroz; rinde 4 porciones.', 'almuerzo', 'estimado',
+  42, 'estimacion', 'estimada', '1 de 4 porciones',
+  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pollo-salteado-con-berenjena-y-arroz' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 42, true, 0
+  from meals where slug = 'pollo-salteado-con-berenjena-y-arroz' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pollo-salteado-con-berenjena-y-arroz' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Pollo con champiñones y puré de papa
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pollo-con-champinones-y-pure-de-papa', 'Pollo con champiñones y puré de papa', 'Pollo con champiñones y puré de papa con pollo, champiñones, papa; rinde 4 porciones.', 'cena', 'estimado',
+  27, 'estimacion', 'estimada', '1 de 4 porciones',
+  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 40, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pollo-con-champinones-y-pure-de-papa' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 27, true, 0
+  from meals where slug = 'pollo-con-champinones-y-pure-de-papa' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pollo-con-champinones-y-pure-de-papa' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Cerdo salteado con batata y cebolla
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'cerdo-salteado-con-batata-y-cebolla', 'Cerdo salteado con batata y cebolla', 'Cerdo salteado con batata y cebolla con cerdo, batata, cebolla; rinde 4 porciones.', 'cena', 'estimado',
+  28, 'estimacion', 'estimada', '1 de 4 porciones',
+  'cerdo', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 40, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'cerdo-salteado-con-batata-y-cebolla' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 28, true, 0
+  from meals where slug = 'cerdo-salteado-con-batata-y-cebolla' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'cerdo-salteado-con-batata-y-cebolla' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Bife a la criolla con arroz
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'bife-a-la-criolla-con-arroz', 'Bife a la criolla con arroz', 'Bife a la criolla con arroz con lomo, arroz, tomate; rinde 4 porciones.', 'almuerzo', 'estimado',
+  43, 'estimacion', 'estimada', '1 de 4 porciones',
+  'lomo', array['para llevar', 'casero'], 25, 'potente',
+  true, false, true, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'bife-a-la-criolla-con-arroz' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 43, true, 0
+  from meals where slug = 'bife-a-la-criolla-con-arroz' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'bife-a-la-criolla-con-arroz' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Milanesa de pollo a la napolitana
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'milanesa-de-pollo-a-la-napolitana', 'Milanesa de pollo a la napolitana', 'Milanesa de pollo a la napolitana con pollo, huevo, pan rallado; rinde 4 porciones.', 'cena', 'estimado',
+  27, 'estimacion', 'estimada', '1 de 4 porciones',
+  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'milanesa-de-pollo-a-la-napolitana' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 27, true, 0
+  from meals where slug = 'milanesa-de-pollo-a-la-napolitana' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'milanesa-de-pollo-a-la-napolitana' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Croquetas de arroz, queso y espinaca
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'croquetas-de-arroz-queso-y-espinaca', 'Croquetas de arroz, queso y espinaca', 'Croquetas de arroz, queso y espinaca con arroz, espinaca, queso; rinde 4 porciones.', 'almuerzo', 'estimado',
+  46, 'estimacion', 'estimada', '1 de 4 porciones',
+  'arroz', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 40, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'croquetas-de-arroz-queso-y-espinaca' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 46, true, 0
+  from meals where slug = 'croquetas-de-arroz-queso-y-espinaca' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'croquetas-de-arroz-queso-y-espinaca' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Croquetas de papa y atún
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'croquetas-de-papa-y-atun', 'Croquetas de papa y atún', 'Croquetas de papa y atún con papa, atún, huevo; rinde 4 porciones.', 'almuerzo', 'estimado',
+  43, 'estimacion', 'estimada', '1 de 4 porciones',
+  'papa', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 40, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'croquetas-de-papa-y-atun' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 43, true, 0
+  from meals where slug = 'croquetas-de-papa-y-atun' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'croquetas-de-papa-y-atun' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Croquetas de calabaza y ricota
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'croquetas-de-calabaza-y-ricota', 'Croquetas de calabaza y ricota', 'Croquetas de calabaza y ricota con calabaza, ricota, huevo; rinde 4 porciones.', 'cena', 'estimado',
+  32, 'estimacion', 'estimada', '1 de 4 porciones',
+  'calabaza', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 40, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'croquetas-de-calabaza-y-ricota' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 32, true, 0
+  from meals where slug = 'croquetas-de-calabaza-y-ricota' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'croquetas-de-calabaza-y-ricota' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Pizzetas de berenjena con muzzarella
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pizzetas-de-berenjena-con-muzzarella', 'Pizzetas de berenjena con muzzarella', 'Pizzetas de berenjena con muzzarella con berenjena, tomate, muzzarella; rinde 4 porciones.', 'cena', 'estimado',
+  21, 'estimacion', 'estimada', '1 de 4 porciones',
+  'berenjena', array['para llevar', 'rápido'], 25, 'potente',
+  true, false, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pizzetas-de-berenjena-con-muzzarella' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 21, true, 0
+  from meals where slug = 'pizzetas-de-berenjena-con-muzzarella' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pizzetas-de-berenjena-con-muzzarella' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'rapido', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Pizza casera de cebolla y queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pizza-casera-de-cebolla-y-queso', 'Pizza casera de cebolla y queso', 'Pizza casera de cebolla y queso con masa de pizza, cebolla, muzzarella; rinde 6 porciones.', 'cena', 'estimado',
+  30, 'estimacion', 'estimada', '1 de 6 porciones',
+  'masa de pizza', array['en casa', 'casero'], 25, 'potente',
+  false, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 40, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pizza-casera-de-cebolla-y-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 30, true, 0
+  from meals where slug = 'pizza-casera-de-cebolla-y-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pizza-casera-de-cebolla-y-queso' and m.profile_id is null and t.slug in ('cena', 'potente', 'casa', 'salado', 'almuerzo')
+  on conflict do nothing;
+
+-- Pizza casera de tomate, atún y aceitunas
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pizza-casera-de-tomate-atun-y-aceitunas', 'Pizza casera de tomate, atún y aceitunas', 'Pizza casera de tomate, atún y aceitunas con masa de pizza, salsa de tomate, atún; rinde 6 porciones.', 'cena', 'estimado',
+  27, 'estimacion', 'estimada', '1 de 6 porciones',
+  'masa de pizza', array['en casa', 'casero'], 25, 'potente',
+  false, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 40, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pizza-casera-de-tomate-atun-y-aceitunas' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 27, true, 0
+  from meals where slug = 'pizza-casera-de-tomate-atun-y-aceitunas' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pizza-casera-de-tomate-atun-y-aceitunas' and m.profile_id is null and t.slug in ('cena', 'potente', 'casa', 'salado', 'almuerzo')
+  on conflict do nothing;
+
+-- Pizza de pollo y morrón
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pizza-de-pollo-y-morron', 'Pizza de pollo y morrón', 'Pizza de pollo y morrón con masa de pizza, pollo, morrón; rinde 6 porciones.', 'cena', 'estimado',
+  28, 'estimacion', 'estimada', '1 de 6 porciones',
+  'masa de pizza', array['en casa', 'casero'], 25, 'potente',
+  false, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pizza-de-pollo-y-morron' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 28, true, 0
+  from meals where slug = 'pizza-de-pollo-y-morron' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pizza-de-pollo-y-morron' and m.profile_id is null and t.slug in ('cena', 'potente', 'casa', 'salado', 'almuerzo')
+  on conflict do nothing;
+
+-- Calzone de espinaca y ricota
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'calzone-de-espinaca-y-ricota', 'Calzone de espinaca y ricota', 'Calzone de espinaca y ricota con masa de pizza, espinaca, ricota; rinde 6 porciones.', 'cena', 'estimado',
+  27, 'estimacion', 'estimada', '1 de 6 porciones',
+  'masa de pizza', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'calzone-de-espinaca-y-ricota' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 27, true, 0
+  from meals where slug = 'calzone-de-espinaca-y-ricota' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'calzone-de-espinaca-y-ricota' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Canelones de acelga y ricota
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'canelones-de-acelga-y-ricota', 'Canelones de acelga y ricota', 'Canelones de acelga y ricota con harina, huevo, leche; rinde 6 porciones.', 'almuerzo', 'estimado',
+  34, 'estimacion', 'estimada', '1 de 6 porciones',
+  'harina', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'canelones-de-acelga-y-ricota' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 34, true, 0
+  from meals where slug = 'canelones-de-acelga-y-ricota' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'canelones-de-acelga-y-ricota' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Canelones de pollo y verduras
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'canelones-de-pollo-y-verduras', 'Canelones de pollo y verduras', 'Canelones de pollo y verduras con harina, huevo, leche; rinde 6 porciones.', 'almuerzo', 'estimado',
+  33, 'estimacion', 'estimada', '1 de 6 porciones',
+  'harina', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'canelones-de-pollo-y-verduras' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 33, true, 0
+  from meals where slug = 'canelones-de-pollo-y-verduras' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'canelones-de-pollo-y-verduras' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Lasaña de berenjena con carne
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'lasana-de-berenjena-con-carne', 'Lasaña de berenjena con carne', 'Lasaña de berenjena con carne con berenjena, carne picada, salsa de tomate; rinde 6 porciones.', 'cena', 'estimado',
+  9, 'estimacion', 'estimada', '1 de 6 porciones',
+  'berenjena', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'lasana-de-berenjena-con-carne' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 9, true, 0
+  from meals where slug = 'lasana-de-berenjena-con-carne' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'lasana-de-berenjena-con-carne' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Lasaña de verduras y ricota
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'lasana-de-verduras-y-ricota', 'Lasaña de verduras y ricota', 'Lasaña de verduras y ricota con berenjena, zapallito, espinaca; rinde 6 porciones.', 'cena', 'estimado',
+  11, 'estimacion', 'estimada', '1 de 6 porciones',
+  'berenjena', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, true,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'lasana-de-verduras-y-ricota' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 11, true, 0
+  from meals where slug = 'lasana-de-verduras-y-ricota' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'lasana-de-verduras-y-ricota' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Tacos de pollo con repollo y yogur
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tacos-de-pollo-con-repollo-y-yogur', 'Tacos de pollo con repollo y yogur', 'Tacos de pollo con repollo y yogur con tortilla de trigo, pollo, repollo; rinde 4 porciones.', 'almuerzo', 'estimado',
+  32, 'estimacion', 'estimada', '1 de 4 porciones',
+  'tortilla de trigo', array['para llevar', 'rápido'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
+  'assemble'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tacos-de-pollo-con-repollo-y-yogur' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 32, true, 0
+  from meals where slug = 'tacos-de-pollo-con-repollo-y-yogur' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tacos-de-pollo-con-repollo-y-yogur' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Tacos de carne y porotos
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tacos-de-carne-y-porotos', 'Tacos de carne y porotos', 'Tacos de carne y porotos con tortilla de trigo, carne picada, porotos cocidos; rinde 4 porciones.', 'almuerzo', 'estimado',
+  43, 'estimacion', 'estimada', '1 de 4 porciones',
+  'tortilla de trigo', array['para llevar', 'casero'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'assemble'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tacos-de-carne-y-porotos' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 43, true, 0
+  from meals where slug = 'tacos-de-carne-y-porotos' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tacos-de-carne-y-porotos' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Tacos de merluza con ensalada de repollo
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tacos-de-merluza-con-ensalada-de-repollo', 'Tacos de merluza con ensalada de repollo', 'Tacos de merluza con ensalada de repollo con tortilla de trigo, merluza, repollo; rinde 4 porciones.', 'almuerzo', 'estimado',
+  33, 'estimacion', 'estimada', '1 de 4 porciones',
+  'tortilla de trigo', array['para llevar', 'casero'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'assemble'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tacos-de-merluza-con-ensalada-de-repollo' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 33, true, 0
+  from meals where slug = 'tacos-de-merluza-con-ensalada-de-repollo' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tacos-de-merluza-con-ensalada-de-repollo' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Arroz al horno con verduras y queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'arroz-al-horno-con-verduras-y-queso', 'Arroz al horno con verduras y queso', 'Arroz al horno con verduras y queso con arroz, zapallito, zanahoria; rinde 4 porciones.', 'cena', 'estimado',
+  51, 'estimacion', 'estimada', '1 de 4 porciones',
+  'arroz', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 40, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'arroz-al-horno-con-verduras-y-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 51, true, 0
+  from meals where slug = 'arroz-al-horno-con-verduras-y-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'arroz-al-horno-con-verduras-y-queso' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Arroz con cerdo, arvejas y morrón
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'arroz-con-cerdo-arvejas-y-morron', 'Arroz con cerdo, arvejas y morrón', 'Arroz con cerdo, arvejas y morrón con arroz, cerdo, arvejas; rinde 4 porciones.', 'almuerzo', 'estimado',
+  54, 'estimacion', 'estimada', '1 de 4 porciones',
+  'arroz', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'arroz-con-cerdo-arvejas-y-morron' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 54, true, 0
+  from meals where slug = 'arroz-con-cerdo-arvejas-y-morron' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'arroz-con-cerdo-arvejas-y-morron' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Ñoquis de calabaza con salsa roja
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'noquis-de-calabaza-con-salsa-roja', 'Ñoquis de calabaza con salsa roja', 'Ñoquis de calabaza con salsa roja con calabaza, harina, huevo; rinde 5 porciones.', 'cena', 'estimado',
+  48, 'estimacion', 'estimada', '1 de 5 porciones',
+  'calabaza', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 60, false,
+  'cook'::prep_type, '5 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'noquis-de-calabaza-con-salsa-roja' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 5 porciones', null, 48, true, 0
+  from meals where slug = 'noquis-de-calabaza-con-salsa-roja' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'noquis-de-calabaza-con-salsa-roja' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Ñoquis de papa caseros con salsa fileto
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'noquis-de-papa-caseros-con-salsa-fileto', 'Ñoquis de papa caseros con salsa fileto', 'Ñoquis de papa caseros con salsa fileto con papa, harina, huevo; rinde 5 porciones.', 'cena', 'estimado',
+  69, 'estimacion', 'estimada', '1 de 5 porciones',
+  'papa', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 65, false,
+  'cook'::prep_type, '5 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'noquis-de-papa-caseros-con-salsa-fileto' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 5 porciones', null, 69, true, 0
+  from meals where slug = 'noquis-de-papa-caseros-con-salsa-fileto' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'noquis-de-papa-caseros-con-salsa-fileto' and m.profile_id is null and t.slug in ('cena', 'potente', 'para_llevar', 'salado', 'almuerzo', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Pasta con salsa de porotos y tomate
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pasta-con-salsa-de-porotos-y-tomate', 'Pasta con salsa de porotos y tomate', 'Pasta con salsa de porotos y tomate con fideos, porotos cocidos, salsa de tomate; rinde 4 porciones.', 'almuerzo', 'estimado',
+  80, 'estimacion', 'estimada', '1 de 4 porciones',
+  'fideos', array['para llevar', 'casero'], 25, 'potente',
+  true, false, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pasta-con-salsa-de-porotos-y-tomate' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 80, true, 0
+  from meals where slug = 'pasta-con-salsa-de-porotos-y-tomate' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pasta-con-salsa-de-porotos-y-tomate' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Milanesas de lentejas con puré de batata
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'milanesas-de-lentejas-con-pure-de-batata', 'Milanesas de lentejas con puré de batata', 'Milanesas de lentejas con puré de batata con lentejas cocidas, batata, huevo; rinde 4 porciones.', 'almuerzo', 'estimado',
+  63, 'estimacion', 'estimada', '1 de 4 porciones',
+  'lentejas cocidas', array['para llevar', 'casero'], 25, 'potente',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
+  'cook'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'milanesas-de-lentejas-con-pure-de-batata' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 63, true, 0
+  from meals where slug = 'milanesas-de-lentejas-con-pure-de-batata' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'milanesas-de-lentejas-con-pure-de-batata' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Tarta de remolacha, ricota y nuez
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tarta-de-remolacha-ricota-y-nuez', 'Tarta de remolacha, ricota y nuez', 'Tarta de remolacha, ricota y nuez con masa de tarta, remolacha, ricota; rinde 6 porciones.', 'almuerzo', 'estimado',
+  27, 'estimacion', 'estimada', '1 de 6 porciones',
+  'masa de tarta', array['para llevar', 'casero'], 25, 'potente',
+  true, true, false, true, true,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tarta-de-remolacha-ricota-y-nuez' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 27, true, 0
+  from meals where slug = 'tarta-de-remolacha-ricota-y-nuez' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tarta-de-remolacha-ricota-y-nuez' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Tarta de pollo, puerro y queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tarta-de-pollo-puerro-y-queso', 'Tarta de pollo, puerro y queso', 'Tarta de pollo, puerro y queso con masa de tarta, pollo, cebolla; rinde 6 porciones.', 'almuerzo', 'estimado',
+  22, 'estimacion', 'estimada', '1 de 6 porciones',
+  'masa de tarta', array['para llevar', 'casero'], 25, 'potente',
+  true, true, false, true, true,
+  2, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 55, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tarta-de-pollo-puerro-y-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 22, true, 0
+  from meals where slug = 'tarta-de-pollo-puerro-y-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tarta-de-pollo-puerro-y-queso' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Tarta de tomate, atún y huevo
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tarta-de-tomate-atun-y-huevo', 'Tarta de tomate, atún y huevo', 'Tarta de tomate, atún y huevo con masa de tarta, tomate, atún; rinde 6 porciones.', 'almuerzo', 'estimado',
+  21, 'estimacion', 'estimada', '1 de 6 porciones',
+  'masa de tarta', array['para llevar', 'casero'], 25, 'potente',
+  true, true, false, true, true,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 50, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tarta-de-tomate-atun-y-huevo' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 21, true, 0
+  from meals where slug = 'tarta-de-tomate-atun-y-huevo' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tarta-de-tomate-atun-y-huevo' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Ensalada de arroz integral, garbanzos y verduras
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'ensalada-de-arroz-integral-garbanzos-y-verduras', 'Ensalada de arroz integral, garbanzos y verduras', 'Ensalada de arroz integral, garbanzos y verduras con arroz, garbanzos cocidos, pepino; rinde 4 porciones.', 'almuerzo', 'estimado',
+  52, 'estimacion', 'estimada', '1 de 4 porciones',
+  'arroz', array['para llevar', 'rápido'], 15, 'potente',
+  true, false, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
+  'assemble'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-de-arroz-integral-garbanzos-y-verduras' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 52, true, 0
+  from meals where slug = 'ensalada-de-arroz-integral-garbanzos-y-verduras' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'ensalada-de-arroz-integral-garbanzos-y-verduras' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'rapido', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Ensalada tibia de calabaza, pollo y lentejas
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'ensalada-tibia-de-calabaza-pollo-y-lentejas', 'Ensalada tibia de calabaza, pollo y lentejas', 'Ensalada tibia de calabaza, pollo y lentejas con calabaza, pollo, lentejas cocidas; rinde 4 porciones.', 'almuerzo', 'estimado',
+  20, 'estimacion', 'estimada', '1 de 4 porciones',
+  'calabaza', array['para llevar', 'casero'], 15, 'potente',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
+  'assemble'::prep_type, '4 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-tibia-de-calabaza-pollo-y-lentejas' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 4 porciones', null, 20, true, 0
+  from meals where slug = 'ensalada-tibia-de-calabaza-pollo-y-lentejas' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'ensalada-tibia-de-calabaza-pollo-y-lentejas' and m.profile_id is null and t.slug in ('almuerzo', 'potente', 'para_llevar', 'salado', 'cena', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Bocaditos de garbanzos y zanahoria en air fryer
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'bocaditos-de-garbanzos-y-zanahoria-en-air-fryer', 'Bocaditos de garbanzos y zanahoria en air fryer', 'Bocaditos de garbanzos y zanahoria en air fryer con garbanzos cocidos, zanahoria, huevo; rinde 8 porciones.', 'snack', 'estimado',
+  17, 'estimacion', 'estimada', '1 de 8 porciones',
+  'garbanzos cocidos', array['para llevar', 'rápido'], 25, 'normal',
+  true, true, true, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['snack']::meal_category[], 30, false,
+  'cook'::prep_type, '8 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'bocaditos-de-garbanzos-y-zanahoria-en-air-fryer' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 8 porciones', null, 17, true, 0
+  from meals where slug = 'bocaditos-de-garbanzos-y-zanahoria-en-air-fryer' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'bocaditos-de-garbanzos-y-zanahoria-en-air-fryer' and m.profile_id is null and t.slug in ('media_tarde', 'normal', 'para_llevar', 'rapido', 'salado', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Chipá casero de queso
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'chipa-casero-de-queso', 'Chipá casero de queso', 'Chipá casero de queso con almidón de mandioca, queso, huevo; rinde 12 porciones.', 'merienda', 'estimado',
+  19, 'estimacion', 'estimada', '1 de 12 porciones',
+  'almidón de mandioca', array['para llevar', 'casero'], 25, 'normal',
+  true, true, false, true, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 35, false,
+  'cook'::prep_type, '12 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'chipa-casero-de-queso' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 12 porciones', null, 19, true, 0
+  from meals where slug = 'chipa-casero-de-queso' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'chipa-casero-de-queso' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'salado', 'desayuno', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Bizcochuelo casero de naranja
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'bizcochuelo-casero-de-naranja', 'Bizcochuelo casero de naranja', 'Bizcochuelo casero de naranja con harina, naranja, huevo; rinde 10 porciones.', 'merienda', 'estimado',
+  31, 'estimacion', 'estimada', '1 de 10 porciones',
+  'harina', array['para llevar', 'casero'], 25, 'normal',
+  true, true, false, true, false,
+  1, 'ocasional', null, true, true, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 50, false,
+  'cook'::prep_type, '10 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'bizcochuelo-casero-de-naranja' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 10 porciones', null, 31, true, 0
+  from meals where slug = 'bizcochuelo-casero-de-naranja' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'bizcochuelo-casero-de-naranja' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'dulce', 'desayuno', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Torta húmeda de manzana y yogur
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'torta-humeda-de-manzana-y-yogur', 'Torta húmeda de manzana y yogur', 'Torta húmeda de manzana y yogur con manzana, harina, yogur natural; rinde 10 porciones.', 'merienda', 'estimado',
+  30, 'estimacion', 'estimada', '1 de 10 porciones',
+  'manzana', array['para llevar', 'casero'], 25, 'normal',
+  true, true, false, true, false,
+  2, 'ocasional', null, true, true, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 55, false,
+  'cook'::prep_type, '10 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'torta-humeda-de-manzana-y-yogur' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 10 porciones', null, 30, true, 0
+  from meals where slug = 'torta-humeda-de-manzana-y-yogur' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'torta-humeda-de-manzana-y-yogur' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'dulce', 'desayuno', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Tostadas con hummus y tomate
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tostadas-con-hummus-y-tomate', 'Tostadas con hummus y tomate', 'Tostadas con hummus y tomate con pan, garbanzos cocidos, tomate; rinde 2 porciones.', 'desayuno', 'estimado',
+  55, 'estimacion', 'estimada', '1 de 2 porciones',
+  'pan', array['para llevar', 'rápido'], 12, 'normal',
+  true, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 12, false,
+  'assemble'::prep_type, '2 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tostadas-con-hummus-y-tomate' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 2 porciones', null, 55, true, 0
+  from meals where slug = 'tostadas-con-hummus-y-tomate' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tostadas-con-hummus-y-tomate' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'para_llevar', 'rapido', 'salado', 'merienda')
+  on conflict do nothing;
+
+-- Tostadas de ricota con pera y canela
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'tostadas-de-ricota-con-pera-y-canela', 'Tostadas de ricota con pera y canela', 'Tostadas de ricota con pera y canela con pan, ricota, pera; rinde 2 porciones.', 'desayuno', 'estimado',
+  47, 'estimacion', 'estimada', '1 de 2 porciones',
+  'pan', array['para llevar', 'rápido'], 10, 'normal',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 10, false,
+  'assemble'::prep_type, '2 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'tostadas-de-ricota-con-pera-y-canela' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 2 porciones', null, 47, true, 0
+  from meals where slug = 'tostadas-de-ricota-con-pera-y-canela' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'tostadas-de-ricota-con-pera-y-canela' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'para_llevar', 'rapido', 'salado', 'merienda')
+  on conflict do nothing;
+
+-- Pan árabe con huevo y tomate
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pan-arabe-con-huevo-y-tomate', 'Pan árabe con huevo y tomate', 'Pan árabe con huevo y tomate con tortilla de trigo, huevo, tomate; rinde 2 porciones.', 'desayuno', 'estimado',
+  31, 'estimacion', 'estimada', '1 de 2 porciones',
+  'tortilla de trigo', array['para llevar', 'rápido'], 15, 'normal',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 15, false,
+  'assemble'::prep_type, '2 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pan-arabe-con-huevo-y-tomate' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 2 porciones', null, 31, true, 0
+  from meals where slug = 'pan-arabe-con-huevo-y-tomate' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pan-arabe-con-huevo-y-tomate' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'para_llevar', 'rapido', 'salado', 'merienda')
+  on conflict do nothing;
+
+-- Pan con mantequilla de maní y frutilla
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pan-con-mantequilla-de-mani-y-frutilla', 'Pan con mantequilla de maní y frutilla', 'Pan con mantequilla de maní y frutilla con pan, mantequilla de maní, frutilla; rinde 2 porciones.', 'desayuno', 'estimado',
+  40, 'estimacion', 'estimada', '1 de 2 porciones',
+  'pan', array['para llevar', 'rápido'], 8, 'normal',
+  true, false, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 8, false,
+  'assemble'::prep_type, '2 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pan-con-mantequilla-de-mani-y-frutilla' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 2 porciones', null, 40, true, 0
+  from meals where slug = 'pan-con-mantequilla-de-mani-y-frutilla' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pan-con-mantequilla-de-mani-y-frutilla' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'para_llevar', 'rapido', 'salado', 'merienda')
+  on conflict do nothing;
+
+-- Sándwich de queso, palta y huevo duro
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'sandwich-de-queso-palta-y-huevo-duro', 'Sándwich de queso, palta y huevo duro', 'Sándwich de queso, palta y huevo duro con pan integral, queso, palta; rinde 2 porciones.', 'merienda', 'estimado',
+  27, 'estimacion', 'estimada', '1 de 2 porciones',
+  'pan integral', array['para llevar', 'rápido'], 15, 'normal',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 15, false,
+  'assemble'::prep_type, '2 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'sandwich-de-queso-palta-y-huevo-duro' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 2 porciones', null, 27, true, 0
+  from meals where slug = 'sandwich-de-queso-palta-y-huevo-duro' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'sandwich-de-queso-palta-y-huevo-duro' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'rapido', 'salado', 'desayuno')
+  on conflict do nothing;
+
+-- Yogur con manzana cocida y nueces
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'yogur-con-manzana-cocida-y-nueces', 'Yogur con manzana cocida y nueces', 'Yogur con manzana cocida y nueces con yogur natural, manzana, nuez; rinde 2 porciones.', 'desayuno', 'estimado',
+  28, 'estimacion', 'estimada', '1 de 2 porciones',
+  'yogur natural', array['para llevar', 'rápido'], 15, 'normal',
+  true, true, false, false, false,
+  1, 'habitual', null, true, false, null,
+  false, '{}', 2, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 15, false,
+  'assemble'::prep_type, '2 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'yogur-con-manzana-cocida-y-nueces' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 2 porciones', null, 28, true, 0
+  from meals where slug = 'yogur-con-manzana-cocida-y-nueces' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'yogur-con-manzana-cocida-y-nueces' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'para_llevar', 'rapido', 'dulce', 'merienda')
+  on conflict do nothing;
+
+-- Galletitas caseras de ricota y limón
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'galletitas-caseras-de-ricota-y-limon', 'Galletitas caseras de ricota y limón', 'Galletitas caseras de ricota y limón con ricota, harina, limón; rinde 10 porciones.', 'snack', 'estimado',
+  19, 'estimacion', 'estimada', '1 de 10 porciones',
+  'ricota', array['para llevar', 'rápido'], 25, 'normal',
+  true, true, false, true, false,
+  1, 'ocasional', null, true, true, null,
+  false, '{}', 1, true, true,
+  'casera'::food_origin, 'dulce'::flavor, array['snack']::meal_category[], 30, false,
+  'cook'::prep_type, '10 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'galletitas-caseras-de-ricota-y-limon' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 10 porciones', null, 19, true, 0
+  from meals where slug = 'galletitas-caseras-de-ricota-y-limon' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'galletitas-caseras-de-ricota-y-limon' and m.profile_id is null and t.slug in ('media_tarde', 'normal', 'para_llevar', 'rapido', 'dulce', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Pasta frola de membrillo por porción
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'pasta-frola-de-membrillo-por-porcion', 'Pasta frola de membrillo por porción', 'Pasta frola de membrillo por porción con harina, manteca, huevo; rinde 12 porciones.', 'merienda', 'estimado',
+  40, 'estimacion', 'estimada', '1 de 12 porciones',
+  'harina', array['para llevar', 'casero'], 25, 'normal',
+  true, true, true, true, false,
+  2, 'ocasional', null, true, true, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 55, false,
+  'cook'::prep_type, '12 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'pasta-frola-de-membrillo-por-porcion' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 12 porciones', null, 40, true, 0
+  from meals where slug = 'pasta-frola-de-membrillo-por-porcion' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'pasta-frola-de-membrillo-por-porcion' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'salado', 'desayuno', 'preparar_noche_anterior')
+  on conflict do nothing;
+
+-- Flan casero de huevo y leche
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'flan-casero-de-huevo-y-leche', 'Flan casero de huevo y leche', 'Flan casero de huevo y leche con leche, huevo, azúcar; rinde 6 porciones.', 'merienda', 'estimado',
+  22, 'estimacion', 'estimada', '1 de 6 porciones',
+  'leche', array['en casa', 'casero'], 25, 'normal',
+  false, false, false, false, false,
+  2, 'ocasional', null, true, true, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 55, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'flan-casero-de-huevo-y-leche' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 22, true, 0
+  from meals where slug = 'flan-casero-de-huevo-y-leche' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'flan-casero-de-huevo-y-leche' and m.profile_id is null and t.slug in ('merienda', 'normal', 'casa', 'dulce', 'desayuno')
+  on conflict do nothing;
+
+-- Arroz con leche y canela por porción
+insert into meals (
+  profile_id, slug, name, description, category, data_state,
+  carbs_total, carbs_source, carbs_confidence, portion,
+  main_ingredient, subcategories, prep_minutes, satiety,
+  portable, needs_cold, needs_reheat, make_night_before, freezable,
+  difficulty, freq, drink, everyday, added_sugar, notes,
+  buy_outside, venues, price_level, handheld, carbs_from_items,
+  origin, flavor, moments, total_minutes, is_drink,
+  prep_type, yields,
+  source_name
+) values (
+  null, 'arroz-con-leche-y-canela-por-porcion', 'Arroz con leche y canela por porción', 'Arroz con leche y canela por porción con arroz, leche, azúcar; rinde 6 porciones.', 'merienda', 'estimado',
+  38, 'estimacion', 'estimada', '1 de 6 porciones',
+  'arroz', array['para llevar', 'casero'], 25, 'normal',
+  true, true, true, true, true,
+  1, 'ocasional', null, true, true, null,
+  false, '{}', 1, false, true,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 45, false,
+  'cook'::prep_type, '6 porciones',
+  'porción estándar calculada'
+)
+on conflict (slug) where profile_id is null and slug is not null do update set
+  name = excluded.name, description = excluded.description,
+  category = excluded.category, carbs_total = excluded.carbs_total,
+  portion = excluded.portion, main_ingredient = excluded.main_ingredient,
+  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,
+  satiety = excluded.satiety, portable = excluded.portable,
+  needs_cold = excluded.needs_cold, needs_reheat = excluded.needs_reheat,
+  make_night_before = excluded.make_night_before, freezable = excluded.freezable,
+  difficulty = excluded.difficulty, freq = excluded.freq, drink = excluded.drink,
+  everyday = excluded.everyday, added_sugar = excluded.added_sugar,
+  notes = excluded.notes, buy_outside = excluded.buy_outside,
+  venues = excluded.venues, price_level = excluded.price_level,
+  handheld = excluded.handheld, origin = excluded.origin,
+  flavor = excluded.flavor, moments = excluded.moments,
+  total_minutes = excluded.total_minutes, is_drink = excluded.is_drink,
+  prep_type = excluded.prep_type, yields = excluded.yields,
+  updated_at = now();
+
+delete from meal_portions where meal_id = (select id from meals where slug = 'arroz-con-leche-y-canela-por-porcion' and profile_id is null);
+insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
+  select id, '1 de 6 porciones', null, 38, true, 0
+  from meals where slug = 'arroz-con-leche-y-canela-por-porcion' and profile_id is null;
+insert into meal_tags (meal_id, tag_slug)
+  select m.id, t.slug from meals m, tags t
+  where m.slug = 'arroz-con-leche-y-canela-por-porcion' and m.profile_id is null and t.slug in ('merienda', 'normal', 'para_llevar', 'salado', 'desayuno', 'preparar_noche_anterior')
+  on conflict do nothing;
 
 -- Tostadas con queso untable
 insert into meals (
@@ -21,7 +10360,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tostadas-queso-untable', 'Tostadas con queso untable', 'El desayuno de todos los días. La bebida va aparte.', 'desayuno', 'estimado',
-  26, 'estimacion', 'estimada', '2 tostadas',
+  29, 'estimacion', 'estimada', '2 tostadas',
   'pan', array['en casa', 'rápido', 'salado'], 5, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -50,13 +10389,13 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tostadas-queso-untable' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 tostadas', 60, 26, true, 0
+  select id, '2 tostadas', 60, 29, true, 0
   from meals where slug = 'tostadas-queso-untable' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '3 tostadas', 90, 39, false, 1
+  select id, '3 tostadas', 90, 44, false, 1
   from meals where slug = 'tostadas-queso-untable' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 tostada', 30, 13, false, 2
+  select id, '1 tostada', 30, 15, false, 2
   from meals where slug = 'tostadas-queso-untable' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -76,7 +10415,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tostadas-manteca-mermelada', 'Tostadas con manteca y mermelada', 'Lo dulce de la mañana, sin vueltas.', 'desayuno', 'estimado',
-  32, 'estimacion', 'estimada', '2 tostadas',
+  35, 'estimacion', 'estimada', '2 tostadas',
   'pan', array['en casa', 'rápido', 'dulce'], 5, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, true, null,
@@ -105,10 +10444,10 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tostadas-manteca-mermelada' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 tostadas', 60, 32, true, 0
+  select id, '2 tostadas', 60, 35, true, 0
   from meals where slug = 'tostadas-manteca-mermelada' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '3 tostadas', 90, 48, false, 1
+  select id, '3 tostadas', 90, 53, false, 1
   from meals where slug = 'tostadas-manteca-mermelada' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -128,7 +10467,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tostadas-dulce-de-leche', 'Tostadas con dulce de leche', 'Once gramos por cucharada de dulce de leche, arriba del pan.', 'desayuno', 'estimado',
-  37, 'estimacion', 'estimada', '2 tostadas',
+  45, 'estimacion', 'estimada', '2 tostadas',
   'pan', array['en casa', 'rápido', 'dulce'], 4, 'normal',
   false, false, false, false, false,
   1, 'ocasional', null, true, true, null,
@@ -157,7 +10496,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tostadas-dulce-de-leche' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 tostadas', 65, 37, true, 0
+  select id, '2 tostadas', 65, 45, true, 0
   from meals where slug = 'tostadas-dulce-de-leche' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -177,7 +10516,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tostado-jamon-queso', 'Tostado de jamón y queso', 'Cae bien a cualquier hora, y por eso sirve para las tres.', 'desayuno', 'estimado',
-  30, 'estimacion', 'estimada', '1 tostado',
+  29, 'estimacion', 'estimada', '1 tostado',
   'pan', array['en casa', 'rápido', 'salado', 'potente'], 7, 'potente',
   true, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -206,7 +10545,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tostado-jamon-queso' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 tostado', 110, 30, true, 0
+  select id, '1 tostado', 110, 29, true, 0
   from meals where slug = 'tostado-jamon-queso' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -226,7 +10565,7 @@ insert into meals (
   source_name
 ) values (
   null, 'huevos-revueltos-tostadas', 'Huevos revueltos con tostadas', 'Con dos huevos aguanta hasta el mediodía.', 'desayuno', 'estimado',
-  28, 'estimacion', 'estimada', '1 plato',
+  29, 'estimacion', 'estimada', '1 plato',
   'huevo', array['en casa', 'salado', 'potente'], 10, 'potente',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -255,7 +10594,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'huevos-revueltos-tostadas' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 200, 28, true, 0
+  select id, '1 plato', 200, 29, true, 0
   from meals where slug = 'huevos-revueltos-tostadas' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -324,7 +10663,7 @@ insert into meals (
   source_name
 ) values (
   null, 'yogur-granola-fruta', 'Yogur con granola y fruta', 'De las más armadas de la lista, y se lleva sin drama.', 'desayuno', 'estimado',
-  38, 'estimacion', 'estimada', '1 pote',
+  50, 'estimacion', 'estimada', '1 pote',
   'yogur natural', array['para llevar', 'rápido', 'dulce'], 3, 'potente',
   true, true, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -353,10 +10692,10 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'yogur-granola-fruta' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 pote', 250, 38, true, 0
+  select id, '1 pote', 250, 50, true, 0
   from meals where slug = 'yogur-granola-fruta' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, 'Sin granola', 210, 12, false, 1
+  select id, 'Sin granola', 210, 16, false, 1
   from meals where slug = 'yogur-granola-fruta' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -480,7 +10819,7 @@ insert into meals (
   source_name
 ) values (
   null, 'sandwich-queso-manana', 'Sándwich de queso para llevar', 'Se arma en dos minutos y se come en el colectivo.', 'desayuno', 'estimado',
-  28, 'estimacion', 'estimada', '1 sándwich',
+  29, 'estimacion', 'estimada', '1 sándwich',
   'pan', array['para llevar', 'rápido', 'salado'], 3, 'normal',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
@@ -509,7 +10848,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'sandwich-queso-manana' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 sándwich', 110, 28, true, 0
+  select id, '1 sándwich', 110, 29, true, 0
   from meals where slug = 'sandwich-queso-manana' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -529,7 +10868,7 @@ insert into meals (
   source_name
 ) values (
   null, 'cereales-leche', 'Cereales con leche', 'El desayuno más rápido que existe después del café solo.', 'desayuno', 'estimado',
-  42, 'estimacion', 'estimada', '1 tazón',
+  32, 'estimacion', 'estimada', '1 tazón',
   'granola', array['en casa', 'rápido', 'dulce'], 2, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, true, null,
@@ -558,7 +10897,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'cereales-leche' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 tazón', 280, 42, true, 0
+  select id, '1 tazón', 280, 32, true, 0
   from meals where slug = 'cereales-leche' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -578,7 +10917,7 @@ insert into meals (
   source_name
 ) values (
   null, 'budin-casero', 'Budín casero', 'Uno rinde ocho porciones y aguanta toda la semana.', 'desayuno', 'estimado',
-  35, 'estimacion', 'estimada', '1 porción',
+  36, 'estimacion', 'estimada', '1 porción',
   'budín', array['en casa', 'dulce'], 15, 'liviana',
   true, false, false, false, true,
   1, 'habitual', null, true, true, null,
@@ -607,7 +10946,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'budin-casero' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 porción', 80, 35, true, 0
+  select id, '1 porción', 80, 36, true, 0
   from meals where slug = 'budin-casero' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -627,7 +10966,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tostadas-palta', 'Tostadas con palta', 'La palta se pone marrón: si es para llevar, va entera y se pisa ahí.', 'desayuno', 'estimado',
-  28, 'estimacion', 'estimada', '2 tostadas',
+  30, 'estimacion', 'estimada', '2 tostadas',
   'pan', array['en casa', 'rápido', 'salado'], 5, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -656,7 +10995,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tostadas-palta' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 tostadas', 110, 28, true, 0
+  select id, '2 tostadas', 110, 30, true, 0
   from meals where slug = 'tostadas-palta' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -676,7 +11015,7 @@ insert into meals (
   source_name
 ) values (
   null, 'avena-nocturna', 'Avena con banana y nueces', 'Se deja lista la noche anterior y a la mañana ya está.', 'desayuno', 'estimado',
-  58, 'estimacion', 'estimada', '1 frasco de 400 ml',
+  74, 'estimacion', 'estimada', '1 frasco de 400 ml',
   'avena', array['para llevar', 'dulce', 'potente'], 8, 'potente',
   true, true, false, true, false,
   1, 'habitual', null, false, false, null,
@@ -705,7 +11044,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'avena-nocturna' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 frasco de 400 ml', 400, 58, true, 0
+  select id, '1 frasco de 400 ml', 400, 74, true, 0
   from meals where slug = 'avena-nocturna' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -774,7 +11113,7 @@ insert into meals (
   source_name
 ) values (
   null, 'sandwich-tortilla', 'Sándwich de tortilla de papa', 'Con la tortilla del día anterior se arma en dos minutos.', 'desayuno', 'estimado',
-  38, 'estimacion', 'estimada', '1 sándwich',
+  54, 'estimacion', 'estimada', '1 sándwich',
   'papa', array['para llevar', 'salado', 'potente'], 5, 'potente',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
@@ -803,7 +11142,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'sandwich-tortilla' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 sándwich', 220, 38, true, 0
+  select id, '1 sándwich', 220, 54, true, 0
   from meals where slug = 'sandwich-tortilla' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -1117,7 +11456,7 @@ insert into meals (
   source_name
 ) values (
   null, 'galletitas-agua-queso', 'Galletitas de agua con queso', 'Salado y práctico. Las galletitas son casi todo el carbohidrato.', 'snack', 'estimado',
-  22, 'estimacion', 'estimada', '6 galletitas',
+  27, 'estimacion', 'estimada', '6 galletitas',
   'galletitas de agua', array['para llevar', 'salado', 'práctico'], 3, 'normal',
   true, true, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -1146,10 +11485,10 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'galletitas-agua-queso' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '6 galletitas', 60, 22, true, 0
+  select id, '6 galletitas', 60, 27, true, 0
   from meals where slug = 'galletitas-agua-queso' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '3 galletitas', 30, 11, false, 1
+  select id, '3 galletitas', 30, 13, false, 1
   from meals where slug = 'galletitas-agua-queso' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -1417,7 +11756,7 @@ insert into meals (
   source_name
 ) values (
   null, 'huevos-duros-snack', 'Huevos duros', 'Hacés seis de una y te resuelven varios días.', 'snack', 'estimado',
-  1, 'estimacion', 'estimada', '2 huevos',
+  0, 'estimacion', 'estimada', '2 huevos',
   'huevo', array['para llevar', 'salado', 'práctico'], 3, 'normal',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
@@ -1446,7 +11785,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'huevos-duros-snack' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 huevos', 110, 1, true, 0
+  select id, '2 huevos', 110, 0, true, 0
   from meals where slug = 'huevos-duros-snack' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -1466,7 +11805,7 @@ insert into meals (
   source_name
 ) values (
   null, 'sandwich-chico', 'Sándwich chico de jamón y queso', 'Un snack, no un almuerzo. Si te queda grande, cortalo al medio.', 'snack', 'estimado',
-  22, 'estimacion', 'estimada', '1 sándwich chico',
+  15, 'estimacion', 'estimada', '1 sándwich chico',
   'pan', array['para llevar', 'salado', 'rápido'], 3, 'normal',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
@@ -1495,7 +11834,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'sandwich-chico' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 sándwich chico', 80, 22, true, 0
+  select id, '1 sándwich chico', 80, 15, true, 0
   from meals where slug = 'sandwich-chico' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -1564,7 +11903,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tostadas-arroz', 'Galletas de arroz con queso untable', 'Livianas de verdad, no de las que dicen que lo son.', 'snack', 'estimado',
-  16, 'estimacion', 'estimada', '3 galletas',
+  20, 'estimacion', 'estimada', '3 galletas',
   'galletitas de agua', array['para llevar', 'práctico'], 2, 'liviana',
   true, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -1593,7 +11932,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tostadas-arroz' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '3 galletas', 45, 16, true, 0
+  select id, '3 galletas', 45, 20, true, 0
   from meals where slug = 'tostadas-arroz' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -1613,7 +11952,7 @@ insert into meals (
   source_name
 ) values (
   null, 'pochoclo', 'Pochoclo', 'Para una película. Más aire que otra cosa, pero el maíz suma.', 'snack', 'estimado',
-  18, 'estimacion', 'estimada', '1 bol chico',
+  17, 'estimacion', 'estimada', '1 bol chico',
   'harina', array['en casa', 'salado', 'antojo'], 5, 'liviana',
   false, false, false, false, false,
   1, 'ocasional', null, true, false, null,
@@ -1642,7 +11981,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'pochoclo' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 bol chico', 25, 18, true, 0
+  select id, '1 bol chico', 25, 17, true, 0
   from meals where slug = 'pochoclo' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -1662,7 +12001,7 @@ insert into meals (
   source_name
 ) values (
   null, 'ensalada-frutas', 'Ensalada de frutas', 'Se deja hecha y aguanta dos días en la heladera.', 'snack', 'estimado',
-  28, 'estimacion', 'estimada', '1 pote',
+  46, 'estimacion', 'estimada', '1 pote',
   'manzana', array['para llevar', 'dulce'], 8, 'liviana',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
@@ -1691,7 +12030,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-frutas' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 pote', 250, 28, true, 0
+  select id, '1 pote', 250, 46, true, 0
   from meals where slug = 'ensalada-frutas' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -1711,7 +12050,7 @@ insert into meals (
   source_name
 ) values (
   null, 'milanesa-pure', 'Milanesa con puré', 'De las comidas más normales que hay. El puré es la mitad del número.', 'almuerzo', 'estimado',
-  42, 'estimacion', 'estimada', '1 plato',
+  44, 'estimacion', 'estimada', '1 plato',
   'milanesa de pollo', array['en casa', 'potente'], 20, 'potente',
   false, false, true, false, true,
   2, 'habitual', null, true, false, null,
@@ -1740,10 +12079,10 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'milanesa-pure' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 400, 42, true, 0
+  select id, '1 plato', 400, 44, true, 0
   from meals where slug = 'milanesa-pure' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, 'Con medio puré', 300, 27, false, 1
+  select id, 'Con medio puré', 300, 28, false, 1
   from meals where slug = 'milanesa-pure' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -1763,7 +12102,7 @@ insert into meals (
   source_name
 ) values (
   null, 'milanesa-napolitana', 'Milanesa a la napolitana con papas', 'Con jamón, queso y salsa arriba. Las papas son la mitad del número.', 'almuerzo', 'estimado',
-  56, 'estimacion', 'estimada', '1 plato',
+  43, 'estimacion', 'estimada', '1 plato',
   'milanesa de carne', array['en casa', 'potente', 'antojo'], 20, 'potente',
   false, false, true, false, false,
   2, 'ocasional', null, true, false, null,
@@ -1792,7 +12131,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'milanesa-napolitana' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 450, 56, true, 0
+  select id, '1 plato', 450, 43, true, 0
   from meals where slug = 'milanesa-napolitana' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -1812,7 +12151,7 @@ insert into meals (
   source_name
 ) values (
   null, 'pollo-horno-papas', 'Pollo al horno con papas', 'Se hace una vez y rinde dos comidas.', 'almuerzo', 'estimado',
-  40, 'estimacion', 'estimada', '1 plato',
+  42, 'estimacion', 'estimada', '1 plato',
   'pollo', array['en casa', 'potente'], 10, 'potente',
   false, false, true, true, true,
   2, 'habitual', null, true, false, null,
@@ -1841,7 +12180,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'pollo-horno-papas' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 450, 40, true, 0
+  select id, '1 plato', 450, 42, true, 0
   from meals where slug = 'pollo-horno-papas' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -1861,7 +12200,7 @@ insert into meals (
   source_name
 ) values (
   null, 'fideos-tuco', 'Fideos con tuco', 'De lo que más carbohidratos tiene del día. Conviene mirarlo bien.', 'almuerzo', 'estimado',
-  62, 'estimacion', 'estimada', '1 plato',
+  85, 'estimacion', 'estimada', '1 plato',
   'fideos', array['en casa', 'potente'], 10, 'potente',
   false, false, true, false, false,
   1, 'habitual', null, true, false, null,
@@ -1890,10 +12229,10 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'fideos-tuco' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 350, 62, true, 0
+  select id, '1 plato', 350, 85, true, 0
   from meals where slug = 'fideos-tuco' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, 'Medio plato', 175, 31, false, 1
+  select id, 'Medio plato', 175, 42, false, 1
   from meals where slug = 'fideos-tuco' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -1913,7 +12252,7 @@ insert into meals (
   source_name
 ) values (
   null, 'ravioles-salsa', 'Ravioles con salsa', 'Los de plancha, del súper. Cinco minutos de agua hirviendo.', 'almuerzo', 'estimado',
-  68, 'estimacion', 'estimada', '1 plato',
+  58, 'estimacion', 'estimada', '1 plato',
   'ravioles', array['en casa', 'potente', 'rápido'], 10, 'potente',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -1942,7 +12281,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'ravioles-salsa' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 350, 68, true, 0
+  select id, '1 plato', 350, 58, true, 0
   from meals where slug = 'ravioles-salsa' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -1962,7 +12301,7 @@ insert into meals (
   source_name
 ) values (
   null, 'noquis-salsa', 'Ñoquis con salsa', 'Los del 29. De los platos con más carbohidratos de la lista.', 'almuerzo', 'estimado',
-  72, 'estimacion', 'estimada', '1 plato',
+  84, 'estimacion', 'estimada', '1 plato',
   'ñoquis', array['en casa', 'potente'], 10, 'potente',
   false, false, false, false, false,
   1, 'ocasional', null, true, false, null,
@@ -1991,7 +12330,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'noquis-salsa' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 350, 72, true, 0
+  select id, '1 plato', 350, 84, true, 0
   from meals where slug = 'noquis-salsa' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -2011,7 +12350,7 @@ insert into meals (
   source_name
 ) values (
   null, 'arroz-con-pollo', 'Arroz con pollo', 'Se come frío o caliente y viaja bien en tupper.', 'almuerzo', 'estimado',
-  50, 'estimacion', 'estimada', '1 plato',
+  66, 'estimacion', 'estimada', '1 plato',
   'arroz', array['para llevar', 'potente'], 15, 'potente',
   true, true, false, true, true,
   1, 'habitual', null, true, false, null,
@@ -2040,7 +12379,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'arroz-con-pollo' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 400, 50, true, 0
+  select id, '1 plato', 400, 66, true, 0
   from meals where slug = 'arroz-con-pollo' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -2060,7 +12399,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tortilla-papa', 'Tortilla de papa', 'Fría al día siguiente está mejor que recién hecha.', 'almuerzo', 'estimado',
-  30, 'estimacion', 'estimada', '2 porciones',
+  28, 'estimacion', 'estimada', '2 porciones',
   'papa', array['para llevar', 'en casa'], 20, 'normal',
   true, true, false, true, false,
   2, 'habitual', null, true, false, null,
@@ -2089,10 +12428,10 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tortilla-papa' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 porciones', 250, 30, true, 0
+  select id, '2 porciones', 250, 28, true, 0
   from meals where slug = 'tortilla-papa' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 porción', 125, 15, false, 1
+  select id, '1 porción', 125, 14, false, 1
   from meals where slug = 'tortilla-papa' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -2112,7 +12451,7 @@ insert into meals (
   source_name
 ) values (
   null, 'empanadas-caseras', 'Empanadas de carne caseras', 'Veinte gramos cada una: 150 g de harina rinden 6, y comés la mitad.', 'almuerzo', 'estimado',
-  60, 'estimacion', 'estimada', '3 empanadas',
+  57, 'estimacion', 'estimada', '3 empanadas',
   'harina', array['potente', 'antojo'], 30, 'potente',
   true, false, true, false, true,
   3, 'ocasional', null, true, false, 'Carbohidratos calculados sobre la receta: 150 g de harina (≈110 g CH) más 1 cebolla (≈10 g), dividido 6 empanadas. La masa lleva 30 g de manteca y 75 ml de agua, que antes no estaban.',
@@ -2141,13 +12480,13 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'empanadas-caseras' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 empanada', 75, 20, false, 0
+  select id, '1 empanada', 75, 19, false, 0
   from meals where slug = 'empanadas-caseras' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 empanadas', 150, 40, false, 1
+  select id, '2 empanadas', 150, 38, false, 1
   from meals where slug = 'empanadas-caseras' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '3 empanadas', 225, 60, true, 2
+  select id, '3 empanadas', 225, 57, true, 2
   from meals where slug = 'empanadas-caseras' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -2167,7 +12506,7 @@ insert into meals (
   source_name
 ) values (
   null, 'ensalada-completa', 'Ensalada completa con pollo y huevo', 'Completa de verdad: con papa, huevo y pollo llena como un plato caliente.', 'almuerzo', 'estimado',
-  26, 'estimacion', 'estimada', '1 plato grande',
+  31, 'estimacion', 'estimada', '1 plato grande',
   'pollo', array['para llevar'], 20, 'potente',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
@@ -2196,7 +12535,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-completa' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato grande', 450, 26, true, 0
+  select id, '1 plato grande', 450, 31, true, 0
   from meals where slug = 'ensalada-completa' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -2216,7 +12555,7 @@ insert into meals (
   source_name
 ) values (
   null, 'pastel-de-papa', 'Pastel de papa', 'Entero rinde cuatro. Se congela y se calienta sin perder nada.', 'almuerzo', 'estimado',
-  44, 'estimacion', 'estimada', '1 porción',
+  40, 'estimacion', 'estimada', '1 porción',
   'papa', array['en casa', 'potente'], 25, 'potente',
   false, false, true, false, true,
   2, 'habitual', null, true, false, null,
@@ -2245,7 +12584,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'pastel-de-papa' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 porción', 380, 44, true, 0
+  select id, '1 porción', 380, 40, true, 0
   from meals where slug = 'pastel-de-papa' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -2265,7 +12604,7 @@ insert into meals (
   source_name
 ) values (
   null, 'sandwich-milanesa', 'Sándwich de milanesa', 'Con la milanesa que sobró de ayer. De las mejores cosas que hay.', 'almuerzo', 'estimado',
-  48, 'estimacion', 'estimada', '1 sándwich',
+  79, 'estimacion', 'estimada', '1 sándwich',
   'pan francés', array['para llevar', 'potente'], 5, 'potente',
   true, false, false, false, false,
   1, 'ocasional', null, true, false, null,
@@ -2294,7 +12633,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'sandwich-milanesa' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 sándwich', 300, 48, true, 0
+  select id, '1 sándwich', 300, 79, true, 0
   from meals where slug = 'sandwich-milanesa' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -2314,7 +12653,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tarta-verdura', 'Tarta de verdura', 'De acelga o espinaca. Entera rinde cuatro y se lleva fría.', 'almuerzo', 'estimado',
-  28, 'estimacion', 'estimada', '1 porción',
+  30, 'estimacion', 'estimada', '1 porción',
   'masa de tarta', array['para llevar', 'en casa'], 20, 'normal',
   true, true, false, true, true,
   2, 'habitual', null, true, false, null,
@@ -2343,10 +12682,10 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tarta-verdura' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 porción', 180, 28, true, 0
+  select id, '1 porción', 180, 30, true, 0
   from meals where slug = 'tarta-verdura' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 porciones', 360, 56, false, 1
+  select id, '2 porciones', 360, 60, false, 1
   from meals where slug = 'tarta-verdura' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -2366,7 +12705,7 @@ insert into meals (
   source_name
 ) values (
   null, 'arroz-atun', 'Arroz con atún', 'Se come frío, no necesita microondas en ningún lado.', 'almuerzo', 'estimado',
-  48, 'estimacion', 'estimada', '1 tupper',
+  76, 'estimacion', 'estimada', '1 tupper',
   'arroz', array['para llevar'], 10, 'potente',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
@@ -2395,7 +12734,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'arroz-atun' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 tupper', 380, 48, true, 0
+  select id, '1 tupper', 380, 76, true, 0
   from meals where slug = 'arroz-atun' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -2464,7 +12803,7 @@ insert into meals (
   source_name
 ) values (
   null, 'guiso-lentejas', 'Guiso de lentejas', 'Barato, rinde y se congela. De lo más práctico que hay.', 'almuerzo', 'estimado',
-  48, 'estimacion', 'estimada', '1 plato hondo',
+  36, 'estimacion', 'estimada', '1 plato hondo',
   'lentejas cocidas', array['en casa', 'potente'], 20, 'potente',
   false, false, true, false, true,
   2, 'habitual', null, true, false, null,
@@ -2493,7 +12832,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'guiso-lentejas' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato hondo', 400, 48, true, 0
+  select id, '1 plato hondo', 400, 36, true, 0
   from meals where slug = 'guiso-lentejas' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -2562,7 +12901,7 @@ insert into meals (
   source_name
 ) values (
   null, 'wrap-pollo', 'Wrap de pollo y vegetales', 'La tortilla de trigo aguanta el viaje mejor que el pan.', 'almuerzo', 'estimado',
-  30, 'estimacion', 'estimada', '1 wrap',
+  65, 'estimacion', 'estimada', '1 wrap',
   'pollo', array['para llevar', 'salado'], 12, 'normal',
   true, true, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -2591,7 +12930,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'wrap-pollo' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 wrap', 230, 30, true, 0
+  select id, '1 wrap', 230, 65, true, 0
   from meals where slug = 'wrap-pollo' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -2611,7 +12950,7 @@ insert into meals (
   source_name
 ) values (
   null, 'ensalada-lentejas', 'Ensalada de lentejas con huevo y palta', 'Fría, se hace de una vez y aguanta tres días en la heladera.', 'almuerzo', 'estimado',
-  28, 'estimacion', 'estimada', '1 plato',
+  38, 'estimacion', 'estimada', '1 plato',
   'lentejas cocidas', array['en casa', 'salado', 'potente'], 15, 'potente',
   true, true, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -2640,7 +12979,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-lentejas' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 330, 28, true, 0
+  select id, '1 plato', 330, 38, true, 0
   from meals where slug = 'ensalada-lentejas' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -2660,7 +12999,7 @@ insert into meals (
   source_name
 ) values (
   null, 'mate-galletitas', 'Mate con galletitas', 'La merienda de casi todo el mundo.', 'merienda', 'estimado',
-  34, 'estimacion', 'estimada', '6 galletitas',
+  31, 'estimacion', 'estimada', '6 galletitas',
   'galletitas dulces', array['en casa', 'dulce', 'rápido'], 2, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, true, null,
@@ -2689,10 +13028,10 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'mate-galletitas' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '6 galletitas', 60, 34, true, 0
+  select id, '6 galletitas', 60, 31, true, 0
   from meals where slug = 'mate-galletitas' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '3 galletitas', 30, 17, false, 1
+  select id, '3 galletitas', 30, 15, false, 1
   from meals where slug = 'mate-galletitas' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -2764,7 +13103,7 @@ insert into meals (
   source_name
 ) values (
   null, 'yogur-con-fruta', 'Yogur con fruta', 'Liviana y se prepara en un minuto.', 'merienda', 'estimado',
-  26, 'estimacion', 'estimada', '1 pote con fruta',
+  15, 'estimacion', 'estimada', '1 pote con fruta',
   'yogur natural', array['rápido', 'dulce', 'para llevar'], 3, 'liviana',
   true, true, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -2793,7 +13132,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'yogur-con-fruta' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 pote con fruta', 280, 26, true, 0
+  select id, '1 pote con fruta', 280, 15, true, 0
   from meals where slug = 'yogur-con-fruta' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -2813,7 +13152,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tostadas-mermelada-merienda', 'Tostadas con mermelada', 'Liviana, para cuando la cena viene pesada.', 'merienda', 'estimado',
-  30, 'estimacion', 'estimada', '2 tostadas',
+  37, 'estimacion', 'estimada', '2 tostadas',
   'pan', array['en casa', 'dulce', 'rápido'], 4, 'liviana',
   false, false, false, false, false,
   1, 'habitual', null, true, true, null,
@@ -2842,7 +13181,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tostadas-mermelada-merienda' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 tostadas', 60, 30, true, 0
+  select id, '2 tostadas', 60, 37, true, 0
   from meals where slug = 'tostadas-mermelada-merienda' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -2862,7 +13201,7 @@ insert into meals (
   source_name
 ) values (
   null, 'panqueques-dulce', 'Panqueques con dulce de leche', 'Salen seis u ocho de una vez y fríos al otro día siguen buenos.', 'merienda', 'estimado',
-  46, 'estimacion', 'estimada', '2 panqueques',
+  44, 'estimacion', 'estimada', '2 panqueques',
   'harina', array['en casa', 'dulce', 'antojo'], 20, 'normal',
   false, false, false, false, false,
   2, 'ocasional', null, true, true, null,
@@ -2891,10 +13230,10 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'panqueques-dulce' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 panqueques', 180, 46, true, 0
+  select id, '2 panqueques', 180, 44, true, 0
   from meals where slug = 'panqueques-dulce' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 panqueque', 90, 23, false, 1
+  select id, '1 panqueque', 90, 22, false, 1
   from meals where slug = 'panqueques-dulce' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -2914,7 +13253,7 @@ insert into meals (
   source_name
 ) values (
   null, 'pan-queso-merienda', 'Pan con queso', 'La merienda salada de los que no quieren algo dulce a las seis.', 'merienda', 'estimado',
-  26, 'estimacion', 'estimada', '2 rebanadas',
+  29, 'estimacion', 'estimada', '2 rebanadas',
   'pan', array['en casa', 'salado', 'rápido'], 3, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -2943,7 +13282,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'pan-queso-merienda' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 rebanadas', 90, 26, true, 0
+  select id, '2 rebanadas', 90, 29, true, 0
   from meals where slug = 'pan-queso-merienda' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -3012,7 +13351,7 @@ insert into meals (
   source_name
 ) values (
   null, 'sandwich-merienda-llevar', 'Sándwich de queso y tomate', 'Se arma la noche anterior y llega entero a la tarde.', 'merienda', 'estimado',
-  30, 'estimacion', 'estimada', '1 sándwich',
+  33, 'estimacion', 'estimada', '1 sándwich',
   'pan', array['para llevar', 'salado'], 5, 'potente',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
@@ -3041,7 +13380,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'sandwich-merienda-llevar' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 sándwich', 140, 30, true, 0
+  select id, '1 sándwich', 140, 33, true, 0
   from meals where slug = 'sandwich-merienda-llevar' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -3159,7 +13498,7 @@ insert into meals (
   source_name
 ) values (
   null, 'queso-dulce-membrillo', 'Queso con dulce de membrillo', 'Vigilante. Dulce y salado a la vez, que es justo lo que es.', 'merienda', 'estimado',
-  24, 'estimacion', 'estimada', '1 porción',
+  19, 'estimacion', 'estimada', '1 porción',
   'queso', array['en casa', 'rápido'], 2, 'liviana',
   false, false, false, false, false,
   1, 'habitual', null, true, true, null,
@@ -3188,7 +13527,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'queso-dulce-membrillo' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 porción', 100, 24, true, 0
+  select id, '1 porción', 100, 19, true, 0
   from meals where slug = 'queso-dulce-membrillo' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -3306,7 +13645,7 @@ insert into meals (
   source_name
 ) values (
   null, 'pizza-casera', 'Pizza de muzzarella casera', 'Treinta gramos por porción, sesenta por dos. De las de cada tanto.', 'cena', 'estimado',
-  60, 'estimacion', 'estimada', '2 porciones',
+  39, 'estimacion', 'estimada', '2 porciones',
   'masa de pizza', array['en casa', 'potente', 'antojo'], 10, 'potente',
   false, false, false, false, false,
   1, 'ocasional', null, true, false, null,
@@ -3335,13 +13674,13 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'pizza-casera' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 porciones', 220, 60, true, 0
+  select id, '2 porciones', 220, 39, true, 0
   from meals where slug = 'pizza-casera' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 porción', 110, 30, false, 1
+  select id, '1 porción', 110, 20, false, 1
   from meals where slug = 'pizza-casera' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '3 porciones', 330, 90, false, 2
+  select id, '3 porciones', 330, 59, false, 2
   from meals where slug = 'pizza-casera' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -3361,7 +13700,7 @@ insert into meals (
   source_name
 ) values (
   null, 'hamburguesa-casera', 'Hamburguesa con papas', 'El pan y las papas son casi todo el número; la carne no aporta nada.', 'cena', 'estimado',
-  75, 'estimacion', 'estimada', '1 hamburguesa con papas',
+  65, 'estimacion', 'estimada', '1 hamburguesa con papas',
   'carne picada', array['en casa', 'potente', 'antojo'], 15, 'potente',
   false, false, false, false, false,
   1, 'ocasional', null, true, false, null,
@@ -3390,10 +13729,10 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'hamburguesa-casera' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 hamburguesa con papas', 400, 75, true, 0
+  select id, '1 hamburguesa con papas', 400, 65, true, 0
   from meals where slug = 'hamburguesa-casera' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, 'Sin papas', 250, 30, false, 1
+  select id, 'Sin papas', 250, 26, false, 1
   from meals where slug = 'hamburguesa-casera' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -3413,7 +13752,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tarta-jamon-queso', 'Tarta de jamón y queso', 'Entera rinde cuatro comidas y se lleva fría sin drama.', 'cena', 'estimado',
-  30, 'estimacion', 'estimada', '1 porción',
+  28, 'estimacion', 'estimada', '1 porción',
   'masa de tarta', array['para llevar', 'en casa'], 15, 'normal',
   true, true, false, true, true,
   2, 'habitual', null, true, false, null,
@@ -3442,10 +13781,10 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tarta-jamon-queso' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 porción', 180, 30, true, 0
+  select id, '1 porción', 180, 28, true, 0
   from meals where slug = 'tarta-jamon-queso' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 porciones', 360, 60, false, 1
+  select id, '2 porciones', 360, 57, false, 1
   from meals where slug = 'tarta-jamon-queso' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -3465,7 +13804,7 @@ insert into meals (
   source_name
 ) values (
   null, 'bife-pure-calabaza', 'Bife con puré de calabaza', 'La carne no tiene carbohidratos: el número es todo de la guarnición.', 'cena', 'estimado',
-  24, 'estimacion', 'estimada', '1 plato',
+  23, 'estimacion', 'estimada', '1 plato',
   'vacío', array['en casa', 'potente'], 10, 'potente',
   false, false, true, false, false,
   1, 'habitual', null, true, false, null,
@@ -3494,7 +13833,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'bife-pure-calabaza' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 350, 24, true, 0
+  select id, '1 plato', 350, 23, true, 0
   from meals where slug = 'bife-pure-calabaza' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -3514,7 +13853,7 @@ insert into meals (
   source_name
 ) values (
   null, 'asado', 'Asado con ensalada', 'La carne no suma. Los catorce gramos son del pan y la ensalada.', 'cena', 'estimado',
-  14, 'estimacion', 'estimada', '1 plato',
+  19, 'estimacion', 'estimada', '1 plato',
   'asado', array['en casa', 'potente'], 15, 'potente',
   false, false, false, false, false,
   2, 'ocasional', null, true, false, null,
@@ -3543,10 +13882,10 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'asado' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 400, 14, true, 0
+  select id, '1 plato', 400, 19, true, 0
   from meals where slug = 'asado' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, 'Con dos rebanadas de pan', 460, 40, false, 1
+  select id, 'Con dos rebanadas de pan', 460, 53, false, 1
   from meals where slug = 'asado' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -3566,7 +13905,7 @@ insert into meals (
   source_name
 ) values (
   null, 'revuelto-zapallitos', 'Revuelto de zapallitos', 'Cena liviana para cuando se come tarde.', 'cena', 'estimado',
-  18, 'estimacion', 'estimada', '1 plato',
+  9, 'estimacion', 'estimada', '1 plato',
   'zapallito', array['en casa', 'rápido'], 15, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -3595,7 +13934,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'revuelto-zapallitos' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 300, 18, true, 0
+  select id, '1 plato', 300, 9, true, 0
   from meals where slug = 'revuelto-zapallitos' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -3615,7 +13954,7 @@ insert into meals (
   source_name
 ) values (
   null, 'sopa-calabaza', 'Sopa de calabaza con pan', 'El pan es lo que la convierte en cena y no en entrada.', 'cena', 'estimado',
-  34, 'estimacion', 'estimada', '1 plato hondo',
+  52, 'estimacion', 'estimada', '1 plato hondo',
   'calabaza', array['en casa'], 10, 'normal',
   false, false, true, false, true,
   1, 'habitual', null, true, false, null,
@@ -3644,10 +13983,10 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'sopa-calabaza' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato hondo', 400, 34, true, 0
+  select id, '1 plato hondo', 400, 52, true, 0
   from meals where slug = 'sopa-calabaza' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, 'Sin pan', 350, 22, false, 1
+  select id, 'Sin pan', 350, 33, false, 1
   from meals where slug = 'sopa-calabaza' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -3667,7 +14006,7 @@ insert into meals (
   source_name
 ) values (
   null, 'omelette-queso', 'Omelette de queso con pan', 'Diez minutos y no hay nada que planear.', 'cena', 'estimado',
-  20, 'estimacion', 'estimada', '1 omelette',
+  16, 'estimacion', 'estimada', '1 omelette',
   'huevo', array['en casa', 'rápido', 'potente'], 10, 'potente',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -3696,7 +14035,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'omelette-queso' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 omelette', 250, 20, true, 0
+  select id, '1 omelette', 250, 16, true, 0
   from meals where slug = 'omelette-queso' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -3716,7 +14055,7 @@ insert into meals (
   source_name
 ) values (
   null, 'picada-cena', 'Picada para cenar', 'Queso, fiambre y pan. La cena de cuando no querés cocinar.', 'cena', 'estimado',
-  30, 'estimacion', 'estimada', '1 tabla chica',
+  31, 'estimacion', 'estimada', '1 tabla chica',
   'queso', array['en casa', 'salado', 'rápido'], 8, 'potente',
   false, false, false, false, false,
   1, 'ocasional', null, true, false, null,
@@ -3745,7 +14084,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'picada-cena' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 tabla chica', 250, 30, true, 0
+  select id, '1 tabla chica', 250, 31, true, 0
   from meals where slug = 'picada-cena' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -3765,7 +14104,7 @@ insert into meals (
   source_name
 ) values (
   null, 'ensalada-atun-cena', 'Ensalada de atún, huevo y papa', 'Sin cocinar nada más que el huevo. Se deja lista la noche anterior.', 'cena', 'estimado',
-  22, 'estimacion', 'estimada', '1 plato',
+  27, 'estimacion', 'estimada', '1 plato',
   'atún', array['para llevar', 'en casa'], 12, 'potente',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
@@ -3794,7 +14133,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-atun-cena' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 380, 22, true, 0
+  select id, '1 plato', 380, 27, true, 0
   from meals where slug = 'ensalada-atun-cena' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -3814,7 +14153,7 @@ insert into meals (
   source_name
 ) values (
   null, 'sandwich-cena-rapido', 'Sándwich caliente con huevo', 'Diez minutos, una sartén y listo.', 'cena', 'estimado',
-  36, 'estimacion', 'estimada', '1 sándwich',
+  30, 'estimacion', 'estimada', '1 sándwich',
   'pan', array['en casa', 'rápido', 'potente'], 10, 'potente',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -3843,7 +14182,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'sandwich-cena-rapido' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 sándwich', 220, 36, true, 0
+  select id, '1 sándwich', 220, 30, true, 0
   from meals where slug = 'sandwich-cena-rapido' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -3863,7 +14202,7 @@ insert into meals (
   source_name
 ) values (
   null, 'ravioles-cena-rapida', 'Ravioles con manteca y queso', 'Quince minutos de punta a punta, contando el agua.', 'cena', 'estimado',
-  66, 'estimacion', 'estimada', '1 plato',
+  54, 'estimacion', 'estimada', '1 plato',
   'ravioles', array['en casa', 'rápido', 'potente'], 8, 'potente',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -3892,7 +14231,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'ravioles-cena-rapida' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 320, 66, true, 0
+  select id, '1 plato', 320, 54, true, 0
   from meals where slug = 'ravioles-cena-rapida' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -3912,7 +14251,7 @@ insert into meals (
   source_name
 ) values (
   null, 'ensalada-caprese-cena', 'Tomate con muzzarella y pan', 'Sin cocinar nada. Para las noches de calor.', 'cena', 'estimado',
-  26, 'estimacion', 'estimada', '1 plato',
+  23, 'estimacion', 'estimada', '1 plato',
   'tomate', array['en casa', 'rápido'], 6, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -3941,7 +14280,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-caprese-cena' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 300, 26, true, 0
+  select id, '1 plato', 300, 23, true, 0
   from meals where slug = 'ensalada-caprese-cena' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -4059,7 +14398,7 @@ insert into meals (
   source_name
 ) values (
   null, 'flan-dulce-de-leche', 'Flan con dulce de leche', 'Cuarenta gramos con dulce de leche, veintiocho sin.', 'snack', 'estimado',
-  40, 'estimacion', 'estimada', '1 porción',
+  36, 'estimacion', 'estimada', '1 porción',
   'huevo', array['dulce', 'antojo'], 10, 'normal',
   false, true, false, false, false,
   1, 'ocasional', null, true, true, null,
@@ -4088,10 +14427,10 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'flan-dulce-de-leche' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 porción', 150, 40, true, 0
+  select id, '1 porción', 150, 36, true, 0
   from meals where slug = 'flan-dulce-de-leche' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, 'Sin dulce de leche', 120, 28, false, 1
+  select id, 'Sin dulce de leche', 120, 25, false, 1
   from meals where slug = 'flan-dulce-de-leche' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -4368,7 +14707,7 @@ insert into meals (
   source_name
 ) values (
   null, 'arroz-con-leche', 'Arroz con leche', 'Se hace una olla y rinde cuatro.', 'snack', 'estimado',
-  38, 'estimacion', 'estimada', '1 pote',
+  47, 'estimacion', 'estimada', '1 pote',
   'arroz', array['dulce', 'en casa'], 10, 'normal',
   false, true, false, false, false,
   1, 'ocasional', null, true, true, null,
@@ -4397,7 +14736,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'arroz-con-leche' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 pote', 200, 38, true, 0
+  select id, '1 pote', 200, 47, true, 0
   from meals where slug = 'arroz-con-leche' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -5433,7 +15772,7 @@ insert into meals (
   source_name
 ) values (
   null, 'cafe-solo', 'Café', 'Sin azúcar, cero. Con azúcar son cinco gramos por cucharadita.', 'snack', 'estimado',
-  0, 'estimacion', 'estimada', '1 taza',
+  NaN, 'estimacion', 'estimada', '1 taza',
   'café', array['rápido', 'práctico'], 2, 'liviana',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -5462,10 +15801,10 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'cafe-solo' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 taza', 200, 0, true, 0
+  select id, '1 taza', 200, NaN, true, 0
   from meals where slug = 'cafe-solo' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, 'Con una cucharadita de azúcar', 200, 5, false, 1
+  select id, 'Con una cucharadita de azúcar', 200, NaN, false, 1
   from meals where slug = 'cafe-solo' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -5534,7 +15873,7 @@ insert into meals (
   source_name
 ) values (
   null, 'mate', 'Mate', 'Cero carbohidratos. Con azúcar, cinco por cucharadita. Y sirve de desayuno: mucha gente no desayuna otra cosa.', 'snack', 'estimado',
-  0, 'estimacion', 'estimada', '1 mate',
+  NaN, 'estimacion', 'estimada', '1 mate',
   'yerba', array['rápido', 'práctico', 'en casa'], 2, 'liviana',
   false, false, false, false, false,
   1, 'habitual', null, true, false, 'Absorbió a «mate-solo-manana», que era la misma entrada cargada dos veces: mismo ingrediente, misma porción, mismos dos minutos. Lo único que cambiaba era el momento, y eso ahora vive en momentos.',
@@ -5563,7 +15902,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'mate' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 mate', null, 0, true, 0
+  select id, '1 mate', null, NaN, true, 0
   from meals where slug = 'mate' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -5583,7 +15922,7 @@ insert into meals (
   source_name
 ) values (
   null, 'mate-cocido', 'Mate cocido', 'Solo, cero. Con leche son diez.', 'snack', 'estimado',
-  0, 'estimacion', 'estimada', '1 taza',
+  NaN, 'estimacion', 'estimada', '1 taza',
   'mate cocido', array['rápido', 'práctico'], 3, 'liviana',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -5612,10 +15951,10 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'mate-cocido' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 taza', 200, 0, true, 0
+  select id, '1 taza', 200, NaN, true, 0
   from meals where slug = 'mate-cocido' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, 'Con leche', 250, 10, false, 1
+  select id, 'Con leche', 250, NaN, false, 1
   from meals where slug = 'mate-cocido' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -5635,7 +15974,7 @@ insert into meals (
   source_name
 ) values (
   null, 'te', 'Té', 'Cero. Lo que suma es lo que le ponés.', 'snack', 'estimado',
-  0, 'estimacion', 'estimada', '1 taza',
+  NaN, 'estimacion', 'estimada', '1 taza',
   'té', array['rápido', 'práctico'], 3, 'liviana',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -5664,7 +16003,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'te' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 taza', 200, 0, true, 0
+  select id, '1 taza', 200, NaN, true, 0
   from meals where slug = 'te' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -5834,7 +16173,7 @@ insert into meals (
   source_name
 ) values (
   null, 'jugo-exprimido', 'Jugo de naranja exprimido', 'Natural, pero el azúcar de la fruta está igual: veintidós gramos.', 'snack', 'estimado',
-  22, 'estimacion', 'estimada', '1 vaso',
+  12, 'estimacion', 'estimada', '1 vaso',
   'limón', array['rápido', 'dulce'], 5, 'liviana',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -5863,7 +16202,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'jugo-exprimido' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 vaso', 250, 22, true, 0
+  select id, '1 vaso', 250, 12, true, 0
   from meals where slug = 'jugo-exprimido' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -5883,7 +16222,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tostadas-queso-tomate', 'Tostadas con queso y tomate', 'El tomate va secado con papel, si no te moja el pan.', 'desayuno', 'estimado',
-  27, 'estimacion', 'estimada', '2 tostadas',
+  32, 'estimacion', 'estimada', '2 tostadas',
   'pan', array['en casa', 'rápido', 'salado'], 6, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -5912,7 +16251,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tostadas-queso-tomate' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 tostadas', 150, 27, true, 0
+  select id, '2 tostadas', 150, 32, true, 0
   from meals where slug = 'tostadas-queso-tomate' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -5932,7 +16271,7 @@ insert into meals (
   source_name
 ) values (
   null, 'yogur-avena', 'Yogur con avena', 'Más barato que la granola y hace lo mismo.', 'desayuno', 'estimado',
-  34, 'estimacion', 'estimada', '1 pote',
+  32, 'estimacion', 'estimada', '1 pote',
   'yogur natural', array['para llevar', 'rápido', 'dulce'], 2, 'potente',
   true, true, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -5961,7 +16300,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'yogur-avena' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 pote', 240, 34, true, 0
+  select id, '1 pote', 240, 32, true, 0
   from meals where slug = 'yogur-avena' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -5981,7 +16320,7 @@ insert into meals (
   source_name
 ) values (
   null, 'licuado-banana-avena', 'Licuado de banana con avena', 'Para la mañana en que no te entra nada sólido.', 'desayuno', 'estimado',
-  44, 'estimacion', 'estimada', '1 vaso grande',
+  53, 'estimacion', 'estimada', '1 vaso grande',
   'banana', array['en casa', 'rápido', 'dulce'], 4, 'potente',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -6010,7 +16349,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'licuado-banana-avena' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 vaso grande', 400, 44, true, 0
+  select id, '1 vaso grande', 400, 53, true, 0
   from meals where slug = 'licuado-banana-avena' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -6030,7 +16369,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tostadas-ricota-mermelada', 'Tostadas con ricota y mermelada', 'La ricota sostiene más que el queso untable.', 'desayuno', 'estimado',
-  30, 'estimacion', 'estimada', '2 tostadas',
+  38, 'estimacion', 'estimada', '2 tostadas',
   'pan', array['en casa', 'rápido', 'dulce'], 5, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -6059,7 +16398,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tostadas-ricota-mermelada' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 tostadas', 140, 30, true, 0
+  select id, '2 tostadas', 140, 38, true, 0
   from meals where slug = 'tostadas-ricota-mermelada' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -6079,7 +16418,7 @@ insert into meals (
   source_name
 ) values (
   null, 'huevo-frito-pan', 'Huevo frito con pan', 'Dos minutos de sartén y listo.', 'desayuno', 'estimado',
-  26, 'estimacion', 'estimada', '1 huevo y 2 tostadas',
+  28, 'estimacion', 'estimada', '1 huevo y 2 tostadas',
   'huevo', array['en casa', 'rápido', 'salado'], 6, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -6108,7 +16447,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'huevo-frito-pan' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 huevo y 2 tostadas', 150, 26, true, 0
+  select id, '1 huevo y 2 tostadas', 150, 28, true, 0
   from meals where slug = 'huevo-frito-pan' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -6128,7 +16467,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tostadas-integrales-queso', 'Tostadas integrales con queso untable', 'El pan integral tiene un poco menos y aguanta un poco más.', 'desayuno', 'estimado',
-  24, 'estimacion', 'estimada', '2 tostadas',
+  26, 'estimacion', 'estimada', '2 tostadas',
   'pan integral', array['en casa', 'rápido', 'salado'], 4, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -6157,7 +16496,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tostadas-integrales-queso' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 tostadas', 70, 24, true, 0
+  select id, '2 tostadas', 70, 26, true, 0
   from meals where slug = 'tostadas-integrales-queso' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -6275,7 +16614,7 @@ insert into meals (
   source_name
 ) values (
   null, 'mate-bizcochos', 'Mate con bizcochos', 'La merienda salada de toda la vida.', 'merienda', 'estimado',
-  30, 'estimacion', 'estimada', '6 bizcochos',
+  35, 'estimacion', 'estimada', '6 bizcochos',
   'bizcochos', array['en casa', 'rápido', 'salado'], 2, 'liviana',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -6304,7 +16643,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'mate-bizcochos' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '6 bizcochos', 60, 30, true, 0
+  select id, '6 bizcochos', 60, 35, true, 0
   from meals where slug = 'mate-bizcochos' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -6422,7 +16761,7 @@ insert into meals (
   source_name
 ) values (
   null, 'cafe-galletitas-agua', 'Café con galletitas de agua', 'Cuando querés algo, pero poco.', 'merienda', 'estimado',
-  18, 'estimacion', 'estimada', '5 galletitas',
+  21, 'estimacion', 'estimada', '5 galletitas',
   'galletitas de agua', array['en casa', 'rápido', 'salado'], 2, 'liviana',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -6451,7 +16790,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'cafe-galletitas-agua' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '5 galletitas', 35, 18, true, 0
+  select id, '5 galletitas', 35, 21, true, 0
   from meals where slug = 'cafe-galletitas-agua' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -6471,7 +16810,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tostadas-dulce-membrillo', 'Tostadas con dulce de membrillo', 'El membrillo tiene más azúcar de la que parece.', 'merienda', 'estimado',
-  36, 'estimacion', 'estimada', '2 tostadas',
+  61, 'estimacion', 'estimada', '2 tostadas',
   'pan', array['en casa', 'rápido', 'dulce'], 3, 'normal',
   false, false, false, false, false,
   1, 'ocasional', null, true, true, null,
@@ -6500,7 +16839,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tostadas-dulce-membrillo' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 tostadas', 120, 36, true, 0
+  select id, '2 tostadas', 120, 61, true, 0
   from meals where slug = 'tostadas-dulce-membrillo' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -6520,7 +16859,7 @@ insert into meals (
   source_name
 ) values (
   null, 'yogur-galletitas', 'Yogur con galletitas', 'Se arma en el escritorio sin ensuciar nada.', 'merienda', 'estimado',
-  34, 'estimacion', 'estimada', '1 pote y 4 galletitas',
+  29, 'estimacion', 'estimada', '1 pote y 4 galletitas',
   'yogur saborizado sin azúcar', array['para llevar', 'rápido', 'dulce'], 1, 'normal',
   true, true, false, false, false,
   1, 'habitual', null, true, true, null,
@@ -6549,7 +16888,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'yogur-galletitas' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 pote y 4 galletitas', 230, 34, true, 0
+  select id, '1 pote y 4 galletitas', 230, 29, true, 0
   from meals where slug = 'yogur-galletitas' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -6569,7 +16908,7 @@ insert into meals (
   source_name
 ) values (
   null, 'licuado-frutilla', 'Licuado de frutilla', 'Con leche, sin azúcar agregada: la fruta ya trae la suya.', 'merienda', 'estimado',
-  26, 'estimacion', 'estimada', '1 vaso',
+  18, 'estimacion', 'estimada', '1 vaso',
   'frutilla', array['en casa', 'rápido', 'dulce'], 5, 'liviana',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -6598,7 +16937,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'licuado-frutilla' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 vaso', 330, 26, true, 0
+  select id, '1 vaso', 330, 18, true, 0
   from meals where slug = 'licuado-frutilla' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -6667,7 +17006,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tortas-fritas', 'Tortas fritas', 'Día de lluvia. No hay mucho más que decir.', 'merienda', 'estimado',
-  40, 'estimacion', 'estimada', '2 tortas fritas',
+  44, 'estimacion', 'estimada', '2 tortas fritas',
   'harina', array['en casa', 'antojo'], 20, 'potente',
   false, false, false, false, false,
   1, 'ocasional', null, false, false, null,
@@ -6696,7 +17035,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tortas-fritas' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 tortas fritas', 120, 40, true, 0
+  select id, '2 tortas fritas', 120, 44, true, 0
   from meals where slug = 'tortas-fritas' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -6716,7 +17055,7 @@ insert into meals (
   source_name
 ) values (
   null, 'bizcochuelo', 'Porción de bizcochuelo', 'Uno rinde ocho porciones y dura tres días.', 'merienda', 'estimado',
-  38, 'estimacion', 'estimada', '1 porción',
+  36, 'estimacion', 'estimada', '1 porción',
   'bizcochuelo', array['en casa', 'dulce'], 15, 'liviana',
   true, false, false, false, false,
   1, 'ocasional', null, true, true, null,
@@ -6745,7 +17084,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'bizcochuelo' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 porción', 80, 38, true, 0
+  select id, '1 porción', 80, 36, true, 0
   from meals where slug = 'bizcochuelo' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -6765,7 +17104,7 @@ insert into meals (
   source_name
 ) values (
   null, 'galletitas-avena-caseras', 'Galletitas de avena caseras', 'Salen veinte de una vez y aguantan una semana en un frasco.', 'merienda', 'estimado',
-  22, 'estimacion', 'estimada', '3 galletitas',
+  23, 'estimacion', 'estimada', '3 galletitas',
   'avena', array['para llevar', 'dulce'], 15, 'liviana',
   true, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -6794,7 +17133,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'galletitas-avena-caseras' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '3 galletitas', 60, 22, true, 0
+  select id, '3 galletitas', 60, 23, true, 0
   from meals where slug = 'galletitas-avena-caseras' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -6961,7 +17300,7 @@ insert into meals (
   source_name
 ) values (
   null, 'galletitas-queso-untable', 'Galletitas con queso untable', 'Las de agua con queso untable aguantan hasta la cena.', 'merienda', 'estimado',
-  24, 'estimacion', 'estimada', '5 galletitas',
+  23, 'estimacion', 'estimada', '5 galletitas',
   'galletitas de agua', array['en casa', 'rápido', 'salado'], 3, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -6990,7 +17329,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'galletitas-queso-untable' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '5 galletitas', 70, 24, true, 0
+  select id, '5 galletitas', 70, 23, true, 0
   from meals where slug = 'galletitas-queso-untable' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -7010,7 +17349,7 @@ insert into meals (
   source_name
 ) values (
   null, 'pan-dulce-de-leche', 'Pan con dulce de leche', 'Once gramos por cucharada. Dos cucharadas son dos.', 'merienda', 'estimado',
-  40, 'estimacion', 'estimada', '2 rebanadas',
+  51, 'estimacion', 'estimada', '2 rebanadas',
   'pan', array['en casa', 'rápido', 'dulce', 'antojo'], 2, 'normal',
   false, false, false, false, false,
   1, 'ocasional', null, true, true, null,
@@ -7039,7 +17378,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'pan-dulce-de-leche' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 rebanadas', 110, 40, true, 0
+  select id, '2 rebanadas', 110, 51, true, 0
   from meals where slug = 'pan-dulce-de-leche' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -7059,7 +17398,7 @@ insert into meals (
   source_name
 ) values (
   null, 'mate-frutos-secos', 'Mate con frutos secos', 'Cuando querés parar el hambre sin sumar casi nada.', 'merienda', 'estimado',
-  10, 'estimacion', 'estimada', '1 puñado',
+  3, 'estimacion', 'estimada', '1 puñado',
   'nuez', array['en casa', 'rápido'], 2, 'liviana',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -7088,7 +17427,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'mate-frutos-secos' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 puñado', 40, 10, true, 0
+  select id, '1 puñado', 40, 3, true, 0
   from meals where slug = 'mate-frutos-secos' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -7108,7 +17447,7 @@ insert into meals (
   source_name
 ) values (
   null, 'yogur-cereales', 'Yogur con cereales', 'Los cereales de caja tienen azúcar agregada: el número lo incluye.', 'merienda', 'estimado',
-  36, 'estimacion', 'estimada', '1 pote',
+  29, 'estimacion', 'estimada', '1 pote',
   'granola', array['rápido', 'dulce'], 2, 'normal',
   true, true, false, false, false,
   1, 'habitual', null, true, true, null,
@@ -7137,7 +17476,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'yogur-cereales' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 pote', 240, 36, true, 0
+  select id, '1 pote', 240, 29, true, 0
   from meals where slug = 'yogur-cereales' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -7157,7 +17496,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tostado-miga-merienda', 'Tostado de pan de miga', 'El de pan de miga es más chico y entra a media tarde.', 'merienda', 'estimado',
-  24, 'estimacion', 'estimada', '1 tostado',
+  25, 'estimacion', 'estimada', '1 tostado',
   'pan de miga', array['en casa', 'rápido', 'salado'], 5, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -7186,7 +17525,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tostado-miga-merienda' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 tostado', 90, 24, true, 0
+  select id, '1 tostado', 90, 25, true, 0
   from meals where slug = 'tostado-miga-merienda' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -7206,7 +17545,7 @@ insert into meals (
   source_name
 ) values (
   null, 'fruta-queso', 'Fruta con queso', 'La manzana con queso llena más que la manzana sola.', 'merienda', 'estimado',
-  22, 'estimacion', 'estimada', '1 manzana y queso',
+  18, 'estimacion', 'estimada', '1 manzana y queso',
   'manzana', array['para llevar', 'rápido'], 2, 'normal',
   true, true, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -7235,7 +17574,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'fruta-queso' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 manzana y queso', 200, 22, true, 0
+  select id, '1 manzana y queso', 200, 18, true, 0
   from meals where slug = 'fruta-queso' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -7304,7 +17643,7 @@ insert into meals (
   source_name
 ) values (
   null, 'merluza-pure', 'Merluza con puré', 'El pescado se hace en diez minutos y nadie se acuerda de él.', 'almuerzo', 'estimado',
-  32, 'estimacion', 'estimada', '1 plato',
+  47, 'estimacion', 'estimada', '1 plato',
   'merluza', array['en casa', 'salado'], 20, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -7333,7 +17672,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'merluza-pure' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 350, 32, true, 0
+  select id, '1 plato', 350, 47, true, 0
   from meals where slug = 'merluza-pure' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -7353,7 +17692,7 @@ insert into meals (
   source_name
 ) values (
   null, 'pollo-arroz-integral', 'Pollo con arroz integral', 'Mismo pollo, arroz que sube un poco más despacio.', 'almuerzo', 'estimado',
-  46, 'estimacion', 'estimada', '1 plato',
+  69, 'estimacion', 'estimada', '1 plato',
   'pollo', array['para llevar', 'salado', 'potente'], 30, 'potente',
   true, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -7382,7 +17721,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'pollo-arroz-integral' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 400, 46, true, 0
+  select id, '1 plato', 400, 69, true, 0
   from meals where slug = 'pollo-arroz-integral' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -7402,7 +17741,7 @@ insert into meals (
   source_name
 ) values (
   null, 'fideos-integrales-salsa', 'Fideos integrales con salsa', 'Los integrales no son menos carbohidratos: son los mismos, más lentos.', 'almuerzo', 'estimado',
-  56, 'estimacion', 'estimada', '1 plato',
+  85, 'estimacion', 'estimada', '1 plato',
   'fideos integrales', array['en casa', 'salado', 'potente'], 20, 'potente',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -7431,7 +17770,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'fideos-integrales-salsa' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 350, 56, true, 0
+  select id, '1 plato', 350, 85, true, 0
   from meals where slug = 'fideos-integrales-salsa' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -7451,7 +17790,7 @@ insert into meals (
   source_name
 ) values (
   null, 'polenta-salsa', 'Polenta con salsa y queso', 'Cinco minutos y llena como un guiso.', 'almuerzo', 'estimado',
-  48, 'estimacion', 'estimada', '1 plato',
+  63, 'estimacion', 'estimada', '1 plato',
   'polenta', array['en casa', 'salado', 'potente'], 10, 'potente',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -7480,7 +17819,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'polenta-salsa' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 350, 48, true, 0
+  select id, '1 plato', 350, 63, true, 0
   from meals where slug = 'polenta-salsa' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -7500,7 +17839,7 @@ insert into meals (
   source_name
 ) values (
   null, 'guiso-garbanzos', 'Guiso de garbanzos', 'Se hace una vez y hay para tres días.', 'almuerzo', 'estimado',
-  44, 'estimacion', 'estimada', '1 plato hondo',
+  46, 'estimacion', 'estimada', '1 plato hondo',
   'garbanzos cocidos', array['en casa', 'salado', 'potente'], 15, 'potente',
   true, false, false, false, true,
   1, 'habitual', null, true, false, null,
@@ -7529,7 +17868,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'guiso-garbanzos' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato hondo', 400, 44, true, 0
+  select id, '1 plato hondo', 400, 46, true, 0
   from meals where slug = 'guiso-garbanzos' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -7549,7 +17888,7 @@ insert into meals (
   source_name
 ) values (
   null, 'milanesa-ensalada', 'Milanesa con ensalada', 'La misma milanesa, sin la guarnición que la sube a cuarenta.', 'almuerzo', 'estimado',
-  18, 'estimacion', 'estimada', '1 milanesa',
+  20, 'estimacion', 'estimada', '1 milanesa',
   'milanesa de carne', array['en casa', 'salado', 'potente'], 20, 'potente',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -7578,7 +17917,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'milanesa-ensalada' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 milanesa', 300, 18, true, 0
+  select id, '1 milanesa', 300, 20, true, 0
   from meals where slug = 'milanesa-ensalada' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -7598,7 +17937,7 @@ insert into meals (
   source_name
 ) values (
   null, 'zapallitos-rellenos', 'Zapallitos rellenos', 'Rinden más de lo que parece y se recalientan bien.', 'almuerzo', 'estimado',
-  26, 'estimacion', 'estimada', '2 zapallitos',
+  38, 'estimacion', 'estimada', '2 zapallitos',
   'zapallito', array['en casa', 'salado'], 20, 'normal',
   false, false, true, false, false,
   1, 'habitual', null, true, false, null,
@@ -7627,7 +17966,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'zapallitos-rellenos' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 zapallitos', 320, 26, true, 0
+  select id, '2 zapallitos', 320, 38, true, 0
   from meals where slug = 'zapallitos-rellenos' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -7647,7 +17986,7 @@ insert into meals (
   source_name
 ) values (
   null, 'berenjenas-parmesana', 'Berenjenas a la parmesana', 'Como una napolitana pero sin la milanesa abajo.', 'almuerzo', 'estimado',
-  30, 'estimacion', 'estimada', '1 porción',
+  22, 'estimacion', 'estimada', '1 porción',
   'berenjena', array['en casa', 'salado'], 25, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -7676,7 +18015,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'berenjenas-parmesana' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 porción', 320, 30, true, 0
+  select id, '1 porción', 320, 22, true, 0
   from meals where slug = 'berenjenas-parmesana' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -7696,7 +18035,7 @@ insert into meals (
   source_name
 ) values (
   null, 'ensalada-atun-garbanzos', 'Ensalada de atún y garbanzos', 'Fría, se arma en cinco minutos y viaja perfecto.', 'almuerzo', 'estimado',
-  30, 'estimacion', 'estimada', '1 plato',
+  47, 'estimacion', 'estimada', '1 plato',
   'garbanzos cocidos', array['para llevar', 'salado', 'potente'], 8, 'potente',
   true, true, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -7725,7 +18064,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-atun-garbanzos' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 350, 30, true, 0
+  select id, '1 plato', 350, 47, true, 0
   from meals where slug = 'ensalada-atun-garbanzos' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -7745,7 +18084,7 @@ insert into meals (
   source_name
 ) values (
   null, 'arroz-primavera', 'Arroz primavera', 'Arroz con lo que haya de verdura. Bien para el tupper.', 'almuerzo', 'estimado',
-  52, 'estimacion', 'estimada', '1 plato',
+  74, 'estimacion', 'estimada', '1 plato',
   'arroz', array['para llevar', 'salado', 'potente'], 20, 'potente',
   true, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -7774,7 +18113,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'arroz-primavera' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 380, 52, true, 0
+  select id, '1 plato', 380, 74, true, 0
   from meals where slug = 'arroz-primavera' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -7794,7 +18133,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tarta-atun', 'Tarta de atún', 'Con la masa comprada sale en media hora.', 'almuerzo', 'estimado',
-  32, 'estimacion', 'estimada', '1 porción',
+  30, 'estimacion', 'estimada', '1 porción',
   'masa de tarta', array['para llevar', 'salado'], 15, 'normal',
   true, true, false, false, true,
   1, 'habitual', null, true, false, null,
@@ -7823,7 +18162,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tarta-atun' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 porción', 200, 32, true, 0
+  select id, '1 porción', 200, 30, true, 0
   from meals where slug = 'tarta-atun' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -7843,7 +18182,7 @@ insert into meals (
   source_name
 ) values (
   null, 'pollo-brocoli', 'Pollo con brócoli y papas', 'Todo en la misma asadera, una sola cosa para lavar.', 'almuerzo', 'estimado',
-  34, 'estimacion', 'estimada', '1 plato',
+  23, 'estimacion', 'estimada', '1 plato',
   'pollo', array['en casa', 'salado', 'potente'], 15, 'potente',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -7872,7 +18211,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'pollo-brocoli' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 400, 34, true, 0
+  select id, '1 plato', 400, 23, true, 0
   from meals where slug = 'pollo-brocoli' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -7892,7 +18231,7 @@ insert into meals (
   source_name
 ) values (
   null, 'empanadas-verdura', 'Empanadas de verdura caseras', 'Con tapas compradas: se arman en veinte minutos.', 'almuerzo', 'estimado',
-  60, 'estimacion', 'estimada', '3 empanadas',
+  65, 'estimacion', 'estimada', '3 empanadas',
   'tapas de empanada', array['para llevar', 'salado'], 20, 'potente',
   true, false, false, false, true,
   1, 'habitual', null, true, false, null,
@@ -7921,13 +18260,13 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'empanadas-verdura' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '3 empanadas', 280, 60, true, 0
+  select id, '3 empanadas', 280, 65, true, 0
   from meals where slug = 'empanadas-verdura' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 empanada', null, 20, false, 1
+  select id, '1 empanada', null, 22, false, 1
   from meals where slug = 'empanadas-verdura' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 empanadas', null, 40, false, 2
+  select id, '2 empanadas', null, 43, false, 2
   from meals where slug = 'empanadas-verdura' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -7947,7 +18286,7 @@ insert into meals (
   source_name
 ) values (
   null, 'sandwich-milanesa-completo', 'Sándwich de milanesa completo', 'Con lechuga, tomate y huevo. El pan es lo que pesa.', 'almuerzo', 'estimado',
-  52, 'estimacion', 'estimada', '1 sándwich',
+  107, 'estimacion', 'estimada', '1 sándwich',
   'milanesa de carne', array['en casa', 'salado', 'potente'], 20, 'potente',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -7976,7 +18315,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'sandwich-milanesa-completo' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 sándwich', 380, 52, true, 0
+  select id, '1 sándwich', 380, 107, true, 0
   from meals where slug = 'sandwich-milanesa-completo' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -7996,7 +18335,7 @@ insert into meals (
   source_name
 ) values (
   null, 'pastel-calabaza', 'Pastel de calabaza', 'Como el de papa, con calabaza arriba.', 'almuerzo', 'estimado',
-  40, 'estimacion', 'estimada', '1 porción',
+  48, 'estimacion', 'estimada', '1 porción',
   'calabaza', array['en casa', 'salado', 'potente'], 20, 'potente',
   false, false, true, false, true,
   1, 'habitual', null, true, false, null,
@@ -8025,7 +18364,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'pastel-calabaza' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 porción', 350, 40, true, 0
+  select id, '1 porción', 350, 48, true, 0
   from meals where slug = 'pastel-calabaza' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -8290,7 +18629,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tortilla-verduras', 'Tortilla de verduras', 'Sin papa: la misma tortilla, mucho menos carbohidrato.', 'cena', 'estimado',
-  18, 'estimacion', 'estimada', '2 porciones',
+  14, 'estimacion', 'estimada', '2 porciones',
   'huevo', array['en casa', 'salado'], 15, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -8319,7 +18658,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tortilla-verduras' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 porciones', 280, 18, true, 0
+  select id, '2 porciones', 280, 14, true, 0
   from meals where slug = 'tortilla-verduras' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -8339,7 +18678,7 @@ insert into meals (
   source_name
 ) values (
   null, 'sopa-crema-pan', 'Sopa crema con pan', 'Sobre de sopa y dos tostadas. Cinco minutos de cocina.', 'cena', 'estimado',
-  34, 'estimacion', 'estimada', '1 plato',
+  35, 'estimacion', 'estimada', '1 plato',
   'sopa crema', array['en casa', 'rápido', 'salado'], 6, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -8368,7 +18707,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'sopa-crema-pan' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 350, 34, true, 0
+  select id, '1 plato', 350, 35, true, 0
   from meals where slug = 'sopa-crema-pan' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -8388,7 +18727,7 @@ insert into meals (
   source_name
 ) values (
   null, 'ensalada-cesar-cena', 'Ensalada césar con pollo', 'Sin crutones se va a la mitad de carbohidratos.', 'cena', 'estimado',
-  22, 'estimacion', 'estimada', '1 plato grande',
+  20, 'estimacion', 'estimada', '1 plato grande',
   'pollo', array['en casa', 'salado', 'potente'], 15, 'potente',
   false, true, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -8417,7 +18756,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-cesar-cena' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato grande', 330, 22, true, 0
+  select id, '1 plato grande', 330, 20, true, 0
   from meals where slug = 'ensalada-cesar-cena' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -8437,7 +18776,7 @@ insert into meals (
   source_name
 ) values (
   null, 'revuelto-espinaca', 'Revuelto de espinaca', 'Diez minutos y casi sin carbohidratos.', 'cena', 'estimado',
-  10, 'estimacion', 'estimada', '1 plato',
+  5, 'estimacion', 'estimada', '1 plato',
   'espinaca', array['en casa', 'rápido', 'salado'], 10, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -8466,7 +18805,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'revuelto-espinaca' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 280, 10, true, 0
+  select id, '1 plato', 280, 5, true, 0
   from meals where slug = 'revuelto-espinaca' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -8486,7 +18825,7 @@ insert into meals (
   source_name
 ) values (
   null, 'pizza-prepizza', 'Pizza con prepizza', 'La prepizza comprada: diez minutos de horno y listo.', 'cena', 'estimado',
-  62, 'estimacion', 'estimada', '2 porciones',
+  65, 'estimacion', 'estimada', '2 porciones',
   'prepizza', array['en casa', 'potente', 'antojo'], 8, 'potente',
   false, false, false, false, false,
   1, 'ocasional', null, true, false, null,
@@ -8515,13 +18854,13 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'pizza-prepizza' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 porciones', 250, 62, true, 0
+  select id, '2 porciones', 250, 65, true, 0
   from meals where slug = 'pizza-prepizza' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 porción', null, 31, false, 1
+  select id, '1 porción', null, 32, false, 1
   from meals where slug = 'pizza-prepizza' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '3 porciones', null, 93, false, 2
+  select id, '3 porciones', null, 97, false, 2
   from meals where slug = 'pizza-prepizza' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -8541,7 +18880,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tomate-atun-cena', 'Tomates rellenos con atún', 'Sin cocinar nada, y aguanta hecho en la heladera.', 'cena', 'estimado',
-  12, 'estimacion', 'estimada', '2 tomates',
+  8, 'estimacion', 'estimada', '2 tomates',
   'tomate', array['en casa', 'rápido', 'salado'], 10, 'normal',
   false, true, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -8570,7 +18909,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tomate-atun-cena' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 tomates', 300, 12, true, 0
+  select id, '2 tomates', 300, 8, true, 0
   from meals where slug = 'tomate-atun-cena' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -8590,7 +18929,7 @@ insert into meals (
   source_name
 ) values (
   null, 'picada-liviana', 'Picada liviana', 'Queso, fiambre y unas galletitas. Sin cocinar.', 'cena', 'estimado',
-  20, 'estimacion', 'estimada', '1 tabla chica',
+  28, 'estimacion', 'estimada', '1 tabla chica',
   'queso', array['en casa', 'rápido', 'salado'], 5, 'normal',
   false, true, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -8619,7 +18958,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'picada-liviana' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 tabla chica', 220, 20, true, 0
+  select id, '1 tabla chica', 220, 28, true, 0
   from meals where slug = 'picada-liviana' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -8639,7 +18978,7 @@ insert into meals (
   source_name
 ) values (
   null, 'sandwich-panceta-queso', 'Sándwich de panceta y queso', 'En sandwichera, cinco minutos.', 'cena', 'estimado',
-  30, 'estimacion', 'estimada', '1 sándwich',
+  29, 'estimacion', 'estimada', '1 sándwich',
   'pan', array['en casa', 'rápido', 'potente'], 8, 'potente',
   false, false, false, false, false,
   1, 'ocasional', null, true, false, null,
@@ -8668,7 +19007,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'sandwich-panceta-queso' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 sándwich', 220, 30, true, 0
+  select id, '1 sándwich', 220, 29, true, 0
   from meals where slug = 'sandwich-panceta-queso' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -8688,7 +19027,7 @@ insert into meals (
   source_name
 ) values (
   null, 'panchos', 'Panchos', 'Dos panes y dos salchichas. Rápido y barato.', 'cena', 'estimado',
-  40, 'estimacion', 'estimada', '2 panchos',
+  59, 'estimacion', 'estimada', '2 panchos',
   'salchicha', array['en casa', 'rápido', 'antojo'], 8, 'normal',
   false, false, false, false, false,
   1, 'ocasional', null, false, false, null,
@@ -8717,7 +19056,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'panchos' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '2 panchos', 220, 40, true, 0
+  select id, '2 panchos', 220, 59, true, 0
   from meals where slug = 'panchos' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -8737,7 +19076,7 @@ insert into meals (
   source_name
 ) values (
   null, 'ensalada-pollo-palta', 'Ensalada de pollo y palta', 'Con la pechuga que sobró del mediodía.', 'cena', 'estimado',
-  14, 'estimacion', 'estimada', '1 plato grande',
+  6, 'estimacion', 'estimada', '1 plato grande',
   'pechuga de pollo', array['en casa', 'rápido', 'salado', 'potente'], 10, 'potente',
   false, true, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -8766,7 +19105,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'ensalada-pollo-palta' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato grande', 330, 14, true, 0
+  select id, '1 plato grande', 330, 6, true, 0
   from meals where slug = 'ensalada-pollo-palta' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -8786,7 +19125,7 @@ insert into meals (
   source_name
 ) values (
   null, 'noquis-manteca', 'Ñoquis con manteca y queso', 'Los comprados: cinco minutos de olla.', 'cena', 'estimado',
-  62, 'estimacion', 'estimada', '1 plato',
+  77, 'estimacion', 'estimada', '1 plato',
   'ñoquis', array['en casa', 'rápido', 'potente'], 8, 'potente',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -8815,7 +19154,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'noquis-manteca' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato', 300, 62, true, 0
+  select id, '1 plato', 300, 77, true, 0
   from meals where slug = 'noquis-manteca' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -8835,7 +19174,7 @@ insert into meals (
   source_name
 ) values (
   null, 'milanesa-congelada', 'Milanesa congelada al horno', 'La de freezer, directo al horno. Es la cena de un martes.', 'cena', 'estimado',
-  34, 'estimacion', 'estimada', '1 milanesa con puré',
+  36, 'estimacion', 'estimada', '1 milanesa con puré',
   'milanesa de pollo', array['en casa', 'salado', 'potente'], 12, 'potente',
   false, false, false, false, false,
   1, 'habitual', null, true, false, 'La porción dice «con puré» y el puré no sale en cinco minutos: hervir y pisar las papas son doce de trabajo. Se sumó la leche del puré, que no estaba.',
@@ -8864,7 +19203,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'milanesa-congelada' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 milanesa con puré', 320, 34, true, 0
+  select id, '1 milanesa con puré', 320, 36, true, 0
   from meals where slug = 'milanesa-congelada' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -8884,7 +19223,7 @@ insert into meals (
   source_name
 ) values (
   null, 'sopa-verduras', 'Sopa de verduras con fideos', 'De las que se hacen con lo que quedó en la heladera.', 'cena', 'estimado',
-  30, 'estimacion', 'estimada', '1 plato hondo',
+  55, 'estimacion', 'estimada', '1 plato hondo',
   'caldo', array['en casa', 'salado'], 15, 'normal',
   false, false, false, false, true,
   1, 'habitual', null, true, false, null,
@@ -8913,7 +19252,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'sopa-verduras' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 plato hondo', 400, 30, true, 0
+  select id, '1 plato hondo', 400, 55, true, 0
   from meals where slug = 'sopa-verduras' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -9527,7 +19866,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tomatitos-queso', 'Tomates cherry con queso', 'Para picar sin que sea una picada.', 'snack', 'estimado',
-  6, 'estimacion', 'estimada', '1 bowl chico',
+  8, 'estimacion', 'estimada', '1 bowl chico',
   'tomate', array['en casa', 'rápido', 'salado'], 3, 'liviana',
   false, true, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -9556,7 +19895,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tomatitos-queso' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 bowl chico', 150, 6, true, 0
+  select id, '1 bowl chico', 150, 8, true, 0
   from meals where slug = 'tomatitos-queso' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -9576,7 +19915,7 @@ insert into meals (
   source_name
 ) values (
   null, 'pepino-zanahoria', 'Bastones de pepino y zanahoria', 'Se cortan a la noche y quedan listos en un tupper.', 'snack', 'estimado',
-  8, 'estimacion', 'estimada', '1 bowl',
+  16, 'estimacion', 'estimada', '1 bowl',
   'zanahoria', array['para llevar', 'salado'], 5, 'liviana',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
@@ -9605,7 +19944,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'pepino-zanahoria' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 bowl', 200, 8, true, 0
+  select id, '1 bowl', 200, 16, true, 0
   from meals where slug = 'pepino-zanahoria' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -9625,7 +19964,7 @@ insert into meals (
   source_name
 ) values (
   null, 'tostadas-arroz-palta', 'Galletas de arroz con palta', 'Livianas de verdad, no «livianas» de etiqueta.', 'snack', 'estimado',
-  16, 'estimacion', 'estimada', '3 galletas',
+  20, 'estimacion', 'estimada', '3 galletas',
   'palta', array['en casa', 'rápido', 'salado'], 3, 'liviana',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -9654,7 +19993,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'tostadas-arroz-palta' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '3 galletas', 90, 16, true, 0
+  select id, '3 galletas', 90, 20, true, 0
   from meals where slug = 'tostadas-arroz-palta' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t

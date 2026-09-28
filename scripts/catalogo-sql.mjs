@@ -67,9 +67,18 @@ const MOMENTO = {
    carpeta también viven revisiones —duplicados.json— que no son
    entradas y no tienen por qué terminar en el seed. */
 const entradas = readdirSync(resolve(ROOT, 'data/catalogo'))
-  .filter((f) => /^v\d+\.json$/.test(f))
+  .filter((f) => /^v\d+\.json$/.test(f) || f === 'ampliacion.json')
   .sort()
   .flatMap((f) => JSON.parse(readFileSync(resolve(ROOT, 'data/catalogo', f), 'utf8')))
+const enriquecidas = JSON.parse(readFileSync(resolve(ROOT, 'data/catalogo/legacy-enrichment.json'), 'utf8'))
+for (const e of entradas) {
+  const supplement = enriquecidas[e.slug]
+  if (!supplement) continue
+  const base = e.portions.find((p) => p.default) ?? e.portions[0]
+  e.portions = e.portions.map((p) => ({ ...p,
+    carbs: Math.round(supplement.nutrition.carbs * p.carbs / base.carbs),
+  }))
+}
 
 const out = [
   '-- ==================================================================',

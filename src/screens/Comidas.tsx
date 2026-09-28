@@ -8,13 +8,33 @@ import { Sheet } from '../components/Sheet'
 import { MealDetail } from '../components/MealDetail'
 
 const CATEGORIES: (Slot | 'todas')[] = ['todas', ...SLOT_ORDER]
+const EXTRA = [
+  ['rapido', 'rápido'], ['llevar', 'para llevar'], ['airfryer', 'air fryer'],
+  ['horno', 'horno'], ['sarten', 'sartén'], ['frio', 'sin cocción'],
+  ['economico', 'económico'], ['anticipar', 'preparar antes'],
+] as const
+type Extra = typeof EXTRA[number][0]
+const coincide = (meal: Meal, filtro: Extra) => {
+  const equipo = normalizar(meal.equipment ?? '')
+  switch (filtro) {
+    case 'rapido': return meal.totalMinutes <= 30
+    case 'llevar': return meal.portable
+    case 'airfryer': return equipo.includes('freidora de aire')
+    case 'horno': return equipo.includes('horno')
+    case 'sarten': return equipo.includes('sarten') || equipo.includes('hornalla')
+    case 'frio': return meal.prepType === 'assemble' || equipo.includes('sin coccion')
+    case 'economico': return meal.priceLevel === 1
+    case 'anticipar': return meal.makeNightBefore
+  }
+}
 
 const normalizar = (value: string) =>
   value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim()
 
 export function Comidas({ app }: { app: Vianda }) {
   const [cat, setCat] = useState<Slot | 'todas'>('todas')
-  const [portable, setPortable] = useState(false)
+  const [extras, setExtras] = useState<Extra[]>([])
+  const [expanded, setExpanded] = useState<Slot[]>([])
   const [outside, setOutside] = useState<'todas' | 'casa' | 'afuera'>('todas')
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState<Meal | null>(null)
@@ -23,7 +43,7 @@ export function Comidas({ app }: { app: Vianda }) {
     const q = normalizar(query)
     const list = app.meals
       .filter((m) => (cat === 'todas' ? true : m.momentos?.includes(SLOT_CATEGORY[cat])))
-      .filter((m) => (portable ? m.portable : true))
+      .filter((m) => extras.every((f) => coincide(m, f)))
       .filter((m) => outside === 'todas' ? true : outside === 'afuera' ? m.buyOutside : !m.buyOutside)
       .filter((m) => {
         if (!q) return true
@@ -40,7 +60,7 @@ export function Comidas({ app }: { app: Vianda }) {
         return SLOT_ORDER.find((s) => m.momentos?.includes(SLOT_CATEGORY[s])) === slot
       }),
     })).filter((g) => g.meals.length > 0)
-  }, [app.meals, cat, portable, outside, query])
+  }, [app.meals, cat, extras, outside, query])
 
   const count = groups.reduce((n, g) => n + g.meals.length, 0)
 
@@ -80,8 +100,10 @@ export function Comidas({ app }: { app: Vianda }) {
           ))}
         </div>
 
-        <div className="flex gap-1.5 pb-3">
-          <FilterWord active={portable} onClick={() => setPortable((v) => !v)}>para llevar</FilterWord>
+        <div className="v-no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4 pb-3">
+          {EXTRA.map(([id, label]) => <FilterWord key={id} active={extras.includes(id)} onClick={() => {
+            setExtras((xs) => xs.includes(id) ? xs.filter((x) => x !== id) : [...xs, id]); setExpanded([])
+          }}>{label}</FilterWord>)}
           <FilterWord active={outside === 'casa'} onClick={() => setOutside((v) => (v === 'casa' ? 'todas' : 'casa'))}>la cocinás</FilterWord>
           <FilterWord active={outside === 'afuera'} onClick={() => setOutside((v) => (v === 'afuera' ? 'todas' : 'afuera'))}>se compra</FilterWord>
         </div>
@@ -105,7 +127,7 @@ export function Comidas({ app }: { app: Vianda }) {
                 </span>
               </div>
 
-              {group.meals.map((meal) => (
+              {group.meals.slice(0, expanded.includes(group.category) ? undefined : 24).map((meal) => (
                 <button
                   key={meal.id}
                   onClick={() => setOpen(meal)}
@@ -132,6 +154,10 @@ export function Comidas({ app }: { app: Vianda }) {
                   </svg>
                 </button>
               ))}
+              {group.meals.length > 24 && !expanded.includes(group.category) && <button
+                className="mt-2 min-h-11 w-full rounded-xl border border-line text-[14px] font-semibold text-accent"
+                onClick={() => setExpanded((xs) => [...xs, group.category])}
+              >Ver las {group.meals.length - 24} opciones restantes</button>}
             </m.section>
           ))}
         </AnimatePresence>
@@ -159,7 +185,7 @@ function FilterWord({ active, onClick, children }: { active: boolean; onClick: (
     <button
       onClick={onClick}
       aria-pressed={active}
-      className={`v-label-sm min-h-[34px] rounded-lg px-3 transition-colors ${
+      className={`v-label-sm min-h-[36px] shrink-0 whitespace-nowrap rounded-lg px-3 transition-colors ${
         active ? 'bg-accent-soft font-semibold text-accent' : 'border border-line text-ink-faint active:bg-surface-2'
       }`}
     >

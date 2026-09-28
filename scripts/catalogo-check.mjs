@@ -15,7 +15,8 @@ import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const catalogo = JSON.parse(readFileSync(resolve(ROOT, 'data/catalogo/v1.json'), 'utf8'))
+const catalogo = ['v1.json', 'ampliacion.json'].flatMap((name) =>
+  JSON.parse(readFileSync(resolve(ROOT, 'data/catalogo', name), 'utf8')))
 
 /* FOODS es TypeScript, así que se leen las claves del archivo en vez de
    importarlo: alcanza para saber si un ingrediente existe. */

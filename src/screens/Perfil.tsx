@@ -9,10 +9,21 @@ const diabetesOpciones: DiabetesType[] = [
   'tipo-1',
   'tipo-2',
   'gestacional',
-  'prediabetes',
-  'sin-diabetes',
+  'lada',
+  'mody-otro',
+  'otro',
+  'no-seguro',
   'prefiero-no-decir',
 ]
+
+const esquemas = [
+  ['basal', 'Basal / acción prolongada'],
+  ['comidas', 'Rápida o ultrarrápida para comidas'],
+  ['ambas', 'Basal y rápida para comidas'],
+  ['bomba', 'Bomba de insulina'],
+  ['otro', 'Otro esquema'],
+  ['no-seguro', 'No estoy seguro/a'],
+] as const
 
 export function Perfil({ app }: { app: Vianda }) {
   const cuenta = useSession()
@@ -61,6 +72,19 @@ export function Perfil({ app }: { app: Vianda }) {
       </section>
 
       <section className="mt-8">
+        <TituloSeccion>Preferencias de comida</TituloSeccion>
+        <Card>
+          <label className="flex items-start gap-3 text-[15px] leading-relaxed text-ink">
+            <input type="checkbox" checked={app.prefs.reduceAddedSugar}
+              onChange={(e) => app.setPrefs({ ...app.prefs, reduceAddedSugar: e.target.checked })}
+              className="mt-1 size-5 shrink-0 accent-accent" />
+            Preferir opciones con menos azúcar agregada al armar la semana
+          </label>
+          <p className="mt-2 text-[13px] text-ink-faint">No excluye alimentos. Podés cambiar cualquier comida del plan.</p>
+        </Card>
+      </section>
+
+      <section className="mt-8">
         <TituloSeccion>Sobre vos</TituloSeccion>
         <Card>
           <label className="block">
@@ -74,7 +98,7 @@ export function Perfil({ app }: { app: Vianda }) {
           </label>
 
           <div className="mt-5 border-t border-line pt-5">
-            <p className="v-label-sm text-ink-faint">Diabetes</p>
+            <p className="v-label-sm text-ink-faint">Tipo de diabetes</p>
             <select
               value={app.perfil.diabetes ?? ''}
               onChange={(e) => cambiarDiabetes((e.target.value || null) as DiabetesType | null)}
@@ -86,6 +110,37 @@ export function Perfil({ app }: { app: Vianda }) {
               ))}
             </select>
           </div>
+
+          <label className="mt-5 block border-t border-line pt-5">
+            <span className="v-label-sm text-ink-faint">¿Usás insulina actualmente?</span>
+            <select value={app.perfil.usaInsulina ?? ''}
+              onChange={(e) => app.setPerfil({ ...app.perfil,
+                usaInsulina: (e.target.value || null) as typeof app.perfil.usaInsulina,
+                esquemaInsulina: e.target.value === 'si' ? app.perfil.esquemaInsulina : null,
+              })}
+              className="mt-2 w-full rounded-xl border border-line bg-bg px-3.5 py-3 text-[16px] text-ink">
+              <option value="">Sin responder</option><option value="si">Sí</option>
+              <option value="no">No</option><option value="prefiero">Prefiero no indicarlo</option>
+            </select>
+          </label>
+          {app.perfil.usaInsulina === 'si' && <label className="mt-5 block">
+            <span className="v-label-sm text-ink-faint">Esquema de insulina</span>
+            <select value={app.perfil.esquemaInsulina ?? ''}
+              onChange={(e) => app.setPerfil({ ...app.perfil, esquemaInsulina: (e.target.value || null) as typeof app.perfil.esquemaInsulina })}
+              className="mt-2 w-full rounded-xl border border-line bg-bg px-3.5 py-3 text-[16px] text-ink">
+              <option value="">Sin responder</option>
+              {esquemas.map(([id, label]) => <option key={id} value={id}>{label}</option>)}
+            </select>
+          </label>}
+          <label className="mt-5 block">
+            <span className="v-label-sm text-ink-faint">¿Usás otra medicación para la diabetes?</span>
+            <select value={app.perfil.medicacionAdicional ?? ''}
+              onChange={(e) => app.setPerfil({ ...app.perfil, medicacionAdicional: (e.target.value || null) as typeof app.perfil.medicacionAdicional })}
+              className="mt-2 w-full rounded-xl border border-line bg-bg px-3.5 py-3 text-[16px] text-ink">
+              <option value="">Sin responder</option><option value="si">Sí</option>
+              <option value="no">No</option><option value="prefiero">Prefiero no indicarlo</option>
+            </select>
+          </label>
 
           <button
             onClick={cambiarCarbos}

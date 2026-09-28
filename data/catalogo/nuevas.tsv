@@ -1,0 +1,212 @@
+# nombre|momento|método|ingredientes (nombre:cantidad:unidad separados por ;)|minutos|porciones|transportable
+Tortilla de batata y cebolla|almuerzo|tortilla|batata:350:g;cebolla:100:g;huevo:3:u;aceite:10:g|35|3|si
+Tortilla de acelga y queso|cena|tortilla|acelga:300:g;cebolla:80:g;huevo:3:u;queso:70:g;aceite:10:g|30|3|si
+Tortilla de arvejas y papa|almuerzo|tortilla|papa:300:g;arvejas:160:g;huevo:3:u;cebolla:80:g|35|3|si
+Frittata de brócoli y ricota|cena|tortilla|brócoli:300:g;ricota:120:g;huevo:3:u;cebolla:80:g|30|3|si
+Frittata de tomate y muzzarella|cena|tortilla|tomate:250:g;muzzarella:100:g;huevo:3:u;cebolla:80:g|25|3|si
+Tarta de zapallitos y choclo|almuerzo|tarta|masa de tarta:1:u;zapallito:450:g;choclo:200:g;cebolla:120:g;huevo:2:u;queso:100:g|50|6|si
+Tarta de calabaza y ricota|almuerzo|tarta|masa de tarta:1:u;calabaza:600:g;ricota:250:g;cebolla:100:g;huevo:2:u|55|6|si
+Tarta de acelga y queso|almuerzo|tarta|masa de tarta:1:u;acelga:500:g;queso:160:g;cebolla:120:g;huevo:2:u|50|6|si
+Tarta de cebolla y queso|cena|tarta|masa de tarta:1:u;cebolla:500:g;queso:180:g;huevo:2:u|50|6|si
+Tarta de brócoli y pollo|almuerzo|tarta|masa de tarta:1:u;brócoli:350:g;pollo:250:g;cebolla:100:g;huevo:2:u;queso:80:g|55|6|si
+Tarta de berenjena y tomate|cena|tarta|masa de tarta:1:u;berenjena:400:g;tomate:250:g;muzzarella:130:g;huevo:2:u|55|6|si
+Tarta de espinaca y ricota|almuerzo|tarta|masa de tarta:1:u;espinaca:400:g;ricota:250:g;huevo:2:u;cebolla:100:g|50|6|si
+Tarta de zanahoria y atún|almuerzo|tarta|masa de tarta:1:u;zanahoria:300:g;atún:200:g;cebolla:120:g;huevo:2:u|50|6|si
+Tarta de choclo y jamón|cena|tarta|masa de tarta:1:u;choclo:350:g;jamón:130:g;queso:120:g;huevo:2:u|50|6|si
+Empanadas de humita|almuerzo|empanada|tapas de empanada:12:u;choclo:450:g;cebolla:180:g;queso:160:g;leche:100:ml|45|6|si
+Empanadas de pollo y morrón|almuerzo|empanada|tapas de empanada:12:u;pollo:500:g;cebolla:250:g;morrón:180:g;huevo:2:u|55|6|si
+Empanadas de carne cortada a cuchillo|cena|empanada|tapas de empanada:12:u;lomo:500:g;cebolla:300:g;morrón:100:g;huevo:2:u|65|6|si
+Empanadas de acelga y salsa blanca|almuerzo|empanada|tapas de empanada:12:u;acelga:500:g;leche:250:ml;harina:25:g;queso:100:g|50|6|si
+Empanadas de jamón, queso y tomate|cena|empanada|tapas de empanada:12:u;jamón:250:g;queso:250:g;tomate:150:g|35|6|si
+Empanadas de lentejas especiadas|almuerzo|empanada|tapas de empanada:12:u;lentejas cocidas:500:g;cebolla:250:g;zanahoria:160:g;morrón:100:g|50|6|si
+Guiso de arroz y lentejas|almuerzo|guiso|arroz:160:g;lentejas cocidas:350:g;cebolla:180:g;zanahoria:180:g;salsa de tomate:250:g|45|4|si
+Guiso de porotos con calabaza|cena|guiso|porotos cocidos:450:g;calabaza:500:g;cebolla:180:g;morrón:150:g;salsa de tomate:250:g|45|4|si
+Guiso de fideos y pollo|almuerzo|guiso|fideos:220:g;pollo:400:g;zanahoria:200:g;cebolla:180:g;salsa de tomate:250:g|45|4|si
+Guiso de garbanzos y espinaca|cena|guiso|garbanzos cocidos:450:g;espinaca:350:g;cebolla:180:g;tomate:250:g|40|4|si
+Carbonada de carne y zapallo|almuerzo|guiso|carne picada:450:g;calabaza:500:g;papa:300:g;choclo:200:g;cebolla:180:g|55|4|si
+Locro sencillo de porotos y maíz|almuerzo|guiso|porotos cocidos:450:g;choclo:400:g;calabaza:450:g;cebolla:200:g;cerdo:250:g|65|5|si
+Estofado de carne con papas|cena|guiso|lomo:500:g;papa:500:g;cebolla:220:g;zanahoria:180:g;salsa de tomate:300:g|65|4|si
+Pollo a la cacerola con zanahoria|almuerzo|guiso|pollo:500:g;zanahoria:350:g;cebolla:200:g;papa:350:g;salsa de tomate:200:g|50|4|si
+Lentejas con chorizo y verduras|cena|guiso|lentejas cocidas:500:g;chorizo:160:g;calabaza:300:g;cebolla:180:g;zanahoria:150:g|45|4|si
+Arroz caldoso con merluza|almuerzo|guiso|arroz:180:g;merluza:450:g;tomate:220:g;cebolla:180:g;morrón:120:g|40|4|si
+Sopa de verduras con garbanzos|cena|sopa|garbanzos cocidos:350:g;calabaza:300:g;zanahoria:180:g;zapallito:250:g;cebolla:100:g|35|4|si
+Sopa de tomate y arroz|cena|sopa|tomate:600:g;arroz:100:g;cebolla:180:g;queso rallado:35:g|35|4|si
+Sopa de pollo con fideos|cena|sopa|pollo:300:g;fideos:120:g;zanahoria:180:g;cebolla:120:g;zapallito:220:g|40|4|si
+Crema de zanahoria y calabaza|cena|sopa|calabaza:500:g;zanahoria:350:g;cebolla:120:g;leche:150:ml|35|4|si
+Sopa de lentejas y verduras|cena|sopa|lentejas cocidas:450:g;zanahoria:220:g;tomate:250:g;cebolla:150:g|35|4|si
+Crema de brócoli con queso|cena|sopa|brócoli:600:g;papa:180:g;leche:200:ml;queso:80:g|35|4|si
+Sopa de batata y puerro|cena|sopa|batata:500:g;cebolla:160:g;leche:180:ml;queso:50:g|35|4|si
+Puchero rápido de pollo|almuerzo|guiso|pollo:600:g;papa:400:g;calabaza:400:g;zanahoria:300:g;choclo:300:g|55|4|si
+Pastel de lentejas y puré de papa|almuerzo|pastel|lentejas cocidas:550:g;papa:650:g;cebolla:250:g;zanahoria:170:g;queso:80:g|55|5|si
+Pastel de pollo y calabaza|almuerzo|pastel|pollo:500:g;calabaza:750:g;cebolla:230:g;morrón:140:g;queso:100:g|55|5|si
+Pastel de berenjena y carne|cena|pastel|berenjena:650:g;carne picada:450:g;tomate:350:g;cebolla:180:g;muzzarella:120:g|55|5|si
+Pastel de choclo y carne|almuerzo|pastel|choclo:600:g;carne picada:450:g;calabaza:200:g;cebolla:230:g;queso:100:g|55|5|si
+Cazuela de cerdo y batata|cena|guiso|cerdo:500:g;batata:500:g;cebolla:200:g;zanahoria:180:g;tomate:250:g|55|4|si
+Cazuela de merluza y tomate|cena|guiso|merluza:550:g;papa:400:g;tomate:350:g;cebolla:220:g;morrón:150:g|45|4|si
+Humita en olla|almuerzo|guiso|choclo:650:g;calabaza:450:g;cebolla:250:g;morrón:120:g;leche:200:ml;queso:100:g|50|5|si
+Risotto de calabaza y queso|cena|risotto|arroz:220:g;calabaza:400:g;cebolla:150:g;queso rallado:70:g;aceite:15:g|40|4|no
+Risotto de hongos y pollo|cena|risotto|arroz:220:g;champiñones:320:g;pollo:300:g;cebolla:150:g;queso rallado:60:g|45|4|no
+Arroz salteado con huevo y arvejas|almuerzo|salteado|arroz:180:g;huevo:3:u;arvejas:220:g;zanahoria:180:g;cebolla:120:g|30|4|si
+Arroz salteado con cerdo y morrón|almuerzo|salteado|arroz:180:g;cerdo:400:g;morrón:230:g;cebolla:150:g;zanahoria:120:g|35|4|si
+Arroz con atún y tomate al horno|almuerzo|horno|arroz:200:g;atún:220:g;tomate:300:g;cebolla:150:g;queso:100:g|40|4|si
+Ensalada fría de arroz, pollo y zanahoria|almuerzo|ensalada|arroz:150:g;pollo:350:g;zanahoria:180:g;tomate:230:g;lechuga:130:g|30|3|si
+Ensalada de pasta con atún y choclo|almuerzo|ensalada|fideos:180:g;atún:180:g;choclo:170:g;tomate:220:g;aceite de oliva:15:g|25|3|si
+Ensalada de papa, huevo y arvejas|almuerzo|ensalada|papa:450:g;huevo:3:u;arvejas:180:g;zanahoria:180:g|30|3|si
+Ensalada de garbanzos con pollo y pepino|almuerzo|ensalada|garbanzos cocidos:350:g;pollo:330:g;pepino:220:g;tomate:250:g|25|3|si
+Ensalada de porotos con huevo y tomate|almuerzo|ensalada|porotos cocidos:400:g;huevo:3:u;tomate:300:g;cebolla morada:80:g|20|3|si
+Ensalada tibia de batata, espinaca y ricota|almuerzo|ensalada|batata:400:g;espinaca:220:g;ricota:180:g;cebolla:100:g|30|3|si
+Ensalada de lentejas y remolacha|almuerzo|ensalada|lentejas cocidas:400:g;remolacha:300:g;zanahoria:160:g;queso:100:g|25|3|si
+Ensalada de arroz y sardinas|almuerzo|ensalada|arroz:160:g;sardina:180:g;tomate:250:g;huevo:2:u;lechuga:150:g|25|3|si
+Ensalada de pollo, naranja y zanahoria|almuerzo|ensalada|pollo:360:g;naranja:200:g;zanahoria:180:g;lechuga:180:g;nuez:35:g|25|3|si
+Ensalada de fideos, brócoli y queso|almuerzo|ensalada|fideos:180:g;brócoli:300:g;queso:170:g;tomate:200:g|25|3|si
+Ensalada caprese con garbanzos|almuerzo|ensalada|garbanzos cocidos:360:g;tomate:350:g;muzzarella:180:g;aceite de oliva:12:g|15|3|si
+Ensalada de papa, merluza y tomate|almuerzo|ensalada|papa:450:g;merluza:400:g;tomate:240:g;huevo:2:u|35|3|si
+Ensalada de pollo con arroz y palta|almuerzo|ensalada|pollo:350:g;arroz:150:g;palta:170:g;tomate:240:g|30|3|si
+Ensalada de remolacha, huevo y ricota|almuerzo|ensalada|remolacha:380:g;huevo:3:u;ricota:210:g;lechuga:180:g|25|3|si
+Ensalada de garbanzos, zanahoria y atún|almuerzo|ensalada|garbanzos cocidos:350:g;atún:180:g;zanahoria:220:g;cebolla morada:80:g|20|3|si
+Wrap de carne salteada y morrón|almuerzo|wrap|tortilla de trigo:3:u;lomo:350:g;morrón:220:g;cebolla:180:g;queso:80:g|30|3|si
+Wrap de atún, huevo y tomate|almuerzo|wrap|tortilla de trigo:3:u;atún:180:g;huevo:2:u;tomate:250:g;lechuga:110:g|20|3|si
+Wrap de garbanzos pisados y verduras|almuerzo|wrap|tortilla de trigo:3:u;garbanzos cocidos:350:g;zanahoria:170:g;pepino:170:g;queso untable:80:g|20|3|si
+Wrap de cerdo con repollo y zanahoria|almuerzo|wrap|tortilla de trigo:3:u;cerdo:350:g;repollo:220:g;zanahoria:170:g;yogur natural:80:g|30|3|si
+Wrap de milanesa de berenjena y queso|almuerzo|wrap|tortilla de trigo:3:u;berenjena:350:g;huevo:1:u;pan rallado:80:g;queso:120:g;tomate:200:g|35|3|si
+Sándwich de pollo al horno y tomate|almuerzo|sandwich|pan:6:u;pollo:300:g;tomate:220:g;lechuga:100:g;queso:80:g|25|3|si
+Sándwich de atún y huevo duro|almuerzo|sandwich|pan:6:u;atún:170:g;huevo:2:u;tomate:180:g|20|3|si
+Sándwich de carne fría y morrón asado|almuerzo|sandwich|pan:6:u;lomo:330:g;morrón:220:g;queso:90:g|30|3|si
+Sándwich de ricota, espinaca y tomate|almuerzo|sandwich|pan:6:u;ricota:240:g;espinaca:180:g;tomate:210:g|15|3|si
+Sándwich de cerdo desmenuzado y repollo|almuerzo|sandwich|pan:6:u;cerdo:400:g;repollo:250:g;zanahoria:130:g|45|3|si
+Pan árabe relleno de pollo y verduras|almuerzo|sandwich|tortilla de trigo:3:u;pollo:350:g;tomate:250:g;pepino:180:g;yogur natural:90:g|25|3|si
+Sándwich de omelette y queso|almuerzo|sandwich|pan:6:u;huevo:3:u;queso:120:g;espinaca:180:g|15|3|si
+Sándwich de garbanzos con palta|almuerzo|sandwich|pan integral:6:u;garbanzos cocidos:300:g;palta:160:g;tomate:200:g|15|3|si
+Pan de miga con pollo, huevo y lechuga|almuerzo|sandwich|pan de miga:9:u;pollo:300:g;huevo:2:u;lechuga:130:g;queso untable:80:g|25|3|si
+Hamburguesas de lentejas y zanahoria|almuerzo|hamburguesa|lentejas cocidas:500:g;zanahoria:180:g;cebolla:130:g;huevo:1:u;pan rallado:60:g|35|4|si
+Hamburguesas de garbanzos y espinaca|almuerzo|hamburguesa|garbanzos cocidos:500:g;espinaca:220:g;cebolla:120:g;huevo:1:u;pan rallado:50:g|35|4|si
+Hamburguesas de pollo y calabaza|almuerzo|hamburguesa|pollo:500:g;calabaza:260:g;cebolla:130:g;huevo:1:u;pan rallado:50:g|40|4|si
+Hamburguesas de atún y papa|almuerzo|hamburguesa|atún:300:g;papa:350:g;huevo:2:u;cebolla:100:g;pan rallado:60:g|40|4|si
+Hamburguesas de carne y remolacha|cena|hamburguesa|carne picada:500:g;remolacha:250:g;cebolla:130:g;huevo:1:u|35|4|si
+Hamburguesas de porotos y arroz|almuerzo|hamburguesa|porotos cocidos:480:g;arroz:100:g;cebolla:120:g;huevo:1:u;pan rallado:50:g|40|4|si
+Albóndigas de carne con salsa y arroz|almuerzo|albondiga|carne picada:500:g;arroz:180:g;salsa de tomate:350:g;cebolla:150:g;huevo:1:u|45|4|si
+Albóndigas de pollo con puré de calabaza|almuerzo|albondiga|pollo:500:g;calabaza:700:g;cebolla:160:g;huevo:1:u;pan rallado:50:g|45|4|si
+Albóndigas de lentejas en salsa|cena|albondiga|lentejas cocidas:550:g;salsa de tomate:350:g;cebolla:160:g;huevo:1:u;pan rallado:70:g|45|4|si
+Albóndigas de cerdo y zanahoria|cena|albondiga|cerdo:500:g;zanahoria:200:g;cebolla:120:g;huevo:1:u;pan rallado:60:g|40|4|si
+Milanesas de berenjena con ensalada|almuerzo|milanesa|berenjena:550:g;huevo:2:u;pan rallado:130:g;tomate:250:g;lechuga:180:g|40|4|si
+Milanesas de merluza al horno con papas|almuerzo|milanesa|merluza:550:g;huevo:2:u;pan rallado:130:g;papa:550:g|45|4|si
+Milanesas de pollo en air fryer|almuerzo|airfryer|pollo:550:g;huevo:2:u;pan rallado:130:g;zanahoria:220:g|35|4|si
+Milanesas de cerdo al horno con batata|cena|milanesa|cerdo:550:g;huevo:2:u;pan rallado:130:g;batata:550:g|50|4|si
+Milanesas de calabaza rellenas con queso|cena|milanesa|calabaza:600:g;queso:180:g;huevo:2:u;pan rallado:130:g|45|4|si
+Merluza en papillote con verduras|cena|horno|merluza:550:g;zapallito:320:g;zanahoria:230:g;tomate:230:g;aceite de oliva:18:g|35|4|si
+Merluza al horno con salsa criolla|almuerzo|horno|merluza:550:g;morrón:200:g;cebolla:200:g;tomate:300:g;papa:450:g|45|4|si
+Pollo al limón con batatas|almuerzo|horno|pollo:600:g;batata:600:g;limón:1:u;cebolla:180:g|45|4|si
+Pollo al horno con calabaza y cebolla|cena|horno|pollo:600:g;calabaza:650:g;cebolla:250:g;aceite:20:g|45|4|si
+Cerdo al horno con manzana y batata|cena|horno|cerdo:600:g;manzana:250:g;batata:500:g;cebolla:160:g|55|4|si
+Bifes al horno con papa y tomate|cena|horno|lomo:600:g;papa:600:g;tomate:300:g;cebolla:150:g|45|4|si
+Zapallitos rellenos de arroz y carne|almuerzo|horno|zapallito:800:g;carne picada:400:g;arroz:130:g;cebolla:180:g;queso:100:g|55|4|si
+Papas rellenas de pollo y queso|cena|horno|papa:800:g;pollo:400:g;queso:160:g;cebolla:170:g|55|4|si
+Batatas rellenas de lentejas y queso|cena|horno|batata:750:g;lentejas cocidas:360:g;queso:150:g;cebolla:180:g|55|4|si
+Berenjenas rellenas de arroz y atún|almuerzo|horno|berenjena:750:g;arroz:130:g;atún:240:g;tomate:300:g;queso:100:g|50|4|si
+Morrones rellenos de carne y arroz|cena|horno|morrón:700:g;carne picada:450:g;arroz:140:g;cebolla:180:g;salsa de tomate:220:g|55|4|si
+Calabaza rellena de pollo y choclo|cena|horno|calabaza:850:g;pollo:450:g;choclo:220:g;queso:130:g;cebolla:150:g|55|4|si
+Fideos con salsa de atún y tomate|almuerzo|pasta|fideos:300:g;atún:200:g;salsa de tomate:420:g;cebolla:150:g|30|4|si
+Fideos con brócoli, ajo y queso|almuerzo|pasta|fideos:300:g;brócoli:400:g;ajo:12:g;queso rallado:65:g;aceite de oliva:18:g|30|4|si
+Fideos con pollo y crema de espinaca|almuerzo|pasta|fideos:300:g;pollo:350:g;espinaca:300:g;crema de leche:160:ml|35|4|si
+Fideos con berenjena y salsa roja|cena|pasta|fideos:300:g;berenjena:450:g;salsa de tomate:400:g;muzzarella:100:g|35|4|si
+Fideos con albóndigas de cerdo|cena|pasta|fideos:300:g;cerdo:450:g;salsa de tomate:420:g;cebolla:170:g|45|4|si
+Pasta fría con pollo y palta|almuerzo|ensalada|fideos:260:g;pollo:400:g;palta:220:g;tomate:250:g|30|4|si
+Ravioles con salsa de espinaca y queso|cena|pasta|ravioles:600:g;espinaca:300:g;queso:150:g;leche:120:ml|30|4|no
+Ñoquis con tuco de carne|cena|pasta|ñoquis:600:g;carne picada:350:g;salsa de tomate:400:g;cebolla:150:g|40|4|si
+Polenta gratinada con hongos|cena|horno|polenta:240:g;champiñones:350:g;leche:500:ml;muzzarella:150:g|40|4|si
+Polenta con estofado de pollo|almuerzo|guiso|polenta:240:g;pollo:450:g;salsa de tomate:350:g;cebolla:180:g|45|4|si
+Tostadas francesas con manzana salteada|desayuno|panqueque|pan:4:u;huevo:2:u;leche:150:ml;manzana:220:g;canela:2:g|20|2|no
+Tostadas francesas con frutilla y ricota|desayuno|panqueque|pan:4:u;huevo:2:u;leche:150:ml;frutilla:180:g;ricota:130:g|20|2|no
+Panqueques de ricota y banana|desayuno|panqueque|ricota:200:g;banana:180:g;huevo:2:u;harina:100:g;leche:100:ml|25|4|si
+Panqueques de manzana y canela|merienda|panqueque|manzana:280:g;huevo:2:u;harina:130:g;leche:220:ml;canela:2:g|25|4|si
+Panqueques salados de espinaca y queso|merienda|panqueque|espinaca:180:g;queso:140:g;huevo:2:u;harina:120:g;leche:220:ml|25|4|si
+Crepes de ricota y frutilla|merienda|panqueque|ricota:210:g;frutilla:220:g;huevo:2:u;harina:130:g;leche:220:ml|25|4|si
+Waffles caseros con yogur y pera|desayuno|panqueque|harina:140:g;huevo:2:u;leche:160:ml;yogur natural:160:g;pera:200:g|25|4|no
+Omelette de jamón y tomate|desayuno|tortilla|huevo:2:u;jamón:80:g;tomate:140:g;queso:40:g|12|1|no
+Omelette de espinaca y queso|desayuno|tortilla|huevo:2:u;espinaca:100:g;queso:60:g|12|1|no
+Omelette de champiñones y queso|desayuno|tortilla|huevo:2:u;champiñones:120:g;queso:55:g|15|1|no
+Revuelto de huevo, tomate y cebolla|desayuno|salteado|huevo:2:u;tomate:160:g;cebolla:80:g;pan:2:u|15|1|no
+Revuelto de huevo y arvejas sobre pan|desayuno|salteado|huevo:2:u;arvejas:100:g;pan:2:u;queso:40:g|15|1|no
+Sándwich de ricota y durazno|merienda|sandwich|pan:4:u;ricota:160:g;durazno:180:g;canela:2:g|10|2|si
+Sándwich de queso, pera y nueces|merienda|sandwich|pan integral:4:u;queso:110:g;pera:160:g;nuez:35:g|10|2|si
+Sándwich de huevo y palta con pan integral|desayuno|sandwich|pan integral:4:u;huevo:2:u;palta:120:g;tomate:130:g|18|2|si
+Tostado de tomate, muzzarella y orégano|merienda|sandwich|pan:4:u;tomate:150:g;muzzarella:130:g;orégano:2:g|12|2|si
+Tostado de pollo y queso|merienda|sandwich|pan:4:u;pollo:160:g;queso:100:g;tomate:130:g|15|2|si
+Tostado de espinaca y ricota|merienda|sandwich|pan:4:u;espinaca:160:g;ricota:170:g|15|2|si
+Tostado de jamón, queso y huevo|desayuno|sandwich|pan:4:u;jamón:100:g;queso:100:g;huevo:2:u|15|2|si
+Sándwich de atún con queso untable|merienda|sandwich|pan:4:u;atún:140:g;queso untable:80:g;tomate:140:g|12|2|si
+Bocaditos de huevo y brócoli al horno|snack|horno|huevo:3:u;brócoli:250:g;queso rallado:60:g;harina:40:g|25|6|si
+Muffins salados de choclo y queso|snack|budin|choclo:220:g;queso:120:g;huevo:2:u;harina:120:g;leche:100:ml|35|6|si
+Muffins salados de zanahoria y jamón|snack|budin|zanahoria:220:g;jamón:130:g;huevo:2:u;harina:130:g;leche:100:ml|35|6|si
+Muffins salados de espinaca y ricota|snack|budin|espinaca:220:g;ricota:180:g;huevo:2:u;harina:120:g|35|6|si
+Galletitas caseras de banana y maní|snack|galletita|banana:220:g;harina:140:g;maní:80:g;huevo:1:u|25|8|si
+Galletitas de avena y manzana|merienda|galletita|avena:180:g;manzana:240:g;huevo:1:u;canela:2:g|30|10|si
+Galletitas de cacao y nueces|merienda|galletita|harina:170:g;cacao amargo:25:g;nuez:75:g;manteca:65:g;azúcar:60:g;huevo:1:u|30|12|si
+Galletitas de limón y ricota|snack|galletita|harina:180:g;ricota:160:g;limón:1:u;manteca:55:g;azúcar:55:g|30|10|si
+Galletitas saladas de queso|snack|galletita|harina:170:g;queso rallado:110:g;manteca:70:g;huevo:1:u|30|10|si
+Bizcochitos caseros de queso y orégano|merienda|galletita|harina:200:g;queso rallado:90:g;manteca:70:g;leche:80:ml;orégano:2:g|35|10|si
+Budín de banana y nuez|merienda|budin|banana:300:g;harina:220:g;huevo:2:u;leche:120:ml;nuez:90:g;azúcar:75:g|55|10|si
+Budín de limón y yogur|merienda|budin|harina:230:g;huevo:2:u;yogur natural:180:g;limón:1:u;azúcar:100:g;aceite:65:g|55|10|si
+Budín de manzana y canela|merienda|budin|manzana:350:g;harina:220:g;huevo:2:u;leche:150:ml;azúcar:80:g;canela:3:g|55|10|si
+Budín de zanahoria y naranja|merienda|budin|zanahoria:260:g;naranja:180:g;harina:230:g;huevo:2:u;azúcar:85:g;aceite:60:g|55|10|si
+Budín de chocolate y ricota|merienda|budin|ricota:250:g;harina:210:g;cacao amargo:35:g;huevo:2:u;azúcar:90:g;leche:130:ml|55|10|si
+Budín de pera y almendras|merienda|budin|pera:330:g;harina:210:g;almendra:90:g;huevo:2:u;azúcar:80:g;leche:130:ml|55|10|si
+Budín salado de verduras y queso|almuerzo|budin|zapallito:300:g;zanahoria:200:g;queso:150:g;huevo:3:u;harina:160:g|45|6|si
+Budín salado de atún y choclo|almuerzo|budin|atún:250:g;choclo:200:g;huevo:3:u;harina:160:g;leche:120:ml|45|6|si
+Barritas caseras de avena y maní|snack|barrita|avena:200:g;maní:120:g;miel:85:g;mantequilla de maní:100:g|20|10|si
+Barritas de banana, avena y nueces|snack|barrita|banana:300:g;avena:200:g;nuez:95:g;miel:50:g|30|10|si
+Bocaditos de yogur congelado y frutilla|snack|frio|yogur natural:400:g;frutilla:220:g;chocolate:70:g|15|8|si
+Vasitos de ricota, fruta y cacao|snack|frio|ricota:280:g;banana:170:g;cacao amargo:20:g;nuez:50:g|10|4|si
+Pera asada con ricota y nueces|merienda|horno|pera:400:g;ricota:200:g;nuez:50:g;canela:2:g|30|4|no
+Manzana al horno con canela y yogur|merienda|horno|manzana:480:g;yogur natural:260:g;canela:3:g;nuez:35:g|30|4|no
+Ensalada de frutas y yogur en frasco|snack|ensalada|banana:200:g;manzana:200:g;frutilla:200:g;yogur natural:300:g|12|4|si
+Vaso de yogur, pera y nueces|desayuno|frio|yogur natural:350:g;pera:200:g;nuez:55:g|8|2|si
+Yogur con banana y mantequilla de maní|desayuno|frio|yogur natural:350:g;banana:200:g;mantequilla de maní:45:g|8|2|si
+Ricota batida con durazno y canela|merienda|frio|ricota:300:g;durazno:260:g;canela:2:g|8|2|si
+Postre de yogur, frutilla y chocolate|merienda|frio|yogur natural:320:g;frutilla:200:g;chocolate:50:g|10|4|si
+Pochoclo casero con maní tostado|snack|pochoclo|maíz para pochoclo:100:g;maní:80:g;aceite:8:g|15|4|si
+Pollo salteado con berenjena y arroz|almuerzo|salteado|pollo:480:g;berenjena:350:g;arroz:180:g;cebolla:180:g;morrón:150:g|35|4|si
+Pollo con champiñones y puré de papa|cena|salteado|pollo:480:g;champiñones:300:g;papa:550:g;leche:130:ml|40|4|si
+Cerdo salteado con batata y cebolla|cena|salteado|cerdo:500:g;batata:500:g;cebolla:250:g;morrón:160:g|40|4|si
+Bife a la criolla con arroz|almuerzo|guiso|lomo:500:g;arroz:180:g;tomate:350:g;cebolla:200:g;morrón:160:g|45|4|si
+Milanesa de pollo a la napolitana|cena|milanesa|pollo:550:g;huevo:2:u;pan rallado:130:g;salsa de tomate:220:g;muzzarella:150:g|45|4|si
+Croquetas de arroz, queso y espinaca|almuerzo|croqueta|arroz:160:g;espinaca:240:g;queso:140:g;huevo:2:u;pan rallado:80:g|40|4|si
+Croquetas de papa y atún|almuerzo|croqueta|papa:550:g;atún:260:g;huevo:2:u;pan rallado:100:g;cebolla:120:g|40|4|si
+Croquetas de calabaza y ricota|cena|croqueta|calabaza:650:g;ricota:220:g;huevo:2:u;pan rallado:100:g|40|4|si
+Pizzetas de berenjena con muzzarella|cena|horno|berenjena:600:g;tomate:250:g;muzzarella:200:g;pan:4:u|30|4|si
+Pizza casera de cebolla y queso|cena|pizza|masa de pizza:1:u;cebolla:400:g;muzzarella:250:g;aceite:15:g|40|6|no
+Pizza casera de tomate, atún y aceitunas|cena|pizza|masa de pizza:1:u;salsa de tomate:200:g;atún:250:g;muzzarella:200:g;aceitunas:80:g|40|6|no
+Pizza de pollo y morrón|cena|pizza|masa de pizza:1:u;pollo:300:g;morrón:180:g;muzzarella:210:g;salsa de tomate:160:g|45|6|no
+Calzone de espinaca y ricota|cena|pizza|masa de pizza:1:u;espinaca:350:g;ricota:300:g;queso:100:g|45|6|si
+Canelones de acelga y ricota|almuerzo|canelon|harina:200:g;huevo:2:u;leche:300:ml;acelga:450:g;ricota:350:g;salsa de tomate:350:g|55|6|si
+Canelones de pollo y verduras|almuerzo|canelon|harina:200:g;huevo:2:u;leche:300:ml;pollo:450:g;zanahoria:200:g;salsa de tomate:350:g|55|6|si
+Lasaña de berenjena con carne|cena|pastel|berenjena:750:g;carne picada:500:g;salsa de tomate:450:g;muzzarella:220:g|55|6|si
+Lasaña de verduras y ricota|cena|pastel|berenjena:450:g;zapallito:400:g;espinaca:300:g;ricota:380:g;salsa de tomate:400:g|55|6|si
+Tacos de pollo con repollo y yogur|almuerzo|wrap|tortilla de trigo:4:u;pollo:400:g;repollo:230:g;tomate:230:g;yogur natural:100:g|30|4|si
+Tacos de carne y porotos|almuerzo|wrap|tortilla de trigo:4:u;carne picada:400:g;porotos cocidos:260:g;tomate:210:g;cebolla:150:g|35|4|si
+Tacos de merluza con ensalada de repollo|almuerzo|wrap|tortilla de trigo:4:u;merluza:500:g;repollo:270:g;zanahoria:140:g;yogur natural:100:g|35|4|si
+Arroz al horno con verduras y queso|cena|horno|arroz:220:g;zapallito:320:g;zanahoria:220:g;queso:200:g;huevo:2:u|40|4|si
+Arroz con cerdo, arvejas y morrón|almuerzo|salteado|arroz:200:g;cerdo:420:g;arvejas:230:g;morrón:170:g;cebolla:140:g|35|4|si
+Ñoquis de calabaza con salsa roja|cena|ñoqui|calabaza:600:g;harina:220:g;huevo:1:u;salsa de tomate:420:g;queso rallado:70:g|60|5|si
+Ñoquis de papa caseros con salsa fileto|cena|ñoqui|papa:800:g;harina:240:g;huevo:1:u;salsa de tomate:450:g;queso rallado:70:g|65|5|si
+Pasta con salsa de porotos y tomate|almuerzo|pasta|fideos:300:g;porotos cocidos:350:g;salsa de tomate:400:g;cebolla:160:g|35|4|si
+Milanesas de lentejas con puré de batata|almuerzo|milanesa|lentejas cocidas:550:g;batata:600:g;huevo:2:u;pan rallado:110:g;cebolla:100:g|45|4|si
+Tarta de remolacha, ricota y nuez|almuerzo|tarta|masa de tarta:1:u;remolacha:450:g;ricota:280:g;nuez:70:g;huevo:2:u|55|6|si
+Tarta de pollo, puerro y queso|almuerzo|tarta|masa de tarta:1:u;pollo:450:g;cebolla:270:g;queso:150:g;huevo:2:u|55|6|si
+Tarta de tomate, atún y huevo|almuerzo|tarta|masa de tarta:1:u;tomate:400:g;atún:260:g;huevo:3:u;queso:100:g|50|6|si
+Ensalada de arroz integral, garbanzos y verduras|almuerzo|ensalada|arroz:160:g;garbanzos cocidos:300:g;pepino:200:g;tomate:260:g;zanahoria:160:g|30|4|si
+Ensalada tibia de calabaza, pollo y lentejas|almuerzo|ensalada|calabaza:450:g;pollo:350:g;lentejas cocidas:330:g;espinaca:180:g|35|4|si
+Bocaditos de garbanzos y zanahoria en air fryer|snack|airfryer|garbanzos cocidos:400:g;zanahoria:200:g;huevo:1:u;pan rallado:60:g|30|8|si
+Chipá casero de queso|merienda|chipa|almidón de mandioca:240:g;queso:180:g;huevo:2:u;leche:100:ml|35|12|si
+Bizcochuelo casero de naranja|merienda|budin|harina:250:g;naranja:200:g;huevo:3:u;azúcar:110:g;leche:100:ml|50|10|si
+Torta húmeda de manzana y yogur|merienda|budin|manzana:400:g;harina:220:g;yogur natural:250:g;huevo:2:u;azúcar:90:g|55|10|si
+Tostadas con hummus y tomate|desayuno|sandwich|pan:4:u;garbanzos cocidos:240:g;tomate:200:g;aceite de oliva:12:g|12|2|si
+Tostadas de ricota con pera y canela|desayuno|sandwich|pan:4:u;ricota:220:g;pera:230:g;canela:2:g|10|2|si
+Pan árabe con huevo y tomate|desayuno|sandwich|tortilla de trigo:2:u;huevo:2:u;tomate:220:g;queso:60:g|15|2|si
+Pan con mantequilla de maní y frutilla|desayuno|sandwich|pan:4:u;mantequilla de maní:65:g;frutilla:220:g|8|2|si
+Sándwich de queso, palta y huevo duro|merienda|sandwich|pan integral:4:u;queso:100:g;palta:150:g;huevo:2:u|15|2|si
+Yogur con manzana cocida y nueces|desayuno|frio|yogur natural:350:g;manzana:300:g;nuez:65:g;canela:2:g|15|2|si
+Galletitas caseras de ricota y limón|snack|galletita|ricota:220:g;harina:170:g;limón:1:u;huevo:1:u;azúcar:60:g|30|10|si
+Pasta frola de membrillo por porción|merienda|pastafrola|harina:270:g;manteca:120:g;huevo:2:u;dulce de membrillo:320:g;azúcar:75:g|55|12|si
+Flan casero de huevo y leche|merienda|flan|leche:600:ml;huevo:4:u;azúcar:100:g|55|6|no
+Arroz con leche y canela por porción|merienda|guiso|arroz:160:g;leche:750:ml;azúcar:65:g;canela:3:g|45|6|si

@@ -50,6 +50,19 @@ export interface Food {
    nuez tiene 14 g por cada 100 y la mitad no se absorbe. */
 
 export const FOODS: Record<string, Food> = {
+  'almidón de mandioca': { aisle: 'almacén', buy: { unit: 'g', step: 500, label: 'paquete' }, carbsPer100g: 90.4 },
+  batata: { plural: 'batatas', aisle: 'verdulería', buy: { unit: 'kg' }, carbsPer100g: 18 },
+  repollo: { aisle: 'verdulería', buy: { unit: 'g', step: 500 }, carbsPer100g: 4 },
+  ajo: { aisle: 'verdulería', buy: { unit: 'g', step: 50 }, carbsPer100g: 20 },
+  champiñones: { aisle: 'verdulería', buy: { unit: 'g', step: 200 }, carbsPer100g: 2.3 },
+  aceitunas: { aisle: 'almacén', buy: { unit: 'g', step: 100 }, carbsPer100g: 0.5 },
+  cerdo: { aisle: 'carnicería', buy: { unit: 'kg' }, carbsPer100g: 0 },
+  lomo: { aisle: 'carnicería', buy: { unit: 'kg' }, carbsPer100g: 0 },
+  sardina: { aisle: 'almacén', buy: { unit: 'g', step: 120, label: 'lata' }, carbsPer100g: 0 },
+  'porotos cocidos': { aisle: 'almacén', buy: { unit: 'g', step: 400, label: 'lata' }, carbsPer100g: 13 },
+  miel: { aisle: 'almacén', buy: { unit: 'g', step: 250 }, carbsPer100g: 82 },
+  'cacao amargo': { aisle: 'almacén', buy: { unit: 'g', step: 100 }, carbsPer100g: 20 },
+  'almidón de maíz': { aisle: 'almacén', buy: { unit: 'g', step: 500 }, carbsPer100g: 90 },
   // --- verdulería ---
   banana: { plural: 'bananas', aisle: 'verdulería', carbsPer100g: 22, carbsPerUnit: 25 },
   manzana: { plural: 'manzanas', aisle: 'verdulería', carbsPer100g: 12, carbsPerUnit: 18 },
@@ -123,7 +136,7 @@ export const FOODS: Record<string, Food> = {
   granola: { aisle: 'almacén', buy: { unit: 'g', step: 500 }, carbsPer100g: 65 },
   arroz: { aisle: 'almacén', buy: { unit: 'kg' }, carbsPer100g: 78 },
   'lentejas cocidas': { aisle: 'almacén', buy: { unit: 'g', per: 400, label: 'lata' }, carbsPer100g: 17 },
-  atún: { aisle: 'almacén', buy: { unit: 'lata' }, unidad: { uno: 'lata', varios: 'latas' }, carbsPer100g: 0, carbsPerUnit: 0 },
+  atún: { aisle: 'almacén', buy: { unit: 'g', step: 120, label: 'lata' }, carbsPer100g: 0, carbsPerUnit: 0 },
   nuez: { plural: 'nueces', aisle: 'almacén', buy: { unit: 'g', step: 250 }, carbsPer100g: 7 },
   almendra: { plural: 'almendras', aisle: 'almacén', buy: { unit: 'g', step: 250 }, carbsPer100g: 9 },
   'mantequilla de maní': { aisle: 'almacén', buy: { unit: 'g', step: 350, label: 'frasco' }, carbsPer100g: 20 },
@@ -153,7 +166,7 @@ export const FOODS: Record<string, Food> = {
   'tapas de empanada': { aisle: 'congelados', buy: { unit: 'u', per: 12, label: 'paquete' }, carbsPer100g: 45, carbsPerUnit: 16 },
   'verduras congeladas': { aisle: 'congelados', buy: { unit: 'g', step: 500, label: 'paquete' }, carbsPer100g: 8 },
   'sopa crema': { aisle: 'almacén', buy: { unit: 'u', per: 1, label: 'sobre' }, unidad: { uno: 'sobre', varios: 'sobres' }, carbsPer100g: 60, carbsPerUnit: 12 },
-  'atún al natural': { aisle: 'almacén', buy: { unit: 'lata' }, unidad: { uno: 'lata', varios: 'latas' }, carbsPer100g: 0, carbsPerUnit: 0 },
+  'atún al natural': { aisle: 'almacén', buy: { unit: 'g', step: 120, label: 'lata' }, carbsPer100g: 0, carbsPerUnit: 0 },
   'fideos integrales': { aisle: 'almacén', buy: { unit: 'g', per: 500, label: 'paquete' }, carbsPer100g: 70 },
   'pan de salvado': { aisle: 'panadería', buy: { unit: 'paquete', per: 18 }, carbsPer100g: 45, carbsPerUnit: 12 },
 

@@ -1,6 +1,7 @@
 import type { DayPlan, InsulinSettings, Perfil, Preferences, Slot } from '../types'
 import { DEFAULT_INSULIN, DEFAULT_PERFIL, DEFAULT_PREFERENCES } from '../types'
 import { CATALOGO, idVigente } from '../catalogo'
+import { normalizarPerfil } from '../perfil'
 import { addDays, isoDate } from '../format'
 import { DEFAULT_TIMES, buildWeek } from '../domain'
 import type { Snapshot, ViandaRepo } from './types'
@@ -47,6 +48,7 @@ const startOfWeek = (d: Date) => {
    ahí lo que hay en el dispositivo vuelve a apuntar a algo real. */
 const alDia = (s: Stored): Stored => ({
   ...s,
+  perfil: normalizarPerfil(s.perfil ?? DEFAULT_PERFIL, s.insulin?.enabled),
   week: s.week.map((d) => ({
     ...d,
     meals: d.meals.map((m) => ({

@@ -667,14 +667,17 @@ export const buildShoppingList = (week: DayPlan[], meals: Meal[]): ShoppingGroup
          lo que traés hecho pero completás en casa sí los tiene. */
       for (const ing of meal.ingredients) {
         if (esBasico(ing.item)) continue
-        const key = `${ing.item}|${ing.unit}`
+        const item = ing.item === 'atún al natural' ? 'atún' : ing.item.trim().toLowerCase()
+        const unit = (item === 'atún' && ing.unit === 'lata' ? 'g' : ing.unit) as Unit
+        const qty = item === 'atún' && ing.unit === 'lata' ? ing.qty * 120 : ing.qty
+        const key = `${item}|${unit}`
         const acc = totals.get(key) ?? {
-          item: ing.item,
-          unit: ing.unit,
+          item,
+          unit,
           qty: 0,
           from: new Set<string>(),
         }
-        acc.qty += ing.qty
+        acc.qty += qty
         acc.from.add(meal.name)
         totals.set(key, acc)
       }

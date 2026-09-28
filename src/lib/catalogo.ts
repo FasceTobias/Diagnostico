@@ -1,6 +1,8 @@
 import type { Category, Drink, Meal, Origen, Portion, Sabor, Tag, Unit, Venue } from './types'
 import { RECETAS } from './recetas'
 import crudo from '../../data/catalogo/v1.json'
+import ampliacion from '../../data/catalogo/ampliacion.json'
+import legacyEnrichment from '../../data/catalogo/legacy-enrichment.json'
 
 /* ------------------------------------------------------------------
    EL CATÁLOGO
@@ -73,6 +75,15 @@ interface EntradaJson {
   drink: string | null
   items: { item: string; qty: number; unit: string }[]
   notes: string
+  steps?: { text: string; minutes?: number; detail?: string }[]
+  servings?: number
+  cookMinutes?: number
+  equipment?: string
+  storage?: string
+  reheat?: string | null
+  nutrition?: Meal['nutrition']
+  nutritionSource?: string
+  researchSource?: string
 }
 
 const aPorcion = (p: PorcionJson): Portion => ({
@@ -101,6 +112,14 @@ const aMeal = (e: EntradaJson): Meal => {
     mainIngredient: e.mainIngredient,
     portion: porDefecto.label,
     carbs: porDefecto.carbs,
+    servings: e.servings,
+    cookMinutes: e.cookMinutes,
+    equipment: e.equipment,
+    storage: e.storage,
+    reheat: e.reheat ?? undefined,
+    nutrition: e.nutrition,
+    nutritionSource: e.nutritionSource,
+    researchSource: e.researchSource,
     /* Una porción estándar calculada es una estimación honesta, no una
        medición. Se muestra con tilde hasta que haya etiqueta o receta. */
     carbSource: 'estimación',
@@ -133,7 +152,7 @@ const aMeal = (e: EntradaJson): Meal => {
     prepSteps: e.makeNightBefore ? [`Dejar lista: ${e.name.toLowerCase()}`] : [],
     /* La receta, si la tiene. Vive en `recetas.ts` porque es prosa, no
        data: el JSON guarda el número, el otro archivo cómo se hace. */
-    steps: RECETAS[e.slug],
+    steps: e.steps ?? RECETAS[e.slug],
     buyOutside: e.buyOutside,
     venues: e.venues.length ? (e.venues as Venue[]) : undefined,
     priceLevel: (e.priceLevel ?? undefined) as Meal['priceLevel'],
@@ -146,7 +165,20 @@ const aMeal = (e: EntradaJson): Meal => {
   }
 }
 
-export const CATALOGO: Meal[] = (crudo as EntradaJson[]).map(aMeal)
+const previo = (crudo as EntradaJson[]).map((original) => {
+  const supplement = (legacyEnrichment as Record<string, Partial<EntradaJson>>)[original.slug]
+  if (!supplement) return original
+  const base = original.portions.find((p) => p.default) ?? original.portions[0]
+  const carbs = supplement.nutrition!.carbs
+  return {
+    ...original, ...supplement,
+    portions: original.portions.map((p) => ({ ...p, carbs: Math.round(carbs * p.carbs / base.carbs) })),
+    rinde: supplement.servings! > 1 ? `${supplement.servings} porciones` : original.rinde,
+    steps: RECETAS[original.slug] ?? supplement.steps,
+  }
+})
+
+export const CATALOGO: Meal[] = [...previo, ...(ampliacion as EntradaJson[])].map(aMeal)
 
 /* ------------------------------------------------------------------
    ENTRADAS QUE SE FUSIONARON

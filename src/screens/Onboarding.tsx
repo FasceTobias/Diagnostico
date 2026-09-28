@@ -4,7 +4,7 @@ import type { Vianda } from '../lib/store'
 import type { DiabetesType, Perfil, Rol, Slot } from '../lib/types'
 import { DIABETES_LABEL, DIABETES_NOTE, SLOT_LABEL } from '../lib/types'
 
-const PASOS = 6
+const PASOS = 9
 
 export function Onboarding({ app, onSalir }: { app: Vianda; onSalir: () => void }) {
   const [paso, setPaso] = useState(app.perfil.paso || 0)
@@ -71,9 +71,12 @@ export function Onboarding({ app, onSalir }: { app: Vianda; onSalir: () => void 
               {paso === 0 && <Bienvenida />}
               {paso === 1 && <Nombre perfil={perfil} onChange={setPerfilLocal} />}
               {paso === 2 && <Diabetes perfil={perfil} onChange={setPerfilLocal} />}
-              {paso === 3 && <Carbos perfil={perfil} onChange={setPerfilLocal} />}
-              {paso === 4 && <Rutina app={app} />}
-              {paso === 5 && <Final perfil={perfil} />}
+              {paso === 3 && <Insulina perfil={perfil} onChange={setPerfilLocal} />}
+              {paso === 4 && <Esquema perfil={perfil} onChange={setPerfilLocal} />}
+              {paso === 5 && <Medicacion perfil={perfil} onChange={setPerfilLocal} />}
+              {paso === 6 && <Carbos perfil={perfil} onChange={setPerfilLocal} />}
+              {paso === 7 && <Rutina app={app} />}
+              {paso === 8 && <Final perfil={perfil} />}
             </m.div>
           </AnimatePresence>
         </div>
@@ -128,7 +131,7 @@ function Bienvenida() {
       <p className="v-label mb-3 font-semibold text-accent">VIANDA</p>
       <Titulo>Cociná fácil. Comé rico.</Titulo>
       <Bajada>
-        Te armamos una semana realista con porciones, hidratos si los necesitás, qué llevar y qué comprar. Menos tiempo pensando la comida; más tiempo viviendo tu día.
+        Organizá tus comidas, descubrí recetas, planificá la semana y las compras, prepará qué llevar y registrá lo que realmente comiste. Podés ver carbohidratos aproximados por porción.
       </Bajada>
 
       <div className="mt-8 border-t border-line">
@@ -173,14 +176,14 @@ function Nombre({ perfil, onChange }: { perfil: Perfil; onChange: (p: Perfil) =>
   )
 }
 
-const TIPOS: DiabetesType[] = ['tipo-1', 'tipo-2', 'gestacional', 'prediabetes', 'sin-diabetes', 'prefiero-no-decir']
+const TIPOS: DiabetesType[] = ['tipo-1', 'tipo-2', 'gestacional', 'lada', 'mody-otro', 'otro', 'no-seguro', 'prefiero-no-decir']
 
 function Diabetes({ perfil, onChange }: { perfil: Perfil; onChange: (p: Perfil) => void }) {
   return (
     <>
-      <Titulo>{perfil.rol === 'acompanio' ? '¿Qué necesita esa persona?' : '¿Vivís con diabetes?'}</Titulo>
+      <Titulo>¿Qué tipo de diabetes tenés?</Titulo>
       <Bajada>
-        No usamos esto para prohibirte comida. Nos sirve para mostrar mejor porciones e hidratos cuando corresponde.
+        Esto nos ayuda a adaptar Vianda a vos. El tratamiento se pregunta aparte y podés cambiarlo después.
       </Bajada>
       <div className="mt-6">
         {TIPOS.map((t) => (
@@ -195,6 +198,48 @@ function Diabetes({ perfil, onChange }: { perfil: Perfil; onChange: (p: Perfil) 
       </div>
     </>
   )
+}
+
+function Insulina({ perfil, onChange }: { perfil: Perfil; onChange: (p: Perfil) => void }) {
+  return <>
+    <Titulo>¿Usás insulina actualmente?</Titulo>
+    <Bajada>Es independiente del tipo de diabetes. Vianda no calcula dosis.</Bajada>
+    <div className="mt-6">
+      {([['si', 'Sí'], ['no', 'No'], ['prefiero', 'Prefiero no indicarlo']] as const).map(([id, label]) =>
+        <Opcion key={id} activa={perfil.usaInsulina === id} titulo={label}
+          onClick={() => onChange({ ...perfil, usaInsulina: id, esquemaInsulina: id === 'si' ? perfil.esquemaInsulina : null })} />)}
+    </div>
+  </>
+}
+
+const ESQUEMAS: { id: NonNullable<Perfil['esquemaInsulina']>; label: string }[] = [
+  { id: 'basal', label: 'Basal / acción prolongada' },
+  { id: 'comidas', label: 'Rápida o ultrarrápida para comidas' },
+  { id: 'ambas', label: 'Basal y rápida para comidas' },
+  { id: 'bomba', label: 'Bomba de insulina' },
+  { id: 'otro', label: 'Otro esquema' },
+  { id: 'no-seguro', label: 'No estoy seguro/a' },
+]
+
+function Esquema({ perfil, onChange }: { perfil: Perfil; onChange: (p: Perfil) => void }) {
+  if (perfil.usaInsulina !== 'si') return <><Titulo>Tratamiento</Titulo><Bajada>Podés seguir. Si más adelante usás insulina, agregá el esquema desde Perfil.</Bajada></>
+  return <>
+    <Titulo>¿Qué esquema de insulina usás?</Titulo>
+    <Bajada>Solo para personalizar la experiencia. No se usa para recomendar dosis.</Bajada>
+    <div className="mt-6">{ESQUEMAS.map(({ id, label }) =>
+      <Opcion key={id} activa={perfil.esquemaInsulina === id} titulo={label}
+        onClick={() => onChange({ ...perfil, esquemaInsulina: id })} />)}</div>
+  </>
+}
+
+function Medicacion({ perfil, onChange }: { perfil: Perfil; onChange: (p: Perfil) => void }) {
+  return <>
+    <Titulo>¿Usás otra medicación para la diabetes?</Titulo>
+    <Bajada>Además de insulina, si la usás. Es opcional y podés cambiarlo cuando quieras.</Bajada>
+    <div className="mt-6">{([['si', 'Sí'], ['no', 'No'], ['prefiero', 'Prefiero no indicarlo']] as const).map(([id, label]) =>
+      <Opcion key={id} activa={perfil.medicacionAdicional === id} titulo={label}
+        onClick={() => onChange({ ...perfil, medicacionAdicional: id })} />)}</div>
+  </>
 }
 
 function Carbos({ perfil, onChange }: { perfil: Perfil; onChange: (p: Perfil) => void }) {
@@ -278,7 +323,7 @@ function Final({ perfil }: { perfil: Perfil }) {
         ))}
       </div>
       <p className="mt-6 text-[13px] leading-relaxed text-ink-faint">
-        Las cantidades y los hidratos sirven como referencia para organizarte. Cuando un dato no está verificado, Vianda lo marca.
+        Las cantidades y los hidratos son aproximados. Vianda acompaña la organización de comidas y no reemplaza a tu equipo médico o nutricional.
       </p>
     </>
   )

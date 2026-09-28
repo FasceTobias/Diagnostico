@@ -344,6 +344,14 @@ export interface Meal {
   /** Cuando existan fotos reales, ocupan el lugar del ícono. */
   photoUrl?: string
   carbs: number
+  servings?: number
+  cookMinutes?: number
+  equipment?: string
+  storage?: string
+  reheat?: string
+  nutrition?: { kcal: number; protein: number; fat: number; carbs: number; fiber: number }
+  nutritionSource?: string
+  researchSource?: string
   carbSource: CarbSource
   confidence: Confidence
   /** Los carbos fueron revisados contra una fuente real. Los demo, nunca. */
@@ -483,6 +491,10 @@ export type DiabetesType =
   | 'tipo-1'
   | 'tipo-2'
   | 'gestacional'
+  | 'lada'
+  | 'mody-otro'
+  | 'otro'
+  | 'no-seguro'
   | 'prediabetes'
   | 'sin-diabetes'
   | 'prefiero-no-decir'
@@ -491,16 +503,24 @@ export const DIABETES_LABEL: Record<DiabetesType, string> = {
   'tipo-1': 'Tipo 1',
   'tipo-2': 'Tipo 2',
   gestacional: 'Gestacional',
+  lada: 'LADA',
+  'mody-otro': 'MODY / otro tipo específico',
+  otro: 'Otro',
+  'no-seguro': 'No estoy seguro/a',
   prediabetes: 'Prediabetes',
   'sin-diabetes': 'No tengo diabetes',
   'prefiero-no-decir': 'Prefiero no decirlo',
 }
 
 export const DIABETES_NOTE: Record<DiabetesType, string> = {
-  'tipo-1': 'Contás carbohidratos y usás insulina. La app te muestra los dos.',
-  'tipo-2': 'Algunos usan insulina y otros no. Vos elegís qué ver.',
-  gestacional: 'Suele ser por un tiempo. Lo podés cambiar cuando quieras.',
-  prediabetes: 'Ver los carbohidratos ayuda; no hace falta nada más.',
+  'tipo-1': 'Gracias. Tu tratamiento se pregunta aparte.',
+  'tipo-2': 'Gracias. Tu tratamiento se pregunta aparte.',
+  gestacional: 'Podés actualizar este dato cuando quieras.',
+  lada: 'Gracias. Tu tratamiento se pregunta aparte.',
+  'mody-otro': 'Podés actualizar este dato cuando quieras.',
+  otro: 'Podés actualizar este dato cuando quieras.',
+  'no-seguro': 'Está bien. Podés cambiarlo más adelante.',
+  prediabetes: 'Podés usar Vianda para organizar tus comidas.',
   'sin-diabetes': 'La app sirve igual: es organizar la comida del día.',
   'prefiero-no-decir': 'Perfecto. Podés encender lo que te sirva a mano.',
 }
@@ -513,6 +533,9 @@ export interface Perfil {
   nombre: string
   rol: Rol
   diabetes: DiabetesType | null
+  usaInsulina: 'si' | 'no' | 'prefiero' | null
+  esquemaInsulina: 'basal' | 'comidas' | 'ambas' | 'bomba' | 'otro' | 'no-seguro' | null
+  medicacionAdicional: 'si' | 'no' | 'prefiero' | null
   /** Ver los carbohidratos al lado de cada comida. */
   contarCarbos: boolean
   /** Hasta dónde llegó el onboarding. Se puede retomar. */
@@ -525,6 +548,9 @@ export const DEFAULT_PERFIL: Perfil = {
   nombre: '',
   rol: 'para-mi',
   diabetes: null,
+  usaInsulina: null,
+  esquemaInsulina: null,
+  medicacionAdicional: null,
   contarCarbos: true,
   paso: 0,
   listo: false,

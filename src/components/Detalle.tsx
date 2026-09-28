@@ -104,7 +104,7 @@ export function DetalleComida({
             />
           )}
           <Fila
-            rotulo="Carbohidratos"
+            rotulo="Carbohidratos por porción"
             valor={`${carbs(meal)} · ${meal.carbsVerified ? 'verificado' : 'estimado'}`}
             nota={
               meal.carbsVerified
@@ -112,6 +112,15 @@ export function DetalleComida({
                 : 'La porción está documentada y el número calculado sobre ella, pero todavía no se midió contra una etiqueta.'
             }
           />
+          {meal.nutrition && <>
+            <Fila rotulo="Energía aprox. por porción" valor={`${Math.round(meal.nutrition.kcal)} kcal`} />
+            <Fila rotulo="Proteínas / grasas" valor={`${meal.nutrition.protein.toFixed(1)} g / ${meal.nutrition.fat.toFixed(1)} g`} />
+            <Fila rotulo="Fibra" valor={`${meal.nutrition.fiber.toFixed(1)} g`} />
+          </>}
+          {meal.servings && <Fila rotulo="Rinde" valor={`${meal.servings} porciones`} />}
+          {meal.equipment && <Fila rotulo="Equipo" valor={meal.equipment} />}
+          {meal.storage && <Fila rotulo="Conservación" valor={meal.storage} />}
+          {meal.reheat && <Fila rotulo="Recalentado" valor={meal.reheat} />}
         </dl>
 
         {meal.tags.length > 0 && (
