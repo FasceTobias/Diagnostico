@@ -648,6 +648,15 @@ export interface ShoppingGroup {
   lines: ShoppingLine[]
 }
 
+/** Peso doméstico aproximado para reunir gramos y unidades en una sola compra.
+    Se redondea al presentar la lista, después de sumar toda la semana. */
+const PRODUCE_GRAMS_PER_UNIT: Record<string, number> = {
+  banana: 115, manzana: 150, pera: 160, naranja: 160, durazno: 150,
+  tomate: 115, cebolla: 120, 'cebolla morada': 120, zanahoria: 75,
+  morrón: 160, zapallito: 200, palta: 180, limón: 60,
+  mandarina: 100, lechuga: 200,
+}
+
 export const buildShoppingList = (week: DayPlan[], meals: Meal[]): ShoppingGroup[] => {
   const totals = new Map<
     string,
@@ -668,8 +677,11 @@ export const buildShoppingList = (week: DayPlan[], meals: Meal[]): ShoppingGroup
       for (const ing of meal.ingredients) {
         if (esBasico(ing.item)) continue
         const item = ing.item === 'atún al natural' ? 'atún' : ing.item.trim().toLowerCase()
-        const unit = (item === 'atún' && ing.unit === 'lata' ? 'g' : ing.unit) as Unit
-        const qty = item === 'atún' && ing.unit === 'lata' ? ing.qty * 120 : ing.qty
+        const unit = (item === 'atún' && ing.unit === 'lata' ? 'g'
+          : ing.unit === 'g' && PRODUCE_GRAMS_PER_UNIT[item] ? 'u' : ing.unit) as Unit
+        const qty = item === 'atún' && ing.unit === 'lata' ? ing.qty * 120
+          : ing.unit === 'g' && PRODUCE_GRAMS_PER_UNIT[item]
+            ? ing.qty / PRODUCE_GRAMS_PER_UNIT[item] : ing.qty
         const key = `${item}|${unit}`
         const acc = totals.get(key) ?? {
           item,

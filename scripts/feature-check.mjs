@@ -55,6 +55,18 @@ try {
   assert(packListFor({ ...planned, context: 'mixto' }, snap.meals).some((x) => x.kind === 'meal' && x.label.includes(recipe.name)))
   const shopping = buildShoppingList([planned], snap.meals).flatMap((g) => g.lines)
   assert(shopping.some((x) => x.item === 'zapallito'))
+  assert(shopping.filter((x) => x.item === 'tomate').length <= 1)
+  const bothUnits = [
+    { ...recipe, id: 'gramos', ingredients: [{ item: 'tomate', qty: 230, unit: 'g' }] },
+    { ...recipe, id: 'unidades', ingredients: [{ item: 'tomate', qty: 2, unit: 'u' }] },
+  ]
+  const withBoth = [{ ...planned, meals: [
+    { ...planned.meals[0], mealId: 'gramos' },
+    { ...planned.meals[1], mealId: 'unidades' },
+  ] }]
+  const tomatoes = buildShoppingList(withBoth, bothUnits).flatMap((g) => g.lines).filter((x) => x.item === 'tomate')
+  assert.equal(tomatoes.length, 1)
+  assert.equal(tomatoes[0].value, '4')
   const scenarios = [
     [{ diabetes: 'tipo-1', usaInsulina: 'si', esquemaInsulina: 'ambas' }, ['tipo-1','si','ambas']],
     [{ diabetes: 'tipo-2', usaInsulina: 'no' }, ['tipo-2','no',null]],
