@@ -22,7 +22,7 @@ insert into meals (
 ) values (
   null, 'tortilla-de-batata-y-cebolla', 'Tortilla de batata y cebolla', 'Tortilla de batata y cebolla con batata, cebolla, huevo; rinde 3 porciones.', 'almuerzo', 'estimado',
   23, 'estimacion', 'estimada', '1 de 3 porciones',
-  'batata', array['para llevar', 'casero'], 25, 'potente',
+  'batata', array['para llevar', 'casero'], 20, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -71,7 +71,7 @@ insert into meals (
 ) values (
   null, 'tortilla-de-acelga-y-queso', 'Tortilla de acelga y queso', 'Tortilla de acelga y queso con acelga, cebolla, huevo; rinde 3 porciones.', 'cena', 'estimado',
   5, 'estimacion', 'estimada', '1 de 3 porciones',
-  'acelga', array['para llevar', 'rápido'], 25, 'potente',
+  'acelga', array['para llevar', 'rápido'], 15, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -120,7 +120,7 @@ insert into meals (
 ) values (
   null, 'tortilla-de-arvejas-y-papa', 'Tortilla de arvejas y papa', 'Tortilla de arvejas y papa con papa, arvejas, huevo; rinde 3 porciones.', 'almuerzo', 'estimado',
   29, 'estimacion', 'estimada', '1 de 3 porciones',
-  'papa', array['para llevar', 'casero'], 25, 'potente',
+  'papa', array['para llevar', 'casero'], 20, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -169,7 +169,7 @@ insert into meals (
 ) values (
   null, 'frittata-de-brocoli-y-ricota', 'Frittata de brócoli y ricota', 'Frittata de brócoli y ricota con brócoli, ricota, huevo; rinde 3 porciones.', 'cena', 'estimado',
   7, 'estimacion', 'estimada', '1 de 3 porciones',
-  'brócoli', array['para llevar', 'rápido'], 25, 'potente',
+  'brócoli', array['para llevar', 'rápido'], 15, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -218,7 +218,7 @@ insert into meals (
 ) values (
   null, 'frittata-de-tomate-y-muzzarella', 'Frittata de tomate y muzzarella', 'Frittata de tomate y muzzarella con tomate, muzzarella, huevo; rinde 3 porciones.', 'cena', 'estimado',
   5, 'estimacion', 'estimada', '1 de 3 porciones',
-  'tomate', array['para llevar', 'rápido'], 25, 'potente',
+  'tomate', array['para llevar', 'rápido'], 10, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
@@ -267,7 +267,7 @@ insert into meals (
 ) values (
   null, 'tarta-de-zapallitos-y-choclo', 'Tarta de zapallitos y choclo', 'Tarta de zapallitos y choclo con masa de tarta, zapallito, choclo; rinde 6 porciones.', 'almuerzo', 'estimado',
   25, 'estimacion', 'estimada', '1 de 6 porciones',
-  'masa de tarta', array['para llevar', 'casero'], 25, 'potente',
+  'masa de tarta', array['para llevar', 'casero'], 20, 'potente',
   true, true, false, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -365,7 +365,7 @@ insert into meals (
 ) values (
   null, 'tarta-de-acelga-y-queso', 'Tarta de acelga y queso', 'Tarta de acelga y queso con masa de tarta, acelga, queso; rinde 6 porciones.', 'almuerzo', 'estimado',
   22, 'estimacion', 'estimada', '1 de 6 porciones',
-  'masa de tarta', array['para llevar', 'casero'], 25, 'potente',
+  'masa de tarta', array['para llevar', 'casero'], 20, 'potente',
   true, true, false, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -414,7 +414,7 @@ insert into meals (
 ) values (
   null, 'tarta-de-cebolla-y-queso', 'Tarta de cebolla y queso', 'Tarta de cebolla y queso con masa de tarta, cebolla, queso; rinde 6 porciones.', 'cena', 'estimado',
   25, 'estimacion', 'estimada', '1 de 6 porciones',
-  'masa de tarta', array['para llevar', 'casero'], 25, 'potente',
+  'masa de tarta', array['para llevar', 'casero'], 20, 'potente',
   true, true, false, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -561,7 +561,7 @@ insert into meals (
 ) values (
   null, 'tarta-de-espinaca-y-ricota', 'Tarta de espinaca y ricota', 'Tarta de espinaca y ricota con masa de tarta, espinaca, ricota; rinde 6 porciones.', 'almuerzo', 'estimado',
   22, 'estimacion', 'estimada', '1 de 6 porciones',
-  'masa de tarta', array['para llevar', 'casero'], 25, 'potente',
+  'masa de tarta', array['para llevar', 'casero'], 20, 'potente',
   true, true, false, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -610,7 +610,7 @@ insert into meals (
 ) values (
   null, 'tarta-de-zanahoria-y-atun', 'Tarta de zanahoria y atún', 'Tarta de zanahoria y atún con masa de tarta, zanahoria, atún; rinde 6 porciones.', 'almuerzo', 'estimado',
   24, 'estimacion', 'estimada', '1 de 6 porciones',
-  'masa de tarta', array['para llevar', 'casero'], 25, 'potente',
+  'masa de tarta', array['para llevar', 'casero'], 20, 'potente',
   true, true, false, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -659,7 +659,7 @@ insert into meals (
 ) values (
   null, 'tarta-de-choclo-y-jamon', 'Tarta de choclo y jamón', 'Tarta de choclo y jamón con masa de tarta, choclo, jamón; rinde 6 porciones.', 'cena', 'estimado',
   25, 'estimacion', 'estimada', '1 de 6 porciones',
-  'masa de tarta', array['para llevar', 'casero'], 25, 'potente',
+  'masa de tarta', array['para llevar', 'casero'], 20, 'potente',
   true, true, false, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -708,7 +708,7 @@ insert into meals (
 ) values (
   null, 'empanadas-de-humita', 'Empanadas de humita', 'Empanadas de humita con tapas de empanada, choclo, cebolla; rinde 6 porciones.', 'almuerzo', 'estimado',
   44, 'estimacion', 'estimada', '1 de 6 porciones',
-  'tapas de empanada', array['para llevar', 'casero'], 25, 'potente',
+  'tapas de empanada', array['para llevar', 'casero'], 20, 'potente',
   true, true, false, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
@@ -757,7 +757,7 @@ insert into meals (
 ) values (
   null, 'empanadas-de-pollo-y-morron', 'Empanadas de pollo y morrón', 'Empanadas de pollo y morrón con tapas de empanada, pollo, cebolla; rinde 6 porciones.', 'almuerzo', 'estimado',
   36, 'estimacion', 'estimada', '1 de 6 porciones',
-  'tapas de empanada', array['para llevar', 'casero'], 25, 'potente',
+  'tapas de empanada', array['para llevar', 'casero'], 30, 'potente',
   true, true, false, true, true,
   2, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
@@ -806,7 +806,7 @@ insert into meals (
 ) values (
   null, 'empanadas-de-carne-cortada-a-cuchillo', 'Empanadas de carne cortada a cuchillo', 'Empanadas de carne cortada a cuchillo con tapas de empanada, lomo, cebolla; rinde 6 porciones.', 'cena', 'estimado',
   36, 'estimacion', 'estimada', '1 de 6 porciones',
-  'tapas de empanada', array['para llevar', 'casero'], 25, 'potente',
+  'tapas de empanada', array['para llevar', 'casero'], 40, 'potente',
   true, true, false, true, true,
   2, 'habitual', null, true, false, null,
   false, '{}', 2, true, true,
@@ -904,7 +904,7 @@ insert into meals (
 ) values (
   null, 'empanadas-de-jamon-queso-y-tomate', 'Empanadas de jamón, queso y tomate', 'Empanadas de jamón, queso y tomate con tapas de empanada, jamón, queso; rinde 6 porciones.', 'cena', 'estimado',
   34, 'estimacion', 'estimada', '1 de 6 porciones',
-  'tapas de empanada', array['para llevar', 'casero'], 25, 'potente',
+  'tapas de empanada', array['para llevar', 'casero'], 10, 'potente',
   true, true, false, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
@@ -1002,7 +1002,7 @@ insert into meals (
 ) values (
   null, 'guiso-de-arroz-y-lentejas', 'Guiso de arroz y lentejas', 'Guiso de arroz y lentejas con arroz, lentejas cocidas, cebolla; rinde 4 porciones.', 'almuerzo', 'estimado',
   54, 'estimacion', 'estimada', '1 de 4 porciones',
-  'arroz', array['para llevar', 'casero'], 25, 'potente',
+  'arroz', array['para llevar', 'casero'], 20, 'potente',
   true, false, true, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -1051,7 +1051,7 @@ insert into meals (
 ) values (
   null, 'guiso-de-porotos-con-calabaza', 'Guiso de porotos con calabaza', 'Guiso de porotos con calabaza con porotos cocidos, calabaza, cebolla; rinde 4 porciones.', 'cena', 'estimado',
   40, 'estimacion', 'estimada', '1 de 4 porciones',
-  'porotos cocidos', array['para llevar', 'casero'], 25, 'potente',
+  'porotos cocidos', array['para llevar', 'casero'], 20, 'potente',
   true, false, true, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -1100,7 +1100,7 @@ insert into meals (
 ) values (
   null, 'guiso-de-fideos-y-pollo', 'Guiso de fideos y pollo', 'Guiso de fideos y pollo con fideos, pollo, zanahoria; rinde 4 porciones.', 'almuerzo', 'estimado',
   52, 'estimacion', 'estimada', '1 de 4 porciones',
-  'fideos', array['para llevar', 'casero'], 25, 'potente',
+  'fideos', array['para llevar', 'casero'], 20, 'potente',
   true, true, true, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -1149,7 +1149,7 @@ insert into meals (
 ) values (
   null, 'guiso-de-garbanzos-y-espinaca', 'Guiso de garbanzos y espinaca', 'Guiso de garbanzos y espinaca con garbanzos cocidos, espinaca, cebolla; rinde 4 porciones.', 'cena', 'estimado',
   29, 'estimacion', 'estimada', '1 de 4 porciones',
-  'garbanzos cocidos', array['para llevar', 'casero'], 25, 'potente',
+  'garbanzos cocidos', array['para llevar', 'casero'], 15, 'potente',
   true, false, true, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -1198,7 +1198,7 @@ insert into meals (
 ) values (
   null, 'carbonada-de-carne-y-zapallo', 'Carbonada de carne y zapallo', 'Carbonada de carne y zapallo con carne picada, calabaza, papa; rinde 4 porciones.', 'almuerzo', 'estimado',
   32, 'estimacion', 'estimada', '1 de 4 porciones',
-  'carne picada', array['para llevar', 'casero'], 25, 'potente',
+  'carne picada', array['para llevar', 'casero'], 30, 'potente',
   true, true, true, true, true,
   2, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -1247,7 +1247,7 @@ insert into meals (
 ) values (
   null, 'locro-sencillo-de-porotos-y-maiz', 'Locro sencillo de porotos y maíz', 'Locro sencillo de porotos y maíz con porotos cocidos, choclo, calabaza; rinde 5 porciones.', 'almuerzo', 'estimado',
   36, 'estimacion', 'estimada', '1 de 5 porciones',
-  'porotos cocidos', array['para llevar', 'casero'], 25, 'potente',
+  'porotos cocidos', array['para llevar', 'casero'], 40, 'potente',
   true, true, true, true, true,
   2, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -1296,7 +1296,7 @@ insert into meals (
 ) values (
   null, 'estofado-de-carne-con-papas', 'Estofado de carne con papas', 'Estofado de carne con papas con lomo, papa, cebolla; rinde 4 porciones.', 'cena', 'estimado',
   35, 'estimacion', 'estimada', '1 de 4 porciones',
-  'lomo', array['para llevar', 'casero'], 25, 'potente',
+  'lomo', array['para llevar', 'casero'], 40, 'potente',
   true, false, true, true, true,
   2, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
@@ -1394,7 +1394,7 @@ insert into meals (
 ) values (
   null, 'lentejas-con-chorizo-y-verduras', 'Lentejas con chorizo y verduras', 'Lentejas con chorizo y verduras con lentejas cocidas, chorizo, calabaza; rinde 4 porciones.', 'cena', 'estimado',
   30, 'estimacion', 'estimada', '1 de 4 porciones',
-  'lentejas cocidas', array['para llevar', 'casero'], 25, 'potente',
+  'lentejas cocidas', array['para llevar', 'casero'], 20, 'potente',
   true, false, true, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -1443,7 +1443,7 @@ insert into meals (
 ) values (
   null, 'arroz-caldoso-con-merluza', 'Arroz caldoso con merluza', 'Arroz caldoso con merluza con arroz, merluza, tomate; rinde 4 porciones.', 'almuerzo', 'estimado',
   41, 'estimacion', 'estimada', '1 de 4 porciones',
-  'arroz', array['para llevar', 'casero'], 25, 'potente',
+  'arroz', array['para llevar', 'casero'], 15, 'potente',
   true, true, true, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
@@ -1492,7 +1492,7 @@ insert into meals (
 ) values (
   null, 'sopa-de-verduras-con-garbanzos', 'Sopa de verduras con garbanzos', 'Sopa de verduras con garbanzos con garbanzos cocidos, calabaza, zanahoria; rinde 4 porciones.', 'cena', 'estimado',
   31, 'estimacion', 'estimada', '1 de 4 porciones',
-  'garbanzos cocidos', array['para llevar', 'casero'], 25, 'potente',
+  'garbanzos cocidos', array['para llevar', 'casero'], 10, 'potente',
   true, false, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -1541,7 +1541,7 @@ insert into meals (
 ) values (
   null, 'sopa-de-tomate-y-arroz', 'Sopa de tomate y arroz', 'Sopa de tomate y arroz con tomate, arroz, cebolla; rinde 4 porciones.', 'cena', 'estimado',
   28, 'estimacion', 'estimada', '1 de 4 porciones',
-  'tomate', array['para llevar', 'casero'], 25, 'potente',
+  'tomate', array['para llevar', 'casero'], 10, 'potente',
   true, false, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -1590,7 +1590,7 @@ insert into meals (
 ) values (
   null, 'sopa-de-pollo-con-fideos', 'Sopa de pollo con fideos', 'Sopa de pollo con fideos con pollo, fideos, zanahoria; rinde 4 porciones.', 'cena', 'estimado',
   29, 'estimacion', 'estimada', '1 de 4 porciones',
-  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  'pollo', array['para llevar', 'casero'], 15, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -1639,7 +1639,7 @@ insert into meals (
 ) values (
   null, 'crema-de-zanahoria-y-calabaza', 'Crema de zanahoria y calabaza', 'Crema de zanahoria y calabaza con calabaza, zanahoria, cebolla; rinde 4 porciones.', 'cena', 'estimado',
   22, 'estimacion', 'estimada', '1 de 4 porciones',
-  'calabaza', array['para llevar', 'casero'], 25, 'potente',
+  'calabaza', array['para llevar', 'casero'], 10, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -1688,7 +1688,7 @@ insert into meals (
 ) values (
   null, 'sopa-de-lentejas-y-verduras', 'Sopa de lentejas y verduras', 'Sopa de lentejas y verduras con lentejas cocidas, zanahoria, tomate; rinde 4 porciones.', 'cena', 'estimado',
   23, 'estimacion', 'estimada', '1 de 4 porciones',
-  'lentejas cocidas', array['para llevar', 'casero'], 25, 'potente',
+  'lentejas cocidas', array['para llevar', 'casero'], 10, 'potente',
   true, false, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -1737,7 +1737,7 @@ insert into meals (
 ) values (
   null, 'crema-de-brocoli-con-queso', 'Crema de brócoli con queso', 'Crema de brócoli con queso con brócoli, papa, leche; rinde 4 porciones.', 'cena', 'estimado',
   15, 'estimacion', 'estimada', '1 de 4 porciones',
-  'brócoli', array['para llevar', 'casero'], 25, 'potente',
+  'brócoli', array['para llevar', 'casero'], 10, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -1786,7 +1786,7 @@ insert into meals (
 ) values (
   null, 'sopa-de-batata-y-puerro', 'Sopa de batata y puerro', 'Sopa de batata y puerro con batata, cebolla, leche; rinde 4 porciones.', 'cena', 'estimado',
   27, 'estimacion', 'estimada', '1 de 4 porciones',
-  'batata', array['para llevar', 'casero'], 25, 'potente',
+  'batata', array['para llevar', 'casero'], 10, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -1835,7 +1835,7 @@ insert into meals (
 ) values (
   null, 'puchero-rapido-de-pollo', 'Puchero rápido de pollo', 'Puchero rápido de pollo con pollo, papa, calabaza; rinde 4 porciones.', 'almuerzo', 'estimado',
   40, 'estimacion', 'estimada', '1 de 4 porciones',
-  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  'pollo', array['para llevar', 'casero'], 30, 'potente',
   true, true, true, true, true,
   2, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -1884,7 +1884,7 @@ insert into meals (
 ) values (
   null, 'pastel-de-lentejas-y-pure-de-papa', 'Pastel de lentejas y puré de papa', 'Pastel de lentejas y puré de papa con lentejas cocidas, papa, cebolla; rinde 5 porciones.', 'almuerzo', 'estimado',
   43, 'estimacion', 'estimada', '1 de 5 porciones',
-  'lentejas cocidas', array['para llevar', 'casero'], 25, 'potente',
+  'lentejas cocidas', array['para llevar', 'casero'], 30, 'potente',
   true, true, true, true, true,
   2, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -1933,7 +1933,7 @@ insert into meals (
 ) values (
   null, 'pastel-de-pollo-y-calabaza', 'Pastel de pollo y calabaza', 'Pastel de pollo y calabaza con pollo, calabaza, cebolla; rinde 5 porciones.', 'almuerzo', 'estimado',
   17, 'estimacion', 'estimada', '1 de 5 porciones',
-  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  'pollo', array['para llevar', 'casero'], 30, 'potente',
   true, true, true, true, true,
   2, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -1982,7 +1982,7 @@ insert into meals (
 ) values (
   null, 'pastel-de-berenjena-y-carne', 'Pastel de berenjena y carne', 'Pastel de berenjena y carne con berenjena, carne picada, tomate; rinde 5 porciones.', 'cena', 'estimado',
   9, 'estimacion', 'estimada', '1 de 5 porciones',
-  'berenjena', array['para llevar', 'casero'], 25, 'potente',
+  'berenjena', array['para llevar', 'casero'], 30, 'potente',
   true, true, true, true, true,
   2, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
@@ -2031,7 +2031,7 @@ insert into meals (
 ) values (
   null, 'pastel-de-choclo-y-carne', 'Pastel de choclo y carne', 'Pastel de choclo y carne con choclo, carne picada, calabaza; rinde 5 porciones.', 'almuerzo', 'estimado',
   21, 'estimacion', 'estimada', '1 de 5 porciones',
-  'choclo', array['para llevar', 'casero'], 25, 'potente',
+  'choclo', array['para llevar', 'casero'], 30, 'potente',
   true, true, true, true, true,
   2, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -2080,7 +2080,7 @@ insert into meals (
 ) values (
   null, 'cazuela-de-cerdo-y-batata', 'Cazuela de cerdo y batata', 'Cazuela de cerdo y batata con cerdo, batata, cebolla; rinde 4 porciones.', 'cena', 'estimado',
   31, 'estimacion', 'estimada', '1 de 4 porciones',
-  'cerdo', array['para llevar', 'casero'], 25, 'potente',
+  'cerdo', array['para llevar', 'casero'], 30, 'potente',
   true, true, true, true, true,
   2, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -2129,7 +2129,7 @@ insert into meals (
 ) values (
   null, 'cazuela-de-merluza-y-tomate', 'Cazuela de merluza y tomate', 'Cazuela de merluza y tomate con merluza, papa, tomate; rinde 4 porciones.', 'cena', 'estimado',
   25, 'estimacion', 'estimada', '1 de 4 porciones',
-  'merluza', array['para llevar', 'casero'], 25, 'potente',
+  'merluza', array['para llevar', 'casero'], 20, 'potente',
   true, true, true, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
@@ -2227,7 +2227,7 @@ insert into meals (
 ) values (
   null, 'risotto-de-calabaza-y-queso', 'Risotto de calabaza y queso', 'Risotto de calabaza y queso con arroz, calabaza, cebolla; rinde 4 porciones.', 'cena', 'estimado',
   56, 'estimacion', 'estimada', '1 de 4 porciones',
-  'arroz', array['en casa', 'casero'], 25, 'potente',
+  'arroz', array['en casa', 'casero'], 20, 'potente',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -2325,7 +2325,7 @@ insert into meals (
 ) values (
   null, 'arroz-salteado-con-huevo-y-arvejas', 'Arroz salteado con huevo y arvejas', 'Arroz salteado con huevo y arvejas con arroz, huevo, arvejas; rinde 4 porciones.', 'almuerzo', 'estimado',
   52, 'estimacion', 'estimada', '1 de 4 porciones',
-  'arroz', array['para llevar', 'rápido'], 25, 'potente',
+  'arroz', array['para llevar', 'rápido'], 18, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -2374,7 +2374,7 @@ insert into meals (
 ) values (
   null, 'arroz-salteado-con-cerdo-y-morron', 'Arroz salteado con cerdo y morrón', 'Arroz salteado con cerdo y morrón con arroz, cerdo, morrón; rinde 4 porciones.', 'almuerzo', 'estimado',
   43, 'estimacion', 'estimada', '1 de 4 porciones',
-  'arroz', array['para llevar', 'casero'], 25, 'potente',
+  'arroz', array['para llevar', 'casero'], 23, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -2423,7 +2423,7 @@ insert into meals (
 ) values (
   null, 'arroz-con-atun-y-tomate-al-horno', 'Arroz con atún y tomate al horno', 'Arroz con atún y tomate al horno con arroz, atún, tomate; rinde 4 porciones.', 'almuerzo', 'estimado',
   44, 'estimacion', 'estimada', '1 de 4 porciones',
-  'arroz', array['para llevar', 'casero'], 25, 'potente',
+  'arroz', array['para llevar', 'casero'], 15, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -2472,12 +2472,12 @@ insert into meals (
 ) values (
   null, 'ensalada-fria-de-arroz-pollo-y-zanahoria', 'Ensalada fría de arroz, pollo y zanahoria', 'Ensalada fría de arroz, pollo y zanahoria con arroz, pollo, zanahoria; rinde 3 porciones.', 'almuerzo', 'estimado',
   47, 'estimacion', 'estimada', '1 de 3 porciones',
-  'arroz', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, true, false,
+  'arroz', array['para llevar', 'rápido'], 18, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -2521,12 +2521,12 @@ insert into meals (
 ) values (
   null, 'ensalada-de-pasta-con-atun-y-choclo', 'Ensalada de pasta con atún y choclo', 'Ensalada de pasta con atún y choclo con fideos, atún, choclo; rinde 3 porciones.', 'almuerzo', 'estimado',
   51, 'estimacion', 'estimada', '1 de 3 porciones',
-  'fideos', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, true, false,
+  'fideos', array['para llevar', 'rápido'], 13, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 25, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -2570,12 +2570,12 @@ insert into meals (
 ) values (
   null, 'ensalada-de-papa-huevo-y-arvejas', 'Ensalada de papa, huevo y arvejas', 'Ensalada de papa, huevo y arvejas con papa, huevo, arvejas; rinde 3 porciones.', 'almuerzo', 'estimado',
   42, 'estimacion', 'estimada', '1 de 3 porciones',
-  'papa', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, true, false,
+  'papa', array['para llevar', 'rápido'], 18, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -2619,12 +2619,12 @@ insert into meals (
 ) values (
   null, 'ensalada-de-garbanzos-con-pollo-y-pepino', 'Ensalada de garbanzos con pollo y pepino', 'Ensalada de garbanzos con pollo y pepino con garbanzos cocidos, pollo, pepino; rinde 3 porciones.', 'almuerzo', 'estimado',
   27, 'estimacion', 'estimada', '1 de 3 porciones',
-  'garbanzos cocidos', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, true, false,
+  'garbanzos cocidos', array['para llevar', 'rápido'], 13, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 25, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -2668,12 +2668,12 @@ insert into meals (
 ) values (
   null, 'ensalada-de-porotos-con-huevo-y-tomate', 'Ensalada de porotos con huevo y tomate', 'Ensalada de porotos con huevo y tomate con porotos cocidos, huevo, tomate; rinde 3 porciones.', 'almuerzo', 'estimado',
   30, 'estimacion', 'estimada', '1 de 3 porciones',
-  'porotos cocidos', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, false, false,
+  'porotos cocidos', array['para llevar', 'rápido'], 8, 'potente',
+  true, true, true, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 20, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -2717,12 +2717,12 @@ insert into meals (
 ) values (
   null, 'ensalada-tibia-de-batata-espinaca-y-ricota', 'Ensalada tibia de batata, espinaca y ricota', 'Ensalada tibia de batata, espinaca y ricota con batata, espinaca, ricota; rinde 3 porciones.', 'almuerzo', 'estimado',
   29, 'estimacion', 'estimada', '1 de 3 porciones',
-  'batata', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, true, false,
+  'batata', array['para llevar', 'rápido'], 18, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -2766,7 +2766,7 @@ insert into meals (
 ) values (
   null, 'ensalada-de-lentejas-y-remolacha', 'Ensalada de lentejas y remolacha', 'Ensalada de lentejas y remolacha con lentejas cocidas, remolacha, zanahoria; rinde 3 porciones.', 'almuerzo', 'estimado',
   30, 'estimacion', 'estimada', '1 de 3 porciones',
-  'lentejas cocidas', array['para llevar', 'rápido'], 15, 'potente',
+  'lentejas cocidas', array['para llevar', 'rápido'], 25, 'potente',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -2815,12 +2815,12 @@ insert into meals (
 ) values (
   null, 'ensalada-de-arroz-y-sardinas', 'Ensalada de arroz y sardinas', 'Ensalada de arroz y sardinas con arroz, sardina, tomate; rinde 3 porciones.', 'almuerzo', 'estimado',
   45, 'estimacion', 'estimada', '1 de 3 porciones',
-  'arroz', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, true, false,
+  'arroz', array['para llevar', 'rápido'], 13, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 25, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -2864,12 +2864,12 @@ insert into meals (
 ) values (
   null, 'ensalada-de-pollo-naranja-y-zanahoria', 'Ensalada de pollo, naranja y zanahoria', 'Ensalada de pollo, naranja y zanahoria con pollo, naranja, zanahoria; rinde 3 porciones.', 'almuerzo', 'estimado',
   13, 'estimacion', 'estimada', '1 de 3 porciones',
-  'pollo', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, true, false,
+  'pollo', array['para llevar', 'rápido'], 13, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 25, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -2913,12 +2913,12 @@ insert into meals (
 ) values (
   null, 'ensalada-de-fideos-brocoli-y-queso', 'Ensalada de fideos, brócoli y queso', 'Ensalada de fideos, brócoli y queso con fideos, brócoli, queso; rinde 3 porciones.', 'almuerzo', 'estimado',
   49, 'estimacion', 'estimada', '1 de 3 porciones',
-  'fideos', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, true, false,
+  'fideos', array['para llevar', 'rápido'], 13, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 25, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -3011,12 +3011,12 @@ insert into meals (
 ) values (
   null, 'ensalada-de-papa-merluza-y-tomate', 'Ensalada de papa, merluza y tomate', 'Ensalada de papa, merluza y tomate con papa, merluza, tomate; rinde 3 porciones.', 'almuerzo', 'estimado',
   28, 'estimacion', 'estimada', '1 de 3 porciones',
-  'papa', array['para llevar', 'casero'], 15, 'potente',
-  true, true, false, true, false,
+  'papa', array['para llevar', 'casero'], 23, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -3060,12 +3060,12 @@ insert into meals (
 ) values (
   null, 'ensalada-de-pollo-con-arroz-y-palta', 'Ensalada de pollo con arroz y palta', 'Ensalada de pollo con arroz y palta con pollo, arroz, palta; rinde 3 porciones.', 'almuerzo', 'estimado',
   42, 'estimacion', 'estimada', '1 de 3 porciones',
-  'pollo', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, true, false,
+  'pollo', array['para llevar', 'rápido'], 18, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -3109,12 +3109,12 @@ insert into meals (
 ) values (
   null, 'ensalada-de-remolacha-huevo-y-ricota', 'Ensalada de remolacha, huevo y ricota', 'Ensalada de remolacha, huevo y ricota con remolacha, huevo, ricota; rinde 3 porciones.', 'almuerzo', 'estimado',
   14, 'estimacion', 'estimada', '1 de 3 porciones',
-  'remolacha', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, true, false,
+  'remolacha', array['para llevar', 'rápido'], 13, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 25, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -3158,7 +3158,7 @@ insert into meals (
 ) values (
   null, 'ensalada-de-garbanzos-zanahoria-y-atun', 'Ensalada de garbanzos, zanahoria y atún', 'Ensalada de garbanzos, zanahoria y atún con garbanzos cocidos, atún, zanahoria; rinde 3 porciones.', 'almuerzo', 'estimado',
   32, 'estimacion', 'estimada', '1 de 3 porciones',
-  'garbanzos cocidos', array['para llevar', 'rápido'], 15, 'potente',
+  'garbanzos cocidos', array['para llevar', 'rápido'], 20, 'potente',
   true, true, false, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -3207,12 +3207,12 @@ insert into meals (
 ) values (
   null, 'wrap-de-carne-salteada-y-morron', 'Wrap de carne salteada y morrón', 'Wrap de carne salteada y morrón con tortilla de trigo, lomo, morrón; rinde 3 porciones.', 'almuerzo', 'estimado',
   35, 'estimacion', 'estimada', '1 de 3 porciones',
-  'tortilla de trigo', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, true, false,
+  'tortilla de trigo', array['para llevar', 'rápido'], 18, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, true, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -3256,12 +3256,12 @@ insert into meals (
 ) values (
   null, 'wrap-de-atun-huevo-y-tomate', 'Wrap de atún, huevo y tomate', 'Wrap de atún, huevo y tomate con tortilla de trigo, atún, huevo; rinde 3 porciones.', 'almuerzo', 'estimado',
   30, 'estimacion', 'estimada', '1 de 3 porciones',
-  'tortilla de trigo', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, false, false,
+  'tortilla de trigo', array['para llevar', 'rápido'], 8, 'potente',
+  true, true, true, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 20, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -3305,7 +3305,7 @@ insert into meals (
 ) values (
   null, 'wrap-de-garbanzos-pisados-y-verduras', 'Wrap de garbanzos pisados y verduras', 'Wrap de garbanzos pisados y verduras con tortilla de trigo, garbanzos cocidos, zanahoria; rinde 3 porciones.', 'almuerzo', 'estimado',
   57, 'estimacion', 'estimada', '1 de 3 porciones',
-  'tortilla de trigo', array['para llevar', 'rápido'], 15, 'potente',
+  'tortilla de trigo', array['para llevar', 'rápido'], 20, 'potente',
   true, false, false, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
@@ -3354,12 +3354,12 @@ insert into meals (
 ) values (
   null, 'wrap-de-cerdo-con-repollo-y-zanahoria', 'Wrap de cerdo con repollo y zanahoria', 'Wrap de cerdo con repollo y zanahoria con tortilla de trigo, cerdo, repollo; rinde 3 porciones.', 'almuerzo', 'estimado',
   36, 'estimacion', 'estimada', '1 de 3 porciones',
-  'tortilla de trigo', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, true, false,
+  'tortilla de trigo', array['para llevar', 'rápido'], 18, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -3403,12 +3403,12 @@ insert into meals (
 ) values (
   null, 'wrap-de-milanesa-de-berenjena-y-queso', 'Wrap de milanesa de berenjena y queso', 'Wrap de milanesa de berenjena y queso con tortilla de trigo, berenjena, huevo; rinde 3 porciones.', 'almuerzo', 'estimado',
   51, 'estimacion', 'estimada', '1 de 3 porciones',
-  'tortilla de trigo', array['para llevar', 'casero'], 15, 'potente',
-  true, true, false, true, false,
+  'tortilla de trigo', array['para llevar', 'casero'], 23, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -3452,12 +3452,12 @@ insert into meals (
 ) values (
   null, 'sandwich-de-pollo-al-horno-y-tomate', 'Sándwich de pollo al horno y tomate', 'Sándwich de pollo al horno y tomate con pan, pollo, tomate; rinde 3 porciones.', 'almuerzo', 'estimado',
   31, 'estimacion', 'estimada', '1 de 3 porciones',
-  'pan', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, true, false,
+  'pan', array['para llevar', 'rápido'], 13, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 25, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -3501,12 +3501,12 @@ insert into meals (
 ) values (
   null, 'sandwich-de-atun-y-huevo-duro', 'Sándwich de atún y huevo duro', 'Sándwich de atún y huevo duro con pan, atún, huevo; rinde 3 porciones.', 'almuerzo', 'estimado',
   30, 'estimacion', 'estimada', '1 de 3 porciones',
-  'pan', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, false, false,
+  'pan', array['para llevar', 'rápido'], 8, 'potente',
+  true, true, true, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 20, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -3550,12 +3550,12 @@ insert into meals (
 ) values (
   null, 'sandwich-de-carne-fria-y-morron-asado', 'Sándwich de carne fría y morrón asado', 'Sándwich de carne fría y morrón asado con pan, lomo, morrón; rinde 3 porciones.', 'almuerzo', 'estimado',
   32, 'estimacion', 'estimada', '1 de 3 porciones',
-  'pan', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, true, false,
+  'pan', array['para llevar', 'rápido'], 18, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, true, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -3648,12 +3648,12 @@ insert into meals (
 ) values (
   null, 'sandwich-de-cerdo-desmenuzado-y-repollo', 'Sándwich de cerdo desmenuzado y repollo', 'Sándwich de cerdo desmenuzado y repollo con pan, cerdo, repollo; rinde 3 porciones.', 'almuerzo', 'estimado',
   35, 'estimacion', 'estimada', '1 de 3 porciones',
-  'pan', array['para llevar', 'casero'], 15, 'potente',
-  true, true, false, true, false,
+  'pan', array['para llevar', 'casero'], 33, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 45, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -3697,12 +3697,12 @@ insert into meals (
 ) values (
   null, 'pan-arabe-relleno-de-pollo-y-verduras', 'Pan árabe relleno de pollo y verduras', 'Pan árabe relleno de pollo y verduras con tortilla de trigo, pollo, tomate; rinde 3 porciones.', 'almuerzo', 'estimado',
   32, 'estimacion', 'estimada', '1 de 3 porciones',
-  'tortilla de trigo', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, true, false,
+  'tortilla de trigo', array['para llevar', 'rápido'], 13, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 25, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -3746,12 +3746,12 @@ insert into meals (
 ) values (
   null, 'sandwich-de-omelette-y-queso', 'Sándwich de omelette y queso', 'Sándwich de omelette y queso con pan, huevo, queso; rinde 3 porciones.', 'almuerzo', 'estimado',
   30, 'estimacion', 'estimada', '1 de 3 porciones',
-  'pan', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, false, false,
+  'pan', array['para llevar', 'rápido'], 5, 'potente',
+  true, true, true, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 15, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -3844,12 +3844,12 @@ insert into meals (
 ) values (
   null, 'pan-de-miga-con-pollo-huevo-y-lechuga', 'Pan de miga con pollo, huevo y lechuga', 'Pan de miga con pollo, huevo y lechuga con pan de miga, pollo, huevo; rinde 3 porciones.', 'almuerzo', 'estimado',
   38, 'estimacion', 'estimada', '1 de 3 porciones',
-  'pan de miga', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, true, false,
+  'pan de miga', array['para llevar', 'rápido'], 13, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 25, false,
-  'assemble'::prep_type, '3 porciones',
+  'cook'::prep_type, '3 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -3893,7 +3893,7 @@ insert into meals (
 ) values (
   null, 'hamburguesas-de-lentejas-y-zanahoria', 'Hamburguesas de lentejas y zanahoria', 'Hamburguesas de lentejas y zanahoria con lentejas cocidas, zanahoria, cebolla; rinde 4 porciones.', 'almuerzo', 'estimado',
   32, 'estimacion', 'estimada', '1 de 4 porciones',
-  'lentejas cocidas', array['para llevar', 'casero'], 25, 'potente',
+  'lentejas cocidas', array['para llevar', 'casero'], 15, 'potente',
   true, true, true, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -3942,7 +3942,7 @@ insert into meals (
 ) values (
   null, 'hamburguesas-de-garbanzos-y-espinaca', 'Hamburguesas de garbanzos y espinaca', 'Hamburguesas de garbanzos y espinaca con garbanzos cocidos, espinaca, cebolla; rinde 4 porciones.', 'almuerzo', 'estimado',
   36, 'estimacion', 'estimada', '1 de 4 porciones',
-  'garbanzos cocidos', array['para llevar', 'casero'], 25, 'potente',
+  'garbanzos cocidos', array['para llevar', 'casero'], 15, 'potente',
   true, true, true, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -3991,7 +3991,7 @@ insert into meals (
 ) values (
   null, 'hamburguesas-de-pollo-y-calabaza', 'Hamburguesas de pollo y calabaza', 'Hamburguesas de pollo y calabaza con pollo, calabaza, cebolla; rinde 4 porciones.', 'almuerzo', 'estimado',
   16, 'estimacion', 'estimada', '1 de 4 porciones',
-  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  'pollo', array['para llevar', 'casero'], 20, 'potente',
   true, true, true, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -4040,7 +4040,7 @@ insert into meals (
 ) values (
   null, 'hamburguesas-de-atun-y-papa', 'Hamburguesas de atún y papa', 'Hamburguesas de atún y papa con atún, papa, huevo; rinde 4 porciones.', 'almuerzo', 'estimado',
   27, 'estimacion', 'estimada', '1 de 4 porciones',
-  'atún', array['para llevar', 'casero'], 25, 'potente',
+  'atún', array['para llevar', 'casero'], 20, 'potente',
   true, true, true, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -4089,7 +4089,7 @@ insert into meals (
 ) values (
   null, 'hamburguesas-de-carne-y-remolacha', 'Hamburguesas de carne y remolacha', 'Hamburguesas de carne y remolacha con carne picada, remolacha, cebolla; rinde 4 porciones.', 'cena', 'estimado',
   8, 'estimacion', 'estimada', '1 de 4 porciones',
-  'carne picada', array['para llevar', 'casero'], 25, 'potente',
+  'carne picada', array['para llevar', 'casero'], 15, 'potente',
   true, true, true, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -4138,7 +4138,7 @@ insert into meals (
 ) values (
   null, 'hamburguesas-de-porotos-y-arroz', 'Hamburguesas de porotos y arroz', 'Hamburguesas de porotos y arroz con porotos cocidos, arroz, cebolla; rinde 4 porciones.', 'almuerzo', 'estimado',
   53, 'estimacion', 'estimada', '1 de 4 porciones',
-  'porotos cocidos', array['para llevar', 'casero'], 25, 'potente',
+  'porotos cocidos', array['para llevar', 'casero'], 20, 'potente',
   true, true, true, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -4334,7 +4334,7 @@ insert into meals (
 ) values (
   null, 'albondigas-de-cerdo-y-zanahoria', 'Albóndigas de cerdo y zanahoria', 'Albóndigas de cerdo y zanahoria con cerdo, zanahoria, cebolla; rinde 4 porciones.', 'cena', 'estimado',
   17, 'estimacion', 'estimada', '1 de 4 porciones',
-  'cerdo', array['para llevar', 'casero'], 25, 'potente',
+  'cerdo', array['para llevar', 'casero'], 20, 'potente',
   true, true, true, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -4383,7 +4383,7 @@ insert into meals (
 ) values (
   null, 'milanesas-de-berenjena-con-ensalada', 'Milanesas de berenjena con ensalada', 'Milanesas de berenjena con ensalada con berenjena, huevo, pan rallado; rinde 4 porciones.', 'almuerzo', 'estimado',
   28, 'estimacion', 'estimada', '1 de 4 porciones',
-  'berenjena', array['para llevar', 'casero'], 25, 'potente',
+  'berenjena', array['para llevar', 'casero'], 15, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -4432,7 +4432,7 @@ insert into meals (
 ) values (
   null, 'milanesas-de-merluza-al-horno-con-papas', 'Milanesas de merluza al horno con papas', 'Milanesas de merluza al horno con papas con merluza, huevo, pan rallado; rinde 4 porciones.', 'almuerzo', 'estimado',
   45, 'estimacion', 'estimada', '1 de 4 porciones',
-  'merluza', array['para llevar', 'casero'], 25, 'potente',
+  'merluza', array['para llevar', 'casero'], 20, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
@@ -4481,7 +4481,7 @@ insert into meals (
 ) values (
   null, 'milanesas-de-pollo-en-air-fryer', 'Milanesas de pollo en air fryer', 'Milanesas de pollo en air fryer con pollo, huevo, pan rallado; rinde 4 porciones.', 'almuerzo', 'estimado',
   27, 'estimacion', 'estimada', '1 de 4 porciones',
-  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  'pollo', array['para llevar', 'casero'], 17, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -4579,7 +4579,7 @@ insert into meals (
 ) values (
   null, 'milanesas-de-calabaza-rellenas-con-queso', 'Milanesas de calabaza rellenas con queso', 'Milanesas de calabaza rellenas con queso con calabaza, queso, huevo; rinde 4 porciones.', 'cena', 'estimado',
   35, 'estimacion', 'estimada', '1 de 4 porciones',
-  'calabaza', array['para llevar', 'casero'], 25, 'potente',
+  'calabaza', array['para llevar', 'casero'], 20, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -4628,7 +4628,7 @@ insert into meals (
 ) values (
   null, 'merluza-en-papillote-con-verduras', 'Merluza en papillote con verduras', 'Merluza en papillote con verduras con merluza, zapallito, zanahoria; rinde 4 porciones.', 'cena', 'estimado',
   9, 'estimacion', 'estimada', '1 de 4 porciones',
-  'merluza', array['para llevar', 'casero'], 25, 'potente',
+  'merluza', array['para llevar', 'casero'], 5, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
@@ -4677,7 +4677,7 @@ insert into meals (
 ) values (
   null, 'merluza-al-horno-con-salsa-criolla', 'Merluza al horno con salsa criolla', 'Merluza al horno con salsa criolla con merluza, morrón, cebolla; rinde 4 porciones.', 'almuerzo', 'estimado',
   27, 'estimacion', 'estimada', '1 de 4 porciones',
-  'merluza', array['para llevar', 'casero'], 25, 'potente',
+  'merluza', array['para llevar', 'casero'], 15, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
@@ -4726,7 +4726,7 @@ insert into meals (
 ) values (
   null, 'pollo-al-limon-con-batatas', 'Pollo al limón con batatas', 'Pollo al limón con batatas con pollo, batata, limón; rinde 4 porciones.', 'almuerzo', 'estimado',
   30, 'estimacion', 'estimada', '1 de 4 porciones',
-  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  'pollo', array['para llevar', 'casero'], 15, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -4775,7 +4775,7 @@ insert into meals (
 ) values (
   null, 'pollo-al-horno-con-calabaza-y-cebolla', 'Pollo al horno con calabaza y cebolla', 'Pollo al horno con calabaza y cebolla con pollo, calabaza, cebolla; rinde 4 porciones.', 'cena', 'estimado',
   17, 'estimacion', 'estimada', '1 de 4 porciones',
-  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  'pollo', array['para llevar', 'casero'], 15, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -4873,7 +4873,7 @@ insert into meals (
 ) values (
   null, 'bifes-al-horno-con-papa-y-tomate', 'Bifes al horno con papa y tomate', 'Bifes al horno con papa y tomate con lomo, papa, tomate; rinde 4 porciones.', 'cena', 'estimado',
   30, 'estimacion', 'estimada', '1 de 4 porciones',
-  'lomo', array['para llevar', 'casero'], 25, 'potente',
+  'lomo', array['para llevar', 'casero'], 15, 'potente',
   true, false, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
@@ -5069,7 +5069,7 @@ insert into meals (
 ) values (
   null, 'berenjenas-rellenas-de-arroz-y-atun', 'Berenjenas rellenas de arroz y atún', 'Berenjenas rellenas de arroz y atún con berenjena, arroz, atún; rinde 4 porciones.', 'almuerzo', 'estimado',
   33, 'estimacion', 'estimada', '1 de 4 porciones',
-  'berenjena', array['para llevar', 'casero'], 25, 'potente',
+  'berenjena', array['para llevar', 'casero'], 20, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -5216,7 +5216,7 @@ insert into meals (
 ) values (
   null, 'fideos-con-salsa-de-atun-y-tomate', 'Fideos con salsa de atún y tomate', 'Fideos con salsa de atún y tomate con fideos, atún, salsa de tomate; rinde 4 porciones.', 'almuerzo', 'estimado',
   64, 'estimacion', 'estimada', '1 de 4 porciones',
-  'fideos', array['para llevar', 'rápido'], 25, 'potente',
+  'fideos', array['para llevar', 'rápido'], 15, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -5265,7 +5265,7 @@ insert into meals (
 ) values (
   null, 'fideos-con-brocoli-ajo-y-queso', 'Fideos con brócoli, ajo y queso', 'Fideos con brócoli, ajo y queso con fideos, brócoli, ajo; rinde 4 porciones.', 'almuerzo', 'estimado',
   59, 'estimacion', 'estimada', '1 de 4 porciones',
-  'fideos', array['para llevar', 'rápido'], 25, 'potente',
+  'fideos', array['para llevar', 'rápido'], 15, 'potente',
   true, false, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -5314,7 +5314,7 @@ insert into meals (
 ) values (
   null, 'fideos-con-pollo-y-crema-de-espinaca', 'Fideos con pollo y crema de espinaca', 'Fideos con pollo y crema de espinaca con fideos, pollo, espinaca; rinde 4 porciones.', 'almuerzo', 'estimado',
   56, 'estimacion', 'estimada', '1 de 4 porciones',
-  'fideos', array['para llevar', 'casero'], 25, 'potente',
+  'fideos', array['para llevar', 'casero'], 20, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -5363,7 +5363,7 @@ insert into meals (
 ) values (
   null, 'fideos-con-berenjena-y-salsa-roja', 'Fideos con berenjena y salsa roja', 'Fideos con berenjena y salsa roja con fideos, berenjena, salsa de tomate; rinde 4 porciones.', 'cena', 'estimado',
   64, 'estimacion', 'estimada', '1 de 4 porciones',
-  'fideos', array['para llevar', 'casero'], 25, 'potente',
+  'fideos', array['para llevar', 'casero'], 20, 'potente',
   true, false, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
@@ -5412,7 +5412,7 @@ insert into meals (
 ) values (
   null, 'fideos-con-albondigas-de-cerdo', 'Fideos con albóndigas de cerdo', 'Fideos con albóndigas de cerdo con fideos, cerdo, salsa de tomate; rinde 4 porciones.', 'cena', 'estimado',
   64, 'estimacion', 'estimada', '1 de 4 porciones',
-  'fideos', array['para llevar', 'casero'], 25, 'potente',
+  'fideos', array['para llevar', 'casero'], 30, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -5461,12 +5461,12 @@ insert into meals (
 ) values (
   null, 'pasta-fria-con-pollo-y-palta', 'Pasta fría con pollo y palta', 'Pasta fría con pollo y palta con fideos, pollo, palta; rinde 4 porciones.', 'almuerzo', 'estimado',
   49, 'estimacion', 'estimada', '1 de 4 porciones',
-  'fideos', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, true, false,
+  'fideos', array['para llevar', 'rápido'], 18, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
-  'assemble'::prep_type, '4 porciones',
+  'cook'::prep_type, '4 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -5510,7 +5510,7 @@ insert into meals (
 ) values (
   null, 'ravioles-con-salsa-de-espinaca-y-queso', 'Ravioles con salsa de espinaca y queso', 'Ravioles con salsa de espinaca y queso con ravioles, espinaca, queso; rinde 4 porciones.', 'cena', 'estimado',
   67, 'estimacion', 'estimada', '1 de 4 porciones',
-  'ravioles', array['en casa', 'rápido'], 25, 'potente',
+  'ravioles', array['en casa', 'rápido'], 15, 'potente',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -5608,7 +5608,7 @@ insert into meals (
 ) values (
   null, 'polenta-gratinada-con-hongos', 'Polenta gratinada con hongos', 'Polenta gratinada con hongos con polenta, champiñones, leche; rinde 4 porciones.', 'cena', 'estimado',
   48, 'estimacion', 'estimada', '1 de 4 porciones',
-  'polenta', array['para llevar', 'casero'], 25, 'potente',
+  'polenta', array['para llevar', 'casero'], 10, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
@@ -5657,7 +5657,7 @@ insert into meals (
 ) values (
   null, 'polenta-con-estofado-de-pollo', 'Polenta con estofado de pollo', 'Polenta con estofado de pollo con polenta, pollo, salsa de tomate; rinde 4 porciones.', 'almuerzo', 'estimado',
   48, 'estimacion', 'estimada', '1 de 4 porciones',
-  'polenta', array['para llevar', 'casero'], 25, 'potente',
+  'polenta', array['para llevar', 'casero'], 20, 'potente',
   true, true, true, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -5706,11 +5706,11 @@ insert into meals (
 ) values (
   null, 'tostadas-francesas-con-manzana-salteada', 'Tostadas francesas con manzana salteada', 'Tostadas francesas con manzana salteada con pan, huevo, leche; rinde 2 porciones.', 'desayuno', 'estimado',
   45, 'estimacion', 'estimada', '1 de 2 porciones',
-  'pan', array['en casa', 'rápido'], 20, 'normal',
+  'pan', array['en casa', 'rápido'], 10, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
-  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 20, false,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 20, false,
   'cook'::prep_type, '2 porciones',
   'porción estándar calculada'
 )
@@ -5738,7 +5738,7 @@ insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
   from meals where slug = 'tostadas-francesas-con-manzana-salteada' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
-  where m.slug = 'tostadas-francesas-con-manzana-salteada' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'casa', 'rapido', 'dulce', 'merienda')
+  where m.slug = 'tostadas-francesas-con-manzana-salteada' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'casa', 'rapido', 'salado', 'merienda')
   on conflict do nothing;
 
 -- Tostadas francesas con frutilla y ricota
@@ -5755,11 +5755,11 @@ insert into meals (
 ) values (
   null, 'tostadas-francesas-con-frutilla-y-ricota', 'Tostadas francesas con frutilla y ricota', 'Tostadas francesas con frutilla y ricota con pan, huevo, leche; rinde 2 porciones.', 'desayuno', 'estimado',
   40, 'estimacion', 'estimada', '1 de 2 porciones',
-  'pan', array['en casa', 'rápido'], 20, 'normal',
+  'pan', array['en casa', 'rápido'], 10, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
-  'casera'::food_origin, 'dulce'::flavor, array['desayuno', 'merienda']::meal_category[], 20, false,
+  'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 20, false,
   'cook'::prep_type, '2 porciones',
   'porción estándar calculada'
 )
@@ -5787,7 +5787,7 @@ insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
   from meals where slug = 'tostadas-francesas-con-frutilla-y-ricota' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
-  where m.slug = 'tostadas-francesas-con-frutilla-y-ricota' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'casa', 'rapido', 'dulce', 'merienda')
+  where m.slug = 'tostadas-francesas-con-frutilla-y-ricota' and m.profile_id is null and t.slug in ('desayuno', 'normal', 'casa', 'rapido', 'salado', 'merienda')
   on conflict do nothing;
 
 -- Panqueques de ricota y banana
@@ -5804,7 +5804,7 @@ insert into meals (
 ) values (
   null, 'panqueques-de-ricota-y-banana', 'Panqueques de ricota y banana', 'Panqueques de ricota y banana con ricota, banana, huevo; rinde 4 porciones.', 'desayuno', 'estimado',
   30, 'estimacion', 'estimada', '1 de 4 porciones',
-  'ricota', array['para llevar', 'rápido'], 25, 'normal',
+  'ricota', array['para llevar', 'rápido'], 15, 'normal',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -5853,7 +5853,7 @@ insert into meals (
 ) values (
   null, 'panqueques-de-manzana-y-canela', 'Panqueques de manzana y canela', 'Panqueques de manzana y canela con manzana, huevo, harina; rinde 4 porciones.', 'merienda', 'estimado',
   34, 'estimacion', 'estimada', '1 de 4 porciones',
-  'manzana', array['para llevar', 'rápido'], 25, 'normal',
+  'manzana', array['para llevar', 'rápido'], 15, 'normal',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -5902,7 +5902,7 @@ insert into meals (
 ) values (
   null, 'panqueques-salados-de-espinaca-y-queso', 'Panqueques salados de espinaca y queso', 'Panqueques salados de espinaca y queso con espinaca, queso, huevo; rinde 4 porciones.', 'merienda', 'estimado',
   25, 'estimacion', 'estimada', '1 de 4 porciones',
-  'espinaca', array['para llevar', 'rápido'], 25, 'normal',
+  'espinaca', array['para llevar', 'rápido'], 15, 'normal',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -5951,7 +5951,7 @@ insert into meals (
 ) values (
   null, 'crepes-de-ricota-y-frutilla', 'Crepes de ricota y frutilla', 'Crepes de ricota y frutilla con ricota, frutilla, huevo; rinde 4 porciones.', 'merienda', 'estimado',
   31, 'estimacion', 'estimada', '1 de 4 porciones',
-  'ricota', array['para llevar', 'rápido'], 25, 'normal',
+  'ricota', array['para llevar', 'rápido'], 15, 'normal',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -6000,7 +6000,7 @@ insert into meals (
 ) values (
   null, 'waffles-caseros-con-yogur-y-pera', 'Waffles caseros con yogur y pera', 'Waffles caseros con yogur y pera con harina, huevo, leche; rinde 4 porciones.', 'desayuno', 'estimado',
   34, 'estimacion', 'estimada', '1 de 4 porciones',
-  'harina', array['en casa', 'rápido'], 25, 'normal',
+  'harina', array['en casa', 'rápido'], 15, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -6049,7 +6049,7 @@ insert into meals (
 ) values (
   null, 'omelette-de-jamon-y-tomate', 'Omelette de jamón y tomate', 'Omelette de jamón y tomate con huevo, jamón, tomate; rinde 1 porciones.', 'desayuno', 'estimado',
   6, 'estimacion', 'estimada', '1 de 1 porciones',
-  'huevo', array['en casa', 'rápido'], 12, 'normal',
+  'huevo', array['en casa', 'rápido'], 5, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -6098,7 +6098,7 @@ insert into meals (
 ) values (
   null, 'omelette-de-espinaca-y-queso', 'Omelette de espinaca y queso', 'Omelette de espinaca y queso con huevo, espinaca, queso; rinde 1 porciones.', 'desayuno', 'estimado',
   3, 'estimacion', 'estimada', '1 de 1 porciones',
-  'huevo', array['en casa', 'rápido'], 12, 'normal',
+  'huevo', array['en casa', 'rápido'], 5, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -6147,7 +6147,7 @@ insert into meals (
 ) values (
   null, 'omelette-de-champinones-y-queso', 'Omelette de champiñones y queso', 'Omelette de champiñones y queso con huevo, champiñones, queso; rinde 1 porciones.', 'desayuno', 'estimado',
   5, 'estimacion', 'estimada', '1 de 1 porciones',
-  'huevo', array['en casa', 'rápido'], 15, 'normal',
+  'huevo', array['en casa', 'rápido'], 5, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -6196,7 +6196,7 @@ insert into meals (
 ) values (
   null, 'revuelto-de-huevo-tomate-y-cebolla', 'Revuelto de huevo, tomate y cebolla', 'Revuelto de huevo, tomate y cebolla con huevo, tomate, cebolla; rinde 1 porciones.', 'desayuno', 'estimado',
   39, 'estimacion', 'estimada', '1 de 1 porciones',
-  'huevo', array['en casa', 'rápido'], 15, 'normal',
+  'huevo', array['en casa', 'rápido'], 5, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -6245,7 +6245,7 @@ insert into meals (
 ) values (
   null, 'revuelto-de-huevo-y-arvejas-sobre-pan', 'Revuelto de huevo y arvejas sobre pan', 'Revuelto de huevo y arvejas sobre pan con huevo, arvejas, pan; rinde 1 porciones.', 'desayuno', 'estimado',
   48, 'estimacion', 'estimada', '1 de 1 porciones',
-  'huevo', array['en casa', 'rápido'], 15, 'normal',
+  'huevo', array['en casa', 'rápido'], 5, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -6392,12 +6392,12 @@ insert into meals (
 ) values (
   null, 'sandwich-de-huevo-y-palta-con-pan-integral', 'Sándwich de huevo y palta con pan integral', 'Sándwich de huevo y palta con pan integral con pan integral, huevo, palta; rinde 2 porciones.', 'desayuno', 'estimado',
   28, 'estimacion', 'estimada', '1 de 2 porciones',
-  'pan integral', array['para llevar', 'rápido'], 15, 'normal',
-  true, true, false, false, false,
+  'pan integral', array['para llevar', 'rápido'], 6, 'normal',
+  true, true, true, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
   'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 18, false,
-  'assemble'::prep_type, '2 porciones',
+  'cook'::prep_type, '2 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -6490,12 +6490,12 @@ insert into meals (
 ) values (
   null, 'tostado-de-pollo-y-queso', 'Tostado de pollo y queso', 'Tostado de pollo y queso con pan, pollo, queso; rinde 2 porciones.', 'merienda', 'estimado',
   31, 'estimacion', 'estimada', '1 de 2 porciones',
-  'pan', array['para llevar', 'rápido'], 15, 'normal',
-  true, true, false, false, false,
+  'pan', array['para llevar', 'rápido'], 5, 'normal',
+  true, true, true, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
   'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 15, false,
-  'assemble'::prep_type, '2 porciones',
+  'cook'::prep_type, '2 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -6588,12 +6588,12 @@ insert into meals (
 ) values (
   null, 'tostado-de-jamon-queso-y-huevo', 'Tostado de jamón, queso y huevo', 'Tostado de jamón, queso y huevo con pan, jamón, queso; rinde 2 porciones.', 'desayuno', 'estimado',
   30, 'estimacion', 'estimada', '1 de 2 porciones',
-  'pan', array['para llevar', 'rápido'], 15, 'normal',
-  true, true, false, false, false,
+  'pan', array['para llevar', 'rápido'], 5, 'normal',
+  true, true, true, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
   'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 15, false,
-  'assemble'::prep_type, '2 porciones',
+  'cook'::prep_type, '2 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -6686,7 +6686,7 @@ insert into meals (
 ) values (
   null, 'bocaditos-de-huevo-y-brocoli-al-horno', 'Bocaditos de huevo y brócoli al horno', 'Bocaditos de huevo y brócoli al horno con huevo, brócoli, queso rallado; rinde 6 porciones.', 'snack', 'estimado',
   7, 'estimacion', 'estimada', '1 de 6 porciones',
-  'huevo', array['para llevar', 'rápido'], 25, 'normal',
+  'huevo', array['para llevar', 'rápido'], 5, 'normal',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -6735,7 +6735,7 @@ insert into meals (
 ) values (
   null, 'muffins-salados-de-choclo-y-queso', 'Muffins salados de choclo y queso', 'Muffins salados de choclo y queso con choclo, queso, huevo; rinde 6 porciones.', 'snack', 'estimado',
   20, 'estimacion', 'estimada', '1 de 6 porciones',
-  'choclo', array['para llevar', 'casero'], 25, 'normal',
+  'choclo', array['para llevar', 'casero'], 5, 'normal',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -6784,7 +6784,7 @@ insert into meals (
 ) values (
   null, 'muffins-salados-de-zanahoria-y-jamon', 'Muffins salados de zanahoria y jamón', 'Muffins salados de zanahoria y jamón con zanahoria, jamón, huevo; rinde 6 porciones.', 'snack', 'estimado',
   20, 'estimacion', 'estimada', '1 de 6 porciones',
-  'zanahoria', array['para llevar', 'casero'], 25, 'normal',
+  'zanahoria', array['para llevar', 'casero'], 5, 'normal',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -6833,7 +6833,7 @@ insert into meals (
 ) values (
   null, 'muffins-salados-de-espinaca-y-ricota', 'Muffins salados de espinaca y ricota', 'Muffins salados de espinaca y ricota con espinaca, ricota, huevo; rinde 6 porciones.', 'snack', 'estimado',
   16, 'estimacion', 'estimada', '1 de 6 porciones',
-  'espinaca', array['para llevar', 'casero'], 25, 'normal',
+  'espinaca', array['para llevar', 'casero'], 5, 'normal',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -6882,7 +6882,7 @@ insert into meals (
 ) values (
   null, 'galletitas-caseras-de-banana-y-mani', 'Galletitas caseras de banana y maní', 'Galletitas caseras de banana y maní con banana, harina, maní; rinde 8 porciones.', 'snack', 'estimado',
   19, 'estimacion', 'estimada', '1 de 8 porciones',
-  'banana', array['para llevar', 'rápido'], 25, 'normal',
+  'banana', array['para llevar', 'rápido'], 10, 'normal',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
@@ -6931,7 +6931,7 @@ insert into meals (
 ) values (
   null, 'galletitas-de-avena-y-manzana', 'Galletitas de avena y manzana', 'Galletitas de avena y manzana con avena, manzana, huevo; rinde 10 porciones.', 'merienda', 'estimado',
   13, 'estimacion', 'estimada', '1 de 10 porciones',
-  'avena', array['para llevar', 'rápido'], 25, 'normal',
+  'avena', array['para llevar', 'rápido'], 15, 'normal',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
@@ -6980,7 +6980,7 @@ insert into meals (
 ) values (
   null, 'galletitas-de-cacao-y-nueces', 'Galletitas de cacao y nueces', 'Galletitas de cacao y nueces con harina, cacao amargo, nuez; rinde 12 porciones.', 'merienda', 'estimado',
   16, 'estimacion', 'estimada', '1 de 12 porciones',
-  'harina', array['para llevar', 'rápido'], 25, 'normal',
+  'harina', array['para llevar', 'rápido'], 15, 'normal',
   true, true, false, true, false,
   1, 'ocasional', null, true, true, null,
   false, '{}', 2, true, true,
@@ -7029,7 +7029,7 @@ insert into meals (
 ) values (
   null, 'galletitas-de-limon-y-ricota', 'Galletitas de limón y ricota', 'Galletitas de limón y ricota con harina, ricota, limón; rinde 10 porciones.', 'snack', 'estimado',
   19, 'estimacion', 'estimada', '1 de 10 porciones',
-  'harina', array['para llevar', 'rápido'], 25, 'normal',
+  'harina', array['para llevar', 'rápido'], 15, 'normal',
   true, true, false, true, false,
   1, 'ocasional', null, true, true, null,
   false, '{}', 1, true, true,
@@ -7078,7 +7078,7 @@ insert into meals (
 ) values (
   null, 'galletitas-saladas-de-queso', 'Galletitas saladas de queso', 'Galletitas saladas de queso con harina, queso rallado, manteca; rinde 10 porciones.', 'snack', 'estimado',
   13, 'estimacion', 'estimada', '1 de 10 porciones',
-  'harina', array['para llevar', 'rápido'], 25, 'normal',
+  'harina', array['para llevar', 'rápido'], 15, 'normal',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
@@ -7127,7 +7127,7 @@ insert into meals (
 ) values (
   null, 'bizcochitos-caseros-de-queso-y-oregano', 'Bizcochitos caseros de queso y orégano', 'Bizcochitos caseros de queso y orégano con harina, queso rallado, manteca; rinde 10 porciones.', 'merienda', 'estimado',
   16, 'estimacion', 'estimada', '1 de 10 porciones',
-  'harina', array['para llevar', 'casero'], 25, 'normal',
+  'harina', array['para llevar', 'casero'], 20, 'normal',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
@@ -7470,7 +7470,7 @@ insert into meals (
 ) values (
   null, 'budin-salado-de-verduras-y-queso', 'Budín salado de verduras y queso', 'Budín salado de verduras y queso con zapallito, zanahoria, queso; rinde 6 porciones.', 'almuerzo', 'estimado',
   24, 'estimacion', 'estimada', '1 de 6 porciones',
-  'zapallito', array['para llevar', 'casero'], 25, 'potente',
+  'zapallito', array['para llevar', 'casero'], 15, 'potente',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -7519,7 +7519,7 @@ insert into meals (
 ) values (
   null, 'budin-salado-de-atun-y-choclo', 'Budín salado de atún y choclo', 'Budín salado de atún y choclo con atún, choclo, huevo; rinde 6 porciones.', 'almuerzo', 'estimado',
   23, 'estimacion', 'estimada', '1 de 6 porciones',
-  'atún', array['para llevar', 'casero'], 25, 'potente',
+  'atún', array['para llevar', 'casero'], 15, 'potente',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -7568,7 +7568,7 @@ insert into meals (
 ) values (
   null, 'barritas-caseras-de-avena-y-mani', 'Barritas caseras de avena y maní', 'Barritas caseras de avena y maní con avena, maní, miel; rinde 10 porciones.', 'snack', 'estimado',
   22, 'estimacion', 'estimada', '1 de 10 porciones',
-  'avena', array['para llevar', 'rápido'], 15, 'normal',
+  'avena', array['para llevar', 'rápido'], 20, 'normal',
   true, false, false, false, false,
   1, 'habitual', null, true, true, null,
   false, '{}', 1, true, true,
@@ -7617,7 +7617,7 @@ insert into meals (
 ) values (
   null, 'barritas-de-banana-avena-y-nueces', 'Barritas de banana, avena y nueces', 'Barritas de banana, avena y nueces con banana, avena, nuez; rinde 10 porciones.', 'snack', 'estimado',
   22, 'estimacion', 'estimada', '1 de 10 porciones',
-  'banana', array['para llevar', 'rápido'], 15, 'normal',
+  'banana', array['para llevar', 'rápido'], 30, 'normal',
   true, false, false, true, false,
   1, 'habitual', null, true, true, null,
   false, '{}', 2, true, true,
@@ -7764,7 +7764,7 @@ insert into meals (
 ) values (
   null, 'pera-asada-con-ricota-y-nueces', 'Pera asada con ricota y nueces', 'Pera asada con ricota y nueces con pera, ricota, nuez; rinde 4 porciones.', 'merienda', 'estimado',
   15, 'estimacion', 'estimada', '1 de 4 porciones',
-  'pera', array['en casa', 'rápido'], 25, 'normal',
+  'pera', array['en casa', 'rápido'], 5, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
@@ -7813,7 +7813,7 @@ insert into meals (
 ) values (
   null, 'manzana-al-horno-con-canela-y-yogur', 'Manzana al horno con canela y yogur', 'Manzana al horno con canela y yogur con manzana, yogur natural, canela; rinde 4 porciones.', 'merienda', 'estimado',
   18, 'estimacion', 'estimada', '1 de 4 porciones',
-  'manzana', array['en casa', 'rápido'], 25, 'normal',
+  'manzana', array['en casa', 'rápido'], 5, 'normal',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
@@ -8107,7 +8107,7 @@ insert into meals (
 ) values (
   null, 'pochoclo-casero-con-mani-tostado', 'Pochoclo casero con maní tostado', 'Pochoclo casero con maní tostado con maíz para pochoclo, maní, aceite; rinde 4 porciones.', 'snack', 'estimado',
   20, 'estimacion', 'estimada', '1 de 4 porciones',
-  'maíz para pochoclo', array['para llevar', 'rápido'], 15, 'normal',
+  'maíz para pochoclo', array['para llevar', 'rápido'], 7, 'normal',
   true, false, true, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -8156,7 +8156,7 @@ insert into meals (
 ) values (
   null, 'pollo-salteado-con-berenjena-y-arroz', 'Pollo salteado con berenjena y arroz', 'Pollo salteado con berenjena y arroz con pollo, berenjena, arroz; rinde 4 porciones.', 'almuerzo', 'estimado',
   42, 'estimacion', 'estimada', '1 de 4 porciones',
-  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  'pollo', array['para llevar', 'casero'], 23, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -8205,7 +8205,7 @@ insert into meals (
 ) values (
   null, 'pollo-con-champinones-y-pure-de-papa', 'Pollo con champiñones y puré de papa', 'Pollo con champiñones y puré de papa con pollo, champiñones, papa; rinde 4 porciones.', 'cena', 'estimado',
   27, 'estimacion', 'estimada', '1 de 4 porciones',
-  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  'pollo', array['para llevar', 'casero'], 28, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -8254,7 +8254,7 @@ insert into meals (
 ) values (
   null, 'cerdo-salteado-con-batata-y-cebolla', 'Cerdo salteado con batata y cebolla', 'Cerdo salteado con batata y cebolla con cerdo, batata, cebolla; rinde 4 porciones.', 'cena', 'estimado',
   28, 'estimacion', 'estimada', '1 de 4 porciones',
-  'cerdo', array['para llevar', 'casero'], 25, 'potente',
+  'cerdo', array['para llevar', 'casero'], 28, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -8303,7 +8303,7 @@ insert into meals (
 ) values (
   null, 'bife-a-la-criolla-con-arroz', 'Bife a la criolla con arroz', 'Bife a la criolla con arroz con lomo, arroz, tomate; rinde 4 porciones.', 'almuerzo', 'estimado',
   43, 'estimacion', 'estimada', '1 de 4 porciones',
-  'lomo', array['para llevar', 'casero'], 25, 'potente',
+  'lomo', array['para llevar', 'casero'], 20, 'potente',
   true, false, true, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
@@ -8352,7 +8352,7 @@ insert into meals (
 ) values (
   null, 'milanesa-de-pollo-a-la-napolitana', 'Milanesa de pollo a la napolitana', 'Milanesa de pollo a la napolitana con pollo, huevo, pan rallado; rinde 4 porciones.', 'cena', 'estimado',
   27, 'estimacion', 'estimada', '1 de 4 porciones',
-  'pollo', array['para llevar', 'casero'], 25, 'potente',
+  'pollo', array['para llevar', 'casero'], 20, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
@@ -8401,7 +8401,7 @@ insert into meals (
 ) values (
   null, 'croquetas-de-arroz-queso-y-espinaca', 'Croquetas de arroz, queso y espinaca', 'Croquetas de arroz, queso y espinaca con arroz, espinaca, queso; rinde 4 porciones.', 'almuerzo', 'estimado',
   46, 'estimacion', 'estimada', '1 de 4 porciones',
-  'arroz', array['para llevar', 'casero'], 25, 'potente',
+  'arroz', array['para llevar', 'casero'], 15, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -8450,7 +8450,7 @@ insert into meals (
 ) values (
   null, 'croquetas-de-papa-y-atun', 'Croquetas de papa y atún', 'Croquetas de papa y atún con papa, atún, huevo; rinde 4 porciones.', 'almuerzo', 'estimado',
   43, 'estimacion', 'estimada', '1 de 4 porciones',
-  'papa', array['para llevar', 'casero'], 25, 'potente',
+  'papa', array['para llevar', 'casero'], 15, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -8499,7 +8499,7 @@ insert into meals (
 ) values (
   null, 'croquetas-de-calabaza-y-ricota', 'Croquetas de calabaza y ricota', 'Croquetas de calabaza y ricota con calabaza, ricota, huevo; rinde 4 porciones.', 'cena', 'estimado',
   32, 'estimacion', 'estimada', '1 de 4 porciones',
-  'calabaza', array['para llevar', 'casero'], 25, 'potente',
+  'calabaza', array['para llevar', 'casero'], 15, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -8548,7 +8548,7 @@ insert into meals (
 ) values (
   null, 'pizzetas-de-berenjena-con-muzzarella', 'Pizzetas de berenjena con muzzarella', 'Pizzetas de berenjena con muzzarella con berenjena, tomate, muzzarella; rinde 4 porciones.', 'cena', 'estimado',
   21, 'estimacion', 'estimada', '1 de 4 porciones',
-  'berenjena', array['para llevar', 'rápido'], 25, 'potente',
+  'berenjena', array['para llevar', 'rápido'], 5, 'potente',
   true, false, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
@@ -8597,7 +8597,7 @@ insert into meals (
 ) values (
   null, 'pizza-casera-de-cebolla-y-queso', 'Pizza casera de cebolla y queso', 'Pizza casera de cebolla y queso con masa de pizza, cebolla, muzzarella; rinde 6 porciones.', 'cena', 'estimado',
   30, 'estimacion', 'estimada', '1 de 6 porciones',
-  'masa de pizza', array['en casa', 'casero'], 25, 'potente',
+  'masa de pizza', array['en casa', 'casero'], 20, 'potente',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
@@ -8646,7 +8646,7 @@ insert into meals (
 ) values (
   null, 'pizza-casera-de-tomate-atun-y-aceitunas', 'Pizza casera de tomate, atún y aceitunas', 'Pizza casera de tomate, atún y aceitunas con masa de pizza, salsa de tomate, atún; rinde 6 porciones.', 'cena', 'estimado',
   27, 'estimacion', 'estimada', '1 de 6 porciones',
-  'masa de pizza', array['en casa', 'casero'], 25, 'potente',
+  'masa de pizza', array['en casa', 'casero'], 20, 'potente',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
@@ -8793,7 +8793,7 @@ insert into meals (
 ) values (
   null, 'canelones-de-acelga-y-ricota', 'Canelones de acelga y ricota', 'Canelones de acelga y ricota con harina, huevo, leche; rinde 6 porciones.', 'almuerzo', 'estimado',
   34, 'estimacion', 'estimada', '1 de 6 porciones',
-  'harina', array['para llevar', 'casero'], 25, 'potente',
+  'harina', array['para llevar', 'casero'], 30, 'potente',
   true, true, true, true, false,
   2, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -8842,7 +8842,7 @@ insert into meals (
 ) values (
   null, 'canelones-de-pollo-y-verduras', 'Canelones de pollo y verduras', 'Canelones de pollo y verduras con harina, huevo, leche; rinde 6 porciones.', 'almuerzo', 'estimado',
   33, 'estimacion', 'estimada', '1 de 6 porciones',
-  'harina', array['para llevar', 'casero'], 25, 'potente',
+  'harina', array['para llevar', 'casero'], 30, 'potente',
   true, true, true, true, false,
   2, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -8891,7 +8891,7 @@ insert into meals (
 ) values (
   null, 'lasana-de-berenjena-con-carne', 'Lasaña de berenjena con carne', 'Lasaña de berenjena con carne con berenjena, carne picada, salsa de tomate; rinde 6 porciones.', 'cena', 'estimado',
   9, 'estimacion', 'estimada', '1 de 6 porciones',
-  'berenjena', array['para llevar', 'casero'], 25, 'potente',
+  'berenjena', array['para llevar', 'casero'], 30, 'potente',
   true, true, true, true, true,
   2, 'habitual', null, true, false, null,
   false, '{}', 2, false, true,
@@ -8940,7 +8940,7 @@ insert into meals (
 ) values (
   null, 'lasana-de-verduras-y-ricota', 'Lasaña de verduras y ricota', 'Lasaña de verduras y ricota con berenjena, zapallito, espinaca; rinde 6 porciones.', 'cena', 'estimado',
   11, 'estimacion', 'estimada', '1 de 6 porciones',
-  'berenjena', array['para llevar', 'casero'], 25, 'potente',
+  'berenjena', array['para llevar', 'casero'], 30, 'potente',
   true, true, true, true, true,
   2, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -8989,12 +8989,12 @@ insert into meals (
 ) values (
   null, 'tacos-de-pollo-con-repollo-y-yogur', 'Tacos de pollo con repollo y yogur', 'Tacos de pollo con repollo y yogur con tortilla de trigo, pollo, repollo; rinde 4 porciones.', 'almuerzo', 'estimado',
   32, 'estimacion', 'estimada', '1 de 4 porciones',
-  'tortilla de trigo', array['para llevar', 'rápido'], 15, 'potente',
-  true, true, false, true, false,
+  'tortilla de trigo', array['para llevar', 'rápido'], 18, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
-  'assemble'::prep_type, '4 porciones',
+  'cook'::prep_type, '4 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -9038,12 +9038,12 @@ insert into meals (
 ) values (
   null, 'tacos-de-carne-y-porotos', 'Tacos de carne y porotos', 'Tacos de carne y porotos con tortilla de trigo, carne picada, porotos cocidos; rinde 4 porciones.', 'almuerzo', 'estimado',
   43, 'estimacion', 'estimada', '1 de 4 porciones',
-  'tortilla de trigo', array['para llevar', 'casero'], 15, 'potente',
-  true, true, false, true, false,
+  'tortilla de trigo', array['para llevar', 'casero'], 23, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
-  'assemble'::prep_type, '4 porciones',
+  'cook'::prep_type, '4 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -9087,12 +9087,12 @@ insert into meals (
 ) values (
   null, 'tacos-de-merluza-con-ensalada-de-repollo', 'Tacos de merluza con ensalada de repollo', 'Tacos de merluza con ensalada de repollo con tortilla de trigo, merluza, repollo; rinde 4 porciones.', 'almuerzo', 'estimado',
   33, 'estimacion', 'estimada', '1 de 4 porciones',
-  'tortilla de trigo', array['para llevar', 'casero'], 15, 'potente',
-  true, true, false, true, false,
+  'tortilla de trigo', array['para llevar', 'casero'], 23, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 2, true, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
-  'assemble'::prep_type, '4 porciones',
+  'cook'::prep_type, '4 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -9136,7 +9136,7 @@ insert into meals (
 ) values (
   null, 'arroz-al-horno-con-verduras-y-queso', 'Arroz al horno con verduras y queso', 'Arroz al horno con verduras y queso con arroz, zapallito, zanahoria; rinde 4 porciones.', 'cena', 'estimado',
   51, 'estimacion', 'estimada', '1 de 4 porciones',
-  'arroz', array['para llevar', 'casero'], 25, 'potente',
+  'arroz', array['para llevar', 'casero'], 10, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -9185,7 +9185,7 @@ insert into meals (
 ) values (
   null, 'arroz-con-cerdo-arvejas-y-morron', 'Arroz con cerdo, arvejas y morrón', 'Arroz con cerdo, arvejas y morrón con arroz, cerdo, arvejas; rinde 4 porciones.', 'almuerzo', 'estimado',
   54, 'estimacion', 'estimada', '1 de 4 porciones',
-  'arroz', array['para llevar', 'casero'], 25, 'potente',
+  'arroz', array['para llevar', 'casero'], 23, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -9234,7 +9234,7 @@ insert into meals (
 ) values (
   null, 'noquis-de-calabaza-con-salsa-roja', 'Ñoquis de calabaza con salsa roja', 'Ñoquis de calabaza con salsa roja con calabaza, harina, huevo; rinde 5 porciones.', 'cena', 'estimado',
   48, 'estimacion', 'estimada', '1 de 5 porciones',
-  'calabaza', array['para llevar', 'casero'], 25, 'potente',
+  'calabaza', array['para llevar', 'casero'], 40, 'potente',
   true, true, true, true, false,
   2, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -9283,7 +9283,7 @@ insert into meals (
 ) values (
   null, 'noquis-de-papa-caseros-con-salsa-fileto', 'Ñoquis de papa caseros con salsa fileto', 'Ñoquis de papa caseros con salsa fileto con papa, harina, huevo; rinde 5 porciones.', 'cena', 'estimado',
   69, 'estimacion', 'estimada', '1 de 5 porciones',
-  'papa', array['para llevar', 'casero'], 25, 'potente',
+  'papa', array['para llevar', 'casero'], 45, 'potente',
   true, true, true, true, false,
   2, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -9332,7 +9332,7 @@ insert into meals (
 ) values (
   null, 'pasta-con-salsa-de-porotos-y-tomate', 'Pasta con salsa de porotos y tomate', 'Pasta con salsa de porotos y tomate con fideos, porotos cocidos, salsa de tomate; rinde 4 porciones.', 'almuerzo', 'estimado',
   80, 'estimacion', 'estimada', '1 de 4 porciones',
-  'fideos', array['para llevar', 'casero'], 25, 'potente',
+  'fideos', array['para llevar', 'casero'], 20, 'potente',
   true, false, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -9381,7 +9381,7 @@ insert into meals (
 ) values (
   null, 'milanesas-de-lentejas-con-pure-de-batata', 'Milanesas de lentejas con puré de batata', 'Milanesas de lentejas con puré de batata con lentejas cocidas, batata, huevo; rinde 4 porciones.', 'almuerzo', 'estimado',
   63, 'estimacion', 'estimada', '1 de 4 porciones',
-  'lentejas cocidas', array['para llevar', 'casero'], 25, 'potente',
+  'lentejas cocidas', array['para llevar', 'casero'], 20, 'potente',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -9528,7 +9528,7 @@ insert into meals (
 ) values (
   null, 'tarta-de-tomate-atun-y-huevo', 'Tarta de tomate, atún y huevo', 'Tarta de tomate, atún y huevo con masa de tarta, tomate, atún; rinde 6 porciones.', 'almuerzo', 'estimado',
   21, 'estimacion', 'estimada', '1 de 6 porciones',
-  'masa de tarta', array['para llevar', 'casero'], 25, 'potente',
+  'masa de tarta', array['para llevar', 'casero'], 20, 'potente',
   true, true, false, true, true,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -9577,12 +9577,12 @@ insert into meals (
 ) values (
   null, 'ensalada-de-arroz-integral-garbanzos-y-verduras', 'Ensalada de arroz integral, garbanzos y verduras', 'Ensalada de arroz integral, garbanzos y verduras con arroz, garbanzos cocidos, pepino; rinde 4 porciones.', 'almuerzo', 'estimado',
   52, 'estimacion', 'estimada', '1 de 4 porciones',
-  'arroz', array['para llevar', 'rápido'], 15, 'potente',
-  true, false, false, true, false,
+  'arroz', array['para llevar', 'rápido'], 18, 'potente',
+  true, false, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 30, false,
-  'assemble'::prep_type, '4 porciones',
+  'cook'::prep_type, '4 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -9626,12 +9626,12 @@ insert into meals (
 ) values (
   null, 'ensalada-tibia-de-calabaza-pollo-y-lentejas', 'Ensalada tibia de calabaza, pollo y lentejas', 'Ensalada tibia de calabaza, pollo y lentejas con calabaza, pollo, lentejas cocidas; rinde 4 porciones.', 'almuerzo', 'estimado',
   20, 'estimacion', 'estimada', '1 de 4 porciones',
-  'calabaza', array['para llevar', 'casero'], 15, 'potente',
-  true, true, false, true, false,
+  'calabaza', array['para llevar', 'casero'], 23, 'potente',
+  true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
   'casera'::food_origin, 'salado'::flavor, array['almuerzo', 'cena']::meal_category[], 35, false,
-  'assemble'::prep_type, '4 porciones',
+  'cook'::prep_type, '4 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -9675,7 +9675,7 @@ insert into meals (
 ) values (
   null, 'bocaditos-de-garbanzos-y-zanahoria-en-air-fryer', 'Bocaditos de garbanzos y zanahoria en air fryer', 'Bocaditos de garbanzos y zanahoria en air fryer con garbanzos cocidos, zanahoria, huevo; rinde 8 porciones.', 'snack', 'estimado',
   17, 'estimacion', 'estimada', '1 de 8 porciones',
-  'garbanzos cocidos', array['para llevar', 'rápido'], 25, 'normal',
+  'garbanzos cocidos', array['para llevar', 'rápido'], 12, 'normal',
   true, true, true, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, false, true,
@@ -9724,7 +9724,7 @@ insert into meals (
 ) values (
   null, 'chipa-casero-de-queso', 'Chipá casero de queso', 'Chipá casero de queso con almidón de mandioca, queso, huevo; rinde 12 porciones.', 'merienda', 'estimado',
   19, 'estimacion', 'estimada', '1 de 12 porciones',
-  'almidón de mandioca', array['para llevar', 'casero'], 25, 'normal',
+  'almidón de mandioca', array['para llevar', 'casero'], 15, 'normal',
   true, true, false, true, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
@@ -9773,7 +9773,7 @@ insert into meals (
 ) values (
   null, 'bizcochuelo-casero-de-naranja', 'Bizcochuelo casero de naranja', 'Bizcochuelo casero de naranja con harina, naranja, huevo; rinde 10 porciones.', 'merienda', 'estimado',
   31, 'estimacion', 'estimada', '1 de 10 porciones',
-  'harina', array['para llevar', 'casero'], 25, 'normal',
+  'harina', array['para llevar', 'casero'], 20, 'normal',
   true, true, false, true, false,
   1, 'ocasional', null, true, true, null,
   false, '{}', 1, false, true,
@@ -9969,12 +9969,12 @@ insert into meals (
 ) values (
   null, 'pan-arabe-con-huevo-y-tomate', 'Pan árabe con huevo y tomate', 'Pan árabe con huevo y tomate con tortilla de trigo, huevo, tomate; rinde 2 porciones.', 'desayuno', 'estimado',
   31, 'estimacion', 'estimada', '1 de 2 porciones',
-  'tortilla de trigo', array['para llevar', 'rápido'], 15, 'normal',
-  true, true, false, false, false,
+  'tortilla de trigo', array['para llevar', 'rápido'], 5, 'normal',
+  true, true, true, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
   'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 15, false,
-  'assemble'::prep_type, '2 porciones',
+  'cook'::prep_type, '2 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -10067,12 +10067,12 @@ insert into meals (
 ) values (
   null, 'sandwich-de-queso-palta-y-huevo-duro', 'Sándwich de queso, palta y huevo duro', 'Sándwich de queso, palta y huevo duro con pan integral, queso, palta; rinde 2 porciones.', 'merienda', 'estimado',
   27, 'estimacion', 'estimada', '1 de 2 porciones',
-  'pan integral', array['para llevar', 'rápido'], 15, 'normal',
-  true, true, false, false, false,
+  'pan integral', array['para llevar', 'rápido'], 5, 'normal',
+  true, true, true, false, false,
   1, 'habitual', null, true, false, null,
   false, '{}', 1, true, true,
   'casera'::food_origin, 'salado'::flavor, array['desayuno', 'merienda']::meal_category[], 15, false,
-  'assemble'::prep_type, '2 porciones',
+  'cook'::prep_type, '2 porciones',
   'porción estándar calculada'
 )
 on conflict (slug) where profile_id is null and slug is not null do update set
@@ -10165,7 +10165,7 @@ insert into meals (
 ) values (
   null, 'galletitas-caseras-de-ricota-y-limon', 'Galletitas caseras de ricota y limón', 'Galletitas caseras de ricota y limón con ricota, harina, limón; rinde 10 porciones.', 'snack', 'estimado',
   19, 'estimacion', 'estimada', '1 de 10 porciones',
-  'ricota', array['para llevar', 'rápido'], 25, 'normal',
+  'ricota', array['para llevar', 'rápido'], 15, 'normal',
   true, true, false, true, false,
   1, 'ocasional', null, true, true, null,
   false, '{}', 1, true, true,
@@ -10214,7 +10214,7 @@ insert into meals (
 ) values (
   null, 'pasta-frola-de-membrillo-por-porcion', 'Pasta frola de membrillo por porción', 'Pasta frola de membrillo por porción con harina, manteca, huevo; rinde 12 porciones.', 'merienda', 'estimado',
   40, 'estimacion', 'estimada', '1 de 12 porciones',
-  'harina', array['para llevar', 'casero'], 25, 'normal',
+  'harina', array['para llevar', 'casero'], 20, 'normal',
   true, true, true, true, false,
   2, 'ocasional', null, true, true, null,
   false, '{}', 1, false, true,
@@ -10263,7 +10263,7 @@ insert into meals (
 ) values (
   null, 'flan-casero-de-huevo-y-leche', 'Flan casero de huevo y leche', 'Flan casero de huevo y leche con leche, huevo, azúcar; rinde 6 porciones.', 'merienda', 'estimado',
   22, 'estimacion', 'estimada', '1 de 6 porciones',
-  'leche', array['en casa', 'casero'], 25, 'normal',
+  'leche', array['en casa', 'casero'], 15, 'normal',
   false, false, false, false, false,
   2, 'ocasional', null, true, true, null,
   false, '{}', 1, false, true,
@@ -10312,7 +10312,7 @@ insert into meals (
 ) values (
   null, 'arroz-con-leche-y-canela-por-porcion', 'Arroz con leche y canela por porción', 'Arroz con leche y canela por porción con arroz, leche, azúcar; rinde 6 porciones.', 'merienda', 'estimado',
   38, 'estimacion', 'estimada', '1 de 6 porciones',
-  'arroz', array['para llevar', 'casero'], 25, 'normal',
+  'arroz', array['para llevar', 'casero'], 20, 'normal',
   true, true, true, true, true,
   1, 'ocasional', null, true, true, null,
   false, '{}', 1, false, true,
@@ -15772,7 +15772,7 @@ insert into meals (
   source_name
 ) values (
   null, 'cafe-solo', 'Café', 'Sin azúcar, cero. Con azúcar son cinco gramos por cucharadita.', 'snack', 'estimado',
-  NaN, 'estimacion', 'estimada', '1 taza',
+  0, 'estimacion', 'estimada', '1 taza',
   'café', array['rápido', 'práctico'], 2, 'liviana',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -15801,10 +15801,10 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'cafe-solo' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 taza', 200, NaN, true, 0
+  select id, '1 taza', 200, 0, true, 0
   from meals where slug = 'cafe-solo' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, 'Con una cucharadita de azúcar', 200, NaN, false, 1
+  select id, 'Con una cucharadita de azúcar', 200, 5, false, 1
   from meals where slug = 'cafe-solo' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -15873,7 +15873,7 @@ insert into meals (
   source_name
 ) values (
   null, 'mate', 'Mate', 'Cero carbohidratos. Con azúcar, cinco por cucharadita. Y sirve de desayuno: mucha gente no desayuna otra cosa.', 'snack', 'estimado',
-  NaN, 'estimacion', 'estimada', '1 mate',
+  0, 'estimacion', 'estimada', '1 mate',
   'yerba', array['rápido', 'práctico', 'en casa'], 2, 'liviana',
   false, false, false, false, false,
   1, 'habitual', null, true, false, 'Absorbió a «mate-solo-manana», que era la misma entrada cargada dos veces: mismo ingrediente, misma porción, mismos dos minutos. Lo único que cambiaba era el momento, y eso ahora vive en momentos.',
@@ -15902,7 +15902,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'mate' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 mate', null, NaN, true, 0
+  select id, '1 mate', null, 0, true, 0
   from meals where slug = 'mate' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -15922,7 +15922,7 @@ insert into meals (
   source_name
 ) values (
   null, 'mate-cocido', 'Mate cocido', 'Solo, cero. Con leche son diez.', 'snack', 'estimado',
-  NaN, 'estimacion', 'estimada', '1 taza',
+  0, 'estimacion', 'estimada', '1 taza',
   'mate cocido', array['rápido', 'práctico'], 3, 'liviana',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -15951,10 +15951,10 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'mate-cocido' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 taza', 200, NaN, true, 0
+  select id, '1 taza', 200, 0, true, 0
   from meals where slug = 'mate-cocido' and profile_id is null;
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, 'Con leche', 250, NaN, false, 1
+  select id, 'Con leche', 250, 10, false, 1
   from meals where slug = 'mate-cocido' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t
@@ -15974,7 +15974,7 @@ insert into meals (
   source_name
 ) values (
   null, 'te', 'Té', 'Cero. Lo que suma es lo que le ponés.', 'snack', 'estimado',
-  NaN, 'estimacion', 'estimada', '1 taza',
+  0, 'estimacion', 'estimada', '1 taza',
   'té', array['rápido', 'práctico'], 3, 'liviana',
   false, false, false, false, false,
   1, 'habitual', null, true, false, null,
@@ -16003,7 +16003,7 @@ on conflict (slug) where profile_id is null and slug is not null do update set
 
 delete from meal_portions where meal_id = (select id from meals where slug = 'te' and profile_id is null);
 insert into meal_portions (meal_id, label, grams, carbs, is_default, sort_order)
-  select id, '1 taza', 200, NaN, true, 0
+  select id, '1 taza', 200, 0, true, 0
   from meals where slug = 'te' and profile_id is null;
 insert into meal_tags (meal_id, tag_slug)
   select m.id, t.slug from meals m, tags t

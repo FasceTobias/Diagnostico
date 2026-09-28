@@ -22,7 +22,7 @@ const coincide = (meal: Meal, filtro: Extra) => {
     case 'airfryer': return equipo.includes('freidora de aire')
     case 'horno': return equipo.includes('horno')
     case 'sarten': return equipo.includes('sarten') || equipo.includes('hornalla')
-    case 'frio': return meal.prepType === 'assemble' || equipo.includes('sin coccion')
+    case 'frio': return meal.prepType === 'assemble'
     case 'economico': return meal.priceLevel === 1
     case 'anticipar': return meal.makeNightBefore
   }

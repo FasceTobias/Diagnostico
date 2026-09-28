@@ -172,7 +172,9 @@ const previo = (crudo as EntradaJson[]).map((original) => {
   const carbs = supplement.nutrition!.carbs
   return {
     ...original, ...supplement,
-    portions: original.portions.map((p) => ({ ...p, carbs: Math.round(carbs * p.carbs / base.carbs) })),
+    portions: original.portions.map((p) => ({ ...p,
+      carbs: base.carbs > 0 ? Math.round(carbs * p.carbs / base.carbs) : p.carbs,
+    })),
     rinde: supplement.servings! > 1 ? `${supplement.servings} porciones` : original.rinde,
     steps: RECETAS[original.slug] ?? supplement.steps,
   }

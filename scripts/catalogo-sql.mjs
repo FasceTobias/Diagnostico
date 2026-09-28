@@ -76,7 +76,7 @@ for (const e of entradas) {
   if (!supplement) continue
   const base = e.portions.find((p) => p.default) ?? e.portions[0]
   e.portions = e.portions.map((p) => ({ ...p,
-    carbs: Math.round(supplement.nutrition.carbs * p.carbs / base.carbs),
+    carbs: base.carbs > 0 ? Math.round(supplement.nutrition.carbs * p.carbs / base.carbs) : p.carbs,
   }))
 }
 

@@ -48,7 +48,7 @@ Risotto de calabaza y queso|cena|risotto|arroz:220:g;calabaza:400:g;cebolla:150:
 Risotto de hongos y pollo|cena|risotto|arroz:220:g;champiñones:320:g;pollo:300:g;cebolla:150:g;queso rallado:60:g|45|4|no
 Arroz salteado con huevo y arvejas|almuerzo|salteado|arroz:180:g;huevo:3:u;arvejas:220:g;zanahoria:180:g;cebolla:120:g|30|4|si
 Arroz salteado con cerdo y morrón|almuerzo|salteado|arroz:180:g;cerdo:400:g;morrón:230:g;cebolla:150:g;zanahoria:120:g|35|4|si
-Arroz con atún y tomate al horno|almuerzo|horno|arroz:200:g;atún:220:g;tomate:300:g;cebolla:150:g;queso:100:g|40|4|si
+Arroz con atún y tomate al horno|almuerzo|arrozHorno|arroz:200:g;atún:220:g;tomate:300:g;cebolla:150:g;queso:100:g|40|4|si
 Ensalada fría de arroz, pollo y zanahoria|almuerzo|ensalada|arroz:150:g;pollo:350:g;zanahoria:180:g;tomate:230:g;lechuga:130:g|30|3|si
 Ensalada de pasta con atún y choclo|almuerzo|ensalada|fideos:180:g;atún:180:g;choclo:170:g;tomate:220:g;aceite de oliva:15:g|25|3|si
 Ensalada de papa, huevo y arvejas|almuerzo|ensalada|papa:450:g;huevo:3:u;arvejas:180:g;zanahoria:180:g|30|3|si
@@ -115,8 +115,8 @@ Ravioles con salsa de espinaca y queso|cena|pasta|ravioles:600:g;espinaca:300:g;
 Ñoquis con tuco de carne|cena|pasta|ñoquis:600:g;carne picada:350:g;salsa de tomate:400:g;cebolla:150:g|40|4|si
 Polenta gratinada con hongos|cena|horno|polenta:240:g;champiñones:350:g;leche:500:ml;muzzarella:150:g|40|4|si
 Polenta con estofado de pollo|almuerzo|guiso|polenta:240:g;pollo:450:g;salsa de tomate:350:g;cebolla:180:g|45|4|si
-Tostadas francesas con manzana salteada|desayuno|panqueque|pan:4:u;huevo:2:u;leche:150:ml;manzana:220:g;canela:2:g|20|2|no
-Tostadas francesas con frutilla y ricota|desayuno|panqueque|pan:4:u;huevo:2:u;leche:150:ml;frutilla:180:g;ricota:130:g|20|2|no
+Tostadas francesas con manzana salteada|desayuno|tostadaFrancesa|pan:4:u;huevo:2:u;leche:150:ml;manzana:220:g;canela:2:g|20|2|no
+Tostadas francesas con frutilla y ricota|desayuno|tostadaFrancesa|pan:4:u;huevo:2:u;leche:150:ml;frutilla:180:g;ricota:130:g|20|2|no
 Panqueques de ricota y banana|desayuno|panqueque|ricota:200:g;banana:180:g;huevo:2:u;harina:100:g;leche:100:ml|25|4|si
 Panqueques de manzana y canela|merienda|panqueque|manzana:280:g;huevo:2:u;harina:130:g;leche:220:ml;canela:2:g|25|4|si
 Panqueques salados de espinaca y queso|merienda|panqueque|espinaca:180:g;queso:140:g;huevo:2:u;harina:120:g;leche:220:ml|25|4|si

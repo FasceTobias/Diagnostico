@@ -24,9 +24,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 15,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -121,9 +121,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 30,
-    "cookMinutes": 5,
+    "cookMinutes": 15,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -223,9 +223,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 15,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -320,9 +320,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 30,
-    "cookMinutes": 5,
+    "cookMinutes": 15,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -417,9 +417,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 10,
     "totalMinutes": 25,
-    "cookMinutes": 0,
+    "cookMinutes": 15,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -514,9 +514,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 50,
-    "cookMinutes": 25,
+    "cookMinutes": 30,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -729,9 +729,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 50,
-    "cookMinutes": 25,
+    "cookMinutes": 30,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -834,9 +834,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 50,
-    "cookMinutes": 25,
+    "cookMinutes": 30,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -1149,9 +1149,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 50,
-    "cookMinutes": 25,
+    "cookMinutes": 30,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -1254,9 +1254,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 50,
-    "cookMinutes": 25,
+    "cookMinutes": 30,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -1359,9 +1359,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 50,
-    "cookMinutes": 25,
+    "cookMinutes": 30,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -1464,9 +1464,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 45,
-    "cookMinutes": 20,
+    "cookMinutes": 25,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -1566,9 +1566,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 30,
     "totalMinutes": 55,
-    "cookMinutes": 30,
+    "cookMinutes": 25,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -1668,9 +1668,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 40,
     "totalMinutes": 65,
-    "cookMinutes": 40,
+    "cookMinutes": 25,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -1872,9 +1872,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 10,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 25,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -2071,9 +2071,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 45,
-    "cookMinutes": 20,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -2176,9 +2176,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 45,
-    "cookMinutes": 20,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -2281,9 +2281,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 45,
-    "cookMinutes": 20,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -2386,9 +2386,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 40,
-    "cookMinutes": 15,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -2486,9 +2486,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 30,
     "totalMinutes": 55,
-    "cookMinutes": 30,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -2591,9 +2591,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 40,
     "totalMinutes": 65,
-    "cookMinutes": 40,
+    "cookMinutes": 25,
     "rinde": "5 porciones",
     "servings": 5,
     "esBebida": false,
@@ -2696,9 +2696,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 40,
     "totalMinutes": 65,
-    "cookMinutes": 40,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -2906,9 +2906,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 45,
-    "cookMinutes": 20,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -3011,9 +3011,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 40,
-    "cookMinutes": 15,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -3116,9 +3116,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 10,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -3183,13 +3183,13 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza, zanahoria, zapallito, cebolla cuando corresponda."
       },
       {
-        "text": "Rehogá la cebolla 4 min. Sumá verduras troceadas y agua hasta apenas cubrir."
+        "text": "Rehogá la cebolla 4 min. Sumá las demás verduras y agua hasta apenas cubrir."
       },
       {
         "text": "Cociná a hervor suave 20–25 min; agregá las legumbres ya cocidas o los fideos según su tiempo de cocción."
       },
       {
-        "text": "Si es crema, procesá fuera del fuego y agregá leche o queso al final. Dividí en los platos indicados."
+        "text": "Si buscás una crema, procesá fuera del fuego. Dividí en los platos indicados."
       }
     ]
   },
@@ -3218,9 +3218,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 10,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -3280,13 +3280,13 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá tomate, cebolla cuando corresponda."
       },
       {
-        "text": "Rehogá la cebolla 4 min. Sumá verduras troceadas y agua hasta apenas cubrir."
+        "text": "Rehogá la cebolla 4 min. Sumá las demás verduras y agua hasta apenas cubrir."
       },
       {
         "text": "Cociná a hervor suave 20–25 min; agregá las legumbres ya cocidas o los fideos según su tiempo de cocción."
       },
       {
-        "text": "Si es crema, procesá fuera del fuego y agregá leche o queso al final. Dividí en los platos indicados."
+        "text": "Si buscás una crema, procesá fuera del fuego. Dividí en los platos indicados."
       }
     ]
   },
@@ -3315,9 +3315,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 40,
-    "cookMinutes": 15,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -3382,13 +3382,13 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá zanahoria, cebolla, zapallito cuando corresponda."
       },
       {
-        "text": "Rehogá la cebolla 4 min. Sumá verduras troceadas y agua hasta apenas cubrir."
+        "text": "Rehogá la cebolla 4 min. Sumá las demás verduras y agua hasta apenas cubrir."
       },
       {
         "text": "Cociná a hervor suave 20–25 min; agregá las legumbres ya cocidas o los fideos según su tiempo de cocción."
       },
       {
-        "text": "Si es crema, procesá fuera del fuego y agregá leche o queso al final. Dividí en los platos indicados."
+        "text": "Si buscás una crema, procesá fuera del fuego. Dividí en los platos indicados."
       }
     ]
   },
@@ -3417,9 +3417,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 10,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -3479,13 +3479,13 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza, zanahoria, cebolla cuando corresponda."
       },
       {
-        "text": "Rehogá la cebolla 4 min. Sumá verduras troceadas y agua hasta apenas cubrir."
+        "text": "Rehogá la cebolla 4 min. Sumá las demás verduras y agua hasta apenas cubrir."
       },
       {
         "text": "Cociná a hervor suave 20–25 min; agregá las legumbres ya cocidas o los fideos según su tiempo de cocción."
       },
       {
-        "text": "Si es crema, procesá fuera del fuego y agregá leche o queso al final. Dividí en los platos indicados."
+        "text": "Si buscás una crema, procesá fuera del fuego. Agregá leche o queso al final. Dividí en los platos indicados."
       }
     ]
   },
@@ -3514,9 +3514,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 10,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -3576,13 +3576,13 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá zanahoria, tomate, cebolla cuando corresponda."
       },
       {
-        "text": "Rehogá la cebolla 4 min. Sumá verduras troceadas y agua hasta apenas cubrir."
+        "text": "Rehogá la cebolla 4 min. Sumá las demás verduras y agua hasta apenas cubrir."
       },
       {
         "text": "Cociná a hervor suave 20–25 min; agregá las legumbres ya cocidas o los fideos según su tiempo de cocción."
       },
       {
-        "text": "Si es crema, procesá fuera del fuego y agregá leche o queso al final. Dividí en los platos indicados."
+        "text": "Si buscás una crema, procesá fuera del fuego. Dividí en los platos indicados."
       }
     ]
   },
@@ -3611,9 +3611,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 10,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -3673,13 +3673,13 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá brócoli, papa cuando corresponda."
       },
       {
-        "text": "Rehogá la cebolla 4 min. Sumá verduras troceadas y agua hasta apenas cubrir."
+        "text": "Rehogá las verduras firmes 4 min. Sumá las demás verduras y agua hasta apenas cubrir."
       },
       {
         "text": "Cociná a hervor suave 20–25 min; agregá las legumbres ya cocidas o los fideos según su tiempo de cocción."
       },
       {
-        "text": "Si es crema, procesá fuera del fuego y agregá leche o queso al final. Dividí en los platos indicados."
+        "text": "Si buscás una crema, procesá fuera del fuego. Agregá leche o queso al final. Dividí en los platos indicados."
       }
     ]
   },
@@ -3708,9 +3708,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 10,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -3770,13 +3770,13 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá batata, cebolla cuando corresponda."
       },
       {
-        "text": "Rehogá la cebolla 4 min. Sumá verduras troceadas y agua hasta apenas cubrir."
+        "text": "Rehogá la cebolla 4 min. Sumá las demás verduras y agua hasta apenas cubrir."
       },
       {
         "text": "Cociná a hervor suave 20–25 min; agregá las legumbres ya cocidas o los fideos según su tiempo de cocción."
       },
       {
-        "text": "Si es crema, procesá fuera del fuego y agregá leche o queso al final. Dividí en los platos indicados."
+        "text": "Si buscás una crema, procesá fuera del fuego. Agregá leche o queso al final. Dividí en los platos indicados."
       }
     ]
   },
@@ -3805,9 +3805,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 30,
     "totalMinutes": 55,
-    "cookMinutes": 30,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -3910,9 +3910,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 30,
     "totalMinutes": 55,
-    "cookMinutes": 30,
+    "cookMinutes": 25,
     "rinde": "5 porciones",
     "servings": 5,
     "esBebida": false,
@@ -3977,13 +3977,13 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá papa, cebolla, zanahoria cuando corresponda."
       },
       {
-        "text": "Cociná por separado el relleno con cebolla hasta que no quede líquido y ablandá la cobertura de papa, calabaza o berenjena."
+        "text": "Cociná el relleno con cebolla hasta que no quede líquido; ablandá la cobertura de papa, calabaza o berenjena."
       },
       {
-        "text": "Poné el relleno en fuente de 24 × 20 cm, cubrí con el puré o las láminas y distribuí el queso."
+        "text": "Poné el relleno en fuente de 24 × 20 cm y cubrí con el puré o las láminas. Distribuí el queso encima."
       },
       {
-        "text": "Horneá a 190 °C durante 20–25 min, hasta gratinar. Dejá reposar 10 min para cortar las porciones."
+        "text": "Horneá a 190 °C durante 20–25 min, hasta dorar. Dejá reposar 10 min para cortar las porciones."
       }
     ]
   },
@@ -4012,9 +4012,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 30,
     "totalMinutes": 55,
-    "cookMinutes": 30,
+    "cookMinutes": 25,
     "rinde": "5 porciones",
     "servings": 5,
     "esBebida": false,
@@ -4079,13 +4079,13 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza, cebolla, morrón cuando corresponda."
       },
       {
-        "text": "Cociná por separado el relleno con cebolla hasta que no quede líquido y ablandá la cobertura de papa, calabaza o berenjena."
+        "text": "Cociná el relleno con cebolla hasta que no quede líquido; ablandá la cobertura de papa, calabaza o berenjena."
       },
       {
-        "text": "Poné el relleno en fuente de 24 × 20 cm, cubrí con el puré o las láminas y distribuí el queso."
+        "text": "Poné el relleno en fuente de 24 × 20 cm y cubrí con el puré o las láminas. Distribuí el queso encima."
       },
       {
-        "text": "Horneá a 190 °C durante 20–25 min, hasta gratinar. Dejá reposar 10 min para cortar las porciones."
+        "text": "Horneá a 190 °C durante 20–25 min, hasta dorar. Dejá reposar 10 min para cortar las porciones."
       }
     ]
   },
@@ -4114,9 +4114,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 30,
     "totalMinutes": 55,
-    "cookMinutes": 30,
+    "cookMinutes": 25,
     "rinde": "5 porciones",
     "servings": 5,
     "esBebida": false,
@@ -4181,13 +4181,13 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá berenjena, tomate, cebolla cuando corresponda."
       },
       {
-        "text": "Cociná por separado el relleno con cebolla hasta que no quede líquido y ablandá la cobertura de papa, calabaza o berenjena."
+        "text": "Cociná el relleno con cebolla hasta que no quede líquido; ablandá la cobertura de papa, calabaza o berenjena."
       },
       {
-        "text": "Poné el relleno en fuente de 24 × 20 cm, cubrí con el puré o las láminas y distribuí el queso."
+        "text": "Poné el relleno en fuente de 24 × 20 cm y cubrí con el puré o las láminas. Distribuí el queso encima."
       },
       {
-        "text": "Horneá a 190 °C durante 20–25 min, hasta gratinar. Dejá reposar 10 min para cortar las porciones."
+        "text": "Horneá a 190 °C durante 20–25 min, hasta dorar. Dejá reposar 10 min para cortar las porciones."
       }
     ]
   },
@@ -4216,9 +4216,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 30,
     "totalMinutes": 55,
-    "cookMinutes": 30,
+    "cookMinutes": 25,
     "rinde": "5 porciones",
     "servings": 5,
     "esBebida": false,
@@ -4283,13 +4283,13 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza, cebolla cuando corresponda."
       },
       {
-        "text": "Cociná por separado el relleno con cebolla hasta que no quede líquido y ablandá la cobertura de papa, calabaza o berenjena."
+        "text": "Cociná el relleno con cebolla hasta que no quede líquido; ablandá la cobertura de papa, calabaza o berenjena."
       },
       {
-        "text": "Poné el relleno en fuente de 24 × 20 cm, cubrí con el puré o las láminas y distribuí el queso."
+        "text": "Poné el relleno en fuente de 24 × 20 cm y cubrí con el puré o las láminas. Distribuí el queso encima."
       },
       {
-        "text": "Horneá a 190 °C durante 20–25 min, hasta gratinar. Dejá reposar 10 min para cortar las porciones."
+        "text": "Horneá a 190 °C durante 20–25 min, hasta dorar. Dejá reposar 10 min para cortar las porciones."
       }
     ]
   },
@@ -4318,9 +4318,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 30,
     "totalMinutes": 55,
-    "cookMinutes": 30,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -4423,9 +4423,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 45,
-    "cookMinutes": 20,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -4638,9 +4638,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 40,
-    "cookMinutes": 15,
+    "cookMinutes": 20,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -4842,9 +4842,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 18,
     "totalMinutes": 30,
-    "cookMinutes": 5,
+    "cookMinutes": 12,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -4944,9 +4944,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 23,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 12,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -5046,9 +5046,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 40,
-    "cookMinutes": 15,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -5095,7 +5095,7 @@
       }
     ],
     "notes": "",
-    "method": "horno",
+    "method": "arrozHorno",
     "equipment": "horno",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
     "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
@@ -5113,16 +5113,13 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá tomate, cebolla cuando corresponda."
       },
       {
-        "text": "Prepará tomate, cebolla en trozos parejos y precalentá el horno a 200 °C."
+        "text": "Herví el arroz 12–15 min hasta que esté casi tierno; escurrí. Rehogá cebolla y tomate 5 min."
       },
       {
-        "text": "Distribuí la proteína (atún) y las verduras en fuente sin amontonar; agregá aceite medido."
+        "text": "Mezclá el arroz con el atún escurrido y las verduras. Pasá a una fuente, distribuí el queso y gratiná 10–15 min a 200 °C."
       },
       {
-        "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
-      },
-      {
-        "text": "Dividí en porciones iguales antes de guardar o servir."
+        "text": "Repartí en cuatro porciones; enfriá rápido y refrigerá lo que va en vianda."
       }
     ]
   },
@@ -5150,10 +5147,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 18,
     "totalMinutes": 30,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -5164,7 +5161,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": false,
@@ -5203,7 +5200,7 @@
     "method": "ensalada",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 337.2,
       "protein": 29.1,
@@ -5252,10 +5249,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 13,
     "totalMinutes": 25,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -5266,7 +5263,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": false,
@@ -5305,7 +5302,7 @@
     "method": "ensalada",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 358.2,
       "protein": 21.4,
@@ -5354,10 +5351,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 18,
     "totalMinutes": 30,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -5368,7 +5365,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": false,
@@ -5402,7 +5399,7 @@
     "method": "ensalada",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 284.7,
       "protein": 14.3,
@@ -5451,10 +5448,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 13,
     "totalMinutes": 25,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -5465,7 +5462,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": false,
@@ -5499,7 +5496,7 @@
     "method": "ensalada",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 300.6,
       "protein": 34.1,
@@ -5548,10 +5545,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 8,
     "totalMinutes": 20,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -5562,7 +5559,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": false,
     "freezable": false,
     "handheld": false,
@@ -5596,7 +5593,7 @@
     "method": "ensalada",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 260.6,
       "protein": 20.2,
@@ -5645,10 +5642,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 18,
     "totalMinutes": 30,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -5659,7 +5656,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": false,
@@ -5693,7 +5690,7 @@
     "method": "ensalada",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 226.1,
       "protein": 10.9,
@@ -5743,7 +5740,7 @@
     ],
     "satiety": "potente",
     "prepType": "assemble",
-    "activeMinutes": 15,
+    "activeMinutes": 25,
     "totalMinutes": 25,
     "cookMinutes": 0,
     "rinde": "3 porciones",
@@ -5836,10 +5833,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 13,
     "totalMinutes": 25,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -5850,7 +5847,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": false,
@@ -5889,7 +5886,7 @@
     "method": "ensalada",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 374.2,
       "protein": 23.9,
@@ -5938,10 +5935,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 13,
     "totalMinutes": 25,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -5952,7 +5949,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": false,
@@ -5991,7 +5988,7 @@
     "method": "ensalada",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 269.4,
       "protein": 28,
@@ -6040,10 +6037,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 13,
     "totalMinutes": 25,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -6054,7 +6051,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": false,
@@ -6088,7 +6085,7 @@
     "method": "ensalada",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 425.2,
       "protein": 23.3,
@@ -6231,10 +6228,10 @@
       "casero"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 23,
     "totalMinutes": 35,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -6245,7 +6242,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": false,
@@ -6279,7 +6276,7 @@
     "method": "ensalada",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 290.8,
       "protein": 31.7,
@@ -6328,10 +6325,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 18,
     "totalMinutes": 30,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -6342,7 +6339,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": false,
@@ -6376,7 +6373,7 @@
     "method": "ensalada",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 414.4,
       "protein": 29,
@@ -6425,10 +6422,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 13,
     "totalMinutes": 25,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -6439,7 +6436,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": false,
@@ -6473,7 +6470,7 @@
     "method": "ensalada",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 259.2,
       "protein": 17.9,
@@ -6523,7 +6520,7 @@
     ],
     "satiety": "potente",
     "prepType": "assemble",
-    "activeMinutes": 15,
+    "activeMinutes": 20,
     "totalMinutes": 20,
     "cookMinutes": 0,
     "rinde": "3 porciones",
@@ -6619,10 +6616,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 18,
     "totalMinutes": 30,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -6633,7 +6630,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": true,
@@ -6672,7 +6669,7 @@
     "method": "wrap",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 513.4,
       "protein": 44.3,
@@ -6721,10 +6718,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 8,
     "totalMinutes": 20,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -6735,7 +6732,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": false,
     "freezable": false,
     "handheld": true,
@@ -6774,7 +6771,7 @@
     "method": "wrap",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 252.7,
       "protein": 21.5,
@@ -6824,7 +6821,7 @@
     ],
     "satiety": "potente",
     "prepType": "assemble",
-    "activeMinutes": 15,
+    "activeMinutes": 20,
     "totalMinutes": 20,
     "cookMinutes": 0,
     "rinde": "3 porciones",
@@ -6925,10 +6922,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 18,
     "totalMinutes": 30,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -6939,7 +6936,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": true,
@@ -6978,7 +6975,7 @@
     "method": "wrap",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 425.7,
       "protein": 28.3,
@@ -7027,10 +7024,10 @@
       "casero"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 23,
     "totalMinutes": 35,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -7041,7 +7038,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": true,
@@ -7085,7 +7082,7 @@
     "method": "wrap",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 409.4,
       "protein": 20.2,
@@ -7134,10 +7131,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 13,
     "totalMinutes": 25,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -7148,7 +7145,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": true,
@@ -7187,7 +7184,7 @@
     "method": "sandwich",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 351.5,
       "protein": 32.5,
@@ -7236,10 +7233,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 8,
     "totalMinutes": 20,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -7250,7 +7247,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": false,
     "freezable": false,
     "handheld": true,
@@ -7284,7 +7281,7 @@
     "method": "sandwich",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 257.3,
       "protein": 21.2,
@@ -7333,10 +7330,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 18,
     "totalMinutes": 30,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -7347,7 +7344,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": true,
@@ -7381,7 +7378,7 @@
     "method": "sandwich",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 503,
       "protein": 43.5,
@@ -7524,10 +7521,10 @@
       "casero"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 33,
     "totalMinutes": 45,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -7538,7 +7535,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": true,
@@ -7572,7 +7569,7 @@
     "method": "sandwich",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 455.5,
       "protein": 31.5,
@@ -7621,10 +7618,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 13,
     "totalMinutes": 25,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -7635,7 +7632,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": true,
@@ -7674,7 +7671,7 @@
     "method": "sandwich",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 294.1,
       "protein": 30.5,
@@ -7723,10 +7720,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 5,
     "totalMinutes": 15,
-    "cookMinutes": 0,
+    "cookMinutes": 10,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -7737,7 +7734,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": false,
     "freezable": false,
     "handheld": true,
@@ -7771,7 +7768,7 @@
     "method": "sandwich",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 361,
       "protein": 21.5,
@@ -7914,10 +7911,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 13,
     "totalMinutes": 25,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "3 porciones",
     "servings": 3,
     "esBebida": false,
@@ -7928,7 +7925,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": true,
@@ -7967,7 +7964,7 @@
     "method": "sandwich",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 409.3,
       "protein": 32,
@@ -8017,9 +8014,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 20,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -8119,9 +8116,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 20,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -8221,9 +8218,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 40,
-    "cookMinutes": 15,
+    "cookMinutes": 20,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -8323,9 +8320,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 40,
-    "cookMinutes": 15,
+    "cookMinutes": 20,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -8425,9 +8422,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 20,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -8522,9 +8519,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 40,
-    "cookMinutes": 15,
+    "cookMinutes": 20,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -8930,9 +8927,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 40,
-    "cookMinutes": 15,
+    "cookMinutes": 20,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -9032,9 +9029,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 40,
-    "cookMinutes": 15,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -9134,9 +9131,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 45,
-    "cookMinutes": 20,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -9231,9 +9228,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 17,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 18,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -9425,9 +9422,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 45,
-    "cookMinutes": 20,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -9522,9 +9519,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 5,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 30,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -9592,7 +9589,7 @@
         "text": "Prepará zapallito, zanahoria, tomate en trozos parejos y precalentá el horno a 200 °C."
       },
       {
-        "text": "Distribuí la proteína (merluza) y las verduras en fuente sin amontonar; agregá aceite medido."
+        "text": "Distribuí merluza y las verduras en fuente sin amontonar."
       },
       {
         "text": "Horneá 15–20 min (precociná la papa aparte si la hay), hasta que la proteína esté cocida y las verduras tiernas."
@@ -9627,9 +9624,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 45,
-    "cookMinutes": 20,
+    "cookMinutes": 30,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -9697,7 +9694,7 @@
         "text": "Prepará morrón, cebolla, tomate, papa en trozos parejos y precalentá el horno a 200 °C."
       },
       {
-        "text": "Distribuí la proteína (merluza) y las verduras en fuente sin amontonar; agregá aceite medido."
+        "text": "Distribuí merluza y las verduras en fuente sin amontonar."
       },
       {
         "text": "Horneá 15–20 min (precociná la papa aparte si la hay), hasta que la proteína esté cocida y las verduras tiernas."
@@ -9732,9 +9729,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 45,
-    "cookMinutes": 20,
+    "cookMinutes": 30,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -9797,7 +9794,7 @@
         "text": "Prepará batata, cebolla en trozos parejos y precalentá el horno a 200 °C."
       },
       {
-        "text": "Distribuí la proteína (pollo) y las verduras en fuente sin amontonar; agregá aceite medido."
+        "text": "Distribuí pollo y las verduras en fuente sin amontonar."
       },
       {
         "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
@@ -9832,9 +9829,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 45,
-    "cookMinutes": 20,
+    "cookMinutes": 30,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -9897,7 +9894,7 @@
         "text": "Prepará calabaza, cebolla en trozos parejos y precalentá el horno a 200 °C."
       },
       {
-        "text": "Distribuí la proteína (pollo) y las verduras en fuente sin amontonar; agregá aceite medido."
+        "text": "Distribuí pollo y las verduras en fuente sin amontonar. Agregá el aceite medido."
       },
       {
         "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
@@ -9997,7 +9994,7 @@
         "text": "Prepará batata, cebolla en trozos parejos y precalentá el horno a 200 °C."
       },
       {
-        "text": "Distribuí la proteína (cerdo) y las verduras en fuente sin amontonar; agregá aceite medido."
+        "text": "Distribuí cerdo y las verduras en fuente sin amontonar."
       },
       {
         "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
@@ -10032,9 +10029,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 45,
-    "cookMinutes": 20,
+    "cookMinutes": 30,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -10097,7 +10094,7 @@
         "text": "Prepará papa, tomate, cebolla en trozos parejos y precalentá el horno a 200 °C."
       },
       {
-        "text": "Distribuí la proteína (lomo) y las verduras en fuente sin amontonar; agregá aceite medido."
+        "text": "Distribuí lomo y las verduras en fuente sin amontonar."
       },
       {
         "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
@@ -10437,9 +10434,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 50,
-    "cookMinutes": 25,
+    "cookMinutes": 30,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -10612,7 +10609,7 @@
         "text": "Prepará morrón, cebolla en trozos parejos y precalentá el horno a 200 °C."
       },
       {
-        "text": "Ablandá las piezas principales, ahuecalas y mezclá su pulpa con el relleno ya cocido; rellená y cubrí con queso."
+        "text": "Ablandá las piezas principales, ahuecalas y mezclá su pulpa con el relleno ya cocido; rellená."
       },
       {
         "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
@@ -10752,9 +10749,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 30,
-    "cookMinutes": 5,
+    "cookMinutes": 15,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -10849,9 +10846,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 30,
-    "cookMinutes": 5,
+    "cookMinutes": 15,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -10951,9 +10948,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 15,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -11048,9 +11045,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 15,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -11145,9 +11142,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 30,
     "totalMinutes": 45,
-    "cookMinutes": 20,
+    "cookMinutes": 15,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -11241,10 +11238,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 18,
     "totalMinutes": 30,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -11255,7 +11252,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": false,
@@ -11289,7 +11286,7 @@
     "method": "ensalada",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 449.9,
       "protein": 30.4,
@@ -11339,9 +11336,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 30,
-    "cookMinutes": 5,
+    "cookMinutes": 15,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -11533,9 +11530,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 10,
     "totalMinutes": 40,
-    "cookMinutes": 15,
+    "cookMinutes": 30,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -11598,7 +11595,7 @@
         "text": "Prepará las verduras en trozos parejos y precalentá el horno a 200 °C."
       },
       {
-        "text": "Distribuí la proteína  y las verduras en fuente sin amontonar; agregá aceite medido."
+        "text": "Distribuí el ingrediente principal y las verduras en fuente sin amontonar."
       },
       {
         "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
@@ -11633,9 +11630,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 45,
-    "cookMinutes": 20,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -11717,7 +11714,7 @@
       "merienda"
     ],
     "origen": "casera",
-    "sabor": "dulce",
+    "sabor": "salado",
     "description": "Tostadas francesas con manzana salteada con pan, huevo, leche; rinde 2 porciones.",
     "portions": [
       {
@@ -11733,9 +11730,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 20,
+    "activeMinutes": 10,
     "totalMinutes": 20,
-    "cookMinutes": 0,
+    "cookMinutes": 10,
     "rinde": "2 porciones",
     "servings": 2,
     "esBebida": false,
@@ -11782,7 +11779,7 @@
       }
     ],
     "notes": "",
-    "method": "panqueque",
+    "method": "tostadaFrancesa",
     "equipment": "hornalla y sartén/olla",
     "storage": "Consumir recién hecho o refrigerar hasta 2 días.",
     "reheat": null,
@@ -11800,13 +11797,13 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
       },
       {
-        "text": "Batí huevos, leche y harina hasta lograr una mezcla fluida sin grumos; dejá reposar 5 min."
+        "text": "Batí los huevos con la leche; sumergí cada rebanada de pan unos segundos por lado sin desarmarla."
       },
       {
-        "text": "Verté una capa fina en sartén apenas aceitada y cociná 1–2 min de cada lado."
+        "text": "Doralas en sartén antiadherente 2–3 min por lado hasta que el huevo esté cocido."
       },
       {
-        "text": "Prepará la fruta o el relleno y distribuí parejo sobre los panqueques terminados."
+        "text": "Prepará la manzana en la misma sartén con canela y repartí sobre las tostadas."
       }
     ]
   },
@@ -11819,7 +11816,7 @@
       "merienda"
     ],
     "origen": "casera",
-    "sabor": "dulce",
+    "sabor": "salado",
     "description": "Tostadas francesas con frutilla y ricota con pan, huevo, leche; rinde 2 porciones.",
     "portions": [
       {
@@ -11835,9 +11832,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 20,
+    "activeMinutes": 10,
     "totalMinutes": 20,
-    "cookMinutes": 0,
+    "cookMinutes": 10,
     "rinde": "2 porciones",
     "servings": 2,
     "esBebida": false,
@@ -11884,7 +11881,7 @@
       }
     ],
     "notes": "",
-    "method": "panqueque",
+    "method": "tostadaFrancesa",
     "equipment": "hornalla y sartén/olla",
     "storage": "Consumir recién hecho o refrigerar hasta 2 días.",
     "reheat": null,
@@ -11902,13 +11899,13 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
       },
       {
-        "text": "Batí huevos, leche y harina hasta lograr una mezcla fluida sin grumos; dejá reposar 5 min."
+        "text": "Batí los huevos con la leche; sumergí cada rebanada de pan unos segundos por lado sin desarmarla."
       },
       {
-        "text": "Verté una capa fina en sartén apenas aceitada y cociná 1–2 min de cada lado."
+        "text": "Doralas en sartén antiadherente 2–3 min por lado hasta que el huevo esté cocido."
       },
       {
-        "text": "Prepará la fruta o el relleno y distribuí parejo sobre los panqueques terminados."
+        "text": "Prepará la fruta y la ricota y repartí sobre las tostadas."
       }
     ]
   },
@@ -11937,9 +11934,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 25,
-    "cookMinutes": 0,
+    "cookMinutes": 10,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -12039,9 +12036,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 25,
-    "cookMinutes": 0,
+    "cookMinutes": 10,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -12141,9 +12138,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 25,
-    "cookMinutes": 0,
+    "cookMinutes": 10,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -12243,9 +12240,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 25,
-    "cookMinutes": 0,
+    "cookMinutes": 10,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -12345,9 +12342,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 25,
-    "cookMinutes": 0,
+    "cookMinutes": 10,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -12447,9 +12444,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 12,
+    "activeMinutes": 5,
     "totalMinutes": 12,
-    "cookMinutes": 0,
+    "cookMinutes": 7,
     "rinde": "1 porciones",
     "servings": 1,
     "esBebida": false,
@@ -12544,9 +12541,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 12,
+    "activeMinutes": 5,
     "totalMinutes": 12,
-    "cookMinutes": 0,
+    "cookMinutes": 7,
     "rinde": "1 porciones",
     "servings": 1,
     "esBebida": false,
@@ -12636,9 +12633,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 15,
+    "activeMinutes": 5,
     "totalMinutes": 15,
-    "cookMinutes": 0,
+    "cookMinutes": 10,
     "rinde": "1 porciones",
     "servings": 1,
     "esBebida": false,
@@ -12728,9 +12725,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 15,
+    "activeMinutes": 5,
     "totalMinutes": 15,
-    "cookMinutes": 0,
+    "cookMinutes": 10,
     "rinde": "1 porciones",
     "servings": 1,
     "esBebida": false,
@@ -12825,9 +12822,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 15,
+    "activeMinutes": 5,
     "totalMinutes": 15,
-    "cookMinutes": 0,
+    "cookMinutes": 10,
     "rinde": "1 porciones",
     "servings": 1,
     "esBebida": false,
@@ -13109,10 +13106,10 @@
       "rápido"
     ],
     "satiety": "normal",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 6,
     "totalMinutes": 18,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "2 porciones",
     "servings": 2,
     "esBebida": false,
@@ -13123,7 +13120,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": false,
     "freezable": false,
     "handheld": true,
@@ -13157,7 +13154,7 @@
     "method": "sandwich",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 338.1,
       "protein": 14.3,
@@ -13300,10 +13297,10 @@
       "rápido"
     ],
     "satiety": "normal",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 5,
     "totalMinutes": 15,
-    "cookMinutes": 0,
+    "cookMinutes": 10,
     "rinde": "2 porciones",
     "servings": 2,
     "esBebida": false,
@@ -13314,7 +13311,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": false,
     "freezable": false,
     "handheld": true,
@@ -13348,7 +13345,7 @@
     "method": "sandwich",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 397.3,
       "protein": 32.7,
@@ -13486,10 +13483,10 @@
       "rápido"
     ],
     "satiety": "normal",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 5,
     "totalMinutes": 15,
-    "cookMinutes": 0,
+    "cookMinutes": 10,
     "rinde": "2 porciones",
     "servings": 2,
     "esBebida": false,
@@ -13500,7 +13497,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": false,
     "freezable": false,
     "handheld": true,
@@ -13534,7 +13531,7 @@
     "method": "sandwich",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 432.9,
       "protein": 31,
@@ -13680,9 +13677,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 5,
     "totalMinutes": 25,
-    "cookMinutes": 0,
+    "cookMinutes": 20,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -13745,7 +13742,7 @@
         "text": "Prepará brócoli en trozos parejos y precalentá el horno a 200 °C."
       },
       {
-        "text": "Distribuí la proteína  y las verduras en fuente sin amontonar; agregá aceite medido."
+        "text": "Distribuí el ingrediente principal y las verduras en fuente sin amontonar."
       },
       {
         "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
@@ -13779,9 +13776,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 5,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 30,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -13883,9 +13880,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 5,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 30,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -13987,9 +13984,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 5,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 30,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -14086,9 +14083,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 10,
     "totalMinutes": 25,
-    "cookMinutes": 0,
+    "cookMinutes": 15,
     "rinde": "8 porciones",
     "servings": 8,
     "esBebida": false,
@@ -14183,9 +14180,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 30,
-    "cookMinutes": 5,
+    "cookMinutes": 15,
     "rinde": "10 porciones",
     "servings": 10,
     "esBebida": false,
@@ -14280,9 +14277,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 30,
-    "cookMinutes": 5,
+    "cookMinutes": 15,
     "rinde": "12 porciones",
     "servings": 12,
     "esBebida": false,
@@ -14386,9 +14383,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 30,
-    "cookMinutes": 5,
+    "cookMinutes": 15,
     "rinde": "10 porciones",
     "servings": 10,
     "esBebida": false,
@@ -14487,9 +14484,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 30,
-    "cookMinutes": 5,
+    "cookMinutes": 15,
     "rinde": "10 porciones",
     "servings": 10,
     "esBebida": false,
@@ -14584,9 +14581,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 15,
     "rinde": "10 porciones",
     "servings": 10,
     "esBebida": false,
@@ -15346,9 +15343,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 45,
-    "cookMinutes": 20,
+    "cookMinutes": 30,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -15451,9 +15448,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 45,
-    "cookMinutes": 20,
+    "cookMinutes": 30,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -15555,7 +15552,7 @@
     ],
     "satiety": "normal",
     "prepType": "assemble",
-    "activeMinutes": 15,
+    "activeMinutes": 20,
     "totalMinutes": 140,
     "cookMinutes": 0,
     "rinde": "10 porciones",
@@ -15651,7 +15648,7 @@
     ],
     "satiety": "normal",
     "prepType": "assemble",
-    "activeMinutes": 15,
+    "activeMinutes": 30,
     "totalMinutes": 150,
     "cookMinutes": 0,
     "rinde": "10 porciones",
@@ -15935,9 +15932,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 5,
     "totalMinutes": 30,
-    "cookMinutes": 5,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -16000,7 +15997,7 @@
         "text": "Prepará las verduras en trozos parejos y precalentá el horno a 200 °C."
       },
       {
-        "text": "Distribuí la proteína  y las verduras en fuente sin amontonar; agregá aceite medido."
+        "text": "Distribuí el ingrediente principal y las verduras en fuente sin amontonar."
       },
       {
         "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
@@ -16035,9 +16032,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 5,
     "totalMinutes": 30,
-    "cookMinutes": 5,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -16100,7 +16097,7 @@
         "text": "Prepará las verduras en trozos parejos y precalentá el horno a 200 °C."
       },
       {
-        "text": "Distribuí la proteína  y las verduras en fuente sin amontonar; agregá aceite medido."
+        "text": "Distribuí el ingrediente principal y las verduras en fuente sin amontonar."
       },
       {
         "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
@@ -16595,9 +16592,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 15,
+    "activeMinutes": 7,
     "totalMinutes": 15,
-    "cookMinutes": 0,
+    "cookMinutes": 8,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -16687,9 +16684,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 23,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 12,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -16789,9 +16786,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 28,
     "totalMinutes": 40,
-    "cookMinutes": 15,
+    "cookMinutes": 12,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -16886,9 +16883,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 28,
     "totalMinutes": 40,
-    "cookMinutes": 15,
+    "cookMinutes": 12,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -16983,9 +16980,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 45,
-    "cookMinutes": 20,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -17088,9 +17085,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 45,
-    "cookMinutes": 20,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -17190,9 +17187,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 40,
-    "cookMinutes": 15,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -17240,7 +17237,7 @@
     ],
     "notes": "",
     "method": "croqueta",
-    "equipment": "hornalla y sartén/olla",
+    "equipment": "horno",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
     "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
@@ -17257,10 +17254,10 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá espinaca cuando corresponda."
       },
       {
-        "text": "Cociná arroz o verdura principal y dejá entibiar; mezclá con huevo, queso y pan rallado."
+        "text": "Cociná arroz hasta que esté tierno, escurrí y pisá o mezclá; dejá entibiar."
       },
       {
-        "text": "Moldeá croquetas iguales con las manos húmedas."
+        "text": "Incorporá huevo, queso, pan rallado y las verduras restantes. Moldeá croquetas iguales con las manos húmedas."
       },
       {
         "text": "Horneá a 200 °C 20–25 min, girando a mitad de cocción, hasta dorar."
@@ -17292,9 +17289,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 40,
-    "cookMinutes": 15,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -17342,7 +17339,7 @@
     ],
     "notes": "",
     "method": "croqueta",
-    "equipment": "hornalla y sartén/olla",
+    "equipment": "horno",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
     "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
@@ -17359,10 +17356,10 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá papa, cebolla cuando corresponda."
       },
       {
-        "text": "Cociná arroz o verdura principal y dejá entibiar; mezclá con huevo, queso y pan rallado."
+        "text": "Cociná papa hasta que esté tierno, escurrí y pisá o mezclá; dejá entibiar."
       },
       {
-        "text": "Moldeá croquetas iguales con las manos húmedas."
+        "text": "Incorporá el atún escurrido, huevo, pan rallado y las verduras restantes. Moldeá croquetas iguales con las manos húmedas."
       },
       {
         "text": "Horneá a 200 °C 20–25 min, girando a mitad de cocción, hasta dorar."
@@ -17394,9 +17391,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 40,
-    "cookMinutes": 15,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -17439,7 +17436,7 @@
     ],
     "notes": "",
     "method": "croqueta",
-    "equipment": "hornalla y sartén/olla",
+    "equipment": "horno",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
     "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
@@ -17456,10 +17453,10 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza cuando corresponda."
       },
       {
-        "text": "Cociná arroz o verdura principal y dejá entibiar; mezclá con huevo, queso y pan rallado."
+        "text": "Cociná calabaza hasta que esté tierno, escurrí y pisá o mezclá; dejá entibiar."
       },
       {
-        "text": "Moldeá croquetas iguales con las manos húmedas."
+        "text": "Incorporá huevo, queso, pan rallado y las verduras restantes. Moldeá croquetas iguales con las manos húmedas."
       },
       {
         "text": "Horneá a 200 °C 20–25 min, girando a mitad de cocción, hasta dorar."
@@ -17491,9 +17488,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 5,
     "totalMinutes": 30,
-    "cookMinutes": 5,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -17556,7 +17553,7 @@
         "text": "Prepará berenjena, tomate en trozos parejos y precalentá el horno a 200 °C."
       },
       {
-        "text": "Distribuí la proteína  y las verduras en fuente sin amontonar; agregá aceite medido."
+        "text": "Distribuí el ingrediente principal y las verduras en fuente sin amontonar."
       },
       {
         "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
@@ -17591,9 +17588,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 40,
-    "cookMinutes": 15,
+    "cookMinutes": 20,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -17656,10 +17653,10 @@
         "text": "Precalentá el horno fuerte a 220 °C con la placa adentro."
       },
       {
-        "text": "Extendé la masa, distribuí salsa y relleno sin sobrecargar; agregá queso."
+        "text": "Extendé la masa, distribuí el relleno y el queso sin sobrecargar."
       },
       {
-        "text": "Horneá 15–20 min hasta base dorada y queso fundido. Cortá las porciones indicadas."
+        "text": "Horneá 15–20 min hasta base dorada. Cortá las porciones indicadas."
       }
     ]
   },
@@ -17688,9 +17685,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 40,
-    "cookMinutes": 15,
+    "cookMinutes": 20,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -17758,10 +17755,10 @@
         "text": "Precalentá el horno fuerte a 220 °C con la placa adentro."
       },
       {
-        "text": "Extendé la masa, distribuí salsa y relleno sin sobrecargar; agregá queso."
+        "text": "Extendé la masa, distribuí salsa, el relleno y el queso sin sobrecargar."
       },
       {
-        "text": "Horneá 15–20 min hasta base dorada y queso fundido. Cortá las porciones indicadas."
+        "text": "Horneá 15–20 min hasta base dorada. Cortá las porciones indicadas."
       }
     ]
   },
@@ -17860,10 +17857,10 @@
         "text": "Precalentá el horno fuerte a 220 °C con la placa adentro."
       },
       {
-        "text": "Extendé la masa, distribuí salsa y relleno sin sobrecargar; agregá queso."
+        "text": "Extendé la masa, distribuí salsa, el relleno y el queso sin sobrecargar."
       },
       {
-        "text": "Horneá 15–20 min hasta base dorada y queso fundido. Cortá las porciones indicadas."
+        "text": "Horneá 15–20 min hasta base dorada. Cortá las porciones indicadas."
       }
     ]
   },
@@ -17960,7 +17957,7 @@
         "text": "Extendé la masa, poné el relleno frío en una mitad, doblá y sellá el borde."
       },
       {
-        "text": "Horneá 15–20 min hasta base dorada y queso fundido. Cortá las porciones indicadas."
+        "text": "Horneá 15–20 min hasta base dorada. Cortá las porciones indicadas."
       }
     ]
   },
@@ -17989,9 +17986,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 30,
     "totalMinutes": 55,
-    "cookMinutes": 30,
+    "cookMinutes": 25,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -18096,9 +18093,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 30,
     "totalMinutes": 55,
-    "cookMinutes": 30,
+    "cookMinutes": 25,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -18203,9 +18200,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 30,
     "totalMinutes": 55,
-    "cookMinutes": 30,
+    "cookMinutes": 25,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -18265,13 +18262,13 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá berenjena cuando corresponda."
       },
       {
-        "text": "Cociná por separado el relleno con cebolla hasta que no quede líquido y ablandá la cobertura de papa, calabaza o berenjena."
+        "text": "Cociná el relleno  hasta que no quede líquido; ablandá la cobertura de papa, calabaza o berenjena."
       },
       {
-        "text": "Poné el relleno en fuente de 24 × 20 cm, cubrí con el puré o las láminas y distribuí el queso."
+        "text": "Poné el relleno en fuente de 24 × 20 cm y cubrí con el puré o las láminas. Distribuí el queso encima."
       },
       {
-        "text": "Horneá a 190 °C durante 20–25 min, hasta gratinar. Dejá reposar 10 min para cortar las porciones."
+        "text": "Horneá a 190 °C durante 20–25 min, hasta dorar. Dejá reposar 10 min para cortar las porciones."
       }
     ]
   },
@@ -18300,9 +18297,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 30,
     "totalMinutes": 55,
-    "cookMinutes": 30,
+    "cookMinutes": 25,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -18367,13 +18364,13 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá berenjena, zapallito, espinaca cuando corresponda."
       },
       {
-        "text": "Cociná por separado el relleno con cebolla hasta que no quede líquido y ablandá la cobertura de papa, calabaza o berenjena."
+        "text": "Cociná el relleno  hasta que no quede líquido; ablandá la cobertura de papa, calabaza o berenjena."
       },
       {
-        "text": "Poné el relleno en fuente de 24 × 20 cm, cubrí con el puré o las láminas y distribuí el queso."
+        "text": "Poné el relleno en fuente de 24 × 20 cm y cubrí con el puré o las láminas."
       },
       {
-        "text": "Horneá a 190 °C durante 20–25 min, hasta gratinar. Dejá reposar 10 min para cortar las porciones."
+        "text": "Horneá a 190 °C durante 20–25 min, hasta dorar. Dejá reposar 10 min para cortar las porciones."
       }
     ]
   },
@@ -18401,10 +18398,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 18,
     "totalMinutes": 30,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -18415,7 +18412,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": true,
@@ -18454,7 +18451,7 @@
     "method": "wrap",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 272.7,
       "protein": 27,
@@ -18503,10 +18500,10 @@
       "casero"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 23,
     "totalMinutes": 35,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -18517,7 +18514,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": true,
@@ -18556,7 +18553,7 @@
     "method": "wrap",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 454,
       "protein": 40,
@@ -18605,10 +18602,10 @@
       "casero"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 23,
     "totalMinutes": 35,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -18619,7 +18616,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": true,
@@ -18658,7 +18655,7 @@
     "method": "wrap",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 273.9,
       "protein": 28.1,
@@ -18708,9 +18705,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 10,
     "totalMinutes": 40,
-    "cookMinutes": 15,
+    "cookMinutes": 30,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -18778,7 +18775,7 @@
         "text": "Prepará zapallito, zanahoria en trozos parejos y precalentá el horno a 200 °C."
       },
       {
-        "text": "Distribuí la proteína  y las verduras en fuente sin amontonar; agregá aceite medido."
+        "text": "Distribuí el ingrediente principal y las verduras en fuente sin amontonar."
       },
       {
         "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
@@ -18813,9 +18810,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 23,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 12,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -18915,9 +18912,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 40,
     "totalMinutes": 60,
-    "cookMinutes": 35,
+    "cookMinutes": 20,
     "rinde": "5 porciones",
     "servings": 5,
     "esBebida": false,
@@ -19017,9 +19014,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 45,
     "totalMinutes": 65,
-    "cookMinutes": 40,
+    "cookMinutes": 20,
     "rinde": "5 porciones",
     "servings": 5,
     "esBebida": false,
@@ -19119,9 +19116,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 15,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -19216,9 +19213,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 45,
-    "cookMinutes": 20,
+    "cookMinutes": 25,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -19528,9 +19525,9 @@
     ],
     "satiety": "potente",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 50,
-    "cookMinutes": 25,
+    "cookMinutes": 30,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -19632,10 +19629,10 @@
       "rápido"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 18,
     "totalMinutes": 30,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -19646,7 +19643,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": false,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": false,
@@ -19685,7 +19682,7 @@
     "method": "ensalada",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 273.3,
       "protein": 10.9,
@@ -19734,10 +19731,10 @@
       "casero"
     ],
     "satiety": "potente",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 23,
     "totalMinutes": 35,
-    "cookMinutes": 0,
+    "cookMinutes": 12,
     "rinde": "4 porciones",
     "servings": 4,
     "esBebida": false,
@@ -19748,7 +19745,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": true,
     "freezable": false,
     "handheld": false,
@@ -19782,7 +19779,7 @@
     "method": "ensalada",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 215.3,
       "protein": 27.6,
@@ -19831,9 +19828,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 12,
     "totalMinutes": 30,
-    "cookMinutes": 5,
+    "cookMinutes": 18,
     "rinde": "8 porciones",
     "servings": 8,
     "esBebida": false,
@@ -19928,9 +19925,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 35,
-    "cookMinutes": 10,
+    "cookMinutes": 20,
     "rinde": "12 porciones",
     "servings": 12,
     "esBebida": false,
@@ -20025,9 +20022,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 50,
-    "cookMinutes": 25,
+    "cookMinutes": 30,
     "rinde": "10 porciones",
     "servings": 10,
     "esBebida": false,
@@ -20422,10 +20419,10 @@
       "rápido"
     ],
     "satiety": "normal",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 5,
     "totalMinutes": 15,
-    "cookMinutes": 0,
+    "cookMinutes": 10,
     "rinde": "2 porciones",
     "servings": 2,
     "esBebida": false,
@@ -20436,7 +20433,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": false,
     "freezable": false,
     "handheld": true,
@@ -20470,7 +20467,7 @@
     "method": "sandwich",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 320.2,
       "protein": 17.8,
@@ -20608,10 +20605,10 @@
       "rápido"
     ],
     "satiety": "normal",
-    "prepType": "assemble",
-    "activeMinutes": 15,
+    "prepType": "cook",
+    "activeMinutes": 5,
     "totalMinutes": 15,
-    "cookMinutes": 0,
+    "cookMinutes": 10,
     "rinde": "2 porciones",
     "servings": 2,
     "esBebida": false,
@@ -20622,7 +20619,7 @@
     "difficulty": 1,
     "portable": true,
     "needsCold": true,
-    "needsReheat": false,
+    "needsReheat": true,
     "makeNightBefore": false,
     "freezable": false,
     "handheld": true,
@@ -20656,7 +20653,7 @@
     "method": "sandwich",
     "equipment": "sin cocción final",
     "storage": "Hasta 2 días refrigerado en recipiente cerrado; transportar con frío si lleva ingredientes perecederos.",
-    "reheat": null,
+    "reheat": "Recalentar hasta que esté bien caliente en horno o sartén; no dejar a temperatura ambiente.",
     "nutrition": {
       "kcal": 510.5,
       "protein": 24.2,
@@ -20802,9 +20799,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 30,
-    "cookMinutes": 5,
+    "cookMinutes": 15,
     "rinde": "10 porciones",
     "servings": 10,
     "esBebida": false,
@@ -20904,9 +20901,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 55,
-    "cookMinutes": 30,
+    "cookMinutes": 35,
     "rinde": "12 porciones",
     "servings": 12,
     "esBebida": false,
@@ -21006,9 +21003,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 15,
     "totalMinutes": 55,
-    "cookMinutes": 30,
+    "cookMinutes": 40,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,
@@ -21098,9 +21095,9 @@
     ],
     "satiety": "normal",
     "prepType": "cook",
-    "activeMinutes": 25,
+    "activeMinutes": 20,
     "totalMinutes": 45,
-    "cookMinutes": 20,
+    "cookMinutes": 25,
     "rinde": "6 porciones",
     "servings": 6,
     "esBebida": false,

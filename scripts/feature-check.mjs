@@ -18,6 +18,7 @@ try {
   const { FOODS } = await vite.ssrLoadModule('/src/lib/foods.ts')
   const snap = localRepo.cached()
   assert.equal(snap.meals.length, 410)
+  assert(snap.meals.every((m) => Number.isFinite(m.carbs) && (m.portions ?? []).every((p) => Number.isFinite(p.carbs))), 'ninguna porción puede mostrar NaN')
   assert(snap.meals.filter((m) => m.origen === 'casera' && m.prepType !== 'ready' && !m.esBebida).length > 300)
   assert.equal(SLOT_ORDER.length, 6)
   for (const slot of SLOT_ORDER) assert(snap.meals.some((m) => m.momentos.includes(SLOT_CATEGORY[slot])))
