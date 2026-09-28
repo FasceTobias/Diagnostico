@@ -47,6 +47,11 @@ const EMPTY: Snapshot = {
 }
 
 export const useVianda = () => {
+  const [, tick] = useState(0)
+  useEffect(() => {
+    const timer = window.setInterval(() => tick((n) => n + 1), 60_000)
+    return () => window.clearInterval(timer)
+  }, [])
   /* Lo que ya está en el dispositivo, sin esperar a nadie: la app abre con
      datos en el primer cuadro. */
   const [state, setState] = useState<Snapshot>(() => repo.cached() ?? EMPTY)
@@ -127,6 +132,17 @@ export const useVianda = () => {
             ? { ...m, mealId, replacedFrom: m.mealId, status: 'pending' }
             : m,
         ),
+      })),
+    [patchDay],
+  )
+
+  const recordReplacement = useCallback(
+    (date: string, slot: Slot, mealId: string) =>
+      patchDay(date, (day) => ({
+        ...day,
+        meals: day.meals.map((m) => m.slot === slot
+          ? { ...m, mealId, replacedFrom: m.replacedFrom ?? m.mealId, status: 'eaten' }
+          : m),
       })),
     [patchDay],
   )
@@ -235,8 +251,10 @@ export const useVianda = () => {
     [toggleCheck, todayIso],
   )
   /* La lista de compras se marca por id de línea, no por comida. */
-  const isBought = useCallback((id: string) => !!checks[`shop:${id}`], [checks])
-  const toggleBought = useCallback((id: string) => toggleCheck(`shop:${id}`), [toggleCheck])
+  const isBought = useCallback((id: string) => !!checks[`shop:${state.weekStart}:${id}`], [checks, state.weekStart])
+  const toggleBought = useCallback((id: string) => toggleCheck(`shop:${state.weekStart}:${id}`), [toggleCheck, state.weekStart])
+  const isOwned = useCallback((id: string) => !!checks[`owned:${state.weekStart}:${id}`], [checks, state.weekStart])
+  const toggleOwned = useCallback((id: string) => toggleCheck(`owned:${state.weekStart}:${id}`), [toggleCheck, state.weekStart])
 
   /* Favorita y «agregar a compras» son dos listas de ids y nada más.
      No hace falta una tabla para guardar que te gusta la tarta. */
@@ -291,10 +309,13 @@ export const useVianda = () => {
     setContext,
     setTime,
     replaceMeal,
+    recordReplacement,
     checkPack,
     checkPrep,
     isBought,
     toggleBought,
+    isOwned,
+    toggleOwned,
     regenerate,
     extras: state.extras,
     esExtra,

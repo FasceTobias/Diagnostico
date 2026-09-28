@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import type { Category } from '../lib/types'
 import { SLOT_CATEGORY, SLOT_LABEL } from '../lib/types'
 import type { Vianda } from '../lib/store'
@@ -34,10 +34,7 @@ export function Hoy({ app }: { app: Vianda }) {
   const [hoja, setHoja] = useState<Hoja>(null)
   const dia = app.today
 
-  const comidas = useMemo(
-    () => (dia ? comidasDelDia(dia, app.meals) : []),
-    [dia, app.meals],
-  )
+  const comidas = dia ? comidasDelDia(dia, app.meals) : []
   const actual = comidaActual(comidas)
   const momento: Category = actual ? SLOT_CATEGORY[actual.planned.slot] : 'snack'
 
@@ -116,7 +113,7 @@ export function Hoy({ app }: { app: Vianda }) {
                     slot={c.planned.slot}
                     hora={c.planned.time}
                     onClick={() =>
-                      setHoja({ tipo: 'detalle', meal: c.meal!, slot: c.planned.slot })
+                      setHoja({ tipo: 'registrar', meal: c.meal!, slot: c.planned.slot })
                     }
                   />
                 </li>

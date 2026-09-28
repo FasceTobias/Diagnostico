@@ -18,6 +18,7 @@ import {
   AISLES,
   OPTIONAL_SLOTS,
   SLOT_CATEGORY,
+  SLOT_LABEL,
   SLOT_ORDER,
   VENUES,
 } from './types'
@@ -477,22 +478,25 @@ export const prepTasksFor = (day: DayPlan, meals: Meal[]): PrepTask[] => {
 
 export const packListFor = (day: DayPlan, meals: Meal[]): PackItem[] => {
   const fromMeals: PackItem[] = activeMeals(day, meals)
-    .filter(({ meal }) => meal.portable)
+    .filter(({ planned, meal }) =>
+      day.context !== 'casa' &&
+      ['snack_am', 'lunch', 'snack_pm', 'merienda'].includes(planned.slot) &&
+      meal.portable && !meal.buyOutside)
     .map(({ planned, meal }) => ({
       id: `pack-${planned.slot}`,
-      label: meal.name,
+      label: `${SLOT_LABEL[planned.slot]} · ${meal.name}`,
       kind: 'meal' as const,
-      hint: meal.needsCold ? 'Va con frío' : undefined,
+      hint: `${planned.time}${meal.needsCold ? ' · Guardar con frío' : ''}${meal.makeNightBefore ? ' · Preparar la noche anterior' : ''}`,
       mealId: meal.id,
       done: false,
     }))
 
-  const gear: PackItem[] = [
+  const gear: PackItem[] = fromMeals.length ? [
     { id: 'pack-botella', label: 'Botella de agua', kind: 'gear', done: false },
     { id: 'pack-termo', label: 'Vaso térmico con café', kind: 'gear', done: false },
     { id: 'pack-cubiertos', label: 'Cubiertos', kind: 'gear', done: false },
     { id: 'pack-servilletas', label: 'Servilletas', kind: 'gear', done: false },
-  ]
+  ] : []
 
   if (fromMeals.some((m) => m.hint)) {
     gear.unshift({

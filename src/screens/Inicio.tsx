@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import type { Category, DayContext, Meal, Venue } from '../lib/types'
 import { SLOT_CATEGORY, SLOT_LABEL, VENUES } from '../lib/types'
 import type { Vianda } from '../lib/store'
@@ -121,7 +121,7 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comida
   /* El estado de cada comida sale del reloj, no de lo que hayas
      marcado. Es la misma función que usa Hoy: una sola verdad sobre en
      qué momento del día estás. */
-  const comidas = useMemo(() => (dia ? comidasDelDia(dia, app.meals) : []), [dia, app.meals])
+  const comidas = dia ? comidasDelDia(dia, app.meals) : []
   const actual = comidaActual(comidas)
   const catAhora: Category = actual ? SLOT_CATEGORY[actual.planned.slot] : 'snack'
 
@@ -129,6 +129,7 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comida
   const siguen = comidas
     .filter((c) => c.estado === 'proxima' || c.estado === 'mas-tarde')
     .slice(0, 3)
+  const proxima = siguen[0]
 
   const verLista = (
     titulo: string,
@@ -197,13 +198,21 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comida
         )}
       </section>
 
+      {actual?.estado === 'ahora' && proxima?.meal && (
+        <section className="mt-8">
+          <TituloSeccion>Próxima comida</TituloSeccion>
+          <FilaProxima meal={proxima.meal} slot={proxima.planned.slot} hora={proxima.planned.time}
+            onClick={() => setHoja({ tipo: 'registrar', slot: proxima.planned.slot, meal: proxima.meal! })} />
+        </section>
+      )}
+
       {dia && (
         <section className="mt-8">
           <TituloSeccion>Lo que sigue hoy</TituloSeccion>
           {siguen.length ? (
             <>
               <ul className="space-y-3">
-                {siguen.map((c) =>
+                {siguen.filter((c) => c !== (actual?.estado === 'ahora' ? proxima : undefined)).map((c) =>
                   c.meal ? (
                     <li key={c.planned.slot}>
                       <FilaProxima
@@ -211,7 +220,7 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comida
                         slot={c.planned.slot}
                         hora={c.planned.time}
                         onClick={() =>
-                          setHoja({ tipo: 'detalle', meal: c.meal!, slot: c.planned.slot })
+                          setHoja({ tipo: 'registrar', meal: c.meal!, slot: c.planned.slot })
                         }
                       />
                     </li>
@@ -233,6 +242,27 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comida
               </p>
             </Card>
           )}
+        </section>
+      )}
+
+      {dia && (
+        <section className="mt-8">
+          <TituloSeccion>Qué me llevo</TituloSeccion>
+          <Card>
+            {app.packing.filter((item) => item.kind === 'meal').length ? (
+              <div className="space-y-3">
+                {app.packing.map((item) => (
+                  <button key={item.id} type="button" aria-pressed={item.done}
+                    onClick={() => app.checkPack(item.id)} className="flex w-full gap-3 text-left text-[14px] text-ink">
+                    <span aria-hidden>{item.done ? '☑' : '□'}</span>
+                    <span className={item.done ? 'line-through text-ink-faint' : ''}>
+                      {item.label}{item.hint && <small className="block text-ink-faint">{item.hint}</small>}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            ) : <p className="t-body text-ink-soft">Hoy no hay comidas del plan para guardar en la lonchera.</p>}
+          </Card>
         </section>
       )}
 

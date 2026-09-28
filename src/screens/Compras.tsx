@@ -55,7 +55,7 @@ export function Compras({ app }: { app: Vianda }) {
 
   const total = groups.reduce((n, g) => n + g.lines.length, 0)
   const done = groups.reduce(
-    (n, g) => n + g.lines.filter((l) => app.isBought(l.id)).length,
+    (n, g) => n + g.lines.filter((l) => app.isBought(l.id) || app.isOwned(l.id)).length,
     0,
   )
 
@@ -71,7 +71,7 @@ export function Compras({ app }: { app: Vianda }) {
         <header className="v-safe-top pt-5 pb-5">
           <h1 className="v-serif-lg text-[28px] text-ink">Compras</h1>
           <p className="v-label-sm mt-1.5 text-ink-faint">
-            {total} cosas para la semana · {done} en el changuito
+            {total} cosas para la semana · {done} resueltas
           </p>
         </header>
 
@@ -93,7 +93,7 @@ export function Compras({ app }: { app: Vianda }) {
         )}
 
         {groups.map((group, gi) => {
-          const gDone = group.lines.filter((l) => app.isBought(l.id)).length
+          const gDone = group.lines.filter((l) => app.isBought(l.id) || app.isOwned(l.id)).length
           return (
             <section key={group.aisle} className="mb-7">
               <div className="flex items-baseline justify-between border-b border-line px-1 pt-1 pb-1.5">
@@ -107,20 +107,19 @@ export function Compras({ app }: { app: Vianda }) {
 
               {group.lines.map((line, li) => {
                 const bought = app.isBought(line.id)
+                const owned = app.isOwned(line.id)
                 const priced = estimate.lines.find((x) => x.line.id === line.id)
                 return (
-                  <m.button
+                  <m.div
                     key={line.id}
-                    onClick={() => app.toggleBought(line.id)}
-                    aria-pressed={bought}
                     initial={{ opacity: 0, y: 4 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.012 * (gi * 6 + li) }}
-                    className="flex w-full items-center gap-3 rounded-xl border-b border-line px-1 py-2.5 text-left transition-colors active:bg-surface-2"
+                    className="flex w-full items-center gap-3 rounded-xl border-b border-line px-1 py-2.5 text-left transition-colors"
                   >
                     <span
                       className={`flex w-[82px] shrink-0 items-baseline gap-1 transition-colors ${
-                        bought ? 'text-ink-faint' : 'text-ink'
+                        bought || owned ? 'text-ink-faint' : 'text-ink'
                       }`}
                     >
                       <span className="v-head text-[17px] v-tnum">{line.value}</span>
@@ -130,29 +129,23 @@ export function Compras({ app }: { app: Vianda }) {
                     </span>
                     <span
                       className={`min-w-0 flex-1 text-[16px] transition-colors ${
-                        bought ? 'text-ink-faint line-through decoration-1' : 'text-ink-soft'
+                        bought || owned ? 'text-ink-faint line-through decoration-1' : 'text-ink-soft'
                       }`}
                     >
                       {line.label}
-                      {priced && !bought && (
+                      {priced && !bought && !owned && (
                         <span className="mt-0.5 block text-[12px] text-ink-faint v-tnum">
                           aprox. {money(priced.min)}–{money(priced.max)}
                         </span>
                       )}
                     </span>
-                    <span
-                      aria-hidden
-                      className={`grid size-[20px] shrink-0 place-items-center rounded-[6px] border transition-colors ${
-                        bought ? 'border-accent bg-accent text-accent-ink' : 'border-line-strong'
-                      }`}
-                    >
-                      {bought && (
-                        <svg viewBox="0 0 16 16" className="size-3" fill="none" aria-hidden>
-                          <path d="M3 8.5 6.2 11.6 13 4.8" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      )}
+                    <span className="flex shrink-0 gap-1">
+                      <button type="button" aria-pressed={owned} onClick={() => app.toggleOwned(line.id)}
+                        className={`rounded-md px-2 py-1 text-[11px] ${owned ? 'bg-accent text-accent-ink' : 'bg-surface-2 text-ink-soft'}`}>Tengo</button>
+                      <button type="button" aria-pressed={bought} onClick={() => app.toggleBought(line.id)}
+                        className={`rounded-md px-2 py-1 text-[11px] ${bought ? 'bg-accent text-accent-ink' : 'bg-surface-2 text-ink-soft'}`}>Compré</button>
                     </span>
-                  </m.button>
+                  </m.div>
                 )
               })}
             </section>

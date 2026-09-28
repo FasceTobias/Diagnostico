@@ -1,19 +1,19 @@
 import { useMemo, useState } from 'react'
 import { AnimatePresence, LazyMotion, domAnimation, m } from 'motion/react'
 import type { Vianda } from '../lib/store'
-import type { Category, Meal } from '../lib/types'
+import type { Meal, Slot } from '../lib/types'
+import { SLOT_CATEGORY, SLOT_LABEL, SLOT_ORDER } from '../lib/types'
 import { CarbValue, MetaLine } from '../components/ui'
 import { Sheet } from '../components/Sheet'
 import { MealDetail } from '../components/MealDetail'
 
-const CATEGORIES: (Category | 'todas')[] = ['todas', 'desayuno', 'snack', 'almuerzo', 'merienda', 'cena']
-const ORDER: Category[] = ['desayuno', 'snack', 'almuerzo', 'merienda', 'cena']
+const CATEGORIES: (Slot | 'todas')[] = ['todas', ...SLOT_ORDER]
 
 const normalizar = (value: string) =>
   value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim()
 
 export function Comidas({ app }: { app: Vianda }) {
-  const [cat, setCat] = useState<Category | 'todas'>('todas')
+  const [cat, setCat] = useState<Slot | 'todas'>('todas')
   const [portable, setPortable] = useState(false)
   const [outside, setOutside] = useState<'todas' | 'casa' | 'afuera'>('todas')
   const [query, setQuery] = useState('')
@@ -22,7 +22,7 @@ export function Comidas({ app }: { app: Vianda }) {
   const groups = useMemo(() => {
     const q = normalizar(query)
     const list = app.meals
-      .filter((m) => (cat === 'todas' ? true : m.category === cat))
+      .filter((m) => (cat === 'todas' ? true : m.momentos?.includes(SLOT_CATEGORY[cat])))
       .filter((m) => (portable ? m.portable : true))
       .filter((m) => outside === 'todas' ? true : outside === 'afuera' ? m.buyOutside : !m.buyOutside)
       .filter((m) => {
@@ -31,7 +31,15 @@ export function Comidas({ app }: { app: Vianda }) {
       })
       .sort((a, b) => Number(b.favorite) - Number(a.favorite) || Number(b.everyday) - Number(a.everyday) || a.name.localeCompare(b.name))
 
-    return ORDER.map((c) => ({ category: c, meals: list.filter((m) => m.category === c) })).filter((g) => g.meals.length > 0)
+    return (cat === 'todas' ? SLOT_ORDER : [cat]).map((slot) => ({
+      category: slot,
+      meals: list.filter((m) => {
+        if (!m.momentos?.includes(SLOT_CATEGORY[slot])) return false
+        if (cat !== 'todas') return true
+        if (m.category === 'snack') return slot === (app.meals.indexOf(m) % 2 ? 'snack_pm' : 'snack_am')
+        return SLOT_ORDER.find((s) => m.momentos?.includes(SLOT_CATEGORY[s])) === slot
+      }),
+    })).filter((g) => g.meals.length > 0)
   }, [app.meals, cat, portable, outside, query])
 
   const count = groups.reduce((n, g) => n + g.meals.length, 0)
@@ -67,7 +75,7 @@ export function Comidas({ app }: { app: Vianda }) {
                 c === cat ? 'bg-accent text-accent-ink' : 'bg-surface-2 text-ink-soft active:bg-surface'
               }`}
             >
-              {c}
+              {c === 'todas' ? 'Todas' : SLOT_LABEL[c]}
             </button>
           ))}
         </div>
@@ -91,7 +99,7 @@ export function Comidas({ app }: { app: Vianda }) {
               className="mt-6"
             >
               <div className="flex items-baseline justify-between gap-3 border-b border-line px-1 pb-1.5">
-                <h2 className="v-serif text-[18px] text-ink first-letter:uppercase">{group.category}</h2>
+                <h2 className="v-serif text-[18px] text-ink first-letter:uppercase">{SLOT_LABEL[group.category]}</h2>
                 <span className="v-label-sm text-ink-faint">
                   {group.meals.length}{app.perfil.contarCarbos ? ' · g CHO' : ''}
                 </span>

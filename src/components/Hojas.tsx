@@ -64,8 +64,8 @@ export function Hojas({
       marcada como comida. */
   const poner = (slot: Slot, meal: Meal, comida: boolean) => {
     if (!dia) return
-    app.replaceMeal(dia.date, slot, meal.id)
-    if (comida) app.setStatus(dia.date, slot, 'eaten')
+    if (comida) app.recordReplacement(dia.date, slot, meal.id)
+    else app.replaceMeal(dia.date, slot, meal.id)
     setHoja(null)
   }
 
