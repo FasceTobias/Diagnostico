@@ -27,7 +27,7 @@ const esquemas = [
   ['no-seguro', 'No estoy seguro/a'],
 ] as const
 
-export function Perfil({ app }: { app: Vianda }) {
+export function Perfil({ app, onGuia }: { app: Vianda; onGuia: () => void }) {
   const cuenta = useSession()
   const [cuentaAbierta, setCuentaAbierta] = useState(false)
   const [privacidadAbierta, setPrivacidadAbierta] = useState(false)
@@ -182,7 +182,9 @@ export function Perfil({ app }: { app: Vianda }) {
       <section className="mt-8">
         <TituloSeccion>Configuración inicial</TituloSeccion>
         <Card>
-          <p className="text-[15px] leading-relaxed text-ink-soft">
+          <p className="text-[16px] font-semibold text-ink">¿Necesitás ayuda para usar Vianda?</p>
+          <button onClick={onGuia} className="mt-3 min-h-[52px] w-full rounded-xl bg-accent px-4 text-[16px] font-semibold text-white">Ver guía paso a paso</button>
+          <p className="mt-5 text-[15px] leading-relaxed text-ink-soft">
             Podés volver a recorrer la presentación para cambiar datos básicos sin borrar tu semana.
           </p>
           <button

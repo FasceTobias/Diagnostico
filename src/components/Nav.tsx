@@ -12,7 +12,7 @@ import type { IconName } from './tokens'
    hacía parecer pegada encima de la pantalla; la línea la integra.
    ------------------------------------------------------------------ */
 
-export type Tab = 'inicio' | 'hoy' | 'semana' | 'comidas' | 'compras' | 'perfil'
+export type Tab = 'inicio' | 'hoy' | 'semana' | 'comidas' | 'compras' | 'perfil' | 'guia'
 
 const DESTINOS: { id: Tab; label: string; icono: IconName }[] = [
   { id: 'inicio', label: 'Inicio', icono: 'inicio' },
@@ -39,7 +39,7 @@ export function Nav({ tab, onTab }: { tab: Tab; onTab: (t: Tab) => void }) {
                 }`}
               >
                 <Icono name={d.icono} size={21} strokeWidth={activo ? 1.9 : 1.6} />
-                <span className={`text-[10.5px] ${activo ? 'font-semibold' : 'font-medium'}`}>
+                <span className={`text-[12px] ${activo ? 'font-semibold' : 'font-medium'}`}>
                   {d.label}
                 </span>
               </button>

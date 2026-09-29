@@ -7,6 +7,7 @@ import { Compras } from './screens/Compras'
 import { Onboarding } from './screens/Onboarding'
 import { Perfil } from './screens/Perfil'
 import { Semana } from './screens/Semana'
+import { Guia } from './screens/Guia'
 import { Nav, type Tab } from './components/Nav'
 
 /* Router propio: cinco pantallas no justifican una dependencia.
@@ -51,7 +52,7 @@ export default function App() {
      antes que cualquier otra cosa: no tiene sentido explicar la app por
      encima de la app. */
   if (!app.perfil.listo && !saltado) {
-    return <Onboarding app={app} onSalir={() => setSaltado(true)} />
+    return <Onboarding app={app} onSalir={(verGuia) => { setSaltado(true); if (verGuia) setTab('guia') }} />
   }
 
   return (
@@ -59,9 +60,10 @@ export default function App() {
       {tab === 'inicio' && <Inicio app={app} onIr={setTab} />}
       {tab === 'hoy' && <Hoy app={app} />}
       {tab === 'semana' && <Semana app={app} onVolver={() => setTab('inicio')} />}
+      {tab === 'guia' && <Guia onIr={setTab} />}
       {tab === 'comidas' && <Comidas app={app} />}
       {tab === 'compras' && <Compras app={app} />}
-      {tab === 'perfil' && <Perfil app={app} />}
+      {tab === 'perfil' && <Perfil app={app} onGuia={() => setTab('guia')} />}
       <Nav tab={tab} onTab={setTab} />
     </div>
   )

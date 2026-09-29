@@ -7,7 +7,7 @@ import { PrivacySheet } from '../components/PrivacySheet'
 
 const PASOS = 9
 
-export function Onboarding({ app, onSalir }: { app: Vianda; onSalir: () => void }) {
+export function Onboarding({ app, onSalir }: { app: Vianda; onSalir: (verGuia: boolean) => void }) {
   const [paso, setPaso] = useState(app.perfil.paso || 0)
   const [perfil, setPerfilLocal] = useState<Perfil>(app.perfil)
   const [privacidadAbierta, setPrivacidadAbierta] = useState(false)
@@ -32,12 +32,12 @@ export function Onboarding({ app, onSalir }: { app: Vianda; onSalir: () => void 
 
   const terminar = () => {
     guardar({ ...perfil, paso: PASOS, listo: true })
-    onSalir()
+    onSalir(true)
   }
 
   const saltear = () => {
     guardar({ ...perfil, listo: true })
-    onSalir()
+    onSalir(false)
   }
 
   return (
@@ -88,7 +88,7 @@ export function Onboarding({ app, onSalir }: { app: Vianda; onSalir: () => void 
             onClick={avanzar}
             className="v-label min-h-[52px] w-full rounded-xl bg-accent text-[15px] font-semibold text-accent-ink transition-transform duration-150 active:scale-[0.98]"
           >
-            {paso === 0 ? 'Empezar' : paso === PASOS - 1 ? 'Ver mi semana' : 'Seguir'}
+            {paso === 0 ? 'Empezar' : paso === PASOS - 1 ? 'Aprender a usar Vianda' : 'Seguir'}
           </button>
           {paso > 0 && (
             <button onClick={volver} className="v-label mt-3 min-h-[44px] w-full text-ink-faint">
@@ -313,7 +313,7 @@ function Final({ perfil }: { perfil: Perfil }) {
   return (
     <>
       <Titulo>{nombre ? `Listo, ${nombre}.` : 'Listo.'}</Titulo>
-      <Bajada>Tu semana ya está armada. Entrá, mirá qué toca y cambiá sólo lo que no te cierre.</Bajada>
+      <Bajada>Tu semana ya está armada. Ahora te mostramos cómo mirar el plan, registrar comidas y preparar lo que vas a llevar. Podés saltear la guía cuando quieras.</Bajada>
       <div className="mt-8 border-t border-line">
         {[
           ['HOY', 'Qué toca ahora, qué sigue y qué conviene dejar listo para después.'],

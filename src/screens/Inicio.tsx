@@ -157,7 +157,10 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: Tab) => void })
   return (
     <div className="mx-auto max-w-md px-5 pb-28">
       <header className="v-safe-top pt-6 pb-5">
-        <h1 className="t-title text-ink">{nombre ? `Hola, ${nombre}` : 'Hola'}</h1>
+        <div className="flex items-start justify-between gap-3">
+          <h1 className="t-title text-ink">{nombre ? `Hola, ${nombre}` : 'Hola'}</h1>
+          <button onClick={() => onIr('guia')} className="min-h-[44px] shrink-0 rounded-xl border border-line px-3 text-[15px] font-semibold text-ink">¿Cómo se usa?</button>
+        </div>
         <p className="t-meta mt-1 text-ink-faint">{fechaLarga(hoy)}</p>
       </header>
 
