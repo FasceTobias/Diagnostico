@@ -54,7 +54,7 @@ export function Perfil({ app }: { app: Vianda }) {
       <header className="v-safe-top pt-6 pb-5">
         <h1 className="t-title text-ink">Perfil</h1>
         <p className="mt-1 text-[15px] leading-relaxed text-ink-soft">
-          Tus datos, tus horarios y la cuenta que mantiene todo sincronizado.
+          Tus datos, tus horarios y cómo cuidarlos.
         </p>
       </header>
 

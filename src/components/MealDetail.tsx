@@ -75,7 +75,9 @@ export function MealDetail({ meal }: { meal: Meal }) {
           <span className="text-ink">Carbohidratos sin verificar.</span>{' '}
           {meal.isDemo
             ? 'Es un valor de demostración, no medido contra nada. No lo uses para decidir.'
-            : 'Está calculado sobre una porción estándar, no medido contra una etiqueta. Sirve para orientarte; si vas a ajustar fino, mirá el envase.'}
+            : meal.origen === 'casera'
+              ? 'Es una estimación a partir de ingredientes y cantidades, dividida por porciones. Puede variar según lo que uses y cuánto sirvas.'
+              : 'Es una estimación para la porción indicada. En productos envasados, comparala con la etiqueta del envase que compres.'}
         </p>
       )}
 
@@ -328,11 +330,6 @@ function Recipe({ steps, minutes }: { steps: Step[]; minutes: number }) {
         </button>
       )}
 
-      <p className="mt-2.5 text-[13px] leading-relaxed text-ink-faint">
-        {full
-          ? 'La receta entera. Los tiempos se solapan: el horno calienta mientras cortás.'
-          : 'Los tiempos se solapan: el horno calienta mientras cortás.'}
-      </p>
     </LazyMotion>
   )
 }
