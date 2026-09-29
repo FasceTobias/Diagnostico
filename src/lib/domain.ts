@@ -57,7 +57,7 @@ export interface SlotNeed {
 const PORTABLE_BY_CONTEXT: Record<DayContext, Slot[]> = {
   casa: [],
   mixto: ['breakfast', 'snack_am', 'lunch', 'snack_pm'],
-  calle: ['breakfast', 'snack_am', 'lunch', 'snack_pm', 'merienda'],
+  calle: ['breakfast', 'snack_am', 'lunch', 'snack_pm', 'merienda', 'dinner'],
 }
 
 const SATIETY_BY_CONTEXT: Record<DayContext, Partial<Record<Slot, Satiety>>> = {
@@ -110,6 +110,10 @@ export interface RotationContext {
   maxActiveMinutes?: number
   /** Preferencias del usuario. Hoy sólo desempata; mañana va a pesar más. */
   prefs?: Preferences
+  /** Sólo una preparación de más de 30 minutos en el plan generado. */
+  allowLong?: boolean
+  /** Una compra resuelta afuera por día, como alternativa real al tupper. */
+  allowOutside?: boolean
 }
 
 /** Candidatos que efectivamente sirven para este slot, en orden de prioridad. */
@@ -118,18 +122,18 @@ export const candidatesFor = (
   context: DayContext,
   meals: Meal[],
   maxActiveMinutes?: number,
+  opts: { allowLong?: boolean; allowOutside?: boolean } = {},
 ): Meal[] => {
   const need = needsFor(slot, context)
 
   // 1. Momento del día. Este sí es infranqueable: una cena no es un desayuno.
-  //    Lo comprable afuera queda fuera del plan: el martes no puede decirte
-  //    "comprá empanadas". Aparece sólo desde «Resolver ahora».
+  //    Lo comprable afuera puede resolver una comida de los días marcados.
   const sameMoment = meals.filter(
     (m) =>
       /* Una entrada puede servir para varios momentos: el tostado es
          desayuno, merienda y snack sin ser tres entradas distintas. */
       (m.momentos ? m.momentos.includes(need.category) : m.category === need.category) &&
-      !m.buyOutside &&
+      (!m.buyOutside || (context !== 'casa' && opts.allowOutside === true)) &&
       /* Las bebidas acompañan o se piden a mano. El plan no decide que
          tu merienda es un café. */
       !m.esBebida,
@@ -142,7 +146,11 @@ export const candidatesFor = (
     : sameMoment
 
   // 3. Transportabilidad, cuando el contexto la exige.
-  if (need.requirePortable) pool = narrow(pool, (m) => m.portable)
+  if (need.requirePortable) pool = pool.filter((m) => m.portable || m.buyOutside)
+
+  // Un día afuera nunca puede planificar algo que sólo se cocina en casa.
+  // Para la semana habitual, 30 minutos son un tope real de reloj.
+  if (opts.allowLong === false) pool = pool.filter((m) => m.totalMinutes <= 30 || m.buyOutside)
 
   // 4. Disponibilidad: que entre en el tiempo que hay.
   if (maxActiveMinutes) pool = narrow(pool, (m) => m.activeMinutes <= maxActiveMinutes)
@@ -176,6 +184,13 @@ const preferenceScore = (
      lo de receta de internet y lo de dieta específica sigue disponible,
      pero no es el default: pierde prioridad, no desaparece. */
   score += meal.everyday ? 14 : -22
+  if (meal.totalMinutes <= 15) score += 18
+  else if (meal.totalMinutes <= 30) score += 10
+  else score -= 28
+  if (meal.prepType === 'ready' || meal.prepType === 'assemble') score += 8
+  if (meal.buyOutside) score -= 12
+  if (meal.portable && meal.makeNightBefore) score += 8
+  if (meal.needsReheat) score -= 7
 
   /* Una entrada del catálogo real le gana a una de ejemplo. No por
      calidad de la comida: porque su número salió de una porción
@@ -226,7 +241,7 @@ export const pickForSlot = (
   meals: Meal[],
   ctx: RotationContext,
 ): Meal | undefined => {
-  const all = candidatesFor(slot, context, meals, ctx.maxActiveMinutes)
+  const all = candidatesFor(slot, context, meals, ctx.maxActiveMinutes, { allowLong: ctx.allowLong, allowOutside: ctx.allowOutside })
   if (!all.length) return undefined
 
   // La misma comida dos veces en el mismo día no va. Los dos snacks son el
@@ -249,12 +264,17 @@ export const buildDayPlan = (
   history: string[][] = [],
   times: Record<Slot, string> = DEFAULT_TIMES,
   prefs?: Preferences,
+  allowLong = true,
 ): DayPlan => {
   const usedToday: Meal[] = []
   const planned: PlannedMeal[] = []
 
   for (const slot of SLOT_ORDER) {
-    const meal = pickForSlot(slot, context, meals, { recentByDay: history, usedToday, prefs })
+    const meal = pickForSlot(slot, context, meals, {
+      recentByDay: history, usedToday, prefs,
+      allowLong: allowLong && !usedToday.some((m) => m.totalMinutes > 30),
+      allowOutside: !usedToday.some((m) => m.buyOutside),
+    })
     if (!meal) continue
     usedToday.push(meal)
     planned.push({
@@ -275,11 +295,14 @@ export const buildWeek = (
   context: DayContext = 'mixto',
   times: Record<Slot, string> = DEFAULT_TIMES,
   prefs?: Preferences,
+  contexts?: Record<string, DayContext>,
 ): DayPlan[] => {
   const days: DayPlan[] = []
   const history: string[][] = []
   for (let i = 0; i < 7; i++) {
-    const day = buildDayPlan(addDays(start, i), meals, context, history, times, prefs)
+    const date = addDays(start, i)
+    const day = buildDayPlan(date, meals, contexts?.[isoDate(date)] ?? context, history, times, prefs,
+      !days.some((d) => d.meals.some((p) => (meals.find((m) => m.id === p.mealId)?.totalMinutes ?? 0) > 30)))
     history.unshift(day.meals.map((m) => m.mealId))
     days.push(day)
   }
@@ -306,6 +329,8 @@ export const reflowDay = (
       recentByDay: history,
       usedToday,
       prefs,
+      allowLong: false,
+      allowOutside: !usedToday.some((m) => m.buyOutside),
     })
     if (!meal) return planned
     usedToday.push(meal)
@@ -480,13 +505,25 @@ export const packListFor = (day: DayPlan, meals: Meal[]): PackItem[] => {
   const fromMeals: PackItem[] = activeMeals(day, meals)
     .filter(({ planned, meal }) =>
       day.context !== 'casa' &&
-      ['snack_am', 'lunch', 'snack_pm', 'merienda'].includes(planned.slot) &&
+      (day.context === 'calle' || ['breakfast', 'snack_am', 'lunch', 'snack_pm'].includes(planned.slot)) &&
       meal.portable && !meal.buyOutside)
     .map(({ planned, meal }) => ({
       id: `pack-${planned.slot}`,
       label: `${SLOT_LABEL[planned.slot]} · ${meal.name}`,
       kind: 'meal' as const,
       hint: `${planned.time}${meal.needsCold ? ' · Guardar con frío' : ''}${meal.makeNightBefore ? ' · Preparar la noche anterior' : ''}`,
+      mealId: meal.id,
+      done: false,
+    }))
+
+  const buyOutside: PackItem[] = activeMeals(day, meals)
+    .filter(({ planned, meal }) => day.context !== 'casa' &&
+      ['breakfast', 'snack_am', 'lunch', 'snack_pm', 'merienda', 'dinner'].includes(planned.slot) && meal.buyOutside)
+    .map(({ planned, meal }) => ({
+      id: `buy-${planned.slot}`,
+      label: `${SLOT_LABEL[planned.slot]} · Comprar ${meal.name}`,
+      kind: 'buy' as const,
+      hint: `${planned.time} · ${meal.venues?.[0] ?? 'afuera'} · No va en la lonchera`,
       mealId: meal.id,
       done: false,
     }))
@@ -498,7 +535,7 @@ export const packListFor = (day: DayPlan, meals: Meal[]): PackItem[] => {
     { id: 'pack-servilletas', label: 'Servilletas', kind: 'gear', done: false },
   ] : []
 
-  if (fromMeals.some((m) => m.hint)) {
+  if (fromMeals.some((m) => m.hint?.includes('Guardar con frío'))) {
     gear.unshift({
       id: 'pack-refrigerante',
       label: 'Refrigerante de la mochila térmica',
@@ -508,7 +545,7 @@ export const packListFor = (day: DayPlan, meals: Meal[]): PackItem[] => {
     })
   }
 
-  return [...fromMeals, ...gear]
+  return [...fromMeals, ...buyOutside, ...gear]
 }
 
 /* ------------------------------------------------------------------

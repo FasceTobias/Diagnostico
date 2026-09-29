@@ -14,13 +14,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan; distribuí queso untable en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Serví sobre el pan tostado. Si lo llevás, guardalo tapado y con frío."
       }
     ]
   },
@@ -39,13 +39,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan; distribuí manteca, mermelada sin azúcar en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Serví sobre el pan tostado. Consumí recién armado para conservar la textura."
       }
     ]
   },
@@ -64,13 +64,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan; distribuí dulce de leche en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Serví sobre el pan tostado. Consumí recién armado para conservar la textura."
       }
     ]
   },
@@ -89,13 +89,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan; distribuí jamón, queso en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Cerrá el sándwich y cortalo en porciones. Si lo llevás, guardalo tapado y con frío."
       }
     ]
   },
@@ -114,16 +114,16 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Cociná los huevos completamente y dejá enfriar si lo vas a llevar."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan; distribuí huevo, queso en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Serví sobre el pan tostado. Si lo llevás, guardalo tapado y con frío."
       }
     ]
   },
@@ -142,7 +142,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Poné los huevos en agua fría, llevá a hervor y cociná 10 min. Enfriá bajo agua y pelá."
@@ -167,13 +167,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí los ingredientes. Lavá banana y cortá en cubos chicos."
       },
       {
-        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+        "text": "Dividí yogur natural, granola, banana en 1 porción; combiná al servir."
       },
       {
-        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+        "text": "Guardá en heladera en recipiente cerrado y transportá con frío."
       }
     ]
   },
@@ -192,13 +192,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan; distribuí queso en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Cerrá el sándwich y cortalo en porciones. Si lo llevás, guardalo tapado y con frío."
       }
     ]
   },
@@ -217,13 +217,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+        "text": "Dividí granola, leche en 1 porción; combiná al servir."
       },
       {
-        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+        "text": "Guardá en heladera en recipiente cerrado y transportá con frío."
       }
     ]
   },
@@ -242,7 +242,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Precalentá el horno a 180 °C y forrá un molde de budín o moldes individuales."
@@ -273,13 +273,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí los ingredientes. Lavá palta y picá fino."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan; distribuí palta en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Serví sobre el pan tostado. Consumí recién armado para conservar la textura."
       }
     ]
   },
@@ -298,13 +298,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí los ingredientes. Lavá banana y cortá en cubos chicos."
       },
       {
-        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+        "text": "Dividí avena, yogur natural, leche, banana, nuez, canela en 1 porción; combiná al servir."
       },
       {
-        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+        "text": "Guardá en heladera en recipiente cerrado y transportá con frío."
       }
     ]
   },
@@ -323,16 +323,16 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí los ingredientes. Lavá palta y picá fino."
       },
       {
         "text": "Cociná los huevos completamente y dejá enfriar si lo vas a llevar."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan; distribuí palta, huevo, aceite, sal en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Serví sobre el pan tostado. Si lo llevás, guardalo tapado y con frío."
       }
     ]
   },
@@ -351,16 +351,16 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá papa cuando corresponda."
+        "text": "Medí los ingredientes. Lavá papa y cortá en cubos chicos."
       },
       {
         "text": "Cociná los huevos completamente y dejá enfriar si lo vas a llevar."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan; distribuí papa, huevo en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Cerrá el sándwich y cortalo en porciones. Si lo llevás, guardalo tapado y con frío."
       }
     ]
   },
@@ -379,13 +379,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+        "text": "Dividí galletitas de agua, queso en 1 porción; combiná al servir."
       },
       {
-        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+        "text": "Guardá en heladera en recipiente cerrado y transportá con frío."
       }
     ]
   },
@@ -404,13 +404,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+        "text": "Dividí queso en 1 porción; combiná al servir."
       },
       {
-        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+        "text": "Guardá en heladera en recipiente cerrado y transportá con frío."
       }
     ]
   },
@@ -429,7 +429,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Poné los huevos en agua fría, llevá a hervor y cociná 10 min. Enfriá bajo agua y pelá."
@@ -454,13 +454,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan; distribuí jamón, queso en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Cerrá el sándwich y cortalo en porciones. Si lo llevás, guardalo tapado y con frío."
       }
     ]
   },
@@ -479,13 +479,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+        "text": "Dividí galletas de arroz, queso untable en 1 porción; combiná al servir."
       },
       {
-        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+        "text": "Guardá en heladera en recipiente cerrado y transportá con frío."
       }
     ]
   },
@@ -504,7 +504,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Calentá aceite medido en olla con tapa y agregá los granos en una sola capa."
@@ -532,10 +532,10 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí los ingredientes. Lavá manzana y cortá en cubos chicos; Lavá banana y cortá en cubos chicos; Lavá frutilla y picá fino."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Lavá y cortá manzana, banana, frutilla y mezclá los ingredientes; sumá los ingredientes restantes al final."
       },
       {
         "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
@@ -557,7 +557,7 @@
     "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá papa cuando corresponda."
+        "text": "Medí los ingredientes. Lavá papa y cortá en cubos chicos."
       },
       {
         "text": "Calentá el horno a 200 °C. Acomodá las milanesas ya empanadas en placa apenas aceitada."
@@ -585,7 +585,7 @@
     "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá papa cuando corresponda."
+        "text": "Medí los ingredientes. Lavá papa y cortá en cubos chicos."
       },
       {
         "text": "Calentá el horno a 200 °C. Acomodá las milanesas ya empanadas en placa apenas aceitada."
@@ -613,7 +613,7 @@
     "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá papa cuando corresponda."
+        "text": "Medí los ingredientes. Lavá papa y cortá en cubos chicos."
       },
       {
         "text": "Prepará papa en trozos parejos y precalentá el horno a 200 °C."
@@ -622,10 +622,10 @@
         "text": "Distribuí pollo y las verduras en fuente sin amontonar."
       },
       {
-        "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
+        "text": "Horneá a 200 °C hasta que pollo esté completamente cocido y las verduras tiernas; controlá desde los 25 minutos."
       },
       {
-        "text": "Dividí en porciones iguales antes de guardar o servir."
+        "text": "Dividí en 1 porción antes de guardar o servir."
       }
     ]
   },
@@ -644,7 +644,7 @@
     "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Herví la pasta en abundante agua según el paquete y reservá media taza del agua de cocción."
@@ -672,7 +672,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Herví la pasta en abundante agua según el paquete y reservá media taza del agua de cocción."
@@ -700,7 +700,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Herví la pasta en abundante agua según el paquete y reservá media taza del agua de cocción."
@@ -728,10 +728,10 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá morrón cuando corresponda."
+        "text": "Medí los ingredientes. Lavá morrón y picá fino."
       },
       {
-        "text": "Rehogá morrón 5 min en olla amplia; dorá pollo si corresponde."
+        "text": "Rehogá morrón 5 min en olla amplia; dorá el pollo hasta que tome color."
       },
       {
         "text": "Sumá arroz,  agua suficiente para apenas cubrir."
@@ -759,7 +759,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá papa, cebolla cuando corresponda."
+        "text": "Medí los ingredientes. Lavá papa y cortá en cubos chicos; Lavá cebolla y picá fino."
       },
       {
         "text": "Cociná papa, cebolla hasta que estén tiernas; escurrí el líquido si lo hay."
@@ -787,7 +787,7 @@
     "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá cebolla cuando corresponda."
+        "text": "Medí los ingredientes. Lavá cebolla y picá fino."
       },
       {
         "text": "Cociná la cebolla y el relleno en sartén hasta que no quede líquido; dejá enfriar antes de armar."
@@ -815,13 +815,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá papa, tomate cuando corresponda."
+        "text": "Medí los ingredientes. Lavá papa y cortá en cubos chicos; Lavá lechuga y picá fino; Lavá tomate y cortá en cubos chicos."
       },
       {
-        "text": "Cociná papa por separado hasta que esté listo; enfriá rápidamente."
+        "text": "Herví la papa en cubos hasta que esté tierna; enfriá rápidamente."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Lavá y cortá papa, lechuga, tomate y mezclá los ingredientes; sumá aceite al final."
       },
       {
         "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
@@ -843,7 +843,7 @@
     "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá papa, cebolla cuando corresponda."
+        "text": "Medí los ingredientes. Lavá papa y cortá en cubos chicos; Lavá cebolla y picá fino."
       },
       {
         "text": "Cociná el relleno con cebolla hasta que no quede líquido; ablandá la cobertura de papa, calabaza o berenjena."
@@ -871,7 +871,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+        "text": "Medí los ingredientes. Lavá tomate y cortá en cubos chicos; Lavá lechuga y picá fino."
       },
       {
         "text": "Calentá el horno a 200 °C. Acomodá las milanesas ya empanadas en placa apenas aceitada."
@@ -899,7 +899,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá acelga cuando corresponda."
+        "text": "Medí los ingredientes. Lavá acelga y picá fino."
       },
       {
         "text": "Rehogá acelga y escurrilo; dejá entibiar."
@@ -930,7 +930,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí los ingredientes. Lavá choclo y picá fino."
       },
       {
         "text": "Herví el arroz en agua hasta que esté tierno; escurrí y enfriá si se comerá frío."
@@ -955,10 +955,10 @@
     "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá papa, zanahoria, cebolla cuando corresponda."
+        "text": "Medí los ingredientes. Lavá papa y cortá en cubos chicos; Lavá zanahoria y cortá en cubos chicos; Lavá cebolla y picá fino."
       },
       {
-        "text": "Rehogá papa, zanahoria, cebolla 5 min en olla amplia; dorá el relleno si corresponde."
+        "text": "Rehogá papa, zanahoria, cebolla 5 min en olla amplia; incorporá garbanzos cocidos."
       },
       {
         "text": "Sumá papa,  agua suficiente para apenas cubrir."
@@ -986,16 +986,16 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+        "text": "Medí los ingredientes. Lavá tomate y cortá en cubos chicos; Lavá palta y picá fino."
       },
       {
         "text": "Cociná los huevos completamente y dejá enfriar si lo vas a llevar."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan; distribuí huevo, queso, tomate, palta, sal en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Cerrá el sándwich y cortalo en porciones. Si lo llevás, guardalo tapado y con frío."
       }
     ]
   },
@@ -1014,10 +1014,10 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá zanahoria, tomate cuando corresponda."
+        "text": "Medí los ingredientes. Lavá zanahoria y cortá en cubos chicos; Lavá tomate y cortá en cubos chicos."
       },
       {
-        "text": "Cociná pollo hasta que esté listo; cortá las verduras finas."
+        "text": "Cortá zanahoria, tomate fino y cociná pollo en sartén hasta que esté completamente cocido."
       },
       {
         "text": "Calentá las tortillas 30 segundos por lado sin resecar; distribuí el relleno medido."
@@ -1042,13 +1042,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+        "text": "Medí los ingredientes. Lavá tomate y cortá en cubos chicos; Lavá palta y picá fino; Lavá limón y picá fino."
       },
       {
-        "text": "Cociná los huevos por separado hasta que esté listo; enfriá rápidamente."
+        "text": "Herví los huevos 10 minutos; enfriá rápidamente."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Lavá y cortá tomate, palta, limón y mezclá los ingredientes; sumá limón y aceite de oliva al final."
       },
       {
         "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
@@ -1070,13 +1070,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará galletitas dulces, yerba en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Serví recién preparado."
       }
     ]
   },
@@ -1095,13 +1095,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí los ingredientes. Lavá frutilla y picá fino."
       },
       {
-        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+        "text": "Dividí yogur natural, frutilla en 1 porción; combiná al servir."
       },
       {
-        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+        "text": "Guardá en heladera en recipiente cerrado y transportá con frío."
       }
     ]
   },
@@ -1120,13 +1120,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan; distribuí mermelada sin azúcar en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Serví sobre el pan tostado. Consumí recién armado para conservar la textura."
       }
     ]
   },
@@ -1145,7 +1145,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Batí huevos, leche y harina hasta lograr una mezcla fluida sin grumos; dejá reposar 5 min."
@@ -1154,7 +1154,7 @@
         "text": "Verté una capa fina en sartén apenas aceitada y cociná 1–2 min de cada lado."
       },
       {
-        "text": "Prepará la fruta o el relleno y distribuí parejo sobre los panqueques terminados."
+        "text": "Cortá el relleno y repartí con los demás ingredientes sobre los panqueques."
       }
     ]
   },
@@ -1173,13 +1173,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan; distribuí queso en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Serví sobre el pan tostado. Si lo llevás, guardalo tapado y con frío."
       }
     ]
   },
@@ -1198,13 +1198,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí los ingredientes. Lavá banana y cortá en cubos chicos."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará banana, leche en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Refrigerá lo que no consumas enseguida."
       }
     ]
   },
@@ -1223,13 +1223,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+        "text": "Medí los ingredientes. Lavá tomate y cortá en cubos chicos."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará pan, queso, tomate en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Serví recién preparado."
       }
     ]
   },
@@ -1248,13 +1248,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+        "text": "Dividí queso, mermelada sin azúcar en 1 porción; combiná al servir."
       },
       {
-        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+        "text": "Guardá en heladera en recipiente cerrado y transportá con frío."
       }
     ]
   },
@@ -1273,7 +1273,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Precalentá el horno fuerte a 220 °C con la placa adentro."
@@ -1301,10 +1301,10 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá papa cuando corresponda."
+        "text": "Medí los ingredientes. Lavá papa y cortá en cubos chicos."
       },
       {
-        "text": "Pisá las legumbres o picá la carne; mezclá con verduras cocidas, huevo y pan rallado según la lista."
+        "text": "Pisá o picá carne picada; mezclá con pan de hamburguesa, papa, queso y formá medallones parejos."
       },
       {
         "text": "Formá medallones iguales y dejalos 10 min en heladera para que mantengan la forma."
@@ -1329,7 +1329,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Rehogá el relleno y escurrilo; dejá entibiar."
@@ -1360,19 +1360,19 @@
     "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza cuando corresponda."
+        "text": "Medí los ingredientes. Lavá calabaza y cortá en cubos chicos."
       },
       {
         "text": "Prepará calabaza en trozos parejos y precalentá el horno a 200 °C."
       },
       {
-        "text": "Distribuí el ingrediente principal y las verduras en fuente sin amontonar."
+        "text": "Distribuí vacío, calabaza en una fuente sin amontonar."
       },
       {
-        "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
+        "text": "Horneá a 200 °C hasta que vacío esté completamente cocido y las verduras tiernas; controlá desde los 25 minutos."
       },
       {
-        "text": "Dividí en porciones iguales antes de guardar o servir."
+        "text": "Dividí en 1 porción antes de guardar o servir."
       }
     ]
   },
@@ -1391,7 +1391,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+        "text": "Medí los ingredientes. Lavá lechuga y picá fino; Lavá tomate y cortá en cubos chicos."
       },
       {
         "text": "Calentá bien la parrilla o plancha. Cociná la carne o chorizo de ambos lados hasta que esté bien cocido."
@@ -1416,7 +1416,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá zapallito, cebolla cuando corresponda."
+        "text": "Medí los ingredientes. Lavá zapallito y cortá en cubos chicos; Lavá cebolla y picá fino."
       },
       {
         "text": "Cociná zapallito, cebolla hasta que estén tiernas; escurrí el líquido si lo hay."
@@ -1444,7 +1444,7 @@
     "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza, cebolla cuando corresponda."
+        "text": "Medí los ingredientes. Lavá calabaza y cortá en cubos chicos; Lavá cebolla y picá fino."
       },
       {
         "text": "Rehogá la cebolla 4 min. Sumá las demás verduras y agua hasta apenas cubrir."
@@ -1472,7 +1472,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Batí los huevos. Volcá en sartén antiadherente caliente y cociná 2–3 min a fuego medio."
@@ -1497,13 +1497,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+        "text": "Dividí queso, jamón, pan en 1 porción; combiná al servir."
       },
       {
-        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+        "text": "Guardá en heladera en recipiente cerrado y transportá con frío."
       }
     ]
   },
@@ -1522,13 +1522,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá papa cuando corresponda."
+        "text": "Medí los ingredientes. Lavá papa y cortá en cubos chicos; Lavá lechuga y picá fino."
       },
       {
-        "text": "Cociná papa por separado hasta que esté listo; enfriá rápidamente."
+        "text": "Herví la papa en cubos hasta que esté tierna; enfriá rápidamente."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Lavá y cortá papa, lechuga y mezclá los ingredientes; sumá los ingredientes restantes al final."
       },
       {
         "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
@@ -1550,16 +1550,16 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Cociná los huevos completamente y dejá enfriar si lo vas a llevar."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan; distribuí huevo, jamón, queso en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Cerrá el sándwich y cortalo en porciones. Si lo llevás, guardalo tapado y con frío."
       }
     ]
   },
@@ -1578,7 +1578,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Herví la pasta en abundante agua según el paquete y reservá media taza del agua de cocción."
@@ -1606,13 +1606,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+        "text": "Medí los ingredientes. Lavá tomate y cortá en cubos chicos."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará tomate, muzzarella, pan en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Serví recién preparado."
       }
     ]
   },
@@ -1631,7 +1631,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Calentá bien la parrilla o plancha. Cociná la carne o chorizo de ambos lados hasta que esté bien cocido."
@@ -1656,7 +1656,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá espinaca cuando corresponda."
+        "text": "Medí los ingredientes. Lavá espinaca y picá fino."
       },
       {
         "text": "Cociná y escurrí bien la espinaca. Batí los huevos y mezclá con la harina, el queso y la verdura."
@@ -1684,7 +1684,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Calentá la leche sin hervir; batí huevos con azúcar y mezclá lentamente."
@@ -1712,7 +1712,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Poné la leche en una olla con el arroz y la canela; calentá hasta hervor suave."
@@ -1740,13 +1740,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará café en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Serví recién preparado."
       }
     ]
   },
@@ -1765,13 +1765,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará leche, café en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Refrigerá lo que no consumas enseguida."
       }
     ]
   },
@@ -1790,13 +1790,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará yerba en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Serví recién preparado."
       }
     ]
   },
@@ -1815,13 +1815,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará mate cocido en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Serví recién preparado."
       }
     ]
   },
@@ -1840,13 +1840,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará té en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Serví recién preparado."
       }
     ]
   },
@@ -1865,13 +1865,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí los ingredientes. Lavá limón y picá fino."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará limón en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Serví recién preparado."
       }
     ]
   },
@@ -1890,13 +1890,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+        "text": "Medí los ingredientes. Lavá tomate y cortá en cubos chicos."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará pan, queso, tomate en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Serví recién preparado."
       }
     ]
   },
@@ -1915,13 +1915,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+        "text": "Dividí yogur natural, avena en 1 porción; combiná al servir."
       },
       {
-        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+        "text": "Guardá en heladera en recipiente cerrado y transportá con frío."
       }
     ]
   },
@@ -1940,13 +1940,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí los ingredientes. Lavá banana y cortá en cubos chicos."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará banana, leche, avena en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Refrigerá lo que no consumas enseguida."
       }
     ]
   },
@@ -1965,13 +1965,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan; distribuí ricota, mermelada sin azúcar en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Serví sobre el pan tostado. Si lo llevás, guardalo tapado y con frío."
       }
     ]
   },
@@ -1990,7 +1990,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Calentá una sartén antiadherente con apenas aceite; cascá los huevos y cociná hasta que la clara esté firme."
@@ -2015,13 +2015,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan integral; distribuí queso untable en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Serví sobre el pan tostado. Si lo llevás, guardalo tapado y con frío."
       }
     ]
   },
@@ -2040,16 +2040,16 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí los ingredientes. Lavá lechuga y picá fino."
       },
       {
         "text": "Cociná los huevos completamente y dejá enfriar si lo vas a llevar."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan; distribuí huevo, mayonesa, lechuga, sal en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Cerrá el sándwich y cortalo en porciones. Si lo llevás, guardalo tapado y con frío."
       }
     ]
   },
@@ -2068,13 +2068,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará yerba, bizcochos en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Serví recién preparado."
       }
     ]
   },
@@ -2093,13 +2093,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará yerba, pan, manteca en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Serví recién preparado."
       }
     ]
   },
@@ -2118,13 +2118,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará té, galletitas dulces en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Serví recién preparado."
       }
     ]
   },
@@ -2143,13 +2143,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará café, galletitas de agua en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Serví recién preparado."
       }
     ]
   },
@@ -2168,13 +2168,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan; distribuí dulce de membrillo en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Serví sobre el pan tostado. Consumí recién armado para conservar la textura."
       }
     ]
   },
@@ -2193,13 +2193,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+        "text": "Dividí yogur saborizado sin azúcar, galletitas dulces en 1 porción; combiná al servir."
       },
       {
-        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+        "text": "Guardá en recipiente cerrado hasta consumir."
       }
     ]
   },
@@ -2218,13 +2218,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí los ingredientes. Lavá frutilla y picá fino."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará frutilla, leche en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Refrigerá lo que no consumas enseguida."
       }
     ]
   },
@@ -2243,7 +2243,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Uní harina, grasa y agua de a poco hasta formar una masa suave; reposá 15 min."
@@ -2268,7 +2268,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Precalentá el horno a 180 °C y forrá un molde de budín o moldes individuales."
@@ -2299,7 +2299,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí los ingredientes. Lavá banana y cortá en cubos chicos."
       },
       {
         "text": "Precalentá el horno a 180 °C. Mezclá ingredientes secos y luego los húmedos hasta formar masa."
@@ -2327,13 +2327,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará leche, chocolate en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Refrigerá lo que no consumas enseguida."
       }
     ]
   },
@@ -2352,7 +2352,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Precalentá el horno a 180 °C. Mezclá ingredientes secos y luego los húmedos hasta formar masa."
@@ -2380,13 +2380,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan; distribuí dulce de leche en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Serví sobre el pan tostado. Consumí recién armado para conservar la textura."
       }
     ]
   },
@@ -2405,13 +2405,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará yerba, nuez, almendra en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Serví recién preparado."
       }
     ]
   },
@@ -2430,13 +2430,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+        "text": "Dividí yogur natural, granola en 1 porción; combiná al servir."
       },
       {
-        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+        "text": "Guardá en heladera en recipiente cerrado y transportá con frío."
       }
     ]
   },
@@ -2455,13 +2455,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan de miga sólo si lo preferís; distribuí jamón, queso en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Cerrá el sándwich y cortalo en porciones. Si lo llevás, guardalo tapado y con frío."
       }
     ]
   },
@@ -2480,13 +2480,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí los ingredientes. Lavá manzana y cortá en cubos chicos."
       },
       {
-        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+        "text": "Dividí manzana, queso en 1 porción; combiná al servir."
       },
       {
-        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+        "text": "Guardá en heladera en recipiente cerrado y transportá con frío."
       }
     ]
   },
@@ -2505,7 +2505,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá papa cuando corresponda."
+        "text": "Medí los ingredientes. Lavá papa y cortá en cubos chicos; Lavá limón y picá fino."
       },
       {
         "text": "Prepará papa en trozos parejos y precalentá el horno a 200 °C."
@@ -2514,10 +2514,10 @@
         "text": "Distribuí merluza y las verduras en fuente sin amontonar."
       },
       {
-        "text": "Horneá 15–20 min (precociná la papa aparte si la hay), hasta que la proteína esté cocida y las verduras tiernas."
+        "text": "Horneá 15–20 min (herví la papa en cubos 10 minutos antes), hasta que merluza esté cocida y las verduras tiernas."
       },
       {
-        "text": "Dividí en porciones iguales antes de guardar o servir."
+        "text": "Dividí en 1 porción antes de guardar o servir."
       }
     ]
   },
@@ -2536,10 +2536,10 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá zanahoria cuando corresponda."
+        "text": "Medí los ingredientes. Lavá zanahoria y cortá en cubos chicos."
       },
       {
-        "text": "Rehogá zanahoria 5 min en olla amplia; dorá pollo si corresponde."
+        "text": "Rehogá zanahoria 5 min en olla amplia; dorá el pollo hasta que tome color."
       },
       {
         "text": "Sumá arroz,  agua suficiente para apenas cubrir."
@@ -2567,7 +2567,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Herví la pasta en abundante agua según el paquete y reservá media taza del agua de cocción."
@@ -2595,7 +2595,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Herví agua según las instrucciones de la polenta y agregala en forma de lluvia, revolviendo para que no queden grumos."
@@ -2620,10 +2620,10 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá papa, cebolla, zanahoria cuando corresponda."
+        "text": "Medí los ingredientes. Lavá papa y cortá en cubos chicos; Lavá cebolla y picá fino; Lavá zanahoria y cortá en cubos chicos."
       },
       {
-        "text": "Rehogá papa, cebolla, zanahoria 5 min en olla amplia; dorá el relleno si corresponde."
+        "text": "Rehogá papa, cebolla, zanahoria 5 min en olla amplia; incorporá garbanzos cocidos."
       },
       {
         "text": "Sumá papa,  agua suficiente para apenas cubrir."
@@ -2651,7 +2651,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+        "text": "Medí los ingredientes. Lavá lechuga y picá fino; Lavá tomate y cortá en cubos chicos."
       },
       {
         "text": "Calentá el horno a 200 °C. Acomodá las milanesas ya empanadas en placa apenas aceitada."
@@ -2679,7 +2679,7 @@
     "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá zapallito cuando corresponda."
+        "text": "Medí los ingredientes. Lavá zapallito y cortá en cubos chicos."
       },
       {
         "text": "Prepará zapallito en trozos parejos y precalentá el horno a 200 °C."
@@ -2688,10 +2688,10 @@
         "text": "Ablandá las piezas principales, ahuecalas y mezclá su pulpa con el relleno ya cocido; rellená."
       },
       {
-        "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
+        "text": "Horneá a 200 °C hasta que carne picada esté completamente cocido y las verduras tiernas; controlá desde los 25 minutos."
       },
       {
-        "text": "Dividí en porciones iguales antes de guardar o servir."
+        "text": "Dividí en 1 porción antes de guardar o servir."
       }
     ]
   },
@@ -2710,19 +2710,19 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá berenjena cuando corresponda."
+        "text": "Medí los ingredientes. Lavá berenjena y cortá en cubos chicos."
       },
       {
         "text": "Prepará berenjena en trozos parejos y precalentá el horno a 200 °C."
       },
       {
-        "text": "Distribuí el ingrediente principal y las verduras en fuente sin amontonar. Agregá el aceite medido."
+        "text": "Distribuí berenjena y las verduras en fuente sin amontonar. Agregá el aceite medido."
       },
       {
-        "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
+        "text": "Horneá a 200 °C hasta que berenjena esté tierna y la superficie dorada; controlá desde los 20 minutos."
       },
       {
-        "text": "Dividí en porciones iguales antes de guardar o servir."
+        "text": "Dividí en 2 porciones antes de guardar o servir."
       }
     ]
   },
@@ -2741,10 +2741,10 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+        "text": "Medí los ingredientes. Lavá tomate y cortá en cubos chicos."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Lavá y cortá tomate y mezclá los ingredientes; sumá los ingredientes restantes al final."
       },
       {
         "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
@@ -2766,7 +2766,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Herví el arroz en agua hasta que esté tierno; escurrí y enfriá si se comerá frío."
@@ -2791,7 +2791,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá cebolla cuando corresponda."
+        "text": "Medí los ingredientes. Lavá cebolla y picá fino."
       },
       {
         "text": "Rehogá cebolla y escurrilo; dejá entibiar."
@@ -2822,7 +2822,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá brócoli, papa cuando corresponda."
+        "text": "Medí los ingredientes. Lavá brócoli y picá fino; Lavá papa y cortá en cubos chicos."
       },
       {
         "text": "Prepará brócoli, papa en trozos parejos y precalentá el horno a 200 °C."
@@ -2831,10 +2831,10 @@
         "text": "Distribuí pollo y las verduras en fuente sin amontonar. Agregá el aceite medido."
       },
       {
-        "text": "Horneá 25–35 min, hasta que la proteína esté cocida y las verduras tiernas."
+        "text": "Horneá a 200 °C hasta que pollo esté completamente cocido y las verduras tiernas; controlá desde los 25 minutos."
       },
       {
-        "text": "Dividí en porciones iguales antes de guardar o servir."
+        "text": "Dividí en 2 porciones antes de guardar o servir."
       }
     ]
   },
@@ -2853,7 +2853,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá acelga, cebolla cuando corresponda."
+        "text": "Medí los ingredientes. Lavá acelga y picá fino; Lavá cebolla y picá fino."
       },
       {
         "text": "Cociná la cebolla y el relleno en sartén hasta que no quede líquido; dejá enfriar antes de armar."
@@ -2881,7 +2881,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+        "text": "Medí los ingredientes. Lavá lechuga y picá fino; Lavá tomate y cortá en cubos chicos."
       },
       {
         "text": "Calentá el horno a 200 °C. Acomodá las milanesas ya empanadas en placa apenas aceitada."
@@ -2909,7 +2909,7 @@
     "reheat": "Calentar hasta que esté bien caliente en horno o sartén.",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza, cebolla cuando corresponda."
+        "text": "Medí los ingredientes. Lavá calabaza y cortá en cubos chicos; Lavá cebolla y picá fino."
       },
       {
         "text": "Cociná el relleno con cebolla hasta que no quede líquido; ablandá la cobertura de papa, calabaza o berenjena."
@@ -2937,7 +2937,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá zapallito, cebolla cuando corresponda."
+        "text": "Medí los ingredientes. Lavá zapallito y cortá en cubos chicos; Lavá cebolla y picá fino."
       },
       {
         "text": "Cociná zapallito, cebolla hasta que estén tiernas; escurrí el líquido si lo hay."
@@ -2965,7 +2965,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Rehogá las verduras firmes 4 min. Sumá las demás verduras y agua hasta apenas cubrir."
@@ -2993,13 +2993,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí los ingredientes. Lavá lechuga y picá fino."
       },
       {
-        "text": "Cociná pollo por separado hasta que esté listo; enfriá rápidamente."
+        "text": "Cociná el pollo en sartén hasta que esté completamente cocido; enfriá rápidamente."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Lavá y cortá lechuga y mezclá los ingredientes; sumá aceite al final."
       },
       {
         "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
@@ -3021,7 +3021,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá espinaca cuando corresponda."
+        "text": "Medí los ingredientes. Lavá espinaca y picá fino."
       },
       {
         "text": "Cociná espinaca hasta que estén tiernas; escurrí el líquido si lo hay."
@@ -3049,7 +3049,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Precalentá el horno fuerte a 220 °C con la placa adentro."
@@ -3077,13 +3077,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+        "text": "Medí los ingredientes. Lavá tomate y cortá en cubos chicos."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará tomate, atún al natural, huevo, mayonesa, sal en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Serví recién preparado."
       }
     ]
   },
@@ -3102,13 +3102,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+        "text": "Dividí queso, jamón, galletitas de agua en 1 porción; combiná al servir."
       },
       {
-        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+        "text": "Guardá en heladera en recipiente cerrado y transportá con frío."
       }
     ]
   },
@@ -3127,13 +3127,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
-        "text": "Tostá el pan; distribuí los ingredientes medidos en partes iguales."
+        "text": "Tostá pan; distribuí panceta, queso en 1 porción."
       },
       {
-        "text": "Cerrá o serví abierto según la preparación. Refrigerá si lleva huevo, carne o lácteos."
+        "text": "Cerrá el sándwich y cortalo en porciones. Si lo llevás, guardalo tapado y con frío."
       }
     ]
   },
@@ -3152,13 +3152,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Calentá las salchichas en agua a hervor suave 5 min hasta que estén bien calientes."
       },
       {
-        "text": "Abrí y calentá los panes; repartí salchichas y acompañamientos según la lista."
+        "text": "Abrí y calentá los panes; repartí salchichas y acompañamientos con pan de pancho, salchicha."
       }
     ]
   },
@@ -3177,10 +3177,10 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+        "text": "Medí los ingredientes. Lavá palta y picá fino; Lavá lechuga y picá fino; Lavá tomate y cortá en cubos chicos."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Lavá y cortá palta, lechuga, tomate y mezclá los ingredientes; sumá los ingredientes restantes al final."
       },
       {
         "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
@@ -3202,7 +3202,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí cada ingrediente antes de empezar."
       },
       {
         "text": "Herví la pasta en abundante agua según el paquete y reservá media taza del agua de cocción."
@@ -3230,7 +3230,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá papa cuando corresponda."
+        "text": "Medí los ingredientes. Lavá papa y cortá en cubos chicos."
       },
       {
         "text": "Calentá el horno a 200 °C. Acomodá las milanesas ya empanadas en placa apenas aceitada."
@@ -3258,7 +3258,7 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá zanahoria, papa cuando corresponda."
+        "text": "Medí los ingredientes. Lavá zanahoria y cortá en cubos chicos; Lavá papa y cortá en cubos chicos."
       },
       {
         "text": "Rehogá las verduras firmes 4 min. Sumá las demás verduras y agua hasta apenas cubrir."
@@ -3286,13 +3286,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+        "text": "Medí los ingredientes. Lavá tomate y cortá en cubos chicos."
       },
       {
-        "text": "Prepará la infusión o mezclá la fruta con el líquido indicado; serví la cantidad de la lista."
+        "text": "Prepará tomate, queso en la cantidad indicada en ingredientes; serví 1 porción."
       },
       {
-        "text": "Si lleva leche o fruta licuada, refrigerá lo que no consumas enseguida."
+        "text": "Serví recién preparado."
       }
     ]
   },
@@ -3311,13 +3311,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá zanahoria cuando corresponda."
+        "text": "Medí los ingredientes. Lavá pepino y picá fino; Lavá zanahoria y cortá en cubos chicos."
       },
       {
-        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+        "text": "Dividí pepino, zanahoria en 1 porción; combiná al servir."
       },
       {
-        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+        "text": "Guardá en recipiente cerrado hasta consumir."
       }
     ]
   },
@@ -3336,13 +3336,13 @@
     "reheat": null,
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Medí los ingredientes. Lavá palta y picá fino."
       },
       {
-        "text": "Dividí los ingredientes medidos en las porciones indicadas y combiná justo antes de comer."
+        "text": "Dividí galletas de arroz, palta en 1 porción; combiná al servir."
       },
       {
-        "text": "Si hay lácteos o fruta cortada, conservá en heladera y transportá con frío."
+        "text": "Guardá en recipiente cerrado hasta consumir."
       }
     ]
   }

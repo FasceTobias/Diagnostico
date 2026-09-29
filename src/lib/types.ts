@@ -612,7 +612,7 @@ export interface PrepTask {
   done: boolean
 }
 
-export type PackKind = 'meal' | 'gear'
+export type PackKind = 'meal' | 'buy' | 'gear'
 
 export interface PackItem {
   id: string
@@ -690,6 +690,6 @@ export const CONTEXT_LABEL: Record<DayContext, string> = {
 /** Qué implica cada contexto para el armado del día. */
 export const CONTEXT_NOTE: Record<DayContext, string> = {
   casa: 'Podés cocinar en el momento.',
-  calle: 'Todo tiene que poder llevarse.',
+  calle: 'Planificá viandas o resolvé alguna comida comprada.',
   mixto: 'Desayuno, snacks y almuerzo se llevan; merienda y cena en casa.',
 }

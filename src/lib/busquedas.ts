@@ -162,6 +162,6 @@ export const alternativas = (
   limite = Number.POSITIVE_INFINITY,
 ): Meal[] =>
   meals
-    .filter((m) => sirveEn(m, cat) && m.id !== exceptoId && !m.esBebida && !m.buyOutside)
+    .filter((m) => sirveEn(m, cat) && m.id !== exceptoId && !m.esBebida)
     .sort(orden)
     .slice(0, limite)

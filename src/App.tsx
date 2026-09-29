@@ -6,6 +6,7 @@ import { Comidas } from './screens/Comidas'
 import { Compras } from './screens/Compras'
 import { Onboarding } from './screens/Onboarding'
 import { Perfil } from './screens/Perfil'
+import { Semana } from './screens/Semana'
 import { Nav, type Tab } from './components/Nav'
 
 /* Router propio: cinco pantallas no justifican una dependencia.
@@ -57,6 +58,7 @@ export default function App() {
     <div className="min-h-dvh bg-bg">
       {tab === 'inicio' && <Inicio app={app} onIr={setTab} />}
       {tab === 'hoy' && <Hoy app={app} />}
+      {tab === 'semana' && <Semana app={app} onVolver={() => setTab('inicio')} />}
       {tab === 'comidas' && <Comidas app={app} />}
       {tab === 'compras' && <Compras app={app} />}
       {tab === 'perfil' && <Perfil app={app} />}

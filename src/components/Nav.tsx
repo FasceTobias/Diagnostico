@@ -12,7 +12,7 @@ import type { IconName } from './tokens'
    hacía parecer pegada encima de la pantalla; la línea la integra.
    ------------------------------------------------------------------ */
 
-export type Tab = 'inicio' | 'hoy' | 'comidas' | 'compras' | 'perfil'
+export type Tab = 'inicio' | 'hoy' | 'semana' | 'comidas' | 'compras' | 'perfil'
 
 const DESTINOS: { id: Tab; label: string; icono: IconName }[] = [
   { id: 'inicio', label: 'Inicio', icono: 'inicio' },

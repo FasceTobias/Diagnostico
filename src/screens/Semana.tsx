@@ -7,7 +7,7 @@ import { ContextSwitch, SectionLabel } from '../components/ui'
 import { Rail, type RailItem } from '../components/Rail'
 import { MealSheet, type MealSheetTarget } from '../components/MealSheet'
 
-export function Semana({ app }: { app: Vianda }) {
+export function Semana({ app, onVolver }: { app: Vianda; onVolver: () => void }) {
   const todayIso = isoDate(new Date())
   const [selected, setSelected] = useState(todayIso)
   const [target, setTarget] = useState<MealSheetTarget | null>(null)
@@ -21,10 +21,11 @@ export function Semana({ app }: { app: Vianda }) {
     <LazyMotion features={domAnimation}>
       <div className="mx-auto max-w-md px-4 pb-40">
         <header className="v-safe-top pt-5 pb-4">
+          <button onClick={onVolver} className="mb-4 min-h-[44px] text-[14px] font-semibold text-accent">‹ Volver a Inicio</button>
           <p className="v-label font-semibold text-accent">TU SEMANA, RESUELTA</p>
           <h1 className="v-serif-lg mt-1 text-[28px] text-ink">Qué vas a comer</h1>
           <p className="mt-1.5 text-[14px] leading-relaxed text-ink-soft">
-            Mirá el plan completo y cambiá sólo lo que no te cierre.
+            Marcá dónde vas a estar cada día. Vianda arma opciones rápidas y algo para llevar o comprar cuando estés afuera.
           </p>
         </header>
 
@@ -48,6 +49,7 @@ export function Semana({ app }: { app: Vianda }) {
                   {date.getDate()}
                 </span>
                 {isToday && <span aria-hidden className={`mx-auto mt-1 block size-1 rounded-full ${active ? 'bg-accent' : 'bg-ink-faint'}`} />}
+                <span className="mt-1 block text-[10px] text-ink-faint">{d.context === 'calle' ? 'Afuera' : d.context === 'casa' ? 'Casa' : 'Mixto'}</span>
               </button>
             )
           })}
@@ -62,6 +64,7 @@ export function Semana({ app }: { app: Vianda }) {
             className="pt-5"
           >
             <h2 className="v-head text-[20px] text-ink first-letter:uppercase">{longDate(parseIso(day.date))}</h2>
+            <p className="mt-2 text-[14px] text-ink-soft">¿Cómo va a ser tu día? Elegí por separado cada fecha.</p>
 
             <div className="mt-3.5">
               <ContextSwitch value={day.context} onChange={(c) => app.setContext(day.date, c)} />
@@ -87,7 +90,7 @@ export function Semana({ app }: { app: Vianda }) {
           Armar otra semana
         </button>
         <p className="mt-3 px-1 text-[13px] leading-relaxed text-ink-faint">
-          Vianda prioriza que la comida encaje con tu día —si estás en casa, afuera o necesitás llevarla— y después busca variedad.
+          Al rearmar conserva los días que marcaste. Las comidas del plan llevan hasta 30 minutos en total, con lugar para una receta más larga por semana.
         </p>
 
         <MealSheet

@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import type { Category, DayContext, Meal, Venue } from '../lib/types'
-import { SLOT_CATEGORY, SLOT_LABEL, VENUES } from '../lib/types'
+import { CONTEXT_LABEL, CONTEXT_NOTE, SLOT_CATEGORY, SLOT_LABEL, VENUES } from '../lib/types'
 import type { Vianda } from '../lib/store'
 import { comidaActual, comidasDelDia } from '../lib/dia'
+import { packListFor } from '../lib/domain'
+import type { Tab } from '../components/Nav'
 import type { FiltroSnack, Pregunta } from '../lib/busquedas'
 import { FILTRO_SNACK, PREGUNTA, alternativas, porLugar, responder, snacks } from '../lib/busquedas'
 import { Card, Chip, FilaChips, Icono, Rotulo, TituloSeccion, Vacio } from '../components/base'
 import type { IconName } from '../components/tokens'
 import { FilaProxima, ProximaComida, TiraDelDia } from '../components/comida'
 import { Hojas, type Hoja } from '../components/Hojas'
+import { ContextSwitch } from '../components/ui'
 import { BarraAsistente } from '../components/Asistente'
 
 /* ------------------------------------------------------------------
@@ -108,7 +111,7 @@ function Celda({
   )
 }
 
-export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comidas') => void }) {
+export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: Tab) => void }) {
   const [hoja, setHoja] = useState<Hoja>(null)
   const [situacion, setSituacion] = useState<Situacion>(() =>
     app.today?.context === 'calle' ? 'calle' : app.today?.context === 'casa' ? 'casa' : 'trabajo',
@@ -245,11 +248,24 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: 'hoy' | 'comida
         </section>
       )}
 
+      {app.tomorrow && <section className="mt-8">
+        <TituloSeccion>Cómo va a ser mañana</TituloSeccion>
+        <Card>
+          <p className="text-[15px] font-semibold text-ink">{CONTEXT_LABEL[app.tomorrow.context]}</p>
+          <p className="mt-1 text-[13px] text-ink-soft">{CONTEXT_NOTE[app.tomorrow.context]}</p>
+          <div className="mt-4"><ContextSwitch value={app.tomorrow.context} onChange={(c) => app.setContext(app.tomorrow!.date, c)} /></div>
+          {app.tomorrow.context !== 'casa' && <p className="mt-4 text-[13px] leading-relaxed text-ink-soft">
+            {packListFor(app.tomorrow, app.meals).filter((i) => i.kind === 'meal').length} comidas para llevar · {packListFor(app.tomorrow, app.meals).filter((i) => i.kind === 'buy').length} para comprar afuera.
+          </p>}
+          <button onClick={() => onIr('semana')} className="mt-4 min-h-[44px] w-full rounded-xl border border-line font-semibold text-ink">Ver y marcar los días de la semana</button>
+        </Card>
+      </section>}
+
       {dia && (
         <section className="mt-8">
           <TituloSeccion>Qué me llevo</TituloSeccion>
           <Card>
-            {app.packing.filter((item) => item.kind === 'meal').length ? (
+            {app.packing.some((item) => item.kind === 'meal' || item.kind === 'buy') ? (
               <div className="space-y-3">
                 {app.packing.map((item) => (
                   <button key={item.id} type="button" aria-pressed={item.done}

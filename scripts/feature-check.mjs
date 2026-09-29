@@ -10,7 +10,7 @@ globalThis.localStorage = {
 const vite = await createServer({ server: { middlewareMode: true }, appType: 'custom' })
 try {
   const { localRepo } = await vite.ssrLoadModule('/src/lib/repo/local.ts')
-  const { buildShoppingList, packListFor } = await vite.ssrLoadModule('/src/lib/domain.ts')
+  const { buildShoppingList, packListFor, buildWeek, reflowDay } = await vite.ssrLoadModule('/src/lib/domain.ts')
   const { comidasDelDia, comidaActual } = await vite.ssrLoadModule('/src/lib/dia.ts')
   const { SLOT_ORDER, SLOT_CATEGORY } = await vite.ssrLoadModule('/src/lib/types.ts')
   const { normalizarPerfil } = await vite.ssrLoadModule('/src/lib/perfil.ts')
@@ -33,6 +33,23 @@ try {
   assert.equal(SLOT_ORDER.length, 6)
   for (const slot of SLOT_ORDER) assert(snap.meals.some((m) => m.momentos.includes(SLOT_CATEGORY[slot])))
   const day = snap.week[0]
+  const contexts = Object.fromEntries(snap.week.map((d, i) => [d.date, i % 2 ? 'calle' : 'casa']))
+  const rotated = buildWeek(new Date(`${snap.weekStart}T12:00:00`), snap.meals, 'mixto', snap.times, snap.prefs, contexts)
+  assert(rotated.every((d) => d.context === contexts[d.date]))
+  assert(rotated.flatMap((d) => d.meals).filter((p) => snap.meals.find((m) => m.id === p.mealId)?.totalMinutes > 30).length <= 1)
+  for (const d of rotated.filter((d) => d.context === 'calle')) {
+    for (const p of d.meals) {
+      const m = snap.meals.find((x) => x.id === p.mealId)
+      assert(m?.portable || m?.buyOutside, `${p.slot} del ${d.date} no sirve afuera`)
+    }
+  }
+  const reflowed = reflowDay(day, snap.meals, 'calle')
+  assert(reflowed.meals.every((p) => { const m = snap.meals.find((x) => x.id === p.mealId); return m?.portable || m?.buyOutside }))
+  await localRepo.saveDay(reflowed)
+  assert.equal(localRepo.cached().week[0].context, 'calle')
+  const kioskSnack = kiosk.find((m) => m.momentos.includes('snack mañana')) ?? kiosk[0]
+  const withBought = { ...reflowed, meals: reflowed.meals.map((p) => p.slot === 'snack_am' ? { ...p, mealId: kioskSnack.id } : p) }
+  assert(packListFor(withBought, snap.meals).some((x) => x.kind === 'buy' && x.label.includes(kioskSnack.name)))
   assert.equal(day.meals.length, 6)
   assert(comidaActual(comidasDelDia(day, snap.meals, 8 * 60)))
   const outside = { ...day, context: 'mixto' }

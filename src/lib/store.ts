@@ -224,6 +224,7 @@ export const useVianda = () => {
       s.week.find((d) => d.date === isoDate(new Date()))?.context ?? 'mixto',
       s.times,
       s.prefs,
+      Object.fromEntries(s.week.map((d) => [d.date, d.context])),
     )
     apply({ ...s, week, checks: {} }, () => repo.saveWeek(week, s.weekStart))
   }, [apply])
