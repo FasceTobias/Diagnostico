@@ -3,9 +3,10 @@ import { readFileSync } from 'node:fs'
 const read = (path) => JSON.parse(readFileSync(path, 'utf8'))
 const old = read('data/catalogo/v1.json')
 const added = read('data/catalogo/ampliacion.json')
+const kiosk = read('data/catalogo/kiosco.json')
 const enriched = read('data/catalogo/legacy-enrichment.json')
 const reference = read('data/nutrition/sara2.json')
-const all = [...old, ...added]
+const all = [...old, ...added, ...kiosk]
 const normalize = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
 const unique = new Set()
 const names = new Set()
@@ -21,6 +22,13 @@ for (const x of all) {
   assert(['liviana','normal','potente'].includes(x.satiety), `${x.name}: saciedad inválida`)
   assert(x.portions?.length && x.portions.some((p) => p.default && p.carbs >= 0), `${x.name}: porción`)
   assert(x.items?.every((i) => i.item && i.qty > 0 && units.has(i.unit)), `${x.name}: ingrediente incompleto`)
+  if (kiosk.includes(x)) {
+    assert(x.buyOutside && x.venues.includes('kiosco') && x.items.length === 0, `${x.name}: integración kiosco`)
+    assert(x.packaged?.verified && x.packaged.source?.startsWith('https://') &&
+      x.packaged.carbsPerServing === x.portions.find((p) => p.default).carbs &&
+      x.packaged.servingSize === x.portions.find((p) => p.default).label,
+    `${x.name}: etiqueta/porción incoherente`)
+  }
   if (x.origen !== 'casera' || x.prepType === 'ready' || x.esBebida) continue // Bebidas y alimentos listos tampoco son recetas.
   assert(Number.isFinite(x.activeMinutes) && x.totalMinutes >= x.activeMinutes && x.totalMinutes > 0, `${x.name}: tiempo`)
   const complete = enriched[x.slug] ?? x

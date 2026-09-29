@@ -141,7 +141,9 @@ export function MealDetail({ meal }: { meal: Meal }) {
           {meal.packaged.caloriesPerServing !== undefined && (
             <Fact label="Calorías por porción" value={`${meal.packaged.caloriesPerServing}`} />
           )}
-          {meal.packaged.source && <Fact label="Fuente" value={meal.packaged.source} />}
+          {meal.packaged.source && <p className="mt-3 text-[13px] text-ink-soft">
+            Datos publicados por la marca · <a href={meal.packaged.source} target="_blank" rel="noreferrer" className="underline">ver información nutricional</a>
+          </p>}
           {!meal.carbsVerified && (
             <p className="mt-3 text-[13px] leading-relaxed text-ink-faint">
               Tiene etiqueta, así que este número puede dejar de ser una estimación

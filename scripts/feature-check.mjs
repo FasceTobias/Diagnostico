@@ -18,9 +18,18 @@ try {
   const { FOODS } = await vite.ssrLoadModule('/src/lib/foods.ts')
   const { alternativas } = await vite.ssrLoadModule('/src/lib/busquedas.ts')
   const snap = localRepo.cached()
-  assert.equal(snap.meals.length, 410)
+  assert.equal(snap.meals.length, 423)
   assert(snap.meals.every((m) => Number.isFinite(m.carbs) && (m.portions ?? []).every((p) => Number.isFinite(p.carbs))), 'ninguna porción puede mostrar NaN')
   assert(snap.meals.filter((m) => m.origen === 'casera' && m.prepType !== 'ready' && !m.esBebida).length > 300)
+  const kiosk = snap.meals.filter((m) => m.id.endsWith('-kiosco') && m.packaged?.verified)
+  assert.equal(kiosk.length, 13)
+  assert(kiosk.every((m) => m.buyOutside && m.venues?.includes('kiosco') && m.carbsVerified && m.packaged?.carbsPerServing === m.carbs))
+  const { byVenue } = await vite.ssrLoadModule('/src/lib/domain.ts')
+  const lowCarb = byVenue('snack_pm', snap.meals, ['pocos-carbo']).flatMap((g) => g.meals)
+  assert(lowCarb.some((m) => m.id === 'natural-break-nutritivo-kiosco'))
+  assert(lowCarb.every((m) => m.carbs <= 10 && !m.esBebida))
+  assert(!lowCarb.some((m) => m.id === 'menthoplus-zero-kiosco'))
+  assert.equal(byVenue('snack_pm', snap.meals, ['pocos-carbo','mucha-hambre']).flatMap((g) => g.meals).every((m) => m.carbs <= 10), true)
   assert.equal(SLOT_ORDER.length, 6)
   for (const slot of SLOT_ORDER) assert(snap.meals.some((m) => m.momentos.includes(SLOT_CATEGORY[slot])))
   const day = snap.week[0]
@@ -84,7 +93,7 @@ try {
     assert.deepEqual([localRepo.cached().perfil.diabetes,localRepo.cached().perfil.usaInsulina], expected.slice(0,2))
   }
   assert.equal(normalizarPerfil({ diabetes: 'tipo2_insulina', paso: 4, listo: false }).paso, 2)
-  console.log('6 momentos, 410 opciones, onboarding A–F, receta→plan→Hoy/lonchera/Compras y persistencia: OK')
+  console.log('6 momentos, 423 opciones, 13 productos de kiosco con etiqueta, onboarding A–F, receta→plan→Hoy/lonchera/Compras y persistencia: OK')
 } finally {
   await vite.close()
 }

@@ -575,6 +575,9 @@ const matchesFilters = (meal: Meal, filters: ResolveFilter[]): boolean => {
       case 'barato':
         if ((meal.priceLevel ?? 1) > 1) return false
         break
+      case 'pocos-carbo':
+        if (meal.carbs > 10 || meal.esBebida) return false
+        break
     }
   }
   return true
@@ -583,12 +586,16 @@ const matchesFilters = (meal: Meal, filters: ResolveFilter[]): boolean => {
 /** Relaja el último filtro antes que devolver una lista vacía:
     a las 12:30 en la calle, una lista vacía no le sirve a nadie. */
 const searchRelaxing = (pool: Meal[], filters: ResolveFilter[]): Meal[] => {
-  for (let i = filters.length; i >= 0; i--) {
-    const applied = filters.slice(0, i)
+  // El límite de CHO expresa una elección explícita: nunca mostrar una
+  // comida que lo supera aunque los demás filtros dejen cero resultados.
+  const strict = filters.includes('pocos-carbo') ? ['pocos-carbo' as const] : []
+  const optional = filters.filter((f) => f !== 'pocos-carbo')
+  for (let i = optional.length; i >= 0; i--) {
+    const applied = [...strict, ...optional.slice(0, i)]
     const found = pool.filter((m) => matchesFilters(m, applied))
     if (found.length) return found
   }
-  return pool
+  return pool.filter((m) => matchesFilters(m, strict))
 }
 
 const rank = (a: Meal, b: Meal) =>

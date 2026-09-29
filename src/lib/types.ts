@@ -425,12 +425,13 @@ export const RESOLVE_REASON: Record<ResolveReason, string> = {
   reemplazar: 'Quiero reemplazar una comida',
 }
 
-export type ResolveFilter = 'mucha-hambre' | 'rapido' | 'barato'
+export type ResolveFilter = 'mucha-hambre' | 'rapido' | 'barato' | 'pocos-carbo'
 
 export const RESOLVE_FILTER: Record<ResolveFilter, string> = {
   'mucha-hambre': 'Que llene',
   rapido: 'Rápido',
   barato: 'Barato',
+  'pocos-carbo': 'Hasta 10 g CHO',
 }
 
 /* ------------------------------------------------------------------

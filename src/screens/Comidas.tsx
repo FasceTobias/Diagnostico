@@ -12,6 +12,7 @@ const EXTRA = [
   ['rapido', 'rápido'], ['llevar', 'para llevar'], ['airfryer', 'air fryer'],
   ['horno', 'horno'], ['sarten', 'sartén'], ['frio', 'sin cocción'],
   ['economico', 'económico'], ['anticipar', 'preparar antes'],
+  ['kiosco', 'kiosco'], ['pocoscarbo', 'hasta 10 g CHO'],
 ] as const
 type Extra = typeof EXTRA[number][0]
 const coincide = (meal: Meal, filtro: Extra) => {
@@ -25,6 +26,8 @@ const coincide = (meal: Meal, filtro: Extra) => {
     case 'frio': return meal.prepType === 'assemble'
     case 'economico': return meal.priceLevel === 1
     case 'anticipar': return meal.makeNightBefore
+    case 'kiosco': return Boolean(meal.venues?.includes('kiosco'))
+    case 'pocoscarbo': return meal.carbs <= 10 && !meal.esBebida
   }
 }
 

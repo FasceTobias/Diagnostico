@@ -65,7 +65,7 @@ const REASON_HINT: Record<ResolveReason, string> = {
    una tarde larga no respetan el horario del almuerzo. */
 const SLOTLESS: ResolveReason[] = ['dulce', 'evento']
 
-const FILTERS: ResolveFilter[] = ['mucha-hambre', 'rapido', 'barato']
+const FILTERS: ResolveFilter[] = ['mucha-hambre', 'rapido', 'barato', 'pocos-carbo']
 
 /* Cerrado no existe: así cada apertura arranca limpia, sin efectos que
    reseteen estado. Abierto desde el asistente, entra directo al paso que
@@ -369,8 +369,8 @@ function Results({
       )}
 
       <p className="mt-8 text-[12px] leading-relaxed text-ink-faint">
-        Los carbohidratos de lo que se compra afuera son un orden de magnitud:
-        dependen del tamaño y de quién lo hizo.
+        Los productos de marca con etiqueta muestran la porción publicada;
+        lo preparado afuera sigue siendo una estimación. Revisá el envase que compraste.
       </p>
     </>
   )
@@ -480,8 +480,8 @@ function Extras({
       )}
 
       <p className="mt-8 text-[12px] leading-relaxed text-ink-faint">
-        Los carbohidratos de lo envasado y de lo que se compra afuera son un
-        orden de magnitud hasta que carguemos la etiqueta.
+        Los productos de marca con etiqueta muestran la porción publicada;
+        lo preparado afuera sigue siendo una estimación. Revisá el envase que compraste.
       </p>
     </>
   )

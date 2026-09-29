@@ -67,7 +67,7 @@ const MOMENTO = {
    carpeta también viven revisiones —duplicados.json— que no son
    entradas y no tienen por qué terminar en el seed. */
 const entradas = readdirSync(resolve(ROOT, 'data/catalogo'))
-  .filter((f) => /^v\d+\.json$/.test(f) || f === 'ampliacion.json')
+  .filter((f) => /^v\d+\.json$/.test(f) || ['ampliacion.json', 'kiosco.json'].includes(f))
   .sort()
   .flatMap((f) => JSON.parse(readFileSync(resolve(ROOT, 'data/catalogo', f), 'utf8')))
 const enriquecidas = JSON.parse(readFileSync(resolve(ROOT, 'data/catalogo/legacy-enrichment.json'), 'utf8'))
@@ -84,9 +84,8 @@ const out = [
   '-- ==================================================================',
   '-- Catálogo v1 — generado por scripts/catalogo-sql.mjs. No editar.',
   '--',
-  `-- ${entradas.length} entradas, todas ESTIMADAS: la porción está`,
-  '-- documentada y el número calculado sobre esa porción, pero ninguna',
-  '-- se midió contra una etiqueta. Eso es la fase D.',
+  `-- ${entradas.length} entradas; los productos de kiosco nuevos usan`,
+  '-- etiquetas publicadas por el fabricante; las recetas son estimadas.',
   '--',
   '-- Idempotente: se puede correr las veces que haga falta.',
   '-- ==================================================================',
@@ -113,7 +112,7 @@ for (const e of entradas) {
     `-- ${e.name}`,
     `insert into meals (`,
     `  profile_id, slug, name, description, category, data_state,`,
-    `  carbs_total, carbs_source, carbs_confidence, portion,`,
+    `  carbs_total, carbs_source, carbs_confidence, carbs_verified, portion,`,
     `  main_ingredient, subcategories, prep_minutes, satiety,`,
     `  portable, needs_cold, needs_reheat, make_night_before, freezable,`,
     `  difficulty, freq, drink, everyday, added_sugar, notes,`,
@@ -123,20 +122,22 @@ for (const e of entradas) {
     `  source_name`,
     `) values (`,
     `  null, ${q(e.slug)}, ${q(e.name)}, ${q(e.description)}, ${q(e.category)}, 'estimado',`,
-    `  ${n(porDefecto.carbs)}, 'estimacion', 'estimada', ${q(porDefecto.label)},`,
+    `  ${n(porDefecto.carbs)}, ${q(e.packaged?.verified ? 'etiqueta' : 'estimacion')}, ${q(e.packaged?.verified ? 'alta' : 'estimada')}, ${b(e.packaged?.verified)}, ${q(porDefecto.label)},`,
     `  ${q(e.mainIngredient)}, ${arr(e.tags)}, ${n(e.activeMinutes)}, ${q(e.satiety)},`,
     `  ${b(e.portable)}, ${b(e.needsCold)}, ${b(e.needsReheat)}, ${b(e.makeNightBefore)}, ${b(e.freezable)},`,
     `  ${n(e.difficulty)}, ${q(e.frequency)}, ${q(e.drink)}, ${b(e.everyday)}, ${b(e.addedSugar)}, ${q(e.notes)},`,
     `  ${b(e.buyOutside)}, ${e.venues.length ? `array[${e.venues.map(q).join(', ')}]::venue[]` : `'{}'`}, ${n(e.priceLevel)}, ${b(e.handheld)}, ${b(e.items.length > 0)},`,
     `  ${q(ORIGEN[e.origen])}::food_origin, ${q(e.sabor)}::flavor, array[${e.momentos.map(q).join(', ')}]::meal_category[], ${n(e.totalMinutes)}, ${b(e.esBebida)},`,
     `  ${q(e.prepType)}::prep_type, ${q(e.rinde)},`,
-    `  'porción estándar calculada'`,
+    `  ${q(e.packaged?.verified ? e.packaged.source : 'porción estándar calculada')}`,
     `)`,
     // El predicado tiene que coincidir con el del índice parcial, si no
     // Postgres no sabe cuál usar para inferir el conflicto.
     `on conflict (slug) where profile_id is null and slug is not null do update set`,
     `  name = excluded.name, description = excluded.description,`,
     `  category = excluded.category, carbs_total = excluded.carbs_total,`,
+    `  carbs_source = excluded.carbs_source, carbs_confidence = excluded.carbs_confidence,`,
+    `  carbs_verified = excluded.carbs_verified, source_name = excluded.source_name,`,
     `  portion = excluded.portion, main_ingredient = excluded.main_ingredient,`,
     `  subcategories = excluded.subcategories, prep_minutes = excluded.prep_minutes,`,
     `  satiety = excluded.satiety, portable = excluded.portable,`,

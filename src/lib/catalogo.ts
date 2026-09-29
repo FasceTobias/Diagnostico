@@ -2,6 +2,7 @@ import type { Category, Drink, Meal, Origen, Portion, Sabor, Tag, Unit, Venue } 
 import { RECETAS } from './recetas'
 import crudo from '../../data/catalogo/v1.json'
 import ampliacion from '../../data/catalogo/ampliacion.json'
+import kiosco from '../../data/catalogo/kiosco.json'
 import legacyEnrichment from '../../data/catalogo/legacy-enrichment.json'
 
 /* ------------------------------------------------------------------
@@ -12,10 +13,9 @@ import legacyEnrichment from '../../data/catalogo/legacy-enrichment.json'
    seed SQL que va a Supabase (`npm run catalogo:sql`). Un dato se corrige
    en un solo lugar.
 
-   Todas las entradas entran como **estimadas**: la porción está
-   documentada y el número calculado sobre esa porción, pero ninguna se
-   midió contra una etiqueta. Para eso hace falta el envase en la mano, y
-   por eso la app las muestra con la tilde: ~42 g CHO.
+   Las recetas son estimaciones por ingredientes y porciones. Los productos
+   de marca agregados con datos publicados por el fabricante conservan la
+   etiqueta y su porción exacta. Revisar el envase real si cambia.
 
    Sobre la comida que suele quedar afuera de estas apps —pizza,
    empanadas, medialunas, alfajor, helado, gaseosa común—: está, con su
@@ -84,6 +84,7 @@ interface EntradaJson {
   nutrition?: Meal['nutrition']
   nutritionSource?: string
   researchSource?: string
+  packaged?: Meal['packaged']
 }
 
 const aPorcion = (p: PorcionJson): Portion => ({
@@ -120,11 +121,12 @@ const aMeal = (e: EntradaJson): Meal => {
     nutrition: e.nutrition,
     nutritionSource: e.nutritionSource,
     researchSource: e.researchSource,
+    packaged: e.packaged,
     /* Una porción estándar calculada es una estimación honesta, no una
        medición. Se muestra con tilde hasta que haya etiqueta o receta. */
-    carbSource: 'estimación',
-    confidence: 'estimada',
-    carbsVerified: false,
+    carbSource: e.packaged?.verified ? 'etiqueta' : 'estimación',
+    confidence: e.packaged?.verified ? 'alta' : 'estimada',
+    carbsVerified: Boolean(e.packaged?.verified),
     isDemo: false,
     portions: porciones.length > 1 ? porciones : undefined,
     prepType: e.prepType,
@@ -180,7 +182,7 @@ const previo = (crudo as EntradaJson[]).map((original) => {
   }
 })
 
-export const CATALOGO: Meal[] = [...previo, ...(ampliacion as EntradaJson[])].map(aMeal)
+export const CATALOGO: Meal[] = [...previo, ...(ampliacion as EntradaJson[]), ...(kiosco as EntradaJson[])].map(aMeal)
 
 /* ------------------------------------------------------------------
    ENTRADAS QUE SE FUSIONARON

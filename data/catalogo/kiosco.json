@@ -1,0 +1,815 @@
+[
+  {
+    "slug": "natural-break-nutritivo-kiosco",
+    "name": "Natural Break Nutritivo, bolsita",
+    "category": "snack",
+    "origen": "kiosco",
+    "sabor": "salado",
+    "description": "Arcor: Almendras, castañas, maní y semillas; buscá la bolsita Nutritivo, no Energía ni Liviano.",
+    "momentos": [
+      "snack",
+      "merienda"
+    ],
+    "portions": [
+      {
+        "label": "1 bolsita (27 g)",
+        "carbs": 4,
+        "grams": null,
+        "default": true
+      }
+    ],
+    "tags": [
+      "kiosco",
+      "salida",
+      "envasado",
+      "salado",
+      "práctico"
+    ],
+    "satiety": "liviana",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "totalMinutes": 0,
+    "rinde": null,
+    "esBebida": false,
+    "mainIngredient": "natural break nutritivo",
+    "everyday": true,
+    "addedSugar": true,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": true,
+    "venues": [
+      "kiosco",
+      "estación de servicio"
+    ],
+    "priceLevel": 1,
+    "drink": null,
+    "items": [],
+    "notes": "Revisá el envase real: las fórmulas, tamaños y porciones pueden cambiar. Almendras, castañas, maní y semillas; buscá la bolsita Nutritivo, no Energía ni Liviano.",
+    "packaged": {
+      "brand": "Arcor",
+      "product": "Natural Break Nutritivo",
+      "servingSize": "1 bolsita (27 g)",
+      "carbsPerServing": 4,
+      "sugarPerServing": 1,
+      "caloriesPerServing": 159,
+      "source": "https://www.arcor.com/ar/alimentacion-productos-sin-azucar",
+      "verified": true
+    }
+  },
+  {
+    "slug": "natural-break-energia-kiosco",
+    "name": "Natural Break Energía, bolsita",
+    "category": "snack",
+    "origen": "kiosco",
+    "sabor": "dulce",
+    "description": "Arcor: Tiene fruta deshidratada y más carbohidratos que el mix Nutritivo.",
+    "momentos": [
+      "snack",
+      "merienda"
+    ],
+    "portions": [
+      {
+        "label": "1 bolsita (28,5 g)",
+        "carbs": 11,
+        "grams": null,
+        "default": true
+      }
+    ],
+    "tags": [
+      "kiosco",
+      "salida",
+      "envasado",
+      "dulce",
+      "práctico"
+    ],
+    "satiety": "liviana",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "totalMinutes": 0,
+    "rinde": null,
+    "esBebida": false,
+    "mainIngredient": "natural break energía",
+    "everyday": false,
+    "addedSugar": true,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": true,
+    "venues": [
+      "kiosco",
+      "estación de servicio"
+    ],
+    "priceLevel": 1,
+    "drink": null,
+    "items": [],
+    "notes": "Revisá el envase real: las fórmulas, tamaños y porciones pueden cambiar. Tiene fruta deshidratada y más carbohidratos que el mix Nutritivo.",
+    "packaged": {
+      "brand": "Arcor",
+      "product": "Natural Break Energía",
+      "servingSize": "1 bolsita (28,5 g)",
+      "carbsPerServing": 11,
+      "sugarPerServing": 6.8,
+      "caloriesPerServing": 148,
+      "source": "https://www.arcor.com/ar/alimentacion-productos-porcion-justa",
+      "verified": true
+    }
+  },
+  {
+    "slug": "saladix-duo-kiosco",
+    "name": "Saladix Duo Jamón y Queso",
+    "category": "snack",
+    "origen": "kiosco",
+    "sabor": "salado",
+    "description": "Arcor: La etiqueta habla de 25 g, no del paquete entero; pesá o separá la porción.",
+    "momentos": [
+      "snack",
+      "merienda"
+    ],
+    "portions": [
+      {
+        "label": "25 g (27 galletitas)",
+        "carbs": 15,
+        "grams": null,
+        "default": true
+      }
+    ],
+    "tags": [
+      "kiosco",
+      "salida",
+      "envasado",
+      "salado",
+      "práctico"
+    ],
+    "satiety": "liviana",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "totalMinutes": 0,
+    "rinde": null,
+    "esBebida": false,
+    "mainIngredient": "saladix duo jamón y queso",
+    "everyday": false,
+    "addedSugar": true,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": true,
+    "venues": [
+      "kiosco",
+      "estación de servicio"
+    ],
+    "priceLevel": 1,
+    "drink": null,
+    "items": [],
+    "notes": "Revisá el envase real: las fórmulas, tamaños y porciones pueden cambiar. La etiqueta habla de 25 g, no del paquete entero; pesá o separá la porción.",
+    "packaged": {
+      "brand": "Arcor",
+      "product": "Saladix Duo Jamón y Queso",
+      "servingSize": "25 g (27 galletitas)",
+      "carbsPerServing": 15,
+      "sugarPerServing": 1.6,
+      "caloriesPerServing": 113,
+      "source": "https://www.arcor.com/ar/alimentacion-productos-porcion-justa",
+      "verified": true
+    }
+  },
+  {
+    "slug": "saladix-pizza-kiosco",
+    "name": "Saladix Pizza",
+    "category": "snack",
+    "origen": "kiosco",
+    "sabor": "salado",
+    "description": "Arcor: Una porción de 30 g ya aporta 20 g CHO; el paquete puede contener más.",
+    "momentos": [
+      "snack",
+      "merienda"
+    ],
+    "portions": [
+      {
+        "label": "30 g (50 galletitas)",
+        "carbs": 20,
+        "grams": null,
+        "default": true
+      }
+    ],
+    "tags": [
+      "kiosco",
+      "salida",
+      "envasado",
+      "salado",
+      "práctico"
+    ],
+    "satiety": "liviana",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "totalMinutes": 0,
+    "rinde": null,
+    "esBebida": false,
+    "mainIngredient": "saladix pizza",
+    "everyday": false,
+    "addedSugar": true,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": true,
+    "venues": [
+      "kiosco",
+      "estación de servicio"
+    ],
+    "priceLevel": 1,
+    "drink": null,
+    "items": [],
+    "notes": "Revisá el envase real: las fórmulas, tamaños y porciones pueden cambiar. Una porción de 30 g ya aporta 20 g CHO; el paquete puede contener más.",
+    "packaged": {
+      "brand": "Arcor",
+      "product": "Saladix Pizza",
+      "servingSize": "30 g (50 galletitas)",
+      "carbsPerServing": 20,
+      "sugarPerServing": 2.2,
+      "caloriesPerServing": 132,
+      "source": "https://www.arcor.com/ar/alimentacion-productos-porcion-justa",
+      "verified": true
+    }
+  },
+  {
+    "slug": "aguila-sesenta-kiosco",
+    "name": "Barrita Águila 60 % cacao",
+    "category": "snack",
+    "origen": "kiosco",
+    "sabor": "dulce",
+    "description": "Águila: Chocolate amargo en porción chica. Revisá que sea la barrita de 14 g.",
+    "momentos": [
+      "snack",
+      "merienda"
+    ],
+    "portions": [
+      {
+        "label": "1 barrita (14 g)",
+        "carbs": 5.2,
+        "grams": null,
+        "default": true
+      }
+    ],
+    "tags": [
+      "kiosco",
+      "salida",
+      "envasado",
+      "dulce",
+      "práctico"
+    ],
+    "satiety": "liviana",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "totalMinutes": 0,
+    "rinde": null,
+    "esBebida": false,
+    "mainIngredient": "barrita 60 % cacao",
+    "everyday": false,
+    "addedSugar": true,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": true,
+    "venues": [
+      "kiosco",
+      "estación de servicio"
+    ],
+    "priceLevel": 1,
+    "drink": null,
+    "items": [],
+    "notes": "Revisá el envase real: las fórmulas, tamaños y porciones pueden cambiar. Chocolate amargo en porción chica. Revisá que sea la barrita de 14 g.",
+    "packaged": {
+      "brand": "Águila",
+      "product": "Barrita 60 % cacao",
+      "servingSize": "1 barrita (14 g)",
+      "carbsPerServing": 5.2,
+      "sugarPerServing": 4.8,
+      "caloriesPerServing": 73,
+      "source": "https://www.arcor.com/ar/alimentacion-productos-porcion-justa",
+      "verified": true
+    }
+  },
+  {
+    "slug": "aguila-semiamargo-kiosco",
+    "name": "Barrita Águila semiamargo",
+    "category": "snack",
+    "origen": "kiosco",
+    "sabor": "dulce",
+    "description": "Águila: La barrita semiamarga tiene más carbohidratos que la 60 % cacao.",
+    "momentos": [
+      "snack",
+      "merienda"
+    ],
+    "portions": [
+      {
+        "label": "1 barrita (14 g)",
+        "carbs": 8.4,
+        "grams": null,
+        "default": true
+      }
+    ],
+    "tags": [
+      "kiosco",
+      "salida",
+      "envasado",
+      "dulce",
+      "práctico"
+    ],
+    "satiety": "liviana",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "totalMinutes": 0,
+    "rinde": null,
+    "esBebida": false,
+    "mainIngredient": "barrita semiamargo",
+    "everyday": false,
+    "addedSugar": true,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": true,
+    "venues": [
+      "kiosco",
+      "estación de servicio"
+    ],
+    "priceLevel": 1,
+    "drink": null,
+    "items": [],
+    "notes": "Revisá el envase real: las fórmulas, tamaños y porciones pueden cambiar. La barrita semiamarga tiene más carbohidratos que la 60 % cacao.",
+    "packaged": {
+      "brand": "Águila",
+      "product": "Barrita semiamargo",
+      "servingSize": "1 barrita (14 g)",
+      "carbsPerServing": 8.4,
+      "sugarPerServing": 7.5,
+      "caloriesPerServing": 66,
+      "source": "https://www.arcor.com/ar/alimentacion-productos-porcion-justa",
+      "verified": true
+    }
+  },
+  {
+    "slug": "bonobon-chocolinas-kiosco",
+    "name": "Bon o Bon Chocolinas",
+    "category": "snack",
+    "origen": "kiosco",
+    "sabor": "dulce",
+    "description": "Arcor: Un bombón individual; otras presentaciones tienen otra etiqueta.",
+    "momentos": [
+      "snack",
+      "merienda"
+    ],
+    "portions": [
+      {
+        "label": "1 bombón (15 g)",
+        "carbs": 7.8,
+        "grams": null,
+        "default": true
+      }
+    ],
+    "tags": [
+      "kiosco",
+      "salida",
+      "envasado",
+      "dulce",
+      "práctico"
+    ],
+    "satiety": "liviana",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "totalMinutes": 0,
+    "rinde": null,
+    "esBebida": false,
+    "mainIngredient": "bon o bon chocolinas",
+    "everyday": false,
+    "addedSugar": true,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": true,
+    "venues": [
+      "kiosco",
+      "estación de servicio"
+    ],
+    "priceLevel": 1,
+    "drink": null,
+    "items": [],
+    "notes": "Revisá el envase real: las fórmulas, tamaños y porciones pueden cambiar. Un bombón individual; otras presentaciones tienen otra etiqueta.",
+    "packaged": {
+      "brand": "Arcor",
+      "product": "Bon o Bon Chocolinas",
+      "servingSize": "1 bombón (15 g)",
+      "carbsPerServing": 7.8,
+      "sugarPerServing": 6.4,
+      "caloriesPerServing": 83,
+      "source": "https://www.arcor.com/ar/alimentacion-productos-porcion-justa",
+      "verified": true
+    }
+  },
+  {
+    "slug": "tortuguita-kiosco",
+    "name": "Tortuguita de chocolate",
+    "category": "snack",
+    "origen": "kiosco",
+    "sabor": "dulce",
+    "description": "Arcor: Porción individual de 17,5 g.",
+    "momentos": [
+      "snack",
+      "merienda"
+    ],
+    "portions": [
+      {
+        "label": "1 unidad (17,5 g)",
+        "carbs": 8.6,
+        "grams": null,
+        "default": true
+      }
+    ],
+    "tags": [
+      "kiosco",
+      "salida",
+      "envasado",
+      "dulce",
+      "práctico"
+    ],
+    "satiety": "liviana",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "totalMinutes": 0,
+    "rinde": null,
+    "esBebida": false,
+    "mainIngredient": "tortuguita",
+    "everyday": false,
+    "addedSugar": true,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": true,
+    "venues": [
+      "kiosco",
+      "estación de servicio"
+    ],
+    "priceLevel": 1,
+    "drink": null,
+    "items": [],
+    "notes": "Revisá el envase real: las fórmulas, tamaños y porciones pueden cambiar. Porción individual de 17,5 g.",
+    "packaged": {
+      "brand": "Arcor",
+      "product": "Tortuguita",
+      "servingSize": "1 unidad (17,5 g)",
+      "carbsPerServing": 8.6,
+      "sugarPerServing": 8.5,
+      "caloriesPerServing": 94,
+      "source": "https://www.arcor.com/ar/alimentacion-productos-porcion-justa",
+      "verified": true
+    }
+  },
+  {
+    "slug": "tatin-blanco-kiosco",
+    "name": "Alfajor Tatín blanco",
+    "category": "snack",
+    "origen": "kiosco",
+    "sabor": "dulce",
+    "description": "Arcor: Alfajor chico, pero no es una opción de pocos carbohidratos.",
+    "momentos": [
+      "snack",
+      "merienda"
+    ],
+    "portions": [
+      {
+        "label": "1 alfajor (33 g)",
+        "carbs": 21,
+        "grams": null,
+        "default": true
+      }
+    ],
+    "tags": [
+      "kiosco",
+      "salida",
+      "envasado",
+      "dulce",
+      "práctico"
+    ],
+    "satiety": "liviana",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "totalMinutes": 0,
+    "rinde": null,
+    "esBebida": false,
+    "mainIngredient": "tatín blanco",
+    "everyday": false,
+    "addedSugar": true,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": true,
+    "venues": [
+      "kiosco",
+      "estación de servicio"
+    ],
+    "priceLevel": 1,
+    "drink": null,
+    "items": [],
+    "notes": "Revisá el envase real: las fórmulas, tamaños y porciones pueden cambiar. Alfajor chico, pero no es una opción de pocos carbohidratos.",
+    "packaged": {
+      "brand": "Arcor",
+      "product": "Tatín blanco",
+      "servingSize": "1 alfajor (33 g)",
+      "carbsPerServing": 21,
+      "sugarPerServing": 13,
+      "caloriesPerServing": 140,
+      "source": "https://www.arcor.com/ar/alimentacion-productos-porcion-justa",
+      "verified": true
+    }
+  },
+  {
+    "slug": "natural-break-manzana-kiosco",
+    "name": "Natural Break manzana deshidratada",
+    "category": "snack",
+    "origen": "kiosco",
+    "sabor": "dulce",
+    "description": "Arcor: El envase es pequeño: 8 g CHO en 10 g de manzana deshidratada.",
+    "momentos": [
+      "snack",
+      "merienda"
+    ],
+    "portions": [
+      {
+        "label": "1 bolsita (10 g)",
+        "carbs": 8,
+        "grams": null,
+        "default": true
+      }
+    ],
+    "tags": [
+      "kiosco",
+      "salida",
+      "envasado",
+      "dulce",
+      "práctico"
+    ],
+    "satiety": "liviana",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "totalMinutes": 0,
+    "rinde": null,
+    "esBebida": false,
+    "mainIngredient": "natural break manzana",
+    "everyday": false,
+    "addedSugar": true,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": true,
+    "venues": [
+      "kiosco",
+      "estación de servicio"
+    ],
+    "priceLevel": 1,
+    "drink": null,
+    "items": [],
+    "notes": "Revisá el envase real: las fórmulas, tamaños y porciones pueden cambiar. El envase es pequeño: 8 g CHO en 10 g de manzana deshidratada.",
+    "packaged": {
+      "brand": "Arcor",
+      "product": "Natural Break manzana",
+      "servingSize": "1 bolsita (10 g)",
+      "carbsPerServing": 8,
+      "sugarPerServing": 8,
+      "caloriesPerServing": 35,
+      "source": "https://www.arcor.com/ar/alimentacion-productos-sin-azucar",
+      "verified": true
+    }
+  },
+  {
+    "slug": "menthoplus-zero-kiosco",
+    "name": "Menthoplus Zero Strong, 4 caramelos",
+    "category": "snack",
+    "origen": "kiosco",
+    "sabor": "dulce",
+    "description": "Arcor: Sin azúcares, pero la etiqueta declara 25 g de carbohidratos por cuatro caramelos; no lo filtres como bajo en CHO.",
+    "momentos": [
+      "snack",
+      "merienda"
+    ],
+    "portions": [
+      {
+        "label": "4 caramelos (27 g)",
+        "carbs": 25,
+        "grams": null,
+        "default": true
+      }
+    ],
+    "tags": [
+      "kiosco",
+      "salida",
+      "envasado",
+      "dulce",
+      "práctico"
+    ],
+    "satiety": "liviana",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "totalMinutes": 0,
+    "rinde": null,
+    "esBebida": false,
+    "mainIngredient": "menthoplus zero strong",
+    "everyday": false,
+    "addedSugar": false,
+    "frequency": "ocasional",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": true,
+    "venues": [
+      "kiosco",
+      "estación de servicio"
+    ],
+    "priceLevel": 1,
+    "drink": null,
+    "items": [],
+    "notes": "Revisá el envase real: las fórmulas, tamaños y porciones pueden cambiar. Sin azúcares, pero la etiqueta declara 25 g de carbohidratos por cuatro caramelos; no lo filtres como bajo en CHO.",
+    "packaged": {
+      "brand": "Arcor",
+      "product": "Menthoplus Zero Strong",
+      "servingSize": "4 caramelos (27 g)",
+      "carbsPerServing": 25,
+      "sugarPerServing": 0,
+      "caloriesPerServing": 60,
+      "source": "https://www.arcor.com/ar/alimentacion-productos-sin-azucar",
+      "verified": true
+    }
+  },
+  {
+    "slug": "coca-zero-kiosco",
+    "name": "Coca-Cola Zero",
+    "category": "snack",
+    "origen": "kiosco",
+    "sabor": "neutral",
+    "description": "Coca-Cola: 0 g CHO por vaso de 200 ml según la tabla publicada en Argentina.",
+    "momentos": [
+      "snack"
+    ],
+    "portions": [
+      {
+        "label": "200 ml (1 vaso)",
+        "carbs": 0,
+        "grams": null,
+        "default": true
+      }
+    ],
+    "tags": [
+      "kiosco",
+      "salida",
+      "envasado"
+    ],
+    "satiety": "liviana",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "totalMinutes": 0,
+    "rinde": null,
+    "esBebida": true,
+    "mainIngredient": "coca-cola zero",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": true,
+    "venues": [
+      "kiosco",
+      "estación de servicio"
+    ],
+    "priceLevel": 1,
+    "drink": null,
+    "items": [],
+    "notes": "El fabricante informa 0 g CHO por 200 ml; revisá la presentación que compraste. No reemplaza una comida.",
+    "packaged": {
+      "brand": "Coca-Cola",
+      "product": "Coca-Cola Zero",
+      "servingSize": "200 ml (1 vaso)",
+      "carbsPerServing": 0,
+      "sugarPerServing": 0,
+      "caloriesPerServing": 0,
+      "source": "https://www.coca-cola.com/ar/es/brands/coca-cola/zero",
+      "verified": true
+    }
+  },
+  {
+    "slug": "sprite-zero-kiosco",
+    "name": "Sprite Zero",
+    "category": "snack",
+    "origen": "kiosco",
+    "sabor": "neutral",
+    "description": "Sprite: 0 g CHO por vaso de 200 ml según la tabla publicada en Argentina.",
+    "momentos": [
+      "snack"
+    ],
+    "portions": [
+      {
+        "label": "200 ml (1 vaso)",
+        "carbs": 0,
+        "grams": null,
+        "default": true
+      }
+    ],
+    "tags": [
+      "kiosco",
+      "salida",
+      "envasado"
+    ],
+    "satiety": "liviana",
+    "prepType": "ready",
+    "activeMinutes": 0,
+    "totalMinutes": 0,
+    "rinde": null,
+    "esBebida": true,
+    "mainIngredient": "sprite zero",
+    "everyday": true,
+    "addedSugar": false,
+    "frequency": "habitual",
+    "difficulty": 1,
+    "portable": false,
+    "needsCold": false,
+    "needsReheat": false,
+    "makeNightBefore": false,
+    "freezable": false,
+    "handheld": true,
+    "buyOutside": true,
+    "venues": [
+      "kiosco",
+      "estación de servicio"
+    ],
+    "priceLevel": 1,
+    "drink": null,
+    "items": [],
+    "notes": "El fabricante informa 0 g CHO por 200 ml; revisá la presentación que compraste. No reemplaza una comida.",
+    "packaged": {
+      "brand": "Sprite",
+      "product": "Sprite Zero",
+      "servingSize": "200 ml (1 vaso)",
+      "carbsPerServing": 0,
+      "sugarPerServing": 0,
+      "caloriesPerServing": 0,
+      "source": "https://www.coca-cola.com/ar/es/brands/sprite/productos",
+      "verified": true
+    }
+  }
+]
