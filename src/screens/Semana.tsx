@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { LazyMotion, domAnimation, m } from 'motion/react'
+import { AnimatePresence, LazyMotion, domAnimation, m, useReducedMotion } from 'motion/react'
 import type { Vianda } from '../lib/store'
 import { CONTEXT_NOTE } from '../lib/types'
 import { isoDate, longDate, parseIso, shortDate } from '../lib/format'
@@ -7,10 +7,11 @@ import { ContextSwitch, SectionLabel } from '../components/ui'
 import { Rail, type RailItem } from '../components/Rail'
 import { MealSheet, type MealSheetTarget } from '../components/MealSheet'
 
-export function Semana({ app, onVolver }: { app: Vianda; onVolver: () => void }) {
+export function Semana({ app, initialDate, onVolver }: { app: Vianda; initialDate: string; onVolver: () => void }) {
   const todayIso = isoDate(new Date())
-  const [selected, setSelected] = useState(todayIso)
+  const [selected, setSelected] = useState(initialDate)
   const [target, setTarget] = useState<MealSheetTarget | null>(null)
+  const reducir = useReducedMotion()
 
   const day = app.week.find((d) => d.date === selected) ?? app.week[0]
   const items: RailItem[] = (day?.meals ?? [])
@@ -38,7 +39,9 @@ export function Semana({ app, onVolver }: { app: Vianda; onVolver: () => void })
               <button
                 key={d.date}
                 onClick={() => setSelected(d.date)}
-                className={`relative min-w-[47px] shrink-0 rounded-xl py-2.5 text-center transition-colors ${
+                aria-pressed={active}
+                aria-label={`${longDate(date)} · ${d.context === 'calle' ? 'afuera' : d.context === 'casa' ? 'en casa' : 'mixto'}`}
+                className={`relative min-w-[49px] shrink-0 rounded-xl py-2.5 text-center transition-colors ${
                   active ? 'bg-accent-soft' : 'active:bg-surface-2'
                 }`}
               >
@@ -49,18 +52,20 @@ export function Semana({ app, onVolver }: { app: Vianda; onVolver: () => void })
                   {date.getDate()}
                 </span>
                 {isToday && <span aria-hidden className={`mx-auto mt-1 block size-1 rounded-full ${active ? 'bg-accent' : 'bg-ink-faint'}`} />}
-                <span className="mt-1 block text-[10px] text-ink-faint">{d.context === 'calle' ? 'Afuera' : d.context === 'casa' ? 'Casa' : 'Mixto'}</span>
+                <span className="mt-1 block text-[12px] text-ink-soft">{d.context === 'calle' ? 'Afuera' : d.context === 'casa' ? 'Casa' : 'Mixto'}</span>
               </button>
             )
           })}
         </div>
 
+        <AnimatePresence mode="wait">
         {day && (
           <m.section
             key={day.date}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: 'spring', stiffness: 250, damping: 28 }}
+            initial={reducir ? false : { opacity: 0, x: 16 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={reducir ? undefined : { opacity: 0, x: -16 }}
+            transition={{ duration: reducir ? 0 : 0.2 }}
             className="pt-5"
           >
             <h2 className="v-head text-[20px] text-ink first-letter:uppercase">{longDate(parseIso(day.date))}</h2>
@@ -82,6 +87,7 @@ export function Semana({ app, onVolver }: { app: Vianda; onVolver: () => void })
             />
           </m.section>
         )}
+        </AnimatePresence>
 
         <button
           onClick={app.regenerate}

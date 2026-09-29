@@ -32,7 +32,7 @@ export function Onboarding({ app, onSalir }: { app: Vianda; onSalir: (verGuia: b
 
   const terminar = () => {
     guardar({ ...perfil, paso: PASOS, listo: true })
-    onSalir(true)
+    onSalir(false)
   }
 
   const saltear = () => {
@@ -88,7 +88,7 @@ export function Onboarding({ app, onSalir }: { app: Vianda; onSalir: (verGuia: b
             onClick={avanzar}
             className="v-label min-h-[52px] w-full rounded-xl bg-accent text-[15px] font-semibold text-accent-ink transition-transform duration-150 active:scale-[0.98]"
           >
-            {paso === 0 ? 'Empezar' : paso === PASOS - 1 ? 'Aprender a usar Vianda' : 'Seguir'}
+            {paso === 0 ? 'Empezar' : paso === PASOS - 1 ? 'Ir a mi semana' : 'Seguir'}
           </button>
           {paso > 0 && (
             <button onClick={volver} className="v-label mt-3 min-h-[44px] w-full text-ink-faint">
@@ -313,7 +313,7 @@ function Final({ perfil }: { perfil: Perfil }) {
   return (
     <>
       <Titulo>{nombre ? `Listo, ${nombre}.` : 'Listo.'}</Titulo>
-      <Bajada>Tu semana ya está armada. Ahora te mostramos cómo mirar el plan, registrar comidas y preparar lo que vas a llevar. Podés saltear la guía cuando quieras.</Bajada>
+      <Bajada>Tu semana ya está armada. Podés cambiar cualquier comida, marcar los días afuera y volver a abrir la guía desde Inicio o Perfil.</Bajada>
       <div className="mt-8 border-t border-line">
         {[
           ['HOY', 'Qué toca ahora, qué sigue y qué conviene dejar listo para después.'],

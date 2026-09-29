@@ -9,6 +9,7 @@ import { Perfil } from './screens/Perfil'
 import { Semana } from './screens/Semana'
 import { Guia } from './screens/Guia'
 import { Nav, type Tab } from './components/Nav'
+import { isoDate } from './lib/format'
 
 /* Router propio: cinco pantallas no justifican una dependencia.
 
@@ -35,10 +36,12 @@ const useHash = () => {
 export default function App() {
   const app = useVianda()
   const [tab, setTab] = useState<Tab>('inicio')
+  const [selectedDate, setSelectedDate] = useState(() => isoDate(new Date()))
   const [hash, setHash] = useHash()
   /* Para que salir de la presentación se sienta inmediato, sin esperar a
      que el guardado vuelva. */
   const [saltado, setSaltado] = useState(false)
+  const [introVista, setIntroVista] = useState(false)
 
   if (Direcciones && (hash === '#/direcciones' || hash === '#/conceptos')) {
     return (
@@ -48,18 +51,21 @@ export default function App() {
     )
   }
 
-  /* La presentación aparece una sola vez y se puede saltear entera. Va
-     antes que cualquier otra cosa: no tiene sentido explicar la app por
-     encima de la app. */
+  if (!app.perfil.listo && !saltado && app.perfil.paso === 0 && !introVista) {
+    return <Guia intro onTerminar={() => setIntroVista(true)} onIr={setTab} />
+  }
+
+  /* La configuración sigue a la explicación inicial. Una configuración
+     empezada se retoma en el paso guardado, sin repetir la guía. */
   if (!app.perfil.listo && !saltado) {
-    return <Onboarding app={app} onSalir={(verGuia) => { setSaltado(true); if (verGuia) setTab('guia') }} />
+    return <Onboarding app={app} onSalir={() => setSaltado(true)} />
   }
 
   return (
     <div className="min-h-dvh bg-bg">
-      {tab === 'inicio' && <Inicio app={app} onIr={setTab} />}
+      {tab === 'inicio' && <Inicio app={app} onIr={setTab} onDiaSemana={(date) => { setSelectedDate(date); setTab('semana') }} />}
       {tab === 'hoy' && <Hoy app={app} />}
-      {tab === 'semana' && <Semana app={app} onVolver={() => setTab('inicio')} />}
+      {tab === 'semana' && <Semana app={app} initialDate={selectedDate} onVolver={() => setTab('inicio')} />}
       {tab === 'guia' && <Guia onIr={setTab} />}
       {tab === 'comidas' && <Comidas app={app} />}
       {tab === 'compras' && <Compras app={app} />}

@@ -13,6 +13,7 @@ import { FilaProxima, ProximaComida, TiraDelDia } from '../components/comida'
 import { Hojas, type Hoja } from '../components/Hojas'
 import { ContextSwitch } from '../components/ui'
 import { BarraAsistente } from '../components/Asistente'
+import { isoDate, parseIso } from '../lib/format'
 
 /* ------------------------------------------------------------------
    INICIO
@@ -111,7 +112,7 @@ function Celda({
   )
 }
 
-export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: Tab) => void }) {
+export function Inicio({ app, onIr, onDiaSemana }: { app: Vianda; onIr: (tab: Tab) => void; onDiaSemana: (date: string) => void }) {
   const [hoja, setHoja] = useState<Hoja>(null)
   const [situacion, setSituacion] = useState<Situacion>(() =>
     app.today?.context === 'calle' ? 'calle' : app.today?.context === 'casa' ? 'casa' : 'trabajo',
@@ -163,6 +164,24 @@ export function Inicio({ app, onIr }: { app: Vianda; onIr: (tab: Tab) => void })
         </div>
         <p className="t-meta mt-1 text-ink-faint">{fechaLarga(hoy)}</p>
       </header>
+
+      <section aria-label="Calendario de la semana" className="rounded-[22px] bg-surface p-4 shadow-sm">
+        <div className="flex items-center justify-between gap-2">
+          <h2 className="text-[19px] font-bold text-ink">Tu semana</h2>
+          <button onClick={() => onIr('semana')} className="min-h-[44px] rounded-xl bg-accent px-3 text-[14px] font-semibold text-white">Ver calendario ›</button>
+        </div>
+        <p className="mt-1 text-[14px] text-ink-soft">Elegí un día para ver o cambiar sus comidas.</p>
+        <div className="mt-3 grid grid-cols-7 gap-1">
+          {app.week.map((d) => {
+            const fecha = parseIso(d.date)
+            const esHoy = d.date === isoDate(hoy)
+            return <button key={d.date} onClick={() => onDiaSemana(d.date)} aria-label={`${fechaLarga(fecha)} · ${d.context === 'calle' ? 'afuera' : d.context === 'casa' ? 'en casa' : 'mixto'}`} className={`min-h-[62px] rounded-xl text-center transition-transform active:scale-95 ${esHoy ? 'bg-accent-soft text-accent' : 'bg-bg text-ink'}`}>
+              <span className="block text-[12px] font-semibold">{new Intl.DateTimeFormat('es-AR', { weekday: 'short' }).format(fecha).replace('.', '')}</span>
+              <span className="block text-[20px] font-bold">{fecha.getDate()}</span>
+            </button>
+          })}
+        </div>
+      </section>
 
       {/* ══════════════ TU DÍA ══════════════ */}
 

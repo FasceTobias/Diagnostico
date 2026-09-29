@@ -43,6 +43,7 @@ export type IconName =
   // navegación
   | 'inicio'
   | 'hoy'
+  | 'semana'
   | 'comidas'
   | 'compras'
   | 'perfil'
@@ -78,6 +79,7 @@ export type IconName =
 const PATHS: Record<IconName, string> = {
   inicio: 'M4 10.4 12 4l8 6.4V19a1 1 0 0 1-1 1h-4.5v-5.2h-5V20H5a1 1 0 0 1-1-1Z',
   hoy: 'M4.8 6.6h14.4v12.6H4.8zM4.8 10.6h14.4M9 4.4v3.6M15 4.4v3.6',
+  semana: 'M4.8 6.6h14.4v12.6H4.8zM4.8 10.6h14.4M9 4.4v3.6M15 4.4v3.6M8 14h2M14 14h2M8 17h2M14 17h2',
   comidas:
     'M7 4v5.4a1.7 1.7 0 0 0 3.4 0V4M8.7 11.1V20M15.9 4c-1.2 1.5-1.7 3.2-1.7 5.1 0 1.5.6 2.3 1.7 2.3V20',
   compras: 'M6 7.8h12l-1.1 11a1.6 1.6 0 0 1-1.6 1.4H8.7a1.6 1.6 0 0 1-1.6-1.4ZM9.3 7.8a2.7 2.7 0 0 1 5.4 0',
@@ -180,4 +182,3 @@ export const meta = (meal: Meal): string => {
     .filter(Boolean)
     .join(' · ')
 }
-
