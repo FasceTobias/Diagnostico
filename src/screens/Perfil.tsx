@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { Card, TituloSeccion } from '../components/base'
 import { CuentaSheet } from '../components/Cuenta'
+import { PrivacySheet } from '../components/PrivacySheet'
 import { useSession } from '../lib/auth'
+import { exportLocalData, deleteLocalData } from '../lib/privacy'
 import { DIABETES_LABEL, type DiabetesType } from '../lib/types'
 import type { Vianda } from '../lib/store'
 
@@ -28,6 +30,19 @@ const esquemas = [
 export function Perfil({ app }: { app: Vianda }) {
   const cuenta = useSession()
   const [cuentaAbierta, setCuentaAbierta] = useState(false)
+  const [privacidadAbierta, setPrivacidadAbierta] = useState(false)
+  const [avisoDatos, setAvisoDatos] = useState('')
+
+  const borrarDatos = () => {
+    if (cuenta.estado !== 'sin-backend') return
+    if (!window.confirm('¿Borrar tu perfil, semana, registros y compras de este dispositivo? Esta acción no se puede deshacer. Podés descargarlos antes.')) return
+    try {
+      deleteLocalData()
+      window.location.reload()
+    } catch {
+      setAvisoDatos('No se pudieron borrar los datos. Revisá los permisos del navegador.')
+    }
+  }
 
   const cambiarNombre = (nombre: string) => app.setPerfil({ ...app.perfil, nombre })
   const cambiarCarbos = () => app.setPerfil({ ...app.perfil, contarCarbos: !app.perfil.contarCarbos })
@@ -179,7 +194,20 @@ export function Perfil({ app }: { app: Vianda }) {
         </Card>
       </section>
 
+      <section className="mt-8">
+        <TituloSeccion>Privacidad y tus datos</TituloSeccion>
+        <Card>
+          <p className="text-[14px] leading-relaxed text-ink-soft">Tu planificación y los datos de salud que elegiste indicar se guardan en este navegador.</p>
+          <button onClick={() => setPrivacidadAbierta(true)} className="mt-4 min-h-[44px] w-full rounded-xl border border-line px-4 text-left font-semibold text-ink">Cómo usa Vianda tus datos</button>
+          <button onClick={() => { try { exportLocalData(); setAvisoDatos('Descarga iniciada. Guardá el archivo en un lugar privado.') } catch (error) { setAvisoDatos(error instanceof Error ? error.message : 'No se pudo descargar el archivo.') } }} className="mt-3 min-h-[44px] w-full rounded-xl border border-line px-4 text-left font-semibold text-ink">Descargar mis datos de este dispositivo</button>
+          {cuenta.estado === 'sin-backend' && <button onClick={borrarDatos} className="mt-3 min-h-[44px] w-full rounded-xl border border-line px-4 text-left font-semibold text-ink">Borrar mis datos de este dispositivo</button>}
+          {cuenta.estado !== 'sin-backend' && <p className="mt-3 text-[13px] text-ink-soft">Las cuentas conectadas necesitan un proceso de baja completo; el borrado local no eliminaría sus datos remotos.</p>}
+          {avisoDatos && <p role="status" className="mt-3 text-[13px] text-ink-soft">{avisoDatos}</p>}
+        </Card>
+      </section>
+
       <CuentaSheet open={cuentaAbierta} onClose={() => setCuentaAbierta(false)} cuenta={cuenta} />
+      <PrivacySheet open={privacidadAbierta} onClose={() => setPrivacidadAbierta(false)} />
     </div>
   )
 }

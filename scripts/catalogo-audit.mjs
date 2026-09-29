@@ -33,6 +33,7 @@ for (const x of all) {
   assert(Number.isFinite(x.activeMinutes) && x.totalMinutes >= x.activeMinutes && x.totalMinutes > 0, `${x.name}: tiempo`)
   const complete = enriched[x.slug] ?? x
   assert(x.items.length && complete.steps?.length && complete.steps.every((p) => p.text?.trim()), `${x.name}: preparación`)
+  if (added.includes(x)) assert(!complete.steps.some((p) => /legumbres ya cocidas|cobertura de papa, calabaza o berenjena|Cortá fruta o verduras según la lista|queso o ricota|si corresponde/i.test(p.text)), `${x.name}: preparación genérica sin resolver`)
   assert(complete.servings > 0 && complete.nutrition && complete.equipment && complete.storage, `${x.name}: ficha incompleta`)
   const n = complete.nutrition
   assert(n.carbs >= 0 && n.carbs < 150 && n.kcal > 0 && n.kcal < 1200 && n.protein >= 0 && n.fat >= 0 && n.fiber >= 0, `${x.name}: macros inverosímiles`)

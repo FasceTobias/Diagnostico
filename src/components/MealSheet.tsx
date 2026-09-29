@@ -5,7 +5,6 @@ import { compatibleReplacements, rescueOptions } from '../lib/domain'
 import { Sheet } from './Sheet'
 import { SectionLabel } from './ui'
 import { MealDetail } from './MealDetail'
-import { CarbCalculator } from './CarbCalculator'
 import { CarbValue, MetaLine } from './ui'
 
 /* Un solo sheet resuelve: ver, marcar, cambiar y rescatar el día.
@@ -56,7 +55,6 @@ export function MealSheet({
   target,
   meals,
   context,
-  insulin,
   onClose,
   onStatus,
   onReplace,
@@ -70,7 +68,6 @@ export function MealSheet({
   onReplace: (mealId: string) => void
 }) {
   const [mode, setMode] = useState<Mode>('detail')
-  const [calc, setCalc] = useState(false)
 
   const close = () => {
     onClose()
@@ -179,15 +176,6 @@ export function MealSheet({
           Cambiar por otra
         </button>
 
-        {insulin.enabled && (
-          <button
-            onClick={() => setCalc(true)}
-            className="mt-2 min-h-[44px] w-full text-[15px] font-medium text-ink-soft active:text-ink"
-          >
-            Calcular referencia de insulina
-          </button>
-        )}
-
         {canRescue && (
           <button
             onClick={() => setMode('rescue')}
@@ -198,14 +186,6 @@ export function MealSheet({
         )}
       </div>
 
-      <CarbCalculator
-        open={calc}
-        onClose={() => setCalc(false)}
-        insulin={insulin}
-        meal={meal}
-        slot={planned.slot}
-        time={planned.time}
-      />
     </Sheet>
   )
 }

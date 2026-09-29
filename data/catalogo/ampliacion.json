@@ -586,13 +586,13 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá zapallito, cebolla cuando corresponda."
       },
       {
-        "text": "Rehogá zapallito, cebolla y escurrilo; dejá entibiar."
+        "text": "Rehogá la cebolla y el zapallito hasta que pierdan líquido; sumá el choclo y dejá entibiar."
       },
       {
         "text": "Estirá la masa en tartera de 24 cm, pinchá la base y precocinala 8 min a 190 °C."
       },
       {
-        "text": "Mezclá el relleno con huevo y queso o ricota; distribuí en la base."
+        "text": "Mezclá el relleno con huevo y queso; distribuí en la base."
       },
       {
         "text": "Horneá 25–30 min a 190 °C hasta que la base dore y el relleno esté firme. Entibiá antes de cortar."
@@ -697,7 +697,7 @@
         "text": "Estirá la masa en tartera de 24 cm, pinchá la base y precocinala 8 min a 190 °C."
       },
       {
-        "text": "Mezclá el relleno con huevo y queso o ricota; distribuí en la base."
+        "text": "Mezclá el relleno con huevo y ricota; distribuí en la base."
       },
       {
         "text": "Horneá 25–30 min a 190 °C hasta que la base dore y el relleno esté firme. Entibiá antes de cortar."
@@ -802,7 +802,7 @@
         "text": "Estirá la masa en tartera de 24 cm, pinchá la base y precocinala 8 min a 190 °C."
       },
       {
-        "text": "Mezclá el relleno con huevo y queso o ricota; distribuí en la base."
+        "text": "Mezclá el relleno con huevo y queso; distribuí en la base."
       },
       {
         "text": "Horneá 25–30 min a 190 °C hasta que la base dore y el relleno esté firme. Entibiá antes de cortar."
@@ -902,7 +902,7 @@
         "text": "Estirá la masa en tartera de 24 cm, pinchá la base y precocinala 8 min a 190 °C."
       },
       {
-        "text": "Mezclá el relleno con huevo y queso o ricota; distribuí en la base."
+        "text": "Mezclá el relleno con huevo y queso; distribuí en la base."
       },
       {
         "text": "Horneá 25–30 min a 190 °C hasta que la base dore y el relleno esté firme. Entibiá antes de cortar."
@@ -1012,7 +1012,7 @@
         "text": "Estirá la masa en tartera de 24 cm, pinchá la base y precocinala 8 min a 190 °C."
       },
       {
-        "text": "Mezclá el relleno con huevo y queso o ricota; distribuí en la base."
+        "text": "Mezclá el relleno con huevo y queso; distribuí en la base."
       },
       {
         "text": "Horneá 25–30 min a 190 °C hasta que la base dore y el relleno esté firme. Entibiá antes de cortar."
@@ -1117,7 +1117,7 @@
         "text": "Estirá la masa en tartera de 24 cm, pinchá la base y precocinala 8 min a 190 °C."
       },
       {
-        "text": "Mezclá el relleno con huevo; distribuí en la base."
+        "text": "Batí los huevos, mezclalos con la berenjena y el tomate escurridos y distribuí sobre la base; agregá la muzzarella."
       },
       {
         "text": "Horneá 25–30 min a 190 °C hasta que la base dore y el relleno esté firme. Entibiá antes de cortar."
@@ -1222,7 +1222,7 @@
         "text": "Estirá la masa en tartera de 24 cm, pinchá la base y precocinala 8 min a 190 °C."
       },
       {
-        "text": "Mezclá el relleno con huevo y queso o ricota; distribuí en la base."
+        "text": "Mezclá el relleno con huevo y ricota; distribuí en la base."
       },
       {
         "text": "Horneá 25–30 min a 190 °C hasta que la base dore y el relleno esté firme. Entibiá antes de cortar."
@@ -1327,7 +1327,7 @@
         "text": "Estirá la masa en tartera de 24 cm, pinchá la base y precocinala 8 min a 190 °C."
       },
       {
-        "text": "Mezclá el relleno con huevo; distribuí en la base."
+        "text": "Escurrí el atún y mezclalo con la zanahoria y cebolla cocidas y los huevos; distribuí sobre la base."
       },
       {
         "text": "Horneá 25–30 min a 190 °C hasta que la base dore y el relleno esté firme. Entibiá antes de cortar."
@@ -1426,13 +1426,13 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
       },
       {
-        "text": "Rehogá el relleno y escurrilo; dejá entibiar."
+        "text": "Calentá el choclo y mezclalo con el jamón cortado en tiras; dejá entibiar antes de sumar los huevos y el queso."
       },
       {
         "text": "Estirá la masa en tartera de 24 cm, pinchá la base y precocinala 8 min a 190 °C."
       },
       {
-        "text": "Mezclá el relleno con huevo y queso o ricota; distribuí en la base."
+        "text": "Mezclá el relleno con huevo y queso; distribuí en la base."
       },
       {
         "text": "Horneá 25–30 min a 190 °C hasta que la base dore y el relleno esté firme. Entibiá antes de cortar."
@@ -1528,16 +1528,13 @@
     "researchSource": "https://www.argentina.gob.ar/alimentarsaberes/acocinar",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá cebolla cuando corresponda."
+        "text": "Rehogá la cebolla picada; agregá el choclo y la leche y cociná hasta que espese. Retirá del fuego y mezclá el queso; enfriá el relleno."
       },
       {
-        "text": "Cociná la cebolla y el relleno en sartén hasta que no quede líquido; dejá enfriar antes de armar."
+        "text": "Distribuí el relleno en las 12 tapas, humedecé los bordes y cerrá bien."
       },
       {
-        "text": "Repartí el relleno en 12 tapas, humedecé los bordes y cerrá con repulgue firme."
-      },
-      {
-        "text": "Acomodá en placa y horneá a 200 °C durante 20–25 min hasta dorar; cada porción son 2 empanadas."
+        "text": "Horneá a 200 °C durante 20–25 minutos, hasta que estén doradas; cada porción son 2 empanadas."
       }
     ]
   },
@@ -2135,19 +2132,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213611",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá cebolla, zanahoria cuando corresponda."
+        "text": "Lavá y cortá cebolla, zanahoria en trozos parejos. Medí el resto de los ingredientes de la lista."
       },
       {
-        "text": "Rehogá cebolla, zanahoria 5 min en olla amplia; dorá el relleno si corresponde."
+        "text": "En una olla, rehogá la cebolla y agregá zanahoria. "
       },
       {
-        "text": "Sumá arroz, la salsa de tomate y agua suficiente para apenas cubrir."
+        "text": "Sumá arroz, salsa de tomate y agua suficiente para cubrir apenas. Cociná a hervor suave, revolviendo de vez en cuando, hasta que los ingredientes crudos estén tiernos."
       },
       {
-        "text": "Cociná a hervor suave hasta que arroz esté tierno; incorporá legumbres ya cocidas al final."
-      },
-      {
-        "text": "Probá la sazón y serví dividido en las porciones indicadas."
+        "text": "Incorporá lentejas cocidas ya cocidos y calentá 5 minutos más. Repartí en 4 porciones; refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -2240,19 +2234,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213611",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza, cebolla, morrón cuando corresponda."
+        "text": "Lavá y cortá calabaza, cebolla, morrón en trozos parejos. Medí el resto de los ingredientes de la lista."
       },
       {
-        "text": "Rehogá calabaza, cebolla, morrón 5 min en olla amplia; dorá el relleno si corresponde."
+        "text": "En una olla, rehogá la cebolla y agregá calabaza, morrón. "
       },
       {
-        "text": "Sumá el ingrediente principal, la salsa de tomate y agua suficiente para apenas cubrir."
+        "text": "Sumá salsa de tomate y agua suficiente para cubrir apenas. Cociná a hervor suave, revolviendo de vez en cuando, hasta que los ingredientes crudos estén tiernos."
       },
       {
-        "text": "Cociná a hervor suave hasta que las verduras esté tierno; incorporá legumbres ya cocidas al final."
-      },
-      {
-        "text": "Probá la sazón y serví dividido en las porciones indicadas."
+        "text": "Incorporá porotos cocidos ya cocidos y calentá 5 minutos más. Repartí en 4 porciones; refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -2345,19 +2336,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213611",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá zanahoria, cebolla cuando corresponda."
+        "text": "Lavá y cortá zanahoria, cebolla en trozos parejos. Medí el resto de los ingredientes de la lista."
       },
       {
-        "text": "Rehogá zanahoria, cebolla 5 min en olla amplia; dorá pollo si corresponde."
+        "text": "En una olla, rehogá la cebolla y agregá zanahoria. Sumá pollo y cociná bien antes de incorporar el líquido."
       },
       {
-        "text": "Sumá fideos, la salsa de tomate y agua suficiente para apenas cubrir."
+        "text": "Sumá fideos, salsa de tomate y agua suficiente para cubrir apenas. Cociná a hervor suave, revolviendo de vez en cuando, hasta que los ingredientes crudos estén tiernos."
       },
       {
-        "text": "Cociná a hervor suave hasta que fideos esté tierno; incorporá legumbres ya cocidas al final."
-      },
-      {
-        "text": "Probá la sazón y serví dividido en las porciones indicadas."
+        "text": "Repartí en 4 porciones; refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -2445,19 +2433,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213611",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá espinaca, cebolla, tomate cuando corresponda."
+        "text": "Lavá y cortá espinaca, cebolla, tomate en trozos parejos. Medí el resto de los ingredientes de la lista."
       },
       {
-        "text": "Rehogá espinaca, cebolla, tomate 5 min en olla amplia; dorá el relleno si corresponde."
+        "text": "En una olla, rehogá la cebolla y agregá espinaca, tomate. "
       },
       {
-        "text": "Sumá el ingrediente principal,  agua suficiente para apenas cubrir."
+        "text": "Sumá los ingredientes restantes y agua suficiente para cubrir apenas. Cociná a hervor suave, revolviendo de vez en cuando, hasta que los ingredientes crudos estén tiernos."
       },
       {
-        "text": "Cociná a hervor suave hasta que las verduras esté tierno; incorporá legumbres ya cocidas al final."
-      },
-      {
-        "text": "Probá la sazón y serví dividido en las porciones indicadas."
+        "text": "Incorporá garbanzos cocidos ya cocidos y calentá 5 minutos más. Repartí en 4 porciones; refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -2550,19 +2535,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213611",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza, papa, cebolla cuando corresponda."
+        "text": "Lavá y cortá calabaza, choclo, cebolla en trozos parejos. Medí el resto de los ingredientes de la lista."
       },
       {
-        "text": "Rehogá calabaza, papa, cebolla 5 min en olla amplia; dorá carne picada si corresponde."
+        "text": "En una olla, rehogá la cebolla y agregá calabaza, choclo. Sumá carne picada y cociná bien antes de incorporar el líquido."
       },
       {
-        "text": "Sumá papa,  agua suficiente para apenas cubrir."
+        "text": "Sumá papa y agua suficiente para cubrir apenas. Cociná a hervor suave, revolviendo de vez en cuando, hasta que los ingredientes crudos estén tiernos."
       },
       {
-        "text": "Cociná a hervor suave hasta que papa esté tierno; incorporá legumbres ya cocidas al final."
-      },
-      {
-        "text": "Probá la sazón y serví dividido en las porciones indicadas."
+        "text": "Repartí en 4 porciones; refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -2655,19 +2637,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213611",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza, cebolla cuando corresponda."
+        "text": "Lavá y cortá choclo, calabaza, cebolla en trozos parejos. Medí el resto de los ingredientes de la lista."
       },
       {
-        "text": "Rehogá calabaza, cebolla 5 min en olla amplia; dorá cerdo si corresponde."
+        "text": "En una olla, rehogá la cebolla y agregá choclo, calabaza. Sumá cerdo y cociná bien antes de incorporar el líquido."
       },
       {
-        "text": "Sumá el ingrediente principal,  agua suficiente para apenas cubrir."
+        "text": "Sumá los ingredientes restantes y agua suficiente para cubrir apenas. Cociná a hervor suave, revolviendo de vez en cuando, hasta que los ingredientes crudos estén tiernos."
       },
       {
-        "text": "Cociná a hervor suave hasta que las verduras esté tierno; incorporá legumbres ya cocidas al final."
-      },
-      {
-        "text": "Probá la sazón y serví dividido en las porciones indicadas."
+        "text": "Incorporá porotos cocidos ya cocidos y calentá 5 minutos más. Repartí en 5 porciones; refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -2760,19 +2739,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213611",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá papa, cebolla, zanahoria cuando corresponda."
+        "text": "Lavá y cortá cebolla, zanahoria en trozos parejos. Medí el resto de los ingredientes de la lista."
       },
       {
-        "text": "Rehogá papa, cebolla, zanahoria 5 min en olla amplia; dorá lomo si corresponde."
+        "text": "En una olla, rehogá la cebolla y agregá zanahoria. Sumá lomo y cociná bien antes de incorporar el líquido."
       },
       {
-        "text": "Sumá papa, la salsa de tomate y agua suficiente para apenas cubrir."
+        "text": "Sumá papa, salsa de tomate y agua suficiente para cubrir apenas. Cociná a hervor suave, revolviendo de vez en cuando, hasta que los ingredientes crudos estén tiernos."
       },
       {
-        "text": "Cociná a hervor suave hasta que papa esté tierno; incorporá legumbres ya cocidas al final."
-      },
-      {
-        "text": "Probá la sazón y serví dividido en las porciones indicadas."
+        "text": "Repartí en 4 porciones; refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -2865,19 +2841,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213611",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá zanahoria, cebolla, papa cuando corresponda."
+        "text": "Lavá y cortá zanahoria, cebolla en trozos parejos. Medí el resto de los ingredientes de la lista."
       },
       {
-        "text": "Rehogá zanahoria, cebolla, papa 5 min en olla amplia; dorá pollo si corresponde."
+        "text": "En una olla, rehogá la cebolla y agregá zanahoria. Sumá pollo y cociná bien antes de incorporar el líquido."
       },
       {
-        "text": "Sumá papa, la salsa de tomate y agua suficiente para apenas cubrir."
+        "text": "Sumá papa, salsa de tomate y agua suficiente para cubrir apenas. Cociná a hervor suave, revolviendo de vez en cuando, hasta que los ingredientes crudos estén tiernos."
       },
       {
-        "text": "Cociná a hervor suave hasta que papa esté tierno; incorporá legumbres ya cocidas al final."
-      },
-      {
-        "text": "Probá la sazón y serví dividido en las porciones indicadas."
+        "text": "Repartí en 4 porciones; refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -2970,19 +2943,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213611",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza, cebolla, zanahoria cuando corresponda."
+        "text": "Lavá y cortá calabaza, cebolla, zanahoria en trozos parejos. Medí el resto de los ingredientes de la lista."
       },
       {
-        "text": "Rehogá calabaza, cebolla, zanahoria 5 min en olla amplia; dorá el relleno si corresponde."
+        "text": "En una olla, rehogá la cebolla y agregá calabaza, zanahoria. Sumá chorizo y cociná bien antes de incorporar el líquido."
       },
       {
-        "text": "Sumá el ingrediente principal,  agua suficiente para apenas cubrir."
+        "text": "Sumá los ingredientes restantes y agua suficiente para cubrir apenas. Cociná a hervor suave, revolviendo de vez en cuando, hasta que los ingredientes crudos estén tiernos."
       },
       {
-        "text": "Cociná a hervor suave hasta que las verduras esté tierno; incorporá legumbres ya cocidas al final."
-      },
-      {
-        "text": "Probá la sazón y serví dividido en las porciones indicadas."
+        "text": "Incorporá lentejas cocidas ya cocidos y calentá 5 minutos más. Repartí en 4 porciones; refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -3075,19 +3045,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213611",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate, cebolla, morrón cuando corresponda."
+        "text": "Lavá y cortá tomate, cebolla, morrón en trozos parejos. Medí el resto de los ingredientes de la lista."
       },
       {
-        "text": "Rehogá tomate, cebolla, morrón 5 min en olla amplia; dorá merluza si corresponde."
+        "text": "En una olla, rehogá la cebolla y agregá tomate, morrón. "
       },
       {
-        "text": "Sumá arroz,  agua suficiente para apenas cubrir."
+        "text": "Sumá arroz y agua suficiente para cubrir apenas. Cociná a hervor suave, revolviendo de vez en cuando, hasta que los ingredientes crudos estén tiernos."
       },
       {
-        "text": "Cociná a hervor suave hasta que arroz esté tierno; incorporá legumbres ya cocidas al final."
-      },
-      {
-        "text": "Probá la sazón y serví dividido en las porciones indicadas."
+        "text": "Agregá la merluza hacia el final y cociná suavemente hasta que quede opaca y se desmenuce fácilmente. Repartí en 4 porciones; refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -3180,16 +3147,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213612",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza, zanahoria, zapallito, cebolla cuando corresponda."
+        "text": "Lavá y cortá calabaza, zanahoria, zapallito, cebolla en trozos parejos. Medí el resto de los ingredientes de la lista."
       },
       {
-        "text": "Rehogá la cebolla 4 min. Sumá las demás verduras y agua hasta apenas cubrir."
+        "text": "En una olla, rehogá la cebolla y agregá calabaza, zanahoria, zapallito. "
       },
       {
-        "text": "Cociná a hervor suave 20–25 min; agregá las legumbres ya cocidas o los fideos según su tiempo de cocción."
+        "text": "Sumá los ingredientes restantes y agua suficiente para cubrir apenas. Cociná a hervor suave, revolviendo de vez en cuando, hasta que los ingredientes crudos estén tiernos."
       },
       {
-        "text": "Si buscás una crema, procesá fuera del fuego. Dividí en los platos indicados."
+        "text": "Incorporá garbanzos cocidos ya cocidos y calentá 5 minutos más. Repartí en 4 porciones; refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -3277,16 +3244,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213612",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate, cebolla cuando corresponda."
+        "text": "Lavá y cortá tomate, cebolla en trozos parejos. Medí el resto de los ingredientes de la lista."
       },
       {
-        "text": "Rehogá la cebolla 4 min. Sumá las demás verduras y agua hasta apenas cubrir."
+        "text": "En una olla, rehogá la cebolla y agregá tomate. "
       },
       {
-        "text": "Cociná a hervor suave 20–25 min; agregá las legumbres ya cocidas o los fideos según su tiempo de cocción."
+        "text": "Sumá arroz y agua suficiente para cubrir apenas. Cociná a hervor suave, revolviendo de vez en cuando, hasta que los ingredientes crudos estén tiernos."
       },
       {
-        "text": "Si buscás una crema, procesá fuera del fuego. Dividí en los platos indicados."
+        "text": "Repartí en 4 porciones; refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -3379,16 +3346,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213612",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá zanahoria, cebolla, zapallito cuando corresponda."
+        "text": "Lavá y cortá zanahoria, cebolla y zapallito; cortá el pollo en trozos pequeños."
       },
       {
-        "text": "Rehogá la cebolla 4 min. Sumá las demás verduras y agua hasta apenas cubrir."
+        "text": "Rehogá la cebolla, añadí pollo y cociná hasta que cambie de color. Sumá las verduras y agua suficiente para cubrirlas generosamente."
       },
       {
-        "text": "Cociná a hervor suave 20–25 min; agregá las legumbres ya cocidas o los fideos según su tiempo de cocción."
+        "text": "Herví suavemente unos 15 minutos; agregá los fideos y cociná el tiempo indicado en el envase, hasta que estén tiernos y el pollo completamente cocido."
       },
       {
-        "text": "Si buscás una crema, procesá fuera del fuego. Dividí en los platos indicados."
+        "text": "Repartí en 4 platos. Enfriá y refrigerá pronto las porciones que guardes."
       }
     ]
   },
@@ -3476,16 +3443,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213612",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza, zanahoria, cebolla cuando corresponda."
+        "text": "Lavá y cortá calabaza, zanahoria, cebolla en trozos similares."
       },
       {
-        "text": "Rehogá la cebolla 4 min. Sumá las demás verduras y agua hasta apenas cubrir."
+        "text": "Cociná las verduras en una olla con agua hasta que estén tiernas; usá sólo el líquido necesario para cubrirlas."
       },
       {
-        "text": "Cociná a hervor suave 20–25 min; agregá las legumbres ya cocidas o los fideos según su tiempo de cocción."
+        "text": "Procesá fuera del fuego. Incorporá leche y calentá suavemente sin dejar que hierva fuerte."
       },
       {
-        "text": "Si buscás una crema, procesá fuera del fuego. Agregá leche o queso al final. Dividí en los platos indicados."
+        "text": "Serví en 4 porciones; enfriá y refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -3573,16 +3540,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213612",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá zanahoria, tomate, cebolla cuando corresponda."
+        "text": "Lavá y cortá zanahoria, tomate, cebolla en trozos parejos. Medí el resto de los ingredientes de la lista."
       },
       {
-        "text": "Rehogá la cebolla 4 min. Sumá las demás verduras y agua hasta apenas cubrir."
+        "text": "En una olla, rehogá la cebolla y agregá zanahoria, tomate. "
       },
       {
-        "text": "Cociná a hervor suave 20–25 min; agregá las legumbres ya cocidas o los fideos según su tiempo de cocción."
+        "text": "Sumá los ingredientes restantes y agua suficiente para cubrir apenas. Cociná a hervor suave, revolviendo de vez en cuando, hasta que los ingredientes crudos estén tiernos."
       },
       {
-        "text": "Si buscás una crema, procesá fuera del fuego. Dividí en los platos indicados."
+        "text": "Incorporá lentejas cocidas ya cocidos y calentá 5 minutos más. Repartí en 4 porciones; refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -3670,16 +3637,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213612",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá brócoli, papa cuando corresponda."
+        "text": "Lavá y cortá brócoli, papa en trozos similares."
       },
       {
-        "text": "Rehogá las verduras firmes 4 min. Sumá las demás verduras y agua hasta apenas cubrir."
+        "text": "Cociná las verduras en una olla con agua hasta que estén tiernas; usá sólo el líquido necesario para cubrirlas."
       },
       {
-        "text": "Cociná a hervor suave 20–25 min; agregá las legumbres ya cocidas o los fideos según su tiempo de cocción."
+        "text": "Procesá fuera del fuego. Incorporá leche y queso y calentá suavemente sin dejar que hierva fuerte."
       },
       {
-        "text": "Si buscás una crema, procesá fuera del fuego. Agregá leche o queso al final. Dividí en los platos indicados."
+        "text": "Serví en 4 porciones; enfriá y refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -3767,16 +3734,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213612",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá batata, cebolla cuando corresponda."
+        "text": "Lavá y cortá cebolla, batata en trozos similares."
       },
       {
-        "text": "Rehogá la cebolla 4 min. Sumá las demás verduras y agua hasta apenas cubrir."
+        "text": "Cociná las verduras en una olla con agua hasta que estén tiernas; usá sólo el líquido necesario para cubrirlas."
       },
       {
-        "text": "Cociná a hervor suave 20–25 min; agregá las legumbres ya cocidas o los fideos según su tiempo de cocción."
+        "text": "Procesá fuera del fuego. Incorporá leche y queso y calentá suavemente sin dejar que hierva fuerte."
       },
       {
-        "text": "Si buscás una crema, procesá fuera del fuego. Agregá leche o queso al final. Dividí en los platos indicados."
+        "text": "Serví en 4 porciones; enfriá y refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -3869,19 +3836,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213611",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá papa, calabaza, zanahoria cuando corresponda."
+        "text": "Lavá y cortá calabaza, zanahoria, choclo en trozos parejos. Medí el resto de los ingredientes de la lista."
       },
       {
-        "text": "Rehogá papa, calabaza, zanahoria 5 min en olla amplia; dorá pollo si corresponde."
+        "text": "En una olla, rehogá las verduras y agregá calabaza, zanahoria, choclo. Sumá pollo y cociná bien antes de incorporar el líquido."
       },
       {
-        "text": "Sumá papa,  agua suficiente para apenas cubrir."
+        "text": "Sumá papa y agua suficiente para cubrir apenas. Cociná a hervor suave, revolviendo de vez en cuando, hasta que los ingredientes crudos estén tiernos."
       },
       {
-        "text": "Cociná a hervor suave hasta que papa esté tierno; incorporá legumbres ya cocidas al final."
-      },
-      {
-        "text": "Probá la sazón y serví dividido en las porciones indicadas."
+        "text": "Repartí en 4 porciones; refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -3974,16 +3938,16 @@
     "researchSource": "https://www.paulinacocina.net/viandas-saludables/13747",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá papa, cebolla, zanahoria cuando corresponda."
+        "text": "Prepará papa: cociná hasta que esté tierno y hacé un puré; medí los demás ingredientes."
       },
       {
-        "text": "Cociná el relleno con cebolla hasta que no quede líquido; ablandá la cobertura de papa, calabaza o berenjena."
+        "text": "Rehogá la cebolla; agregá lentejas cocidas y cociná hasta que se caliente y se evapore el líquido."
       },
       {
-        "text": "Poné el relleno en fuente de 24 × 20 cm y cubrí con el puré o las láminas. Distribuí el queso encima."
+        "text": "Poné el relleno en una fuente y cubrí con el puré de papa; distribuí el queso encima."
       },
       {
-        "text": "Horneá a 190 °C durante 20–25 min, hasta dorar. Dejá reposar 10 min para cortar las porciones."
+        "text": "Horneá a 190 °C durante 20–25 minutos, hasta dorar. Dejá reposar 10 minutos y dividí en 5 porciones."
       }
     ]
   },
@@ -4076,16 +4040,16 @@
     "researchSource": "https://www.paulinacocina.net/viandas-saludables/13747",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza, cebolla, morrón cuando corresponda."
+        "text": "Prepará calabaza: cociná hasta que esté tierno y hacé un puré; medí los demás ingredientes."
       },
       {
-        "text": "Cociná el relleno con cebolla hasta que no quede líquido; ablandá la cobertura de papa, calabaza o berenjena."
+        "text": "Rehogá la cebolla; agregá pollo y cociná hasta que esté completamente cocido y sin exceso de líquido."
       },
       {
-        "text": "Poné el relleno en fuente de 24 × 20 cm y cubrí con el puré o las láminas. Distribuí el queso encima."
+        "text": "Poné el relleno en una fuente y cubrí con el puré de calabaza; distribuí el queso encima."
       },
       {
-        "text": "Horneá a 190 °C durante 20–25 min, hasta dorar. Dejá reposar 10 min para cortar las porciones."
+        "text": "Horneá a 190 °C durante 20–25 minutos, hasta dorar. Dejá reposar 10 minutos y dividí en 5 porciones."
       }
     ]
   },
@@ -4178,16 +4142,16 @@
     "researchSource": "https://www.paulinacocina.net/viandas-saludables/13747",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá berenjena, tomate, cebolla cuando corresponda."
+        "text": "Prepará berenjena: cortá en láminas y horneá hasta ablandar; medí los demás ingredientes."
       },
       {
-        "text": "Cociná el relleno con cebolla hasta que no quede líquido; ablandá la cobertura de papa, calabaza o berenjena."
+        "text": "Rehogá la cebolla; agregá carne picada y cociná hasta que esté completamente cocido y sin exceso de líquido."
       },
       {
-        "text": "Poné el relleno en fuente de 24 × 20 cm y cubrí con el puré o las láminas. Distribuí el queso encima."
+        "text": "Poné el relleno en una fuente y cubrí con las láminas de berenjena; distribuí la muzzarella encima."
       },
       {
-        "text": "Horneá a 190 °C durante 20–25 min, hasta dorar. Dejá reposar 10 min para cortar las porciones."
+        "text": "Horneá a 190 °C durante 20–25 minutos, hasta dorar. Dejá reposar 10 minutos y dividí en 5 porciones."
       }
     ]
   },
@@ -4280,16 +4244,16 @@
     "researchSource": "https://www.paulinacocina.net/viandas-saludables/13747",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza, cebolla cuando corresponda."
+        "text": "Prepará choclo: cociná hasta que esté tierno y hacé un puré; medí los demás ingredientes."
       },
       {
-        "text": "Cociná el relleno con cebolla hasta que no quede líquido; ablandá la cobertura de papa, calabaza o berenjena."
+        "text": "Rehogá la cebolla; agregá carne picada y cociná hasta que esté completamente cocido y sin exceso de líquido."
       },
       {
-        "text": "Poné el relleno en fuente de 24 × 20 cm y cubrí con el puré o las láminas. Distribuí el queso encima."
+        "text": "Poné el relleno en una fuente y cubrí con el puré de choclo; distribuí el queso encima."
       },
       {
-        "text": "Horneá a 190 °C durante 20–25 min, hasta dorar. Dejá reposar 10 min para cortar las porciones."
+        "text": "Horneá a 190 °C durante 20–25 minutos, hasta dorar. Dejá reposar 10 minutos y dividí en 5 porciones."
       }
     ]
   },
@@ -4382,19 +4346,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213611",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá batata, cebolla, zanahoria, tomate cuando corresponda."
+        "text": "Lavá y cortá cebolla, zanahoria, tomate en trozos parejos. Medí el resto de los ingredientes de la lista."
       },
       {
-        "text": "Rehogá batata, cebolla, zanahoria, tomate 5 min en olla amplia; dorá cerdo si corresponde."
+        "text": "En una olla, rehogá la cebolla y agregá zanahoria, tomate. Sumá cerdo y cociná bien antes de incorporar el líquido."
       },
       {
-        "text": "Sumá batata,  agua suficiente para apenas cubrir."
+        "text": "Sumá batata y agua suficiente para cubrir apenas. Cociná a hervor suave, revolviendo de vez en cuando, hasta que los ingredientes crudos estén tiernos."
       },
       {
-        "text": "Cociná a hervor suave hasta que batata esté tierno; incorporá legumbres ya cocidas al final."
-      },
-      {
-        "text": "Probá la sazón y serví dividido en las porciones indicadas."
+        "text": "Repartí en 4 porciones; refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -4487,19 +4448,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213611",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá papa, tomate, cebolla, morrón cuando corresponda."
+        "text": "Lavá y cortá tomate, cebolla, morrón en trozos parejos. Medí el resto de los ingredientes de la lista."
       },
       {
-        "text": "Rehogá papa, tomate, cebolla, morrón 5 min en olla amplia; dorá merluza si corresponde."
+        "text": "En una olla, rehogá la cebolla y agregá tomate, morrón. "
       },
       {
-        "text": "Sumá papa,  agua suficiente para apenas cubrir."
+        "text": "Sumá papa y agua suficiente para cubrir apenas. Cociná a hervor suave, revolviendo de vez en cuando, hasta que los ingredientes crudos estén tiernos."
       },
       {
-        "text": "Cociná a hervor suave hasta que papa esté tierno; incorporá legumbres ya cocidas al final."
-      },
-      {
-        "text": "Probá la sazón y serví dividido en las porciones indicadas."
+        "text": "Agregá la merluza hacia el final y cociná suavemente hasta que quede opaca y se desmenuce fácilmente. Repartí en 4 porciones; refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -4597,19 +4555,13 @@
     "researchSource": "https://www.argentina.gob.ar/node/213611",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza, cebolla, morrón cuando corresponda."
+        "text": "Cortá la cebolla, el morrón y la calabaza; separá y medí el choclo."
       },
       {
-        "text": "Rehogá calabaza, cebolla, morrón 5 min en olla amplia; dorá el relleno si corresponde."
+        "text": "Rehogá cebolla y morrón. Agregá la calabaza, el choclo y la leche; mezclá y cociná a fuego bajo, revolviendo seguido, hasta que la calabaza esté tierna y la humita espese."
       },
       {
-        "text": "Sumá el ingrediente principal,  agua suficiente para apenas cubrir."
-      },
-      {
-        "text": "Cociná a hervor suave hasta que las verduras esté tierno; incorporá legumbres ya cocidas al final."
-      },
-      {
-        "text": "Probá la sazón y serví dividido en las porciones indicadas."
+        "text": "Incorporá el queso al final y serví en 5 porciones. Refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -4909,7 +4861,7 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá zanahoria, cebolla cuando corresponda."
       },
       {
-        "text": "Cociná arroz por separado si corresponde."
+        "text": "Herví el arroz por separado según el tiempo del envase."
       },
       {
         "text": "En sartén caliente cociná el huevo o las verduras hasta su punto seguro; reservá."
@@ -5011,7 +4963,7 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá morrón, cebolla, zanahoria cuando corresponda."
       },
       {
-        "text": "Cociná arroz por separado si corresponde."
+        "text": "Herví el arroz por separado según el tiempo del envase."
       },
       {
         "text": "En sartén caliente cociná cerdo hasta su punto seguro; reservá."
@@ -5212,16 +5164,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/181869",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá zanahoria, tomate cuando corresponda."
+        "text": "Por separado, herví arroz según el envase; cociná pollo completamente. Enfriá rápidamente si vas a comer la ensalada fría."
       },
       {
-        "text": "Cociná arroz por separado hasta que esté listo; enfriá rápidamente."
+        "text": "Lavá y cortá zanahoria, tomate, lechuga; escurrí y cortá los ingredientes cocidos en trozos cómodos para comer."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Mezclá arroz, pollo, zanahoria, tomate, lechuga."
       },
       {
-        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+        "text": "Repartí en 3 porciones. Si es vianda, refrigerá enseguida y transportá con frío."
       }
     ]
   },
@@ -5314,16 +5266,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/181869",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+        "text": "Por separado, herví fideos según el envase. Enfriá rápidamente si vas a comer la ensalada fría."
       },
       {
-        "text": "Cociná fideos por separado hasta que esté listo; enfriá rápidamente."
+        "text": "Lavá y cortá choclo, tomate; escurrí y cortá los ingredientes cocidos en trozos cómodos para comer."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Mezclá fideos, atún, choclo, tomate y agregá el aceite de oliva al servir."
       },
       {
-        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+        "text": "Repartí en 3 porciones. Si es vianda, refrigerá enseguida y transportá con frío."
       }
     ]
   },
@@ -5411,16 +5363,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/181869",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá papa, zanahoria cuando corresponda."
+        "text": "Por separado, cociná papa hasta que esté tierno; herví el huevo 10 minutos. Enfriá rápidamente si vas a comer la ensalada fría."
       },
       {
-        "text": "Cociná papa por separado hasta que esté listo; enfriá rápidamente."
+        "text": "Lavá y cortá arvejas, zanahoria; escurrí y cortá los ingredientes cocidos en trozos cómodos para comer."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Mezclá papa, huevo, arvejas, zanahoria."
       },
       {
-        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+        "text": "Repartí en 3 porciones. Si es vianda, refrigerá enseguida y transportá con frío."
       }
     ]
   },
@@ -5508,16 +5460,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/181869",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+        "text": "Por separado, cociná pollo completamente. Enfriá rápidamente si vas a comer la ensalada fría."
       },
       {
-        "text": "Cociná pollo por separado hasta que esté listo; enfriá rápidamente."
+        "text": "Lavá y cortá pepino, tomate; escurrí y cortá los ingredientes cocidos en trozos cómodos para comer."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Mezclá garbanzos cocidos, pollo, pepino, tomate."
       },
       {
-        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+        "text": "Repartí en 3 porciones. Si es vianda, refrigerá enseguida y transportá con frío."
       }
     ]
   },
@@ -5605,16 +5557,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/181869",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+        "text": "Por separado, herví el huevo 10 minutos. Enfriá rápidamente si vas a comer la ensalada fría."
       },
       {
-        "text": "Cociná los huevos por separado hasta que esté listo; enfriá rápidamente."
+        "text": "Lavá y cortá tomate, cebolla morada; escurrí y cortá los ingredientes cocidos en trozos cómodos para comer."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Mezclá porotos cocidos, huevo, tomate, cebolla morada."
       },
       {
-        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+        "text": "Repartí en 3 porciones. Si es vianda, refrigerá enseguida y transportá con frío."
       }
     ]
   },
@@ -5702,16 +5654,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/181869",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá batata, espinaca, cebolla cuando corresponda."
+        "text": "Por separado, cociná batata hasta que esté tierno. Enfriá rápidamente si vas a comer la ensalada fría."
       },
       {
-        "text": "Cociná batata por separado hasta que esté listo; enfriá rápidamente."
+        "text": "Lavá y cortá espinaca, cebolla; escurrí y cortá los ingredientes cocidos en trozos cómodos para comer."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Mezclá batata, espinaca, ricota, cebolla."
       },
       {
-        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+        "text": "Repartí en 3 porciones. Si es vianda, refrigerá enseguida y transportá con frío."
       }
     ]
   },
@@ -5799,13 +5751,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/181869",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá zanahoria cuando corresponda."
+        "text": "Por separado, cociná remolacha hasta que esté tierno. Enfriá rápidamente si vas a comer la ensalada fría."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Lavá y cortá zanahoria; escurrí y cortá los ingredientes cocidos en trozos cómodos para comer."
       },
       {
-        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+        "text": "Mezclá lentejas cocidas, remolacha, zanahoria, queso."
+      },
+      {
+        "text": "Repartí en 3 porciones. Si es vianda, refrigerá enseguida y transportá con frío."
       }
     ]
   },
@@ -5898,16 +5853,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/181869",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+        "text": "Por separado, herví arroz según el envase; herví el huevo 10 minutos. Enfriá rápidamente si vas a comer la ensalada fría."
       },
       {
-        "text": "Cociná arroz por separado hasta que esté listo; enfriá rápidamente."
+        "text": "Lavá y cortá tomate, lechuga; escurrí y cortá los ingredientes cocidos en trozos cómodos para comer."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Mezclá arroz, sardina, tomate, huevo, lechuga."
       },
       {
-        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+        "text": "Repartí en 3 porciones. Si es vianda, refrigerá enseguida y transportá con frío."
       }
     ]
   },
@@ -6000,16 +5955,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/181869",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá zanahoria cuando corresponda."
+        "text": "Por separado, cociná pollo completamente. Enfriá rápidamente si vas a comer la ensalada fría."
       },
       {
-        "text": "Cociná pollo por separado hasta que esté listo; enfriá rápidamente."
+        "text": "Lavá y cortá naranja, zanahoria, lechuga; escurrí y cortá los ingredientes cocidos en trozos cómodos para comer."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Mezclá pollo, naranja, zanahoria, lechuga, nuez."
       },
       {
-        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+        "text": "Repartí en 3 porciones. Si es vianda, refrigerá enseguida y transportá con frío."
       }
     ]
   },
@@ -6097,16 +6052,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/181869",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá brócoli, tomate cuando corresponda."
+        "text": "Por separado, herví fideos según el envase; cociná brócoli hasta que esté tierno. Enfriá rápidamente si vas a comer la ensalada fría."
       },
       {
-        "text": "Cociná fideos por separado hasta que esté listo; enfriá rápidamente."
+        "text": "Lavá y cortá tomate; escurrí y cortá los ingredientes cocidos en trozos cómodos para comer."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Mezclá fideos, brócoli, queso, tomate."
       },
       {
-        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+        "text": "Repartí en 3 porciones. Si es vianda, refrigerá enseguida y transportá con frío."
       }
     ]
   },
@@ -6194,13 +6149,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/181869",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+        "text": "Escurrí garbanzos cocidos y medí las cantidades de la lista."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Lavá y cortá tomate; prepará los demás ingredientes según la lista."
       },
       {
-        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+        "text": "Mezclá garbanzos cocidos, tomate, muzzarella y agregá el aceite de oliva al servir."
+      },
+      {
+        "text": "Repartí en 3 porciones. Si es vianda, refrigerá enseguida y transportá con frío."
       }
     ]
   },
@@ -6288,16 +6246,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/181869",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá papa, tomate cuando corresponda."
+        "text": "Por separado, cociná papa hasta que esté tierno; cociná merluza completamente; herví el huevo 10 minutos. Enfriá rápidamente si vas a comer la ensalada fría."
       },
       {
-        "text": "Cociná papa por separado hasta que esté listo; enfriá rápidamente."
+        "text": "Lavá y cortá tomate; escurrí y cortá los ingredientes cocidos en trozos cómodos para comer."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Mezclá papa, merluza, tomate, huevo."
       },
       {
-        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+        "text": "Repartí en 3 porciones. Si es vianda, refrigerá enseguida y transportá con frío."
       }
     ]
   },
@@ -6385,16 +6343,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/181869",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+        "text": "Por separado, cociná pollo completamente; herví arroz según el envase. Enfriá rápidamente si vas a comer la ensalada fría."
       },
       {
-        "text": "Cociná arroz por separado hasta que esté listo; enfriá rápidamente."
+        "text": "Lavá y cortá palta, tomate; escurrí y cortá los ingredientes cocidos en trozos cómodos para comer."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Mezclá pollo, arroz, palta, tomate."
       },
       {
-        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+        "text": "Repartí en 3 porciones. Si es vianda, refrigerá enseguida y transportá con frío."
       }
     ]
   },
@@ -6482,16 +6440,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/181869",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Por separado, cociná remolacha hasta que esté tierno; herví el huevo 10 minutos. Enfriá rápidamente si vas a comer la ensalada fría."
       },
       {
-        "text": "Cociná los huevos por separado hasta que esté listo; enfriá rápidamente."
+        "text": "Lavá y cortá lechuga; escurrí y cortá los ingredientes cocidos en trozos cómodos para comer."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Mezclá remolacha, huevo, ricota, lechuga."
       },
       {
-        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+        "text": "Repartí en 3 porciones. Si es vianda, refrigerá enseguida y transportá con frío."
       }
     ]
   },
@@ -6579,16 +6537,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/181869",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá zanahoria cuando corresponda."
+        "text": "Escurrí garbanzos cocidos, atún y medí las cantidades de la lista."
       },
       {
-        "text": "Cociná atún por separado hasta que esté listo; enfriá rápidamente."
+        "text": "Lavá y cortá zanahoria, cebolla morada; prepará los demás ingredientes según la lista."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Mezclá garbanzos cocidos, atún, zanahoria, cebolla morada."
       },
       {
-        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+        "text": "Repartí en 3 porciones. Si es vianda, refrigerá enseguida y transportá con frío."
       }
     ]
   },
@@ -8694,7 +8652,7 @@
         "text": "Dorá en sartén con poco aceite y agregá la salsa; tapá y cociná a fuego bajo 15–20 min."
       },
       {
-        "text": "Cociná la guarnición aparte si corresponde y repartí albóndigas, salsa y guarnición por igual."
+        "text": "Cociná arroz hasta que esté tierno y repartí las albóndigas y la guarnición en 4 porciones."
       }
     ]
   },
@@ -8796,7 +8754,7 @@
         "text": "Dorá en sartén con poco aceite y agregá la salsa; tapá y cociná a fuego bajo 15–20 min."
       },
       {
-        "text": "Cociná la guarnición aparte si corresponde y repartí albóndigas, salsa y guarnición por igual."
+        "text": "Cociná calabaza hasta que esté tierno y repartí las albóndigas y la guarnición en 4 porciones."
       }
     ]
   },
@@ -8898,7 +8856,7 @@
         "text": "Dorá en sartén con poco aceite y agregá la salsa; tapá y cociná a fuego bajo 15–20 min."
       },
       {
-        "text": "Cociná la guarnición aparte si corresponde y repartí albóndigas, salsa y guarnición por igual."
+        "text": "Repartí las albóndigas y la salsa en 4 porciones."
       }
     ]
   },
@@ -9000,7 +8958,7 @@
         "text": "Dorá en sartén con poco aceite y agregá la salsa; tapá y cociná a fuego bajo 15–20 min."
       },
       {
-        "text": "Cociná la guarnición aparte si corresponde y repartí albóndigas, salsa y guarnición por igual."
+        "text": "Repartí las albóndigas y la salsa en 4 porciones."
       }
     ]
   },
@@ -11298,16 +11256,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/181869",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate cuando corresponda."
+        "text": "Por separado, herví fideos según el envase; cociná pollo completamente. Enfriá rápidamente si vas a comer la ensalada fría."
       },
       {
-        "text": "Cociná fideos por separado hasta que esté listo; enfriá rápidamente."
+        "text": "Lavá y cortá palta, tomate; escurrí y cortá los ingredientes cocidos en trozos cómodos para comer."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Mezclá fideos, pollo, palta, tomate."
       },
       {
-        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+        "text": "Repartí en 4 porciones. Si es vianda, refrigerá enseguida y transportá con frío."
       }
     ]
   },
@@ -11689,19 +11647,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213611",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá cebolla cuando corresponda."
+        "text": "Lavá y cortá cebolla en trozos parejos. Medí el resto de los ingredientes de la lista."
       },
       {
-        "text": "Rehogá cebolla 5 min en olla amplia; dorá pollo si corresponde."
+        "text": "En una olla, rehogá la cebolla y agregá las demás verduras. Sumá pollo y cociná bien antes de incorporar el líquido."
       },
       {
-        "text": "Sumá polenta, la salsa de tomate y agua suficiente para apenas cubrir."
+        "text": "Sumá polenta, salsa de tomate y agua suficiente para cubrir apenas. Cociná a hervor suave, revolviendo de vez en cuando, hasta que los ingredientes crudos estén tiernos."
       },
       {
-        "text": "Cociná a hervor suave hasta que polenta esté tierno; incorporá legumbres ya cocidas al final."
-      },
-      {
-        "text": "Probá la sazón y serví dividido en las porciones indicadas."
+        "text": "Repartí en 4 porciones; refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -12787,7 +12742,7 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá tomate, cebolla cuando corresponda."
       },
       {
-        "text": "Cociná la guarnición por separado si corresponde."
+        "text": "Tostá el pan y serví el revuelto encima."
       },
       {
         "text": "En sartén caliente cociná el huevo o las verduras hasta su punto seguro; reservá."
@@ -12884,7 +12839,7 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
       },
       {
-        "text": "Cociná la guarnición por separado si corresponde."
+        "text": "Tostá el pan y serví el revuelto encima."
       },
       {
         "text": "En sartén caliente cociná el huevo o las verduras hasta su punto seguro; reservá."
@@ -16190,13 +16145,13 @@
     "researchSource": "https://www.argentina.gob.ar/node/181869",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
+        "text": "Lavá las frutillas y la manzana; cortalas junto con la banana en trozos pequeños."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Distribuí la fruta en los frascos y agregá el yogur natural medido."
       },
       {
-        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+        "text": "Tapá y mantené refrigerado hasta comer; dividí en 4 porciones."
       }
     ]
   },
@@ -16751,7 +16706,7 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá berenjena, cebolla, morrón cuando corresponda."
       },
       {
-        "text": "Cociná arroz por separado si corresponde."
+        "text": "Herví el arroz por separado según el tiempo del envase."
       },
       {
         "text": "En sartén caliente cociná pollo hasta su punto seguro; reservá."
@@ -16848,7 +16803,7 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá papa cuando corresponda."
       },
       {
-        "text": "Cociná papa por separado si corresponde."
+        "text": "Cociná papa por separado hasta que esté tierno."
       },
       {
         "text": "En sartén caliente cociná pollo hasta su punto seguro; reservá."
@@ -16945,7 +16900,7 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá batata, cebolla, morrón cuando corresponda."
       },
       {
-        "text": "Cociná batata por separado si corresponde."
+        "text": "Cociná batata por separado hasta que esté tierno."
       },
       {
         "text": "En sartén caliente cociná cerdo hasta su punto seguro; reservá."
@@ -17044,19 +16999,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/213611",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate, cebolla, morrón cuando corresponda."
+        "text": "Lavá y cortá tomate, cebolla, morrón en trozos parejos. Medí el resto de los ingredientes de la lista."
       },
       {
-        "text": "Rehogá tomate, cebolla, morrón 5 min en olla amplia; dorá lomo si corresponde."
+        "text": "En una olla, rehogá la cebolla y agregá tomate, morrón. Sumá lomo y cociná bien antes de incorporar el líquido."
       },
       {
-        "text": "Sumá arroz,  agua suficiente para apenas cubrir."
+        "text": "Sumá arroz y agua suficiente para cubrir apenas. Cociná a hervor suave, revolviendo de vez en cuando, hasta que los ingredientes crudos estén tiernos."
       },
       {
-        "text": "Cociná a hervor suave hasta que arroz esté tierno; incorporá legumbres ya cocidas al final."
-      },
-      {
-        "text": "Probá la sazón y serví dividido en las porciones indicadas."
+        "text": "Repartí en 4 porciones; refrigerá pronto lo que guardes."
       }
     ]
   },
@@ -18259,16 +18211,16 @@
     "researchSource": "https://www.paulinacocina.net/viandas-saludables/13747",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá berenjena cuando corresponda."
+        "text": "Prepará berenjena: cortá en láminas y horneá hasta ablandar; medí los demás ingredientes."
       },
       {
-        "text": "Cociná el relleno  hasta que no quede líquido; ablandá la cobertura de papa, calabaza o berenjena."
+        "text": "Rehogá las verduras; agregá carne picada y cociná hasta que esté completamente cocido y sin exceso de líquido."
       },
       {
-        "text": "Poné el relleno en fuente de 24 × 20 cm y cubrí con el puré o las láminas. Distribuí el queso encima."
+        "text": "Poné el relleno en una fuente y cubrí con las láminas de berenjena; distribuí la muzzarella encima."
       },
       {
-        "text": "Horneá a 190 °C durante 20–25 min, hasta dorar. Dejá reposar 10 min para cortar las porciones."
+        "text": "Horneá a 190 °C durante 20–25 minutos, hasta dorar. Dejá reposar 10 minutos y dividí en 6 porciones."
       }
     ]
   },
@@ -18361,16 +18313,16 @@
     "researchSource": "https://www.paulinacocina.net/viandas-saludables/13747",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá berenjena, zapallito, espinaca cuando corresponda."
+        "text": "Prepará berenjena: cortá en láminas y horneá hasta ablandar; medí los demás ingredientes."
       },
       {
-        "text": "Cociná el relleno  hasta que no quede líquido; ablandá la cobertura de papa, calabaza o berenjena."
+        "text": "Rehogá las verduras; agregá el relleno y cociná hasta que esté completamente cocido y sin exceso de líquido."
       },
       {
-        "text": "Poné el relleno en fuente de 24 × 20 cm y cubrí con el puré o las láminas."
+        "text": "Poné el relleno en una fuente y cubrí con las láminas de berenjena."
       },
       {
-        "text": "Horneá a 190 °C durante 20–25 min, hasta dorar. Dejá reposar 10 min para cortar las porciones."
+        "text": "Horneá a 190 °C durante 20–25 minutos, hasta dorar. Dejá reposar 10 minutos y dividí en 6 porciones."
       }
     ]
   },
@@ -18670,7 +18622,7 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá repollo, zanahoria cuando corresponda."
       },
       {
-        "text": "Cociná merluza hasta que esté listo; cortá las verduras finas."
+        "text": "Cociná la merluza hasta que quede opaca; cortá finos el repollo y la zanahoria y mezclalos con el yogur natural."
       },
       {
         "text": "Calentá las tortillas 30 segundos por lado sin resecar; distribuí el relleno medido."
@@ -18877,7 +18829,7 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá morrón, cebolla cuando corresponda."
       },
       {
-        "text": "Cociná arroz por separado si corresponde."
+        "text": "Herví el arroz por separado según el tiempo del envase."
       },
       {
         "text": "En sartén caliente cociná cerdo hasta su punto seguro; reservá."
@@ -19382,13 +19334,13 @@
         "text": "Pesá los ingredientes según la lista; lavá y cortá la fruta o las verduras cuando corresponda."
       },
       {
-        "text": "Rehogá el relleno y escurrilo; dejá entibiar."
+        "text": "Cociná la remolacha hasta que esté tierna, pelala, rallala y escurrila; mezclá con ricota y nueces picadas."
       },
       {
         "text": "Estirá la masa en tartera de 24 cm, pinchá la base y precocinala 8 min a 190 °C."
       },
       {
-        "text": "Mezclá el relleno con huevo y queso o ricota; distribuí en la base."
+        "text": "Mezclá el relleno con huevo y ricota; distribuí en la base."
       },
       {
         "text": "Horneá 25–30 min a 190 °C hasta que la base dore y el relleno esté firme. Entibiá antes de cortar."
@@ -19493,7 +19445,7 @@
         "text": "Estirá la masa en tartera de 24 cm, pinchá la base y precocinala 8 min a 190 °C."
       },
       {
-        "text": "Mezclá el relleno con huevo y queso o ricota; distribuí en la base."
+        "text": "Mezclá el relleno con huevo y queso; distribuí en la base."
       },
       {
         "text": "Horneá 25–30 min a 190 °C hasta que la base dore y el relleno esté firme. Entibiá antes de cortar."
@@ -19598,7 +19550,7 @@
         "text": "Estirá la masa en tartera de 24 cm, pinchá la base y precocinala 8 min a 190 °C."
       },
       {
-        "text": "Mezclá el relleno con huevo y queso o ricota; distribuí en la base."
+        "text": "Escurrí el atún y mezclalo con el tomate cocido, los huevos y el queso; distribuí sobre la base."
       },
       {
         "text": "Horneá 25–30 min a 190 °C hasta que la base dore y el relleno esté firme. Entibiá antes de cortar."
@@ -19694,16 +19646,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/181869",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá tomate, zanahoria cuando corresponda."
+        "text": "Por separado, herví arroz según el envase. Enfriá rápidamente si vas a comer la ensalada fría."
       },
       {
-        "text": "Cociná arroz por separado hasta que esté listo; enfriá rápidamente."
+        "text": "Lavá y cortá pepino, tomate, zanahoria; escurrí y cortá los ingredientes cocidos en trozos cómodos para comer."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Mezclá arroz, garbanzos cocidos, pepino, tomate, zanahoria."
       },
       {
-        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+        "text": "Repartí en 4 porciones. Si es vianda, refrigerá enseguida y transportá con frío."
       }
     ]
   },
@@ -19791,16 +19743,16 @@
     "researchSource": "https://www.argentina.gob.ar/node/181869",
     "steps": [
       {
-        "text": "Pesá los ingredientes según la lista; lavá y cortá calabaza, espinaca cuando corresponda."
+        "text": "Por separado, cociná calabaza hasta que esté tierno; cociná pollo completamente. Enfriá rápidamente si vas a comer la ensalada fría."
       },
       {
-        "text": "Cociná pollo por separado hasta que esté listo; enfriá rápidamente."
+        "text": "Lavá y cortá espinaca; escurrí y cortá los ingredientes cocidos en trozos cómodos para comer."
       },
       {
-        "text": "Cortá fruta o verduras según la lista y mezclá los ingredientes; agregá el aderezo al final si corresponde."
+        "text": "Mezclá calabaza, pollo, lentejas cocidas, espinaca."
       },
       {
-        "text": "Dividí en recipientes. Si es vianda, refrigerá de inmediato y mantené frío hasta comer."
+        "text": "Repartí en 4 porciones. Si es vianda, refrigerá enseguida y transportá con frío."
       }
     ]
   },

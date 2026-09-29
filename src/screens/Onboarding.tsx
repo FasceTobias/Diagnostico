@@ -3,12 +3,14 @@ import { AnimatePresence, LazyMotion, domAnimation, m } from 'motion/react'
 import type { Vianda } from '../lib/store'
 import type { DiabetesType, Perfil, Rol, Slot } from '../lib/types'
 import { DIABETES_LABEL, DIABETES_NOTE, SLOT_LABEL } from '../lib/types'
+import { PrivacySheet } from '../components/PrivacySheet'
 
 const PASOS = 9
 
 export function Onboarding({ app, onSalir }: { app: Vianda; onSalir: () => void }) {
   const [paso, setPaso] = useState(app.perfil.paso || 0)
   const [perfil, setPerfilLocal] = useState<Perfil>(app.perfil)
+  const [privacidadAbierta, setPrivacidadAbierta] = useState(false)
 
   const guardar = (p: Perfil) => {
     setPerfilLocal(p)
@@ -68,7 +70,7 @@ export function Onboarding({ app, onSalir }: { app: Vianda; onSalir: () => void 
               exit={{ opacity: 0, y: -8 }}
               transition={{ type: 'spring', stiffness: 320, damping: 30 }}
             >
-              {paso === 0 && <Bienvenida />}
+              {paso === 0 && <Bienvenida onPrivacy={() => setPrivacidadAbierta(true)} />}
               {paso === 1 && <Nombre perfil={perfil} onChange={setPerfilLocal} />}
               {paso === 2 && <Diabetes perfil={perfil} onChange={setPerfilLocal} />}
               {paso === 3 && <Insulina perfil={perfil} onChange={setPerfilLocal} />}
@@ -94,6 +96,7 @@ export function Onboarding({ app, onSalir }: { app: Vianda; onSalir: () => void 
             </button>
           )}
         </footer>
+        <PrivacySheet open={privacidadAbierta} onClose={() => setPrivacidadAbierta(false)} />
       </div>
     </LazyMotion>
   )
@@ -125,7 +128,7 @@ function Opcion({ activa, titulo, detalle, onClick }: { activa: boolean; titulo:
   )
 }
 
-function Bienvenida() {
+function Bienvenida({ onPrivacy }: { onPrivacy: () => void }) {
   return (
     <>
       <p className="v-label mb-3 font-semibold text-accent">VIANDA</p>
@@ -133,6 +136,7 @@ function Bienvenida() {
       <Bajada>
         Organizá tus comidas, descubrí recetas, planificá la semana y las compras, prepará qué llevar y registrá lo que realmente comiste. Podés ver carbohidratos aproximados por porción.
       </Bajada>
+      <p className="mt-4 text-[14px] leading-relaxed text-ink-soft">Las preguntas de salud son opcionales. Tus respuestas quedan en este dispositivo. <button onClick={onPrivacy} className="font-semibold text-accent underline underline-offset-2">Cómo usa Vianda tus datos</button></p>
 
       <div className="mt-8 border-t border-line">
         {[

@@ -1,11 +1,8 @@
-import { useState } from 'react'
 import type { Cuenta } from '../lib/auth'
 import type { DayContext, InsulinSettings, Preferences, Slot } from '../lib/types'
 import { CONTEXT_NOTE, SLOT_LABEL, SLOT_ORDER } from '../lib/types'
-import { CARB_UNIT } from '../lib/format'
 import { Sheet } from './Sheet'
 import { ContextSwitch, SectionLabel } from './ui'
-import { CarbCalculator } from './CarbCalculator'
 
 /* Configuración: lo que no se toca todos los días.
    Vive detrás de un ícono en el encabezado, no en la navegación. */
@@ -15,8 +12,6 @@ export function SettingsSheet({
   onClose,
   times,
   onTime,
-  insulin,
-  onInsulin,
   context,
   onContext,
   prefs,
@@ -37,18 +32,6 @@ export function SettingsSheet({
   cuenta: Cuenta
   onCuenta: () => void
 }) {
-  const [calc, setCalc] = useState(false)
-
-  const general = insulin.ratios.find((r) => r.scope === 'general')
-
-  const setGrams = (grams: number) =>
-    onInsulin({
-      ...insulin,
-      ratios: insulin.ratios.map((r) =>
-        r.scope === 'general' ? { ...r, gramsPerUnit: grams } : r,
-      ),
-    })
-
   return (
     <>
       <Sheet open={open} onClose={onClose} title="Configuración">
@@ -118,62 +101,7 @@ export function SettingsSheet({
           ))}
         </div>
 
-        {/* ---- Insulina: existe, pero no domina ---- */}
-        <SectionLabel className="mt-10">Relación insulina / carbohidratos</SectionLabel>
-
-        <Toggle
-          on={insulin.enabled}
-          onToggle={() => onInsulin({ ...insulin, enabled: !insulin.enabled })}
-          title="Guardar mi relación y usar la calculadora"
-          detail="Apagado, la app no muestra nada de insulina en ningún lado."
-        />
-
-        {insulin.enabled && general && (
-          <div className="v-rise mt-3">
-            <div className="border-b border-line py-5">
-              <div className="flex flex-wrap items-center gap-x-2 gap-y-2 text-[17px] text-ink">
-                <span className="font-semibold v-tnum">1 unidad</span>
-                <span className="text-ink-soft">por</span>
-                <input
-                  inputMode="decimal"
-                  value={general.gramsPerUnit}
-                  onChange={(e) => {
-                    const n = Number(e.target.value.replace(',', '.'))
-                    if (Number.isFinite(n) && n > 0) setGrams(n)
-                  }}
-                  aria-label="Gramos de carbohidratos por unidad"
-                  className="w-20 rounded-xl border border-line bg-bg px-3 py-2 text-[17px] font-semibold text-ink v-tnum outline-none focus:border-accent"
-                />
-                <span className="text-ink-soft">{CARB_UNIT}</span>
-              </div>
-            </div>
-
-            <button
-              onClick={() => setCalc(true)}
-              className="mt-4 min-h-[48px] w-full rounded-[10px] border border-ink/80 text-[15px] font-semibold text-ink active:scale-[0.98]"
-            >
-              Abrir la calculadora
-            </button>
-
-            <p className="mt-4 text-[13px] leading-relaxed text-ink-faint">
-              Más adelante vas a poder guardar relaciones distintas por momento del
-              día o por franja horaria. Por ahora se usa una sola para todo.
-            </p>
-
-            <p className="mt-4 text-[13px] leading-relaxed text-ink-soft">
-              Vianda guarda este número y hace la división cuando se la pedís.
-              Nunca calcula ni sugiere dosis por su cuenta, y no reemplaza lo que
-              te indicó tu médico.
-            </p>
-          </div>
-        )}
       </Sheet>
-
-      <CarbCalculator
-        open={calc}
-        onClose={() => setCalc(false)}
-        insulin={insulin}
-      />
     </>
   )
 }
